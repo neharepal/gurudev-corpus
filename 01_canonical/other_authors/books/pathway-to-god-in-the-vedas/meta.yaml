@@ -1,0 +1,34 @@
+id: pathway-to-god-in-the-vedas
+title: "Pathway to God in the Vedas"
+title_en: "Pathway to God in the Vedas"
+title_translit: ""
+author: other_authors
+co_authors:
+  - K. D. Sangoram
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: "ACPR Belgaum"
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/pathway-to-god-in-the-vedas.pdf
+    received_on: 2026-06-17
+    received_in_batch: wikimedia_acpr_2026-06-17
+    checksum_sha256: 4c34df8c2b6e51ef87646f5fb46da9c4abab9dc96124151356479a43c40b94ef
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+quality_notes: "OCR'd from Wikimedia Commons scan, publication-grade."
+notes: |
+  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+  Author: K. D. Sangoram.
+  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+external_verification:
+  verified: false
+  reason: ocr_only_from_wikimedia_commons_scan
+  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR

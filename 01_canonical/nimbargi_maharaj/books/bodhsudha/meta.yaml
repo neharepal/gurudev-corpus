@@ -1,0 +1,30 @@
+id: bodhsudha
+title: "Bodhsudha"
+title_en: "Bodhsudha"
+title_translit: ""
+author: nimbargi_maharaj
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/nimbargi_maharaj/books/bodhsudha/mr/श्री निम्बर्गी महाराजांची बोधसुधा मूळ ग्रंथ.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhakti
+  - nimbargi-maharaj
+  - sant-tradition
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pandoc.

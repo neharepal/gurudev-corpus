@@ -1,0 +1,30 @@
+id: kanada-saints-bio
+title: "A Brief Bio-Information of Kannada Poet-Saints"
+title_en: "A Brief Bio-Information of Kannada Poet-Saints (mentioned in Gurudeo R. D. Ranade's Pathway to God in Kannada Literature)"
+title_translit: ""
+author: ""
+co_authors: []
+kind: reference
+work_type: reference
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: Brief Bio information of Kanada saints.pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text
+extracted_on: 2026-06-14
+word_count: 7660
+quality_notes: ""
+notes: |
+  Reference work: short biographies of Kannada poet-saints cited by Gurudev Ranade in PGKL and its source-book. Published by Prof. Dr. K. B. Dabade (First Edition 2020), Udupi. Useful for citation expansion and timeline queries in Phase 2 RAG; should be weighted low and never quoted as Gurudev's teaching.

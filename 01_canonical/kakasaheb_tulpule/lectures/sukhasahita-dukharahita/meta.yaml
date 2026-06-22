@@ -1,0 +1,29 @@
+id: sukhasahita-dukharahita
+title: "Sukhasahita Dukharahita"
+title_en: "Sukhasahita Dukharahita"
+title_translit: ""
+author: kakasaheb_tulpule
+co_authors: []
+work_type: lecture
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/kakasaheb_tulpule/lectures/sukhasahita-dukharahita/mr/सुखसहिता दुखरहिता निर्मल एकांता।.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - lectures
+  - spiritual-practice
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pandoc.

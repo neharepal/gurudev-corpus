@@ -1,0 +1,41 @@
+version: 1
+last_updated: '2026-06-14'
+stories:
+  the-old-house-at-nimbal:
+    canonical_title: निंबाळचे जुने घर
+    title_en: The Old House at Nimbal
+    about_member: gurudev_ranade
+    one_line: Physical layout of Gurudev's old Nimbal house (1925-1958), later converted
+      into the Samadhi Mandir; preservation of Bhausaheb Maharaj's letters; donation
+      of ~2000 books to Dharwad University.
+    key_people:
+    - shri-gurudev-ranade
+    - bhausaheb-maharaj
+    - bhaurao-nimbargi
+    - nagappa-nimbargi
+    - amburao-maharaj
+    - shivlingavva
+    - pundappa
+    - narsappa
+    - shetyappa
+    - banhatti
+    - yuvraj-of-sangli
+    - keshavrao-dharmadhikari
+    - krishnarao-gajendragadkar
+    - dr-pavate
+    - kakoosaheb
+    locations:
+    - nimbal
+    - dharwad
+    period: 1925-1958
+    fingerprint_phrases:
+    - धारवाड युनिव्हर्सिटी
+    - शेट्ट्यप्पांची खोली
+    - जुन्या घराचे वर्णन
+    - समाधी मंदिरात त्याचे रुपांतर
+    - श्रीमहाराजांच्या पत्रांच्या पेट्या
+    variant_count: 3
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/jaisi-ganga-vahe_p17-19.md
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/src-1dc746a5_seg01.md
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/src-895333ca_seg01.md

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citation Panel Mockups — Gurudev Corpus</title>
+<style>
+  :root {
+    --bg-page:        #F8F2E4;   /* warm parchment */
+    --bg-surface:     #FCF8EC;   /* lighter parchment, slight elevation */
+    --bg-panel:       #F4ECD8;   /* darker parchment for citation cards */
+    --text-primary:   #2D2924;   /* deep sepia */
+    --text-secondary: #6E665B;   /* muted bronze */
+    --text-tertiary:  #8E8472;   /* faded sepia */
+    --accent-maroon:  #7A2E2A;   /* primary accent — buttons, citations */
+    --accent-gold:    #A88556;   /* secondary — hover, highlights */
+    --border-soft:    #D8CDB5;   /* book margin lines */
+    --border-stronger:#B8AB8A;
+    --shadow-soft:    0 1px 0 var(--border-soft);
+
+    --font-serif:     'Lora', 'Charter', 'Georgia', 'Times New Roman', 'Noto Serif Devanagari', serif;
+    --font-headline:  'Lora', 'Charter', 'Georgia', serif;
+    --font-mono:      'Iosevka Slab', 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-serif);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+
+  .page-header {
+    max-width: 1100px;
+    margin: 40px auto 16px;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 28px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .page-header .lede {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .mockup {
+    max-width: 1100px;
+    margin: 56px auto;
+    padding: 0 24px;
+  }
+  .mockup-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .mockup-header .label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .mockup-header h2 {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .pros-cons div { padding: 10px 14px; border-radius: 4px; background: var(--bg-surface); border-left: 3px solid; }
+  .pros { border-left-color: var(--accent-gold); }
+  .cons { border-left-color: var(--accent-maroon); }
+  .pros-cons strong { color: var(--text-primary); }
+
+  /* common chat frame */
+  .chat-frame {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 28px 32px;
+  }
+  .question {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--text-primary);
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .answer-body {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .answer-body p { margin: 0 0 14px; }
+
+  /* citation marker style */
+  .cite {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-maroon);
+    vertical-align: super;
+    line-height: 1;
+    padding: 1px 4px;
+    border: 1px solid var(--border-soft);
+    border-radius: 3px;
+    background: var(--bg-surface);
+    cursor: pointer;
+    margin: 0 1px;
+    transition: background 200ms ease;
+  }
+  .cite:hover { background: var(--accent-gold); color: var(--bg-surface); border-color: var(--accent-gold); }
+
+  /* ==================== Layout 1: Right-side panel ==================== */
+  .layout-1-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 28px;
+  }
+  .layout-1-grid .sources-panel {
+    background: var(--bg-panel);
+    border-radius: 6px;
+    padding: 18px 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    align-self: start;
+  }
+  .layout-1-grid .sources-panel h3 {
+    font-family: var(--font-headline);
+    font-size: 13px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    font-weight: 700;
+  }
+  .layout-1-grid .source-item {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .layout-1-grid .source-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .layout-1-grid .source-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-maroon);
+    font-weight: 700;
+  }
+  .layout-1-grid .source-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 2px 0;
+    line-height: 1.4;
+  }
+  .layout-1-grid .source-meta { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
+
+  /* ==================== Layout 2: Inline expanding cards ==================== */
+  .expand-card {
+    background: var(--bg-panel);
+    border-left: 3px solid var(--accent-maroon);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin: 10px 0 18px;
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: 1.55;
+  }
+  .expand-card .src-line {
+    color: var(--accent-maroon);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .expand-card .src-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .expand-card .src-quote {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 8px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-soft);
+  }
+  .expand-card .src-meta {
+    color: var(--text-tertiary);
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  /* ==================== Layout 3: Bottom accordion ==================== */
+  .accordion {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-headline);
+    font-size: 14px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+  }
+  .accordion-arrow {
+    transition: transform 200ms ease;
+    display: inline-block;
+    font-size: 12px;
+  }
+  .accordion.open .accordion-arrow { transform: rotate(90deg); }
+  .accordion-body { margin-top: 18px; display: none; }
+  .accordion.open .accordion-body { display: block; }
+  .accordion-body .source-row {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .accordion-body .source-row:last-child { border-bottom: none; }
+  .accordion-body .source-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-maroon);
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 30px;
+  }
+  .accordion-body .source-content { flex: 1; font-size: 15px; }
+  .accordion-body .source-title { font-weight: 600; margin-bottom: 4px; }
+  .accordion-body .source-meta { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
+
+  /* mobile fallback */
+  @media (max-width: 720px) {
+    .layout-1-grid { grid-template-columns: 1fr; }
+    .layout-1-grid .sources-panel { margin-top: 18px; }
+    body { font-size: 16px; }
+  }
+
+  .footer-note {
+    max-width: 1100px;
+    margin: 60px auto 40px;
+    padding: 24px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: var(--bg-surface);
+    border-radius: 6px;
+    border: 1px solid var(--border-soft);
+    line-height: 1.6;
+  }
+  .footer-note h3 {
+    font-family: var(--font-headline);
+    font-size: 16px;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Citation Panel — three layouts</h1>
+  <p class="lede">Same question, same answer, same three citations — only the layout differs. All three use the "warm devotional" aesthetic (ADR-006): parchment background, sepia text, maroon accent, warm serif fonts. Compare how each <em>feels</em>, not just how each looks.</p>
+</header>
+
+<!-- ============== LAYOUT 1: Right-side pinned panel ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Layout 1</span>
+    <h2>Right-side pinned panel</h2>
+  </div>
+  <div class="pros-cons">
+    <div class="pros"><strong>Pros:</strong> All sources always visible. Easy comparison. Feels scholarly.</div>
+    <div class="cons"><strong>Cons:</strong> Less reading width for the answer. Collapses to bottom on mobile.</div>
+  </div>
+
+  <div class="chat-frame">
+    <div class="layout-1-grid">
+      <div>
+        <div class="question">What are Shri Gurudev's views on Bhakti?</div>
+        <div class="answer-body">
+          <p>For Shri Gurudev Ranade, bhakti is not a sentimental devotion but the deepest and most direct path to God-realization<span class="cite">#1</span>. He places it at the apex of the four classical yogas, arguing that jnana, karma, and dhyana all culminate in bhakti when fully realized<span class="cite">#1</span>.</p>
+          <p>In his survey of mystical traditions, Gurudev draws particular attention to the Marathi sant tradition — Jnaneshwar, Tukaram, Eknath, Ramdas — as embodiments of the bhakti path in lived form<span class="cite">#2</span>.</p>
+          <p>The corpus also preserves recollections that connect Gurudev's writings to his own practice: devotees describe how his daily life at Nimbal was itself an expression of unwavering bhakti toward his own guru, Shri Bhausaheb Maharaj<span class="cite">#3</span>.</p>
+        </div>
+      </div>
+      <div class="sources-panel">
+        <h3>Sources</h3>
+        <div class="source-item">
+          <div class="source-num">#1</div>
+          <div class="source-title">Pathway to God in Hindi Literature</div>
+          <div class="source-meta">ch. 4, p. 87 — Shri Gurudev Ranade</div>
+        </div>
+        <div class="source-item">
+          <div class="source-num">#2</div>
+          <div class="source-title">Mysticism in Maharashtra</div>
+          <div class="source-meta">preface — Shri Gurudev Ranade</div>
+        </div>
+        <div class="source-item">
+          <div class="source-num">#3</div>
+          <div class="source-title">निंबाळचे जुने घर <em>(athvani)</em></div>
+          <div class="source-meta">narrator Vijaya Apte, from "जैसी गंगा वाहे"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LAYOUT 2: Inline expanding cards ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Layout 2</span>
+    <h2>Inline expanding cards</h2>
+  </div>
+  <div class="pros-cons">
+    <div class="pros"><strong>Pros:</strong> Source appears next to the claim it backs. Lower cognitive load. Mobile-friendly. Cards include a verbatim quote.</div>
+    <div class="cons"><strong>Cons:</strong> Answer gets visually broken up. Multiple opens = page becomes long.</div>
+  </div>
+
+  <div class="chat-frame">
+    <div class="question">What are Shri Gurudev's views on Bhakti?</div>
+    <div class="answer-body">
+      <p>For Shri Gurudev Ranade, bhakti is not a sentimental devotion but the deepest and most direct path to God-realization<span class="cite">#1</span>. He places it at the apex of the four classical yogas, arguing that jnana, karma, and dhyana all culminate in bhakti when fully realized<span class="cite">#1</span>.</p>
+      <div class="expand-card">
+        <div class="src-line">[#1] CANONICAL · GURUDEV RANADE</div>
+        <div class="src-title">Pathway to God in Hindi Literature, ch. 4, p. 87</div>
+        <div class="src-quote">"Bhakti is at once the means and the end of mysticism. It is by bhakti that the soul approaches God, and it is in bhakti that the soul finds its fulfilment."</div>
+        <div class="src-meta">Click to read this passage in Simple Reading mode →</div>
+      </div>
+      <p>In his survey of mystical traditions, Gurudev draws particular attention to the Marathi sant tradition — Jnaneshwar, Tukaram, Eknath, Ramdas — as embodiments of the bhakti path in lived form<span class="cite">#2</span>.</p>
+      <p>The corpus also preserves recollections that connect Gurudev's writings to his own practice: devotees describe how his daily life at Nimbal was itself an expression of unwavering bhakti toward his own guru, Shri Bhausaheb Maharaj<span class="cite">#3</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LAYOUT 3: Bottom accordion ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Layout 3</span>
+    <h2>Bottom collapsed accordion</h2>
+  </div>
+  <div class="pros-cons">
+    <div class="pros"><strong>Pros:</strong> Cleanest possible reading surface. Familiar pattern. Naturally mobile-friendly.</div>
+    <div class="cons"><strong>Cons:</strong> Sources are hidden by default — devotees may not click. Less "scholarly" feel.</div>
+  </div>
+
+  <div class="chat-frame">
+    <div class="question">What are Shri Gurudev's views on Bhakti?</div>
+    <div class="answer-body">
+      <p>For Shri Gurudev Ranade, bhakti is not a sentimental devotion but the deepest and most direct path to God-realization<span class="cite">#1</span>. He places it at the apex of the four classical yogas, arguing that jnana, karma, and dhyana all culminate in bhakti when fully realized<span class="cite">#1</span>.</p>
+      <p>In his survey of mystical traditions, Gurudev draws particular attention to the Marathi sant tradition — Jnaneshwar, Tukaram, Eknath, Ramdas — as embodiments of the bhakti path in lived form<span class="cite">#2</span>.</p>
+      <p>The corpus also preserves recollections that connect Gurudev's writings to his own practice: devotees describe how his daily life at Nimbal was itself an expression of unwavering bhakti toward his own guru, Shri Bhausaheb Maharaj<span class="cite">#3</span>.</p>
+    </div>
+
+    <div class="accordion open" id="acc">
+      <div class="accordion-header" onclick="document.getElementById('acc').classList.toggle('open')">
+        <span class="accordion-arrow">▶</span>
+        <span>Sources (3)</span>
+      </div>
+      <div class="accordion-body">
+        <div class="source-row">
+          <div class="source-num">[#1]</div>
+          <div class="source-content">
+            <div class="source-title">Pathway to God in Hindi Literature, ch. 4, p. 87</div>
+            <div class="source-meta">Shri Gurudev Ranade — canonical</div>
+          </div>
+        </div>
+        <div class="source-row">
+          <div class="source-num">[#2]</div>
+          <div class="source-content">
+            <div class="source-title">Mysticism in Maharashtra, preface</div>
+            <div class="source-meta">Shri Gurudev Ranade — canonical</div>
+          </div>
+        </div>
+        <div class="source-row">
+          <div class="source-num">[#3]</div>
+          <div class="source-content">
+            <div class="source-title">निंबाळचे जुने घर — athvani</div>
+            <div class="source-meta">narrator Vijaya Apte (from "जैसी गंगा वाहे") — oral recollection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  <h3>Reminder of the design context</h3>
+  <p>Aesthetic per <strong>ADR-006</strong>: parchment background, sepia text, maroon accent, warm serif fonts (Lora + Noto Serif Devanagari companion when it loads). This page uses system serif fallbacks so the feel is approximate but representative.</p>
+  <p>Click any <span class="cite" style="cursor:default">#N</span> marker to see hover interaction. Click "Sources (3)" header in Layout 3 to expand/collapse.</p>
+</div>
+
+</body>
+</html>

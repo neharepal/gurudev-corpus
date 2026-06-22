@@ -1,0 +1,102 @@
+id: bhagvadgeeta
+title: "Bhagvadgeeta"
+title_en: "Bhagvadgeeta"
+title_translit: ""
+author: kakasaheb_tulpule
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta 1-2_Final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta3 फायनल.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta4 फायनल.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_6_Final_Print.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_7_Final_Print.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_10 final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_10 finallast12 pages.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_11final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_12final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_13final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_14final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_15final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_16final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_17final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_18final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_5 फायनल.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_8final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_9final.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/PART_3.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhagavadgita
+  - bhakti
+  - commentary
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdftotext
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pdftotext.

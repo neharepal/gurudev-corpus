@@ -1,0 +1,38 @@
+id: pathway-to-god-in-kannada-literature
+title: "Pathway to God in Kannada Literature"
+title_en: "Pathway to God in Kannada Literature"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/gurudev_ranade/books/pathway-to-god-in-kannada-literature/en/3. PGKL - Final Vandan.docx_.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/books/pathway-to-god-in-kannada-literature/en/PGKL Part I.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/books/pathway-to-god-in-kannada-literature/en/PGKL Part II.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhakti
+  - kannada-sant-tradition
+  - mysticism
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pandoc.

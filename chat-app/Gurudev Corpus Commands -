@@ -1,0 +1,7 @@
+ Gurudev Corpus Commands -
+
+
+ /Users/neharepal/opt/anaconda3/bin/python tools/chat.py \
+    --mode qa \
+    --show-chunks \
+    "What are Gurudev's views on bhakti?"

@@ -1,0 +1,38 @@
+id: parmartha-sopan
+title: "Parmartha Sopan"
+title_en: "Parmartha Sopan"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: mixed
+languages_available: [mixed]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/final Parmartha sopan Hindi part 1.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/Parmartha sopan Hindi part 2.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/हिंदी परमार्थसोपान.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhakti
+  - sant-tradition
+  - paramartha
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pandoc.

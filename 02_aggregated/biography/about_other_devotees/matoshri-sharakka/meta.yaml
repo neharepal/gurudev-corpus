@@ -1,0 +1,43 @@
+id: matoshri-sharakka
+title: Matoshri Sharakka
+title_en: Matoshri Sharakka
+title_translit: ''
+about_member: other_devotees
+author: Surekha Kadapa-Bose
+co_authors: []
+kind: biography
+work_type: biography
+original_language: en
+languages_available:
+- en
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
+sources:
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
+tags: []
+subject_persons:
+- Matoshri Sharakka
+- Bhausaheb Maharaj or Amburao Maharaj (TBC)
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+extracted_on: 2026-06-14
+word_count: 19391
+quality_notes: folder-slug-misnamed-vs-actual-author
+notes: 'Memoir-style biography of Matoshri Sharakka (''Ajji''), authored by Surekha
+  Kadapa-Bose (First Edition 2022). Predominantly English text despite mr-folder placement
+  — author writes in English with scattered Kannada/Marathi terms. **Note:** the parent
+  folder is `sunil-gajendragadkar/` but the actual author is Surekha Kadapa-Bose;
+  slug preserved as-is per attribution decisions. Recommend either renaming the folder
+  or recording the true author in the dashboard.
+
+
+  Corrected 2026-06-14: Matoshri Sharakka is a disciple in the lineage (not Gurudev''s
+  mother). Author is the granddaughter Surekha Kadapa-Bose. Genre similar to ''My
+  Days with Ajji''. Guru of Sharakka TBD — likely Bhausaheb or Amburao Maharaj.'

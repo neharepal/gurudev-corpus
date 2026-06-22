@@ -1,0 +1,94 @@
+works:
+- id: constructive-survey-of-upanishadic-philosophy
+  title: A Constructive Survey of Upanishadic Philosophy
+  author: gurudev_ranade
+  languages: [en]
+  path: 01_canonical/gurudev_ranade/books/constructive-survey-of-upanishadic-philosophy/
+- id: creative-period
+  title: 'History of Indian Philosophy: The Creative Period'
+  author: gurudev_ranade
+  languages: [en]
+  path: 01_canonical/gurudev_ranade/books/creative-period/
+- id: philosophical-and-other-essays
+  title: Philosophical and Other Essays
+  author: gurudev_ranade
+  languages: [en]
+  path: 01_canonical/gurudev_ranade/books/philosophical-and-other-essays/
+- id: kannad-parmarth-sopan
+  title: कन्नड परमार्थ सोपान (Kannad Parmarth Sopan, Marathi)
+  author: gurudev_ranade
+  languages: [mr]
+  path: 01_canonical/gurudev_ranade/books/kannad-parmarth-sopan/
+- id: parmartha-mandir
+  title: परमार्थ मंदिर (Parmartha Mandir)
+  author: gurudev_ranade
+  languages: [mr]
+  path: 01_canonical/gurudev_ranade/books/parmartha-mandir/
+- id: javak-patre-tipane
+  title: श्री भाऊसाहेब महाराज उमदीकर यांची जावक पत्रे व टिपणे
+  author: bhausaheb_maharaj
+  languages: [mr]
+  path: 01_canonical/bhausaheb_maharaj/letters/javak-patre-tipane/
+- id: allahabad-days-en
+  title: Gurudev R. D. Ranade — A Glance at His Allahabad University Days and Other Essays
+  author: about_gurudev_ranade
+  languages: [en]
+  path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-en/
+- id: allahabad-days-mr
+  title: गुरुदेव रा. द. रानडे — अलाहाबाद विद्यापीठातील कारकीर्द व इतर लेख
+  author: about_gurudev_ranade
+  languages: [mr]
+  path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-mr/
+- id: kushal-pradhyapak
+  title: प्रा. रा. द. रानडे — एक कुशल प्राध्यापक व नामवंत ग्रंथकार
+  author: about_gurudev_ranade
+  languages: [mr]
+  path: 02_aggregated/biography/about_gurudev_ranade/kushal-pradhyapak/
+- id: gurudev-paramarthik-shikvan
+  title: श्री गुरुदेव रानडे व त्यांची पारमार्थिक शिकवण
+  author: kakasaheb_tulpule
+  languages: [mr]
+  path: 01_canonical/kakasaheb_tulpule/books/gurudev-paramarthik-shikvan/
+- id: sonari-pane-2000
+  title: निंबरगी संप्रदायाच्या इतिहासातील सोनेरी पाने (2000)
+  author: about_other_devotees
+  languages: [mr]
+  path: 02_aggregated/biography/about_other_devotees/sonari-pane-2000/
+- id: acpr-silver-jubilee-vol1
+  title: ACPR Silver Jubilee Souvenir, Volume I
+  author: about_other_devotees
+  languages: [en]
+  path: 02_aggregated/biography/about_other_devotees/acpr-silver-jubilee-vol1/
+- id: acpr-silver-jubilee-vol2
+  title: ACPR Silver Jubilee Souvenir, Volume II
+  author: about_other_devotees
+  languages: [en]
+  path: 02_aggregated/biography/about_other_devotees/acpr-silver-jubilee-vol2/
+- id: pathway-to-god-in-the-vedas
+  title: Pathway to God in the Vedas
+  author: other_authors
+  languages: [en]
+  path: 01_canonical/other_authors/books/pathway-to-god-in-the-vedas/
+- id: critical-constructive-aspects
+  title: Critical and Constructive Aspects of Prof. R. D. Ranade's Philosophy
+  author: other_authors
+  languages: [en]
+  path: 01_canonical/other_authors/books/critical-constructive-aspects/
+- id: studies-in-indian-philosophy
+  title: Studies in Indian Philosophy (Edited and Annotated)
+  author: other_authors
+  languages: [en]
+  path: 01_canonical/other_authors/books/studies-in-indian-philosophy/
+stories:
+- id: the-old-house-at-nimbal
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/
+  about_member: gurudev_ranade
+  title: निंबाळचे जुने घर
+  title_en: The Old House at Nimbal
+  themes:
+  - nimbal
+  - gurudev-daily-life
+  - samadhi-mandir
+  languages_available:
+  - mr
+  variant_count: 1

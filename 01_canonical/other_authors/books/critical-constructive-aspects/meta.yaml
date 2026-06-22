@@ -1,0 +1,35 @@
+id: critical-constructive-aspects
+title: "Critical and Constructive Aspects of Prof. R. D. Ranade's Philosophy"
+title_en: "Critical and Constructive Aspects of Prof. R. D. Ranade's Philosophy"
+title_translit: ""
+author: other_authors
+co_authors:
+  - B. R. Kulkarni
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: "ACPR Belgaum"
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/critical-constructive-aspects.pdf
+    received_on: 2026-06-17
+    received_in_batch: wikimedia_acpr_2026-06-17
+    checksum_sha256: 173c8ed494f4f0295e98de1668940173719f405beb2a487ec11289534da8174b
+tags: []
+subject_persons:
+  - gurudev_ranade
+related_works: []
+status: extracted
+text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+quality_notes: "OCR'd from Wikimedia Commons scan, publication-grade."
+notes: |
+  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+  Author: B. R. Kulkarni.
+  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+external_verification:
+  verified: false
+  reason: ocr_only_from_wikimedia_commons_scan
+  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR

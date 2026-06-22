@@ -1,0 +1,584 @@
+# Track A move plan — generated from attribution-decisions-2026-06-12.json
+# Total moves: 145
+# Defer decisions skipped: 0
+moves:
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Bhajnamrut_Final pdf.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/unknown/books/bhajanamrut/mr/Bhajnamrut_Final pdf.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Brief Bio information of Kanada saints.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/03_catalog/reference/kanada-saints-bio/en/Brief Bio information of Kanada saints.pdf"
+    action: reference
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Chronological Order of Writings of Shri Gurudeo--.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/03_catalog/reference/ranade-bibliography/en/Chronological Order of Writings of Shri Gurudeo--.pdf"
+    action: reference
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Chronological Order of Writings of Shri Gurudeo--(1).pdf"
+    destination: "/Users/neharepal/gurudev-corpus/03_catalog/reference/ranade-bibliography/en/Chronological Order of Writings of Shri Gurudeo--(1).pdf"
+    action: reference
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner-1.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/daily-thoughts/en/Daily Thoughts_Inner-1.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner_Final-1.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/daily-thoughts/en/Daily Thoughts_Inner_Final-1.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner_Final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/Daily Thoughts_Inner_Final.pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Final 2025 (mysticism).pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/Final 2025 (mysticism).pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Glimpses of Sri Gurudev_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_other_devotees/glimpses-of-sri-gurudev/en/Glimpses of Sri Gurudev_.pdf"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/GuruSamrpit Jivan - 1-8 th Demmy 280 pages.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_other_devotees/gurusamarpit-jivan/mr/GuruSamrpit Jivan - 1-8 th Demmy 280 pages.pdf"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Nityanemavali.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/nityanemavali/mr/Nityanemavali.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Vedant.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/vedant/en/Vedant.docx"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/ll श्री.txt"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_other_devotees/raw/ll श्री.txt"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/santanchya sahavasat/SS_1-5 _ 21 April (1).pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/santanchya-sahavasat/mr/SS_1-5 _ 21 April (1).pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/santanchya sahavasat/SS_6-8.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/santanchya-sahavasat/mr/SS_6-8.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/संत वचनामृत अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/sant-vachanamrut/mr/संत वचनामृत अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/संत वचनामृत_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/संत वचनामृत_.pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/एकनाथ वचनामृत अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/eknath-vachanamrut/mr/एकनाथ वचनामृत अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/रामदास वचनामृत अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/ramdas-vachanamrut/mr/रामदास वचनामृत अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/तुकाराम वचनामृत अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/tukaram-vachanamrut/mr/तुकाराम वचनामृत अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/ज्ञानेश्वरवचनामृत अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/jnaneshwar-vachanamrut/mr/ज्ञानेश्वरवचनामृत अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/अमरसंदेशसुधा_.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/amar-sandesh-sudha/mr/अमरसंदेशसुधा_.docx"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/Sadhakbodh pdf.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/letters/sadhakbodh/mr/Sadhakbodh pdf.pdf"
+    action: canonical_letters
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मन हे पंगू आहे.docx"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/मन हे पंगू आहे.docx"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्री न. ग. दामले यांचे प्रवचन.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/n-g-damle-pravachan/mr/श्री न. ग. दामले यांचे प्रवचन.docx"
+    action: canonical_lecture
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/साधक संवाद (परमार्थपर पत्रे).pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/letters/sadhak-samvad/mr/साधक संवाद (परमार्थपर पत्रे).pdf"
+    action: canonical_letters
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/दादा तेंडुलकर आठवणी शेष रुपेरी पाने.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/दादा तेंडुलकर आठवणी शेष रुपेरी पाने.pdf"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्री भाऊसाहेब महाराज पुस्तक.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_bhausaheb_maharaj/raw/श्री भाऊसाहेब महाराज पुस्तक.pdf"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांचे मातृप्रेम.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_gurudev_ranade/devotees/mr/श्री गुरुदेवांचे मातृप्रेम.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी २०२४.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_gurudev_ranade/shri-gurudevanchya-athvani-2024/mr/श्री गुरुदेवांच्या आठवणी २०२४.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी पुस्तक.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_gurudev_ranade/shri-gurudevanchya-athvani-pustak/mr/श्री गुरुदेवांच्या आठवणी पुस्तक.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/ईश्वर शरण आश्रम अलाहाबाद.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/ईश्वर शरण आश्रम अलाहाबाद.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/लच्याण संदेश.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/lachyan-sandesh/mr/लच्याण संदेश.docx"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/हरिदास यांच्या आठवणी.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/हरिदास यांच्या आठवणी.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/कल्याणी मासीक.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/periodicals/kalyani-masik/mr/कल्याणी मासीक.pdf"
+    action: periodical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/संकीर्ण.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/संकीर्ण.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/निंबाळची निवड कशी झाली.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_gurudev_ranade/how-nimbal-was-chosen/mr/निंबाळची निवड कशी झाली.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/लिंगप्पा सावळगी यांच्या आठवणी. _.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/लिंगप्पा सावळगी यांच्या आठवणी. _.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/नादाच्या संबंधी.docx"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/नादाच्या संबंधी.docx"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/सुखसहिता दुखरहिता निर्मल एकांता।.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/lectures/sukhasahita-dukharahita/mr/सुखसहिता दुखरहिता निर्मल एकांता।.docx"
+    action: canonical_lecture
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/विनायकराव दाते.docx"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/विनायकराव दाते.docx"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/शेट्यप्पा आठवणी.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_bhausaheb_maharaj/raw/शेट्यप्पा आठवणी.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/बापूसाहेब करंदीकर.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_other_devotees/raw/बापूसाहेब करंदीकर.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/महाराजांचे चरित्र लिहिणे Vivekanand gurudeo.docx"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/महाराजांचे चरित्र लिहिणे Vivekanand gurudeo.docx"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/पुण्यस्मृती.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_gurudev_ranade/punyasmruti/mr/पुण्यस्मृती.pdf"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/ध्यानोपकारणी गीता अर्थासहित.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/dhyangita/mr/ध्यानोपकारणी गीता अर्थासहित.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/ललिताक्कांच्या आठवणी.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/ललिताक्कांच्या आठवणी.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/श्रीरघुनाथाचार्य आद्य.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_other_devotees/raw/श्रीरघुनाथाचार्य आद्य.docx"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/ Sevenfold stream of spiritual life_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/books/v-h-datye/en/Sevenfold stream of spiritual life_.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/ Sevenfold stream of spiritual life_(1).pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/Sevenfold stream of spiritual life_(1).pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Contemporary.Indian.Philosophy_text.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/contemporary-indian-philosophy/en/Contemporary.Indian.Philosophy_text.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Essays and Reflections.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/essays-and-reflections/en/Essays and Reflections.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/REFLECTIONS_By R D RANADE.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/reflections/en/REFLECTIONS_By R D RANADE.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Gurudeo Opportunities of College Life.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/opportunities-of-college-life/en/Gurudeo Opportunities of College Life.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Gurudeo_s Abhang.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/gurudeos-abhang/en/Gurudeo_s Abhang.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/काकांची चर्चा.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/kakanchi-charcha/mr/काकांची चर्चा.pdf"
+    action: canonical
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Matoshri Sharakka-.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_other_devotees/sunil-gajendragadkar/mr/Matoshri Sharakka-.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Radhabai limaye charitra.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_other_devotees/kakasaheb-tulpule/mr/Radhabai limaye charitra.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Gurudev Black and white original photo.jpg"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/Gurudev Black and white original photo.jpg"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/निंबाळ आश्रमाची माहिती.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/03_catalog/reference/nimbal-ashram-info/mr/निंबाळ आश्रमाची माहिती.pdf"
+    action: reference
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/नेमाने आरोग्य.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/नेमाने आरोग्य.pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Copy of भा. रा. पटवर्धन.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/athvani/about_gurudev_ranade/raw/Copy of भा. रा. पटवर्धन.pdf"
+    action: athvani
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/कर्माचे डोळे ज्ञान ते निर्दोख होआवे_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/00_raw/_skipped/कर्माचे डोळे ज्ञान ते निर्दोख होआवे_.pdf"
+    action: skip
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/loose/परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx"
+    destination: "/Users/neharepal/gurudev-corpus/02_aggregated/biography/about_nimbargi_maharaj/devotee/mr/परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx"
+    action: biography
+    bundle_id: null
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Parmarth-Sopan.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/Parmarth-Sopan.pdf"
+    action: canonical
+    bundle_id: "Parmartha Sopan (Marathi + Hindi)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/Hindi Parmarth-Sopan.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/Hindi Parmarth-Sopan.pdf"
+    action: canonical
+    bundle_id: "Parmartha Sopan (Marathi + Hindi)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/Parmartha sopan Hindi part 2.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/Parmartha sopan Hindi part 2.docx"
+    action: canonical
+    bundle_id: "Parmartha Sopan (Marathi + Hindi)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/final Parmartha sopan Hindi part 1.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/final Parmartha sopan Hindi part 1.docx"
+    action: canonical
+    bundle_id: "Parmartha Sopan (Marathi + Hindi)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/हिंदी परमार्थसोपान.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/books/parmartha-sopan/mixed/हिंदी परमार्थसोपान.docx"
+    action: canonical
+    bundle_id: "Parmartha Sopan (Marathi + Hindi)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Patnkar pravachane bhag 3.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/Patnkar pravachane bhag 3.pdf"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/1 - धोखै ही धोखै.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/1 - धोखै ही धोखै.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/10 - कत जाइए रे, घर लाग्यो रंगु ।.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/10 - कत जाइए रे, घर लाग्यो रंगु ।.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/11 - अब कैसे छूटे नाम.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/11 - अब कैसे छूटे नाम.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/12 - मैं मझधारा का माँझी हूँ,.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/12 - मैं मझधारा का माँझी हूँ,.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/13 - अजर अमर इक नाम.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/13 - अजर अमर इक नाम.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/14 - अगर है शौक मिलनेका.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/14 - अगर है शौक मिलनेका.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/15 - नौकरी शरीयतसे_.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/15 - नौकरी शरीयतसे_.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/16 - सुना रे मैने निर्बलके बल.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/16 - सुना रे मैने निर्बलके बल.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/17 - अब  तो प्रकट.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/17 - अब  तो प्रकट.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/18 - शून्य शिखर में.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/18 - शून्य शिखर में.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/19 - झरि लागै महलिया.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/19 - झरि लागै महलिया.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/2 - केहि समुझाओ.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/2 - केहि समुझाओ.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/20 - और देवल जहँ धुंधली पूजा.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/20 - और देवल जहँ धुंधली पूजा.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/21 - ऐसा देस दिवाना रे लोगो .doc.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/21 - ऐसा देस दिवाना रे लोगो .doc.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/22  - महरम होय.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/22  - महरम होय.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/23 - चुवत अमी रस भरत.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/23 - चुवत अमी रस भरत.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/24 - ऐसो है रे.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/24 - ऐसो है रे.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/25 -  क्या बे किसी से.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/25 -  क्या बे किसी से.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/3 - केशव कहि न जाय का कहिए_.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/3 - केशव कहि न जाय का कहिए_.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/4 - बहुरी नहि आवना_.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/4 - बहुरी नहि आवना_.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/5 -छांडी मन.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/5 -छांडी मन.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/6 - अब मै नाच्यो_.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/6 - अब मै नाच्यो_.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/7 - सो काफिर जो बोलै काफ.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/7 - सो काफिर जो बोलै काफ.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/9 - सोइ सच्चिदानन्द.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/9 - सोइ सच्चिदानन्द.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/Patnkar प्रवचने Print File.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/Patnkar प्रवचने Print File.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/Patnkar प्रवचने Print File.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/Patnkar प्रवचने Print File.pdf"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/पाटणकर प्रवचने भाग ३.docx"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/other_authors/lectures/patankar-pravachan-3/mr/पाटणकर प्रवचने भाग ३.docx"
+    action: canonical_lecture
+    bundle_id: "Patankar Pravachan Part 3 (compiled PDF + 27 source files)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta 1-2_Final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta 1-2_Final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta 1-2_Final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta 1-2_Final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta3 फायनल.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta3 फायनल.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta3 फायनल.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta3 फायनल.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta4 फायनल.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta4 फायनल.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta4 फायनल.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta4 फायनल.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_6_Final_Print.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_6_Final_Print.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_6_Final_Print.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_6_Final_Print.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_7_Final_Print.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_7_Final_Print.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_7_Final_Print.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_7_Final_Print.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_10 final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_10 final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 finallast12 pages.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_10 finallast12 pages.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_11final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_11final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_11final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_11final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_12final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_12final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_12final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_12final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_13final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_13final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_13final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_13final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_14final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_14final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_14final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_14final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_15final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_15final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_15final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_15final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_16final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_16final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_16final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_16final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_17final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_17final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_17final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_17final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_18final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_18final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_18final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_18final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_5 फायनल.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_5 फायनल.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_5 फायनल.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_5 फायनल.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_8final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_8final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_8final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_8final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_9final.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_9final.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_9final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Geeta_Book_9final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/PART_3.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/PART_3.pdf"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/PART_3.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/PART_3.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Thumbs.db"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/Thumbs.db"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/विषय सूची 1final.pub"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/books/bhagvadgeeta/mr/विषय सूची 1final.pub"
+    action: canonical
+    bundle_id: "Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने १.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने १.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने २.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने २.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ३.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ३.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ४.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ४.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ५.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ५.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ७.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ७.pdf"
+    action: canonical_lecture
+    bundle_id: "Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग १_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग १_.pdf"
+    action: canonical_lecture
+    bundle_id: "Kakanchi Pravachane (parts 1, 2, 3)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग २_.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग २_.pdf"
+    action: canonical_lecture
+    bundle_id: "Kakanchi Pravachane (parts 1, 2, 3)"
+  - source: "/Users/neharepal/gurudev-corpus/00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग ३.pdf"
+    destination: "/Users/neharepal/gurudev-corpus/01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग ३.pdf"
+    action: canonical_lecture
+    bundle_id: "Kakanchi Pravachane (parts 1, 2, 3)"

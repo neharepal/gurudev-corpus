@@ -1,0 +1,32 @@
+id: creative-period
+title: "History of Indian Philosophy: The Creative Period"
+title_en: "History of Indian Philosophy: The Creative Period"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: "ACPR Belgaum"
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/creative-period.pdf
+    received_on: 2026-06-17
+    received_in_batch: wikimedia_acpr_2026-06-17
+    checksum_sha256: 7c681079ed07ebda16245a8d41d5990394b4bcc6a328099509202f6561580095
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+quality_notes: "OCR'd from Wikimedia Commons scan, publication-grade."
+notes: |
+  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+external_verification:
+  verified: false
+  reason: ocr_only_from_wikimedia_commons_scan
+  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR

@@ -1,0 +1,59 @@
+id: paramarthapar-vyakhyane
+title: "Paramarthapar Vyakhyane"
+title_en: "Paramarthapar Vyakhyane"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: lecture
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने १.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने २.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ३.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ४.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ५.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/gurudev_ranade/lectures/paramarthapar-vyakhyane/mr/परमार्थपर व्याख्याने ७.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - lectures
+  - paramartha
+  - marathi
+subject_persons: []
+related_works: []
+status: cataloged
+text_extraction_method: ocr-needed
+quality_notes: ""
+notes: |
+  Extraction attempted 2026-06-13 in bulk task #11 — ALL SOURCES FAILED.
+  Sources are image-only PDFs or use non-Unicode Devanagari fonts.
+  OCR (tesseract with mar/hin/kan trained data) required.
+  Source files attempted:
+    - परमार्थपर व्याख्याने १.pdf: pdftotext returned 1645 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)
+    - परमार्थपर व्याख्याने २.pdf: pdftotext returned 1069 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)
+    - परमार्थपर व्याख्याने ३.pdf: pdftotext returned 1480 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)
+    - परमार्थपर व्याख्याने ४.pdf: pdftotext returned 3124 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)
+    - परमार्थपर व्याख्याने ५.pdf: pdftotext returned 67412 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)
+    - परमार्थपर व्याख्याने ७.pdf: pdftotext returned 951 chars but devanagari ratio only 0.00 — likely non-Unicode font (needs OCR/font remap)

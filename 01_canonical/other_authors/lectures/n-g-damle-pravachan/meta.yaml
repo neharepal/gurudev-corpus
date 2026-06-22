@@ -1,0 +1,29 @@
+id: n-g-damle-pravachan
+title: "N G Damle Pravachan"
+title_en: "N G Damle Pravachan"
+title_translit: ""
+author: other_authors
+co_authors: []
+work_type: lecture
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/other_authors/lectures/n-g-damle-pravachan/mr/श्री न. ग. दामले यांचे प्रवचन.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - lectures
+  - marathi
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+quality_notes: ""
+notes: |
+  Extracted 2026-06-13 in bulk task #11. Method: pandoc.

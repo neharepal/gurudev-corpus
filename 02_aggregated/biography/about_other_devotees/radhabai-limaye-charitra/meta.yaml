@@ -1,0 +1,31 @@
+id: radhabai-limaye-charitra
+title: "राधाबाई लिमये अल्पचरित्र व शिकवण"
+title_en: "Radhabai Limaye: Alpa-Charitra va Shikvan (Brief Biography and Teachings of 'Aaji', Shri Radhabai Limaye), by G. V. Tulpule"
+title_translit: ""
+about_member: other_devotees
+author: ""
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: Radhabai limaye charitra.docx
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pandoc
+extracted_on: 2026-06-14
+word_count: 2286
+quality_notes: ""
+notes: |
+  Marathi biography of Shri Radhabai Limaye ('Aaji'), a saintly woman disciple in the Nimbargi sampraday, by Shri G. V. Tulpule of Sangli. Page markers appear as underscored numerals (e.g. `___१___`) — preserved verbatim by pandoc.

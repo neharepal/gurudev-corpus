@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ADR-006 — warm devotional palette baked as CSS custom properties for runtime use.
+   Round-4 warming (2026-06-14): deepened parchment toward aged-page amber,
+   warmer surface lift, slightly stronger borders to read against the new base. */
+:root {
+  --bg-page: #ECDFBC;
+  --bg-surface: #F4EAC9;
+  --bg-panel: #E5D6AC;
+  --text-primary: #2A241C;
+  --text-secondary: #6B6151;
+  --text-tertiary: #8B7F69;
+  --accent-maroon: #7A2E2A;
+  --accent-gold: #A88556;
+  --border-soft: #C9BC97;
+  --border-stronger: #A89978;
+
+  /* Crimson Pro 2026-06-14 — Garamond family but with measured italics for
+     screen readability. EB Garamond italic was reading as cursive at the
+     small sizes used for tagline and hints. Devanagari unchanged. */
+  --font-serif: "Crimson Pro", "EB Garamond", "Charter", "Georgia", "Noto Serif Devanagari", serif;
+  --font-deva: "Noto Serif Devanagari", "Crimson Pro", "Charter", "Georgia", serif;
+  --font-mono: "Iosevka Slab", "IBM Plex Mono", monospace;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aged-paper texture covers the full viewport now that the portrait sits
+   inline as a frontispiece (Round 3), not as a side rail. Full image
+   stretches edge-to-edge so all four aged dark borders show at the
+   viewport edges. */
+body {
+  background-color: var(--bg-page);
+  background-image: url("/paper-bg.jpg");
+  background-size: 100vw 100vh;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* EB Garamond runs a touch small per em — pull headings up slightly,
+   and add a faint ink-impression shadow that reads as warmth, not depth. */
+h1, h2, h3 {
+  letter-spacing: -0.002em;
+}
+h1 {
+  text-shadow:
+    0 1px 0 rgba(60, 30, 20, 0.10),
+    0 0 32px rgba(168, 133, 86, 0.12);
+}
+
+/* Decorative rule with centerpiece — used under the title block. Drawn in
+   CSS so it scales with the type. */
+.gd-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #A8853E;
+  opacity: 0.85;
+  font-size: 19px;
+  line-height: 1;
+}
+.gd-flourish::before,
+.gd-flourish::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Selection highlight uses gold per ADR-006 interaction notes. */
+::selection {
+  background: rgba(168, 133, 86, 0.28);
+  color: var(--text-primary);
+}
+
+/* Devanagari blocks pick up the Noto Serif Devanagari stack. */
+.font-deva,
+:lang(mr),
+:lang(hi) {
+  font-family: var(--font-deva);
+}
+
+/* Quote rendering shared by all answer surfaces (ADR-007 quote-first). */
+.gd-quote {
+  border-left: 3px solid var(--accent-maroon);
+  padding: 4px 0 4px 18px;
+  margin: 18px 0 6px;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.gd-quote-attr {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 22px 21px;
+  line-height: 1.5;
+}
+
+.gd-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Subtle 200-300ms tonal transitions per ADR-006. */
+button,
+a {
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}

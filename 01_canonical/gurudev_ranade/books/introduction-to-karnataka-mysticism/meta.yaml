@@ -1,0 +1,34 @@
+id: introduction-to-karnataka-mysticism
+title: "Introduction to Karnataka Mysticism"
+title_en: "Introduction to Karnataka Mysticism"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/gurudev_ranade/books/introduction-to-karnataka-mysticism/en/Introduction-to-Karnataka-mysticism.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - mysticism
+  - kannada-sant-tradition
+  - karnataka
+subject_persons: []
+related_works: []
+status: cataloged
+text_extraction_method: ocr-needed
+quality_notes: ""
+notes: |
+  Extraction attempted 2026-06-13 in bulk task #11 — ALL SOURCES FAILED.
+  Sources are image-only PDFs or use non-Unicode Devanagari fonts.
+  OCR (tesseract with mar/hin/kan trained data) required.
+  Source files attempted:
+    - Introduction-to-Karnataka-mysticism.pdf: pdftotext returned only 36 chars — likely image-only PDF (needs OCR)

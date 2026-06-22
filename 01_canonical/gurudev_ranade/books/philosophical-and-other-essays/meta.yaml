@@ -1,0 +1,32 @@
+id: philosophical-and-other-essays
+title: "Philosophical and Other Essays"
+title_en: "Philosophical and Other Essays"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: "ACPR Belgaum"
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/philosophical-and-other-essays.pdf
+    received_on: 2026-06-17
+    received_in_batch: wikimedia_acpr_2026-06-17
+    checksum_sha256: 0669052a7407ce903638baa605db4020c1a3cc69a4184e77610bb587b76abab3
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+quality_notes: "OCR'd from Wikimedia Commons scan, publication-grade."
+notes: |
+  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+external_verification:
+  verified: false
+  reason: ocr_only_from_wikimedia_commons_scan
+  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR

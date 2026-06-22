@@ -1,0 +1,40 @@
+# Schema for meta.yaml of a canonical work (book, lecture, letter, article).
+# Copy this into each work folder under 01_canonical/.../<work-slug>/meta.yaml
+# Fields marked [opt] may be omitted if unknown.
+
+id: <kebab-case-slug>          # unique, matches folder name
+title: <original title in original script>
+title_en: <english title>      # [opt] if original is non-English
+title_translit: <Latin-script transliteration>   # [opt]
+author: Shri Gurudev Ranade    # canonical author name
+co_authors: []                 # [opt]
+work_type: book                # book | lecture | letter | article | essay
+original_language: en          # en | mr | sa | kn | hi
+languages_available: [en]      # which language subfolders are populated
+
+# Publishing details ([opt] if unknown)
+year_first_published:
+year_this_edition:
+publisher:
+edition:
+isbn:
+
+# Provenance — track which raw files this work was assembled from
+sources:
+  - raw_path: 00_raw/inbox/<filename>
+    received_on: 2026-06-11
+    checksum_sha256:           # [opt] fill in once computed
+    notes:                     # [opt] e.g. "scan quality poor, OCR needed"
+
+# Classification
+tags: []                       # e.g. [vedanta, bhakti, sadhana, biography]
+subject_persons: []            # people the work is about
+related_works: []              # ids of related works in this catalog
+
+# Editorial state
+status: raw                    # raw | cataloged | extracted | verified
+text_extraction_method:        # [opt] "pdf-text" | "ocr-tesseract" | "manual" | ...
+quality_notes:                 # [opt] free-form
+
+# Free-form notes
+notes: |

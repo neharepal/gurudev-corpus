@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat UI Mockups — Gurudev Corpus</title>
+<style>
+  :root {
+    --bg-page:        #F8F2E4;   /* warm parchment */
+    --bg-surface:     #FCF8EC;   /* lighter parchment, slight elevation */
+    --bg-panel:       #F4ECD8;   /* darker parchment for citation cards */
+    --text-primary:   #2D2924;   /* deep sepia */
+    --text-secondary: #6E665B;   /* muted bronze */
+    --text-tertiary:  #8E8472;   /* faded sepia */
+    --accent-maroon:  #7A2E2A;   /* primary accent — buttons, citations */
+    --accent-gold:    #A88556;   /* secondary — hover, highlights */
+    --border-soft:    #D8CDB5;   /* book margin lines */
+    --border-stronger:#B8AB8A;
+    --shadow-soft:    0 1px 0 var(--border-soft);
+
+    --font-serif:     'Lora', 'Charter', 'Georgia', 'Times New Roman', 'Noto Serif Devanagari', serif;
+    --font-headline:  'Lora', 'Charter', 'Georgia', serif;
+    --font-deva:      'Noto Serif Devanagari', 'Lora', 'Charter', 'Georgia', serif;
+    --font-mono:      'Iosevka Slab', 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-serif);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+
+  .page-header {
+    max-width: 1100px;
+    margin: 40px auto 16px;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 28px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .page-header .lede {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Each mockup is centered, ~600px wide */
+  .mockup {
+    max-width: 600px;
+    margin: 56px auto;
+    padding: 0 16px;
+  }
+  .mockup-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-soft);
+    flex-wrap: wrap;
+  }
+  .mockup-header .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .mockup-header .revised-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--bg-panel);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--border-soft);
+    white-space: nowrap;
+  }
+  .mockup-header h2 {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+  }
+  .mockup-note {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* common chat frame */
+  .chat-frame {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 26px 28px;
+    position: relative;
+  }
+  .chat-frame.compact { padding: 20px 22px; }
+
+  /* ============== Mode dropdown (top-right of every screen) ============== */
+  .mode-dropdown {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-family: var(--font-headline);
+    font-size: 13px;
+    z-index: 5;
+  }
+  .mode-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border: 1px solid var(--accent-maroon);
+    border-radius: 4px;
+    color: var(--accent-maroon);
+    background: var(--bg-surface);
+    cursor: pointer;
+    transition: background 200ms ease, color 200ms ease;
+    line-height: 1.3;
+  }
+  .mode-dropdown-trigger:hover { background: var(--accent-maroon); color: var(--bg-surface); }
+  .mode-dropdown-trigger .chevron {
+    font-size: 10px;
+    margin-left: 2px;
+    line-height: 1;
+  }
+  .mode-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--accent-maroon);
+    border-radius: 4px;
+    min-width: 160px;
+    box-shadow: 0 2px 6px rgba(45, 41, 36, 0.08);
+    overflow: hidden;
+  }
+  .mode-dropdown.open .mode-dropdown-menu,
+  .mode-dropdown:hover .mode-dropdown-menu {
+    display: block;
+  }
+  .mode-dropdown-item {
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-soft);
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .mode-dropdown-item:last-child { border-bottom: none; }
+  .mode-dropdown-item:hover { background: var(--bg-panel); color: var(--accent-maroon); }
+  .mode-dropdown-item.selected {
+    background: var(--bg-panel);
+    color: var(--accent-maroon);
+    font-weight: 600;
+  }
+  .mode-dropdown-item.selected::before {
+    content: '\2713';
+    margin-right: 6px;
+    font-size: 11px;
+  }
+
+  /* ============== Top bar (used in conversation views) ============== */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14px;
+    padding-right: 130px; /* leave room for absolute-positioned mode dropdown */
+  }
+  .top-bar .back-link {
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: var(--font-serif);
+    text-decoration: none;
+  }
+  .top-bar .back-link:hover { color: var(--accent-maroon); }
+  .top-bar .actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px 8px;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    background: var(--bg-surface);
+    transition: background 200ms ease, color 200ms ease;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .icon-btn:hover { background: var(--accent-gold); color: var(--bg-surface); border-color: var(--accent-gold); }
+  .icon-btn .glyph { font-size: 14px; }
+
+  /* ============== MOCKUP 1: Landing screen ============== */
+  .landing-title {
+    font-family: var(--font-deva);
+    font-weight: 600;
+    font-size: 38px;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 12px 0 6px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .landing-subtitle {
+    font-family: var(--font-headline);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-style: italic;
+    margin: 0 0 36px;
+  }
+  .input-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .text-input {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--text-primary);
+    background: var(--bg-page);
+    border: 1px solid var(--border-stronger);
+    border-radius: 4px;
+    padding: 12px 14px;
+    resize: vertical;
+    min-height: 56px;
+    line-height: 1.5;
+  }
+  .text-input::placeholder { color: var(--text-tertiary); font-style: italic; }
+  .text-input:focus {
+    outline: none;
+    border-color: var(--accent-maroon);
+  }
+  .submit-btn {
+    font-family: var(--font-headline);
+    font-size: 14px;
+    padding: 12px 20px;
+    background: var(--accent-maroon);
+    color: var(--bg-surface);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 200ms ease;
+    align-self: stretch;
+  }
+  .submit-btn:hover { background: #5C231F; }
+
+  /* inline suggestion hint (replaces the suggested pill cards) */
+  .try-inline {
+    margin-top: 12px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-tertiary);
+    line-height: 1.55;
+  }
+  .try-inline .try-label {
+    font-family: var(--font-headline);
+    color: var(--text-tertiary);
+    margin-right: 4px;
+  }
+  .try-inline .try-suggestion {
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color 150ms ease;
+    font-style: italic;
+  }
+  .try-inline .try-suggestion:hover { color: var(--accent-maroon); }
+  .try-inline .try-suggestion.deva { font-family: var(--font-deva); }
+  .try-inline .try-sep {
+    color: var(--border-stronger);
+    margin: 0 6px;
+    font-style: normal;
+  }
+
+  /* ============== MOCKUP 2: Q&A conversation ============== */
+  .speaker-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 18px 0 8px;
+    font-weight: 700;
+  }
+  .speaker-label.gurudev { color: var(--accent-maroon); }
+  .user-question {
+    font-family: var(--font-headline);
+    font-size: 18px;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+    line-height: 1.4;
+  }
+  .answer-body {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .answer-body p { margin: 0 0 14px; }
+
+  /* quote-first rendering (ADR-007) */
+  .quote-frame-intro {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 4px 0 22px;
+    line-height: 1.55;
+  }
+  .quote-passage {
+    border-left: 3px solid var(--accent-maroon);
+    padding: 4px 0 4px 24px;
+    margin: 0 0 28px;
+  }
+  .quote-passage:last-of-type { margin-bottom: 20px; }
+  .quote-passage .quote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+  }
+  .quote-passage .quote-attribution {
+    font-family: var(--font-headline);
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-style: normal;
+  }
+  .quote-passage .quote-attribution .attr-source {
+    display: block;
+    color: var(--text-secondary);
+  }
+  .quote-passage .quote-attribution .attr-author {
+    display: block;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .quote-synthesis {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.6;
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  /* follow-up input area */
+  .follow-up {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .follow-up .text-input { min-height: 44px; font-size: 14px; padding: 10px 12px; }
+  .follow-up .submit-btn { padding: 10px 16px; font-size: 13px; }
+
+  /* ============== MOCKUP 3: Pravachan output ============== */
+  .section-heading {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 22px 0 8px;
+  }
+  .section-heading:first-of-type { margin-top: 8px; }
+  .pravachan-header {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .pravachan-rule {
+    text-align: center;
+    color: var(--border-stronger);
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .pravachan-section {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-primary);
+  }
+  .pravachan-section p { margin: 0 0 10px; }
+  .anchor-quote {
+    background: var(--bg-panel);
+    border-left: 3px solid var(--accent-maroon);
+    padding: 12px 16px;
+    margin: 6px 0 4px;
+    font-style: italic;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .anchor-quote .src-line {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-style: normal;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* athvani as quote-passages (no [#N]) */
+  .athvani-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+  }
+  .athvani-list .athvani-item {
+    margin: 0 0 24px;
+  }
+  .athvani-list .athvani-item:last-child { margin-bottom: 8px; }
+  .athvani-list .athvani-title {
+    font-family: var(--font-headline);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 15px;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .athvani-list .quote-passage {
+    margin-bottom: 4px;
+  }
+  .athvani-list .quote-passage .quote-text {
+    font-size: 15px;
+  }
+
+  .pravachan-actions {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ghost-btn {
+    font-family: var(--font-headline);
+    font-size: 13px;
+    padding: 8px 16px;
+    background: var(--bg-surface);
+    color: var(--accent-maroon);
+    border: 1px solid var(--accent-maroon);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+  .ghost-btn:hover { background: var(--accent-maroon); color: var(--bg-surface); }
+
+  /* ============== MOCKUP 4: Simple Reading ============== */
+  .reading-header {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .reading-title {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+  .reading-subtitle {
+    font-family: var(--font-headline);
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+  }
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0 22px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    width: 22%;
+    height: 100%;
+    background: var(--accent-maroon);
+  }
+  .progress-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .reading-body {
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+  .reading-paragraph {
+    margin-bottom: 18px;
+  }
+  .para-marker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .reading-nav {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-arrow {
+    font-family: var(--font-headline);
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: color 200ms ease, background 200ms ease;
+  }
+  .nav-arrow:hover { color: var(--accent-maroon); background: var(--bg-panel); }
+  .nav-arrow.disabled { color: var(--text-tertiary); cursor: not-allowed; }
+  .reading-question {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+  }
+  .reading-question-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .reading-question .text-input {
+    background: var(--bg-surface);
+    min-height: 40px;
+    font-size: 14px;
+    padding: 8px 12px;
+    width: 100%;
+  }
+
+  /* ============== MOCKUP 5: Source preview modal ============== */
+  .modal-stage {
+    background: var(--bg-panel);
+    border: 1px dashed var(--border-stronger);
+    border-radius: 6px;
+    padding: 36px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .modal-stage::before {
+    content: 'modal overlay (centered)';
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .modal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-stronger);
+    border-radius: 6px;
+    padding: 24px 26px;
+    max-width: 460px;
+    width: 100%;
+  }
+  .modal-title {
+    font-family: var(--font-headline);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    line-height: 1.35;
+  }
+  .modal-rule {
+    border: 0;
+    border-top: 1px solid var(--border-soft);
+    margin: 14px 0;
+  }
+  /* unified blockquote style for modal — matches .quote-passage */
+  .modal-quote-passage {
+    border-left: 3px solid var(--accent-maroon);
+    padding: 4px 0 4px 20px;
+    margin: 6px 0 14px;
+  }
+  .modal-quote-passage .quote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+  .modal-quote-passage .quote-attribution {
+    font-family: var(--font-headline);
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .modal-quote-passage .quote-attribution .attr-source {
+    display: block;
+    color: var(--text-secondary);
+  }
+  .modal-quote-passage .quote-attribution .attr-author {
+    display: block;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .primary-btn {
+    font-family: var(--font-headline);
+    font-size: 14px;
+    padding: 9px 18px;
+    background: var(--accent-maroon);
+    color: var(--bg-surface);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 200ms ease;
+  }
+  .primary-btn:hover { background: #5C231F; }
+
+  /* ============== MOCKUP 6: Flag modal ============== */
+  .flag-form .form-label {
+    font-family: var(--font-headline);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 16px 0 10px;
+  }
+  .radio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .radio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 200ms ease;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .radio-item:hover { background: var(--bg-panel); }
+  .radio-item.checked { background: var(--bg-panel); }
+  .radio-circle {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border-stronger);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+    position: relative;
+    background: var(--bg-surface);
+  }
+  .radio-item.checked .radio-circle {
+    border-color: var(--accent-maroon);
+  }
+  .radio-item.checked .radio-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-maroon);
+  }
+  .flag-form textarea.text-input {
+    width: 100%;
+    min-height: 70px;
+    font-size: 14px;
+  }
+  .helper-text {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin: 4px 0 0;
+  }
+  .modal-actions.spread {
+    justify-content: space-between;
+    margin-top: 18px;
+  }
+
+  /* ============== MOCKUP 7: Share menu ============== */
+  .share-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .share-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    background: var(--bg-surface);
+    cursor: pointer;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+  .share-option:hover {
+    border-color: var(--accent-maroon);
+    background: var(--bg-panel);
+  }
+  .share-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--accent-maroon);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+  }
+  .share-option.whatsapp .share-icon {
+    background: #DCEFD8;
+    color: #2B6E3F;
+  }
+  .share-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+  }
+  .share-name {
+    font-family: var(--font-headline);
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .share-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  .share-preview {
+    margin-top: 18px;
+    padding: 14px;
+    background: var(--bg-panel);
+    border-left: 3px solid var(--accent-gold);
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    border-radius: 0 4px 4px 0;
+  }
+  .share-preview-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-maroon);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .share-preview-text {
+    font-family: var(--font-serif);
+    color: var(--text-primary);
+  }
+  .share-preview-text .label-inline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-maroon);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: block;
+    margin: 6px 0 2px;
+  }
+
+  /* mobile fallback */
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .mockup { padding: 0 12px; }
+    .chat-frame { padding: 20px 18px; }
+    .landing-title { font-size: 32px; }
+    .top-bar { flex-direction: column; align-items: flex-start; gap: 10px; padding-right: 110px; }
+    .top-bar .actions { width: 100%; justify-content: flex-end; }
+    .pravachan-actions { flex-direction: column; }
+    .pravachan-actions .ghost-btn { width: 100%; }
+    .modal-actions { flex-direction: column; align-items: stretch; }
+    .modal-actions .ghost-btn,
+    .modal-actions .primary-btn { width: 100%; }
+    .modal-actions.spread { flex-direction: column-reverse; }
+    .follow-up { flex-direction: column; align-items: stretch; }
+    .input-row { flex-direction: column; align-items: stretch; }
+    .submit-btn { align-self: stretch; }
+    .try-inline { line-height: 1.7; }
+    .try-inline .try-sep { display: inline-block; }
+    .mode-dropdown { top: 12px; right: 12px; }
+    .mode-dropdown-trigger { font-size: 12px; padding: 4px 10px; }
+    .quote-passage { padding-left: 16px; }
+    .quote-passage .quote-text { font-size: 16px; }
+  }
+
+  .footer-note {
+    max-width: 600px;
+    margin: 60px auto 40px;
+    padding: 22px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: var(--bg-surface);
+    border-radius: 6px;
+    border: 1px solid var(--border-soft);
+    line-height: 1.6;
+  }
+  .footer-note h3 {
+    font-family: var(--font-headline);
+    font-size: 15px;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Chat UI Mockups — Gurudev Sangrah</h1>
+  <p class="lede">Seven static mockups of the chat platform's primary screens, presented vertically for side-by-side comparison. All follow the warm-devotional aesthetic (ADR-006), the quote-first rendering pattern (ADR-007), and the amended screen patterns in RFC-004.</p>
+</header>
+
+<!-- ============== MOCKUP 1: Landing ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 1</span>
+    <h2>Landing screen</h2>
+    <span class="revised-tag">REVISED 2026-06-13</span>
+  </div>
+  <p class="mockup-note">First impression: Devanagari wordmark, a small Mode dropdown in the top-right (Q&amp;A pre-selected), generous input box, and a single line of subtle italic suggestions below.</p>
+
+  <div class="chat-frame">
+    <div class="mode-dropdown">
+      <div class="mode-dropdown-trigger">
+        Mode: Q&amp;A <span class="chevron">&#9662;</span>
+      </div>
+      <div class="mode-dropdown-menu">
+        <div class="mode-dropdown-item selected">Q&amp;A</div>
+        <div class="mode-dropdown-item">Pravachan</div>
+        <div class="mode-dropdown-item">Simple Reading</div>
+      </div>
+    </div>
+
+    <div class="landing-title">गुरुदेव संग्रह</div>
+    <p class="landing-subtitle">A guided exploration of the Nimbal sampradaya literature</p>
+
+    <div class="input-row">
+      <textarea class="text-input" placeholder="Ask anything..."></textarea>
+      <button class="submit-btn">Ask &rarr;</button>
+    </div>
+
+    <div class="try-inline">
+      <span class="try-label">Try:</span>
+      <span class="try-suggestion">&ldquo;What are Gurudev's views on Bhakti?&rdquo;</span>
+      <span class="try-sep">&middot;</span>
+      <span class="try-suggestion deva">&ldquo;श्री गुरुदेव नामसाधनेविषयी काय सांगतात?&rdquo;</span>
+      <span class="try-sep">&middot;</span>
+      <span class="try-suggestion">&ldquo;What did Gurudev do in 1913?&rdquo;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 2: Q&A conversation ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 2</span>
+    <h2>Q&amp;A mode — conversation view</h2>
+    <span class="revised-tag">REVISED 2026-06-13</span>
+  </div>
+  <p class="mockup-note">Quote-first answer (ADR-007): the corpus speaks in its own voice. Verbatim passages with attribution directly below — no inline [#N] markers, no bottom sources accordion. The quote <em>is</em> the citation. Mode dropdown shown in its open state to illustrate.</p>
+
+  <div class="chat-frame">
+    <div class="mode-dropdown open">
+      <div class="mode-dropdown-trigger">
+        Mode: Q&amp;A <span class="chevron">&#9662;</span>
+      </div>
+      <div class="mode-dropdown-menu">
+        <div class="mode-dropdown-item selected">Q&amp;A</div>
+        <div class="mode-dropdown-item">Pravachan</div>
+        <div class="mode-dropdown-item">Simple Reading</div>
+      </div>
+    </div>
+
+    <div class="top-bar">
+      <a class="back-link">&#9665; Back to start</a>
+      <div class="actions">
+        <span class="icon-btn"><span class="glyph">&#9872;</span> Flag</span>
+        <span class="icon-btn"><span class="glyph">&#8689;</span> Share</span>
+      </div>
+    </div>
+
+    <div class="speaker-label">You</div>
+    <div class="user-question">What are Shri Gurudev's views on Bhakti?</div>
+
+    <div class="speaker-label gurudev">Gurudev Sangrah</div>
+    <div class="answer-body">
+      <p class="quote-frame-intro">Here's what the corpus contains on this:</p>
+
+      <div class="quote-passage">
+        <p class="quote-text">&ldquo;Mysticism denotes that attitude of mind which involves a direct, immediate, intuitive apprehension of God. It signifies the highest attitude of which man is capable, namely, a beatific contemplation of God, and its dissemination in the Society and the World.&rdquo;</p>
+        <div class="quote-attribution">
+          <span class="attr-source">&mdash; Pathway to God in Hindi Literature, General Introduction (canonical)</span>
+          <span class="attr-author">Shri Gurudev Ranade</span>
+        </div>
+      </div>
+
+      <div class="quote-passage">
+        <p class="quote-text">&ldquo;Kabir surpasses other Hindi saints in his description of the spiritual Teacher with his moral, mystical and social qualities. He has laid great stress on the importance of the Name of God.&rdquo;</p>
+        <div class="quote-attribution">
+          <span class="attr-source">&mdash; Pathway to God in Hindi Literature, Summary of Kabir (canonical)</span>
+          <span class="attr-author">Shri Gurudev Ranade</span>
+        </div>
+      </div>
+
+      <p class="quote-synthesis">These passages frame bhakti as both the intuitive apprehension of God and the path practiced by the great saints &mdash; in Kabir's case, through the constant remembrance of the Name.</p>
+    </div>
+
+    <div class="follow-up">
+      <textarea class="text-input" placeholder="Ask a follow-up..."></textarea>
+      <button class="submit-btn">Send</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 3: Pravachan output ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 3</span>
+    <h2>Pravachan mode — structured outline</h2>
+    <span class="revised-tag">REVISED 2026-06-13</span>
+  </div>
+  <p class="mockup-note">Sectioned output for someone preparing a pravachan: thesis, canonical anchor (verbatim quote), supporting athvani rendered as quote-first passages, suggested sequence. No [#N] markers anywhere &mdash; each passage carries its own attribution.</p>
+
+  <div class="chat-frame">
+    <div class="mode-dropdown">
+      <div class="mode-dropdown-trigger">
+        Mode: Pravachan <span class="chevron">&#9662;</span>
+      </div>
+      <div class="mode-dropdown-menu">
+        <div class="mode-dropdown-item">Q&amp;A</div>
+        <div class="mode-dropdown-item selected">Pravachan</div>
+        <div class="mode-dropdown-item">Simple Reading</div>
+      </div>
+    </div>
+
+    <div class="top-bar">
+      <a class="back-link">&#9665; Back to start</a>
+      <div class="actions">
+        <span class="icon-btn"><span class="glyph">&#9872;</span> Flag</span>
+        <span class="icon-btn"><span class="glyph">&#8689;</span> Share</span>
+      </div>
+    </div>
+
+    <div class="pravachan-header">Pravachan Outline</div>
+    <div class="pravachan-rule">&mdash; &diams; &mdash;</div>
+
+    <div class="pravachan-section">
+      <div class="section-heading">Thesis</div>
+      <p>Adhyay 12 of the Bhagavad Gita establishes bhakti as the most accessible and the most exalted of yogas. Shri Gurudev Ranade's own life at Nimbal embodied this teaching &mdash; quiet, continuous remembrance of the guru-mantra as the ground of every action.</p>
+
+      <div class="section-heading">Canonical anchor</div>
+      <div class="quote-passage">
+        <p class="quote-text">&ldquo;Bhakti is the very air that the mystic breathes; it is not one yoga among many, but the soul of them all.&rdquo;</p>
+        <div class="quote-attribution">
+          <span class="attr-source">&mdash; Bhagavad Gita as a Philosophy of God-Realisation, ch. 12 (canonical)</span>
+          <span class="attr-author">Shri Gurudev Ranade</span>
+        </div>
+      </div>
+
+      <div class="section-heading">Supporting athvani</div>
+      <ul class="athvani-list">
+        <li class="athvani-item">
+          <div class="athvani-title">The trunks of Bhausaheb Maharaj's letters</div>
+          <div class="quote-passage">
+            <p class="quote-text">&ldquo;Gurudev preserved Bhausaheb Maharaj's correspondence in wooden trunks at the Nimbal house. Every morning he would wash his hands before opening them &mdash; we never saw him touch the letters otherwise.&rdquo;</p>
+            <div class="quote-attribution">
+              <span class="attr-source">&mdash; निंबाळचे जुने घर, &ldquo;जैसी गंगा वाहे&rdquo; collection (athvani)</span>
+              <span class="attr-author">narrated by Vijaya Apte</span>
+            </div>
+          </div>
+        </li>
+        <li class="athvani-item">
+          <div class="athvani-title">Allahabad mornings</div>
+          <div class="quote-passage">
+            <p class="quote-text">&ldquo;Even in his university years at Allahabad, he would be seated in namasadhana long before dawn. For him bhakti was discipline, not mood.&rdquo;</p>
+            <div class="quote-attribution">
+              <span class="attr-source">&mdash; Allahabad days (athvani)</span>
+              <span class="attr-author">recorded by V.H. Date</span>
+            </div>
+          </div>
+        </li>
+        <li class="athvani-item">
+          <div class="athvani-title">The Dharwad library donation</div>
+          <div class="quote-passage">
+            <p class="quote-text">&ldquo;He gave the whole library to the university with no announcement, no ceremony. He treated it as an offering, not a transaction.&rdquo;</p>
+            <div class="quote-attribution">
+              <span class="attr-source">&mdash; Ranade chronology, Dharwad entry (reference)</span>
+              <span class="attr-author">Gurudev Ranade bibliography</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="section-heading">Suggested sequence</div>
+      <p>Open with the canonical anchor to ground listeners in Adhyay 12. Move into the three athvani in chronological order &mdash; Nimbal, Allahabad, Dharwad &mdash; tracing bhakti from inner discipline to outward offering. Close on the Dharwad gesture as the fruition.</p>
+    </div>
+
+    <div class="pravachan-actions">
+      <button class="ghost-btn">Copy outline</button>
+      <button class="ghost-btn">Export as text</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 4: Simple Reading ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 4</span>
+    <h2>Simple Reading mode</h2>
+    <span class="revised-tag">REVISED 2026-06-13</span>
+  </div>
+  <p class="mockup-note">Renders the actual extracted PGHL text paragraph-by-paragraph with subtle ¶ markers and a progress bar. Inline question box folds the reading session into a Q&amp;A turn without leaving context.</p>
+
+  <div class="chat-frame">
+    <div class="mode-dropdown">
+      <div class="mode-dropdown-trigger">
+        Mode: Simple Reading <span class="chevron">&#9662;</span>
+      </div>
+      <div class="mode-dropdown-menu">
+        <div class="mode-dropdown-item">Q&amp;A</div>
+        <div class="mode-dropdown-item">Pravachan</div>
+        <div class="mode-dropdown-item selected">Simple Reading</div>
+      </div>
+    </div>
+
+    <div class="top-bar">
+      <a class="back-link">&#9665; Back to start</a>
+      <div class="actions">
+        <span class="icon-btn"><span class="glyph">&#9872;</span> Flag</span>
+        <span class="icon-btn"><span class="glyph">&#8689;</span> Share</span>
+      </div>
+    </div>
+
+    <div class="reading-header">
+      <h3 class="reading-title">Pathway to God in Hindi Literature</h3>
+      <p class="reading-subtitle">Shri Gurudev Ranade &middot; General Introduction (excerpt)</p>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="progress-label">Page 4 of 18</div>
+    </div>
+
+    <div class="reading-body">
+      <div class="reading-paragraph">
+        <span class="para-marker">¶ 1</span>
+        Mysticism denotes that attitude of mind which involves a direct, immediate, intuitive apprehension of God. It signifies the highest attitude of which man is capable, namely, a beatific contemplation of God, and its dissemination in the Society and the World. The surest criterion of mysticism is the reality of the experience as enjoyed by the mystic himself.
+      </div>
+      <div class="reading-paragraph">
+        <span class="para-marker">¶ 2</span>
+        It is known only to him and to his Maker. Before it there is no appeal; for it there is no criterion. It is this personal-divine aspect of a mystic's spiritual realisation which stamps it with a peculiar halo and worth.
+      </div>
+      <div class="reading-paragraph">
+        <span class="para-marker">¶ 3</span>
+        It is in this sense that mystical experience has been regarded as ineffable. It has been very often supposed that, for mystical experience, no separate faculty like intuition need be requisitioned, but that intellect, feeling, and will might suffice to enable us to have a full experience of God.
+      </div>
+    </div>
+
+    <div class="reading-question">
+      <div class="reading-question-label">Have a question about this passage?</div>
+      <textarea class="text-input" placeholder="e.g. What does Ranade mean by 'beatific contemplation'?"></textarea>
+    </div>
+
+    <div class="reading-nav">
+      <span class="nav-arrow">&#9665; Previous page</span>
+      <span class="nav-arrow">Next page &#9655;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 5: Source preview overlay ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 5</span>
+    <h2>Source preview overlay</h2>
+  </div>
+  <p class="mockup-note">Centered modal that appears on tapping a quote in any answer. Verbatim quote rendered with the same maroon-border blockquote style as the inline passages; primary CTA hands off to Simple Reading mode at this exact paragraph.</p>
+
+  <div class="modal-stage">
+    <div class="modal">
+      <h3 class="modal-title">Pathway to God in Hindi Literature, General Introduction</h3>
+      <hr class="modal-rule">
+      <div class="modal-quote-passage">
+        <p class="quote-text">&ldquo;Mysticism denotes that attitude of mind which involves a direct, immediate, intuitive apprehension of God. It signifies the highest attitude of which man is capable, namely, a beatific contemplation of God, and its dissemination in the Society and the World.&rdquo;</p>
+        <div class="quote-attribution">
+          <span class="attr-source">&mdash; Pathway to God in Hindi Literature, General Introduction (canonical)</span>
+          <span class="attr-author">Shri Gurudev Ranade</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="ghost-btn">Close</button>
+        <button class="primary-btn">Read this chapter in full &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 6: Flag modal ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 6</span>
+    <h2>Flag — report an issue</h2>
+  </div>
+  <p class="mockup-note">Triggered from the [&#9872;] icon on any answer. Categorical radios make incoming flags actionable for Neha's review queue. Free text captures nuance.</p>
+
+  <div class="modal-stage">
+    <div class="modal">
+      <h3 class="modal-title">Report an issue with this answer</h3>
+      <hr class="modal-rule">
+      <div class="flag-form">
+        <div class="form-label">What's wrong?</div>
+        <div class="radio-list">
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Wrong attribution</span>
+          </label>
+          <label class="radio-item checked">
+            <span class="radio-circle"></span>
+            <span>Quoted text doesn't match the source</span>
+          </label>
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Mentions something not actually in the corpus</span>
+          </label>
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Translation or paraphrase issue</span>
+          </label>
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Missing important context</span>
+          </label>
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Sources are mislabeled or in wrong section</span>
+          </label>
+          <label class="radio-item">
+            <span class="radio-circle"></span>
+            <span>Other</span>
+          </label>
+        </div>
+
+        <div class="form-label">Add detail (optional)</div>
+        <textarea class="text-input" placeholder="The PGHL citation seems to point to part 2 but the quote is from part 3..."></textarea>
+        <p class="helper-text">Helps Neha review. The question, answer, and citations are sent automatically.</p>
+
+        <div class="modal-actions spread">
+          <button class="ghost-btn">Cancel</button>
+          <button class="primary-btn">Submit flag</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP 7: WhatsApp share menu ============== -->
+<section class="mockup">
+  <div class="mockup-header">
+    <span class="label">Mockup 7</span>
+    <h2>Share menu</h2>
+  </div>
+  <p class="mockup-note">Sheet that appears from the share icon. WhatsApp prioritized (the sampradaya distribution channel). Preview shows the prepacked message format devotees forward to each other.</p>
+
+  <div class="modal-stage">
+    <div class="modal">
+      <h3 class="modal-title">Share this answer</h3>
+      <hr class="modal-rule">
+
+      <div class="share-options">
+        <div class="share-option whatsapp">
+          <span class="share-icon">&#128172;</span>
+          <span class="share-text">
+            <span class="share-name">Share on WhatsApp</span>
+            <span class="share-desc">Opens WhatsApp with the answer prefilled</span>
+          </span>
+        </div>
+        <div class="share-option">
+          <span class="share-icon">&#128279;</span>
+          <span class="share-text">
+            <span class="share-name">Copy link</span>
+            <span class="share-desc">A link back to this conversation</span>
+          </span>
+        </div>
+        <div class="share-option">
+          <span class="share-icon">&#9998;</span>
+          <span class="share-text">
+            <span class="share-name">Copy as text</span>
+            <span class="share-desc">Plain text with question, answer, and citations</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="share-preview">
+        <div class="share-preview-label">Preview of shared message</div>
+        <div class="share-preview-text">
+          <span class="label-inline">Question</span>
+          What are Shri Gurudev's views on Bhakti?
+          <span class="label-inline">From Gurudev Sangrah</span>
+          &ldquo;Mysticism denotes that attitude of mind which involves a direct, immediate, intuitive apprehension of God&hellip;&rdquo;
+          <span class="label-inline">Source</span>
+          &middot; Pathway to God in Hindi Literature, General Introduction (Ranade)
+          <span style="display:block; margin-top:8px; color: var(--text-tertiary); font-style: italic;">&mdash; via Gurudev Sangrah</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  <h3>Design context</h3>
+  <p>All seven mockups use the warm-devotional aesthetic per <strong>ADR-006</strong>: parchment background, sepia text, maroon accent, warm serif fonts (Lora + Noto Serif Devanagari companion when it loads). System serifs are used as fallback so the feel is approximate but representative. Q&amp;A and Pravachan answers follow the <strong>quote-first</strong> pattern per <strong>ADR-007</strong>: verbatim passages with attribution directly below, no inline citation markers, no bottom accordion. Screen patterns follow the amended <strong>RFC-004</strong>.</p>
+  <p>These are static visual mockups &mdash; the only interactivity is hover states (mode dropdown, share options, ghost buttons) to show how affordances respond. No JavaScript.</p>
+</div>
+
+</body>
+</html>

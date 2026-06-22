@@ -1,0 +1,38 @@
+id: santanchya-sahavasat
+title: "Santanchya Sahavasat"
+title_en: "Santanchya Sahavasat"
+title_translit: ""
+author: kakasaheb_tulpule
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/santanchya-sahavasat/mr/SS_1-5 _ 21 April (1).pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 01_canonical/kakasaheb_tulpule/books/santanchya-sahavasat/mr/SS_6-8.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - sant-tradition
+  - bhakti
+subject_persons: []
+related_works: []
+status: cataloged
+text_extraction_method: ocr-needed
+quality_notes: ""
+notes: |
+  Extraction attempted 2026-06-13 in bulk task #11 — ALL SOURCES FAILED.
+  Sources are image-only PDFs or use non-Unicode Devanagari fonts.
+  OCR (tesseract with mar/hin/kan trained data) required.
+  Source files attempted:
+    - SS_1-5 _ 21 April (1).pdf: pdftotext returned only 94 chars — likely image-only PDF (needs OCR)
+    - SS_6-8.pdf: pdftotext returned only 68 chars — likely image-only PDF (needs OCR)

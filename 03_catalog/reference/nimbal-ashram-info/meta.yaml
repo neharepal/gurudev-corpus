@@ -1,0 +1,30 @@
+id: nimbal-ashram-info
+title: "निंबाळ आश्रमाची माहिती"
+title_en: "Nimbal Ashram Information (brief profile of the Gurudev Ranade Ashram at Nimbal)"
+title_translit: ""
+author: ""
+co_authors: []
+kind: reference
+work_type: reference
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: निंबाळ आश्रमाची माहिती.pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text
+extracted_on: 2026-06-14
+word_count: 896
+quality_notes: ""
+notes: |
+  Short Marathi reference document describing the Gurudev Ranade Ashram at Nimbal (Solapur-Bijapur railway line), its founding, Hermitage section, and sampraday history.

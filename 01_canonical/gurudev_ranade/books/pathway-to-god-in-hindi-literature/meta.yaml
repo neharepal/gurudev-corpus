@@ -1,0 +1,64 @@
+id: pathway-to-god-in-hindi-literature
+title: "Pathway to God in Hindi Literature"
+title_en: "Pathway to God in Hindi Literature"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: "Shri Gurudev Ranade Samadhi Trust, Nimbal R.S."
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/1. PGHL - Final part l final.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/2. PGHL - FINAL part ll final.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+  - raw_path: 00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/3. PGHL - FINAL part lll Dohas final.docx
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhakti
+  - hindi-sant-tradition
+  - mysticism
+  - kabir
+  - surdas
+  - tulsidas
+subject_persons:
+  - Kabir
+  - Tulsidas
+  - Surdas
+  - Mirabai
+  - Dadu
+  - Raidas
+  - Nanak
+  - Rahim
+  - Tukaram
+  - Jnaneshwar
+related_works:
+  - paramarthasopan
+  - pathway-to-god-in-marathi-literature
+  - pathway-to-god-in-kannada-literature
+status: extracted
+text_extraction_method: pandoc
+quality_notes: |
+  Three-part work extracted from three separate DOCX sources, concatenated in order
+  (Part 1, Part 2, Part 3 Dohas) under a single text.md with `## Part N` headings and
+  `---` separators between parts. Mixed-script content (English narrative interleaved
+  with Devanagari quotations from Hindi sant poetry, Marathi padas, and Sanskrit
+  Upanishadic verses) was preserved verbatim by pandoc with no apparent corruption.
+notes: |
+  PGHL is the Hindi-literature companion volume to Pathway to God in Marathi
+  Literature (PGML) and Pathway to God in Kannada Literature (PGKL). Companion
+  source-book परमार्थसोपान (Paramarthasopan) contains the Padas and Dohas discussed
+  here. First published 1954 per the front-matter; fourth edition 2013 is the
+  source used for extraction. Year fields left blank pending verification of
+  exact first-publication date.

@@ -1,0 +1,254 @@
+# RFC-009: Corpus ingestion pipeline (new-material runbook)
+
+**Status:** ACCEPTED 2026-06-17
+**Author:** Neha (with Claude)
+**Created:** 2026-06-16
+**Last updated:** 2026-06-17
+
+## Summary
+
+Defines the end-to-end procedure for bringing a new batch of text material into the corpus and making it retrievable. Covers all material types — canonical works, athvani, biography, periodicals, reference — with conditional branches per type. Pins the order of operations (triage → stage → extract → verify → structure → catalog → chunk → embed → smoke-test → changelog), the responsibilities of each step, and the artifacts produced. References existing scripts (`tools/chunker.py`, `tools/embedder.py`, `tools/verify_canonical.py`, `tools/ingest_athvani.py`) and the structural conventions in RFC-002.
+
+## Motivation
+
+The corpus is being assembled incrementally — drive dumps arrive periodically with mixed material (canonical PDFs, athvani recollections in .docx, biographical pamphlets, reference bibliographies). Each prior batch was handled ad-hoc; conventions emerged informally. As the corpus grows, ad-hoc handling becomes:
+
+1. **Error-prone.** Verification (line-by-line against Internet Archive for canonical works) was retrofitted after PGHL transcription errors surfaced; a new batch should not repeat that gap.
+2. **Unrepeatable.** A new contributor (or future-Claude in a fresh session) cannot pick up where the last batch left off without spelunking through chat history.
+3. **Unsafe for embeddings.** The 11-14h BGE-M3 run is the single most expensive artifact in the repo; the ingest procedure must protect it from accidental rebuilds.
+
+This RFC turns the implicit procedure into an authoritative runbook.
+
+## Goals
+
+- One document describes the steps for every material type.
+- Each step names its inputs, outputs, and the script (if any) that performs it.
+- Verification is a first-class step, with type-specific rules.
+- Embeddings are protected: incremental append by default; full rebuild only on model change (per ADR-009).
+- The runbook is short enough to follow end-to-end in one sitting per batch.
+
+## Non-goals
+
+- Structural decisions about the corpus layout — those live in RFC-002.
+- Retrieval/embedding model choice — those live in ADR-009.
+- Chunking parameters (size, overlap) — those live in RFC-003.
+- Ingestion of audio/video material — deferred to RFC-008.
+
+## Proposed design
+
+### Pipeline overview
+
+```
+new batch arrives  ──►  1. triage       ──►  2. stage in 00_raw/
+                                                       │
+                       7. chunk        ◄──  3. extract │
+                          │                            │
+                       8. embed        ──►  4. verify  │
+                          │                            │
+                       9. smoke-test   ──►  5. structure into 01_canonical/
+                          │                       (or 02_aggregated/ for athvani)
+                       10. changelog        │
+                          │            ──►  6. catalog in 03_catalog/
+                          ▼
+                       retrievable
+```
+
+### Step 1 — Triage
+
+**Input:** A new batch (typically a Google Drive zip, e.g. `Neha-20260616T___.zip`).
+
+**Action:** Open the zip's top-level listing without extracting. For each file or folder, classify into one of:
+
+| Type | Examples | Destination |
+|---|---|---|
+| **canonical** | Books, lectures, letters BY a lineage member (Gurudev, Bhausaheb, Nimbargi, Kakasaheb, Amburao) | `01_canonical/<author>/<work_type>/<work-id>/<lang>/text.md` |
+| **athvani** | Recollections, anecdotes ABOUT a lineage member, narrated by a named devotee | `02_aggregated/about_<member>/athvani/<story-id>/` |
+| **biography** | Full biographies, sometimes anthological | `02_aggregated/about_<member>/biography/<work-id>/` |
+| **periodical** | Magazines, newsletters, conference proceedings | `02_aggregated/periodicals/<title>/<issue>/` |
+| **reference** | Bibliographies, indexes, scholarly cross-references | `03_catalog/reference/` |
+| **skip** | Duplicates, corrupt files, marketing material | `00_raw/_skipped/` with one-line note in `_skipped/README.md` |
+
+Triage output: a `batch-<date>-triage.yaml` (see Step 2) listing every file and its classification. If a file is ambiguous, mark `type: TBD` and resolve before Step 3.
+
+### Step 2 — Stage in `00_raw/`
+
+Per ADR-005, raw zips are immutable archives; extracted staging uses move semantics (files leave staging once they're in their final structured home).
+
+**Action:**
+
+1. Move the unmodified zip to `00_raw/<batch-name>.zip`. Compute and record its SHA-256 in `00_raw/checksums.yaml`.
+2. Extract the zip into `00_raw/drive_dump_YYYY-MM-DD/<contributor>/` (folder name follows RFC-002).
+3. Save the triage YAML at `00_raw/drive_dump_YYYY-MM-DD/batch-triage.yaml`.
+
+No file under `00_raw/drive_dump_YYYY-MM-DD/` is modified after this point — files are MOVED OUT to their structured homes in Step 5.
+
+### Step 3 — Extract text
+
+Convert each file to UTF-8 Markdown.
+
+| Source format | Extraction method | Notes |
+|---|---|---|
+| `.pdf` (text layer) | `pdftotext -layout` | Verify layout; multi-column PDFs often need `-raw` |
+| `.pdf` (scanned) | `pandoc` after OCR via `ocrmypdf` | Manual quality check required — OCR noise is the largest source of bad chunks (see Q1 sweep findings: index pages, page numbers, headers) |
+| `.docx` | `pandoc -t markdown_strict` | |
+| `.txt` | direct copy with charset normalization | |
+| `.html` | `pandoc -f html -t markdown_strict` | Strip nav/footer noise manually |
+
+Extraction goes into the file's eventual structured destination **as `extracted.md`** (not `text.md` yet — `text.md` is the verified version produced by Step 4).
+
+### Step 4 — Verify
+
+The single most important step. Different rules per material type.
+
+#### Canonical works
+
+**Hard gate.** A canonical work cannot proceed to Step 5 (final placement) until verification passes.
+
+1. **Source the authoritative version.** Most of Gurudev's published works are on Internet Archive (e.g., *Pathway to God in Hindi Literature*, 1954 ed., IA item `pathwaytogodinhi0000ranar`). Record the IA item URL in `meta.yaml` under `external_verification.source`.
+2. **Run `tools/verify_canonical.py`** to align the extracted text against the IA version page-by-page. The tool emits a `verification-<work-id>.md` report under `04_processed/canonical_audit/`.
+3. **Review the diffs.** Acceptable divergences: OCR noise on the IA side, transliteration variants (े vs ॆ), edition-specific paragraph breaks. Unacceptable: missing sentences, mistranscribed quotes, dropped footnotes that change meaning.
+4. **Fix the extracted text** until divergences are explainable. Re-run the verifier until the alignment report is clean.
+5. **Promote** `extracted.md` → `text.md`. Set `meta.yaml` `external_verification.verified: true` with the date and the verifier's commit SHA.
+
+If **no IA (or other published) source exists** for a canonical work, treat it like an athvani — set `external_verification.verified: false` with a `reason: no_public_source_available` note (per below).
+
+#### Athvani, biography, periodical (no public source for line-by-line check)
+
+**Soft gate (flag, not block).** These can proceed to Step 5 without external verification, BUT:
+
+- `meta.yaml` MUST record: a **named narrator** (for athvani), a **named author** (for biography/periodical), a **source description** (the document the recollection was transcribed from), and a **received_on** date.
+- `meta.yaml` carries `external_verification: { verified: false, reason: <one-line> }`. This is the flag — answers drawing on unverified material can still be quoted, but the lack of external corroboration is visible in metadata for downstream filters.
+- Spot-check transcription quality: open three random paragraphs, confirm Marathi diacritics are intact, confirm no encoding mojibake.
+
+#### Reference
+
+Catalog metadata only; no verification needed. These are bibliographic, not teaching material — the prompt already forbids citing reference as Gurudev's words (per `SYSTEM_PROMPT_QA`).
+
+### Step 5 — Structure into `01_canonical/` or `02_aggregated/`
+
+**Action:**
+
+1. Create the destination folder per RFC-002's layout. For canonical: `01_canonical/<author>/<work_type>/<work-id>/<lang>/`. For athvani: `02_aggregated/about_<member>/athvani/<story-id>/`.
+2. Move (per ADR-005) the verified `text.md` into the destination.
+3. Write `meta.yaml` with all required fields. Schema is enumerated in RFC-002 §3; mandatory fields for any work: `id`, `title`, `author` (or `narrator` for athvani), `work_type`, `original_language`, `languages_available`, `sources` (with `raw_path`, `received_on`, `received_in_batch`, `checksum_sha256`), `tags`, `status`, `external_verification`.
+4. Status field progression: `extracted` → `verified` → `published`. After Step 5, the work is at `verified`; it moves to `published` after Step 9 smoke-test passes.
+
+### Step 6 — Catalog in `03_catalog/`
+
+The catalog is what surfaces a work in the corpus browser and gives downstream tooling a deterministic list of "what's in the corpus."
+
+**Action:** Add or update entries in:
+
+- `03_catalog/works.yaml` — one row per work with `id`, `title`, `author`, `languages`, `path`.
+- `03_catalog/attribution.yaml` — provenance bundle per ADR-002.
+- For athvani: `03_catalog/story_index.yaml` per RFC-002 §4.
+
+Run `tools/build_corpus_browser.py` to regenerate `tools/corpus_browser.html` so the new work appears in the human-facing browser.
+
+### Step 7 — Chunk
+
+**Action:** Run `tools/chunker.py`. This **rewrites** `04_processed/chunks.jsonl` from scratch (no incremental mode today — see Risks §1).
+
+```bash
+/Users/neharepal/opt/anaconda3/bin/python tools/chunker.py
+```
+
+**Sanity-check** the output: chunker prints per-source counts. Confirm the new work appears in the relevant kind bucket and the chunk count looks plausible (rough heuristic: ~1 chunk per ~600 tokens of text).
+
+### Step 8 — Embed
+
+**Default mode: incremental.** `tools/embedder.py` is resumable per `progress.json`. When new rows appear at the end of `chunks.jsonl`, it embeds only the new rows and appends to `embeddings.npy`. Per-run cost: a few minutes per new work on BGE-M3, vs. 11-14h for a full rebuild.
+
+```bash
+/Users/neharepal/opt/anaconda3/bin/python tools/embedder.py
+```
+
+**Full rebuild** (`--restart`) only when:
+- The embedding model changes (per ADR-009 the old embeddings are archived to `04_processed/embeddings/_archive/`).
+- The chunker re-ordered rows in a way that broke append safety (see Risks §1).
+- A previously-ingested work was substantively edited (its chunks at fixed row indices no longer match their text).
+
+If you must `--restart`, run it overnight. Confirm `ANTHROPIC_API_KEY` is NOT needed (embedder is local; no API calls).
+
+### Step 9 — Smoke-test
+
+**Action:** Confirm the new material is retrievable and renders correctly end-to-end.
+
+1. **Retrieval:** pick a distinctive phrase from each new work. Run `tools/retrieve.py "<phrase>"` and confirm the new work's chunks appear with cos ≥ 0.6.
+2. **Answer rendering:** pick one representative question per new work. Run `tools/chat.py "<question>"` and read the answer for correct attribution and verbatim quote integrity.
+3. **Multi-question regression:** if the batch is large (>5 works) or touches the canonical category, re-run `tools/tune_sweep.py` and diff `summary.md` against the prior run. Watch for: cosine drift on existing questions, classification flips, biography-percentage changes.
+
+Promote each work's `meta.yaml` `status` to `published`.
+
+### Step 10 — Changelog
+
+**Action:** Append an entry to `docs/CORPUS_CHANGELOG.md` (create if it doesn't exist):
+
+```markdown
+## v.YYYY-MM-DD — Batch <batch-name>
+
+Added: <work-id> (<author>, <work_type>, <language>)
+Verified-against: <IA item URL or "no public source — flagged">
+Chunks added: <N> (corpus total: <M>)
+Embedding mode: incremental | restart
+Smoke-test: pass | fail-and-rolled-back
+```
+
+This file is the authoritative answer to "what's in the corpus as of date X" and "when did we add work Y."
+
+## Alternatives considered
+
+### A. Per-material-type RFCs (RFC-009 canonical, RFC-010 athvani, …)
+
+Cleaner separation, but most steps are identical across types. The conditional branches in Steps 1, 4, and 5 capture the actual differences. A unified runbook is what the contributor reads end-to-end; splitting it into five RFCs would push them to flip between documents.
+
+### B. Hard gate on verification for all material types
+
+Safer, but in practice it would block 90% of athvani material indefinitely — most recollections have no published authoritative version, only the family/disciple narrator. We chose **flag, not block** (decision recorded in the conversation 2026-06-16): athvani proceeds with `verified: false` and a reason; the flag is queryable downstream if we ever need to filter.
+
+### C. Full embedding rebuild every batch
+
+Mechanically simpler — no incremental concerns — but 11-14h on BGE-M3 makes this impractical for any batch cadence faster than monthly. Incremental is the only sustainable mode.
+
+## Tradeoffs & risks
+
+### 1. Chunker is non-incremental — row-order stability is fragile
+
+`tools/chunker.py` rewrites `chunks.jsonl` from scratch on every run, scanning `iterdir()` without `sorted()` in `scan_canonical_text_md`. This means:
+
+- Filesystem-dependent ordering: re-running on a different machine could shuffle row indices.
+- Inserting a new author or work alphabetically-earlier than an existing one shifts every subsequent row index, breaking the embedder's row-keyed resume.
+
+**Mitigation today:** until chunker is patched to deterministic-sort, treat any chunker run that touches existing works as a potential `--restart` trigger. The safest pattern is: add NEW authors/works only at the alphabetic end, OR accept the 11-14h embedder rebuild.
+
+**Permanent fix (open question §1):** key embeddings by `chunk_id` instead of row index, so chunker can re-order without invalidating prior embeddings. Tracked separately; not blocking this RFC.
+
+### 2. Extraction quality is the dominant variable
+
+Sweep findings (run 2026-06-16) showed that the single biggest source of bad retrieval results was OCR noise leaking through the chunker (index pages, page-number-littered chunks, mid-word script switches). The verifier catches semantic divergences but not aesthetic ones like residual page-headers. **Until the chunker grows a "drop low-signal chunks" pass, extraction quality is human-gated at Step 3.**
+
+### 3. Marathi-language athvani lacks any public source
+
+Almost all athvani exists only in the family's typewritten or hand-recorded archives. The `external_verification: false` flag is honest, but it means a meaningful fraction of the corpus will never be IA-corroborable. Downstream filters (if we ever add a "verified only" toggle) need to be aware that this hides ~30-50% of material.
+
+### 4. Reference material is easy to misclassify as canonical
+
+Q1 sweep surfaced an index page from *Hindu Mysticism* as chunk 8 — high cosine on "Bhakti" because the index says "Bhakti, p. 6, p. 12, p. 89…". Triage Step 1 must catch this: a back-of-book index is `reference`, not `canonical`. When in doubt, sample-read 3 paragraphs — references are almost always recognizable by density of page-number references.
+
+## Open questions
+
+1. **Chunker → embedder coupling.** Should we refactor to key by `chunk_id` rather than row index, so chunker re-orderings don't invalidate embeddings? Estimated effort: M (~half a day). Recommended once we have >25 works.
+2. **Re-ingestion of edited works.** If a user reports a transcription error in an already-ingested work and we fix it, how do we surface the affected embeddings for re-computation? Open.
+3. **Multi-language single work.** A canonical work that exists in both EN and MR (e.g., *Pathway to God in Marathi Literature*) needs two `text.md` files under separate `<lang>/` folders. Are they one logical work with two language editions, or two distinct works? RFC-002 implies one work; chunker.py emits separate chunks per language. Pin this for future verification work.
+4. **Triage YAML schema.** Step 1 calls for `batch-triage.yaml` but its exact schema isn't specified. Settle this on the next ingestion (will surface naturally) and back-fill the schema into RFC-002 §3.
+
+## References
+
+- RFC-002: Corpus structure (folder layout, `meta.yaml` schema)
+- RFC-003: Retrieval and RAG (chunking parameters, embedding model)
+- ADR-002: Lineage-aware folder structure
+- ADR-005: Raw zip is the immutable archive; extracted staging uses move semantics
+- ADR-007: Quote-first curation pattern
+- ADR-009: Embedding model (BGE-M3)
+- `tools/chunker.py`, `tools/embedder.py`, `tools/verify_canonical.py`, `tools/ingest_athvani.py`, `tools/retrieve.py`, `tools/tune_sweep.py`
+- POST_DEMO_TODO.md §2 (real LLM classification; real retrieval wiring)

@@ -1,0 +1,84 @@
+id: the-old-house-at-nimbal
+title: निंबाळचे जुने घर
+title_translit: Nimbal-che june ghar
+title_en: The Old House at Nimbal
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- nimbal
+- gurudev-daily-life
+- samadhi-mandir
+- lineage-disciples
+- letter-preservation
+- dharwad-university-donation
+people_involved:
+- Banhatti
+- Bhausaheb Maharaj (via letter correspondence)
+- Dr. Pavate (Dharwad VC)
+- Kakoosaheb (referred to as ती. आई)
+- Keshavrao Dharmadhikari
+- Prof. Krishnarao Gajendragadkar
+- Shri Amburao Maharaj
+- Shri Bhaurao Nimbargi
+- Shri Gurudev Ranade
+- Shri Nagappa Nimbargi
+- Shri Narsappa (lived 105 years)
+- Shri Pundappa
+- Shri Shetyappa
+- Shri Shivlingavva
+- Yuvraj of Sangli
+- amburao-maharaj
+- bhaurao-nimbargi
+- bhausaheb-maharaj
+- kakasaheb-tulpule
+- krishnarao-gajendragadkar
+- lokmanya-tilak
+- nagappa-nimbargi
+- nimbargi-maharaj
+- shankarrao-dharmadhikari
+- shri-gurudev-ranade
+- vijaya-apte
+- yuvraj-of-sangli
+subject_focus: Physical layout of Gurudev's old Nimbal house (1925-1958), later converted into the Samadhi
+  Mandir.
+estimated_date_range: 1925-1958 (period described)
+location: Nimbal
+variants:
+- source_work_id: jaisi-ganga-vahe
+  source_work_title: जैसी गंगा वाहे
+  source_work_author: Vijaya Apte (Shakuntala Ranade)
+  source_work_publisher: Kai. Vishvanath Madhav Apte Charitable Trust, 'Ramdhun', Pune
+  narrator: Vijaya Apte / Shakuntala Ranade
+  language: mr
+  file: mr/variants/jaisi-ganga-vahe_p17-19.md
+  page_or_section: pp. 17-19
+  compiler: Dilip R. Naik
+  raw_source: 00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी/निंबाळचे जुने घर.docx
+  received_in_batch: drive_dump_2026-06-11
+  distinctive_details: Detailed physical layout (trunk room called 'शेट्ट्यप्पांची खोली'), preservation
+    of Bhausaheb Maharaj's letters in special trunks Gurudev carried while traveling, ~2000 books later
+    donated to Dharwad University leading to creation of a philosophy chair in Gurudev's memory.
+- source_work_id: निंबाळचे जुने घर
+  source_work_title: निंबाळचे जुने घर
+  narrator: unknown
+  language: mr
+  file: mr/variants/src-1dc746a5_seg01.md
+  page_or_section: segment 1
+  raw_source: 00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी/निंबाळचे जुने घर.docx
+  received_in_batch: drive_dump_2026-06-11
+  distinctive_details: 🌸। श्रीसद्गुरु समर्थ।🌸
+- source_work_id: १९१४-१९२७
+  source_work_title: १९१४-१९२७
+  narrator: unknown
+  language: mr
+  file: mr/variants/src-895333ca_seg01.md
+  page_or_section: segment 1
+  raw_source: 00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी/१९१४-१९२७.docx
+  received_in_batch: drive_dump_2026-06-11
+  distinctive_details: एक दिवस श्रीअंबुराव, रामभाऊ व श्री. कारखानीस** असे तिघे जण बोलत बसलेले
+consolidated:
+  status: partial
+  notes: Only one variant present. Consolidation deferred until parallel tellings arrive.
+notes: Source work 'जैसी गंगा वाहे' is not yet in our 01_canonical/other_authors/ collection. When ingested,
+  link source_work_id.

@@ -1,0 +1,33 @@
+id: gurudev-paramarthik-shikvan
+title: "श्री गुरुदेव रानडे व त्यांची पारमार्थिक शिकवण"
+title_en: "Shri Gurudev Ranade and His Spiritual Teaching"
+title_translit: "Shri Gurudev Ranade va Tyanchi Paramarthik Shikvan"
+author: kakasaheb_tulpule
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: "ACPR Belgaum"
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/gurudev-paramarthik-shikvan.pdf
+    received_on: 2026-06-17
+    received_in_batch: wikimedia_acpr_2026-06-17
+    checksum_sha256: f56b023f0aec320763914df9d7b2da9f6b417cff13016546e00d9891b9636531
+tags: []
+subject_persons:
+  - gurudev_ranade
+related_works: []
+status: extracted
+text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+quality_notes: "OCR'd from Wikimedia Commons scan; spacing artifacts on conjunct consonants and occasional misrecognized English-transliterated proper nouns."
+notes: |
+  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+external_verification:
+  verified: false
+  reason: ocr_only_from_wikimedia_commons_scan
+  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR

@@ -1,0 +1,36 @@
+id: kalyani-masik
+title: "कल्याणी मासीक"
+title_en: "Kalyani Masik (Kalyani Monthly — periodical)"
+title_translit: ""
+author: ""
+co_authors: []
+kind: periodical
+work_type: periodical
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: कल्याणी मासीक.pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: cataloged
+text_extraction_method: ocr-needed
+extracted_on: ""
+word_count: 0
+quality_notes: "Image-only PDF — pdftotext returned 174 bytes (no extractable text layer). Flag for OCR pass (Tesseract Marathi, or Google Cloud Vision Devanagari). text.md deliberately not written; status remains `cataloged` until OCR is run."
+notes: |
+  Kalyani Masik (कल्याणी मासीक) — Marathi periodical. Source PDF in
+  02_aggregated/periodicals/kalyani-masik/mr/ is a scan with no embedded
+  text layer. Standard pdftotext -layout extraction yielded < 500 chars
+  (image-only per Track #11 heuristic), so text extraction was skipped
+  per the rules. Once OCR is completed, write text.md with the OCR
+  output and update `status: extracted`, `text_extraction_method: ocr-tesseract`
+  (or appropriate), and `quality_notes` describing OCR confidence.

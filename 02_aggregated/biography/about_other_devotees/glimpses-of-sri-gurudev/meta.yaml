@@ -1,0 +1,31 @@
+id: glimpses-of-sri-gurudev
+title: "Glimpses of Sri Gurudev"
+title_en: "Glimpses of Sri Gurudev (ed. B. R. Kulkarni, ACPR Belgaum, 1990)"
+title_translit: ""
+about_member: gurudev_ranade
+author: ""
+co_authors: []
+kind: biography
+work_type: biography
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: Glimpses of Sri Gurudev_.pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text
+extracted_on: 2026-06-14
+word_count: 55523
+quality_notes: ""
+notes: |
+  English anthology of memoirs about Shri Gurudev Ranade, edited by B. R. Kulkarni and published by the Academy of Comparative Philosophy and Religion, Belgaum (First Edition 1990). Folder is under `about_other_devotees/` but the subject is Gurudev himself — recorded under that prefix per attribution.

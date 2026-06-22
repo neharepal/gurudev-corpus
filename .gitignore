@@ -1,0 +1,66 @@
+# ===== OS / editor =====
+.DS_Store
+*.swp
+*~
+
+# ===== Secrets / env =====
+.env
+.env.*
+*.pem
+*.key
+secrets.*
+
+# ===== Node / Next.js (chat-app) =====
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.tsbuildinfo
+.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Python =====
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ===== Source documents / scans / archives (too large for git) =====
+*.pdf
+*.docx
+*.doc
+*.pub
+*.zip
+*.gz
+*.tar
+*.7z
+*.rar
+
+# ===== Heavy images / media =====
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.gif
+*.webp
+*.psd
+
+# ===== Processed ML artifacts / bulk data =====
+*.npy
+*.npz
+*.bin
+*.pt
+*.jsonl
+
+# ===== Bulk data directories (raw dumps, embeddings, photos) =====
+00_raw/
+photos/
+04_processed/embeddings/
+04_processed/ia_cache/
+
+# ===== Local Claude Code settings =====
+.claude/

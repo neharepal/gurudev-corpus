@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gurudev Corpus — Attribution Dashboard</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --bg-card: #ffffff;
+    --text: #1a1a1a;
+    --text-dim: #6b6b73;
+    --text-faint: #9a9aa3;
+    --border: #e4e4e8;
+    --border-strong: #d4d4da;
+    --accent: #3a6bd6;
+    --accent-soft: #eef2fc;
+    --status-pending: #c4c4cc;
+    --status-done: #2da26a;
+    --status-skip: #d59a2c;
+    --status-defer: #8a5cd6;
+    --status-edited: #3a6bd6;
+    --row-hover: #f3f4f7;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, system-ui, "Noto Sans Devanagari", "Segoe UI", Roboto, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+  header.top {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  header.top h1 {
+    font-size: 14px; font-weight: 600; margin: 0;
+    letter-spacing: 0.1px;
+  }
+  header.top .progress {
+    font-size: 12.5px; color: var(--text-dim);
+    padding: 3px 9px;
+    background: var(--accent-soft);
+    border-radius: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  header.top .spacer { flex: 1; }
+  header.top button, header.top label.btn {
+    font: inherit;
+    font-size: 12.5px;
+    padding: 5px 11px;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  header.top button:hover, header.top label.btn:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  header.top button.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  header.top button.primary:hover {
+    background: #2d57b8;
+    border-color: #2d57b8;
+    color: #fff;
+  }
+  .filters {
+    position: sticky; top: 41px; z-index: 25;
+    background: rgba(250,250,250,0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 16px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .chip-row .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    margin-right: 4px;
+  }
+  .chip {
+    font: inherit; font-size: 12px;
+    padding: 3px 9px;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: background 0.1s, border-color 0.1s, color 0.1s;
+  }
+  .chip:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .chip.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chip .count {
+    margin-left: 4px;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+    font-size: 11px;
+  }
+  .col-headers {
+    position: sticky;
+    top: 92px;
+    z-index: 20;
+    background: rgba(250,250,250,0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    padding: 4px 26px 4px 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    font-weight: 600;
+  }
+  .col-headers .ch-name { flex: 1 1 auto; min-width: 140px; }
+  .col-headers .ch-size {
+    flex: 0 0 auto;
+    text-align: right;
+    padding-left: 6px;
+    width: 56px;
+    color: #aaa;
+  }
+  .col-headers .ch-fields {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+  .col-headers .ch-action { width: 152px; }
+  .col-headers .ch-author { width: 152px; }
+  .col-headers .ch-work { width: 152px; }
+  .col-headers .ch-lang { width: 70px; }
+  .col-headers .ch-spacer { width: 62px; }
+  .rows { padding: 8px 16px 80px; }
+  .row {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    margin-bottom: 6px;
+    padding: 7px 10px 7px 12px;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.12s, opacity 0.18s;
+    position: relative;
+  }
+  .row:hover { background: var(--row-hover); }
+  .row.done { opacity: 0.62; }
+  .row.done:hover { opacity: 1; }
+  .row .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--status-pending);
+    flex: 0 0 auto;
+    cursor: pointer;
+    border: 1.5px solid #fff;
+    box-shadow: 0 0 0 1px var(--border-strong);
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+  .row .dot:hover { box-shadow: 0 0 0 2px var(--accent); }
+  .row[data-status="done"] .dot { background: var(--status-done); }
+  .row[data-status="skipped"] .dot { background: var(--status-skip); }
+  .row[data-status="deferred"] .dot { background: var(--status-defer); }
+  .row[data-status="edited"] .dot { background: var(--status-edited); }
+  .row .name-cell {
+    flex: 1 1 auto;
+    min-width: 140px;
+    display: flex; align-items: center; gap: 6px;
+    overflow: hidden;
+  }
+  .row .name-stack {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .row .folder-path {
+    font-size: 11px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+    margin-top: 1px;
+  }
+  .row .bundle-badge {
+    flex: 0 0 auto;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 1px 6px;
+    letter-spacing: 0.02em;
+  }
+  .row .name {
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .row .size {
+    flex: 0 0 auto;
+    font-size: 11px;
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+    padding-left: 6px;
+  }
+  .row .fields {
+    display: flex; gap: 5px; align-items: center;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .row select, .row input[type="text"] {
+    font: inherit; font-size: 12px;
+    padding: 3px 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--text);
+    height: 26px;
+  }
+  .row select:focus, .row input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+  .row select.action { width: 152px; font-weight: 500; }
+  .row select.author { width: 152px; }
+  .row select.member { width: 152px; }
+  .row select.language { width: 70px; }
+  .row input.work { width: 168px; }
+  .row input.narrator { width: 130px; }
+  .row .icon-btn {
+    font: inherit; font-size: 13px;
+    padding: 3px 7px;
+    height: 26px;
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: all 0.1s;
+    line-height: 1;
+  }
+  .row .icon-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .row .confirm-btn { color: var(--status-done); }
+  .row .confirm-btn:hover { background: #e7f5ee; border-color: var(--status-done); color: var(--status-done); }
+  .row[data-status="done"] .confirm-btn { background: var(--status-done); color: #fff; border-color: var(--status-done); }
+  .row-expansion {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 7px 7px;
+    margin-top: -7px;
+    margin-bottom: 6px;
+    padding: 10px 14px 12px;
+  }
+  .row-expansion.open { display: block; }
+  .row-expansion label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    margin-bottom: 3px;
+  }
+  .row-expansion textarea {
+    font: inherit; font-size: 12.5px;
+    width: 100%;
+    min-height: 50px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--text);
+    resize: vertical;
+  }
+  .row-expansion textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  .row-expansion .meta {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+  .row-expansion .meta b { color: var(--text); font-weight: 600; }
+  .row-expansion .files {
+    margin-top: 8px;
+    font-size: 11.5px;
+    color: var(--text-dim);
+  }
+  .row-expansion .files ol {
+    margin: 4px 0 0; padding-left: 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+  }
+  .row-expansion .files ol li { padding: 1px 0; word-break: break-all; }
+  .row-expansion .show-more {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--accent);
+    font-size: 11.5px;
+    cursor: pointer;
+    background: none; border: none; padding: 0;
+  }
+  .row-expansion .show-more:hover { text-decoration: underline; }
+  .empty {
+    text-align: center;
+    padding: 36px 16px;
+    color: var(--text-faint);
+    font-size: 13px;
+  }
+  .toast {
+    position: fixed;
+    bottom: 18px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text);
+    color: #fff;
+    font-size: 12.5px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  @media (max-width: 700px) {
+    .row { flex-wrap: wrap; }
+    .row .name-cell { flex-basis: 100%; min-width: 100%; }
+    .row .fields { width: 100%; justify-content: flex-start; }
+    .row select.action, .row select.author, .row select.member { width: 48%; }
+    .row input.work { width: 48%; }
+    .col-headers { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Gurudev Corpus — Attribution</h1>
+  <span class="progress" id="progress">0 / 0 decided</span>
+  <span class="spacer"></span>
+  <button id="confirm-all-pending" title="Confirm every visible row as-is, using guessed defaults">Confirm visible</button>
+  <button id="export-btn" class="primary" title="Download decisions JSON">Export</button>
+  <label class="btn" for="import-input" title="Import a previously exported decisions JSON">Import
+    <input type="file" id="import-input" accept="application/json,.json" style="display:none">
+  </label>
+</header>
+<div class="filters">
+  <div class="chip-row">
+    <span class="label">Status</span>
+    <button class="chip active" data-status-filter="all">All <span class="count" id="cnt-all">0</span></button>
+    <button class="chip" data-status-filter="pending">Pending <span class="count" id="cnt-pending">0</span></button>
+    <button class="chip" data-status-filter="edited">Edited <span class="count" id="cnt-edited">0</span></button>
+    <button class="chip" data-status-filter="done">Done <span class="count" id="cnt-done">0</span></button>
+    <button class="chip" data-status-filter="skipped">Skipped <span class="count" id="cnt-skipped">0</span></button>
+    <button class="chip" data-status-filter="deferred">Deferred <span class="count" id="cnt-deferred">0</span></button>
+  </div>
+  <div class="chip-row">
+    <span class="label">Action</span>
+    <button class="chip active" data-action-filter="all">All</button>
+    <button class="chip" data-action-filter="canonical">canonical</button>
+    <button class="chip" data-action-filter="canonical_lecture">canonical_lecture</button>
+    <button class="chip" data-action-filter="canonical_letters">canonical_letters</button>
+    <button class="chip" data-action-filter="athvani">athvani</button>
+    <button class="chip" data-action-filter="biography">biography</button>
+    <button class="chip" data-action-filter="periodical">periodical</button>
+    <button class="chip" data-action-filter="reference">reference</button>
+    <button class="chip" data-action-filter="skip">skip</button>
+    <button class="chip" data-action-filter="defer">defer</button>
+  </div>
+</div>
+<div class="col-headers" aria-hidden="true">
+  <span class="ch-name">File</span>
+  <span class="ch-size">Size</span>
+  <span class="ch-fields">
+    <span class="ch-action">Action</span>
+    <span class="ch-author">Author / About</span>
+    <span class="ch-work">Work / Narrator</span>
+    <span class="ch-lang">Lang</span>
+    <span class="ch-spacer"></span>
+  </span>
+</div>
+<main class="rows" id="rows"></main>
+<div class="toast" id="toast"></div>
+
+<script type="application/json" id="attribution-data">[{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Bhajnamrut_Final pdf.pdf","name":"Bhajnamrut_Final pdf.pdf","folder":"मूळ ग्रंथ","size_bytes":950481,"exists":true,"my_guess":{"action":"canonical","author":"","work_slug":"bhajanamrut","language":"mr","narrator":"","about_member":"","notes":"Devotional songs collection — editor unclear","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Brief Bio information of Kanada saints.pdf","name":"Brief Bio information of Kanada saints.pdf","folder":"मूळ ग्रंथ","size_bytes":241809280,"exists":true,"my_guess":{"action":"reference","author":"","work_slug":"kanada-saints-bio","language":"en","narrator":"","about_member":"","notes":"Reference material; could be Ranade's research notes","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Chronological Order of Writings of Shri Gurudeo--.pdf","name":"Chronological Order of Writings of Shri Gurudeo--.pdf","folder":"मूळ ग्रंथ","size_bytes":73846,"exists":true,"my_guess":{"action":"reference","author":"","work_slug":"ranade-bibliography","language":"en","narrator":"","about_member":"","notes":"Bibliographic reference","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Chronological Order of Writings of Shri Gurudeo--(1).pdf","name":"Chronological Order of Writings of Shri Gurudeo--(1).pdf","folder":"मूळ ग्रंथ","size_bytes":73846,"exists":true,"my_guess":{"action":"reference","author":"","work_slug":"ranade-bibliography","language":"en","narrator":"","about_member":"","notes":"Duplicate of above","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner-1.pdf","name":"Daily Thoughts_Inner-1.pdf","folder":"मूळ ग्रंथ","size_bytes":116231207,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"daily-thoughts","language":"en","narrator":"","about_member":"","notes":"Ranade's Daily Thoughts","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner_Final-1.pdf","name":"Daily Thoughts_Inner_Final-1.pdf","folder":"मूळ ग्रंथ","size_bytes":165190599,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"daily-thoughts","language":"en","narrator":"","about_member":"","notes":"Likely later edition","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Daily Thoughts_Inner_Final.pdf","name":"Daily Thoughts_Inner_Final.pdf","folder":"मूळ ग्रंथ","size_bytes":162255088,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"daily-thoughts","language":"en","narrator":"","about_member":"","notes":"Likely final edition","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Final 2025 (mysticism).pdf","name":"Final 2025 (mysticism).pdf","folder":"मूळ ग्रंथ","size_bytes":14594481,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"mysticism-in-maharashtra","language":"en","narrator":"","about_member":"","notes":"Could also be Karnataka mysticism final","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Glimpses of Sri Gurudev_.pdf","name":"Glimpses of Sri Gurudev_.pdf","folder":"मूळ ग्रंथ","size_bytes":761436,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"glimpses-of-sri-gurudev","language":"en","narrator":"","about_member":"gurudev_ranade","notes":"Biographical anthology ABOUT Gurudev","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/GuruSamrpit Jivan - 1-8 th Demmy 280 pages.pdf","name":"GuruSamrpit Jivan - 1-8 th Demmy 280 pages.pdf","folder":"मूळ ग्रंथ","size_bytes":1774068,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"gurusamarpit-jivan","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"Bio/memoir","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Nityanemavali.pdf","name":"Nityanemavali.pdf","folder":"मूळ ग्रंथ","size_bytes":25968789,"exists":true,"my_guess":{"action":"canonical","author":"kakasaheb_tulpule","work_slug":"nityanemavali","language":"mr","narrator":"","about_member":"","notes":"Daily practice manual; could be Kakasaheb or Ranade","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Vedant.docx","name":"Vedant.docx","folder":"मूळ ग्रंथ","size_bytes":23344,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"vedant","language":"en","narrator":"","about_member":"","notes":"Title is generic; could be Ranade","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/ll श्री.txt","name":"ll श्री.txt","folder":"मूळ ग्रंथ","size_bytes":9389,"exists":true,"my_guess":{"action":"skip","author":"","work_slug":"","language":"","narrator":"","about_member":"","notes":"Tiny — looks like a placeholder","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/santanchya sahavasat/SS_1-5 _ 21 April (1).pdf","name":"SS_1-5 _ 21 April (1).pdf","folder":"मूळ ग्रंथ/santanchya sahavasat","size_bytes":24700230,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"santanchya-sahavasat","language":"mr","narrator":"","about_member":"","notes":"In the Company of Saints, parts 1-5","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/santanchya sahavasat/SS_6-8.pdf","name":"SS_6-8.pdf","folder":"मूळ ग्रंथ/santanchya sahavasat","size_bytes":18126075,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"santanchya-sahavasat","language":"mr","narrator":"","about_member":"","notes":"Parts 6-8","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/संत वचनामृत अर्थासहित.pdf","name":"संत वचनामृत अर्थासहित.pdf","folder":"मूळ ग्रंथ","size_bytes":134348933,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"sant-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"With word-meanings — Ranade's anthology style","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/संत वचनामृत_.pdf","name":"संत वचनामृत_.pdf","folder":"मूळ ग्रंथ","size_bytes":5024923,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"sant-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"Base version","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/एकनाथ वचनामृत अर्थासहित.pdf","name":"एकनाथ वचनामृत अर्थासहित.pdf","folder":"मूळ ग्रंथ","size_bytes":141888603,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"eknath-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"Eknath sayings anthology","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/रामदास वचनामृत अर्थासहित.pdf","name":"रामदास वचनामृत अर्थासहित.pdf","folder":"मूळ ग्रंथ","size_bytes":154465578,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"ramdas-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"Ramdas sayings anthology","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/तुकाराम वचनामृत अर्थासहित.pdf","name":"तुकाराम वचनामृत अर्थासहित.pdf","folder":"मूळ ग्रंथ","size_bytes":122448063,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"tukaram-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"Tukaram sayings anthology","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/ज्ञानेश्वरवचनामृत अर्थासहित.pdf","name":"ज्ञानेश्वरवचनामृत अर्थासहित.pdf","folder":"मूळ ग्रंथ","size_bytes":148067673,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"jnaneshwar-vachanamrut","language":"mr","narrator":"","about_member":"","notes":"Jnaneshwar sayings anthology","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/अमरसंदेशसुधा_.docx","name":"अमरसंदेशसुधा_.docx","folder":"मूळ ग्रंथ","size_bytes":458404,"exists":true,"my_guess":{"action":"canonical","author":"","work_slug":"amar-sandesh-sudha","language":"mr","narrator":"","about_member":"","notes":"'Amar Sandesh Sudha' — author unclear","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/Sadhakbodh pdf.pdf","name":"Sadhakbodh pdf.pdf","folder":"(root)","size_bytes":12672158,"exists":true,"my_guess":{"action":"periodical","author":"","work_slug":"sadhakbodh","language":"mr","narrator":"","about_member":"","notes":"Periodical, likely Kakasaheb-related","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/मन हे पंगू आहे.docx","name":"मन हे पंगू आहे.docx","folder":"(root)","size_bytes":419557,"exists":true,"my_guess":{"action":"canonical","author":"","work_slug":"man-he-pangu-aahe","language":"mr","narrator":"","about_member":"","notes":"Title is verse line; author unclear","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्री न. ग. दामले यांचे प्रवचन.docx","name":"श्री न. ग. दामले यांचे प्रवचन.docx","folder":"(root)","size_bytes":422726,"exists":true,"my_guess":{"action":"canonical_lecture","author":"other_authors","work_slug":"n-g-damle-pravachan","language":"mr","narrator":"","about_member":"","notes":"N.G. Damle's pravachan (different speaker)","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/साधक संवाद (परमार्थपर पत्रे).pdf","name":"साधक संवाद (परमार्थपर पत्रे).pdf","folder":"(root)","size_bytes":29984962,"exists":true,"my_guess":{"action":"canonical_letters","author":"gurudev_ranade","work_slug":"sadhak-samvad","language":"mr","narrator":"","about_member":"","notes":"'Spiritual letters' — possibly Ranade's correspondence","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/दादा तेंडुलकर आठवणी शेष रुपेरी पाने.pdf","name":"दादा तेंडुलकर आठवणी शेष रुपेरी पाने.pdf","folder":"(root)","size_bytes":7856229,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"shesh-ruperi-pane","language":"mr","narrator":"Dada Tendulkar","about_member":"gurudev_ranade","notes":"Dada Tendulkar's athvani of Gurudev","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्री भाऊसाहेब महाराज पुस्तक.pdf","name":"श्री भाऊसाहेब महाराज पुस्तक.pdf","folder":"(root)","size_bytes":535272,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"shri-bhausaheb-maharaj-pustak","language":"mr","narrator":"","about_member":"bhausaheb_maharaj","notes":"Book ABOUT Bhausaheb (also exists as docx in athvani folder)","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांचे मातृप्रेम.docx","name":"श्री गुरुदेवांचे मातृप्रेम.docx","folder":"(root)","size_bytes":432962,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"matruprem","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"'Gurudev's mother-love'","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी २०२४.docx","name":"श्री गुरुदेवांच्या आठवणी २०२४.docx","folder":"(root)","size_bytes":421300,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"shri-gurudevanchya-athvani-2024","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"Canonical published volume of athvani, 2024 edition","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्री गुरुदेवांच्या आठवणी पुस्तक.docx","name":"श्री गुरुदेवांच्या आठवणी पुस्तक.docx","folder":"(root)","size_bytes":518136,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"shri-gurudevanchya-athvani-pustak","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"Canonical published volume of athvani","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/ईश्वर शरण आश्रम अलाहाबाद.docx","name":"ईश्वर शरण आश्रम अलाहाबाद.docx","folder":"(root)","size_bytes":14252,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"ishvar-sharan-ashram-allahabad","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"About Allahabad ashram phase of Gurudev's life","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/लच्याण संदेश.docx","name":"लच्याण संदेश.docx","folder":"(root)","size_bytes":421494,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"lachyan-sandesh","language":"mr","narrator":"","about_member":"","notes":"'Lachyan message' — unsure","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/हरिदास यांच्या आठवणी.docx","name":"हरिदास यांच्या आठवणी.docx","folder":"(root)","size_bytes":424756,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"haridas-athvani","language":"mr","narrator":"Haridas","about_member":"gurudev_ranade","notes":"Haridas's recollections","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/कल्याणी मासीक.pdf","name":"कल्याणी मासीक.pdf","folder":"(root)","size_bytes":7688275,"exists":true,"my_guess":{"action":"periodical","author":"","work_slug":"kalyani-masik","language":"mr","narrator":"","about_member":"","notes":"Kalyani periodical/magazine","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/संकीर्ण.docx","name":"संकीर्ण.docx","folder":"(root)","size_bytes":472855,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"sankirna","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"'Miscellaneous' — likely mixed athvani","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/निंबाळची निवड कशी झाली.docx","name":"निंबाळची निवड कशी झाली.docx","folder":"(root)","size_bytes":419954,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"how-nimbal-was-chosen","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"About Gurudev choosing Nimbal","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/लिंगप्पा सावळगी यांच्या आठवणी. _.docx","name":"लिंगप्पा सावळगी यांच्या आठवणी. _.docx","folder":"(root)","size_bytes":423692,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"lingappa-savalgi-athvani","language":"mr","narrator":"Lingappa Savalgi","about_member":"gurudev_ranade","notes":"Lingappa Savalgi's athvani","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/नादाच्या संबंधी.docx","name":"नादाच्या संबंधी.docx","folder":"(root)","size_bytes":419049,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"nad-vishay","language":"mr","narrator":"","about_member":"","notes":"'About sound/nada' — likely a discourse","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/सुखसहिता दुखरहिता निर्मल एकांता।.docx","name":"सुखसहिता दुखरहिता निर्मल एकांता।.docx","folder":"(root)","size_bytes":430041,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"sukhasahita-dukharahita","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"Title is a verse line from devotional Marathi","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/विनायकराव दाते.docx","name":"विनायकराव दाते.docx","folder":"(root)","size_bytes":418927,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"vinayakrao-date-athvani","language":"mr","narrator":"Vinayakrao Date","about_member":"gurudev_ranade","notes":"Vinayakrao Date's athvani","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/शेट्यप्पा आठवणी.docx","name":"शेट्यप्पा आठवणी.docx","folder":"(root)","size_bytes":12198,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"shetyappa-athvani","language":"mr","narrator":"Shetyappa","about_member":"bhausaheb_maharaj","notes":"Shetyappa's athvani (also in Bhausaheb folder)","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/बापूसाहेब करंदीकर.docx","name":"बापूसाहेब करंदीकर.docx","folder":"(root)","size_bytes":420521,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"bapusaheb-karandikar-athvani","language":"mr","narrator":"Bapusaheb Karandikar","about_member":"gurudev_ranade","notes":"Bapusaheb Karandikar's recollections","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/महाराजांचे चरित्र लिहिणे Vivekanand gurudeo.docx","name":"महाराजांचे चरित्र लिहिणे Vivekanand gurudeo.docx","folder":"(root)","size_bytes":420689,"exists":true,"my_guess":{"action":"reference","author":"","work_slug":"writing-maharajs-biography","language":"mr","narrator":"","about_member":"","notes":"Meta — about writing Gurudev's biography","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/पुण्यस्मृती.pdf","name":"पुण्यस्मृती.pdf","folder":"(root)","size_bytes":1759179,"exists":true,"my_guess":{"action":"biography","author":"","work_slug":"punyasmruti","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"'Sacred Memory' biographical volume","confidence":"medium"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/ध्यानोपकारणी गीता अर्थासहित.pdf","name":"ध्यानोपकारणी गीता अर्थासहित.pdf","folder":"(root)","size_bytes":1037939,"exists":true,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"dhyangita","language":"mr","narrator":"","about_member":"","notes":"Ranade's Dhyangita with word-meanings","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/ललिताक्कांच्या आठवणी.docx","name":"ललिताक्कांच्या आठवणी.docx","folder":"(root)","size_bytes":423021,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"lalitakka-athvani","language":"mr","narrator":"Lalitakka","about_member":"gurudev_ranade","notes":"Lalitakka's athvani","confidence":"high"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-11/Neha/श्रीरघुनाथाचार्य आद्य.docx","name":"श्रीरघुनाथाचार्य आद्य.docx","folder":"(root)","size_bytes":421274,"exists":true,"my_guess":{"action":"athvani","author":"","work_slug":"raghunathacharya-adya","language":"mr","narrator":"Raghunathacharya","about_member":"gurudev_ranade","notes":"About Shri Raghunathacharya the First","confidence":"low"},"is_bundle":false},{"path":"00_raw/drive_dump_2026-06-12/Neha/Sevenfold stream of spiritual life_.pdf","name":"Sevenfold stream of spiritual life_.pdf","size_bytes":0,"exists":false,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"sevenfold-stream-of-spiritual-life","language":"en","narrator":"","about_member":"","notes":"Ranade essay","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Sevenfold stream of spiritual life_(1).pdf","name":"Sevenfold stream of spiritual life_(1).pdf","size_bytes":0,"exists":false,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"sevenfold-stream-of-spiritual-life","language":"en","narrator":"","about_member":"","notes":"Duplicate copy","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Contemporary.Indian.Philosophy_text.pdf","name":"Contemporary.Indian.Philosophy_text.pdf","size_bytes":43920845,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"contemporary-indian-philosophy","language":"en","narrator":"","about_member":"","notes":"Ranade's chapter in the famous philosophy anthology","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Essays and Reflections.pdf","name":"Essays and Reflections.pdf","size_bytes":168988,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"essays-and-reflections","language":"en","narrator":"","about_member":"","notes":"Ranade essays","confidence":"medium"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/REFLECTIONS_By R D RANADE.pdf","name":"REFLECTIONS_By R D RANADE.pdf","size_bytes":5094957,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"reflections","language":"en","narrator":"","about_member":"","notes":"Filename explicit: 'By R D Ranade'","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Gurudeo Opportunities of College Life.pdf","name":"Gurudeo Opportunities of College Life.pdf","size_bytes":96926,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"opportunities-of-college-life","language":"en","narrator":"","about_member":"","notes":"Ranade addressing college students","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Gurudeo_s Abhang.pdf","name":"Gurudeo_s Abhang.pdf","size_bytes":262164,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"gurudeos-abhang","language":"en","narrator":"","about_member":"","notes":"Gurudev's Abhang","confidence":"medium"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/काकांची चर्चा.pdf","name":"काकांची चर्चा.pdf","size_bytes":242353,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"kakasaheb_tulpule","work_slug":"kakanchi-charcha","language":"mr","narrator":"","about_member":"","notes":"'Kakasaheb's discussion'","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Matoshri Sharakka-.docx","name":"Matoshri Sharakka-.docx","size_bytes":470939,"exists":true,"is_bundle":false,"my_guess":{"action":"biography","author":"","work_slug":"matoshri-sharakka","language":"mr","narrator":"","about_member":"gurudev_ranade","notes":"About Sharakka, Gurudev's mother","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Radhabai limaye charitra.docx","name":"Radhabai limaye charitra.docx","size_bytes":428289,"exists":true,"is_bundle":false,"my_guess":{"action":"biography","author":"","work_slug":"radhabai-limaye-charitra","language":"mr","narrator":"","about_member":"other_devotees","notes":"Radhabai Limaye biography","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Gurudev Black and white original photo.jpg","name":"Gurudev Black and white original photo.jpg","size_bytes":5243348,"exists":true,"is_bundle":false,"my_guess":{"action":"reference","author":"","work_slug":"gurudev-photo","language":"","narrator":"","about_member":"gurudev_ranade","notes":"Photograph — archive somewhere?","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/निंबाळ आश्रमाची माहिती.pdf","name":"निंबाळ आश्रमाची माहिती.pdf","size_bytes":102201,"exists":true,"is_bundle":false,"my_guess":{"action":"reference","author":"","work_slug":"nimbal-ashram-info","language":"mr","narrator":"","about_member":"","notes":"Info on Nimbal ashram","confidence":"medium"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/नेमाने आरोग्य.pdf","name":"नेमाने आरोग्य.pdf","size_bytes":66069,"exists":true,"is_bundle":false,"my_guess":{"action":"reference","author":"","work_slug":"nemane-aarogya","language":"mr","narrator":"","about_member":"","notes":"'Regular health' — unclear context","confidence":"low"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/Copy of भा. रा. पटवर्धन.pdf","name":"Copy of भा. रा. पटवर्धन.pdf","size_bytes":135728,"exists":true,"is_bundle":false,"my_guess":{"action":"athvani","author":"","work_slug":"bh-ra-patwardhan-athvani","language":"mr","narrator":"B.R. Patwardhan","about_member":"gurudev_ranade","notes":"PDF version of B.R. Patwardhan athvani docx already in batch 1","confidence":"high"}},{"path":"00_raw/drive_dump_2026-06-12/Neha/कर्माचे डोळे ज्ञान ते निर्दोख होआवे_.pdf","name":"कर्माचे डोळे ज्ञान ते निर्दोख होआवे_.pdf","size_bytes":124730,"exists":true,"is_bundle":false,"my_guess":{"action":"canonical","author":"","work_slug":"karmache-dole-jnan","language":"mr","narrator":"","about_member":"","notes":"Verse title; unclear","confidence":"low"}},{"path":"00_raw/drive_dump_2026-06-12/loose/परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx","name":"परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx","size_bytes":485080,"exists":true,"is_bundle":false,"my_guess":{"action":"biography","author":"","work_slug":"nimbargi-charitra-aathvani","language":"mr","narrator":"","about_member":"nimbargi_maharaj","notes":"Biography + recollections of Nimbargi","confidence":"high"}},{"path":"","id":"bundle_parmartha_sopan","name":"Parmartha Sopan (Marathi + Hindi)","size_bytes":94899783,"exists":true,"is_bundle":true,"file_count":5,"files":["00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Parmarth-Sopan.pdf","00_raw/drive_dump_2026-06-12/Neha/Hindi Parmarth-Sopan.pdf","00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/Parmartha sopan Hindi part 2.docx","00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/final Parmartha sopan Hindi part 1.docx","00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/PGHL/हिंदी परमार्थसोपान.docx"],"my_guess":{"action":"canonical","author":"","work_slug":"parmartha-sopan","language":"mixed","narrator":"","about_member":"","notes":"5 files: 1 Marathi original PDF + 1 Hindi PDF + 3 Hindi DOCX parts. Author of the original?","confidence":"low"}},{"path":"","id":"bundle_patankar_p3","name":"Patankar Pravachan Part 3 (compiled PDF + 27 source files)","size_bytes":10318547,"exists":true,"is_bundle":true,"file_count":28,"files":["00_raw/drive_dump_2026-06-11/Neha/मूळ ग्रंथ/Patnkar pravachane bhag 3.pdf","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/1 - धोखै ही धोखै.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/10 - कत जाइए रे, घर लाग्यो रंगु ।.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/11 - अब कैसे छूटे नाम.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/12 - मैं मझधारा का माँझी हूँ,.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/13 - अजर अमर इक नाम.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/14 - अगर है शौक मिलनेका.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/15 - नौकरी शरीयतसे_.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/16 - सुना रे मैने निर्बलके बल.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/17 - अब  तो प्रकट.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/18 - शून्य शिखर में.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/19 - झरि लागै महलिया.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/2 - केहि समुझाओ.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/20 - और देवल जहँ धुंधली पूजा.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/21 - ऐसा देस दिवाना रे लोगो .doc.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/22  - महरम होय.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/23 - चुवत अमी रस भरत.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/24 - ऐसो है रे.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/25 -  क्या बे किसी से.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/3 - केशव कहि न जाय का कहिए_.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/4 - बहुरी नहि आवना_.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/5 -छांडी मन.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/6 - अब मै नाच्यो_.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/7 - सो काफिर जो बोलै काफ.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/9 - सोइ सच्चिदानन्द.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/Patnkar प्रवचने Print File.docx","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/Patnkar प्रवचने Print File.pdf","00_raw/drive_dump_2026-06-12/श्री पाटणकर यांची प्रवचने भाग ३/पाटणकर प्रवचने भाग ३.docx"],"my_guess":{"action":"canonical_lecture","author":"other_authors","work_slug":"patankar-pravachan-3","language":"mr","narrator":"","about_member":"","notes":"Patankar (different speaker) — Marathi pravachan series Part 3","confidence":"high"}},{"path":"","id":"bundle_bgpgr_source","name":"Bhagavadgita ध्यानप्रधान भक्तियोग — source files (18 chapter booklets)","size_bytes":11616869,"exists":true,"is_bundle":true,"file_count":39,"files":["00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta 1-2_Final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta 1-2_Final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta3 फायनल.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta3 फायनल.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta4 फायनल.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta4 फायनल.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_6_Final_Print.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_6_Final_Print.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_7_Final_Print.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_7_Final_Print.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_10 finallast12 pages.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_11final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_11final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_12final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_12final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_13final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_13final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_14final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_14final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_15final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_15final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_16final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_16final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_17final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_17final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_18final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_18final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_5 फायनल.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_5 फायनल.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_8final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_8final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_9final.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Geeta_Book_9final.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/PART_3.pdf","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/PART_3.pub","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/Thumbs.db","00_raw/drive_dump_2026-06-12/भगवद्गीता ध्यानप्रधान भक्तियोग/विषय सूची 1final.pub"],"my_guess":{"action":"canonical","author":"gurudev_ranade","work_slug":"bhagavadgita-as-pathway-to-god-realization","language":"mr","narrator":"","about_member":"","notes":".pub (MS Publisher) + .pdf source files for the BGPGR work; likely Marathi companion to the English BGPGR already moved","confidence":"medium"}},{"path":"","id":"bundle_paramarthapar_vyakhyane","name":"Parmarthapar Vyakhyane (Spiritual Discourses, parts 1-7, missing #6)","size_bytes":34343620,"exists":true,"is_bundle":true,"file_count":6,"files":["00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने १.pdf","00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने २.pdf","00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ३.pdf","00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ४.pdf","00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ५.pdf","00_raw/drive_dump_2026-06-12/Neha/परमार्थपर व्याख्याने ७.pdf"],"my_guess":{"action":"canonical_lecture","author":"gurudev_ranade","work_slug":"paramarthapar-vyakhyane","language":"mr","narrator":"","about_member":"","notes":"Major Ranade Marathi lecture series. #6 not in this dump — flag for future batches.","confidence":"medium"}},{"path":"","id":"bundle_kakanchi_pravachane","name":"Kakanchi Pravachane (parts 1, 2, 3)","size_bytes":2589198,"exists":true,"is_bundle":true,"file_count":3,"files":["00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग १_.pdf","00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग २_.pdf","00_raw/drive_dump_2026-06-12/Neha/काकांची प्रवचने भाग ३.pdf"],"my_guess":{"action":"canonical_lecture","author":"kakasaheb_tulpule","work_slug":"kakanchi-pravachane","language":"mr","narrator":"","about_member":"","notes":"Kakasaheb's Pravachan series","confidence":"high"}}]</script>
+
+<script>
+"use strict";
+
+const ACTIONS = [
+  { v: "canonical", l: "canonical" },
+  { v: "canonical_lecture", l: "canonical_lecture" },
+  { v: "canonical_letters", l: "canonical_letters" },
+  { v: "athvani", l: "athvani" },
+  { v: "biography", l: "biography" },
+  { v: "periodical", l: "periodical" },
+  { v: "reference", l: "reference" },
+  { v: "skip", l: "skip" },
+  { v: "defer", l: "defer" }
+];
+const AUTHORS = ["", "gurudev_ranade", "kakasaheb_tulpule", "other_authors"];
+const MEMBERS = ["", "gurudev_ranade", "bhausaheb_maharaj", "nimbargi_maharaj", "other_devotees"];
+const LANGUAGES = ["", "mr", "en", "mixed", "hi", "sa"];
+
+const STORAGE_KEY = "gurudev-corpus-attribution-v2";
+
+const RAW_DATA = JSON.parse(document.getElementById("attribution-data").textContent);
+
+// state: { [name]: decision }
+let STATE = loadState();
+let activeStatusFilter = "all";
+let activeActionFilter = "all";
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return initState();
+    const parsed = JSON.parse(raw);
+    // merge with raw data to handle additions
+    const fresh = initState();
+    for (const k of Object.keys(parsed || {})) {
+      if (fresh[k]) fresh[k] = Object.assign(fresh[k], parsed[k]);
+    }
+    return fresh;
+  } catch (e) {
+    return initState();
+  }
+}
+
+function initState() {
+  const s = {};
+  for (const entry of RAW_DATA) {
+    const g = entry.my_guess || {};
+    s[entry.name] = {
+      action: g.action || "",
+      author: g.author || "",
+      work_slug: g.work_slug || "",
+      language: g.language || "",
+      narrator: g.narrator || "",
+      about_member: g.about_member || "",
+      notes: g.notes || "",
+      status: "pending"
+    };
+  }
+  return s;
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); } catch (e) {}
+}
+
+function formatSize(bytes) {
+  if (!bytes && bytes !== 0) return "";
+  if (bytes < 1024) return bytes + " B";
+  if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + " KB";
+  if (bytes < 1024 * 1024 * 1024) return Math.round(bytes / (1024 * 1024)) + " MB";
+  return (bytes / (1024 * 1024 * 1024)).toFixed(1) + " GB";
+}
+
+// Strip the 00_raw/drive_dump_YYYY-MM-DD/ prefix from a path,
+// return only the parent directory portion (with trailing slash), or "" if root.
+function parentDirFromPath(p) {
+  if (!p || typeof p !== "string") return "";
+  let rest = p.replace(/^00_raw\/drive_dump_\d{4}-\d{2}-\d{2}\//, "");
+  const lastSlash = rest.lastIndexOf("/");
+  if (lastSlash < 0) return ""; // file lives at the root of the dump
+  return rest.slice(0, lastSlash + 1);
+}
+
+function deriveFolderPath(entry) {
+  if (entry.is_bundle && Array.isArray(entry.files) && entry.files.length) {
+    const parents = entry.files.map(parentDirFromPath);
+    const first = parents[0] || "";
+    const unique = Array.from(new Set(parents.filter(x => x !== first)));
+    let display = first;
+    let titleAttr = first;
+    if (unique.length > 0) {
+      display = first + "  (+ " + unique.length + " more location" + (unique.length === 1 ? "" : "s") + ")";
+      titleAttr = first + "\n+ " + unique.join("\n+ ");
+    }
+    return { display, titleAttr };
+  }
+  const display = parentDirFromPath(entry.path || "");
+  return { display, titleAttr: display };
+}
+
+function makeSelect(cls, options, value, title) {
+  const sel = document.createElement("select");
+  sel.className = cls;
+  if (title) sel.title = title;
+  for (const opt of options) {
+    const o = document.createElement("option");
+    if (typeof opt === "string") { o.value = opt; o.textContent = opt || "—"; }
+    else { o.value = opt.v; o.textContent = opt.l; }
+    if ((typeof opt === "string" ? opt : opt.v) === value) o.selected = true;
+    sel.appendChild(o);
+  }
+  return sel;
+}
+
+function makeInput(cls, value, placeholder) {
+  const i = document.createElement("input");
+  i.type = "text";
+  i.className = cls;
+  i.value = value || "";
+  if (placeholder) i.placeholder = placeholder;
+  return i;
+}
+
+function renderRow(entry) {
+  const dec = STATE[entry.name];
+  const row = document.createElement("div");
+  row.className = "row";
+  row.dataset.name = entry.name;
+  row.dataset.status = dec.status;
+  row.dataset.action = dec.action;
+
+  // status dot
+  const dot = document.createElement("span");
+  dot.className = "dot";
+  dot.title = "Click to confirm as-is (or cycle status)";
+  dot.addEventListener("click", () => cycleStatus(entry.name));
+  row.appendChild(dot);
+
+  // name cell
+  const nameCell = document.createElement("div");
+  nameCell.className = "name-cell";
+  if (entry.is_bundle) {
+    const badge = document.createElement("span");
+    badge.className = "bundle-badge";
+    badge.textContent = "[" + (entry.file_count || (entry.files || []).length) + "]";
+    badge.title = "Bundle of " + (entry.file_count || 0) + " files";
+    nameCell.appendChild(badge);
+  }
+  const nameStack = document.createElement("div");
+  nameStack.className = "name-stack";
+  const name = document.createElement("span");
+  name.className = "name";
+  name.textContent = entry.name;
+  name.title = entry.name;
+  nameStack.appendChild(name);
+  const folderInfo = deriveFolderPath(entry);
+  if (folderInfo && folderInfo.display) {
+    const fp = document.createElement("span");
+    fp.className = "folder-path";
+    fp.textContent = folderInfo.display;
+    fp.title = folderInfo.titleAttr || folderInfo.display;
+    nameStack.appendChild(fp);
+  }
+  nameCell.appendChild(nameStack);
+  const size = document.createElement("span");
+  size.className = "size";
+  size.textContent = formatSize(entry.size_bytes);
+  nameCell.appendChild(size);
+  row.appendChild(nameCell);
+
+  // fields cell
+  const fields = document.createElement("div");
+  fields.className = "fields";
+
+  const actionSel = makeSelect("action", ACTIONS, dec.action, "action");
+  actionSel.addEventListener("change", () => {
+    dec.action = actionSel.value;
+    onFieldChanged(entry.name, true);
+  });
+  fields.appendChild(actionSel);
+
+  // dynamic field container
+  const dyn = document.createElement("span");
+  dyn.className = "dyn";
+  dyn.style.display = "contents";
+  fields.appendChild(dyn);
+
+  function renderDyn() {
+    dyn.innerHTML = "";
+    const a = dec.action;
+    if (a === "canonical" || a === "canonical_lecture" || a === "canonical_letters") {
+      const authorSel = makeSelect("author", AUTHORS, dec.author, "author");
+      authorSel.addEventListener("change", () => { dec.author = authorSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(authorSel);
+      const workIn = makeInput("work", dec.work_slug, "work_slug");
+      workIn.addEventListener("input", () => { dec.work_slug = workIn.value; onFieldChanged(entry.name); });
+      dyn.appendChild(workIn);
+      const langSel = makeSelect("language", LANGUAGES, dec.language, "language");
+      langSel.addEventListener("change", () => { dec.language = langSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(langSel);
+    } else if (a === "athvani") {
+      const memSel = makeSelect("member", MEMBERS, dec.about_member, "about_member");
+      memSel.addEventListener("change", () => { dec.about_member = memSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(memSel);
+      const narrIn = makeInput("narrator", dec.narrator, "narrator");
+      narrIn.addEventListener("input", () => { dec.narrator = narrIn.value; onFieldChanged(entry.name); });
+      dyn.appendChild(narrIn);
+      const langSel = makeSelect("language", LANGUAGES, dec.language, "language");
+      langSel.addEventListener("change", () => { dec.language = langSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(langSel);
+    } else if (a === "biography") {
+      const memSel = makeSelect("member", MEMBERS, dec.about_member, "about_member");
+      memSel.addEventListener("change", () => { dec.about_member = memSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(memSel);
+      const workIn = makeInput("work", dec.work_slug, "work_slug");
+      workIn.addEventListener("input", () => { dec.work_slug = workIn.value; onFieldChanged(entry.name); });
+      dyn.appendChild(workIn);
+      const langSel = makeSelect("language", LANGUAGES, dec.language, "language");
+      langSel.addEventListener("change", () => { dec.language = langSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(langSel);
+    } else if (a === "periodical" || a === "reference") {
+      const workIn = makeInput("work", dec.work_slug, "work_slug");
+      workIn.addEventListener("input", () => { dec.work_slug = workIn.value; onFieldChanged(entry.name); });
+      dyn.appendChild(workIn);
+      const langSel = makeSelect("language", LANGUAGES, dec.language, "language");
+      langSel.addEventListener("change", () => { dec.language = langSel.value; onFieldChanged(entry.name); });
+      dyn.appendChild(langSel);
+    }
+    // skip / defer => no extra fields
+  }
+  renderDyn();
+  // Replace renderDyn on next field change so dynamic fields rebuild after action change
+  actionSel.addEventListener("change", () => renderDyn());
+
+  // expansion toggle
+  const expandBtn = document.createElement("button");
+  expandBtn.className = "icon-btn expand-btn";
+  expandBtn.textContent = "…";
+  expandBtn.title = "Notes" + (entry.is_bundle ? " & file list" : "");
+  expandBtn.addEventListener("click", () => toggleExpansion(entry.name));
+  fields.appendChild(expandBtn);
+
+  // confirm
+  const confirmBtn = document.createElement("button");
+  confirmBtn.className = "icon-btn confirm-btn";
+  confirmBtn.textContent = "✓";
+  confirmBtn.title = "Confirm row";
+  confirmBtn.addEventListener("click", () => confirmRow(entry.name));
+  fields.appendChild(confirmBtn);
+
+  row.appendChild(fields);
+
+  // expansion container
+  const exp = document.createElement("div");
+  exp.className = "row-expansion";
+  exp.dataset.expansionFor = entry.name;
+
+  const notesLabel = document.createElement("label");
+  notesLabel.textContent = "Notes";
+  exp.appendChild(notesLabel);
+  const notesArea = document.createElement("textarea");
+  notesArea.value = dec.notes || "";
+  notesArea.addEventListener("input", () => { dec.notes = notesArea.value; onFieldChanged(entry.name); });
+  exp.appendChild(notesArea);
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  const g = entry.my_guess || {};
+  meta.innerHTML = "<b>Confidence:</b> " + (g.confidence || "—");
+  if (entry.folder) meta.innerHTML += "  &nbsp; <b>Folder:</b> " + escapeHtml(entry.folder);
+  exp.appendChild(meta);
+
+  if (entry.is_bundle && entry.files && entry.files.length) {
+    const fl = document.createElement("div");
+    fl.className = "files";
+    const headLabel = document.createElement("label");
+    headLabel.textContent = "Files in bundle (" + entry.files.length + ")";
+    fl.appendChild(headLabel);
+    const ol = document.createElement("ol");
+    const initial = Math.min(10, entry.files.length);
+    for (let i = 0; i < initial; i++) {
+      const li = document.createElement("li");
+      li.textContent = entry.files[i];
+      ol.appendChild(li);
+    }
+    fl.appendChild(ol);
+    if (entry.files.length > 10) {
+      const more = document.createElement("button");
+      more.className = "show-more";
+      more.textContent = "+ " + (entry.files.length - 10) + " more";
+      more.addEventListener("click", () => {
+        for (let i = 10; i < entry.files.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = entry.files[i];
+          ol.appendChild(li);
+        }
+        more.remove();
+      });
+      fl.appendChild(more);
+    }
+    exp.appendChild(fl);
+  }
+
+  return { row, exp };
+}
+
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+}
+
+function onFieldChanged(name, fromAction) {
+  const dec = STATE[name];
+  // determine status: skip -> skipped, defer -> deferred, else edited unless confirmed
+  if (dec.action === "skip") dec.status = "skipped";
+  else if (dec.action === "defer") dec.status = "deferred";
+  else if (dec.status !== "done") dec.status = "edited";
+  else if (fromAction) dec.status = "edited"; // changing action away from done
+  saveState();
+  updateRowStatus(name);
+  updateCounts();
+}
+
+function updateRowStatus(name) {
+  const dec = STATE[name];
+  const row = document.querySelector(`.row[data-name="${cssEscape(name)}"]`);
+  if (row) {
+    row.dataset.status = dec.status;
+    row.dataset.action = dec.action;
+    row.classList.toggle("done", dec.status === "done" || dec.status === "skipped" || dec.status === "deferred");
+  }
+  applyFilters();
+}
+
+function cssEscape(s) {
+  // CSS attribute selector escaping for use inside `"..."`
+  return s.replace(/\\/g, "\\\\").replace(/"/g, "\\\"");
+}
+
+function cycleStatus(name) {
+  const dec = STATE[name];
+  // dot click: pending/edited -> done; done -> pending
+  if (dec.status === "done") {
+    dec.status = "edited";
+  } else {
+    dec.status = "done";
+  }
+  saveState();
+  updateRowStatus(name);
+  updateCounts();
+}
+
+function confirmRow(name) {
+  const dec = STATE[name];
+  if (dec.action === "skip") dec.status = "skipped";
+  else if (dec.action === "defer") dec.status = "deferred";
+  else dec.status = "done";
+  saveState();
+  updateRowStatus(name);
+  updateCounts();
+  showToast("Confirmed: " + name);
+}
+
+function toggleExpansion(name) {
+  const exp = document.querySelector(`.row-expansion[data-expansion-for="${cssEscape(name)}"]`);
+  if (exp) exp.classList.toggle("open");
+}
+
+function updateCounts() {
+  const counts = { all: 0, pending: 0, edited: 0, done: 0, skipped: 0, deferred: 0 };
+  for (const entry of RAW_DATA) {
+    const s = STATE[entry.name].status;
+    counts.all++;
+    counts[s] = (counts[s] || 0) + 1;
+  }
+  for (const k of Object.keys(counts)) {
+    const el = document.getElementById("cnt-" + k);
+    if (el) el.textContent = counts[k];
+  }
+  const decidedCount = counts.done + counts.skipped + counts.deferred;
+  document.getElementById("progress").textContent = decidedCount + " / " + counts.all + " decided";
+}
+
+function applyFilters() {
+  for (const entry of RAW_DATA) {
+    const row = document.querySelector(`.row[data-name="${cssEscape(entry.name)}"]`);
+    const exp = document.querySelector(`.row-expansion[data-expansion-for="${cssEscape(entry.name)}"]`);
+    if (!row) continue;
+    const dec = STATE[entry.name];
+    const statusOk = activeStatusFilter === "all" || dec.status === activeStatusFilter;
+    const actionOk = activeActionFilter === "all" || dec.action === activeActionFilter;
+    const visible = statusOk && actionOk;
+    row.style.display = visible ? "" : "none";
+    if (exp) exp.style.display = visible ? (exp.classList.contains("open") ? "block" : "") : "none";
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+function exportDecisions() {
+  const out = { version: 2, saved_at: new Date().toISOString(), decisions: [] };
+  for (const entry of RAW_DATA) {
+    const dec = STATE[entry.name];
+    if (!dec || dec.status === "pending") continue;
+    const obj = {
+      name: entry.name,
+      is_bundle: !!entry.is_bundle,
+      action: dec.action,
+      author: dec.author,
+      work_slug: dec.work_slug,
+      language: dec.language,
+      narrator: dec.narrator,
+      about_member: dec.about_member,
+      notes: dec.notes,
+      status: dec.status
+    };
+    if (entry.is_bundle) obj.files = entry.files || [];
+    else obj.path = entry.path || "";
+    out.decisions.push(obj);
+  }
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const d = new Date();
+  const ymd = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  a.href = url;
+  a.download = "attribution-decisions-" + ymd + ".json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 500);
+  showToast("Exported " + out.decisions.length + " decisions");
+}
+
+function importDecisions(file) {
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const parsed = JSON.parse(ev.target.result);
+      const decisions = parsed.decisions || [];
+      let merged = 0;
+      for (const d of decisions) {
+        if (!d.name || !STATE[d.name]) continue;
+        const cur = STATE[d.name];
+        for (const k of ["action","author","work_slug","language","narrator","about_member","notes","status"]) {
+          if (d[k] !== undefined) cur[k] = d[k];
+        }
+        merged++;
+      }
+      saveState();
+      renderAll();
+      showToast("Imported " + merged + " decisions");
+    } catch (e) {
+      showToast("Import failed: " + e.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function confirmAllVisible() {
+  let n = 0;
+  for (const entry of RAW_DATA) {
+    const row = document.querySelector(`.row[data-name="${cssEscape(entry.name)}"]`);
+    if (!row || row.style.display === "none") continue;
+    const dec = STATE[entry.name];
+    if (dec.status === "pending" || dec.status === "edited") {
+      if (dec.action === "skip") dec.status = "skipped";
+      else if (dec.action === "defer") dec.status = "deferred";
+      else dec.status = "done";
+      n++;
+    }
+  }
+  saveState();
+  renderAll();
+  showToast("Confirmed " + n + " rows");
+}
+
+function renderAll() {
+  const container = document.getElementById("rows");
+  container.innerHTML = "";
+  if (!RAW_DATA.length) {
+    container.innerHTML = "<div class='empty'>No entries.</div>";
+    return;
+  }
+  for (const entry of RAW_DATA) {
+    const { row, exp } = renderRow(entry);
+    container.appendChild(row);
+    container.appendChild(exp);
+  }
+  updateCounts();
+  applyFilters();
+}
+
+function attachFilterChips() {
+  document.querySelectorAll(".chip[data-status-filter]").forEach(c => {
+    c.addEventListener("click", () => {
+      document.querySelectorAll(".chip[data-status-filter]").forEach(x => x.classList.remove("active"));
+      c.classList.add("active");
+      activeStatusFilter = c.dataset.statusFilter;
+      applyFilters();
+    });
+  });
+  document.querySelectorAll(".chip[data-action-filter]").forEach(c => {
+    c.addEventListener("click", () => {
+      document.querySelectorAll(".chip[data-action-filter]").forEach(x => x.classList.remove("active"));
+      c.classList.add("active");
+      activeActionFilter = c.dataset.actionFilter;
+      applyFilters();
+    });
+  });
+}
+
+document.getElementById("export-btn").addEventListener("click", exportDecisions);
+document.getElementById("confirm-all-pending").addEventListener("click", confirmAllVisible);
+document.getElementById("import-input").addEventListener("change", (e) => {
+  const f = e.target.files && e.target.files[0];
+  if (f) importDecisions(f);
+  e.target.value = "";
+});
+
+attachFilterChips();
+renderAll();
+</script>
+</body>
+</html>

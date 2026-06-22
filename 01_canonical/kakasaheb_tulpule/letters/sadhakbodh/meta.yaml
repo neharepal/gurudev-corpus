@@ -1,0 +1,33 @@
+id: sadhakbodh
+title: "Sadhakbodh"
+title_en: "Sadhakbodh"
+title_translit: ""
+author: kakasaheb_tulpule
+co_authors: []
+work_type: letter
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/kakasaheb_tulpule/letters/sadhakbodh/mr/Sadhakbodh pdf.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - letters
+  - sadhak-guidance
+subject_persons: []
+related_works: []
+status: cataloged
+text_extraction_method: ocr-needed
+quality_notes: ""
+notes: |
+  Extraction attempted 2026-06-13 in bulk task #11 — ALL SOURCES FAILED.
+  Sources are image-only PDFs or use non-Unicode Devanagari fonts.
+  OCR (tesseract with mar/hin/kan trained data) required.
+  Source files attempted:
+    - Sadhakbodh pdf.pdf: pdftotext returned only 168 chars — likely image-only PDF (needs OCR)

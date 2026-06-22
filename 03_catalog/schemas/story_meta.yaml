@@ -1,0 +1,38 @@
+# Schema for meta.yaml of an aggregated athvani story (or parable).
+# Copy into each story folder under 02_aggregated/athvani/stories/<story-slug>/meta.yaml
+# An athvani story typically has multiple tellings from different sources, which
+# are kept verbatim under variants/ and merged into consolidated.md.
+
+id: <kebab-case-slug>          # unique, matches folder name
+title: <short descriptive title>
+title_translit:                # [opt]
+languages_available: [en]      # subfolders populated; en first, mr later
+
+# What the story is about
+themes: []                     # e.g. [seva, sadhana, miracle, compassion, surrender]
+people_involved:               # named individuals in the story
+  - Gurudev
+subject_focus:                 # primary teaching/event this story illustrates
+estimated_date:                # [opt] "circa 1920s", "during Nimbal years", etc.
+location:                      # [opt]
+
+# Each verbatim telling found in source material
+variants:
+  - source_work_id:            # id of the source work in 03_catalog/catalog.yaml
+    narrator:                  # who tells it (often = author of source work)
+    language: en
+    file: en/variants/source_<work-id>.md
+    page_or_section:           # [opt] e.g. "pp. 142-145" or "ch. 7"
+    distinctive_details:       # what only this variant has — important for Phase 2
+    notes:
+
+# Consolidation editorial record
+consolidated:
+  by:                          # person who merged the variants
+  on:                          # date YYYY-MM-DD
+  confidence: medium           # high | medium | low
+  basis: |                     # which variants were primary, what was reconciled
+  excluded: |                  # details deliberately left out and why
+
+# Free-form notes
+notes: |

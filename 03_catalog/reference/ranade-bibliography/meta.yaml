@@ -1,0 +1,34 @@
+id: ranade-bibliography
+title: "Chronological Order of Writings of Shri Gurudeo"
+title_en: "Chronological Order of Writings of Shri Gurudeo (R. D. Ranade) — bibliography reference"
+title_translit: ""
+author: ""
+co_authors: []
+kind: reference
+work_type: reference
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: ""  # source file: Chronological Order of Writings of Shri Gurudeo--(1).pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+  - raw_path: ""  # source file: Chronological Order of Writings of Shri Gurudeo--.pdf
+    received_on: ""
+    received_in_batch: ""
+    checksum_sha256: ""
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text
+extracted_on: 2026-06-14
+word_count: 2102
+quality_notes: ""
+notes: |
+  Reference bibliography of Gurudev Ranade's writings in chronological order, with brief annotations. Folder contains two identical PDFs (`Chronological Order of Writings of Shri Gurudeo--.pdf` and `Chronological Order of Writings of Shri Gurudeo--(1).pdf`); byte-for-byte identical extraction. One copy used as source; the other is a duplicate (flagged but not deleted).
