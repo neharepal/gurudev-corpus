@@ -1,0 +1,30 @@
+id: herakleitos
+title: 'Herakleitos'
+title_en: 'Herakleitos'
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ''
+publisher: ''
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Herakleitos.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: ce33d64e3b3d03ff89bb63026df62173293350e76278a95ec0737c23e7b6f0a4
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text-layer
+quality_notes: 'Born-digital text layer with light OCR artifacts (Greek terms garbled).'
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

@@ -1,0 +1,30 @@
+id: gandhi-and-other-indian-saints
+title: 'Spiritual Awakening in Gandhi and Other Indian Saints'
+title_en: 'Spiritual Awakening in Gandhi and Other Indian Saints'
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: '2003'
+publisher: 'Sarva Seva Sangh Prakashan, Rajghat, Varanasi'
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Gandhi and other Hindi Saints.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: 9e43fd5f9b150ad9e8adfb5b49c0fe3edb0babc59a7b7f4751dda5197b3ece78
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text-layer
+quality_notes: 'Clean EN text layer. 2nd edition, Sept 2003; foreword by Arun Gandhi.'
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

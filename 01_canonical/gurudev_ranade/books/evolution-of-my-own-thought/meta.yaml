@@ -1,0 +1,30 @@
+id: evolution-of-my-own-thought
+title: 'The Evolution of My Own Thought'
+title_en: 'The Evolution of My Own Thought'
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: essay
+original_language: en
+languages_available: [en]
+year_first_published: ""
+year_this_edition: ''
+publisher: ''
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of The Evolution Of My Own Thought 1.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: c0625a09a631c134847e34d44a729856e33e30373ab51ff17672c3fa0be2c523
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: pdf-text-layer
+quality_notes: 'Autobiographical/philosophical essay.'
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source
