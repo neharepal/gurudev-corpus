@@ -1,0 +1,39 @@
+id: smruti-082-tribute-by-matthew-lederle
+title: Tribute by Matthew Lederle
+title_en: Tribute by Matthew Lederle
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- modern-renaissance
+- east-west-synthesis
+- quest-for-truth
+- religious-climate
+people_involved:
+- matthew-lederle
+- r-d-ranade
+- s-radhakrishnan
+- aurobindo-ghose
+subject_focus: The Jesuit scholar Lederle presents Ranade as a dominant figure of
+  India's renaissance who sought to synthesize East and West, his whole life a sincere
+  quest for truth.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: matthew-lederle
+  language: en
+  file: en/variants/smruti_seg082.md
+  page_or_section: unit 82
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The Jesuit scholar Lederle presents Ranade as a dominant figure
+    of India's renaissance who sought to synthesize East and West, his whole life
+    a sincere quest for truth.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 82 of स्मृति-संगम (Smruti Sangam) (narrator: matthew-lederle).'

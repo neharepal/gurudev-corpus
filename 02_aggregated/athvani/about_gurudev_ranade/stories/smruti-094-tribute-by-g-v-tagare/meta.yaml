@@ -1,0 +1,36 @@
+id: smruti-094-tribute-by-g-v-tagare
+title: Tribute by G. V. Tagare
+title_en: Tribute by G. V. Tagare
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- naam-nishtha
+- vedic-tradition
+- bhakti-lineage
+people_involved:
+- g-v-tagare
+- r-d-ranade
+subject_focus: Tagare says Gurudev's devotion to the Name, rooted in Vedic and Upanishadic
+  tradition, makes him without exaggeration a representative of the ancient bhakti
+  lineage.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: g-v-tagare
+  language: mr
+  file: mr/variants/smruti_seg094.md
+  page_or_section: unit 94
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Tagare says Gurudev's devotion to the Name, rooted in Vedic
+    and Upanishadic tradition, makes him without exaggeration a representative of
+    the ancient bhakti lineage.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 94 of स्मृति-संगम (Smruti Sangam) (narrator: g-v-tagare).'

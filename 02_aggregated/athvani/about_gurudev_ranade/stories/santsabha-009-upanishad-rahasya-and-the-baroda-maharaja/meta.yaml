@@ -1,0 +1,37 @@
+id: santsabha-009-upanishad-rahasya-and-the-baroda-maharaja
+title: उपनिषद्रहस्य
+title_en: Upanishad-Rahasya and the Baroda Maharaja
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- scholarship
+- upanishads
+- lectures
+- respect
+people_involved:
+- Gurudev R. D. Ranade
+- Sayajirao Gaikwad
+- N. C. Kelkar
+subject_focus: The story of Gurudev's Upanishad lectures, the Baroda Maharaja's admiration,
+  and the publication of his celebrated Upanishadic work.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg009.md
+  page_or_section: unit 9
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The story of Gurudev's Upanishad lectures, the Baroda Maharaja's
+    admiration, and the publication of his celebrated Upanishadic work.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 9 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

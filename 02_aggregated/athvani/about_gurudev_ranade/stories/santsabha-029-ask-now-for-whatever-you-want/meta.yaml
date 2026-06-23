@@ -1,0 +1,36 @@
+id: santsabha-029-ask-now-for-whatever-you-want
+title: काय हवे असेल ते आत्ता मागून घ्या
+title_en: Ask Now for Whatever You Want
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- maharaj-presence
+- padas
+- radha-golan
+- confidence
+people_involved:
+- Gurudev R. D. Ranade
+- Kakusaheb
+subject_focus: Gurudev, channeling Maharaj's presence, invites devotees to ask for
+  anything, and Vamanrao sings the Radha churning pada.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg029.md
+  page_or_section: unit 29
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev, channeling Maharaj's presence, invites devotees to
+    ask for anything, and Vamanrao sings the Radha churning pada.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 29 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

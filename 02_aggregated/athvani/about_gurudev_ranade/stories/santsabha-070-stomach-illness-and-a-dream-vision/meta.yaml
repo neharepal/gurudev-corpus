@@ -1,0 +1,37 @@
+id: santsabha-070-stomach-illness-and-a-dream-vision
+title: पोटाचा आजार व स्वप्नदृष्टान्त
+title_en: Stomach Illness and a Dream Vision
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- post-nirvana-grace
+- illness
+- dream
+- nem-while-eating
+people_involved:
+- Gurudev R. D. Ranade
+- Dr. Aroskar
+- Baba Gole
+subject_focus: After Gurudev's passing, he appears in dreams to heal Vamanrao's stomach
+  illness and to urge him to do nem even while eating.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg070.md
+  page_or_section: unit 70
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: After Gurudev's passing, he appears in dreams to heal Vamanrao's
+    stomach illness and to urge him to do nem even while eating.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 70 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

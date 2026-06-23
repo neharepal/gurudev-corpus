@@ -1,0 +1,38 @@
+id: santsabha-054-gaddyappa-lost-and-found
+title: गड्ड्याप्पा हरवला व सापडला
+title_en: Gaddyappa Lost and Found
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- humor
+- telegram-mixup
+- journey
+- story
+people_involved:
+- Gurudev R. D. Ranade
+- Sitarampant Joshi
+- Prahlad Kulkarni
+- Gaddyappa
+subject_focus: The comic confusion when 'Gaddyappa Lost' and 'Gaddyappa Found' telegrams
+  arrived in reversed order during a journey to Allahabad.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg054.md
+  page_or_section: unit 54
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The comic confusion when 'Gaddyappa Lost' and 'Gaddyappa Found'
+    telegrams arrived in reversed order during a journey to Allahabad.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 54 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

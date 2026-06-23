@@ -1,0 +1,36 @@
+id: smruti-048-tribute-by-b-n-datar
+title: Tribute by B. N. Datar
+title_en: Tribute by B. N. Datar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- spiritual-guidance
+- allahabad
+- place-of-pilgrimage
+- childlike-simplicity
+people_involved:
+- b-n-datar
+- r-d-ranade
+subject_focus: Datar recalls his long informal discipleship and how Ranade's Allahabad
+  house was a place of pilgrimage for judges, scholars and elite seeking guidance.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: b-n-datar
+  language: en
+  file: en/variants/smruti_seg048.md
+  page_or_section: unit 48
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Datar recalls his long informal discipleship and how Ranade's
+    Allahabad house was a place of pilgrimage for judges, scholars and elite seeking
+    guidance.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 48 of स्मृति-संगम (Smruti Sangam) (narrator: b-n-datar).'

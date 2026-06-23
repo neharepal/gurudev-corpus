@@ -1,0 +1,36 @@
+id: smruti-023-tribute-by-r-p-paranjpye
+title: Tribute by R. P. Paranjpye
+title_en: Tribute by R. P. Paranjpye
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- fergusson-college
+- god-intoxicated
+- four-in-one
+- lord-chelmsford
+people_involved:
+- r-p-paranjpye
+- r-d-ranade
+- lord-chelmsford
+subject_focus: Principal Paranjpye calls Ranade 'God-intoxicated' and tells the Viceroy
+  that in Prof. Ranade one sees four professors rolled into one.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: b-r-kulkarni
+  language: en
+  file: en/variants/smruti_seg023.md
+  page_or_section: unit 23
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Principal Paranjpye calls Ranade 'God-intoxicated' and tells
+    the Viceroy that in Prof. Ranade one sees four professors rolled into one.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 23 of स्मृति-संगम (Smruti Sangam) (narrator: b-r-kulkarni).'

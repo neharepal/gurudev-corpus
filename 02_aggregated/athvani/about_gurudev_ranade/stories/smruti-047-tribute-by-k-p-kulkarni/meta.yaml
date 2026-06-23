@@ -1,0 +1,38 @@
+id: smruti-047-tribute-by-k-p-kulkarni
+title: Tribute by K. P. Kulkarni
+title_en: Tribute by K. P. Kulkarni
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- fergusson-college
+- teaching
+- carlyle
+- essays
+- childlike-nature
+people_involved:
+- k-p-kulkarni
+- r-d-ranade
+subject_focus: A former student vividly describes Prof. Ranade's dress, his flowing
+  English teaching like the Ganga, his essay reviews and home visits, and his guileless,
+  childlike, virtue-seeing nature.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: k-p-kulkarni
+  language: mr
+  file: mr/variants/smruti_seg047.md
+  page_or_section: unit 47
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A former student vividly describes Prof. Ranade's dress, his
+    flowing English teaching like the Ganga, his essay reviews and home visits, and
+    his guileless, childlike, virtue-seeing nature.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 47 of स्मृति-संगम (Smruti Sangam) (narrator: k-p-kulkarni).'

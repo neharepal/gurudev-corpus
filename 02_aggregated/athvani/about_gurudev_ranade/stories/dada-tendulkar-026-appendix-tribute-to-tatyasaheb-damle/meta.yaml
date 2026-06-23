@@ -1,0 +1,40 @@
+id: dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle
+title: 'परिशिष्ट अ: श्रीतात्यासाहेब दामले — श्रद्धांजली'
+title_en: 'Appendix: Tribute to Tatyasaheb Damle'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- tribute
+- rare-human-birth
+- perseverance
+- death-and-atma
+people_involved:
+- Tatyasaheb Damle
+- Nimbargi Maharaj
+- Gurudev
+- Shankar Diwakar Tendulkar
+- Lilabai Shikhalkar
+subject_focus: An appended tribute to Tatyasaheb Damle, the Pune devotees' chief,
+  reflecting on the rare human birth, his relentless sadhana to the end, and the teaching
+  that death is only a change of the soul's dwelling.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg026.md
+  page_or_section: unit 26
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: An appended tribute to Tatyasaheb Damle, the Pune devotees'
+    chief, reflecting on the rare human birth, his relentless sadhana to the end,
+    and the teaching that death is only a change of the soul's dwelling.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 26 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

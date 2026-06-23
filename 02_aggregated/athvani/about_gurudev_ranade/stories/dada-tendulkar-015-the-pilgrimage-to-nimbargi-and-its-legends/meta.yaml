@@ -1,0 +1,41 @@
+id: dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends
+title: श्रीक्षेत्र निंबरगी येथील हकीकत
+title_en: The Pilgrimage to Nimbargi and Its Legends
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- nimbargi-pilgrimage
+- lineage
+- miracles
+- sacred-sites
+people_involved:
+- Gurudev
+- Babaso Sangoram
+- Balappa Guddodgi
+- Bhausaheb Maharaj
+- Nimbargi Maharaj
+- Narsappa
+subject_focus: On the Dec 1955 pilgrimage to Nimbargi, Gurudev insists on hearing
+  Shankarrao's written account and narrates the legends of the lineage and the sacred
+  sites of the village.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg015.md
+  page_or_section: unit 15
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: On the Dec 1955 pilgrimage to Nimbargi, Gurudev insists on
+    hearing Shankarrao's written account and narrates the legends of the lineage and
+    the sacred sites of the village.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 15 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

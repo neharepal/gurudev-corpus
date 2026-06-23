@@ -1,0 +1,34 @@
+id: smruti-035-tribute-by-k-m-munshi
+title: Tribute by K. M. Munshi
+title_en: Tribute by K. M. Munshi
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- philosophy-and-mysticism
+- biography-summary
+- devotion
+people_involved:
+- k-m-munshi
+- r-d-ranade
+subject_focus: The Bharatiya Vidya Bhavan founder describes Gurudev as a profound
+  thinker and devotee combining philosophical insight with mystical heights.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: k-m-munshi
+  language: en
+  file: en/variants/smruti_seg035.md
+  page_or_section: unit 35
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The Bharatiya Vidya Bhavan founder describes Gurudev as a profound
+    thinker and devotee combining philosophical insight with mystical heights.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 35 of स्मृति-संगम (Smruti Sangam) (narrator: k-m-munshi).'

@@ -1,0 +1,40 @@
+id: smruti-043-tribute-by-g-v-tulpule
+title: Tribute by G. V. Tulpule
+title_en: Tribute by G. V. Tulpule
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- word-clarification
+- sahaja-samadhi
+- jivanmukti
+- guru-bhakti
+- amrut-mahotsav
+people_involved:
+- g-v-tulpule
+- r-d-ranade
+- jnaneshwara
+- tukaram
+subject_focus: Tulpule explains how Gurudev clarified obscured spiritual terms like
+  sahaja-samadhi and jivanmukti through his own realization and Western philosophy,
+  with Dnyaneshwar-like guru-bhakti.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: g-v-tulpule
+  language: mr
+  file: mr/variants/smruti_seg043.md
+  page_or_section: unit 43
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Tulpule explains how Gurudev clarified obscured spiritual terms
+    like sahaja-samadhi and jivanmukti through his own realization and Western philosophy,
+    with Dnyaneshwar-like guru-bhakti.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 43 of स्मृति-संगम (Smruti Sangam) (narrator: g-v-tulpule).'

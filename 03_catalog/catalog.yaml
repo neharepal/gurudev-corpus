@@ -2,83 +2,160 @@ works:
 - id: constructive-survey-of-upanishadic-philosophy
   title: A Constructive Survey of Upanishadic Philosophy
   author: gurudev_ranade
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/gurudev_ranade/books/constructive-survey-of-upanishadic-philosophy/
 - id: creative-period
   title: 'History of Indian Philosophy: The Creative Period'
   author: gurudev_ranade
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/gurudev_ranade/books/creative-period/
 - id: philosophical-and-other-essays
   title: Philosophical and Other Essays
   author: gurudev_ranade
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/gurudev_ranade/books/philosophical-and-other-essays/
 - id: kannad-parmarth-sopan
   title: कन्नड परमार्थ सोपान (Kannad Parmarth Sopan, Marathi)
   author: gurudev_ranade
-  languages: [mr]
+  languages:
+  - mr
   path: 01_canonical/gurudev_ranade/books/kannad-parmarth-sopan/
 - id: parmartha-mandir
   title: परमार्थ मंदिर (Parmartha Mandir)
   author: gurudev_ranade
-  languages: [mr]
+  languages:
+  - mr
   path: 01_canonical/gurudev_ranade/books/parmartha-mandir/
 - id: javak-patre-tipane
   title: श्री भाऊसाहेब महाराज उमदीकर यांची जावक पत्रे व टिपणे
   author: bhausaheb_maharaj
-  languages: [mr]
+  languages:
+  - mr
   path: 01_canonical/bhausaheb_maharaj/letters/javak-patre-tipane/
 - id: allahabad-days-en
-  title: Gurudev R. D. Ranade — A Glance at His Allahabad University Days and Other Essays
+  title: Gurudev R. D. Ranade — A Glance at His Allahabad University Days and Other
+    Essays
   author: about_gurudev_ranade
-  languages: [en]
+  languages:
+  - en
   path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-en/
 - id: allahabad-days-mr
   title: गुरुदेव रा. द. रानडे — अलाहाबाद विद्यापीठातील कारकीर्द व इतर लेख
   author: about_gurudev_ranade
-  languages: [mr]
+  languages:
+  - mr
   path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-mr/
 - id: kushal-pradhyapak
   title: प्रा. रा. द. रानडे — एक कुशल प्राध्यापक व नामवंत ग्रंथकार
   author: about_gurudev_ranade
-  languages: [mr]
+  languages:
+  - mr
   path: 02_aggregated/biography/about_gurudev_ranade/kushal-pradhyapak/
 - id: gurudev-paramarthik-shikvan
   title: श्री गुरुदेव रानडे व त्यांची पारमार्थिक शिकवण
   author: kakasaheb_tulpule
-  languages: [mr]
+  languages:
+  - mr
   path: 01_canonical/kakasaheb_tulpule/books/gurudev-paramarthik-shikvan/
 - id: sonari-pane-2000
   title: निंबरगी संप्रदायाच्या इतिहासातील सोनेरी पाने (2000)
   author: about_other_devotees
-  languages: [mr]
+  languages:
+  - mr
   path: 02_aggregated/biography/about_other_devotees/sonari-pane-2000/
 - id: acpr-silver-jubilee-vol1
   title: ACPR Silver Jubilee Souvenir, Volume I
   author: about_other_devotees
-  languages: [en]
+  languages:
+  - en
   path: 02_aggregated/biography/about_other_devotees/acpr-silver-jubilee-vol1/
 - id: acpr-silver-jubilee-vol2
   title: ACPR Silver Jubilee Souvenir, Volume II
   author: about_other_devotees
-  languages: [en]
+  languages:
+  - en
   path: 02_aggregated/biography/about_other_devotees/acpr-silver-jubilee-vol2/
 - id: pathway-to-god-in-the-vedas
   title: Pathway to God in the Vedas
   author: other_authors
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/other_authors/books/pathway-to-god-in-the-vedas/
 - id: critical-constructive-aspects
   title: Critical and Constructive Aspects of Prof. R. D. Ranade's Philosophy
   author: other_authors
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/other_authors/books/critical-constructive-aspects/
 - id: studies-in-indian-philosophy
   title: Studies in Indian Philosophy (Edited and Annotated)
   author: other_authors
-  languages: [en]
+  languages:
+  - en
   path: 01_canonical/other_authors/books/studies-in-indian-philosophy/
+- id: herakleitos
+  title: Herakleitos
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/herakleitos/
+- id: evolution-of-my-own-thought
+  title: The Evolution of My Own Thought
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/evolution-of-my-own-thought/
+- id: vindication-of-indian-philosophy
+  title: A Vindication of Indian Philosophy
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/vindication-of-indian-philosophy/
+- id: gandhi-and-other-indian-saints
+  title: Spiritual Awakening in Gandhi and Other Indian Saints
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/gandhi-and-other-indian-saints/
+- id: sadhakbodh
+  title: साधक-बोध
+  author: kakasaheb_tulpule
+  languages:
+  - mr
+  path: 01_canonical/kakasaheb_tulpule/letters/sadhakbodh/
+- id: ranade-and-his-spiritual-lineage
+  title: R. D. Ranade and His Spiritual Lineage
+  author: about_gurudev_ranade
+  languages:
+  - en
+  path: 02_aggregated/biography/about_gurudev_ranade/ranade-and-his-spiritual-lineage/
+- id: nimbargi-maharaj-biography-en
+  title: Nimbargi Maharaj — A Biography
+  author: about_nimbargi_maharaj
+  languages:
+  - en
+  path: 02_aggregated/biography/about_nimbargi_maharaj/nimbargi-maharaj-biography-en/
+- id: kannada-sahityatil-punyasmruti
+  title: कन्नड साहित्यातील गुरुदेव रानडे यांच्या पुण्यस्मृती
+  author: about_gurudev_ranade
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_gurudev_ranade/kannada-sahityatil-punyasmruti/
+- id: jivandarshan-deshpande
+  title: गुरुदेव रानडे — जीवनदर्शन
+  author: about_gurudev_ranade
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_gurudev_ranade/jivandarshan-deshpande/
+- id: nimbargi-maharaj-charitra-athavani-mr
+  title: परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी
+  author: about_nimbargi_maharaj
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_nimbargi_maharaj/nimbargi-maharaj-charitra-athavani-mr/
 stories:
 - id: the-old-house-at-nimbal
   path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/
@@ -89,6 +166,2789 @@ stories:
   - nimbal
   - gurudev-daily-life
   - samadhi-mandir
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-001-biographical-introduction-of-gurudev-r-d-rana
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-001-biographical-introduction-of-gurudev-r-d-rana/
+  about_member: gurudev_ranade
+  title: Biographical Introduction of Gurudev R. D. Ranade
+  title_en: Biographical Introduction of Gurudev R. D. Ranade
+  themes:
+  - biography
+  - gurudev-life
+  - nimbal
+  - jamkhandi
+  - allahabad-university
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-002-tribute-by-dattopant-ranade-father
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-002-tribute-by-dattopant-ranade-father/
+  about_member: gurudev_ranade
+  title: Tribute by Dattopant Ranade (father)
+  title_en: Tribute by Dattopant Ranade (father)
+  themes:
+  - family
+  - fatherly-advice
+  - early-life
+  - humility
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-003-tribute-by-parvatibai-d-ranade-mother
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-003-tribute-by-parvatibai-d-ranade-mother/
+  about_member: gurudev_ranade
+  title: Tribute by Parvatibai D. Ranade (mother)
+  title_en: Tribute by Parvatibai D. Ranade (mother)
+  themes:
+  - family
+  - meditation
+  - illness
+  - morning-namasmaran
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-004-tribute-by-swami-mahalingayya
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-004-tribute-by-swami-mahalingayya/
+  about_member: gurudev_ranade
+  title: Tribute by Swami Mahalingayya
+  title_en: Tribute by Swami Mahalingayya
+  themes:
+  - childhood
+  - prophecy
+  - saint-recognition
+  - jamkhandi
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-005-tribute-by-rajasaheb-lilavatidevi-patwardhan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-005-tribute-by-rajasaheb-lilavatidevi-patwardhan/
+  about_member: gurudev_ranade
+  title: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+  title_en: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+  themes:
+  - jamkhandi
+  - birth
+  - reverence
+  - spiritual-tradition
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-006-tribute-by-bhaguakka-damle-elder-sister
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-006-tribute-by-bhaguakka-damle-elder-sister/
+  about_member: gurudev_ranade
+  title: Tribute by Bhaguakka Damle (elder sister)
+  title_en: Tribute by Bhaguakka Damle (elder sister)
+  themes:
+  - family
+  - letters
+  - nimbal
+  - remembrance
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-007-tribute-by-sitabai-r-ranade-wife
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-007-tribute-by-sitabai-r-ranade-wife/
+  about_member: gurudev_ranade
+  title: Tribute by Sitabai R. Ranade (wife)
+  title_en: Tribute by Sitabai R. Ranade (wife)
+  themes:
+  - family
+  - bereavement
+  - samadhi-mandir
+  - nimbal
+  - devotion
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-008-tribute-by-vijaya-v-apte-daughter
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-008-tribute-by-vijaya-v-apte-daughter/
+  about_member: gurudev_ranade
+  title: Tribute by Vijaya V. Apte (daughter)
+  title_en: Tribute by Vijaya V. Apte (daughter)
+  themes:
+  - family
+  - scholarship
+  - word-coining
+  - simplicity
+  - courage-in-grief
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-009-tribute-by-narsappa-shapeti
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-009-tribute-by-narsappa-shapeti/
+  about_member: gurudev_ranade
+  title: Tribute by Narsappa Shapeti
+  title_en: Tribute by Narsappa Shapeti
+  themes:
+  - nimbal
+  - anahata-nada
+  - disciple
+  - nimbargi-sampradaya
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-010-tribute-by-annie-besant
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-010-tribute-by-annie-besant/
+  about_member: gurudev_ranade
+  title: Tribute by Annie Besant
+  title_en: Tribute by Annie Besant
+  themes:
+  - theosophy
+  - spiritual-experiences
+  - initiation
+  - banaras
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-011-tribute-by-bal-gangadhar-tilak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-011-tribute-by-bal-gangadhar-tilak/
+  about_member: gurudev_ranade
+  title: Tribute by Bal Gangadhar Tilak
+  title_en: Tribute by Bal Gangadhar Tilak
+  themes:
+  - tilak
+  - politics-vs-religion
+  - gitarahasya
+  - reminiscence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-012-tribute-by-amburao-maharaj
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-012-tribute-by-amburao-maharaj/
+  about_member: gurudev_ranade
+  title: Tribute by Amburao Maharaj
+  title_en: Tribute by Amburao Maharaj
+  themes:
+  - sittings
+  - bhajan
+  - guru-bhakti
+  - authority-to-give-naam
+  - nimbal
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-013-tribute-by-sayajirao-gaekwad
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-013-tribute-by-sayajirao-gaekwad/
+  about_member: gurudev_ranade
+  title: Tribute by Sayajirao Gaekwad
+  title_en: Tribute by Sayajirao Gaekwad
+  themes:
+  - upanishads
+  - lecture
+  - sanskrit-academy
+  - bangalore
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-014-tribute-by-vishnubuva-jog
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-014-tribute-by-vishnubuva-jog/
+  about_member: gurudev_ranade
+  title: Tribute by Vishnubuva Jog
+  title_en: Tribute by Vishnubuva Jog
+  themes:
+  - varkari
+  - dnyaneshwari
+  - alandi-lecture
+  - scholarly-approval
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-015-tribute-by-shivalingavvakka
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-015-tribute-by-shivalingavvakka/
+  about_member: gurudev_ranade
+  title: Tribute by Shivalingavvakka
+  title_en: Tribute by Shivalingavvakka
+  themes:
+  - nimbal
+  - house-opening
+  - saptah
+  - poetic-vision
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-016-tribute-by-balasaheb-pant-pratinidhi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-016-tribute-by-balasaheb-pant-pratinidhi/
+  about_member: gurudev_ranade
+  title: Tribute by Balasaheb Pant Pratinidhi
+  title_en: Tribute by Balasaheb Pant Pratinidhi
+  themes:
+  - aundh
+  - reminiscence
+  - lectures
+  - great-men
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-017-tribute-by-rudolf-otto
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-017-tribute-by-rudolf-otto/
+  about_member: gurudev_ranade
+  title: Tribute by Rudolf Otto
+  title_en: Tribute by Rudolf Otto
+  themes:
+  - west-east-dialogue
+  - comparative-religion
+  - poona-meeting
+  - humility
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-018-tribute-by-gangadharrao-deshpande
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-018-tribute-by-gangadharrao-deshpande/
+  about_member: gurudev_ranade
+  title: Tribute by Gangadharrao Deshpande
+  title_en: Tribute by Gangadharrao Deshpande
+  themes:
+  - god-realisation
+  - tenderness-of-heart
+  - sangli
+  - peace
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-019-tribute-by-aurobindo-ghose-on-greek-and-sansk
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-019-tribute-by-aurobindo-ghose-on-greek-and-sansk/
+  about_member: gurudev_ranade
+  title: Tribute by Aurobindo Ghose (on Greek and Sanskrit)
+  title_en: Tribute by Aurobindo Ghose (on Greek and Sanskrit)
+  themes:
+  - comparative-philology
+  - greek-sanskrit
+  - scholarship
+  - review
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-020-tribute-by-n-c-kelkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-020-tribute-by-n-c-kelkar/
+  about_member: gurudev_ranade
+  title: Tribute by N. C. Kelkar
+  title_en: Tribute by N. C. Kelkar
+  themes:
+  - constructive-survey
+  - writing-style
+  - upanishads
+  - suggestiveness
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-021-tribute-by-ganganath-jha-inviting-gurudev-to
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-021-tribute-by-ganganath-jha-inviting-gurudev-to/
+  about_member: gurudev_ranade
+  title: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+  title_en: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+  themes:
+  - allahabad-university
+  - appointment
+  - correspondence
+  - academy
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-022-tribute-by-m-r-jayakar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-022-tribute-by-m-r-jayakar/
+  about_member: gurudev_ranade
+  title: Tribute by M. R. Jayakar
+  title_en: Tribute by M. R. Jayakar
+  themes:
+  - vedanta
+  - book-review
+  - scholarship
+  - request
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-023-tribute-by-r-p-paranjpye
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-023-tribute-by-r-p-paranjpye/
+  about_member: gurudev_ranade
+  title: Tribute by R. P. Paranjpye
+  title_en: Tribute by R. P. Paranjpye
+  themes:
+  - fergusson-college
+  - god-intoxicated
+  - four-in-one
+  - lord-chelmsford
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-024-tribute-by-madhavrao-v-kibe
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-024-tribute-by-madhavrao-v-kibe/
+  about_member: gurudev_ranade
+  title: Tribute by Madhavrao V. Kibe
+  title_en: Tribute by Madhavrao V. Kibe
+  themes:
+  - spiritual-awakening
+  - materialism
+  - service-to-humanity
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-025-tribute-by-e-a-wodehouse-column-of-light
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-025-tribute-by-e-a-wodehouse-column-of-light/
+  about_member: gurudev_ranade
+  title: Tribute by E. A. Wodehouse (column of light)
+  title_en: Tribute by E. A. Wodehouse (column of light)
+  themes:
+  - fergusson-college
+  - spiritual-experience
+  - vision-of-light
+  - alandi
+  - mentorship
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-026-tribute-by-freeman-freeman-thomas-willingdon
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-026-tribute-by-freeman-freeman-thomas-willingdon/
+  about_member: gurudev_ranade
+  title: Tribute by Freeman Freeman-Thomas Willingdon
+  title_en: Tribute by Freeman Freeman-Thomas Willingdon
+  themes:
+  - m-a-degree
+  - gold-medal
+  - scholarship
+  - examiners-praise
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-027-tribute-by-shankaracharya-kurtkoti
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-027-tribute-by-shankaracharya-kurtkoti/
+  about_member: gurudev_ranade
+  title: Tribute by Shankaracharya Kurtkoti
+  title_en: Tribute by Shankaracharya Kurtkoti
+  themes:
+  - friendship
+  - reverence
+  - kinship-of-soul
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-028-tribute-by-h-g-raulinson
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-028-tribute-by-h-g-raulinson/
+  about_member: gurudev_ranade
+  title: Tribute by H. G. Raulinson
+  title_en: Tribute by H. G. Raulinson
+  themes:
+  - fergusson-college
+  - vocation
+  - philosophy-over-politics
+  - mentorship
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-029-tribute-by-m-s-aney
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-029-tribute-by-m-s-aney/
+  about_member: gurudev_ranade
+  title: Tribute by M. S. Aney
+  title_en: Tribute by M. S. Aney
+  themes:
+  - veneration
+  - upanishads
+  - prayag
+  - wisdom
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-030-tribute-by-krishnaji-keshav-kolhatkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-030-tribute-by-krishnaji-keshav-kolhatkar/
+  about_member: gurudev_ranade
+  title: Tribute by Krishnaji Keshav Kolhatkar
+  title_en: Tribute by Krishnaji Keshav Kolhatkar
+  themes:
+  - simplicity
+  - allahabad
+  - plain-living-high-thinking
+  - self-content
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-031-tribute-by-rajendra-prasad
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-031-tribute-by-rajendra-prasad/
+  about_member: gurudev_ranade
+  title: Tribute by Rajendra Prasad
+  title_en: Tribute by Rajendra Prasad
+  themes:
+  - sant-bani
+  - lecture
+  - rashtrapati-bhavan
+  - philosophy-lives-in-him
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-032-tribute-by-s-m-mate
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-032-tribute-by-s-m-mate/
+  about_member: gurudev_ranade
+  title: Tribute by S. M. Mate
+  title_en: Tribute by S. M. Mate
+  themes:
+  - rational-basis-of-spirituality
+  - mystical-path
+  - modern-education
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-033-tribute-by-r-s-hukkerikar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-033-tribute-by-r-s-hukkerikar/
+  about_member: gurudev_ranade
+  title: Tribute by R. S. Hukkerikar
+  title_en: Tribute by R. S. Hukkerikar
+  themes:
+  - never-speaks-ill
+  - appreciates-virtue
+  - jamkhandi-as-holy
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-034-tribute-by-d-v-gundappa
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-034-tribute-by-d-v-gundappa/
+  about_member: gurudev_ranade
+  title: Tribute by D. V. Gundappa
+  title_en: Tribute by D. V. Gundappa
+  themes:
+  - bangalore
+  - heraclitus
+  - mahavakya-chakram
+  - correspondence
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-035-tribute-by-k-m-munshi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-035-tribute-by-k-m-munshi/
+  about_member: gurudev_ranade
+  title: Tribute by K. M. Munshi
+  title_en: Tribute by K. M. Munshi
+  themes:
+  - philosophy-and-mysticism
+  - biography-summary
+  - devotion
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-036-tribute-by-kailash-nath-katju
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-036-tribute-by-kailash-nath-katju/
+  about_member: gurudev_ranade
+  title: Tribute by Kailash Nath Katju
+  title_en: Tribute by Kailash Nath Katju
+  themes:
+  - mysticism-in-maharashtra
+  - gita
+  - moksha
+  - inspiration
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-037-tribute-by-s-radhakrishnan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-037-tribute-by-s-radhakrishnan/
+  about_member: gurudev_ranade
+  title: Tribute by S. Radhakrishnan
+  title_en: Tribute by S. Radhakrishnan
+  themes:
+  - friendship
+  - philosophy-as-passion
+  - two-birds-verse
+  - god-face-to-face
+  - obituary
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-038-tribute-by-jacques-d-marquette
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-038-tribute-by-jacques-d-marquette/
+  about_member: gurudev_ranade
+  title: Tribute by Jacques D. Marquette
+  title_en: Tribute by Jacques D. Marquette
+  themes:
+  - west-east-dialogue
+  - discipleship
+  - jnana-yoga
+  - metapsychology
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-039-tribute-by-b-g-kher
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-039-tribute-by-b-g-kher/
+  about_member: gurudev_ranade
+  title: Tribute by B. G. Kher
+  title_en: Tribute by B. G. Kher
+  themes:
+  - sanskrit-prize
+  - spiritual-grace
+  - humility
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-040-tribute-by-tara-chand
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-040-tribute-by-tara-chand/
+  about_member: gurudev_ranade
+  title: Tribute by Tara Chand
+  title_en: Tribute by Tara Chand
+  themes:
+  - simple-living-high-thinking
+  - god-man
+  - scholarship
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-041-tribute-by-a-c-mukherjee
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-041-tribute-by-a-c-mukherjee/
+  about_member: gurudev_ranade
+  title: Tribute by A. C. Mukherjee
+  title_en: Tribute by A. C. Mukherjee
+  themes:
+  - mysticism-defined
+  - intellect-and-experience
+  - ineffable-experience
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-042-tribute-by-ganesh-govind-karkhanis
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-042-tribute-by-ganesh-govind-karkhanis/
+  about_member: gurudev_ranade
+  title: Tribute by Ganesh Govind Karkhanis
+  title_en: Tribute by Ganesh Govind Karkhanis
+  themes:
+  - amrut-mahotsav
+  - devotion
+  - guru-as-everything
+  - jamkhandi
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-043-tribute-by-g-v-tulpule
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-043-tribute-by-g-v-tulpule/
+  about_member: gurudev_ranade
+  title: Tribute by G. V. Tulpule
+  title_en: Tribute by G. V. Tulpule
+  themes:
+  - word-clarification
+  - sahaja-samadhi
+  - jivanmukti
+  - guru-bhakti
+  - amrut-mahotsav
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-044-tribute-by-p-k-gode
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-044-tribute-by-p-k-gode/
+  about_member: gurudev_ranade
+  title: Tribute by P. K. Gode
+  title_en: Tribute by P. K. Gode
+  themes:
+  - fergusson-college
+  - bhandarkar-institute
+  - character
+  - illness
+  - literary-output
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-045-tribute-by-sampurnanand
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-045-tribute-by-sampurnanand/
+  about_member: gurudev_ranade
+  title: Tribute by Sampurnanand
+  title_en: Tribute by Sampurnanand
+  themes:
+  - amrut-mahotsav
+  - philosophic-insight
+  - lives-in-philosophy
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-046-tribute-by-mahadevbhai-desai
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-046-tribute-by-mahadevbhai-desai/
+  about_member: gurudev_ranade
+  title: Tribute by Mahadevbhai Desai
+  title_en: Tribute by Mahadevbhai Desai
+  themes:
+  - friendship
+  - letter
+  - bereavement
+  - loving-warmth
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-047-tribute-by-k-p-kulkarni
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-047-tribute-by-k-p-kulkarni/
+  about_member: gurudev_ranade
+  title: Tribute by K. P. Kulkarni
+  title_en: Tribute by K. P. Kulkarni
+  themes:
+  - fergusson-college
+  - teaching
+  - carlyle
+  - essays
+  - childlike-nature
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-048-tribute-by-b-n-datar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-048-tribute-by-b-n-datar/
+  about_member: gurudev_ranade
+  title: Tribute by B. N. Datar
+  title_en: Tribute by B. N. Datar
+  themes:
+  - spiritual-guidance
+  - allahabad
+  - place-of-pilgrimage
+  - childlike-simplicity
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-049-tribute-by-r-r-diwakar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-049-tribute-by-r-r-diwakar/
+  about_member: gurudev_ranade
+  title: Tribute by R. R. Diwakar
+  title_en: Tribute by R. R. Diwakar
+  themes:
+  - fergusson-college
+  - teaching-method
+  - cascade-lectures
+  - inner-experience
+  - humility
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-050-tribute-by-sonopant-dandekar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-050-tribute-by-sonopant-dandekar/
+  about_member: gurudev_ranade
+  title: Tribute by Sonopant Dandekar
+  title_en: Tribute by Sonopant Dandekar
+  themes:
+  - scholarship-and-sainthood
+  - sadhana
+  - maharashtra-saints
+  - modern-saint
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-051-tribute-by-k-d-sangoram
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-051-tribute-by-k-d-sangoram/
+  about_member: gurudev_ranade
+  title: Tribute by K. D. Sangoram
+  title_en: Tribute by K. D. Sangoram
+  themes:
+  - direct-experience
+  - philosophy-from-realisation
+  - god-realisation
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-052-tribute-by-dhirendra-mohan-datta
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-052-tribute-by-dhirendra-mohan-datta/
+  about_member: gurudev_ranade
+  title: Tribute by Dhirendra Mohan Datta
+  title_en: Tribute by Dhirendra Mohan Datta
+  themes:
+  - brahma-contemplation
+  - para-vidya
+  - householder-sannyasi
+  - home-as-ashram
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-053-tribute-by-master-krishnarao-phulambrikar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-053-tribute-by-master-krishnarao-phulambrikar/
+  about_member: gurudev_ranade
+  title: Tribute by Master Krishnarao Phulambrikar
+  title_en: Tribute by Master Krishnarao Phulambrikar
+  themes:
+  - music
+  - abhang-composition
+  - letter
+  - bhajan
+  - blessing
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-054-tribute-by-n-s-phadke
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-054-tribute-by-n-s-phadke/
+  about_member: gurudev_ranade
+  title: Tribute by N. S. Phadke
+  title_en: Tribute by N. S. Phadke
+  themes:
+  - fergusson-college
+  - teaching
+  - preface-to-novel
+  - scholarship
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-055-tribute-by-p-k-atre
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-055-tribute-by-p-k-atre/
+  about_member: gurudev_ranade
+  title: Tribute by P. K. Atre
+  title_en: Tribute by P. K. Atre
+  themes:
+  - intellect
+  - constructive-survey
+  - world-fame
+  - maharshi
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-056-tribute-by-t-siddalingaya
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-056-tribute-by-t-siddalingaya/
+  about_member: gurudev_ranade
+  title: Tribute by T. Siddalingaya
+  title_en: Tribute by T. Siddalingaya
+  themes:
+  - child-mind
+  - example
+  - rare-souls
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-057-tribute-by-m-s-modak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-057-tribute-by-m-s-modak/
+  about_member: gurudev_ranade
+  title: Tribute by M. S. Modak
+  title_en: Tribute by M. S. Modak
+  themes:
+  - teaching
+  - greek-philosophy
+  - plato
+  - rapt-attention
+  - man-of-realisation
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-058-tribute-by-d-c-pavate
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-058-tribute-by-d-c-pavate/
+  about_member: gurudev_ranade
+  title: Tribute by D. C. Pavate
+  title_en: Tribute by D. C. Pavate
+  themes:
+  - karnataka-mysticism
+  - lectures
+  - dharwad
+  - novel-method
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-059-tribute-by-b-r-rao
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-059-tribute-by-b-r-rao/
+  about_member: gurudev_ranade
+  title: Tribute by B. R. Rao
+  title_en: Tribute by B. R. Rao
+  themes:
+  - fergusson-college
+  - discipleship
+  - adhyatma-bhavan
+  - greek-and-sanskrit
+  - memory
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-060-tribute-by-s-v-punatambekar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-060-tribute-by-s-v-punatambekar/
+  about_member: gurudev_ranade
+  title: Tribute by S. V. Punatambekar
+  title_en: Tribute by S. V. Punatambekar
+  themes:
+  - letter
+  - simple-loving-personality
+  - advice
+  - treasured-letters
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-061-tribute-by-baldev-upadhyaya
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-061-tribute-by-baldev-upadhyaya/
+  about_member: gurudev_ranade
+  title: Tribute by Baldev Upadhyaya
+  title_en: Tribute by Baldev Upadhyaya
+  themes:
+  - living-philosophy
+  - kranti-darshi
+  - sadhana
+  - greek-sanskrit
+  - upanishads
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-062-tribute-by-c-a-patwardhan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-062-tribute-by-c-a-patwardhan/
+  about_member: gurudev_ranade
+  title: Tribute by C. A. Patwardhan
+  title_en: Tribute by C. A. Patwardhan
+  themes:
+  - sangli
+  - adhyatma-vidya-mandir
+  - scholar-and-mystic
+  - naam-smarana
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-063-tribute-by-tatyasaheb-patwardhan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-063-tribute-by-tatyasaheb-patwardhan/
+  about_member: gurudev_ranade
+  title: Tribute by Tatyasaheb Patwardhan
+  title_en: Tribute by Tatyasaheb Patwardhan
+  themes:
+  - nimbargi-vari
+  - every-inch-nimbargi
+  - darshan
+  - presence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-064-tribute-by-yashwant-g-joshi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-064-tribute-by-yashwant-g-joshi/
+  about_member: gurudev_ranade
+  title: Tribute by Yashwant G. Joshi
+  title_en: Tribute by Yashwant G. Joshi
+  themes:
+  - need-for-saints
+  - solace
+  - bhakti-path
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-065-tribute-by-george-b-burch
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-065-tribute-by-george-b-burch/
+  about_member: gurudev_ranade
+  title: Tribute by George B. Burch
+  title_en: Tribute by George B. Burch
+  themes:
+  - west-east-dialogue
+  - loving-personality
+  - meditation
+  - humility
+  - great-man
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-066-tribute-by-prema-kantak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-066-tribute-by-prema-kantak/
+  about_member: gurudev_ranade
+  title: Tribute by Prema Kantak
+  title_en: Tribute by Prema Kantak
+  themes:
+  - bhakti-as-social-service
+  - nimbal
+  - spiritual-power-transmission
+  - namasmarana
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-067-tribute-by-v-k-gokak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-067-tribute-by-v-k-gokak/
+  about_member: gurudev_ranade
+  title: Tribute by V. K. Gokak
+  title_en: Tribute by V. K. Gokak
+  themes:
+  - philosopher-and-mystic
+  - indian-renaissance
+  - frail-body-great-soul
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-068-tribute-by-k-v-belsare
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-068-tribute-by-k-v-belsare/
+  about_member: gurudev_ranade
+  title: Tribute by K. V. Belsare
+  title_en: Tribute by K. V. Belsare
+  themes:
+  - letter
+  - longing-to-meet
+  - maharashtra-saints-lineage
+  - punya-yoga
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-069-tribute-by-v-s-page
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-069-tribute-by-v-s-page/
+  about_member: gurudev_ranade
+  title: Tribute by V. S. Page
+  title_en: Tribute by V. S. Page
+  themes:
+  - sangli
+  - vedanta
+  - eccentric-manner
+  - mind-reading
+  - spiritual-height
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-070-tribute-by-d-d-wadekar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-070-tribute-by-d-d-wadekar/
+  about_member: gurudev_ranade
+  title: Tribute by D. D. Wadekar
+  title_en: Tribute by D. D. Wadekar
+  themes:
+  - fergusson-college
+  - teaching
+  - idealist-mystical-strain
+  - scholarship-pattern
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-071-tribute-by-b-d-jatti
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-071-tribute-by-b-d-jatti/
+  about_member: gurudev_ranade
+  title: Tribute by B. D. Jatti
+  title_en: Tribute by B. D. Jatti
+  themes:
+  - nimbal
+  - childlike-innocence
+  - spiritual-current
+  - sacred-spots
+  - jamkhandi
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-072-tribute-by-v-a-satralkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-072-tribute-by-v-a-satralkar/
+  about_member: gurudev_ranade
+  title: Tribute by V. A. Satralkar
+  title_en: Tribute by V. A. Satralkar
+  themes:
+  - teaching
+  - bhate-and-ranade
+  - analytic-mind
+  - discipleship
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-073-tribute-by-devi-prasad-shukla
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-073-tribute-by-devi-prasad-shukla/
+  about_member: gurudev_ranade
+  title: Tribute by Devi Prasad Shukla
+  title_en: Tribute by Devi Prasad Shukla
+  themes:
+  - pathway-to-god
+  - autobiography
+  - parmartha-sopan
+  - lived-experience
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-074-tribute-by-mohammad-hafiz-syed
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-074-tribute-by-mohammad-hafiz-syed/
+  about_member: gurudev_ranade
+  title: Tribute by Mohammad Hafiz Syed
+  title_en: Tribute by Mohammad Hafiz Syed
+  themes:
+  - letter
+  - friendship
+  - love-of-wisdom
+  - true-brahmin
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-075-tribute-by-gyani-zail-singh
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-075-tribute-by-gyani-zail-singh/
+  about_member: gurudev_ranade
+  title: Tribute by Gyani Zail Singh
+  title_en: Tribute by Gyani Zail Singh
+  themes:
+  - constructive-survey
+  - book-launch
+  - sanskrit
+  - languages
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-076-tribute-by-j-p-vaswani
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-076-tribute-by-j-p-vaswani/
+  about_member: gurudev_ranade
+  title: Tribute by J. P. Vaswani
+  title_en: Tribute by J. P. Vaswani
+  themes:
+  - scholar-became-saint
+  - spiritual-illumination
+  - will-of-god
+  - meditation
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-077-tribute-by-ramanand-tiwari
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-077-tribute-by-ramanand-tiwari/
+  about_member: gurudev_ranade
+  title: Tribute by Ramanand Tiwari
+  title_en: Tribute by Ramanand Tiwari
+  themes:
+  - allahabad
+  - discipleship
+  - translation
+  - constructive-survey
+  - living-flame
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-078-tribute-by-shankar-dayal-sharma
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-078-tribute-by-shankar-dayal-sharma/
+  about_member: gurudev_ranade
+  title: Tribute by Shankar Dayal Sharma
+  title_en: Tribute by Shankar Dayal Sharma
+  themes:
+  - allahabad-university
+  - student
+  - influence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-079-tribute-by-swami-rama
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-079-tribute-by-swami-rama/
+  about_member: gurudev_ranade
+  title: Tribute by Swami Rama
+  title_en: Tribute by Swami Rama
+  themes:
+  - allahabad-university
+  - nimbal
+  - seven-systems
+  - clairvoyance
+  - scholar-and-mystic
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-080-tribute-by-s-k-devdhar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-080-tribute-by-s-k-devdhar/
+  about_member: gurudev_ranade
+  title: Tribute by S. K. Devdhar
+  title_en: Tribute by S. K. Devdhar
+  themes:
+  - words-of-power
+  - self-confidence
+  - punyatma
+  - actionable-speech
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-081-tribute-by-i-p-singh
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-081-tribute-by-i-p-singh/
+  about_member: gurudev_ranade
+  title: Tribute by I. P. Singh
+  title_en: Tribute by I. P. Singh
+  themes:
+  - allahabad
+  - jogi-mat-ja
+  - drawing-room
+  - presence
+  - man-in-the-saint
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-082-tribute-by-matthew-lederle
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-082-tribute-by-matthew-lederle/
+  about_member: gurudev_ranade
+  title: Tribute by Matthew Lederle
+  title_en: Tribute by Matthew Lederle
+  themes:
+  - modern-renaissance
+  - east-west-synthesis
+  - quest-for-truth
+  - religious-climate
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-083-tribute-by-pandurang-mahadev-bapat-senapati-b
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-083-tribute-by-pandurang-mahadev-bapat-senapati-b/
+  about_member: gurudev_ranade
+  title: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+  title_en: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+  themes:
+  - meeting
+  - goa-satyagraha
+  - fighting-demon-vs-seeking-god
+  - humour
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-084-tribute-indian-philosophical-congress-nagpur
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-084-tribute-indian-philosophical-congress-nagpur/
+  about_member: gurudev_ranade
+  title: 'Tribute: Indian Philosophical Congress, Nagpur 1937'
+  title_en: 'Tribute: Indian Philosophical Congress, Nagpur 1937'
+  themes:
+  - philosophical-congress
+  - presidential-address
+  - spiriton
+  - extempore
+  - meditation
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-085-tribute-by-sarojini-naidu
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-085-tribute-by-sarojini-naidu/
+  about_member: gurudev_ranade
+  title: Tribute by Sarojini Naidu
+  title_en: Tribute by Sarojini Naidu
+  themes:
+  - allahabad-convocation
+  - d-litt
+  - forgotten-degree
+  - detachment
+  - humour
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-086-tribute-by-s-s-roy
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-086-tribute-by-s-s-roy/
+  about_member: gurudev_ranade
+  title: Tribute by S. S. Roy
+  title_en: Tribute by S. S. Roy
+  themes:
+  - allahabad
+  - prasthana-trayi
+  - transic-vision
+  - jogi-mat-ja
+  - successor
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-087-tribute-by-sangam-lal-pandey
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-087-tribute-by-sangam-lal-pandey/
+  about_member: gurudev_ranade
+  title: Tribute by Sangam Lal Pandey
+  title_en: Tribute by Sangam Lal Pandey
+  themes:
+  - scholarship-and-sadhana
+  - contributions-to-philosophy
+  - daily-meetings
+  - immortal-personality
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-088-tribute-by-r-a-jahagirdar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-088-tribute-by-r-a-jahagirdar/
+  about_member: gurudev_ranade
+  title: Tribute by R. A. Jahagirdar
+  title_en: Tribute by R. A. Jahagirdar
+  themes:
+  - dharwad
+  - welcome
+  - karnataka-pride
+  - philosopher-and-saint
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-089-tribute-by-s-d-pendse
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-089-tribute-by-s-d-pendse/
+  about_member: gurudev_ranade
+  title: Tribute by S. D. Pendse
+  title_en: Tribute by S. D. Pendse
+  themes:
+  - nimbal
+  - two-wonders
+  - living-spring
+  - scholarship
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-090-tribute-by-shankarrao-deo
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-090-tribute-by-shankarrao-deo/
+  about_member: gurudev_ranade
+  title: Tribute by Shankarrao Deo
+  title_en: Tribute by Shankarrao Deo
+  themes:
+  - lecture
+  - realised-soul
+  - facial-radiance
+  - another-world
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-091-tribute-by-g-b-badkas
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-091-tribute-by-g-b-badkas/
+  about_member: gurudev_ranade
+  title: Tribute by G. B. Badkas
+  title_en: Tribute by G. B. Badkas
+  themes:
+  - bhagavadgita-book
+  - lifelong-study
+  - redrafting-before-death
+  - self-realisation
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-092-tribute-by-p-d-khanolkar-final-days
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-092-tribute-by-p-d-khanolkar-final-days/
+  about_member: gurudev_ranade
+  title: Tribute by P. D. Khanolkar (final days)
+  title_en: Tribute by P. D. Khanolkar (final days)
+  themes:
+  - niryan
+  - final-days
+  - detachment
+  - control-over-death
+  - lustrous-body
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-093-tribute-by-v-p-limaye
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-093-tribute-by-v-p-limaye/
+  about_member: gurudev_ranade
+  title: Tribute by V. P. Limaye
+  title_en: Tribute by V. P. Limaye
+  themes:
+  - living-symbol
+  - amrut-mahotsav
+  - blessing-through-presence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-094-tribute-by-g-v-tagare
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-094-tribute-by-g-v-tagare/
+  about_member: gurudev_ranade
+  title: Tribute by G. V. Tagare
+  title_en: Tribute by G. V. Tagare
+  themes:
+  - naam-nishtha
+  - vedic-tradition
+  - bhakti-lineage
+  languages_available:
+  - mr
+  variant_count: 1
+- id: smruti-095-tribute-by-veni-shankar-jha
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-095-tribute-by-veni-shankar-jha/
+  about_member: gurudev_ranade
+  title: Tribute by Veni Shankar Jha
+  title_en: Tribute by Veni Shankar Jha
+  themes:
+  - nagpur-lectures
+  - hospitality
+  - radiant-joy
+  - loss
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-096-tribute-by-s-n-l-shrivastava
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-096-tribute-by-s-n-l-shrivastava/
+  about_member: gurudev_ranade
+  title: Tribute by S. N. L. Shrivastava
+  title_en: Tribute by S. N. L. Shrivastava
+  themes:
+  - radiant-presence
+  - ajatashatru
+  - dhyana-yogi
+  - allahabad-bungalow
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-097-tribute-by-s-k-gupta
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-097-tribute-by-s-k-gupta/
+  about_member: gurudev_ranade
+  title: Tribute by S. K. Gupta
+  title_en: Tribute by S. K. Gupta
+  themes:
+  - research-guidance
+  - mysterium-tremendum
+  - humour
+  - books
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-098-tribute-by-p-nagaraja-rao
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-098-tribute-by-p-nagaraja-rao/
+  about_member: gurudev_ranade
+  title: Tribute by P. Nagaraja Rao
+  title_en: Tribute by P. Nagaraja Rao
+  themes:
+  - dharwad
+  - comparative-religion
+  - jivanmukta
+  - nimbal-lamp
+  - tapasya
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-099-tribute-by-surendra-s-barlingay
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-099-tribute-by-surendra-s-barlingay/
+  about_member: gurudev_ranade
+  title: Tribute by Surendra S. Barlingay
+  title_en: Tribute by Surendra S. Barlingay
+  themes:
+  - studies-in-indian-philosophy
+  - advaita
+  - posthumous-publication
+  - doyen
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-100-tribute-by-n-s-christian
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-100-tribute-by-n-s-christian/
+  about_member: gurudev_ranade
+  title: Tribute by N. S. Christian
+  title_en: Tribute by N. S. Christian
+  themes:
+  - nimbal
+  - initiation
+  - christa-name
+  - conquered-hunger
+  - humility
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-101-tribute-by-a-s-adke
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-101-tribute-by-a-s-adke/
+  about_member: gurudev_ranade
+  title: Tribute by A. S. Adke
+  title_en: Tribute by A. S. Adke
+  themes:
+  - sangli
+  - meditative-walk
+  - philosopher-and-mystic
+  - types-of-experience
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-102-reviews-and-blurbs-on-herakleitos
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-102-reviews-and-blurbs-on-herakleitos/
+  about_member: gurudev_ranade
+  title: Reviews and blurbs on 'Herakleitos'
+  title_en: Reviews and blurbs on 'Herakleitos'
+  themes:
+  - herakleitos
+  - greek-philosophy
+  - book-reviews
+  - scholarship
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-103-reviews-on-carlyle-s-essays-and-psychology-in
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-103-reviews-on-carlyle-s-essays-and-psychology-in/
+  about_member: gurudev_ranade
+  title: Reviews on Carlyle's Essays and 'Psychology in the Upanishads'
+  title_en: Reviews on Carlyle's Essays and 'Psychology in the Upanishads'
+  themes:
+  - carlyle
+  - psychology-in-upanishads
+  - book-reviews
+  - indian-philosophical-review
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-104-reviews-on-a-constructive-survey-of-upanishad
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-104-reviews-on-a-constructive-survey-of-upanishad/
+  about_member: gurudev_ranade
+  title: Reviews on 'A Constructive Survey of Upanishadic Philosophy'
+  title_en: Reviews on 'A Constructive Survey of Upanishadic Philosophy'
+  themes:
+  - constructive-survey
+  - upanishads
+  - international-reviews
+  - encyclopaedic-history
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-105-reviews-on-history-of-indian-philosophy-creat
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-105-reviews-on-history-of-indian-philosophy-creat/
+  about_member: gurudev_ranade
+  title: Reviews on 'History of Indian Philosophy' (Creative Period)
+  title_en: Reviews on 'History of Indian Philosophy' (Creative Period)
+  themes:
+  - history-of-indian-philosophy
+  - belvalkar-ranade
+  - book-reviews
+  - encyclopaedic
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-106-reviews-on-mysticism-in-maharashtra
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-106-reviews-on-mysticism-in-maharashtra/
+  about_member: gurudev_ranade
+  title: Reviews on 'Mysticism in Maharashtra'
+  title_en: Reviews on 'Mysticism in Maharashtra'
+  themes:
+  - mysticism-in-maharashtra
+  - maratha-saints
+  - book-reviews
+  - bhakti
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-107-reviews-on-the-evolution-of-my-own-thought
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-107-reviews-on-the-evolution-of-my-own-thought/
+  about_member: gurudev_ranade
+  title: Reviews on 'The Evolution of My Own Thought'
+  title_en: Reviews on 'The Evolution of My Own Thought'
+  themes:
+  - evolution-of-my-own-thought
+  - contemporary-indian-philosophy
+  - book-reviews
+  - east-west
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-108-appendix-the-academy-of-philosophy-and-religi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-108-appendix-the-academy-of-philosophy-and-religi/
+  about_member: gurudev_ranade
+  title: 'Appendix: The Academy of Philosophy and Religion and opinions on it'
+  title_en: 'Appendix: The Academy of Philosophy and Religion and opinions on it'
+  themes:
+  - academy-of-philosophy-and-religion
+  - adhyatma-bhavan
+  - nimbal-ashram
+  - endorsements
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-109-appendix-indian-philosophical-congress-1925-a
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-109-appendix-indian-philosophical-congress-1925-a/
+  about_member: gurudev_ranade
+  title: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna Math'
+  title_en: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna Math'
+  themes:
+  - philosophical-congress
+  - calcutta-1925
+  - ramakrishna-math
+  - sectional-president
+  languages_available:
+  - en
+  variant_count: 1
+- id: smruti-110-appendix-new-words-coined-by-gurudev-and-rise
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-110-appendix-new-words-coined-by-gurudev-and-rise/
+  about_member: gurudev_ranade
+  title: 'Appendix: New words coined by Gurudev and ''Rise of India'''
+  title_en: 'Appendix: New words coined by Gurudev and ''Rise of India'''
+  themes:
+  - coined-words
+  - spiriton
+  - beatificism
+  - rise-of-india
+  - one-world
+  languages_available:
+  - en
+  variant_count: 1
+- id: santsabha-001-first-darshan-of-gurudev
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-001-first-darshan-of-gurudev/
+  about_member: gurudev_ranade
+  title: प्रथम दर्शन
+  title_en: First Darshan of Gurudev
+  themes:
+  - first-meeting
+  - darshan
+  - shravan-saptah
+  - devotion
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-002-how-gurudev-appeared-to-me
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-002-how-gurudev-appeared-to-me/
+  about_member: gurudev_ranade
+  title: मला गुरुदेव असे दिसले
+  title_en: How Gurudev Appeared to Me
+  themes:
+  - physical-description
+  - first-meeting
+  - name-initiation
+  - humor
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-003-gurudev-s-unmani-chanting-of-narayan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-003-gurudev-s-unmani-chanting-of-narayan/
+  about_member: gurudev_ranade
+  title: सद्गुरूचा उन्मनी नामघोष
+  title_en: Gurudev's Unmani Chanting of Narayan
+  themes:
+  - name-chanting
+  - unmani-state
+  - divine-experience
+  - guru-mahima
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-004-gurudev-recalls-the-name-he-gave-me
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-004-gurudev-recalls-the-name-he-gave-me/
+  about_member: gurudev_ranade
+  title: नामाचे गुरुदेवांकडून स्मरण
+  title_en: Gurudev Recalls the Name He Gave Me
+  themes:
+  - name-meditation
+  - vision
+  - guru-grace
+  - ajar-amar-nam
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company/
+  about_member: gurudev_ranade
+  title: निंबरगी यात्रा व सद्गुरू सहवास
+  title_en: Nimbargi Pilgrimage and Gurudev's Company
+  themes:
+  - pilgrimage
+  - nimbargi
+  - guru-company
+  - every-inch-nimbargi
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-006-gurudev-s-birthday-3-july-1955
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-006-gurudev-s-birthday-3-july-1955/
+  about_member: gurudev_ranade
+  title: गुरुदेवांचा वाढदिवस
+  title_en: Gurudev's Birthday - 3 July 1955
+  themes:
+  - birthday
+  - humility
+  - professor-pandit
+  - celebration
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-007-second-trip-to-nimbargi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-007-second-trip-to-nimbargi/
+  about_member: gurudev_ranade
+  title: निंबरगीची दुसरी वारी
+  title_en: Second Trip to Nimbargi
+  themes:
+  - pilgrimage
+  - nimbargi
+  - guru-parivar
+  - grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-008-raghuttamaraya-s-glance-and-a-promotion
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-008-raghuttamaraya-s-glance-and-a-promotion/
+  about_member: gurudev_ranade
+  title: रघुत्तमरायाची दृष्टी
+  title_en: Raghuttamaraya's Glance and a Promotion
+  themes:
+  - worldly-grace
+  - career
+  - guru-protection
+  - blessing
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-009-upanishad-rahasya-and-the-baroda-maharaja
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-009-upanishad-rahasya-and-the-baroda-maharaja/
+  about_member: gurudev_ranade
+  title: उपनिषद्रहस्य
+  title_en: Upanishad-Rahasya and the Baroda Maharaja
+  themes:
+  - scholarship
+  - upanishads
+  - lectures
+  - respect
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-010-lokmanya-tilak-s-respect-for-gurudev
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-010-lokmanya-tilak-s-respect-for-gurudev/
+  about_member: gurudev_ranade
+  title: लोकमान्यांचा आदर
+  title_en: Lokmanya Tilak's Respect for Gurudev
+  themes:
+  - respect
+  - scholarship
+  - tilak
+  - upanishads
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-011-bhagavad-gita-and-god
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-011-bhagavad-gita-and-god/
+  about_member: gurudev_ranade
+  title: भगवद्गीता
+  title_en: Bhagavad Gita and God
+  themes:
+  - bhagavad-gita
+  - atma-darshan
+  - teaching
+  - kakasaheb-tulpule
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-012-no-calamity-befalls-the-virtuous-dream
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-012-no-calamity-befalls-the-virtuous-dream/
+  about_member: gurudev_ranade
+  title: पुण्यमार्गी जाणाऱ्यांवर संकटे नाहीत
+  title_en: No Calamity Befalls the Virtuous (Dream)
+  themes:
+  - dream
+  - assurance
+  - gita-verse
+  - protection
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-013-ishwarbhava-and-paricharya-servant-of-saints
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-013-ishwarbhava-and-paricharya-servant-of-saints/
+  about_member: gurudev_ranade
+  title: ईश्वरभाव व परिचर्या - संतांचा पाईक
+  title_en: Ishwarbhava and Paricharya - Servant of Saints
+  themes:
+  - lordliness
+  - service
+  - gita
+  - sutra
+  - guru-parampara
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-014-the-1956-shravan-saptah
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-014-the-1956-shravan-saptah/
+  about_member: gurudev_ranade
+  title: १९५६ चा श्रावण सप्ताह
+  title_en: The 1956 Shravan Saptah
+  themes:
+  - shravan-saptah
+  - heavenly-atmosphere
+  - humor
+  - gathering
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-015-tandava-nritya
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-015-tandava-nritya/
+  about_member: gurudev_ranade
+  title: तांडवनृत्य
+  title_en: Tandava-Nritya
+  themes:
+  - humor
+  - sitting
+  - wit
+  - lighthearted
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-016-mangopant-on-horseback
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-016-mangopant-on-horseback/
+  about_member: gurudev_ranade
+  title: मंगोपंत
+  title_en: Mangopant on Horseback
+  themes:
+  - humor
+  - maharaj-era-story
+  - wit
+  - monkey-pun
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-017-sleep
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-017-sleep/
+  about_member: gurudev_ranade
+  title: झोप
+  title_en: Sleep
+  themes:
+  - sleep
+  - meditation
+  - humor
+  - wakefulness
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-018-amar-bhojan-immortal-feast
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-018-amar-bhojan-immortal-feast/
+  about_member: gurudev_ranade
+  title: अमर भोजन
+  title_en: Amar Bhojan - Immortal Feast
+  themes:
+  - teaching
+  - devotion
+  - sadguru
+  - vision
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-019-chancellor-s-gold-medalist
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-019-chancellor-s-gold-medalist/
+  about_member: gurudev_ranade
+  title: चान्सेलर्स गोल्ड मेडल
+  title_en: Chancellor's Gold Medalist
+  themes:
+  - scholarship
+  - teaching
+  - governor-visit
+  - engrossment
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-020-tuka-sees-on-both-sides
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-020-tuka-sees-on-both-sides/
+  about_member: gurudev_ranade
+  title: दोहीकडे पाहे तुका आहे ऐसा आहे
+  title_en: Tuka Sees on Both Sides
+  themes:
+  - self-realization
+  - abhanga
+  - tukaram
+  - guru-experience
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-021-merit-of-the-twelve-jyotirlingas
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-021-merit-of-the-twelve-jyotirlingas/
+  about_member: gurudev_ranade
+  title: बारा ज्योतिर्लिंगाचे पुण्य
+  title_en: Merit of the Twelve Jyotirlingas
+  themes:
+  - devotion
+  - bhava
+  - ekadashi
+  - darshan-experience
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-022-the-plague-in-pune
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-022-the-plague-in-pune/
+  about_member: gurudev_ranade
+  title: पुण्यातला प्लेग
+  title_en: The Plague in Pune
+  themes:
+  - pune-memories
+  - plague
+  - detachment
+  - fearlessness
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-023-gurudev-riding-a-bicycle
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-023-gurudev-riding-a-bicycle/
+  about_member: gurudev_ranade
+  title: गुरुदेवांचे सायकल चालवणे
+  title_en: Gurudev Riding a Bicycle
+  themes:
+  - pune-memories
+  - abhanga
+  - openness
+  - bicycle
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-024-resolving-doubt-realization-comes-gradually
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-024-resolving-doubt-realization-comes-gradually/
+  about_member: gurudev_ranade
+  title: शंका निरसन
+  title_en: Resolving Doubt - Realization Comes Gradually
+  themes:
+  - doubt
+  - gradual-realization
+  - patience
+  - jnaneshwar
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-025-upama-jnaneshwarasya
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-025-upama-jnaneshwarasya/
+  about_member: gurudev_ranade
+  title: उपमा ज्ञानेश्वरस्य
+  title_en: Upama Jnaneshwarasya
+  themes:
+  - jnaneshwar
+  - nivruttinath
+  - interpretation
+  - admiration
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-026-acharyopasana-service-of-the-guru
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-026-acharyopasana-service-of-the-guru/
+  about_member: gurudev_ranade
+  title: आचार्योपासना
+  title_en: Acharyopasana - Service of the Guru
+  themes:
+  - guru-service
+  - jnaneshwar
+  - gita
+  - nem
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-027-some-incidents-1-to-8
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-027-some-incidents-1-to-8/
+  about_member: gurudev_ranade
+  title: काही घटना
+  title_en: Some Incidents (1 to 8)
+  themes:
+  - sitting-anecdotes
+  - humor
+  - padas
+  - guru-insight
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-028-casual-speech-as-beneficial-teaching
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-028-casual-speech-as-beneficial-teaching/
+  about_member: gurudev_ranade
+  title: सहज बोलणे हित उपदेश
+  title_en: Casual Speech as Beneficial Teaching
+  themes:
+  - teaching
+  - instinctive-speech
+  - long-toil
+  - encouragement
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-029-ask-now-for-whatever-you-want
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-029-ask-now-for-whatever-you-want/
+  about_member: gurudev_ranade
+  title: काय हवे असेल ते आत्ता मागून घ्या
+  title_en: Ask Now for Whatever You Want
+  themes:
+  - maharaj-presence
+  - padas
+  - radha-golan
+  - confidence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-030-one-must-be-able-to-insist-with-god
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-030-one-must-be-able-to-insist-with-god/
+  about_member: gurudev_ranade
+  title: देवापाशी हट्ट धरता आला पाहिजे
+  title_en: One Must Be Able to Insist with God
+  themes:
+  - devotion
+  - insistence
+  - teaching
+  - form-of-god
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-031-the-earth-is-moving-earthquake-at-allahabad
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-031-the-earth-is-moving-earthquake-at-allahabad/
+  about_member: gurudev_ranade
+  title: अरेच्या! पृथ्वी हलत आहे
+  title_en: The Earth Is Moving! (Earthquake at Allahabad)
+  themes:
+  - humor
+  - allahabad
+  - earthquake
+  - rustic-wisdom
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-032-daivasura-sampatti-ravana-s-lineage
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-032-daivasura-sampatti-ravana-s-lineage/
+  about_member: gurudev_ranade
+  title: दैवासुर संपत्ती
+  title_en: Daivasura Sampatti - Ravana's Lineage
+  themes:
+  - mythology
+  - ravana
+  - humor
+  - story
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-033-two-important-memories-gurudev-s-last-days
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-033-two-important-memories-gurudev-s-last-days/
+  about_member: gurudev_ranade
+  title: दोन महत्त्वाच्या आठवणी
+  title_en: Two Important Memories - Gurudev's Last Days
+  themes:
+  - last-days
+  - nirvana
+  - emotion
+  - final-meeting
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-034-sunare-maine-and-guru-s-grace
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-034-sunare-maine-and-guru-s-grace/
+  about_member: gurudev_ranade
+  title: सुनारे मैने व गुरुकृपा
+  title_en: Sunare Maine and Guru's Grace
+  themes:
+  - hindi-pada
+  - guru-grace
+  - correction
+  - transformation
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-035-some-remarkable-experiences
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-035-some-remarkable-experiences/
+  about_member: gurudev_ranade
+  title: काही विलक्षण अनुभव
+  title_en: Some Remarkable Experiences
+  themes:
+  - rebuke
+  - guru-grace
+  - pada
+  - spiritual-experience
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-036-bhule-man-the-lamani-caravan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-036-bhule-man-the-lamani-caravan/
+  about_member: gurudev_ranade
+  title: भूले मन समझ के लाद लदनिया
+  title_en: Bhule Man - The Lamani Caravan
+  themes:
+  - hindi-pada
+  - lamani
+  - kabir
+  - guidance
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-037-sai-alakh-the-two-mahipatis
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-037-sai-alakh-the-two-mahipatis/
+  about_member: gurudev_ranade
+  title: साई अलख पलख में झलके
+  title_en: Sai Alakh - The Two Mahipatis
+  themes:
+  - hindi-pada
+  - kannada-sitting
+  - mahipati
+  - saint-poet
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-038-narhari-chanchal-hai-mati
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-038-narhari-chanchal-hai-mati/
+  about_member: gurudev_ranade
+  title: नरहरी चंचल है मति
+  title_en: Narhari Chanchal Hai Mati
+  themes:
+  - hindi-pada
+  - longing
+  - prayer
+  - darshan
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-039-kabir-s-dohas-seek-god-within
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-039-kabir-s-dohas-seek-god-within/
+  about_member: gurudev_ranade
+  title: कबीरांच्या दोह्यांचा मथितार्थ
+  title_en: Kabir's Dohas - Seek God Within
+  themes:
+  - kabir-dohas
+  - immanence
+  - english-explanation
+  - hindi-learning
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-040-gurudev-s-way-of-pointing-out-mistakes
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-040-gurudev-s-way-of-pointing-out-mistakes/
+  about_member: gurudev_ranade
+  title: चूक दाखवून देण्याची खास पद्धत
+  title_en: Gurudev's Way of Pointing Out Mistakes
+  themes:
+  - correction
+  - pada
+  - gentleness
+  - household-priest
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-041-alakh-purush-nirvan-household-priest
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-041-alakh-purush-nirvan-household-priest/
+  about_member: gurudev_ranade
+  title: अलख पुरुष निर्वाण - घरचा भटजी
+  title_en: Alakh Purush Nirvan - Household Priest
+  themes:
+  - doha
+  - humility-secrecy-promptitude
+  - jeurkar
+  - discipline
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-042-dhokhe-hi-dhokhe-service-accepted-at-guru-s-f
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-042-dhokhe-hi-dhokhe-service-accepted-at-guru-s-f/
+  about_member: gurudev_ranade
+  title: धोखे हि धोखै - गुरुचरणी सेवा
+  title_en: Dhokhe Hi Dhokhe - Service Accepted at Guru's Feet
+  themes:
+  - hindi-pada
+  - dream
+  - post-nirvana-grace
+  - true-dreams
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-043-ras-gagan-gufa-mein-sweet-communion-with-guru
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-043-ras-gagan-gufa-mein-sweet-communion-with-guru/
+  about_member: gurudev_ranade
+  title: रस गगन गुफा में - गुरुदेवांशी सुखसंवाद
+  title_en: Ras Gagan Gufa Mein - Sweet Communion with Gurudev
+  themes:
+  - kabir-pada
+  - communion
+  - prachiti
+  - guru-prompting
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-044-saints-padas-and-gurudev-s-thoughts
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-044-saints-padas-and-gurudev-s-thoughts/
+  about_member: gurudev_ranade
+  title: संतांची पदे आणि गुरुदेवांचे विचार
+  title_en: Saints' Padas and Gurudev's Thoughts
+  themes:
+  - poetry
+  - moropant
+  - sanskrit-verse
+  - opportunity
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-045-a-saint-s-quilt-is-best
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-045-a-saint-s-quilt-is-best/
+  about_member: gurudev_ranade
+  title: साधुचि गोधडी बरी
+  title_en: A Saint's Quilt Is Best
+  themes:
+  - pada
+  - saint-company
+  - humility
+  - village
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-046-shivalingavva-akka
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-046-shivalingavva-akka/
+  about_member: gurudev_ranade
+  title: शिवलिंगव्वा अक्का
+  title_en: Shivalingavva Akka
+  themes:
+  - woman-sadhak
+  - intense-sadhana
+  - experience-padas
+  - respect
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-047-lingappa-savalagi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-047-lingappa-savalagi/
+  about_member: gurudev_ranade
+  title: लिंगप्पा सावळगी
+  title_en: Lingappa Savalagi
+  themes:
+  - maharaj-grace
+  - exam-miracle
+  - faith
+  - nem
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-048-dr-sarvepalli-radhakrishnan
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-048-dr-sarvepalli-radhakrishnan/
+  about_member: gurudev_ranade
+  title: डॉ. राधाकृष्णन
+  title_en: Dr. Sarvepalli Radhakrishnan
+  themes:
+  - friendship
+  - brahmasansparsh
+  - two-birds-verse
+  - tribute
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-049-wrangler-paranjpe
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-049-wrangler-paranjpe/
+  about_member: gurudev_ranade
+  title: रँग्लर परांजपे
+  title_en: Wrangler Paranjpe
+  themes:
+  - friendship
+  - atheist
+  - respect
+  - all-rounder
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-050-kakasaheb-tulpule
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-050-kakasaheb-tulpule/
+  about_member: gurudev_ranade
+  title: काकासाहेब तुळपुळे
+  title_en: Kakasaheb Tulpule
+  themes:
+  - devotee
+  - love
+  - pravachan
+  - emotion
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-051-babasaheb-sangoram
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-051-babasaheb-sangoram/
+  about_member: gurudev_ranade
+  title: बाबासाहेब संगोराम
+  title_en: Babasaheb Sangoram
+  themes:
+  - devotee
+  - maharaj-letters
+  - singing
+  - dignity
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-052-banyabapu-tulpule
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-052-banyabapu-tulpule/
+  about_member: gurudev_ranade
+  title: बन्याबापू तुळपुळे
+  title_en: Banyabapu Tulpule
+  themes:
+  - biographer
+  - panini-of-paramartha
+  - self-help
+  - bendre
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-053-gaddyappa-the-water-carrier
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-053-gaddyappa-the-water-carrier/
+  about_member: gurudev_ranade
+  title: गड्ड्याप्पा
+  title_en: Gaddyappa the Water-Carrier
+  themes:
+  - servant
+  - first-to-die-at-nimbal
+  - guru-care
+  - humility
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-054-gaddyappa-lost-and-found
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-054-gaddyappa-lost-and-found/
+  about_member: gurudev_ranade
+  title: गड्ड्याप्पा हरवला व सापडला
+  title_en: Gaddyappa Lost and Found
+  themes:
+  - humor
+  - telegram-mixup
+  - journey
+  - story
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-055-diwan-bahadur-limaye-and-the-meditation-hall
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-055-diwan-bahadur-limaye-and-the-meditation-hall/
+  about_member: gurudev_ranade
+  title: दिवाण बहाद्दर लिमये व ध्यानमंदिर
+  title_en: Diwan Bahadur Limaye and the Meditation Hall
+  themes:
+  - devotee
+  - meditation-hall
+  - letters
+  - obligation
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-056-prema-kantak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-056-prema-kantak/
+  about_member: gurudev_ranade
+  title: प्रेमा कंटक
+  title_en: Prema Kantak
+  themes:
+  - devotee
+  - gandhian
+  - social-service
+  - transmission-of-power
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-057-vasudevrao-ranade-vijapur
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-057-vasudevrao-ranade-vijapur/
+  about_member: gurudev_ranade
+  title: वासुदेवराव रानडे
+  title_en: Vasudevrao Ranade (Vijapur)
+  themes:
+  - devotee
+  - warkari
+  - name-remembrance
+  - openness
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-058-basappa-parchande
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-058-basappa-parchande/
+  about_member: gurudev_ranade
+  title: बसप्पा परचंडे
+  title_en: Basappa Parchande
+  themes:
+  - devotee
+  - effortless-meditation
+  - money-found
+  - guru-love
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-059-dr-paripatyadar-solapur
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-059-dr-paripatyadar-solapur/
+  about_member: gurudev_ranade
+  title: डॉ. पारिपत्यदार
+  title_en: Dr. Paripatyadar, Solapur
+  themes:
+  - devotee
+  - surrender
+  - guru-love
+  - affection
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-060-dada-kamadhenuwadikar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-060-dada-kamadhenuwadikar/
+  about_member: gurudev_ranade
+  title: दादा कामधेनूवाडीकर
+  title_en: Dada Kamadhenuwadikar
+  themes:
+  - devotee
+  - darshan-arranged
+  - grace
+  - timing
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-061-b-b-lal-delhi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-061-b-b-lal-delhi/
+  about_member: gurudev_ranade
+  title: बी. बी. लाल
+  title_en: B. B. Lal, Delhi
+  themes:
+  - devotee
+  - I-perceive
+  - conviction
+  - initiation
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-062-barrister-ankalikar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-062-barrister-ankalikar/
+  about_member: gurudev_ranade
+  title: बॅरिस्टर अंकलीकर
+  title_en: Barrister Ankalikar
+  themes:
+  - devotee
+  - humor
+  - strong-tea
+  - gathering-people
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-063-annappa-the-servant
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-063-annappa-the-servant/
+  about_member: gurudev_ranade
+  title: आण्णप्पा
+  title_en: Annappa the Servant
+  themes:
+  - servant
+  - singing
+  - humor
+  - brain-demonstration
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-064-the-child-watching-the-arati
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-064-the-child-watching-the-arati/
+  about_member: gurudev_ranade
+  title: आरतीकडे पाहणारा मुलगा
+  title_en: The Child Watching the Arati
+  themes:
+  - child
+  - grace
+  - reconciliation
+  - kindness
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-065-american-prof-burch
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-065-american-prof-burch/
+  about_member: gurudev_ranade
+  title: अमेरिकन प्रो. बर्च
+  title_en: American Prof. Burch
+  themes:
+  - meditation-teaching
+  - mystical-meditation
+  - passive-alertness
+  - tribute
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-066-prof-bain
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-066-prof-bain/
+  about_member: gurudev_ranade
+  title: प्रो. बेन
+  title_en: Prof. Bain
+  themes:
+  - teacher
+  - humor
+  - books-and-meditation
+  - kannada-learning
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-067-dr-chidgupkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-067-dr-chidgupkar/
+  about_member: gurudev_ranade
+  title: डॉ. चिडगुपकर
+  title_en: Dr. Chidgupkar
+  themes:
+  - devotee
+  - simplicity
+  - humor
+  - vithoba
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-068-gopalrao-aurangabadkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-068-gopalrao-aurangabadkar/
+  about_member: gurudev_ranade
+  title: गोपाळराव औरंगाबादकर
+  title_en: Gopalrao Aurangabadkar
+  themes:
+  - devotee
+  - water-testing
+  - mangoes
+  - service
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-069-the-lawyer-and-dandekar-s-discussion
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-069-the-lawyer-and-dandekar-s-discussion/
+  about_member: gurudev_ranade
+  title: वकील व दांडेकर चर्चा
+  title_en: The Lawyer and Dandekar's Discussion
+  themes:
+  - devotee
+  - self-realization
+  - the-dish-is-ready
+  - teaching
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-070-stomach-illness-and-a-dream-vision
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-070-stomach-illness-and-a-dream-vision/
+  about_member: gurudev_ranade
+  title: पोटाचा आजार व स्वप्नदृष्टान्त
+  title_en: Stomach Illness and a Dream Vision
+  themes:
+  - post-nirvana-grace
+  - illness
+  - dream
+  - nem-while-eating
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-071-wife-s-illness-and-other-calamities
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-071-wife-s-illness-and-other-calamities/
+  about_member: gurudev_ranade
+  title: पत्नीचा आजार व इतर आपत्ती
+  title_en: Wife's Illness and Other Calamities
+  themes:
+  - post-nirvana-grace
+  - housing
+  - tirth-healing
+  - protection
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-072-death-came-to-my-toe
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-072-death-came-to-my-toe/
+  about_member: gurudev_ranade
+  title: मरण अंगठ्यावर गेले
+  title_en: Death Came to My Toe
+  themes:
+  - protection
+  - near-accident
+  - ego
+  - munj
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-073-the-ego-of-spirituality
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-073-the-ego-of-spirituality/
+  about_member: gurudev_ranade
+  title: परमार्थाचा अहंकार
+  title_en: The Ego of Spirituality
+  themes:
+  - ego
+  - lesson
+  - mill-strike
+  - humility
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-074-gurudev-s-command
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-074-gurudev-s-command/
+  about_member: gurudev_ranade
+  title: गुरुदेवांचा आदेश
+  title_en: Gurudev's Command
+  themes:
+  - post-nirvana-grace
+  - workplace-harassment
+  - vision-at-samadhi
+  - protection
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-075-my-hernia-operation
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-075-my-hernia-operation/
+  about_member: gurudev_ranade
+  title: हर्नियाचे ऑपरेशन
+  title_en: My Hernia Operation
+  themes:
+  - post-nirvana-grace
+  - operation
+  - devotee-help
+  - smooth-recovery
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-076-honest-work-pleases-god
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-076-honest-work-pleases-god/
+  about_member: gurudev_ranade
+  title: इमानदारीने काम केल्यास देवाला आनंद
+  title_en: Honest Work Pleases God
+  themes:
+  - work-ethic
+  - teaching
+  - leave
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: santsabha-077-children-s-education-and-guru-s-grace
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-077-children-s-education-and-guru-s-grace/
+  about_member: gurudev_ranade
+  title: मुलांची शिक्षणे व गुरुकृपा
+  title_en: Children's Education and Guru's Grace
+  themes:
+  - post-nirvana-grace
+  - children-education
+  - providence
+  - family
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-001-opening-apology-and-purpose-of-the-tribute
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-001-opening-apology-and-purpose-of-the-tribute/
+  about_member: gurudev_ranade
+  title: प्रथम संतसभेची क्षमा
+  title_en: Opening Apology and Purpose of the Tribute
+  themes:
+  - humility
+  - tribute-intro
+  - satsang
+  - guru-bhakti
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team/
+  about_member: gurudev_ranade
+  title: गुरूदेवांच्या टीममधले शेवटचे खेळाडू
+  title_en: Shankarrao, the Last Player on Gurudev's Team
+  themes:
+  - saint-mission
+  - discipleship
+  - naam-sadhana
+  - community
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-003-incentive-to-spiritual-life-receiving-the-naa
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-003-incentive-to-spiritual-life-receiving-the-naa/
+  about_member: gurudev_ranade
+  title: नाम मिळणे — परमार्थ प्रवृत्तीचे कारण
+  title_en: 'Incentive to Spiritual Life: Receiving the Naam Mantra'
+  themes:
+  - receiving-naam
+  - self-doubt
+  - guru-grace
+  - redemption
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-004-faith-strengthened-reassurances-from-gurudev
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-004-faith-strengthened-reassurances-from-gurudev/
+  about_member: gurudev_ranade
+  title: श्रध्देस बळकट केले
+  title_en: 'Faith Strengthened: Reassurances from Gurudev'
+  themes:
+  - faith
+  - reassurance
+  - nimbal-pilgrimage
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal/
+  about_member: gurudev_ranade
+  title: दीपावली सप्ताहाची सुरवात
+  title_en: The Beginning of the Diwali Saptah at Nimbal
+  themes:
+  - diwali-saptah
+  - nimbal
+  - naam-practice
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-006-gurudev-takes-charge-of-his-yoga-kshema-livel
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-006-gurudev-takes-charge-of-his-yoga-kshema-livel/
+  about_member: gurudev_ranade
+  title: योगक्षेमाची जबाबदारी श्री गुरूदेवांनी घेतली
+  title_en: Gurudev Takes Charge of His Yoga-Kshema (Livelihood)
+  themes:
+  - yoga-kshema
+  - providence
+  - milk-business
+  - ego
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-007-called-alone-to-gurudev-s-room-the-promise-of
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-007-called-alone-to-gurudev-s-room-the-promise-of/
+  about_member: gurudev_ranade
+  title: गुरूदेवांजवळ एकटाच — अन्नाची जबाबदारी
+  title_en: Called Alone to Gurudev's Room; The Promise of Sustenance
+  themes:
+  - guru-grace
+  - sustenance-promise
+  - intimacy
+  - providence
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell/
+  about_member: gurudev_ranade
+  title: शिष्याचा उपयोग
+  title_en: 'Use of a Disciple: Debt Settled and a Foretelling Saint'
+  themes:
+  - disciple-service
+  - debt
+  - providence
+  - guru-vision
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-009-spiritual-yoga-kshema-the-vision-of-the-bindu
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-009-spiritual-yoga-kshema-the-vision-of-the-bindu/
+  about_member: gurudev_ranade
+  title: पारमार्थिक योगक्षेम — बिंदुदर्शन
+  title_en: 'Spiritual Yoga-Kshema: The Vision of the Bindu'
+  themes:
+  - inner-vision
+  - bindu
+  - spiritual-experience
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-010-the-coconut-the-cholera-crisis-and-see-how-a
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-010-the-coconut-the-cholera-crisis-and-see-how-a/
+  about_member: gurudev_ranade
+  title: नारळ, कॉलरा व शिष्याचा उपयोग
+  title_en: The Coconut, the Cholera Crisis, and 'See How a Disciple Is Used'
+  themes:
+  - seva
+  - providence
+  - crisis-management
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by/
+  about_member: gurudev_ranade
+  title: शिष्याचा उपयोग — श्रावणाची नेमणूक
+  title_en: 'Appointed for Every Shravan: ''A Nail Driven by Maharaj'''
+  themes:
+  - shravan-saptah
+  - appointment
+  - duty
+  - guru-command
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-012-nine-hours-of-sadhana-begins
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-012-nine-hours-of-sadhana-begins/
+  about_member: gurudev_ranade
+  title: नऊ तास साधन सुरू
+  title_en: Nine Hours of Sadhana Begins
+  themes:
+  - sadhana
+  - healing
+  - perseverance
+  - guru-grace
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-013-tea-and-the-afternoon-packet-begin
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-013-tea-and-the-afternoon-packet-begin/
+  about_member: gurudev_ranade
+  title: चहा व दुपारची पुडी चालू झाली
+  title_en: Tea and the Afternoon Packet Begin
+  themes:
+  - seva
+  - saptah-arrangements
+  - providence
+  - surrender
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-014-gurudev-s-pet-devotee-and-the-lesson-on-speak
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-014-gurudev-s-pet-devotee-and-the-lesson-on-speak/
+  about_member: gurudev_ranade
+  title: गुरूदेवांचे पेट (pet)
+  title_en: Gurudev's 'Pet' Devotee and the Lesson on Speaking with Disciples
+  themes:
+  - bhakti
+  - guru-disciple
+  - equanimity
+  - spiritual-experience
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends/
+  about_member: gurudev_ranade
+  title: श्रीक्षेत्र निंबरगी येथील हकीकत
+  title_en: The Pilgrimage to Nimbargi and Its Legends
+  themes:
+  - nimbargi-pilgrimage
+  - lineage
+  - miracles
+  - sacred-sites
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-016-the-amrut-mahotsav-and-a-missed-command
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-016-the-amrut-mahotsav-and-a-missed-command/
+  about_member: gurudev_ranade
+  title: अमृत महोत्सव
+  title_en: The Amrut Mahotsav and a Missed Command
+  themes:
+  - amrut-mahotsav
+  - regret
+  - disobedience
+  - guru-command
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-017-seen-off-at-the-station-bar-bar-bandau-tihi-p
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-017-seen-off-at-the-station-bar-bar-bandau-tihi-p/
+  about_member: gurudev_ranade
+  title: बार बार बन्दऊं तिही पाई
+  title_en: 'Seen Off at the Station: ''Bar Bar Bandau Tihi Pai'''
+  themes:
+  - farewell
+  - guru-affection
+  - premonition
+  - saptah
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-018-no-duality
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-018-no-duality/
+  about_member: gurudev_ranade
+  title: द्वैत नको
+  title_en: No Duality
+  themes:
+  - non-duality
+  - guru-teaching
+  - premonition
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-019-the-last-inquiry-and-final-message
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-019-the-last-inquiry-and-final-message/
+  about_member: gurudev_ranade
+  title: शेवटची विचारपूस व संदेश
+  title_en: The Last Inquiry and Final Message
+  themes:
+  - last-darshan
+  - final-teaching
+  - guru-passing
+  - renunciation
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao/
+  about_member: gurudev_ranade
+  title: माणसाची पारख — आत्मा पारख करतो
+  title_en: 'The Atma Tests a Person: Trials in Shankarrao''s Life'
+  themes:
+  - trials
+  - tests
+  - providence
+  - protection
+  - perseverance
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-021-office-of-the-devotee-for-the-saint-work-done
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-021-office-of-the-devotee-for-the-saint-work-done/
+  about_member: gurudev_ranade
+  title: Office of the Devotee for the Saint
+  title_en: 'Office of the Devotee for the Saint: Work Done Through Dada'
+  themes:
+  - seva
+  - devotee-duties
+  - bhajan
+  - saptah-organization
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-022-other-qualities-and-bringing-souls-to-gurudev
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-022-other-qualities-and-bringing-souls-to-gurudev/
+  about_member: gurudev_ranade
+  title: इतर गुण
+  title_en: Other Qualities and Bringing Souls to Gurudev
+  themes:
+  - devotee-qualities
+  - letters
+  - satsang
+  - dasbodh
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-023-spiritual-worthiness-the-dream-and-final-visi
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-023-spiritual-worthiness-the-dream-and-final-visi/
+  about_member: gurudev_ranade
+  title: पारमार्थिक योग्यता — स्वप्न व अंतिम अनुभव
+  title_en: 'Spiritual Worthiness: The Dream and Final Visions'
+  themes:
+  - spiritual-visions
+  - deathbed
+  - guru-presence
+  - passing
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar/
+  about_member: gurudev_ranade
+  title: श्रीमती उमाबाई शंकर तेंडूलकर — श्रध्दांजली
+  title_en: Tribute to Umabai Shankar Tendulkar
+  themes:
+  - tribute
+  - seva
+  - kitchen-seva
+  - naam-sadhana
+  - family
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-025-two-disciples-naam-and-seva-and-the-teaching
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-025-two-disciples-naam-and-seva-and-the-teaching/
+  about_member: gurudev_ranade
+  title: नेम व सेवा — अनुभवांची शिकवण
+  title_en: Two Disciples—Naam and Seva—and the Teaching on Experiences
+  themes:
+  - naam-and-seva
+  - spiritual-experiences
+  - guru-teaching
+  - humility
+  languages_available:
+  - mr
+  variant_count: 1
+- id: dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle
+  path: 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle/
+  about_member: gurudev_ranade
+  title: 'परिशिष्ट अ: श्रीतात्यासाहेब दामले — श्रद्धांजली'
+  title_en: 'Appendix: Tribute to Tatyasaheb Damle'
+  themes:
+  - tribute
+  - rare-human-birth
+  - perseverance
+  - death-and-atma
   languages_available:
   - mr
   variant_count: 1

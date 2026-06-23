@@ -1,0 +1,39 @@
+id: smruti-069-tribute-by-v-s-page
+title: Tribute by V. S. Page
+title_en: Tribute by V. S. Page
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- sangli
+- vedanta
+- eccentric-manner
+- mind-reading
+- spiritual-height
+people_involved:
+- v-s-page
+- r-d-ranade
+- dnyaneshwara
+subject_focus: Page, judging Gurudev's odd manner, is startled when Ranade reads his
+  very thought and answers it, revealing per Dnyaneshwar a saint hiding his greatness
+  behind apparent madness.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: v-s-page
+  language: en
+  file: en/variants/smruti_seg069.md
+  page_or_section: unit 69
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Page, judging Gurudev's odd manner, is startled when Ranade
+    reads his very thought and answers it, revealing per Dnyaneshwar a saint hiding
+    his greatness behind apparent madness.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 69 of स्मृति-संगम (Smruti Sangam) (narrator: v-s-page).'

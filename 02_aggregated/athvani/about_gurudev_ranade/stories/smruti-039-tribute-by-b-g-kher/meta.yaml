@@ -1,0 +1,34 @@
+id: smruti-039-tribute-by-b-g-kher
+title: Tribute by B. G. Kher
+title_en: Tribute by B. G. Kher
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- sanskrit-prize
+- spiritual-grace
+- humility
+people_involved:
+- b-g-kher
+- r-d-ranade
+subject_focus: Kher, who once shared the Sanskrit prize with Ranade, wishes he could
+  share his spiritual prize too.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: b-g-kher
+  language: en
+  file: en/variants/smruti_seg039.md
+  page_or_section: unit 39
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Kher, who once shared the Sanskrit prize with Ranade, wishes
+    he could share his spiritual prize too.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 39 of स्मृति-संगम (Smruti Sangam) (narrator: b-g-kher).'

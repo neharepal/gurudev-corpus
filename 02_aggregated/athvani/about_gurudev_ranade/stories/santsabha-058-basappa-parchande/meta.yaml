@@ -1,0 +1,36 @@
+id: santsabha-058-basappa-parchande
+title: बसप्पा परचंडे
+title_en: Basappa Parchande
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- devotee
+- effortless-meditation
+- money-found
+- guru-love
+people_involved:
+- Gurudev R. D. Ranade
+- Basappa Parchande
+subject_focus: The 'giant' meditator Basappa, who fell into trance instantly, found
+  money after a dream-voice, and was Gurudev's equation for Solapur.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg058.md
+  page_or_section: unit 58
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The 'giant' meditator Basappa, who fell into trance instantly,
+    found money after a dream-voice, and was Gurudev's equation for Solapur.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 58 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

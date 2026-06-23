@@ -1,0 +1,41 @@
+id: smruti-108-appendix-the-academy-of-philosophy-and-religi
+title: 'Appendix: The Academy of Philosophy and Religion and opinions on it'
+title_en: 'Appendix: The Academy of Philosophy and Religion and opinions on it'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- academy-of-philosophy-and-religion
+- adhyatma-bhavan
+- nimbal-ashram
+- endorsements
+people_involved:
+- r-d-ranade
+- p-k-gode
+- n-g-damle
+- madan-mohan-malaviya
+- m-r-jayakar
+- e-a-wodehouse
+subject_focus: An appendix describing Gurudev's founding of the Academy of Philosophy
+  and Religion, its personnel, and endorsements from Malaviya, Jayakar, Raulinson,
+  Bhattacharya and Wodehouse.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: various
+  language: en
+  file: en/variants/smruti_seg108.md
+  page_or_section: unit 108
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: An appendix describing Gurudev's founding of the Academy of
+    Philosophy and Religion, its personnel, and endorsements from Malaviya, Jayakar,
+    Raulinson, Bhattacharya and Wodehouse.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 108 of स्मृति-संगम (Smruti Sangam) (narrator: various).'

@@ -1,5 +1,5 @@
 version: 1
-last_updated: '2026-06-14'
+last_updated: '2026-06-23'
 stories:
   the-old-house-at-nimbal:
     canonical_title: निंबाळचे जुने घर
@@ -39,3 +39,4526 @@ stories:
     - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/jaisi-ganga-vahe_p17-19.md
     - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/src-1dc746a5_seg01.md
     - 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/mr/variants/src-895333ca_seg01.md
+  smruti-001-biographical-introduction-of-gurudev-r-d-rana:
+    canonical_title: Biographical Introduction of Gurudev R. D. Ranade
+    title_en: Biographical Introduction of Gurudev R. D. Ranade
+    about_member: gurudev_ranade
+    one_line: Editorial biographical sketch of Gurudev Ranade's life from birth at
+      Jamkhandi through initiation, academic career, vice-chancellorship at Allahabad,
+      settling at Nimbal, and passing in 1957.
+    narrator: rajendra-chauhan
+    key_people:
+    - r-d-ranade
+    - bhausaheb-maharaj
+    - kallu-bhokare
+    - ganganath-jha
+    themes:
+    - biography
+    - gurudev-life
+    - nimbal
+    - jamkhandi
+    - allahabad-university
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-001-biographical-introduction-of-gurudev-r-d-rana/en/variants/smruti_seg001.md
+  smruti-002-tribute-by-dattopant-ranade-father:
+    canonical_title: Tribute by Dattopant Ranade (father)
+    title_en: Tribute by Dattopant Ranade (father)
+    about_member: gurudev_ranade
+    one_line: Gurudev's father exhorts the young Rambhau, after his matriculation
+      success, to study without ego and trust in God's mercy.
+    narrator: dattopant-ranade
+    key_people:
+    - dattopant-ranade
+    - r-d-ranade
+    themes:
+    - family
+    - fatherly-advice
+    - early-life
+    - humility
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-002-tribute-by-dattopant-ranade-father/en/variants/smruti_seg002.md
+  smruti-003-tribute-by-parvatibai-d-ranade-mother:
+    canonical_title: Tribute by Parvatibai D. Ranade (mother)
+    title_en: Tribute by Parvatibai D. Ranade (mother)
+    about_member: gurudev_ranade
+    one_line: His mother wakes the TB-stricken Rambhau for morning meditation, urging
+      him not to waste the precious early hours on the Divine Name.
+    narrator: parvatibai-ranade
+    key_people:
+    - parvatibai-ranade
+    - r-d-ranade
+    themes:
+    - family
+    - meditation
+    - illness
+    - morning-namasmaran
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-003-tribute-by-parvatibai-d-ranade-mother/mr/variants/smruti_seg003.md
+  smruti-004-tribute-by-swami-mahalingayya:
+    canonical_title: Tribute by Swami Mahalingayya
+    title_en: Tribute by Swami Mahalingayya
+    about_member: gurudev_ranade
+    one_line: When five-year-old Ramu is brought to him, Swami Mahalingayya bows before
+      the child and declares he is a great saint of the future.
+    narrator: swami-mahalingayya
+    key_people:
+    - swami-mahalingayya
+    - parvatibai-ranade
+    - r-d-ranade
+    themes:
+    - childhood
+    - prophecy
+    - saint-recognition
+    - jamkhandi
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-004-tribute-by-swami-mahalingayya/en/variants/smruti_seg004.md
+  smruti-005-tribute-by-rajasaheb-lilavatidevi-patwardhan:
+    canonical_title: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+    title_en: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+    about_member: gurudev_ranade
+    one_line: The chiefly family of Jamkhandi recounts the holy-water blessing tied
+      to Gurudev's birth and the town's reverence for him as for Dnyaneshwar at Alandi.
+    narrator: lilavatidevi-patwardhan
+    key_people:
+    - lilavatidevi-patwardhan
+    - appasaheb-patwardhan
+    - parvatibai-ranade
+    - r-d-ranade
+    themes:
+    - jamkhandi
+    - birth
+    - reverence
+    - spiritual-tradition
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-005-tribute-by-rajasaheb-lilavatidevi-patwardhan/en/variants/smruti_seg005.md
+  smruti-006-tribute-by-bhaguakka-damle-elder-sister:
+    canonical_title: Tribute by Bhaguakka Damle (elder sister)
+    title_en: Tribute by Bhaguakka Damle (elder sister)
+    about_member: gurudev_ranade
+    one_line: Gurudev's elder sister's letters recall blissful days at Nimbal and
+      her constant remembrance of her ever-meditating brother.
+    narrator: bhaguakka-damle
+    key_people:
+    - bhaguakka-damle
+    - r-d-ranade
+    themes:
+    - family
+    - letters
+    - nimbal
+    - remembrance
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-006-tribute-by-bhaguakka-damle-elder-sister/mr/variants/smruti_seg006.md
+  smruti-007-tribute-by-sitabai-r-ranade-wife:
+    canonical_title: Tribute by Sitabai R. Ranade (wife)
+    title_en: Tribute by Sitabai R. Ranade (wife)
+    about_member: gurudev_ranade
+    one_line: Gurudev's widow's letters express her grief, sense of being his shadow
+      for 35 years, and her resolve to carry on his unfinished work and the Nimbal
+      ashram.
+    narrator: sitabai-ranade
+    key_people:
+    - sitabai-ranade
+    - r-d-ranade
+    - bhaguakka-damle
+    - bhausaheb-maharaj
+    themes:
+    - family
+    - bereavement
+    - samadhi-mandir
+    - nimbal
+    - devotion
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-007-tribute-by-sitabai-r-ranade-wife/mr/variants/smruti_seg007.md
+  smruti-008-tribute-by-vijaya-v-apte-daughter:
+    canonical_title: Tribute by Vijaya V. Apte (daughter)
+    title_en: Tribute by Vijaya V. Apte (daughter)
+    about_member: gurudev_ranade
+    one_line: Gurudev's daughter portrays him as a seer-scientist and grammarian of
+      mysticism, recalling how he consoled her with divine composure at her infant
+      brother's death.
+    narrator: vijaya-apte
+    key_people:
+    - vijaya-apte
+    - r-d-ranade
+    - s-radhakrishnan
+    themes:
+    - family
+    - scholarship
+    - word-coining
+    - simplicity
+    - courage-in-grief
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-008-tribute-by-vijaya-v-apte-daughter/en/variants/smruti_seg008.md
+  smruti-009-tribute-by-narsappa-shapeti:
+    canonical_title: Tribute by Narsappa Shapeti
+    title_en: Tribute by Narsappa Shapeti
+    about_member: gurudev_ranade
+    one_line: The last disciple of Nimbargi Maharaj marvels that Gurudev's Nimbal
+      house resounds everywhere with the unstruck sound of God's Name.
+    narrator: narsappa-shapeti
+    key_people:
+    - narsappa-shapeti
+    - r-d-ranade
+    - nimbargi-maharaj
+    themes:
+    - nimbal
+    - anahata-nada
+    - disciple
+    - nimbargi-sampradaya
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-009-tribute-by-narsappa-shapeti/en/variants/smruti_seg009.md
+  smruti-010-tribute-by-annie-besant:
+    canonical_title: Tribute by Annie Besant
+    title_en: Tribute by Annie Besant
+    about_member: gurudev_ranade
+    one_line: Annie Besant, examining Maharaj's photo, affirms Rambhau is blessed
+      by a true master and in safe spiritual hands.
+    narrator: annie-besant
+    key_people:
+    - annie-besant
+    - r-d-ranade
+    - e-a-wodehouse
+    - bhausaheb-maharaj
+    themes:
+    - theosophy
+    - spiritual-experiences
+    - initiation
+    - banaras
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-010-tribute-by-annie-besant/en/variants/smruti_seg010.md
+  smruti-011-tribute-by-bal-gangadhar-tilak:
+    canonical_title: Tribute by Bal Gangadhar Tilak
+    title_en: Tribute by Bal Gangadhar Tilak
+    about_member: gurudev_ranade
+    one_line: Gurudev recounts Tilak urging him into politics and a Hindu-religion
+      chair, his demurral toward spiritual life, and Tilak naming him the one man
+      who could translate the Gitarahasya.
+    narrator: r-d-ranade
+    key_people:
+    - bal-gangadhar-tilak
+    - r-d-ranade
+    - aurobindo-ghose
+    themes:
+    - tilak
+    - politics-vs-religion
+    - gitarahasya
+    - reminiscence
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-011-tribute-by-bal-gangadhar-tilak/mr/variants/smruti_seg011.md
+  smruti-012-tribute-by-amburao-maharaj:
+    canonical_title: Tribute by Amburao Maharaj
+    title_en: Tribute by Amburao Maharaj
+    about_member: gurudev_ranade
+    one_line: Amburao Maharaj (Baba) cherishes night-long talks of Maharaj with Gurudev,
+      blesses his authority to give the Name, and asks him to carry the burden of
+      bhakti.
+    narrator: ramanna-kulkarni
+    key_people:
+    - amburao-maharaj
+    - r-d-ranade
+    - bhausaheb-maharaj
+    themes:
+    - sittings
+    - bhajan
+    - guru-bhakti
+    - authority-to-give-naam
+    - nimbal
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-012-tribute-by-amburao-maharaj/mr/variants/smruti_seg012.md
+  smruti-013-tribute-by-sayajirao-gaekwad:
+    canonical_title: Tribute by Sayajirao Gaekwad
+    title_en: Tribute by Sayajirao Gaekwad
+    about_member: gurudev_ranade
+    one_line: The Maharaja of Baroda praises Prof. Ranade's eloquent Upanishad address
+      at Bangalore and wishes it widely printed and distributed.
+    narrator: sayajirao-gaekwad
+    key_people:
+    - sayajirao-gaekwad
+    - r-d-ranade
+    themes:
+    - upanishads
+    - lecture
+    - sanskrit-academy
+    - bangalore
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-013-tribute-by-sayajirao-gaekwad/en/variants/smruti_seg013.md
+  smruti-014-tribute-by-vishnubuva-jog:
+    canonical_title: Tribute by Vishnubuva Jog
+    title_en: Tribute by Vishnubuva Jog
+    about_member: gurudev_ranade
+    one_line: Varkari leader Vishnubuva Jog approves Gurudev's selected scriptural
+      extracts and, after his Alandi lecture, says he revealed the Upanishads in a
+      wholly new light.
+    narrator: kakasaheb-karkhanis
+    key_people:
+    - vishnubuva-jog
+    - r-d-ranade
+    - sonopant-dandekar
+    themes:
+    - varkari
+    - dnyaneshwari
+    - alandi-lecture
+    - scholarly-approval
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-014-tribute-by-vishnubuva-jog/mr/variants/smruti_seg014.md
+  smruti-015-tribute-by-shivalingavvakka:
+    canonical_title: Tribute by Shivalingavvakka
+    title_en: Tribute by Shivalingavvakka
+    about_member: gurudev_ranade
+    one_line: At the 1925 opening of the first Nimbal house, senior devotee Shivalingavvakka
+      composes verses on the abode of saints, its bliss and fragrance.
+    narrator: s-n-deshpande
+    key_people:
+    - shivalingavvakka
+    - r-d-ranade
+    - amburao-maharaj
+    - bhausaheb-maharaj
+    themes:
+    - nimbal
+    - house-opening
+    - saptah
+    - poetic-vision
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-015-tribute-by-shivalingavvakka/en/variants/smruti_seg015.md
+  smruti-016-tribute-by-balasaheb-pant-pratinidhi:
+    canonical_title: Tribute by Balasaheb Pant Pratinidhi
+    title_en: Tribute by Balasaheb Pant Pratinidhi
+    about_member: gurudev_ranade
+    one_line: Gurudev recalls his long association with the Raja of Aundh, the welcome
+      on transfer to Sangli, and his lecture 'The Making of Great Men.'
+    narrator: r-d-ranade
+    key_people:
+    - balasaheb-pant-pratinidhi
+    - r-d-ranade
+    themes:
+    - aundh
+    - reminiscence
+    - lectures
+    - great-men
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-016-tribute-by-balasaheb-pant-pratinidhi/en/variants/smruti_seg016.md
+  smruti-017-tribute-by-rudolf-otto:
+    canonical_title: Tribute by Rudolf Otto
+    title_en: Tribute by Rudolf Otto
+    about_member: gurudev_ranade
+    one_line: Gurudev praises theologian Rudolf Otto and recounts their warm 1927
+      Poona meeting where he insisted on visiting the elderly Otto himself.
+    narrator: r-d-ranade
+    key_people:
+    - rudolf-otto
+    - r-d-ranade
+    - nicol-macnicol
+    - s-k-belvalkar
+    themes:
+    - west-east-dialogue
+    - comparative-religion
+    - poona-meeting
+    - humility
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-017-tribute-by-rudolf-otto/en/variants/smruti_seg017.md
+  smruti-018-tribute-by-gangadharrao-deshpande:
+    canonical_title: Tribute by Gangadharrao Deshpande
+    title_en: Tribute by Gangadharrao Deshpande
+    about_member: gurudev_ranade
+    one_line: The 'Lion of Karnataka' finds peace through Gurudev's guidance, and
+      Gurudev praises his rare softness and yearning as nearness to God.
+    narrator: gangadharrao-deshpande
+    key_people:
+    - gangadharrao-deshpande
+    - r-d-ranade
+    themes:
+    - god-realisation
+    - tenderness-of-heart
+    - sangli
+    - peace
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-018-tribute-by-gangadharrao-deshpande/en/variants/smruti_seg018.md
+  smruti-019-tribute-by-aurobindo-ghose-on-greek-and-sansk:
+    canonical_title: Tribute by Aurobindo Ghose (on Greek and Sanskrit)
+    title_en: Tribute by Aurobindo Ghose (on Greek and Sanskrit)
+    about_member: gurudev_ranade
+    one_line: Aurobindo lauds Prof. Ranade's thorough, accurate essay comparing Greek
+      and Sanskrit grammatical forms.
+    narrator: aurobindo-ghose
+    key_people:
+    - aurobindo-ghose
+    - r-d-ranade
+    themes:
+    - comparative-philology
+    - greek-sanskrit
+    - scholarship
+    - review
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-019-tribute-by-aurobindo-ghose-on-greek-and-sansk/en/variants/smruti_seg019.md
+  smruti-020-tribute-by-n-c-kelkar:
+    canonical_title: Tribute by N. C. Kelkar
+    title_en: Tribute by N. C. Kelkar
+    about_member: gurudev_ranade
+    one_line: Sahityasamrat Kelkar likens Ranade's self-realized philosophy, glimpsed
+      behind the Constructive Survey's pages, to a moon behind clouds, with masterly
+      terminology.
+    narrator: n-c-kelkar
+    key_people:
+    - n-c-kelkar
+    - r-d-ranade
+    themes:
+    - constructive-survey
+    - writing-style
+    - upanishads
+    - suggestiveness
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-020-tribute-by-n-c-kelkar/mr/variants/smruti_seg020.md
+  smruti-021-tribute-by-ganganath-jha-inviting-gurudev-to:
+    canonical_title: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+    title_en: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+    about_member: gurudev_ranade
+    one_line: Vice-Chancellor Ganganath Jha persistently courts the reluctant Prof.
+      Ranade by letter, assuring him climate and Academy will be no obstacle, and
+      brings him to Allahabad in 1927.
+    narrator: b-r-kulkarni
+    key_people:
+    - ganganath-jha
+    - r-d-ranade
+    - h-n-randle
+    themes:
+    - allahabad-university
+    - appointment
+    - correspondence
+    - academy
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-021-tribute-by-ganganath-jha-inviting-gurudev-to/en/variants/smruti_seg021.md
+  smruti-022-tribute-by-m-r-jayakar:
+    canonical_title: Tribute by M. R. Jayakar
+    title_en: Tribute by M. R. Jayakar
+    about_member: gurudev_ranade
+    one_line: Jayakar requests Prof. Ranade's review of a Vedanta book, acknowledging
+      his scholarship and offering to print it in full in the Bombay Chronicle.
+    narrator: m-r-jayakar
+    key_people:
+    - m-r-jayakar
+    - r-d-ranade
+    - kirtikar
+    themes:
+    - vedanta
+    - book-review
+    - scholarship
+    - request
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-022-tribute-by-m-r-jayakar/en/variants/smruti_seg022.md
+  smruti-023-tribute-by-r-p-paranjpye:
+    canonical_title: Tribute by R. P. Paranjpye
+    title_en: Tribute by R. P. Paranjpye
+    about_member: gurudev_ranade
+    one_line: Principal Paranjpye calls Ranade 'God-intoxicated' and tells the Viceroy
+      that in Prof. Ranade one sees four professors rolled into one.
+    narrator: b-r-kulkarni
+    key_people:
+    - r-p-paranjpye
+    - r-d-ranade
+    - lord-chelmsford
+    themes:
+    - fergusson-college
+    - god-intoxicated
+    - four-in-one
+    - lord-chelmsford
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-023-tribute-by-r-p-paranjpye/en/variants/smruti_seg023.md
+  smruti-024-tribute-by-madhavrao-v-kibe:
+    canonical_title: Tribute by Madhavrao V. Kibe
+    title_en: Tribute by Madhavrao V. Kibe
+    about_member: gurudev_ranade
+    one_line: Sardar Kibe lauds Gurudev's unique service in countering worldwide materialism
+      with spiritual awakening.
+    narrator: madhavrao-kibe
+    key_people:
+    - madhavrao-kibe
+    - r-d-ranade
+    themes:
+    - spiritual-awakening
+    - materialism
+    - service-to-humanity
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-024-tribute-by-madhavrao-v-kibe/en/variants/smruti_seg024.md
+  smruti-025-tribute-by-e-a-wodehouse-column-of-light:
+    canonical_title: Tribute by E. A. Wodehouse (column of light)
+    title_en: Tribute by E. A. Wodehouse (column of light)
+    about_member: gurudev_ranade
+    one_line: Prof. Wodehouse counsels young Ranade on self-purification, and during
+      a discussion all witness a column of light toward Alandi, prompting Wodehouse
+      to declare his spiritual life had begun.
+    narrator: s-n-deshpande
+    key_people:
+    - e-a-wodehouse
+    - r-d-ranade
+    - jnaneshwara
+    themes:
+    - fergusson-college
+    - spiritual-experience
+    - vision-of-light
+    - alandi
+    - mentorship
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-025-tribute-by-e-a-wodehouse-column-of-light/en/variants/smruti_seg025.md
+  smruti-026-tribute-by-freeman-freeman-thomas-willingdon:
+    canonical_title: Tribute by Freeman Freeman-Thomas Willingdon
+    title_en: Tribute by Freeman Freeman-Thomas Willingdon
+    about_member: gurudev_ranade
+    one_line: Gurudev wins the Chancellor's Gold Medal from Governor Willingdon, with
+      examiners reporting 'the examinee knows more than the examiners.'
+    narrator: m-s-deshpande
+    key_people:
+    - willingdon
+    - r-d-ranade
+    themes:
+    - m-a-degree
+    - gold-medal
+    - scholarship
+    - examiners-praise
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-026-tribute-by-freeman-freeman-thomas-willingdon/en/variants/smruti_seg026.md
+  smruti-027-tribute-by-shankaracharya-kurtkoti:
+    canonical_title: Tribute by Shankaracharya Kurtkoti
+    title_en: Tribute by Shankaracharya Kurtkoti
+    about_member: gurudev_ranade
+    one_line: Shankaracharya Kurtkoti declares Rambhau Ranade his only true kin in
+      the world, feeling toward him an intimacy he extends to no one else.
+    narrator: kurtkoti
+    key_people:
+    - kurtkoti
+    - r-d-ranade
+    themes:
+    - friendship
+    - reverence
+    - kinship-of-soul
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-027-tribute-by-shankaracharya-kurtkoti/mr/variants/smruti_seg027.md
+  smruti-028-tribute-by-h-g-raulinson:
+    canonical_title: Tribute by H. G. Raulinson
+    title_en: Tribute by H. G. Raulinson
+    about_member: gurudev_ranade
+    one_line: Principal Raulinson writes that Ranade is born not for India's political
+      but for her philosophical advancement, urging him to that field.
+    narrator: h-g-raulinson
+    key_people:
+    - h-g-raulinson
+    - r-d-ranade
+    themes:
+    - fergusson-college
+    - vocation
+    - philosophy-over-politics
+    - mentorship
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-028-tribute-by-h-g-raulinson/en/variants/smruti_seg028.md
+  smruti-029-tribute-by-m-s-aney:
+    canonical_title: Tribute by M. S. Aney
+    title_en: Tribute by M. S. Aney
+    about_member: gurudev_ranade
+    one_line: Aney offers a devotional salutation to Ramachandra Ranade as a torchbearer
+      of wisdom churning the Upanishads' nectar at the holy confluence.
+    narrator: m-s-aney
+    key_people:
+    - m-s-aney
+    - r-d-ranade
+    themes:
+    - veneration
+    - upanishads
+    - prayag
+    - wisdom
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-029-tribute-by-m-s-aney/en/variants/smruti_seg029.md
+  smruti-030-tribute-by-krishnaji-keshav-kolhatkar:
+    canonical_title: Tribute by Krishnaji Keshav Kolhatkar
+    title_en: Tribute by Krishnaji Keshav Kolhatkar
+    about_member: gurudev_ranade
+    one_line: A Vedic scholar is astonished to find the Allahabad Vice-Chancellor's
+      room utterly bare, embodying 'plain living and high thinking' and the futility
+      of mere learning without realization.
+    narrator: krishnaji-keshav-kolhatkar
+    key_people:
+    - krishnaji-keshav-kolhatkar
+    - r-d-ranade
+    - s-radhakrishnan
+    themes:
+    - simplicity
+    - allahabad
+    - plain-living-high-thinking
+    - self-content
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-030-tribute-by-krishnaji-keshav-kolhatkar/mr/variants/smruti_seg030.md
+  smruti-031-tribute-by-rajendra-prasad:
+    canonical_title: Tribute by Rajendra Prasad
+    title_en: Tribute by Rajendra Prasad
+    about_member: gurudev_ranade
+    one_line: India's first President thanks Prof. Ranade after a discourse, noting
+      how the inherited philosophy of the saints now lives in him.
+    narrator: rajendra-prasad
+    key_people:
+    - rajendra-prasad
+    - r-d-ranade
+    themes:
+    - sant-bani
+    - lecture
+    - rashtrapati-bhavan
+    - philosophy-lives-in-him
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-031-tribute-by-rajendra-prasad/en/variants/smruti_seg031.md
+  smruti-032-tribute-by-s-m-mate:
+    canonical_title: Tribute by S. M. Mate
+    title_en: Tribute by S. M. Mate
+    about_member: gurudev_ranade
+    one_line: Mate hails Prof. Ranade for restoring spirituality's dignity on a rational
+      basis and as the one modern learned man who has himself traversed the mystical
+      path.
+    narrator: s-m-mate
+    key_people:
+    - s-m-mate
+    - r-d-ranade
+    - mahadev-govind-ranade
+    themes:
+    - rational-basis-of-spirituality
+    - mystical-path
+    - modern-education
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-032-tribute-by-s-m-mate/en/variants/smruti_seg032.md
+  smruti-033-tribute-by-r-s-hukkerikar:
+    canonical_title: Tribute by R. S. Hukkerikar
+    title_en: Tribute by R. S. Hukkerikar
+    about_member: gurudev_ranade
+    one_line: Hukkerikar notes Gurudev never speaks ill of anyone and praises the
+      smallest virtue, calling Jamkhandi a holy place for giving India such a jewel.
+    narrator: r-s-hukkerikar
+    key_people:
+    - r-s-hukkerikar
+    - r-d-ranade
+    themes:
+    - never-speaks-ill
+    - appreciates-virtue
+    - jamkhandi-as-holy
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-033-tribute-by-r-s-hukkerikar/en/variants/smruti_seg033.md
+  smruti-034-tribute-by-d-v-gundappa:
+    canonical_title: Tribute by D. V. Gundappa
+    title_en: Tribute by D. V. Gundappa
+    about_member: gurudev_ranade
+    one_line: Kannada writer Gundappa recalls his talks with Ranade at Bangalore,
+      the Heraclitus pamphlet, and his abiding interest in Ranade's work and ashram.
+    narrator: d-v-gundappa
+    key_people:
+    - d-v-gundappa
+    - r-d-ranade
+    - kurtkoti
+    themes:
+    - bangalore
+    - heraclitus
+    - mahavakya-chakram
+    - correspondence
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-034-tribute-by-d-v-gundappa/en/variants/smruti_seg034.md
+  smruti-035-tribute-by-k-m-munshi:
+    canonical_title: Tribute by K. M. Munshi
+    title_en: Tribute by K. M. Munshi
+    about_member: gurudev_ranade
+    one_line: The Bharatiya Vidya Bhavan founder describes Gurudev as a profound thinker
+      and devotee combining philosophical insight with mystical heights.
+    narrator: k-m-munshi
+    key_people:
+    - k-m-munshi
+    - r-d-ranade
+    themes:
+    - philosophy-and-mysticism
+    - biography-summary
+    - devotion
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-035-tribute-by-k-m-munshi/en/variants/smruti_seg035.md
+  smruti-036-tribute-by-kailash-nath-katju:
+    canonical_title: Tribute by Kailash Nath Katju
+    title_en: Tribute by Kailash Nath Katju
+    about_member: gurudev_ranade
+    one_line: Katju says reading Gurudev's 'Mysticism in Maharashtra' impelled him
+      toward the Gita and the conviction that moksha is life's true duty.
+    narrator: kailash-nath-katju
+    key_people:
+    - kailash-nath-katju
+    - r-d-ranade
+    themes:
+    - mysticism-in-maharashtra
+    - gita
+    - moksha
+    - inspiration
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-036-tribute-by-kailash-nath-katju/mr/variants/smruti_seg036.md
+  smruti-037-tribute-by-s-radhakrishnan:
+    canonical_title: Tribute by S. Radhakrishnan
+    title_en: Tribute by S. Radhakrishnan
+    about_member: gurudev_ranade
+    one_line: Radhakrishnan praises Ranade's integrity, linguistic gifts and life
+      of meditation, recalls the 'two birds' Mundaka verse at a tea, and mourns him
+      as one of the immortals.
+    narrator: s-radhakrishnan
+    key_people:
+    - s-radhakrishnan
+    - r-d-ranade
+    themes:
+    - friendship
+    - philosophy-as-passion
+    - two-birds-verse
+    - god-face-to-face
+    - obituary
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-037-tribute-by-s-radhakrishnan/en/variants/smruti_seg037.md
+  smruti-038-tribute-by-jacques-d-marquette:
+    canonical_title: Tribute by Jacques D. Marquette
+    title_en: Tribute by Jacques D. Marquette
+    about_member: gurudev_ranade
+    one_line: The French philosopher hails Ranade as the leader of India's jnanis
+      and recounts being accepted as his disciple in 1954 with all-penetrating influence.
+    narrator: jacques-marquette
+    key_people:
+    - jacques-marquette
+    - r-d-ranade
+    themes:
+    - west-east-dialogue
+    - discipleship
+    - jnana-yoga
+    - metapsychology
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-038-tribute-by-jacques-d-marquette/en/variants/smruti_seg038.md
+  smruti-039-tribute-by-b-g-kher:
+    canonical_title: Tribute by B. G. Kher
+    title_en: Tribute by B. G. Kher
+    about_member: gurudev_ranade
+    one_line: Kher, who once shared the Sanskrit prize with Ranade, wishes he could
+      share his spiritual prize too.
+    narrator: b-g-kher
+    key_people:
+    - b-g-kher
+    - r-d-ranade
+    themes:
+    - sanskrit-prize
+    - spiritual-grace
+    - humility
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-039-tribute-by-b-g-kher/en/variants/smruti_seg039.md
+  smruti-040-tribute-by-tara-chand:
+    canonical_title: Tribute by Tara Chand
+    title_en: Tribute by Tara Chand
+    about_member: gurudev_ranade
+    one_line: Tara Chand calls Ranade not only a great scholar but truly a God-man
+      living simple living and high thinking.
+    narrator: tara-chand
+    key_people:
+    - tara-chand
+    - r-d-ranade
+    themes:
+    - simple-living-high-thinking
+    - god-man
+    - scholarship
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-040-tribute-by-tara-chand/en/variants/smruti_seg040.md
+  smruti-041-tribute-by-a-c-mukherjee:
+    canonical_title: Tribute by A. C. Mukherjee
+    title_en: Tribute by A. C. Mukherjee
+    about_member: gurudev_ranade
+    one_line: Mukherjee analyses Ranade's mysticism as a full experience uniting intellect,
+      ethics and art in the attainment of God, giving it a distinctive place in modern
+      thought.
+    narrator: a-c-mukherjee
+    key_people:
+    - a-c-mukherjee
+    - r-d-ranade
+    themes:
+    - mysticism-defined
+    - intellect-and-experience
+    - ineffable-experience
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-041-tribute-by-a-c-mukherjee/mr/variants/smruti_seg041.md
+  smruti-042-tribute-by-ganesh-govind-karkhanis:
+    canonical_title: Tribute by Ganesh Govind Karkhanis
+    title_en: Tribute by Ganesh Govind Karkhanis
+    about_member: gurudev_ranade
+    one_line: Kakasaheb Karkhanis declares that Gurudev is his Dnyaneshwar, Tukaram,
+      Ramdas and Pandurang, beyond which he cannot describe him.
+    narrator: ganesh-govind-karkhanis
+    key_people:
+    - ganesh-govind-karkhanis
+    - r-d-ranade
+    themes:
+    - amrut-mahotsav
+    - devotion
+    - guru-as-everything
+    - jamkhandi
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-042-tribute-by-ganesh-govind-karkhanis/mr/variants/smruti_seg042.md
+  smruti-043-tribute-by-g-v-tulpule:
+    canonical_title: Tribute by G. V. Tulpule
+    title_en: Tribute by G. V. Tulpule
+    about_member: gurudev_ranade
+    one_line: Tulpule explains how Gurudev clarified obscured spiritual terms like
+      sahaja-samadhi and jivanmukti through his own realization and Western philosophy,
+      with Dnyaneshwar-like guru-bhakti.
+    narrator: g-v-tulpule
+    key_people:
+    - g-v-tulpule
+    - r-d-ranade
+    - jnaneshwara
+    - tukaram
+    themes:
+    - word-clarification
+    - sahaja-samadhi
+    - jivanmukti
+    - guru-bhakti
+    - amrut-mahotsav
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-043-tribute-by-g-v-tulpule/mr/variants/smruti_seg043.md
+  smruti-044-tribute-by-p-k-gode:
+    canonical_title: Tribute by P. K. Gode
+    title_en: Tribute by P. K. Gode
+    about_member: gurudev_ranade
+    one_line: Gode recounts 47 years with Ranade, his inspiration as a teacher, his
+      role in founding the Bhandarkar Institute, and the mystery of his immortal output
+      despite frail health.
+    narrator: p-k-gode
+    key_people:
+    - p-k-gode
+    - r-d-ranade
+    - kurtkoti
+    - s-k-belvalkar
+    - p-d-gune
+    themes:
+    - fergusson-college
+    - bhandarkar-institute
+    - character
+    - illness
+    - literary-output
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-044-tribute-by-p-k-gode/en/variants/smruti_seg044.md
+  smruti-045-tribute-by-sampurnanand:
+    canonical_title: Tribute by Sampurnanand
+    title_en: Tribute by Sampurnanand
+    about_member: gurudev_ranade
+    one_line: Sampurnanand says Ranade had no second in his time in philosophic depth
+      and spiritual realization, so identified with philosophy as to be inseparable
+      from it.
+    narrator: sampurnanand
+    key_people:
+    - sampurnanand
+    - r-d-ranade
+    themes:
+    - amrut-mahotsav
+    - philosophic-insight
+    - lives-in-philosophy
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-045-tribute-by-sampurnanand/en/variants/smruti_seg045.md
+  smruti-046-tribute-by-mahadevbhai-desai:
+    canonical_title: Tribute by Mahadevbhai Desai
+    title_en: Tribute by Mahadevbhai Desai
+    about_member: gurudev_ranade
+    one_line: Gandhi's secretary writes that the death of their mutual friend Bhaurao
+      binds him closer to Gurudev, whose company he longs to benefit from.
+    narrator: mahadevbhai-desai
+    key_people:
+    - mahadevbhai-desai
+    - r-d-ranade
+    - bhaurao-yadwadkar-patwardhan
+    themes:
+    - friendship
+    - letter
+    - bereavement
+    - loving-warmth
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-046-tribute-by-mahadevbhai-desai/en/variants/smruti_seg046.md
+  smruti-047-tribute-by-k-p-kulkarni:
+    canonical_title: Tribute by K. P. Kulkarni
+    title_en: Tribute by K. P. Kulkarni
+    about_member: gurudev_ranade
+    one_line: A former student vividly describes Prof. Ranade's dress, his flowing
+      English teaching like the Ganga, his essay reviews and home visits, and his
+      guileless, childlike, virtue-seeing nature.
+    narrator: k-p-kulkarni
+    key_people:
+    - k-p-kulkarni
+    - r-d-ranade
+    themes:
+    - fergusson-college
+    - teaching
+    - carlyle
+    - essays
+    - childlike-nature
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-047-tribute-by-k-p-kulkarni/mr/variants/smruti_seg047.md
+  smruti-048-tribute-by-b-n-datar:
+    canonical_title: Tribute by B. N. Datar
+    title_en: Tribute by B. N. Datar
+    about_member: gurudev_ranade
+    one_line: Datar recalls his long informal discipleship and how Ranade's Allahabad
+      house was a place of pilgrimage for judges, scholars and elite seeking guidance.
+    narrator: b-n-datar
+    key_people:
+    - b-n-datar
+    - r-d-ranade
+    themes:
+    - spiritual-guidance
+    - allahabad
+    - place-of-pilgrimage
+    - childlike-simplicity
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-048-tribute-by-b-n-datar/en/variants/smruti_seg048.md
+  smruti-049-tribute-by-r-r-diwakar:
+    canonical_title: Tribute by R. R. Diwakar
+    title_en: Tribute by R. R. Diwakar
+    about_member: gurudev_ranade
+    one_line: Diwakar recalls Ranade advising him to take philosophy, his cascade-like
+      lectures, his remark that writing is mere intellectual play beside inner experience,
+      and his unassuming frame surprising President Prasad.
+    narrator: r-r-diwakar
+    key_people:
+    - r-r-diwakar
+    - r-d-ranade
+    - rajendra-prasad
+    - bendre
+    - shamba-joshi
+    themes:
+    - fergusson-college
+    - teaching-method
+    - cascade-lectures
+    - inner-experience
+    - humility
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-049-tribute-by-r-r-diwakar/en/variants/smruti_seg049.md
+  smruti-050-tribute-by-sonopant-dandekar:
+    canonical_title: Tribute by Sonopant Dandekar
+    title_en: Tribute by Sonopant Dandekar
+    about_member: gurudev_ranade
+    one_line: Dandekar describes Gurudev as a rare confluence of erudition and sainthood
+      who spent up to fourteen hours daily in sadhana and refined the path of Maharashtra's
+      saints.
+    narrator: sonopant-dandekar
+    key_people:
+    - sonopant-dandekar
+    - r-d-ranade
+    - jnaneshwara
+    - ramdas
+    themes:
+    - scholarship-and-sainthood
+    - sadhana
+    - maharashtra-saints
+    - modern-saint
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-050-tribute-by-sonopant-dandekar/mr/variants/smruti_seg050.md
+  smruti-051-tribute-by-k-d-sangoram:
+    canonical_title: Tribute by K. D. Sangoram
+    title_en: Tribute by K. D. Sangoram
+    about_member: gurudev_ranade
+    one_line: Sangoram explains that Gurudev's philosophy rests not on speculation
+      but on the bedrock of his own Atmanic spiritual experience aimed at God-realisation.
+    narrator: k-d-sangoram
+    key_people:
+    - k-d-sangoram
+    - r-d-ranade
+    themes:
+    - direct-experience
+    - philosophy-from-realisation
+    - god-realisation
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-051-tribute-by-k-d-sangoram/en/variants/smruti_seg051.md
+  smruti-052-tribute-by-dhirendra-mohan-datta:
+    canonical_title: Tribute by Dhirendra Mohan Datta
+    title_en: Tribute by Dhirendra Mohan Datta
+    about_member: gurudev_ranade
+    one_line: Datta says Ranade's true identity was his absorption in Brahman, his
+      learning a mere means to higher knowledge, his home a hermitage of constant
+      tapas and satsang.
+    narrator: dhirendra-mohan-datta
+    key_people:
+    - dhirendra-mohan-datta
+    - r-d-ranade
+    themes:
+    - brahma-contemplation
+    - para-vidya
+    - householder-sannyasi
+    - home-as-ashram
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-052-tribute-by-dhirendra-mohan-datta/mr/variants/smruti_seg052.md
+  smruti-053-tribute-by-master-krishnarao-phulambrikar:
+    canonical_title: Tribute by Master Krishnarao Phulambrikar
+    title_en: Tribute by Master Krishnarao Phulambrikar
+    about_member: gurudev_ranade
+    one_line: Vocalist Master Krishnarao writes seeking Gurudev's blessing as he sets
+      the saint's abhangs to ragas, and once sang a Jnaneshwar abhang before him.
+    narrator: master-krishnarao
+    key_people:
+    - master-krishnarao
+    - r-d-ranade
+    - g-v-tulpule
+    - jnaneshwara
+    themes:
+    - music
+    - abhang-composition
+    - letter
+    - bhajan
+    - blessing
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-053-tribute-by-master-krishnarao-phulambrikar/mr/variants/smruti_seg053.md
+  smruti-054-tribute-by-n-s-phadke:
+    canonical_title: Tribute by N. S. Phadke
+    title_en: Tribute by N. S. Phadke
+    about_member: gurudev_ranade
+    one_line: Writer Phadke recalls Prof. Ranade as a sharp scholar (if not, to him,
+      a successful teacher) who readily wrote the preface to his first novel.
+    narrator: n-s-phadke
+    key_people:
+    - n-s-phadke
+    - r-d-ranade
+    - n-g-damle
+    themes:
+    - fergusson-college
+    - teaching
+    - preface-to-novel
+    - scholarship
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-054-tribute-by-n-s-phadke/mr/variants/smruti_seg054.md
+  smruti-055-tribute-by-p-k-atre:
+    canonical_title: Tribute by P. K. Atre
+    title_en: Tribute by P. K. Atre
+    about_member: gurudev_ranade
+    one_line: Acharya Atre calls Ranade a Himalaya of intellect whose Constructive
+      Survey dazzled Western philosophers, a maharshi whose passing none will dispute.
+    narrator: p-k-atre
+    key_people:
+    - p-k-atre
+    - r-d-ranade
+    - s-radhakrishnan
+    themes:
+    - intellect
+    - constructive-survey
+    - world-fame
+    - maharshi
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-055-tribute-by-p-k-atre/mr/variants/smruti_seg055.md
+  smruti-056-tribute-by-t-siddalingaya:
+    canonical_title: Tribute by T. Siddalingaya
+    title_en: Tribute by T. Siddalingaya
+    about_member: gurudev_ranade
+    one_line: Siddalingaya says Gurudev remains a student with a child's mind, one
+      of those rare men whose presence enriches the world.
+    narrator: t-siddalingaya
+    key_people:
+    - t-siddalingaya
+    - r-d-ranade
+    themes:
+    - child-mind
+    - example
+    - rare-souls
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-056-tribute-by-t-siddalingaya/en/variants/smruti_seg056.md
+  smruti-057-tribute-by-m-s-modak:
+    canonical_title: Tribute by M. S. Modak
+    title_en: Tribute by M. S. Modak
+    about_member: gurudev_ranade
+    one_line: Modak recalls Ranade rapidly writing original Greek on the blackboard,
+      boldly correcting Sidgwick, and being recognized by students as a great man
+      of realisation.
+    narrator: m-s-modak
+    key_people:
+    - m-s-modak
+    - r-d-ranade
+    - sidgwick
+    themes:
+    - teaching
+    - greek-philosophy
+    - plato
+    - rapt-attention
+    - man-of-realisation
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-057-tribute-by-m-s-modak/en/variants/smruti_seg057.md
+  smruti-058-tribute-by-d-c-pavate:
+    canonical_title: Tribute by D. C. Pavate
+    title_en: Tribute by D. C. Pavate
+    about_member: gurudev_ranade
+    one_line: Pavate recounts inviting Ranade to deliver and later publish twenty
+      lectures on Mysticism in Karnataka, delivered by his novel and interesting method.
+    narrator: d-c-pavate
+    key_people:
+    - d-c-pavate
+    - r-d-ranade
+    themes:
+    - karnataka-mysticism
+    - lectures
+    - dharwad
+    - novel-method
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-058-tribute-by-d-c-pavate/en/variants/smruti_seg058.md
+  smruti-059-tribute-by-b-r-rao:
+    canonical_title: Tribute by B. R. Rao
+    title_en: Tribute by B. R. Rao
+    about_member: gurudev_ranade
+    one_line: Burgula Ramakrishna Rao recalls being Ranade's philosophy student, finding
+      in him both great learning and lofty spirituality, his house aptly named 'Adhyatma
+      Bhavan.'
+    narrator: b-r-rao
+    key_people:
+    - b-r-rao
+    - r-d-ranade
+    themes:
+    - fergusson-college
+    - discipleship
+    - adhyatma-bhavan
+    - greek-and-sanskrit
+    - memory
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-059-tribute-by-b-r-rao/mr/variants/smruti_seg059.md
+  smruti-060-tribute-by-s-v-punatambekar:
+    canonical_title: Tribute by S. V. Punatambekar
+    title_en: Tribute by S. V. Punatambekar
+    about_member: gurudev_ranade
+    one_line: Writing from Oxford in 1910, Punatambekar tells Ranade he has never
+      met so simple and loving a person and preserves his letters as treasure.
+    narrator: s-v-punatambekar
+    key_people:
+    - s-v-punatambekar
+    - r-d-ranade
+    themes:
+    - letter
+    - simple-loving-personality
+    - advice
+    - treasured-letters
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-060-tribute-by-s-v-punatambekar/en/variants/smruti_seg060.md
+  smruti-061-tribute-by-baldev-upadhyaya:
+    canonical_title: Tribute by Baldev Upadhyaya
+    title_en: Tribute by Baldev Upadhyaya
+    about_member: gurudev_ranade
+    one_line: Upadhyaya calls Ranade a living image of philosophy and a true seer
+      (kranta-darshi) whose harmony of thought and conduct influenced all who heard
+      him.
+    narrator: baldev-upadhyaya
+    key_people:
+    - baldev-upadhyaya
+    - r-d-ranade
+    themes:
+    - living-philosophy
+    - kranti-darshi
+    - sadhana
+    - greek-sanskrit
+    - upanishads
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-061-tribute-by-baldev-upadhyaya/mr/variants/smruti_seg061.md
+  smruti-062-tribute-by-c-a-patwardhan:
+    canonical_title: Tribute by C. A. Patwardhan
+    title_en: Tribute by C. A. Patwardhan
+    about_member: gurudev_ranade
+    one_line: The Rajasaheb of Sangli describes Gurudev as a rare blend of scholar
+      and mystic, recalls founding the Adhyatma Vidya Mandir at his hands, and his
+      teaching of God-realisation through the Name.
+    narrator: c-a-patwardhan
+    key_people:
+    - c-a-patwardhan
+    - r-d-ranade
+    themes:
+    - sangli
+    - adhyatma-vidya-mandir
+    - scholar-and-mystic
+    - naam-smarana
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-062-tribute-by-c-a-patwardhan/mr/variants/smruti_seg062.md
+  smruti-063-tribute-by-tatyasaheb-patwardhan:
+    canonical_title: Tribute by Tatyasaheb Patwardhan
+    title_en: Tribute by Tatyasaheb Patwardhan
+    about_member: gurudev_ranade
+    one_line: On a Nimbargi pilgrimage, when the Maharaja of Miraj asks where Nimbargi
+      Maharaj used to sit, Gurudev exclaims that every inch there is Nimbargi Maharaj.
+    narrator: vaman-narayan-kulkarni
+    key_people:
+    - tatyasaheb-patwardhan
+    - r-d-ranade
+    - nimbargi-maharaj
+    themes:
+    - nimbargi-vari
+    - every-inch-nimbargi
+    - darshan
+    - presence
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-063-tribute-by-tatyasaheb-patwardhan/mr/variants/smruti_seg063.md
+  smruti-064-tribute-by-yashwant-g-joshi:
+    canonical_title: Tribute by Yashwant G. Joshi
+    title_en: Tribute by Yashwant G. Joshi
+    about_member: gurudev_ranade
+    one_line: Writer Y. G. Joshi says society sorely needs realized saints like Ranade
+      to show the hidden path of devotion and bring solace to suffering souls.
+    narrator: yashwant-g-joshi
+    key_people:
+    - yashwant-g-joshi
+    - r-d-ranade
+    themes:
+    - need-for-saints
+    - solace
+    - bhakti-path
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-064-tribute-by-yashwant-g-joshi/mr/variants/smruti_seg064.md
+  smruti-065-tribute-by-george-b-burch:
+    canonical_title: Tribute by George B. Burch
+    title_en: Tribute by George B. Burch
+    about_member: gurudev_ranade
+    one_line: The American professor, expecting a pompous guru, instead finds Ranade
+      frank, humble and vigorous, a mystic in the perennial tradition and an unforgettable
+      friend.
+    narrator: george-b-burch
+    key_people:
+    - george-b-burch
+    - r-d-ranade
+    themes:
+    - west-east-dialogue
+    - loving-personality
+    - meditation
+    - humility
+    - great-man
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-065-tribute-by-george-b-burch/en/variants/smruti_seg065.md
+  smruti-066-tribute-by-prema-kantak:
+    canonical_title: Tribute by Prema Kantak
+    title_en: Tribute by Prema Kantak
+    about_member: gurudev_ranade
+    one_line: Asked how to reconcile social service with spirituality, Gurudev tells
+      Prema Kantak that devotion itself is service and that namasmarana inevitably
+      benefits the world.
+    narrator: k-d-sangoram
+    key_people:
+    - prema-kantak
+    - r-d-ranade
+    themes:
+    - bhakti-as-social-service
+    - nimbal
+    - spiritual-power-transmission
+    - namasmarana
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-066-tribute-by-prema-kantak/mr/variants/smruti_seg066.md
+  smruti-067-tribute-by-v-k-gokak:
+    canonical_title: Tribute by V. K. Gokak
+    title_en: Tribute by V. K. Gokak
+    about_member: gurudev_ranade
+    one_line: Gokak hails Ranade as an illustrious son of the Indian Renaissance whose
+      frail body, sustained mostly on tea, housed a great builder, scholar and serene
+      mystic.
+    narrator: v-k-gokak
+    key_people:
+    - v-k-gokak
+    - r-d-ranade
+    themes:
+    - philosopher-and-mystic
+    - indian-renaissance
+    - frail-body-great-soul
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-067-tribute-by-v-k-gokak/en/variants/smruti_seg067.md
+  smruti-068-tribute-by-k-v-belsare:
+    canonical_title: Tribute by K. V. Belsare
+    title_en: Tribute by K. V. Belsare
+    about_member: gurudev_ranade
+    one_line: Belsare writes that on learning Gurudev's life he recognized in him
+      the experiential lineage of Maharashtra's saints and longs intensely to meet
+      him.
+    narrator: k-v-belsare
+    key_people:
+    - k-v-belsare
+    - r-d-ranade
+    - g-v-tulpule
+    themes:
+    - letter
+    - longing-to-meet
+    - maharashtra-saints-lineage
+    - punya-yoga
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-068-tribute-by-k-v-belsare/mr/variants/smruti_seg068.md
+  smruti-069-tribute-by-v-s-page:
+    canonical_title: Tribute by V. S. Page
+    title_en: Tribute by V. S. Page
+    about_member: gurudev_ranade
+    one_line: Page, judging Gurudev's odd manner, is startled when Ranade reads his
+      very thought and answers it, revealing per Dnyaneshwar a saint hiding his greatness
+      behind apparent madness.
+    narrator: v-s-page
+    key_people:
+    - v-s-page
+    - r-d-ranade
+    - dnyaneshwara
+    themes:
+    - sangli
+    - vedanta
+    - eccentric-manner
+    - mind-reading
+    - spiritual-height
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-069-tribute-by-v-s-page/en/variants/smruti_seg069.md
+  smruti-070-tribute-by-d-d-wadekar:
+    canonical_title: Tribute by D. D. Wadekar
+    title_en: Tribute by D. D. Wadekar
+    about_member: gurudev_ranade
+    one_line: Wadekar credits Ranade with bringing idealist and mystical strains and
+      great learning to Fergusson, attracting students from afar, with a scholarship
+      pattern uniquely his own.
+    narrator: d-d-wadekar
+    key_people:
+    - d-d-wadekar
+    - r-d-ranade
+    - zeller
+    - gomperz
+    themes:
+    - fergusson-college
+    - teaching
+    - idealist-mystical-strain
+    - scholarship-pattern
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-070-tribute-by-d-d-wadekar/en/variants/smruti_seg070.md
+  smruti-071-tribute-by-b-d-jatti:
+    canonical_title: Tribute by B. D. Jatti
+    title_en: Tribute by B. D. Jatti
+    about_member: gurudev_ranade
+    one_line: Jatti recalls Gurudev's motherly affection and his belief in a spiritual
+      current percolating like rainwater, strongest at Jamkhandi among the three sacred
+      spots of his life.
+    narrator: b-d-jatti
+    key_people:
+    - b-d-jatti
+    - r-d-ranade
+    - ganesh-govind-karkhanis
+    themes:
+    - nimbal
+    - childlike-innocence
+    - spiritual-current
+    - sacred-spots
+    - jamkhandi
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-071-tribute-by-b-d-jatti/en/variants/smruti_seg071.md
+  smruti-072-tribute-by-v-a-satralkar:
+    canonical_title: Tribute by V. A. Satralkar
+    title_en: Tribute by V. A. Satralkar
+    about_member: gurudev_ranade
+    one_line: Satralkar fondly recalls the complementary pair of Prof. Bhate and Prof.
+      Ranade, the latter analytic with dreamy eyes and a rare sage-like smile.
+    narrator: v-a-satralkar
+    key_people:
+    - v-a-satralkar
+    - r-d-ranade
+    - bhate
+    themes:
+    - teaching
+    - bhate-and-ranade
+    - analytic-mind
+    - discipleship
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-072-tribute-by-v-a-satralkar/en/variants/smruti_seg072.md
+  smruti-073-tribute-by-devi-prasad-shukla:
+    canonical_title: Tribute by Devi Prasad Shukla
+    title_en: Tribute by Devi Prasad Shukla
+    about_member: gurudev_ranade
+    one_line: Shukla calls 'The Pathway to God in Hindi Literature' Gurudev's autobiography,
+      and notes Ranade's remark that there is nothing in Parmartha Sopan he had not
+      himself experienced.
+    narrator: devi-prasad-shukla
+    key_people:
+    - devi-prasad-shukla
+    - r-d-ranade
+    themes:
+    - pathway-to-god
+    - autobiography
+    - parmartha-sopan
+    - lived-experience
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-073-tribute-by-devi-prasad-shukla/en/variants/smruti_seg073.md
+  smruti-074-tribute-by-mohammad-hafiz-syed:
+    canonical_title: Tribute by Mohammad Hafiz Syed
+    title_en: Tribute by Mohammad Hafiz Syed
+    about_member: gurudev_ranade
+    one_line: Prof. Syed writes that Ranade is a Brahmin in the true sense who loves
+      wisdom more than wealth, and that he is proud of his friendship.
+    narrator: mohammad-hafiz-syed
+    key_people:
+    - mohammad-hafiz-syed
+    - r-d-ranade
+    themes:
+    - letter
+    - friendship
+    - love-of-wisdom
+    - true-brahmin
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-074-tribute-by-mohammad-hafiz-syed/en/variants/smruti_seg074.md
+  smruti-075-tribute-by-gyani-zail-singh:
+    canonical_title: Tribute by Gyani Zail Singh
+    title_en: Tribute by Gyani Zail Singh
+    about_member: gurudev_ranade
+    one_line: President Zail Singh recalls the honour of launching Ranade's book on
+      Upanishadic philosophy and reflects on Sanskrit as the mother of India's languages.
+    narrator: gyani-zail-singh
+    key_people:
+    - gyani-zail-singh
+    - r-d-ranade
+    themes:
+    - constructive-survey
+    - book-launch
+    - sanskrit
+    - languages
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-075-tribute-by-gyani-zail-singh/mr/variants/smruti_seg075.md
+  smruti-076-tribute-by-j-p-vaswani:
+    canonical_title: Tribute by J. P. Vaswani
+    title_en: Tribute by J. P. Vaswani
+    about_member: gurudev_ranade
+    one_line: Dada Vaswani describes Gurudev as a scholar who became a saint and a
+      professor who became a prophet through acceptance of God's Will and meditation.
+    narrator: j-p-vaswani
+    key_people:
+    - j-p-vaswani
+    - r-d-ranade
+    themes:
+    - scholar-became-saint
+    - spiritual-illumination
+    - will-of-god
+    - meditation
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-076-tribute-by-j-p-vaswani/en/variants/smruti_seg076.md
+  smruti-077-tribute-by-ramanand-tiwari:
+    canonical_title: Tribute by Ramanand Tiwari
+    title_en: Tribute by Ramanand Tiwari
+    about_member: gurudev_ranade
+    one_line: Tiwari recalls ten years of close association, being initiated while
+      translating the Constructive Survey, and describes Gurudev as a living flame
+      of philosophy and a realized mystic.
+    narrator: ramanand-tiwari
+    key_people:
+    - ramanand-tiwari
+    - r-d-ranade
+    themes:
+    - allahabad
+    - discipleship
+    - translation
+    - constructive-survey
+    - living-flame
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-077-tribute-by-ramanand-tiwari/en/variants/smruti_seg077.md
+  smruti-078-tribute-by-shankar-dayal-sharma:
+    canonical_title: Tribute by Shankar Dayal Sharma
+    title_en: Tribute by Shankar Dayal Sharma
+    about_member: gurudev_ranade
+    one_line: President Shankar Dayal Sharma recalls being Gurudev's philosophy student
+      at Allahabad and being profoundly influenced by him.
+    narrator: shankar-dayal-sharma
+    key_people:
+    - shankar-dayal-sharma
+    - r-d-ranade
+    themes:
+    - allahabad-university
+    - student
+    - influence
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-078-tribute-by-shankar-dayal-sharma/mr/variants/smruti_seg078.md
+  smruti-079-tribute-by-swami-rama:
+    canonical_title: Tribute by Swami Rama
+    title_en: Tribute by Swami Rama
+    about_member: gurudev_ranade
+    one_line: Swami Rama recalls Dr. Ranade teaching him Indian philosophy's seven
+      systems and taking him to Nimbal, a startlingly clairvoyant living example of
+      being in the world yet above it.
+    narrator: swami-rama
+    key_people:
+    - swami-rama
+    - r-d-ranade
+    themes:
+    - allahabad-university
+    - nimbal
+    - seven-systems
+    - clairvoyance
+    - scholar-and-mystic
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-079-tribute-by-swami-rama/en/variants/smruti_seg079.md
+  smruti-080-tribute-by-s-k-devdhar:
+    canonical_title: Tribute by S. K. Devdhar
+    title_en: Tribute by S. K. Devdhar
+    about_member: gurudev_ranade
+    one_line: Devdhar says every word Ranade spoke carried the weight of learning
+      and experience, settling in the listener's heart, the words of a great holy
+      soul always charged with action.
+    narrator: s-k-devdhar
+    key_people:
+    - s-k-devdhar
+    - r-d-ranade
+    themes:
+    - words-of-power
+    - self-confidence
+    - punyatma
+    - actionable-speech
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-080-tribute-by-s-k-devdhar/mr/variants/smruti_seg080.md
+  smruti-081-tribute-by-i-p-singh:
+    canonical_title: Tribute by I. P. Singh
+    title_en: Tribute by I. P. Singh
+    about_member: gurudev_ranade
+    one_line: Indu Prakash Singh feels he meets a true sage at Ranade's lecture on
+      Meera's 'Jogi mat ja' and is struck by the absence of aloofness and the indescribable
+      presence in his crowded drawing room.
+    narrator: i-p-singh
+    key_people:
+    - i-p-singh
+    - r-d-ranade
+    - meera-bai
+    themes:
+    - allahabad
+    - jogi-mat-ja
+    - drawing-room
+    - presence
+    - man-in-the-saint
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-081-tribute-by-i-p-singh/en/variants/smruti_seg081.md
+  smruti-082-tribute-by-matthew-lederle:
+    canonical_title: Tribute by Matthew Lederle
+    title_en: Tribute by Matthew Lederle
+    about_member: gurudev_ranade
+    one_line: The Jesuit scholar Lederle presents Ranade as a dominant figure of India's
+      renaissance who sought to synthesize East and West, his whole life a sincere
+      quest for truth.
+    narrator: matthew-lederle
+    key_people:
+    - matthew-lederle
+    - r-d-ranade
+    - s-radhakrishnan
+    - aurobindo-ghose
+    themes:
+    - modern-renaissance
+    - east-west-synthesis
+    - quest-for-truth
+    - religious-climate
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-082-tribute-by-matthew-lederle/en/variants/smruti_seg082.md
+  smruti-083-tribute-by-pandurang-mahadev-bapat-senapati-b:
+    canonical_title: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+    title_en: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+    about_member: gurudev_ranade
+    one_line: Senapati Bapat tells Gurudev that while revolutionaries spent their
+      lives fighting the demon in vain, Ranade from the start pursued and attained
+      God.
+    narrator: venkatesh-gopal-apte
+    key_people:
+    - pandurang-mahadev-bapat
+    - r-d-ranade
+    themes:
+    - meeting
+    - goa-satyagraha
+    - fighting-demon-vs-seeking-god
+    - humour
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-083-tribute-by-pandurang-mahadev-bapat-senapati-b/mr/variants/smruti_seg083.md
+  smruti-084-tribute-indian-philosophical-congress-nagpur:
+    canonical_title: 'Tribute: Indian Philosophical Congress, Nagpur 1937'
+    title_en: 'Tribute: Indian Philosophical Congress, Nagpur 1937'
+    about_member: gurudev_ranade
+    one_line: An account of Ranade's wholly extempore presidential address at the
+      1937 Nagpur Congress, his coining of 'spiriton,' his witty reply to Gaur, and
+      his subsequent withdrawal into meditation.
+    narrator: unknown
+    key_people:
+    - r-d-ranade
+    - s-radhakrishnan
+    - hari-singh-gaur
+    - hyde-gowin
+    - c-d-deshmukh
+    themes:
+    - philosophical-congress
+    - presidential-address
+    - spiriton
+    - extempore
+    - meditation
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-084-tribute-indian-philosophical-congress-nagpur/en/variants/smruti_seg084.md
+  smruti-085-tribute-by-sarojini-naidu:
+    canonical_title: Tribute by Sarojini Naidu
+    title_en: Tribute by Sarojini Naidu
+    about_member: gurudev_ranade
+    one_line: At the 1947 Allahabad convocation, when Gurudev leaves his D.Litt. certificate
+      on the table, Chancellor Sarojini Naidu jokes that the great philosopher has
+      forgotten his degree.
+    narrator: vijaya-apte
+    key_people:
+    - sarojini-naidu
+    - r-d-ranade
+    - jawaharlal-nehru
+    - p-v-kane
+    - tara-chand
+    themes:
+    - allahabad-convocation
+    - d-litt
+    - forgotten-degree
+    - detachment
+    - humour
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-085-tribute-by-sarojini-naidu/mr/variants/smruti_seg085.md
+  smruti-086-tribute-by-s-s-roy:
+    canonical_title: Tribute by S. S. Roy
+    title_en: Tribute by S. S. Roy
+    about_member: gurudev_ranade
+    one_line: Roy, Ranade's successor at Allahabad, describes him as the confluence
+      of human and divine in perpetual open-eyed trance, recalling the thrill in his
+      eyes at 'Jogi mat ja.'
+    narrator: s-s-roy
+    key_people:
+    - s-s-roy
+    - r-d-ranade
+    - onkar-nath-thakur
+    themes:
+    - allahabad
+    - prasthana-trayi
+    - transic-vision
+    - jogi-mat-ja
+    - successor
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-086-tribute-by-s-s-roy/en/variants/smruti_seg086.md
+  smruti-087-tribute-by-sangam-lal-pandey:
+    canonical_title: Tribute by Sangam Lal Pandey
+    title_en: Tribute by Sangam Lal Pandey
+    about_member: gurudev_ranade
+    one_line: Pandey calls Ranade the foremost modern Indian philosopher uniquely
+      uniting scholarship and sadhana lifelong, recalling daily meetings in which
+      the spirit in him was ever new.
+    narrator: sangam-lal-pandey
+    key_people:
+    - sangam-lal-pandey
+    - r-d-ranade
+    themes:
+    - scholarship-and-sadhana
+    - contributions-to-philosophy
+    - daily-meetings
+    - immortal-personality
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-087-tribute-by-sangam-lal-pandey/mr/variants/smruti_seg087.md
+  smruti-088-tribute-by-r-a-jahagirdar:
+    canonical_title: Tribute by R. A. Jahagirdar
+    title_en: Tribute by R. A. Jahagirdar
+    about_member: gurudev_ranade
+    one_line: Vice-Chancellor Jahagirdar welcomes Dr. Ranade at Karnatak University,
+      expressing pride that Karnataka produced so eminent a philosopher and saint.
+    narrator: r-a-jahagirdar
+    key_people:
+    - r-a-jahagirdar
+    - r-d-ranade
+    themes:
+    - dharwad
+    - welcome
+    - karnataka-pride
+    - philosopher-and-saint
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-088-tribute-by-r-a-jahagirdar/en/variants/smruti_seg088.md
+  smruti-089-tribute-by-s-d-pendse:
+    canonical_title: Tribute by S. D. Pendse
+    title_en: Tribute by S. D. Pendse
+    about_member: gurudev_ranade
+    one_line: 'After visiting Nimbal, Pendse says he saw two wonders there: the living
+      spring in Rambhau''s well, and Rambhau himself.'
+    narrator: s-g-tulpule
+    key_people:
+    - s-d-pendse
+    - r-d-ranade
+    - s-g-tulpule
+    themes:
+    - nimbal
+    - two-wonders
+    - living-spring
+    - scholarship
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-089-tribute-by-s-d-pendse/mr/variants/smruti_seg089.md
+  smruti-090-tribute-by-shankarrao-deo:
+    canonical_title: Tribute by Shankarrao Deo
+    title_en: Tribute by Shankarrao Deo
+    about_member: gurudev_ranade
+    one_line: Attending Gurudev's Delhi lecture, Deo finds himself gazing at his face
+      more than hearing him, convinced the radiance shows a realised soul living in
+      another world.
+    narrator: shankarrao-deo
+    key_people:
+    - shankarrao-deo
+    - r-d-ranade
+    themes:
+    - lecture
+    - realised-soul
+    - facial-radiance
+    - another-world
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-090-tribute-by-shankarrao-deo/en/variants/smruti_seg090.md
+  smruti-091-tribute-by-g-b-badkas:
+    canonical_title: Tribute by G. B. Badkas
+    title_en: Tribute by G. B. Badkas
+    about_member: gurudev_ranade
+    one_line: Badkas notes Ranade redrafted a page of his Bhagavadgita work just eight
+      days before his passing, fruit of lifelong study and personal spiritual experience.
+    narrator: g-b-badkas
+    key_people:
+    - g-b-badkas
+    - r-d-ranade
+    themes:
+    - bhagavadgita-book
+    - lifelong-study
+    - redrafting-before-death
+    - self-realisation
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-091-tribute-by-g-b-badkas/en/variants/smruti_seg091.md
+  smruti-092-tribute-by-p-d-khanolkar-final-days:
+    canonical_title: Tribute by P. D. Khanolkar (final days)
+    title_en: Tribute by P. D. Khanolkar (final days)
+    about_member: gurudev_ranade
+    one_line: Dr. Khanolkar's health bulletin records Gurudev's complete detachment
+      and conscious control in his last days, his disease-free body remaining lustrous
+      without rigor mortis for 18 hours.
+    narrator: p-d-khanolkar
+    key_people:
+    - p-d-khanolkar
+    - r-d-ranade
+    - n-s-paripatyadar
+    - kabir
+    - nimbargi-maharaj
+    themes:
+    - niryan
+    - final-days
+    - detachment
+    - control-over-death
+    - lustrous-body
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-092-tribute-by-p-d-khanolkar-final-days/en/variants/smruti_seg092.md
+  smruti-093-tribute-by-v-p-limaye:
+    canonical_title: Tribute by V. P. Limaye
+    title_en: Tribute by V. P. Limaye
+    about_member: gurudev_ranade
+    one_line: Acharya Limaye calls Gurudev a living embodiment of India's spiritual
+      knowledge whose very touch, glance and breath bring welfare to all.
+    narrator: v-p-limaye
+    key_people:
+    - v-p-limaye
+    - r-d-ranade
+    themes:
+    - living-symbol
+    - amrut-mahotsav
+    - blessing-through-presence
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-093-tribute-by-v-p-limaye/mr/variants/smruti_seg093.md
+  smruti-094-tribute-by-g-v-tagare:
+    canonical_title: Tribute by G. V. Tagare
+    title_en: Tribute by G. V. Tagare
+    about_member: gurudev_ranade
+    one_line: Tagare says Gurudev's devotion to the Name, rooted in Vedic and Upanishadic
+      tradition, makes him without exaggeration a representative of the ancient bhakti
+      lineage.
+    narrator: g-v-tagare
+    key_people:
+    - g-v-tagare
+    - r-d-ranade
+    themes:
+    - naam-nishtha
+    - vedic-tradition
+    - bhakti-lineage
+    source_work: smruti-sangam
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-094-tribute-by-g-v-tagare/mr/variants/smruti_seg094.md
+  smruti-095-tribute-by-veni-shankar-jha:
+    canonical_title: Tribute by Veni Shankar Jha
+    title_en: Tribute by Veni Shankar Jha
+    about_member: gurudev_ranade
+    one_line: The BHU Vice-Chancellor recalls Gurudev radiating joy as his guest at
+      Nagpur and laments how rare such honest, clear-thinking giants of philosophy
+      are.
+    narrator: veni-shankar-jha
+    key_people:
+    - veni-shankar-jha
+    - r-d-ranade
+    themes:
+    - nagpur-lectures
+    - hospitality
+    - radiant-joy
+    - loss
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-095-tribute-by-veni-shankar-jha/en/variants/smruti_seg095.md
+  smruti-096-tribute-by-s-n-l-shrivastava:
+    canonical_title: Tribute by S. N. L. Shrivastava
+    title_en: Tribute by S. N. L. Shrivastava
+    about_member: gurudev_ranade
+    one_line: Shrivastava describes Gurudev as an angelic, enemy-less soul radiating
+      joy, a Dhyana-Yogi whose Allahabad bungalow kindled spiritual fire in all who
+      gathered.
+    narrator: s-n-l-shrivastava
+    key_people:
+    - s-n-l-shrivastava
+    - r-d-ranade
+    themes:
+    - radiant-presence
+    - ajatashatru
+    - dhyana-yogi
+    - allahabad-bungalow
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-096-tribute-by-s-n-l-shrivastava/en/variants/smruti_seg096.md
+  smruti-097-tribute-by-s-k-gupta:
+    canonical_title: Tribute by S. K. Gupta
+    title_en: Tribute by S. K. Gupta
+    about_member: gurudev_ranade
+    one_line: Gupta bows to the 'Mysterium Tremendum' that is Ranade, recalling the
+      privilege of his research guidance and the depth and charm of his books.
+    narrator: s-k-gupta
+    key_people:
+    - s-k-gupta
+    - r-d-ranade
+    themes:
+    - research-guidance
+    - mysterium-tremendum
+    - humour
+    - books
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-097-tribute-by-s-k-gupta/en/variants/smruti_seg097.md
+  smruti-098-tribute-by-p-nagaraja-rao:
+    canonical_title: Tribute by P. Nagaraja Rao
+    title_en: Tribute by P. Nagaraja Rao
+    about_member: gurudev_ranade
+    one_line: Nagaraja Rao calls Ranade a giant among philosophers and a jivan-mukta
+      who lit a lamp at Nimbal that will never be put out, a metaphysician doubled
+      with a yogi.
+    narrator: p-nagaraja-rao
+    key_people:
+    - p-nagaraja-rao
+    - r-d-ranade
+    - aurobindo-ghose
+    themes:
+    - dharwad
+    - comparative-religion
+    - jivanmukta
+    - nimbal-lamp
+    - tapasya
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-098-tribute-by-p-nagaraja-rao/en/variants/smruti_seg098.md
+  smruti-099-tribute-by-surendra-s-barlingay:
+    canonical_title: Tribute by Surendra S. Barlingay
+    title_en: Tribute by Surendra S. Barlingay
+    about_member: gurudev_ranade
+    one_line: Barlingay introduces the posthumous 'Studies in Indian Philosophy,'
+      calling Ranade a doyen of the field and his unpublished works the most fitting
+      tribute.
+    narrator: surendra-barlingay
+    key_people:
+    - surendra-barlingay
+    - r-d-ranade
+    themes:
+    - studies-in-indian-philosophy
+    - advaita
+    - posthumous-publication
+    - doyen
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-099-tribute-by-surendra-s-barlingay/en/variants/smruti_seg099.md
+  smruti-100-tribute-by-n-s-christian:
+    canonical_title: Tribute by N. S. Christian
+    title_en: Tribute by N. S. Christian
+    about_member: gurudev_ranade
+    one_line: Surgeon N. S. Christian recalls being initiated with the Christa-Name
+      at Nimbal and describes Gurudev as an embodiment of humility who conquered hunger
+      and thirst, 'God in flesh and blood.'
+    narrator: n-s-christian
+    key_people:
+    - n-s-christian
+    - r-d-ranade
+    themes:
+    - nimbal
+    - initiation
+    - christa-name
+    - conquered-hunger
+    - humility
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-100-tribute-by-n-s-christian/en/variants/smruti_seg100.md
+  smruti-101-tribute-by-a-s-adke:
+    canonical_title: Tribute by A. S. Adke
+    title_en: Tribute by A. S. Adke
+    about_member: gurudev_ranade
+    one_line: Adke recalls watching the frail, radiant Rambhau Ranade walk meditatively
+      past the Sangli hostels each evening, and credits him with first classifying
+      the true types of spiritual experience.
+    narrator: a-s-adke
+    key_people:
+    - a-s-adke
+    - r-d-ranade
+    themes:
+    - sangli
+    - meditative-walk
+    - philosopher-and-mystic
+    - types-of-experience
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-101-tribute-by-a-s-adke/en/variants/smruti_seg101.md
+  smruti-102-reviews-and-blurbs-on-herakleitos:
+    canonical_title: Reviews and blurbs on 'Herakleitos'
+    title_en: Reviews and blurbs on 'Herakleitos'
+    about_member: gurudev_ranade
+    one_line: Collected praise from Aurobindo, H. R. James, F. W. Bain and Wodehouse
+      for Ranade's treatise on Heraclitus, with Bain noted as his intellectual master.
+    narrator: various
+    key_people:
+    - aurobindo-ghose
+    - h-r-james
+    - f-w-bain
+    - e-a-wodehouse
+    - r-d-ranade
+    - bhausaheb-maharaj
+    themes:
+    - herakleitos
+    - greek-philosophy
+    - book-reviews
+    - scholarship
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-102-reviews-and-blurbs-on-herakleitos/en/variants/smruti_seg102.md
+  smruti-103-reviews-on-carlyle-s-essays-and-psychology-in:
+    canonical_title: Reviews on Carlyle's Essays and 'Psychology in the Upanishads'
+    title_en: Reviews on Carlyle's Essays and 'Psychology in the Upanishads'
+    about_member: gurudev_ranade
+    one_line: Collected reviews of Ranade's edition of Carlyle's essays and his 'Psychology
+      in the Upanishads,' including Bhandarkar's and the Times of India's praise.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - r-g-bhandarkar
+    - w-d-s-brown
+    - herbert-stanley-reed
+    - alban-widgery
+    themes:
+    - carlyle
+    - psychology-in-upanishads
+    - book-reviews
+    - indian-philosophical-review
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-103-reviews-on-carlyle-s-essays-and-psychology-in/en/variants/smruti_seg103.md
+  smruti-104-reviews-on-a-constructive-survey-of-upanishad:
+    canonical_title: Reviews on 'A Constructive Survey of Upanishadic Philosophy'
+    title_en: Reviews on 'A Constructive Survey of Upanishadic Philosophy'
+    about_member: gurudev_ranade
+    one_line: A large gathering of international scholarly reviews (1926-27) praising
+      Ranade's Constructive Survey of Upanishadic Philosophy and his planned Encyclopaedic
+      History.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - muirhead
+    - stcherbatsky
+    - winternitz
+    - jacobi
+    - amar-nath-jha
+    themes:
+    - constructive-survey
+    - upanishads
+    - international-reviews
+    - encyclopaedic-history
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-104-reviews-on-a-constructive-survey-of-upanishad/en/variants/smruti_seg104.md
+  smruti-105-reviews-on-history-of-indian-philosophy-creat:
+    canonical_title: Reviews on 'History of Indian Philosophy' (Creative Period)
+    title_en: Reviews on 'History of Indian Philosophy' (Creative Period)
+    about_member: gurudev_ranade
+    one_line: Reviews and endorsements of the Belvalkar-Ranade 'History of Indian
+      Philosophy,' including Bhandarkar's detailed approval of its scope.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - s-k-belvalkar
+    - lord-ronaldshay
+    - ashutosh-mukherjee
+    - r-g-bhandarkar
+    themes:
+    - history-of-indian-philosophy
+    - belvalkar-ranade
+    - book-reviews
+    - encyclopaedic
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-105-reviews-on-history-of-indian-philosophy-creat/en/variants/smruti_seg105.md
+  smruti-106-reviews-on-mysticism-in-maharashtra:
+    canonical_title: Reviews on 'Mysticism in Maharashtra'
+    title_en: Reviews on 'Mysticism in Maharashtra'
+    about_member: gurudev_ranade
+    one_line: An extensive set of reviews of 'Mysticism in Maharashtra,' lauding Ranade's
+      encyclopaedic, heartfelt exposition of the Maratha saints for Western readers.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - verrier-elwin
+    - ganganath-jha
+    - i-b-horner
+    - nicol-macnicol
+    themes:
+    - mysticism-in-maharashtra
+    - maratha-saints
+    - book-reviews
+    - bhakti
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-106-reviews-on-mysticism-in-maharashtra/en/variants/smruti_seg106.md
+  smruti-107-reviews-on-the-evolution-of-my-own-thought:
+    canonical_title: Reviews on 'The Evolution of My Own Thought'
+    title_en: Reviews on 'The Evolution of My Own Thought'
+    about_member: gurudev_ranade
+    one_line: Reviews calling Ranade's autobiographical essay the most original in
+      'Contemporary Indian Philosophy,' praising his interpretative genius and East-West
+      correlation.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - arthur-shillinglaw
+    - alban-widgery
+    - s-radhakrishnan
+    themes:
+    - evolution-of-my-own-thought
+    - contemporary-indian-philosophy
+    - book-reviews
+    - east-west
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-107-reviews-on-the-evolution-of-my-own-thought/en/variants/smruti_seg107.md
+  smruti-108-appendix-the-academy-of-philosophy-and-religi:
+    canonical_title: 'Appendix: The Academy of Philosophy and Religion and opinions
+      on it'
+    title_en: 'Appendix: The Academy of Philosophy and Religion and opinions on it'
+    about_member: gurudev_ranade
+    one_line: An appendix describing Gurudev's founding of the Academy of Philosophy
+      and Religion, its personnel, and endorsements from Malaviya, Jayakar, Raulinson,
+      Bhattacharya and Wodehouse.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - p-k-gode
+    - n-g-damle
+    - madan-mohan-malaviya
+    - m-r-jayakar
+    - e-a-wodehouse
+    themes:
+    - academy-of-philosophy-and-religion
+    - adhyatma-bhavan
+    - nimbal-ashram
+    - endorsements
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-108-appendix-the-academy-of-philosophy-and-religi/en/variants/smruti_seg108.md
+  smruti-109-appendix-indian-philosophical-congress-1925-a:
+    canonical_title: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna
+      Math'
+    title_en: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna Math'
+    about_member: gurudev_ranade
+    one_line: An appendix recounting the 1925 founding session of the Indian Philosophical
+      Congress at Calcutta, Ranade's sectional presidency, the office-bearers, and
+      his role with the Vivekananda Society.
+    narrator: various
+    key_people:
+    - r-d-ranade
+    - rabindranath-tagore
+    - s-radhakrishnan
+    - brajendranath-seal
+    themes:
+    - philosophical-congress
+    - calcutta-1925
+    - ramakrishna-math
+    - sectional-president
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-109-appendix-indian-philosophical-congress-1925-a/en/variants/smruti_seg109.md
+  smruti-110-appendix-new-words-coined-by-gurudev-and-rise:
+    canonical_title: 'Appendix: New words coined by Gurudev and ''Rise of India'''
+    title_en: 'Appendix: New words coined by Gurudev and ''Rise of India'''
+    about_member: gurudev_ranade
+    one_line: An appendix listing Gurudev's coined philosophical terms (Spiriton,
+      Theonem, Beatificism, etc.), his family-lineage epigraph, and his prophetic
+      'Rise of India' vision of an East-West synthesis.
+    narrator: rajendra-chauhan
+    key_people:
+    - r-d-ranade
+    - e-a-wodehouse
+    - kabir
+    themes:
+    - coined-words
+    - spiriton
+    - beatificism
+    - rise-of-india
+    - one-world
+    source_work: smruti-sangam
+    language: en
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/smruti-110-appendix-new-words-coined-by-gurudev-and-rise/en/variants/smruti_seg110.md
+  santsabha-001-first-darshan-of-gurudev:
+    canonical_title: प्रथम दर्शन
+    title_en: First Darshan of Gurudev
+    about_member: gurudev_ranade
+    one_line: Vamanrao recounts his first sight of Gurudev at the 1953 Shravan Saptah
+      conclusion and the song about the form of God appearing in light.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Sutar
+    - Bhausaheb Maharaj
+    themes:
+    - first-meeting
+    - darshan
+    - shravan-saptah
+    - devotion
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-001-first-darshan-of-gurudev/mr/variants/santsabha_seg001.md
+  santsabha-002-how-gurudev-appeared-to-me:
+    canonical_title: मला गुरुदेव असे दिसले
+    title_en: How Gurudev Appeared to Me
+    about_member: gurudev_ranade
+    one_line: A description of Gurudev's simple appearance and the playful exchange
+      where he guessed Vamanrao's relatives before giving him initiation.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb Karkhanis
+    - S. L. Ranade
+    themes:
+    - physical-description
+    - first-meeting
+    - name-initiation
+    - humor
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-002-how-gurudev-appeared-to-me/mr/variants/santsabha_seg002.md
+  santsabha-003-gurudev-s-unmani-chanting-of-narayan:
+    canonical_title: सद्गुरूचा उन्मनी नामघोष
+    title_en: Gurudev's Unmani Chanting of Narayan
+    about_member: gurudev_ranade
+    one_line: Vamanrao hears Gurudev chanting 'Narayan' in a divine ecstatic state
+      while fetching a prayer book at the new house.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Lele
+    - Jagannath
+    themes:
+    - name-chanting
+    - unmani-state
+    - divine-experience
+    - guru-mahima
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-003-gurudev-s-unmani-chanting-of-narayan/mr/variants/santsabha_seg003.md
+  santsabha-004-gurudev-recalls-the-name-he-gave-me:
+    canonical_title: नामाचे गुरुदेवांकडून स्मरण
+    title_en: Gurudev Recalls the Name He Gave Me
+    about_member: gurudev_ranade
+    one_line: A vision during meditation in which Gurudev seems to correct Vamanrao
+      toward the three-syllable name he was actually given, confirmed later in a sitting.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - name-meditation
+    - vision
+    - guru-grace
+    - ajar-amar-nam
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-004-gurudev-recalls-the-name-he-gave-me/mr/variants/santsabha_seg004.md
+  santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company:
+    canonical_title: निंबरगी यात्रा व सद्गुरू सहवास
+    title_en: Nimbargi Pilgrimage and Gurudev's Company
+    about_member: gurudev_ranade
+    one_line: Vamanrao's unforgettable pilgrimage to Nimbargi with Gurudev, including
+      the 'Every inch there is Nimbargi Maharaj' remark and the abdagiri incident.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Padki
+    - Tatyasaheb Patwardhan
+    - Nimbargi Maharaj
+    - Bhausaheb Maharaj
+    themes:
+    - pilgrimage
+    - nimbargi
+    - guru-company
+    - every-inch-nimbargi
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company/mr/variants/santsabha_seg005.md
+  santsabha-006-gurudev-s-birthday-3-july-1955:
+    canonical_title: गुरुदेवांचा वाढदिवस
+    title_en: Gurudev's Birthday - 3 July 1955
+    about_member: gurudev_ranade
+    one_line: The celebration of Gurudev's birthday in 1955 and Vamanrao's shame at
+      not prostrating when Professor Pandit did full prostration.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Aroskar
+    - Professor Pandit
+    - Kaku
+    themes:
+    - birthday
+    - humility
+    - professor-pandit
+    - celebration
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-006-gurudev-s-birthday-3-july-1955/mr/variants/santsabha_seg006.md
+  santsabha-007-second-trip-to-nimbargi:
+    canonical_title: निंबरगीची दुसरी वारी
+    title_en: Second Trip to Nimbargi
+    about_member: gurudev_ranade
+    one_line: Vamanrao's second Nimbargi trip in January 1957 among eminent devotees,
+      which he counts as Gurudev including him in his spiritual family.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Gangadharrao Deshpande
+    - Dr. Christian
+    - M. N. Deshpande
+    themes:
+    - pilgrimage
+    - nimbargi
+    - guru-parivar
+    - grace
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-007-second-trip-to-nimbargi/mr/variants/santsabha_seg007.md
+  santsabha-008-raghuttamaraya-s-glance-and-a-promotion:
+    canonical_title: रघुत्तमरायाची दृष्टी
+    title_en: Raghuttamaraya's Glance and a Promotion
+    about_member: gurudev_ranade
+    one_line: Gurudev's grace, signalled by his calling Vamanrao 'master', leads to
+      an unexpected workplace promotion and lasting prosperity.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - worldly-grace
+    - career
+    - guru-protection
+    - blessing
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-008-raghuttamaraya-s-glance-and-a-promotion/mr/variants/santsabha_seg008.md
+  santsabha-009-upanishad-rahasya-and-the-baroda-maharaja:
+    canonical_title: उपनिषद्रहस्य
+    title_en: Upanishad-Rahasya and the Baroda Maharaja
+    about_member: gurudev_ranade
+    one_line: The story of Gurudev's Upanishad lectures, the Baroda Maharaja's admiration,
+      and the publication of his celebrated Upanishadic work.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Sayajirao Gaikwad
+    - N. C. Kelkar
+    themes:
+    - scholarship
+    - upanishads
+    - lectures
+    - respect
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-009-upanishad-rahasya-and-the-baroda-maharaja/mr/variants/santsabha_seg009.md
+  santsabha-010-lokmanya-tilak-s-respect-for-gurudev:
+    canonical_title: लोकमान्यांचा आदर
+    title_en: Lokmanya Tilak's Respect for Gurudev
+    about_member: gurudev_ranade
+    one_line: Tilak directs a man with an Upanishad manuscript to show it to Prof.
+      Ranade as the true authority.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Lokmanya Tilak
+    themes:
+    - respect
+    - scholarship
+    - tilak
+    - upanishads
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-010-lokmanya-tilak-s-respect-for-gurudev/mr/variants/santsabha_seg010.md
+  santsabha-011-bhagavad-gita-and-god:
+    canonical_title: भगवद्गीता
+    title_en: Bhagavad Gita and God
+    about_member: gurudev_ranade
+    one_line: Gurudev's striking statement that the Gita scarcely speaks of God except
+      through self-realization, and his discussions on the Gita.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb Tulpule
+    themes:
+    - bhagavad-gita
+    - atma-darshan
+    - teaching
+    - kakasaheb-tulpule
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-011-bhagavad-gita-and-god/mr/variants/santsabha_seg011.md
+  santsabha-012-no-calamity-befalls-the-virtuous-dream:
+    canonical_title: पुण्यमार्गी जाणाऱ्यांवर संकटे नाहीत
+    title_en: No Calamity Befalls the Virtuous (Dream)
+    about_member: gurudev_ranade
+    one_line: Gurudev appears in Vamanrao's dream reciting the Gita verse assuring
+      that the virtuous meet no misfortune, calming his worries.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb Tulpule
+    themes:
+    - dream
+    - assurance
+    - gita-verse
+    - protection
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-012-no-calamity-befalls-the-virtuous-dream/mr/variants/santsabha_seg012.md
+  santsabha-013-ishwarbhava-and-paricharya-servant-of-saints:
+    canonical_title: ईश्वरभाव व परिचर्या - संतांचा पाईक
+    title_en: Ishwarbhava and Paricharya - Servant of Saints
+    about_member: gurudev_ranade
+    one_line: Gurudev explains Lord-liness and service from his Gita work, calls himself
+      a servant of saints, and expounds the meanings of 'sutra'.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Gangadharrao Deshpande
+    - Dr. Christian
+    - Nimbargi Maharaj
+    - Bhausaheb Maharaj
+    themes:
+    - lordliness
+    - service
+    - gita
+    - sutra
+    - guru-parampara
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-013-ishwarbhava-and-paricharya-servant-of-saints/mr/variants/santsabha_seg013.md
+  santsabha-014-the-1956-shravan-saptah:
+    canonical_title: १९५६ चा श्रावण सप्ताह
+    title_en: The 1956 Shravan Saptah
+    about_member: gurudev_ranade
+    one_line: The extraordinary, joyous 1956 Shravan Saptah, Gurudev's last in the
+      body, with its heaven-on-earth atmosphere.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb Tulpule
+    - Kakasaheb Karkhanis
+    - Babasaheb Sangoram
+    themes:
+    - shravan-saptah
+    - heavenly-atmosphere
+    - humor
+    - gathering
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-014-the-1956-shravan-saptah/mr/variants/santsabha_seg014.md
+  santsabha-015-tandava-nritya:
+    canonical_title: तांडवनृत्य
+    title_en: Tandava-Nritya
+    about_member: gurudev_ranade
+    one_line: A humorous sitting exchange where Gurudev playfully asks Baba Gole if
+      the Tandava dance 'comes' to him.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Baba Gole
+    themes:
+    - humor
+    - sitting
+    - wit
+    - lighthearted
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-015-tandava-nritya/mr/variants/santsabha_seg015.md
+  santsabha-016-mangopant-on-horseback:
+    canonical_title: मंगोपंत
+    title_en: Mangopant on Horseback
+    about_member: gurudev_ranade
+    one_line: Gurudev's humorous tale of Mangopant riding a horse backwards and the
+      pun on his name meaning monkey.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Mangopant
+    themes:
+    - humor
+    - maharaj-era-story
+    - wit
+    - monkey-pun
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-016-mangopant-on-horseback/mr/variants/santsabha_seg016.md
+  santsabha-017-sleep:
+    canonical_title: झोप
+    title_en: Sleep
+    about_member: gurudev_ranade
+    one_line: A witty sitting about sleep during meditation, with the saying about
+      hours of sleep for a man, mule, and fool.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Panduranga Bapat
+    - Dabade
+    themes:
+    - sleep
+    - meditation
+    - humor
+    - wakefulness
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-017-sleep/mr/variants/santsabha_seg017.md
+  santsabha-018-amar-bhojan-immortal-feast:
+    canonical_title: अमर भोजन
+    title_en: Amar Bhojan - Immortal Feast
+    about_member: gurudev_ranade
+    one_line: Gurudev remarks that watching disciples eat is like witnessing an immortal
+      feast, seeing God in them.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - teaching
+    - devotion
+    - sadguru
+    - vision
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-018-amar-bhojan-immortal-feast/mr/variants/santsabha_seg018.md
+  santsabha-019-chancellor-s-gold-medalist:
+    canonical_title: चान्सेलर्स गोल्ड मेडल
+    title_en: Chancellor's Gold Medalist
+    about_member: gurudev_ranade
+    one_line: Sondur's eyewitness account of Gurudev so absorbed in teaching that
+      he ignored the visiting Governor, who then greeted him as 'my gold medalist'.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Sondur
+    - Wrangler Paranjpe
+    themes:
+    - scholarship
+    - teaching
+    - governor-visit
+    - engrossment
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-019-chancellor-s-gold-medalist/mr/variants/santsabha_seg019.md
+  santsabha-020-tuka-sees-on-both-sides:
+    canonical_title: दोहीकडे पाहे तुका आहे ऐसा आहे
+    title_en: Tuka Sees on Both Sides
+    about_member: gurudev_ranade
+    one_line: Gurudev recalls Bhausaheb Maharaj explaining a Tukaram abhanga in 1911,
+      giving him a glimpse of self-realization that stabilized years later.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Bhausaheb Maharaj
+    - Kakasaheb Tulpule
+    themes:
+    - self-realization
+    - abhanga
+    - tukaram
+    - guru-experience
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-020-tuka-sees-on-both-sides/mr/variants/santsabha_seg020.md
+  santsabha-021-merit-of-the-twelve-jyotirlingas:
+    canonical_title: बारा ज्योतिर्लिंगाचे पुण्य
+    title_en: Merit of the Twelve Jyotirlingas
+    about_member: gurudev_ranade
+    one_line: Gurudev teaches how devotional fervor swells during darshan and tells
+      devotees their gathering earned the merit of twelve Jyotirlingas.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Mahipati
+    - Vaidya
+    themes:
+    - devotion
+    - bhava
+    - ekadashi
+    - darshan-experience
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-021-merit-of-the-twelve-jyotirlingas/mr/variants/santsabha_seg021.md
+  santsabha-022-the-plague-in-pune:
+    canonical_title: पुण्यातला प्लेग
+    title_en: The Plague in Pune
+    about_member: gurudev_ranade
+    one_line: Gurudev recounts the plague days in Pune when he rode in a cart loaded
+      with corpses, unmoved by it.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - pune-memories
+    - plague
+    - detachment
+    - fearlessness
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-022-the-plague-in-pune/mr/variants/santsabha_seg022.md
+  santsabha-023-gurudev-riding-a-bicycle:
+    canonical_title: गुरुदेवांचे सायकल चालवणे
+    title_en: Gurudev Riding a Bicycle
+    about_member: gurudev_ranade
+    one_line: Gurudev openly recalls riding a brakeless bicycle fast in Pune, breaking
+      bones, while reciting abhangas as the divine form ran ahead.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Bapu Kulkarni
+    themes:
+    - pune-memories
+    - abhanga
+    - openness
+    - bicycle
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-023-gurudev-riding-a-bicycle/mr/variants/santsabha_seg023.md
+  santsabha-024-resolving-doubt-realization-comes-gradually:
+    canonical_title: शंका निरसन
+    title_en: Resolving Doubt - Realization Comes Gradually
+    about_member: gurudev_ranade
+    one_line: When Vamanrao doubts his worthiness, a sitting discussion teaches that
+      self-realization comes slowly and gradually through patient effort.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - doubt
+    - gradual-realization
+    - patience
+    - jnaneshwar
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-024-resolving-doubt-realization-comes-gradually/mr/variants/santsabha_seg024.md
+  santsabha-025-upama-jnaneshwarasya:
+    canonical_title: उपमा ज्ञानेश्वरस्य
+    title_en: Upama Jnaneshwarasya
+    about_member: gurudev_ranade
+    one_line: Gurudev's deep admiration for Jnaneshwar, his quip 'Upama Jnaneshwarasya',
+      and his distinctive interpretation of an ovi.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Jnaneshwar
+    - Nivruttinath
+    - Kalidas
+    themes:
+    - jnaneshwar
+    - nivruttinath
+    - interpretation
+    - admiration
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-025-upama-jnaneshwarasya/mr/variants/santsabha_seg025.md
+  santsabha-026-acharyopasana-service-of-the-guru:
+    canonical_title: आचार्योपासना
+    title_en: Acharyopasana - Service of the Guru
+    about_member: gurudev_ranade
+    one_line: A reading on Jnaneshwar's hundred ovis on serving the guru, with Gurudev
+      wryly noting people will do anything but the discipline of nem.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Jnaneshwar
+    themes:
+    - guru-service
+    - jnaneshwar
+    - gita
+    - nem
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-026-acharyopasana-service-of-the-guru/mr/variants/santsabha_seg026.md
+  santsabha-027-some-incidents-1-to-8:
+    canonical_title: काही घटना
+    title_en: Some Incidents (1 to 8)
+    about_member: gurudev_ranade
+    one_line: A collection of eight short sitting incidents, including a child's pada,
+      Gurudev's puns, reading Bhausaheb's letters, and Shambhuling Swami.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Suhas Kulkarni
+    - Nanasaheb Apte
+    - Bhausaheb Maharaj
+    themes:
+    - sitting-anecdotes
+    - humor
+    - padas
+    - guru-insight
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-027-some-incidents-1-to-8/mr/variants/santsabha_seg027.md
+  santsabha-028-casual-speech-as-beneficial-teaching:
+    canonical_title: सहज बोलणे हित उपदेश
+    title_en: Casual Speech as Beneficial Teaching
+    about_member: gurudev_ranade
+    one_line: Gurudev's spontaneous words carried teaching and assurance, and he taught
+      that vision of God demands long, patient, exhausting toil.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - teaching
+    - instinctive-speech
+    - long-toil
+    - encouragement
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-028-casual-speech-as-beneficial-teaching/mr/variants/santsabha_seg028.md
+  santsabha-029-ask-now-for-whatever-you-want:
+    canonical_title: काय हवे असेल ते आत्ता मागून घ्या
+    title_en: Ask Now for Whatever You Want
+    about_member: gurudev_ranade
+    one_line: Gurudev, channeling Maharaj's presence, invites devotees to ask for
+      anything, and Vamanrao sings the Radha churning pada.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakusaheb
+    themes:
+    - maharaj-presence
+    - padas
+    - radha-golan
+    - confidence
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-029-ask-now-for-whatever-you-want/mr/variants/santsabha_seg029.md
+  santsabha-030-one-must-be-able-to-insist-with-god:
+    canonical_title: देवापाशी हट्ट धरता आला पाहिजे
+    title_en: One Must Be Able to Insist with God
+    about_member: gurudev_ranade
+    one_line: Pointing to the divine form, Gurudev teaches that a devotee should be
+      able to insist lovingly with God.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - devotion
+    - insistence
+    - teaching
+    - form-of-god
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-030-one-must-be-able-to-insist-with-god/mr/variants/santsabha_seg030.md
+  santsabha-031-the-earth-is-moving-earthquake-at-allahabad:
+    canonical_title: अरेच्या! पृथ्वी हलत आहे
+    title_en: The Earth Is Moving! (Earthquake at Allahabad)
+    about_member: gurudev_ranade
+    one_line: Gurudev recounts an Allahabad earthquake and a Maratha servant's rustic
+      exclamation conveying a great truth that amused him.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - humor
+    - allahabad
+    - earthquake
+    - rustic-wisdom
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-031-the-earth-is-moving-earthquake-at-allahabad/mr/variants/santsabha_seg031.md
+  santsabha-032-daivasura-sampatti-ravana-s-lineage:
+    canonical_title: दैवासुर संपत्ती
+    title_en: Daivasura Sampatti - Ravana's Lineage
+    about_member: gurudev_ranade
+    one_line: Gurudev illustrates divine-and-demonic wealth through Ravana's mixed
+      parentage and the tale of Mayasura's scheming marriage.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Mayasura
+    themes:
+    - mythology
+    - ravana
+    - humor
+    - story
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-032-daivasura-sampatti-ravana-s-lineage/mr/variants/santsabha_seg032.md
+  santsabha-033-two-important-memories-gurudev-s-last-days:
+    canonical_title: दोन महत्त्वाच्या आठवणी
+    title_en: Two Important Memories - Gurudev's Last Days
+    about_member: gurudev_ranade
+    one_line: Vamanrao's poignant account of Gurudev's last weeks in 1957, the emotional
+      sittings, Gurudev's final instructions, and his passing on 6 June.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Khanolkar
+    - Dr. Paripatyadar
+    - Dr. Aroskar
+    - Bhausaheb Maharaj
+    themes:
+    - last-days
+    - nirvana
+    - emotion
+    - final-meeting
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-033-two-important-memories-gurudev-s-last-days/mr/variants/santsabha_seg033.md
+  santsabha-034-sunare-maine-and-guru-s-grace:
+    canonical_title: सुनारे मैने व गुरुकृपा
+    title_en: Sunare Maine and Guru's Grace
+    about_member: gurudev_ranade
+    one_line: Gurudev loves Vamanrao's rendering of a Hindi pada, insists the 'wrong'
+      wording not be called wrong, and his life transforms thereafter.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Paripatyadar
+    - Kaka Tulpule
+    themes:
+    - hindi-pada
+    - guru-grace
+    - correction
+    - transformation
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-034-sunare-maine-and-guru-s-grace/mr/variants/santsabha_seg034.md
+  santsabha-035-some-remarkable-experiences:
+    canonical_title: काही विलक्षण अनुभव
+    title_en: Some Remarkable Experiences
+    about_member: gurudev_ranade
+    one_line: Gurudev sternly corrects Vamanrao's imitation, then later, hearing 'Dev
+      maza mi devacha', a luminous experience enters him.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Shankarrao Tendulkar
+    - Dr. Paripatyadar
+    themes:
+    - rebuke
+    - guru-grace
+    - pada
+    - spiritual-experience
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-035-some-remarkable-experiences/mr/variants/santsabha_seg035.md
+  santsabha-036-bhule-man-the-lamani-caravan:
+    canonical_title: भूले मन समझ के लाद लदनिया
+    title_en: Bhule Man - The Lamani Caravan
+    about_member: gurudev_ranade
+    one_line: Gurudev recalls explaining a Kabir pada to a Lamani caravan to settle
+      them near Nimbal during the Hyderabad liberation unrest.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - hindi-pada
+    - lamani
+    - kabir
+    - guidance
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-036-bhule-man-the-lamani-caravan/mr/variants/santsabha_seg036.md
+  santsabha-037-sai-alakh-the-two-mahipatis:
+    canonical_title: साई अलख पलख में झलके
+    title_en: Sai Alakh - The Two Mahipatis
+    about_member: gurudev_ranade
+    one_line: Gurudev distinguishes the realized saint-poet Mahipati of Kakhandki
+      from a mere storyteller and sings his Hindi pada.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakhandki Mahipati
+    themes:
+    - hindi-pada
+    - kannada-sitting
+    - mahipati
+    - saint-poet
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-037-sai-alakh-the-two-mahipatis/mr/variants/santsabha_seg037.md
+  santsabha-038-narhari-chanchal-hai-mati:
+    canonical_title: नरहरी चंचल है मति
+    title_en: Narhari Chanchal Hai Mati
+    about_member: gurudev_ranade
+    one_line: Eager for Gurudev's attention, Vamanrao uses the pretext of leaving
+      and sings a pada praying for the vision of God.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - hindi-pada
+    - longing
+    - prayer
+    - darshan
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-038-narhari-chanchal-hai-mati/mr/variants/santsabha_seg038.md
+  santsabha-039-kabir-s-dohas-seek-god-within:
+    canonical_title: कबीरांच्या दोह्यांचा मथितार्थ
+    title_en: Kabir's Dohas - Seek God Within
+    about_member: gurudev_ranade
+    one_line: Vamanrao recites Kabir dohas with English meanings (henna, musk-deer),
+      prompting Gurudev to urge him to learn Hindi and come to Allahabad.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - S. R. Deshpande
+    themes:
+    - kabir-dohas
+    - immanence
+    - english-explanation
+    - hindi-learning
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-039-kabir-s-dohas-seek-god-within/mr/variants/santsabha_seg039.md
+  santsabha-040-gurudev-s-way-of-pointing-out-mistakes:
+    canonical_title: चूक दाखवून देण्याची खास पद्धत
+    title_en: Gurudev's Way of Pointing Out Mistakes
+    about_member: gurudev_ranade
+    one_line: Gurudev indirectly reveals Vamanrao's mispronunciation by having the
+      pada-book read aloud rather than directly correcting him.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Jeurkar
+    - Maslekar
+    themes:
+    - correction
+    - pada
+    - gentleness
+    - household-priest
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-040-gurudev-s-way-of-pointing-out-mistakes/mr/variants/santsabha_seg040.md
+  santsabha-041-alakh-purush-nirvan-household-priest:
+    canonical_title: अलख पुरुष निर्वाण - घरचा भटजी
+    title_en: Alakh Purush Nirvan - Household Priest
+    about_member: gurudev_ranade
+    one_line: Reflecting on Gurudev calling Jeurkar 'household priest', Vamanrao learns
+      the qualities of humility, secrecy and promptitude from the doha.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Jeurkar
+    themes:
+    - doha
+    - humility-secrecy-promptitude
+    - jeurkar
+    - discipline
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-041-alakh-purush-nirvan-household-priest/mr/variants/santsabha_seg041.md
+  santsabha-042-dhokhe-hi-dhokhe-service-accepted-at-guru-s-f:
+    canonical_title: धोखे हि धोखै - गुरुचरणी सेवा
+    title_en: Dhokhe Hi Dhokhe - Service Accepted at Guru's Feet
+    about_member: gurudev_ranade
+    one_line: After Gurudev's passing, Jeurkar dreams Gurudev praising Vamanrao's
+      singing of a difficult pada, which Vamanrao takes as accepted service.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Vasantrao Jeurkar
+    themes:
+    - hindi-pada
+    - dream
+    - post-nirvana-grace
+    - true-dreams
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-042-dhokhe-hi-dhokhe-service-accepted-at-guru-s-f/mr/variants/santsabha_seg042.md
+  santsabha-043-ras-gagan-gufa-mein-sweet-communion-with-guru:
+    canonical_title: रस गगन गुफा में - गुरुदेवांशी सुखसंवाद
+    title_en: Ras Gagan Gufa Mein - Sweet Communion with Gurudev
+    about_member: gurudev_ranade
+    one_line: Forgetting a line mid-pada, Vamanrao silently prays and recalls it,
+      and Gurudev later teaches him a Kabir pada that brings him spiritual experience.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - kabir-pada
+    - communion
+    - prachiti
+    - guru-prompting
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-043-ras-gagan-gufa-mein-sweet-communion-with-guru/mr/variants/santsabha_seg043.md
+  santsabha-044-saints-padas-and-gurudev-s-thoughts:
+    canonical_title: संतांची पदे आणि गुरुदेवांचे विचार
+    title_en: Saints' Padas and Gurudev's Thoughts
+    about_member: gurudev_ranade
+    one_line: A collection of old verses and aryas Gurudev would recite, including
+      the Sanskrit verse on using the body's health for self-realization.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Moropant
+    themes:
+    - poetry
+    - moropant
+    - sanskrit-verse
+    - opportunity
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-044-saints-padas-and-gurudev-s-thoughts/mr/variants/santsabha_seg044.md
+  santsabha-045-a-saint-s-quilt-is-best:
+    canonical_title: साधुचि गोधडी बरी
+    title_en: A Saint's Quilt Is Best
+    about_member: gurudev_ranade
+    one_line: A short fragment on a pada praising the saint's humble quilt and gruel.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - pada
+    - saint-company
+    - humility
+    - village
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-045-a-saint-s-quilt-is-best/mr/variants/santsabha_seg045.md
+  santsabha-046-shivalingavva-akka:
+    canonical_title: शिवलिंगव्वा अक्का
+    title_en: Shivalingavva Akka
+    about_member: gurudev_ranade
+    one_line: Gurudev's deep respect for Shivalingavva Akka, the 'wrestler who never
+      let her back touch the ground', whose realization equaled Mira and Mukta.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Shivalingavva Akka
+    themes:
+    - woman-sadhak
+    - intense-sadhana
+    - experience-padas
+    - respect
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-046-shivalingavva-akka/mr/variants/santsabha_seg046.md
+  santsabha-047-lingappa-savalagi:
+    canonical_title: लिंगप्पा सावळगी
+    title_en: Lingappa Savalagi
+    about_member: gurudev_ranade
+    one_line: Lingappa submits a blank exam paper yet passes after Maharaj's assurance,
+      because the lost paper bundle led to all candidates being passed.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Bhausaheb Maharaj
+    themes:
+    - maharaj-grace
+    - exam-miracle
+    - faith
+    - nem
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-047-lingappa-savalagi/mr/variants/santsabha_seg047.md
+  santsabha-048-dr-sarvepalli-radhakrishnan:
+    canonical_title: डॉ. राधाकृष्णन
+    title_en: Dr. Sarvepalli Radhakrishnan
+    about_member: gurudev_ranade
+    one_line: Radhakrishnan's praise of Gurudev, the concept of 'Brahmasansparsh',
+      and his quoting the Mundaka two-birds verse to describe Gurudev's state.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Sarvepalli Radhakrishnan
+    themes:
+    - friendship
+    - brahmasansparsh
+    - two-birds-verse
+    - tribute
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-048-dr-sarvepalli-radhakrishnan/mr/variants/santsabha_seg048.md
+  santsabha-049-wrangler-paranjpe:
+    canonical_title: रँग्लर परांजपे
+    title_en: Wrangler Paranjpe
+    about_member: gurudev_ranade
+    one_line: Gurudev's high regard for the upright atheist Wrangler Paranjpe, who
+      called Ranade an expert in all subjects.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Wrangler Paranjpe
+    themes:
+    - friendship
+    - atheist
+    - respect
+    - all-rounder
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-049-wrangler-paranjpe/mr/variants/santsabha_seg049.md
+  santsabha-050-kakasaheb-tulpule:
+    canonical_title: काकासाहेब तुळपुळे
+    title_en: Kakasaheb Tulpule
+    about_member: gurudev_ranade
+    one_line: An account of Kakasaheb Tulpule's extraordinary love for Gurudev and
+      his moving discourses that Gurudev greatly admired.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb Tulpule
+    - Ganpatrao
+    themes:
+    - devotee
+    - love
+    - pravachan
+    - emotion
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-050-kakasaheb-tulpule/mr/variants/santsabha_seg050.md
+  santsabha-051-babasaheb-sangoram:
+    canonical_title: बाबासाहेब संगोराम
+    title_en: Babasaheb Sangoram
+    about_member: gurudev_ranade
+    one_line: A portrait of the dignified Babasaheb Sangoram, custodian of Maharaj's
+      letters, whose singing of 'Sant jani parisavi' moved everyone.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Babasaheb Sangoram
+    themes:
+    - devotee
+    - maharaj-letters
+    - singing
+    - dignity
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-051-babasaheb-sangoram/mr/variants/santsabha_seg051.md
+  santsabha-052-banyabapu-tulpule:
+    canonical_title: बन्याबापू तुळपुळे
+    title_en: Banyabapu Tulpule
+    about_member: gurudev_ranade
+    one_line: Banyabapu, Gurudev's biographer, calls him the 'Panini of paramartha'
+      and a living miracle; includes the 'God helps you' letter and Bendre's remark.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Banyabapu Tulpule
+    - D. R. Bendre
+    themes:
+    - biographer
+    - panini-of-paramartha
+    - self-help
+    - bendre
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-052-banyabapu-tulpule/mr/variants/santsabha_seg052.md
+  santsabha-053-gaddyappa-the-water-carrier:
+    canonical_title: गड्ड्याप्पा
+    title_en: Gaddyappa the Water-Carrier
+    about_member: gurudev_ranade
+    one_line: The story of the old illiterate water-carrier Gaddyappa, the first devotee
+      to die at Nimbal, whom Gurudev cared for and praised.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Gaddyappa
+    themes:
+    - servant
+    - first-to-die-at-nimbal
+    - guru-care
+    - humility
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-053-gaddyappa-the-water-carrier/mr/variants/santsabha_seg053.md
+  santsabha-054-gaddyappa-lost-and-found:
+    canonical_title: गड्ड्याप्पा हरवला व सापडला
+    title_en: Gaddyappa Lost and Found
+    about_member: gurudev_ranade
+    one_line: The comic confusion when 'Gaddyappa Lost' and 'Gaddyappa Found' telegrams
+      arrived in reversed order during a journey to Allahabad.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Sitarampant Joshi
+    - Prahlad Kulkarni
+    - Gaddyappa
+    themes:
+    - humor
+    - telegram-mixup
+    - journey
+    - story
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-054-gaddyappa-lost-and-found/mr/variants/santsabha_seg054.md
+  santsabha-055-diwan-bahadur-limaye-and-the-meditation-hall:
+    canonical_title: दिवाण बहाद्दर लिमये व ध्यानमंदिर
+    title_en: Diwan Bahadur Limaye and the Meditation Hall
+    about_member: gurudev_ranade
+    one_line: Limaye builds a meditation hall in Solapur; Gurudev's letter on conferring
+      obligation, and how Baba Gole was drawn to the path through Gurudev's eyes.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Diwan Bahadur Limaye
+    - Dr. Paripatyadar
+    - Baba Gole
+    themes:
+    - devotee
+    - meditation-hall
+    - letters
+    - obligation
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-055-diwan-bahadur-limaye-and-the-meditation-hall/mr/variants/santsabha_seg055.md
+  santsabha-056-prema-kantak:
+    canonical_title: प्रेमा कंटक
+    title_en: Prema Kantak
+    about_member: gurudev_ranade
+    one_line: The Gandhian worker Prema Kantak and the teaching that name-remembrance
+      itself transmits spiritual power for others' welfare.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Prema Kantak
+    themes:
+    - devotee
+    - gandhian
+    - social-service
+    - transmission-of-power
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-056-prema-kantak/mr/variants/santsabha_seg056.md
+  santsabha-057-vasudevrao-ranade-vijapur:
+    canonical_title: वासुदेवराव रानडे
+    title_en: Vasudevrao Ranade (Vijapur)
+    about_member: gurudev_ranade
+    one_line: Vasudevrao Ranade questions whether other practices are needed if name-remembrance
+      is supreme, and Gurudev answers gently.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Vasudevrao Ranade
+    themes:
+    - devotee
+    - warkari
+    - name-remembrance
+    - openness
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-057-vasudevrao-ranade-vijapur/mr/variants/santsabha_seg057.md
+  santsabha-058-basappa-parchande:
+    canonical_title: बसप्पा परचंडे
+    title_en: Basappa Parchande
+    about_member: gurudev_ranade
+    one_line: The 'giant' meditator Basappa, who fell into trance instantly, found
+      money after a dream-voice, and was Gurudev's equation for Solapur.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Basappa Parchande
+    themes:
+    - devotee
+    - effortless-meditation
+    - money-found
+    - guru-love
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-058-basappa-parchande/mr/variants/santsabha_seg058.md
+  santsabha-059-dr-paripatyadar-solapur:
+    canonical_title: डॉ. पारिपत्यदार
+    title_en: Dr. Paripatyadar, Solapur
+    about_member: gurudev_ranade
+    one_line: Dr. Paripatyadar, who offered body, mind and wealth to Gurudev, and
+      Gurudev's gesture of firmly holding his arm out of affection.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Paripatyadar
+    themes:
+    - devotee
+    - surrender
+    - guru-love
+    - affection
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-059-dr-paripatyadar-solapur/mr/variants/santsabha_seg059.md
+  santsabha-060-dada-kamadhenuwadikar:
+    canonical_title: दादा कामधेनूवाडीकर
+    title_en: Dada Kamadhenuwadikar
+    about_member: gurudev_ranade
+    one_line: Dada Kamadhenuwadikar helps Vamanrao get a hurried darshan, which he
+      sees as Gurudev arranging things rightly.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dada Kamadhenuwadikar
+    themes:
+    - devotee
+    - darshan-arranged
+    - grace
+    - timing
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-060-dada-kamadhenuwadikar/mr/variants/santsabha_seg060.md
+  santsabha-061-b-b-lal-delhi:
+    canonical_title: बी. बी. लाल
+    title_en: B. B. Lal, Delhi
+    about_member: gurudev_ranade
+    one_line: The archaeologist B. B. Lal takes the name after hearing Gurudev's reply
+      'I don't believe, I perceive' to a philosophers' query.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - B. B. Lal
+    - M. N. Deshpande
+    themes:
+    - devotee
+    - I-perceive
+    - conviction
+    - initiation
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-061-b-b-lal-delhi/mr/variants/santsabha_seg061.md
+  santsabha-062-barrister-ankalikar:
+    canonical_title: बॅरिस्टर अंकलीकर
+    title_en: Barrister Ankalikar
+    about_member: gurudev_ranade
+    one_line: Barrister Ankalikar and Gurudev's witty '90% perspiration and 10% inspiration'
+      remark about his strong, spiced tea.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Barrister Ankalikar
+    - D. Market
+    - Prof. Burch
+    themes:
+    - devotee
+    - humor
+    - strong-tea
+    - gathering-people
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-062-barrister-ankalikar/mr/variants/santsabha_seg062.md
+  santsabha-063-annappa-the-servant:
+    canonical_title: आण्णप्पा
+    title_en: Annappa the Servant
+    about_member: gurudev_ranade
+    one_line: The young servant Annappa, sweet singer, whose head Gurudev used to
+      demonstrate the brain, and who sang when the ashram emptied.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Datar
+    - Annappa
+    themes:
+    - servant
+    - singing
+    - humor
+    - brain-demonstration
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-063-annappa-the-servant/mr/variants/santsabha_seg063.md
+  santsabha-064-the-child-watching-the-arati:
+    canonical_title: आरतीकडे पाहणारा मुलगा
+    title_en: The Child Watching the Arati
+    about_member: gurudev_ranade
+    one_line: Gurudev lifts onto his lap a child intently watching the arati, and
+      that same day the child's estranged father reconciles with the mother.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Katre
+    - Dr. Paripatyadar
+    themes:
+    - child
+    - grace
+    - reconciliation
+    - kindness
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-064-the-child-watching-the-arati/mr/variants/santsabha_seg064.md
+  santsabha-065-american-prof-burch:
+    canonical_title: अमेरिकन प्रो. बर्च
+    title_en: American Prof. Burch
+    about_member: gurudev_ranade
+    one_line: Gurudev's detailed teaching to Prof. Burch on physical, psychological
+      and mystical meditation, passive alertness, and Burch's later tribute.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Prof. Burch
+    - Kakasaheb Karkhanis
+    - Kanitkar
+    themes:
+    - meditation-teaching
+    - mystical-meditation
+    - passive-alertness
+    - tribute
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-065-american-prof-burch/mr/variants/santsabha_seg065.md
+  santsabha-066-prof-bain:
+    canonical_title: प्रो. बेन
+    title_en: Prof. Bain
+    about_member: gurudev_ranade
+    one_line: Memories of Prof. Bain, the snoring-student anecdote, his saying 'Books
+      help when friends do not, meditation when books do not', and learning Kannada
+      his way.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Prof. Bain
+    - Bhausaheb Maharaj
+    themes:
+    - teacher
+    - humor
+    - books-and-meditation
+    - kannada-learning
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-066-prof-bain/mr/variants/santsabha_seg066.md
+  santsabha-067-dr-chidgupkar:
+    canonical_title: डॉ. चिडगुपकर
+    title_en: Dr. Chidgupkar
+    about_member: gurudev_ranade
+    one_line: The simple, kind Dr. Chidgupkar whom Gurudev playfully called Vithoba
+      after his candid answer about coming to Nimbal out of boredom.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Manikrao Chidgupkar
+    themes:
+    - devotee
+    - simplicity
+    - humor
+    - vithoba
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-067-dr-chidgupkar/mr/variants/santsabha_seg067.md
+  santsabha-068-gopalrao-aurangabadkar:
+    canonical_title: गोपाळराव औरंगाबादकर
+    title_en: Gopalrao Aurangabadkar
+    about_member: gurudev_ranade
+    one_line: The devout sanitary inspector who tested Nimbal's water and brought
+      mangoes, through whom Gurudev later helped Vamanrao's family.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Gopalrao Aurangabadkar
+    themes:
+    - devotee
+    - water-testing
+    - mangoes
+    - service
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-068-gopalrao-aurangabadkar/mr/variants/santsabha_seg068.md
+  santsabha-069-the-lawyer-and-dandekar-s-discussion:
+    canonical_title: वकील व दांडेकर चर्चा
+    title_en: The Lawyer and Dandekar's Discussion
+    about_member: gurudev_ranade
+    one_line: When a lawyer asks when he will get realization, Gurudev replies the
+      dish is set before him and he need only lift the cover.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dandekar
+    themes:
+    - devotee
+    - self-realization
+    - the-dish-is-ready
+    - teaching
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-069-the-lawyer-and-dandekar-s-discussion/mr/variants/santsabha_seg069.md
+  santsabha-070-stomach-illness-and-a-dream-vision:
+    canonical_title: पोटाचा आजार व स्वप्नदृष्टान्त
+    title_en: Stomach Illness and a Dream Vision
+    about_member: gurudev_ranade
+    one_line: After Gurudev's passing, he appears in dreams to heal Vamanrao's stomach
+      illness and to urge him to do nem even while eating.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Aroskar
+    - Baba Gole
+    themes:
+    - post-nirvana-grace
+    - illness
+    - dream
+    - nem-while-eating
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-070-stomach-illness-and-a-dream-vision/mr/variants/santsabha_seg070.md
+  santsabha-071-wife-s-illness-and-other-calamities:
+    canonical_title: पत्नीचा आजार व इतर आपत्ती
+    title_en: Wife's Illness and Other Calamities
+    about_member: gurudev_ranade
+    one_line: Gurudev's grace resolves housing troubles and heals Vamanrao's wife
+      through Nimbal tirth and Gopalrao's care.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Baba Gole
+    - Gopalrao Aurangabadkar
+    themes:
+    - post-nirvana-grace
+    - housing
+    - tirth-healing
+    - protection
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-071-wife-s-illness-and-other-calamities/mr/variants/santsabha_seg071.md
+  santsabha-072-death-came-to-my-toe:
+    canonical_title: मरण अंगठ्यावर गेले
+    title_en: Death Came to My Toe
+    about_member: gurudev_ranade
+    one_line: Vamanrao narrowly escapes falling under a moving train near Tadwal,
+      injuring only his toe, on a prideful trip to the samadhi for his sons' thread
+      ceremony.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - protection
+    - near-accident
+    - ego
+    - munj
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-072-death-came-to-my-toe/mr/variants/santsabha_seg072.md
+  santsabha-073-the-ego-of-spirituality:
+    canonical_title: परमार्थाचा अहंकार
+    title_en: The Ego of Spirituality
+    about_member: gurudev_ranade
+    one_line: After Vamanrao's spiritual pride leads him to strike a worker and cause
+      a mill walkout, Gurudev teaches him a lesson yet shields him from consequences.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakusaheb
+    themes:
+    - ego
+    - lesson
+    - mill-strike
+    - humility
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-073-the-ego-of-spirituality/mr/variants/santsabha_seg073.md
+  santsabha-074-gurudev-s-command:
+    canonical_title: गुरुदेवांचा आदेश
+    title_en: Gurudev's Command
+    about_member: gurudev_ranade
+    one_line: Persecuted by a new department head, Vamanrao is cleared and a vision
+      at Gurudev's samadhi directs the outcome that removes his tormentor.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    themes:
+    - post-nirvana-grace
+    - workplace-harassment
+    - vision-at-samadhi
+    - protection
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-074-gurudev-s-command/mr/variants/santsabha_seg074.md
+  santsabha-075-my-hernia-operation:
+    canonical_title: हर्नियाचे ऑपरेशन
+    title_en: My Hernia Operation
+    about_member: gurudev_ranade
+    one_line: Dr. Chidgupkar arranges Vamanrao's hernia operation and by Gurudev's
+      grace he recovers smoothly and attends the Shravan Saptah.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Dr. Manikrao Chidgupkar
+    - Kakusaheb
+    themes:
+    - post-nirvana-grace
+    - operation
+    - devotee-help
+    - smooth-recovery
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-075-my-hernia-operation/mr/variants/santsabha_seg075.md
+  santsabha-076-honest-work-pleases-god:
+    canonical_title: इमानदारीने काम केल्यास देवाला आनंद
+    title_en: Honest Work Pleases God
+    about_member: gurudev_ranade
+    one_line: Hearing that honest work pleases God, Vamanrao reforms; his manager,
+      learning of his devotion, then never refuses him leave.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Kakasaheb
+    themes:
+    - work-ethic
+    - teaching
+    - leave
+    - guru-grace
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-076-honest-work-pleases-god/mr/variants/santsabha_seg076.md
+  santsabha-077-children-s-education-and-guru-s-grace:
+    canonical_title: मुलांची शिक्षणे व गुरुकृपा
+    title_en: Children's Education and Guru's Grace
+    about_member: gurudev_ranade
+    one_line: Four accounts of Gurudev's grace in the education, careers and marriages
+      of Vamanrao's children, including providential medical-college admission.
+    narrator: Vamanrao Kulkarni
+    key_people:
+    - Gurudev R. D. Ranade
+    - Usha
+    - Ashok
+    - Nandu
+    - Hema
+    themes:
+    - post-nirvana-grace
+    - children-education
+    - providence
+    - family
+    source_work: santsabha-sittings
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/santsabha-077-children-s-education-and-guru-s-grace/mr/variants/santsabha_seg077.md
+  dada-tendulkar-001-opening-apology-and-purpose-of-the-tribute:
+    canonical_title: प्रथम संतसभेची क्षमा
+    title_en: Opening Apology and Purpose of the Tribute
+    about_member: gurudev_ranade
+    one_line: The narrator apologizes for taking the initiative to speak and explains
+      the occasion of offering this tribute to Shankarrao (Dada) Tendulkar at Gurudev's
+      jayanti week.
+    narrator: Dada Tendulkar
+    key_people:
+    - Shankarrao Tendulkar
+    - Ravindra Paripatyadar
+    - Gurudev
+    themes:
+    - humility
+    - tribute-intro
+    - satsang
+    - guru-bhakti
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-001-opening-apology-and-purpose-of-the-tribute/mr/variants/dada-tendulkar_seg001.md
+  dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team:
+    canonical_title: गुरूदेवांच्या टीममधले शेवटचे खेळाडू
+    title_en: Shankarrao, the Last Player on Gurudev's Team
+    about_member: gurudev_ranade
+    one_line: Every saint comes with a team, and Shankarrao was the last player on
+      Gurudev's team, helping build and sustain the collective naam-sadhana.
+    narrator: Dada Tendulkar
+    key_people:
+    - Shankarrao Tendulkar
+    - Gurudev
+    - Kakaso Tulpule
+    - Kakaso Karkhanis
+    themes:
+    - saint-mission
+    - discipleship
+    - naam-sadhana
+    - community
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team/mr/variants/dada-tendulkar_seg002.md
+  dada-tendulkar-003-incentive-to-spiritual-life-receiving-the-naa:
+    canonical_title: नाम मिळणे — परमार्थ प्रवृत्तीचे कारण
+    title_en: 'Incentive to Spiritual Life: Receiving the Naam Mantra'
+    about_member: gurudev_ranade
+    one_line: Feeling unworthy as a milk-seller who adulterated milk, Shankarrao doubts
+      he can receive naam, but Gurudev declares this path is for redeeming sinners
+      and grants him the mantra through Kakaso Tulpule.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Kaka Karkhanis
+    - Kakaso Tulpule
+    - Damle
+    themes:
+    - receiving-naam
+    - self-doubt
+    - guru-grace
+    - redemption
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-003-incentive-to-spiritual-life-receiving-the-naa/mr/variants/dada-tendulkar_seg003.md
+  dada-tendulkar-004-faith-strengthened-reassurances-from-gurudev:
+    canonical_title: श्रध्देस बळकट केले
+    title_en: 'Faith Strengthened: Reassurances from Gurudev'
+    about_member: gurudev_ranade
+    one_line: Through episodes at Nimbal and Pune, Gurudev repeatedly reassures the
+      doubting Shankarrao that his naam practice is correct and foretells he will
+      be useful for the spiritual cause.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Prof. Athawale
+    - Karmarkar
+    - Bapopant Tulpule
+    themes:
+    - faith
+    - reassurance
+    - nimbal-pilgrimage
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-004-faith-strengthened-reassurances-from-gurudev/mr/variants/dada-tendulkar_seg004.md
+  dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal:
+    canonical_title: दीपावली सप्ताहाची सुरवात
+    title_en: The Beginning of the Diwali Saptah at Nimbal
+    about_member: gurudev_ranade
+    one_line: Dr. Dadaso Kanitkar takes Shankarrao to spend Diwali at Nimbal in 1949
+      doing continuous naam on the train, and Gurudev welcomes them warmly, inaugurating
+      the Diwali saptah that continued until 1966.
+    narrator: Dada Tendulkar
+    key_people:
+    - Dr. Dadaso Kanitkar
+    - Gurudev
+    - Jagannath Lele
+    themes:
+    - diwali-saptah
+    - nimbal
+    - naam-practice
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal/mr/variants/dada-tendulkar_seg005.md
+  dada-tendulkar-006-gurudev-takes-charge-of-his-yoga-kshema-livel:
+    canonical_title: योगक्षेमाची जबाबदारी श्री गुरूदेवांनी घेतली
+    title_en: Gurudev Takes Charge of His Yoga-Kshema (Livelihood)
+    about_member: gurudev_ranade
+    one_line: Burdened by debt, Shankarrao's milk business miraculously flourishes
+      after Gurudev and Ketkar tell him to worry only about naam, and he learns a
+      lesson about the ego hidden in his vow to donate a lump sum.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Ketkar
+    - Tatya Damle
+    - Moropant Mokashi
+    - Babaso
+    themes:
+    - yoga-kshema
+    - providence
+    - milk-business
+    - ego
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-006-gurudev-takes-charge-of-his-yoga-kshema-livel/mr/variants/dada-tendulkar_seg006.md
+  dada-tendulkar-007-called-alone-to-gurudev-s-room-the-promise-of:
+    canonical_title: गुरूदेवांजवळ एकटाच — अन्नाची जबाबदारी
+    title_en: Called Alone to Gurudev's Room; The Promise of Sustenance
+    about_member: gurudev_ranade
+    one_line: On his first solo visit to Gurudev's room, Gurudev pulls him close and
+      whispers in his ear that he will never lack food and that the responsibility
+      is Gurudev's, provided he keeps coming.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Babaso Sangoram
+    - Shankarrao Mokashi
+    themes:
+    - guru-grace
+    - sustenance-promise
+    - intimacy
+    - providence
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-007-called-alone-to-gurudev-s-room-the-promise-of/mr/variants/dada-tendulkar_seg007.md
+  dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell:
+    canonical_title: शिष्याचा उपयोग
+    title_en: 'Use of a Disciple: Debt Settled and a Foretelling Saint'
+    about_member: gurudev_ranade
+    one_line: A friend secretly clears Shankarrao's debt, and at a sitting Gurudev
+      senses a struggling devotee whose fortunes later improve—recognized to be Shankarrao
+      himself.
+    narrator: Dada Tendulkar
+    key_people:
+    - Chi. Ra. Gokhale
+    - Gurudev
+    - Bapuso Katre
+    - Nagpurkar
+    themes:
+    - disciple-service
+    - debt
+    - providence
+    - guru-vision
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell/mr/variants/dada-tendulkar_seg008.md
+  dada-tendulkar-009-spiritual-yoga-kshema-the-vision-of-the-bindu:
+    canonical_title: पारमार्थिक योगक्षेम — बिंदुदर्शन
+    title_en: 'Spiritual Yoga-Kshema: The Vision of the Bindu'
+    about_member: gurudev_ranade
+    one_line: Called into his room in 1949, Gurudev has Shankarrao close his eyes
+      and confirms his vision of the inner bindu, resolving a doubt.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    themes:
+    - inner-vision
+    - bindu
+    - spiritual-experience
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-009-spiritual-yoga-kshema-the-vision-of-the-bindu/mr/variants/dada-tendulkar_seg009.md
+  dada-tendulkar-010-the-coconut-the-cholera-crisis-and-see-how-a:
+    canonical_title: नारळ, कॉलरा व शिष्याचा उपयोग
+    title_en: The Coconut, the Cholera Crisis, and 'See How a Disciple Is Used'
+    about_member: gurudev_ranade
+    one_line: When the Nimbal cook falls ill with cholera, Shankarrao and his wife
+      are pressed into kitchen service and miraculously manage to feed everyone, prompting
+      Gurudev's remark on how a disciple is put to use.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Prof. Joshi
+    - Jagannath Lele
+    - Shrikant
+    - Shamrao Kumthekar
+    themes:
+    - seva
+    - providence
+    - crisis-management
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-010-the-coconut-the-cholera-crisis-and-see-how-a/mr/variants/dada-tendulkar_seg010.md
+  dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by:
+    canonical_title: शिष्याचा उपयोग — श्रावणाची नेमणूक
+    title_en: 'Appointed for Every Shravan: ''A Nail Driven by Maharaj'''
+    about_member: gurudev_ranade
+    one_line: Through letters and a 40-day Shravan program, Gurudev permanently appoints
+      Shankarrao to manage the Shravan saptah at Nimbal, saying Maharaj has driven
+      a nail no one can pull out.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Gopalrao Aurangabadkar
+    - Karbasappa Avati
+    - B.N. Datar
+    themes:
+    - shravan-saptah
+    - appointment
+    - duty
+    - guru-command
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by/mr/variants/dada-tendulkar_seg011.md
+  dada-tendulkar-012-nine-hours-of-sadhana-begins:
+    canonical_title: नऊ तास साधन सुरू
+    title_en: Nine Hours of Sadhana Begins
+    about_member: gurudev_ranade
+    one_line: Suffering from arthritis, Shankarrao is examined by Gurudev who declares
+      it trivial and instructs nine hours of daily naam, reviving the old custom and
+      easing his pain.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    themes:
+    - sadhana
+    - healing
+    - perseverance
+    - guru-grace
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-012-nine-hours-of-sadhana-begins/mr/variants/dada-tendulkar_seg012.md
+  dada-tendulkar-013-tea-and-the-afternoon-packet-begin:
+    canonical_title: चहा व दुपारची पुडी चालू झाली
+    title_en: Tea and the Afternoon Packet Begin
+    about_member: gurudev_ranade
+    one_line: From 1953 the practice of morning tea and afternoon snack packets for
+      the saptah saadhaks begins under Shankarrao's care, sustained by Gurudev's grace.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Dhenuvadikar (Dadaso)
+    - Gopalrao Aurangabadkar
+    themes:
+    - seva
+    - saptah-arrangements
+    - providence
+    - surrender
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-013-tea-and-the-afternoon-packet-begin/mr/variants/dada-tendulkar_seg013.md
+  dada-tendulkar-014-gurudev-s-pet-devotee-and-the-lesson-on-speak:
+    canonical_title: गुरूदेवांचे पेट (pet)
+    title_en: Gurudev's 'Pet' Devotee and the Lesson on Speaking with Disciples
+    about_member: gurudev_ranade
+    one_line: A devout senior saadhak marvels at how much Gurudev talks to him, and
+      Gurudev explains he speaks much with such visitors but little with his own 'pet'
+      disciples, dispelling Shankarrao's inner discontent.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Masraguppi
+    - Ambarao Maharaj
+    - Kakaso Tulpule
+    - Babaso Sangoram
+    themes:
+    - bhakti
+    - guru-disciple
+    - equanimity
+    - spiritual-experience
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-014-gurudev-s-pet-devotee-and-the-lesson-on-speak/mr/variants/dada-tendulkar_seg014.md
+  dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends:
+    canonical_title: श्रीक्षेत्र निंबरगी येथील हकीकत
+    title_en: The Pilgrimage to Nimbargi and Its Legends
+    about_member: gurudev_ranade
+    one_line: On the Dec 1955 pilgrimage to Nimbargi, Gurudev insists on hearing Shankarrao's
+      written account and narrates the legends of the lineage and the sacred sites
+      of the village.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Babaso Sangoram
+    - Balappa Guddodgi
+    - Bhausaheb Maharaj
+    - Nimbargi Maharaj
+    - Narsappa
+    themes:
+    - nimbargi-pilgrimage
+    - lineage
+    - miracles
+    - sacred-sites
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends/mr/variants/dada-tendulkar_seg015.md
+  dada-tendulkar-016-the-amrut-mahotsav-and-a-missed-command:
+    canonical_title: अमृत महोत्सव
+    title_en: The Amrut Mahotsav and a Missed Command
+    about_member: gurudev_ranade
+    one_line: Shankarrao regrets failing to bring the Pune devotees to Gurudev's 1956
+      Amrut Mahotsav at Jamkhandi, a lapse Gurudev gently rebukes before his passing
+      in 1957.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    themes:
+    - amrut-mahotsav
+    - regret
+    - disobedience
+    - guru-command
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-016-the-amrut-mahotsav-and-a-missed-command/mr/variants/dada-tendulkar_seg016.md
+  dada-tendulkar-017-seen-off-at-the-station-bar-bar-bandau-tihi-p:
+    canonical_title: बार बार बन्दऊं तिही पाई
+    title_en: 'Seen Off at the Station: ''Bar Bar Bandau Tihi Pai'''
+    about_member: gurudev_ranade
+    one_line: At the 1956 saptah's end Gurudev has all devotees see Shankarrao off
+      at the station, and Bhau Nimbargi prostrates to him in the train—an act understood
+      only after Gurudev's passing the next year.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Bhau Nimbargi
+    - Madhu Kumthekar
+    - Kakaso Karkhanis
+    themes:
+    - farewell
+    - guru-affection
+    - premonition
+    - saptah
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-017-seen-off-at-the-station-bar-bar-bandau-tihi-p/mr/variants/dada-tendulkar_seg017.md
+  dada-tendulkar-018-no-duality:
+    canonical_title: द्वैत नको
+    title_en: No Duality
+    about_member: gurudev_ranade
+    one_line: In June 1957 Gurudev hints that he may not be met again and instructs
+      that duality is to be avoided.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Kannur
+    themes:
+    - non-duality
+    - guru-teaching
+    - premonition
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-018-no-duality/mr/variants/dada-tendulkar_seg018.md
+  dada-tendulkar-019-the-last-inquiry-and-final-message:
+    canonical_title: शेवटची विचारपूस व संदेश
+    title_en: The Last Inquiry and Final Message
+    about_member: gurudev_ranade
+    one_line: Gravely ill, Gurudev gives the Pune devotees his final darshan and last
+      teaching—raising his hands to show how high their sadhana has lifted them—before
+      passing on 6 June 1957.
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Dr. Dadaso Kanitkar
+    - Bhau Nimbargi
+    - Damle
+    themes:
+    - last-darshan
+    - final-teaching
+    - guru-passing
+    - renunciation
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-019-the-last-inquiry-and-final-message/mr/variants/dada-tendulkar_seg019.md
+  dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao:
+    canonical_title: माणसाची पारख — आत्मा पारख करतो
+    title_en: 'The Atma Tests a Person: Trials in Shankarrao''s Life'
+    about_member: gurudev_ranade
+    one_line: A series of hardships—accidents to his son, money troubles on the way
+      to Shravan, a milk-adulteration court case, and a house fire—are recounted to
+      show how the Atma tested Shankarrao and was protected by Gurudev's grace.
+    narrator: Dada Tendulkar
+    key_people:
+    - Shankarrao Tendulkar
+    - Gurudev
+    - Shrikant
+    themes:
+    - trials
+    - tests
+    - providence
+    - protection
+    - perseverance
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao/mr/variants/dada-tendulkar_seg020.md
+  dada-tendulkar-021-office-of-the-devotee-for-the-saint-work-done:
+    canonical_title: Office of the Devotee for the Saint
+    title_en: 'Office of the Devotee for the Saint: Work Done Through Dada'
+    about_member: gurudev_ranade
+    one_line: 'A summary of the work Gurudev had Dada carry out for the spiritual
+      cause: managing the Diwali and Shravan saptahs, nurturing saadhaks with tea
+      and food, organizing bhajans, and accurate reporting of sittings.'
+    narrator: Dada Tendulkar
+    key_people:
+    - Gurudev
+    - Shankarrao Tendulkar
+    themes:
+    - seva
+    - devotee-duties
+    - bhajan
+    - saptah-organization
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-021-office-of-the-devotee-for-the-saint-work-done/mr/variants/dada-tendulkar_seg021.md
+  dada-tendulkar-022-other-qualities-and-bringing-souls-to-gurudev:
+    canonical_title: इतर गुण
+    title_en: Other Qualities and Bringing Souls to Gurudev
+    about_member: gurudev_ranade
+    one_line: Shankarrao's mastery of Dasbodh, his devotional letters, and his lion's
+      share in bringing many people—including P.P. Ramanna—into the fold and to Gurudev's
+      feet.
+    narrator: Dada Tendulkar
+    key_people:
+    - Shankarrao Tendulkar
+    - Kakaso Tulpule
+    - Ramanna
+    themes:
+    - devotee-qualities
+    - letters
+    - satsang
+    - dasbodh
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-022-other-qualities-and-bringing-souls-to-gurudev/mr/variants/dada-tendulkar_seg022.md
+  dada-tendulkar-023-spiritual-worthiness-the-dream-and-final-visi:
+    canonical_title: पारमार्थिक योग्यता — स्वप्न व अंतिम अनुभव
+    title_en: 'Spiritual Worthiness: The Dream and Final Visions'
+    about_member: gurudev_ranade
+    one_line: Recounting a 1968 dream and the visions of feet, lights, and Gurudev
+      that Shankarrao saw on his deathbed in 2000-2001, narrated by his sons, up to
+      his passing on 29 June 2001.
+    narrator: Dada Tendulkar
+    key_people:
+    - Shankarrao Tendulkar
+    - Gurudev
+    - Umakant
+    - Shrikant
+    - Rajakaka
+    - N.V. Kulkarni
+    themes:
+    - spiritual-visions
+    - deathbed
+    - guru-presence
+    - passing
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-023-spiritual-worthiness-the-dream-and-final-visi/mr/variants/dada-tendulkar_seg023.md
+  dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar:
+    canonical_title: श्रीमती उमाबाई शंकर तेंडूलकर — श्रध्दांजली
+    title_en: Tribute to Umabai Shankar Tendulkar
+    about_member: gurudev_ranade
+    one_line: A tribute to Umabai, Shankarrao's wife, recounting her marriage, hardships,
+      decades of selfless kitchen seva at Nimbal's Shravan saptah, and her passing
+      on 13 October 2001.
+    narrator: Dada Tendulkar
+    key_people:
+    - Umabai Tendulkar
+    - Shankarrao Tendulkar
+    - Gurudev
+    - P.P. Sharakka
+    - Lilabai Shikhalkar
+    - Vidyatai Kanitkar
+    themes:
+    - tribute
+    - seva
+    - kitchen-seva
+    - naam-sadhana
+    - family
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar/mr/variants/dada-tendulkar_seg024.md
+  dada-tendulkar-025-two-disciples-naam-and-seva-and-the-teaching:
+    canonical_title: नेम व सेवा — अनुभवांची शिकवण
+    title_en: Two Disciples—Naam and Seva—and the Teaching on Experiences
+    about_member: gurudev_ranade
+    one_line: Reflecting on Umabai's experiences, the teaching that through either
+      naam or seva one shares in the guru's experience, and that no one has the right
+      to question another's naam—only the sadguru decides.
+    narrator: Dada Tendulkar
+    key_people:
+    - Maharaj
+    - Gurudev
+    - Umabai Tendulkar
+    - Shamrao Kumthekar
+    themes:
+    - naam-and-seva
+    - spiritual-experiences
+    - guru-teaching
+    - humility
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-025-two-disciples-naam-and-seva-and-the-teaching/mr/variants/dada-tendulkar_seg025.md
+  dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle:
+    canonical_title: 'परिशिष्ट अ: श्रीतात्यासाहेब दामले — श्रद्धांजली'
+    title_en: 'Appendix: Tribute to Tatyasaheb Damle'
+    about_member: gurudev_ranade
+    one_line: An appended tribute to Tatyasaheb Damle, the Pune devotees' chief, reflecting
+      on the rare human birth, his relentless sadhana to the end, and the teaching
+      that death is only a change of the soul's dwelling.
+    narrator: Dada Tendulkar
+    key_people:
+    - Tatyasaheb Damle
+    - Nimbargi Maharaj
+    - Gurudev
+    - Shankar Diwakar Tendulkar
+    - Lilabai Shikhalkar
+    themes:
+    - tribute
+    - rare-human-birth
+    - perseverance
+    - death-and-atma
+    source_work: dada-tendulkar-shesh-ruperi-pane
+    language: mr
+    variant_count: 1
+    variant_files:
+    - 02_aggregated/athvani/about_gurudev_ranade/stories/dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle/mr/variants/dada-tendulkar_seg026.md

@@ -1,0 +1,39 @@
+id: smruti-008-tribute-by-vijaya-v-apte-daughter
+title: Tribute by Vijaya V. Apte (daughter)
+title_en: Tribute by Vijaya V. Apte (daughter)
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- family
+- scholarship
+- word-coining
+- simplicity
+- courage-in-grief
+people_involved:
+- vijaya-apte
+- r-d-ranade
+- s-radhakrishnan
+subject_focus: Gurudev's daughter portrays him as a seer-scientist and grammarian
+  of mysticism, recalling how he consoled her with divine composure at her infant
+  brother's death.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: vijaya-apte
+  language: en
+  file: en/variants/smruti_seg008.md
+  page_or_section: unit 8
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev's daughter portrays him as a seer-scientist and grammarian
+    of mysticism, recalling how he consoled her with divine composure at her infant
+    brother's death.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 8 of स्मृति-संगम (Smruti Sangam) (narrator: vijaya-apte).'

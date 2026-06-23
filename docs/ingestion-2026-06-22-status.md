@@ -35,8 +35,16 @@ These are book-length recollection volumes, not single stories. Existing convent
 - dada-tendulkar-shesh-ruperi-pane (mr, usable/noisy)
 - smruti-sangam (mr+en, clean; compiler Rajendra Chauhan — multi-tribute anthology)
 
-### 2c. OCR path for the failures (see benchmark)
-amrutavalli, hindi-parmarth-sopan, pawanbhumi-jamkhandi can't be done with tesseract. Pick: Surya local (works but slow on this Intel Mac), Google Cloud Vision (best, needs your GCP key), or vision-LLM for top works.
+### 2c. OCR path for the failures — ROOT CAUSE per file (diagnosed 2026-06-23)
+tesseract fails on all three, but for **three different reasons** — only one is an image-quality problem. Evidence: `pdfimages -list` + rendered page inspection (`pdftoppm`).
+
+| File | Pages | Scan | Why tesseract fails | Better images help? |
+|---|---|---|---|---|
+| **amrutavalli** | 78 | 150 DPI color, clean but soft | **Resolution too low** (150 DPI < tesseract's 300 DPI comfort zone). Surya already reads it cleanly at 150. | **YES** — a 300 DPI rescan makes it trivial for any engine. (Not strictly needed; Surya works on the current scan.) |
+| **hindi-parmarth-sopan** | 539 | 600 DPI bitonal, **pristine & crisp** | **Old/letterpress Devanagari typeface + archaic orthography** (old-style conjuncts/matras). tesseract's Hindi model is trained on modern fonts. Pure model limitation. | **NO** — scan is already excellent. Needs a model robust to historical Devanagari (Surya / Google Vision / vision-LLM). |
+| **pawanbhumi-jamkhandi** | 12 | ~300 DPI color, fine | **Complex souvenir-brochure layout** — multi-column, photos, mixed English+Marathi side-by-side. tesseract page segmentation can't cope. | **NO** — needs layout-aware OCR (Google Vision / Surya layout) or a vision-LLM. Only 12 pages → vision-LLM is cheap+ideal here. |
+
+**So the "arrange better images" offer only helps amrutavalli.** The other two are clean scans that fail on typeface/layout, not pixels. Recommended path: Google Cloud Vision (handles all three) or vision-LLM (best for the 12-page pawanbhumi brochure and historical Hindi); Surya is the no-cloud fallback and already proven on amrutavalli.
 
 ## 3. OCR engine benchmark (answer to "better tool for Devanagari?")
 Tested on the 3 worst files at 300 DPI:
@@ -53,13 +61,15 @@ Tested on the 3 worst files at 300 DPI:
 - Tesseract genuinely fails on amrutavalli / hindi-parmarth-sopan; **Surya reads amrutavalli cleanly**.
 - Modern Surya is awkward on this Intel Mac (no torch wheel for latest → had to pin `numpy<2` + Surya 0.4.5; CPU-slow). **For bulk Devanagari, Google Cloud Vision is the best ROI**; Surya is the no-cloud fallback; vision-LLM for the highest-value works.
 
-## 4. Next steps (after your calls — all before the embed pause)
-1. Apply upgrade decisions (2a); promote `.force.md` lectures+mahayudhacha after a quality eyeball.
-2. Re-OCR amrutavalli / hindi / pawanbhumi with chosen engine (2c).
-3. Structure athvani books per (2b); structure the re-OCR'd works (generator: `tools/structure_batch_2026-06-22.py`).
-4. **Step 6 catalog:** add to `03_catalog/catalog.yaml` (works + stories), `story_index.yaml`; regenerate `tools/corpus_browser.html`.
-5. **Step 7 chunk:** `python tools/chunker.py`; then regenerate SoT: `python tools/build_corpus_manifest.py`.
-6. **STOP before Step 8 (embed)** — hand back smoke-test plan + `docs/CORPUS_CHANGELOG.md` draft.
+## 4. Next steps — progress 2026-06-23
+1. ✅ **2a applied:** studies-in-indian-philosophy replaced with clean text-layer; creative-period kept (declined).
+2. ⏸️ **2c re-OCR — BLOCKED on engine decision** (root cause diagnosed above; awaiting operator).
+3. ✅ **2b athvani structured:** 213 stories from 3 books via `tools/structure_athvani_2026-06-22.py` (line-numbering bug found + fixed). QA'd clean.
+4. ✅ **Step 6 catalog:** 10 works added to `03_catalog/catalog.yaml` (now 26 works); 213 stories merged into `catalog.yaml` + `story_index.yaml`. *(corpus_browser.html regen still TODO — cosmetic.)*
+5. ✅ **Step 7 chunk + SoT:** `chunker.py` → 14,882 chunks; `build_corpus_manifest.py` → `CORPUS_CONTENTS.md` (flags embed-stale).
+6. ⏸️ **STOPPED before Step 8 (embed)** per operator. Changelog entry added (`docs/CORPUS_CHANGELOG.md`); smoke-test plan drafted (scratchpad).
+
+**Remaining:** (a) operator decision on 2c OCR engine, then re-OCR + structure those 3 works; (b) regenerate `corpus_browser.html`; (c) run embedder (`tools/embedder.py --restart`) + smoke-test — only after 2c is resolved or explicitly deferred.
 
 ## 5. Where things live
 - Staging: `00_raw/drive_dump_2026-06-22/` — `_extracted/` (drafts), `_force/` (force-ocr PDFs), `_ocr/` (skip-text PDFs), `batch-triage.yaml` (full classification + resolutions). *(gitignored — local only.)*

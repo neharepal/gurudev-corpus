@@ -1,0 +1,36 @@
+id: smruti-038-tribute-by-jacques-d-marquette
+title: Tribute by Jacques D. Marquette
+title_en: Tribute by Jacques D. Marquette
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- west-east-dialogue
+- discipleship
+- jnana-yoga
+- metapsychology
+people_involved:
+- jacques-marquette
+- r-d-ranade
+subject_focus: The French philosopher hails Ranade as the leader of India's jnanis
+  and recounts being accepted as his disciple in 1954 with all-penetrating influence.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: jacques-marquette
+  language: en
+  file: en/variants/smruti_seg038.md
+  page_or_section: unit 38
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The French philosopher hails Ranade as the leader of India's
+    jnanis and recounts being accepted as his disciple in 1954 with all-penetrating
+    influence.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 38 of स्मृति-संगम (Smruti Sangam) (narrator: jacques-marquette).'

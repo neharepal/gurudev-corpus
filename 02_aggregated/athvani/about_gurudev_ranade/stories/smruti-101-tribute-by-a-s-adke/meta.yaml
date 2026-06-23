@@ -1,0 +1,37 @@
+id: smruti-101-tribute-by-a-s-adke
+title: Tribute by A. S. Adke
+title_en: Tribute by A. S. Adke
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- sangli
+- meditative-walk
+- philosopher-and-mystic
+- types-of-experience
+people_involved:
+- a-s-adke
+- r-d-ranade
+subject_focus: Adke recalls watching the frail, radiant Rambhau Ranade walk meditatively
+  past the Sangli hostels each evening, and credits him with first classifying the
+  true types of spiritual experience.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: a-s-adke
+  language: en
+  file: en/variants/smruti_seg101.md
+  page_or_section: unit 101
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Adke recalls watching the frail, radiant Rambhau Ranade walk
+    meditatively past the Sangli hostels each evening, and credits him with first
+    classifying the true types of spiritual experience.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 101 of स्मृति-संगम (Smruti Sangam) (narrator: a-s-adke).'

@@ -1,0 +1,35 @@
+id: smruti-026-tribute-by-freeman-freeman-thomas-willingdon
+title: Tribute by Freeman Freeman-Thomas Willingdon
+title_en: Tribute by Freeman Freeman-Thomas Willingdon
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- m-a-degree
+- gold-medal
+- scholarship
+- examiners-praise
+people_involved:
+- willingdon
+- r-d-ranade
+subject_focus: Gurudev wins the Chancellor's Gold Medal from Governor Willingdon,
+  with examiners reporting 'the examinee knows more than the examiners.'
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: m-s-deshpande
+  language: en
+  file: en/variants/smruti_seg026.md
+  page_or_section: unit 26
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev wins the Chancellor's Gold Medal from Governor Willingdon,
+    with examiners reporting 'the examinee knows more than the examiners.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 26 of स्मृति-संगम (Smruti Sangam) (narrator: m-s-deshpande).'

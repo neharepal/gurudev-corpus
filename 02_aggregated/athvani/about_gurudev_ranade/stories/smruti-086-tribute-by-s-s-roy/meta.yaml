@@ -1,0 +1,39 @@
+id: smruti-086-tribute-by-s-s-roy
+title: Tribute by S. S. Roy
+title_en: Tribute by S. S. Roy
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- allahabad
+- prasthana-trayi
+- transic-vision
+- jogi-mat-ja
+- successor
+people_involved:
+- s-s-roy
+- r-d-ranade
+- onkar-nath-thakur
+subject_focus: Roy, Ranade's successor at Allahabad, describes him as the confluence
+  of human and divine in perpetual open-eyed trance, recalling the thrill in his eyes
+  at 'Jogi mat ja.'
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-s-roy
+  language: en
+  file: en/variants/smruti_seg086.md
+  page_or_section: unit 86
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Roy, Ranade's successor at Allahabad, describes him as the
+    confluence of human and divine in perpetual open-eyed trance, recalling the thrill
+    in his eyes at 'Jogi mat ja.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 86 of स्मृति-संगम (Smruti Sangam) (narrator: s-s-roy).'

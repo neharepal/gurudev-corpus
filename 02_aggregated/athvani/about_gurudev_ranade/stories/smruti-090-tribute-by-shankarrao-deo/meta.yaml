@@ -1,0 +1,37 @@
+id: smruti-090-tribute-by-shankarrao-deo
+title: Tribute by Shankarrao Deo
+title_en: Tribute by Shankarrao Deo
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- lecture
+- realised-soul
+- facial-radiance
+- another-world
+people_involved:
+- shankarrao-deo
+- r-d-ranade
+subject_focus: Attending Gurudev's Delhi lecture, Deo finds himself gazing at his
+  face more than hearing him, convinced the radiance shows a realised soul living
+  in another world.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: shankarrao-deo
+  language: en
+  file: en/variants/smruti_seg090.md
+  page_or_section: unit 90
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Attending Gurudev's Delhi lecture, Deo finds himself gazing
+    at his face more than hearing him, convinced the radiance shows a realised soul
+    living in another world.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 90 of स्मृति-संगम (Smruti Sangam) (narrator: shankarrao-deo).'

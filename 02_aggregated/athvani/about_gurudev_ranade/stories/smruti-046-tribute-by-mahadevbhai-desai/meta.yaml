@@ -1,0 +1,36 @@
+id: smruti-046-tribute-by-mahadevbhai-desai
+title: Tribute by Mahadevbhai Desai
+title_en: Tribute by Mahadevbhai Desai
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- friendship
+- letter
+- bereavement
+- loving-warmth
+people_involved:
+- mahadevbhai-desai
+- r-d-ranade
+- bhaurao-yadwadkar-patwardhan
+subject_focus: Gandhi's secretary writes that the death of their mutual friend Bhaurao
+  binds him closer to Gurudev, whose company he longs to benefit from.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: mahadevbhai-desai
+  language: en
+  file: en/variants/smruti_seg046.md
+  page_or_section: unit 46
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gandhi's secretary writes that the death of their mutual friend
+    Bhaurao binds him closer to Gurudev, whose company he longs to benefit from.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 46 of स्मृति-संगम (Smruti Sangam) (narrator: mahadevbhai-desai).'

@@ -1,0 +1,34 @@
+id: smruti-051-tribute-by-k-d-sangoram
+title: Tribute by K. D. Sangoram
+title_en: Tribute by K. D. Sangoram
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- direct-experience
+- philosophy-from-realisation
+- god-realisation
+people_involved:
+- k-d-sangoram
+- r-d-ranade
+subject_focus: Sangoram explains that Gurudev's philosophy rests not on speculation
+  but on the bedrock of his own Atmanic spiritual experience aimed at God-realisation.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: k-d-sangoram
+  language: en
+  file: en/variants/smruti_seg051.md
+  page_or_section: unit 51
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Sangoram explains that Gurudev's philosophy rests not on speculation
+    but on the bedrock of his own Atmanic spiritual experience aimed at God-realisation.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 51 of स्मृति-संगम (Smruti Sangam) (narrator: k-d-sangoram).'

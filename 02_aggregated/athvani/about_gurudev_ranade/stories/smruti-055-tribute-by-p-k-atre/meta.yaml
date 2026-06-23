@@ -1,0 +1,36 @@
+id: smruti-055-tribute-by-p-k-atre
+title: Tribute by P. K. Atre
+title_en: Tribute by P. K. Atre
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- intellect
+- constructive-survey
+- world-fame
+- maharshi
+people_involved:
+- p-k-atre
+- r-d-ranade
+- s-radhakrishnan
+subject_focus: Acharya Atre calls Ranade a Himalaya of intellect whose Constructive
+  Survey dazzled Western philosophers, a maharshi whose passing none will dispute.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: p-k-atre
+  language: mr
+  file: mr/variants/smruti_seg055.md
+  page_or_section: unit 55
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Acharya Atre calls Ranade a Himalaya of intellect whose Constructive
+    Survey dazzled Western philosophers, a maharshi whose passing none will dispute.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 55 of स्मृति-संगम (Smruti Sangam) (narrator: p-k-atre).'

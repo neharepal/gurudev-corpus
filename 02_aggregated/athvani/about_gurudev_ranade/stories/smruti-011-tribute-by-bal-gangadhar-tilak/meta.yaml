@@ -1,0 +1,38 @@
+id: smruti-011-tribute-by-bal-gangadhar-tilak
+title: Tribute by Bal Gangadhar Tilak
+title_en: Tribute by Bal Gangadhar Tilak
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- tilak
+- politics-vs-religion
+- gitarahasya
+- reminiscence
+people_involved:
+- bal-gangadhar-tilak
+- r-d-ranade
+- aurobindo-ghose
+subject_focus: Gurudev recounts Tilak urging him into politics and a Hindu-religion
+  chair, his demurral toward spiritual life, and Tilak naming him the one man who
+  could translate the Gitarahasya.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: r-d-ranade
+  language: mr
+  file: mr/variants/smruti_seg011.md
+  page_or_section: unit 11
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev recounts Tilak urging him into politics and a Hindu-religion
+    chair, his demurral toward spiritual life, and Tilak naming him the one man who
+    could translate the Gitarahasya.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 11 of स्मृति-संगम (Smruti Sangam) (narrator: r-d-ranade).'

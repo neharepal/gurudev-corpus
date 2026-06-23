@@ -1,0 +1,36 @@
+id: dada-tendulkar-016-the-amrut-mahotsav-and-a-missed-command
+title: अमृत महोत्सव
+title_en: The Amrut Mahotsav and a Missed Command
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- amrut-mahotsav
+- regret
+- disobedience
+- guru-command
+people_involved:
+- Gurudev
+subject_focus: Shankarrao regrets failing to bring the Pune devotees to Gurudev's
+  1956 Amrut Mahotsav at Jamkhandi, a lapse Gurudev gently rebukes before his passing
+  in 1957.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg016.md
+  page_or_section: unit 16
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Shankarrao regrets failing to bring the Pune devotees to Gurudev's
+    1956 Amrut Mahotsav at Jamkhandi, a lapse Gurudev gently rebukes before his passing
+    in 1957.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 16 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

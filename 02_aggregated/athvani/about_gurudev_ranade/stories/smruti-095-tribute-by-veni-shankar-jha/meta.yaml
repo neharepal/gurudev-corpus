@@ -1,0 +1,37 @@
+id: smruti-095-tribute-by-veni-shankar-jha
+title: Tribute by Veni Shankar Jha
+title_en: Tribute by Veni Shankar Jha
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- nagpur-lectures
+- hospitality
+- radiant-joy
+- loss
+people_involved:
+- veni-shankar-jha
+- r-d-ranade
+subject_focus: The BHU Vice-Chancellor recalls Gurudev radiating joy as his guest
+  at Nagpur and laments how rare such honest, clear-thinking giants of philosophy
+  are.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: veni-shankar-jha
+  language: en
+  file: en/variants/smruti_seg095.md
+  page_or_section: unit 95
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The BHU Vice-Chancellor recalls Gurudev radiating joy as his
+    guest at Nagpur and laments how rare such honest, clear-thinking giants of philosophy
+    are.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 95 of स्मृति-संगम (Smruti Sangam) (narrator: veni-shankar-jha).'

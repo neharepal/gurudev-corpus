@@ -1,0 +1,36 @@
+id: smruti-083-tribute-by-pandurang-mahadev-bapat-senapati-b
+title: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+title_en: Tribute by Pandurang Mahadev Bapat (Senapati Bapat)
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- meeting
+- goa-satyagraha
+- fighting-demon-vs-seeking-god
+- humour
+people_involved:
+- pandurang-mahadev-bapat
+- r-d-ranade
+subject_focus: Senapati Bapat tells Gurudev that while revolutionaries spent their
+  lives fighting the demon in vain, Ranade from the start pursued and attained God.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: venkatesh-gopal-apte
+  language: mr
+  file: mr/variants/smruti_seg083.md
+  page_or_section: unit 83
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Senapati Bapat tells Gurudev that while revolutionaries spent
+    their lives fighting the demon in vain, Ranade from the start pursued and attained
+    God.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 83 of स्मृति-संगम (Smruti Sangam) (narrator: venkatesh-gopal-apte).'

@@ -3,6 +3,54 @@
 Per RFC-009 §Step 10. Authoritative answer to "what's in the corpus as of date X" and
 "when did we add work Y."
 
+## v.2026-06-23 — Batch drive_dump_2026-06-22 (Drive "Dump 3")
+
+10 new works + 1 upgrade + 213 athvani recollection stories segmented from 3 anthologies.
+Chunked (14,882 total chunks). **Embeddings NOT yet regenerated — Step 8 paused per
+operator;** `CORPUS_CONTENTS.md` flags the chunk/embed mismatch until the rebuild.
+
+Added (canonical):
+- herakleitos (gurudev_ranade, en) — 27 chunks
+- evolution-of-my-own-thought (gurudev_ranade, en) — 47 chunks
+- vindication-of-indian-philosophy (gurudev_ranade, en) — 32 chunks
+- gandhi-and-other-indian-saints (gurudev_ranade, en) — 242 chunks
+- sadhakbodh (kakasaheb_tulpule, mr, letters) — 150 chunks — **completes the 2026-06-11 failed stub**
+
+Added (biography):
+- ranade-and-his-spiritual-lineage (about_gurudev_ranade, en) — 446 chunks
+- kannada-sahityatil-punyasmruti (about_gurudev_ranade, mr) — 129 chunks
+- jivandarshan-deshpande (about_gurudev_ranade, mr) — 546 chunks
+- nimbargi-maharaj-biography-en (about_nimbargi_maharaj, en) — 81 chunks
+- nimbargi-maharaj-charitra-athavani-mr (about_nimbargi_maharaj, mr) — 67 chunks
+
+Added (athvani — story segmentation):
+- 213 individual athvani recollection stories (366 chunks) segmented into
+  `02_aggregated/athvani/about_gurudev_ranade/stories/`, each with `meta.yaml` + a
+  verbatim variant file; merged into `story_index.yaml` and `catalog.yaml`.
+  - smruti-sangam (mr+en; compiler Rajendra Chauhan) — 110 stories (`smruti-*`)
+  - santsabha-sittings-vamanrao-kulkarni (mr) — 77 stories (`santsabha-*`)
+  - dada-tendulkar-shesh-ruperi-pane (mr) — 26 stories (`dada-tendulkar-*`)
+  - Fixed a line-numbering bug in `tools/structure_athvani_2026-06-22.py` before
+    finalizing (`str.splitlines` broke on form-feed page-break chars, desyncing slice
+    boundaries from the segmentation agents' `\n`-based line numbers).
+
+Upgraded:
+- studies-in-indian-philosophy (other_authors / ed. B. R. Kulkarni, en) — 199 chunks
+  (was 477) — replaced the noisy Wikimedia Commons OCR (opened with pure garbage) with a
+  clean text-layer extraction from the Dump 3 source. Same work_id; text.md + meta.yaml.
+
+Declined upgrade:
+- creative-period (gurudev_ranade, en) — existing kept; new source near-identical (both
+  clean, ~22.5K lines), replacement judged destructive for marginal benefit.
+
+Verified-against: no public source — flagged (verified=false) on all new works.
+
+Pending (operator decision — NOT done this batch):
+- **2c re-OCR**: amrutavalli, hindi-parmarth-sopan, pawanbhumi-jamkhandi — tesseract
+  fails. Root-cause diagnosed (see `docs/ingestion-2026-06-22-status.md` §2c): only
+  amrutavalli is image-quality limited (150 DPI); the other two are clean scans that
+  fail on typeface/layout — better images won't help them.
+
 ## v.2026-06-17 — Batch wikimedia_acpr_2026-06-17
 
 16 books ingested from Wikimedia Commons ACPR-scanned category.

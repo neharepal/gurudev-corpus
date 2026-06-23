@@ -1,0 +1,41 @@
+id: smruti-044-tribute-by-p-k-gode
+title: Tribute by P. K. Gode
+title_en: Tribute by P. K. Gode
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- fergusson-college
+- bhandarkar-institute
+- character
+- illness
+- literary-output
+people_involved:
+- p-k-gode
+- r-d-ranade
+- kurtkoti
+- s-k-belvalkar
+- p-d-gune
+subject_focus: Gode recounts 47 years with Ranade, his inspiration as a teacher, his
+  role in founding the Bhandarkar Institute, and the mystery of his immortal output
+  despite frail health.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: p-k-gode
+  language: en
+  file: en/variants/smruti_seg044.md
+  page_or_section: unit 44
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gode recounts 47 years with Ranade, his inspiration as a teacher,
+    his role in founding the Bhandarkar Institute, and the mystery of his immortal
+    output despite frail health.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 44 of स्मृति-संगम (Smruti Sangam) (narrator: p-k-gode).'

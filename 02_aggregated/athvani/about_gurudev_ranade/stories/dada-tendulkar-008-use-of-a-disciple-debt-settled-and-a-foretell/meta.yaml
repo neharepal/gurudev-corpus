@@ -1,0 +1,39 @@
+id: dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell
+title: शिष्याचा उपयोग
+title_en: 'Use of a Disciple: Debt Settled and a Foretelling Saint'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- disciple-service
+- debt
+- providence
+- guru-vision
+people_involved:
+- Chi. Ra. Gokhale
+- Gurudev
+- Bapuso Katre
+- Nagpurkar
+subject_focus: A friend secretly clears Shankarrao's debt, and at a sitting Gurudev
+  senses a struggling devotee whose fortunes later improve—recognized to be Shankarrao
+  himself.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg008.md
+  page_or_section: unit 8
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A friend secretly clears Shankarrao's debt, and at a sitting
+    Gurudev senses a struggling devotee whose fortunes later improve—recognized to
+    be Shankarrao himself.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 8 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

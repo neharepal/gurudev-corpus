@@ -1,0 +1,39 @@
+id: dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by
+title: शिष्याचा उपयोग — श्रावणाची नेमणूक
+title_en: 'Appointed for Every Shravan: ''A Nail Driven by Maharaj'''
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- shravan-saptah
+- appointment
+- duty
+- guru-command
+people_involved:
+- Gurudev
+- Gopalrao Aurangabadkar
+- Karbasappa Avati
+- B.N. Datar
+subject_focus: Through letters and a 40-day Shravan program, Gurudev permanently appoints
+  Shankarrao to manage the Shravan saptah at Nimbal, saying Maharaj has driven a nail
+  no one can pull out.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg011.md
+  page_or_section: unit 11
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Through letters and a 40-day Shravan program, Gurudev permanently
+    appoints Shankarrao to manage the Shravan saptah at Nimbal, saying Maharaj has
+    driven a nail no one can pull out.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 11 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

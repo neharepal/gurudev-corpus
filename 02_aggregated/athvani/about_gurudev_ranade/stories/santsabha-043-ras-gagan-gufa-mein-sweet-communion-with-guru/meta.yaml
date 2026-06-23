@@ -1,0 +1,35 @@
+id: santsabha-043-ras-gagan-gufa-mein-sweet-communion-with-guru
+title: रस गगन गुफा में - गुरुदेवांशी सुखसंवाद
+title_en: Ras Gagan Gufa Mein - Sweet Communion with Gurudev
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- kabir-pada
+- communion
+- prachiti
+- guru-prompting
+people_involved:
+- Gurudev R. D. Ranade
+subject_focus: Forgetting a line mid-pada, Vamanrao silently prays and recalls it,
+  and Gurudev later teaches him a Kabir pada that brings him spiritual experience.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg043.md
+  page_or_section: unit 43
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Forgetting a line mid-pada, Vamanrao silently prays and recalls
+    it, and Gurudev later teaches him a Kabir pada that brings him spiritual experience.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 43 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

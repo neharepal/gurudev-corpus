@@ -1,0 +1,37 @@
+id: smruti-087-tribute-by-sangam-lal-pandey
+title: Tribute by Sangam Lal Pandey
+title_en: Tribute by Sangam Lal Pandey
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- scholarship-and-sadhana
+- contributions-to-philosophy
+- daily-meetings
+- immortal-personality
+people_involved:
+- sangam-lal-pandey
+- r-d-ranade
+subject_focus: Pandey calls Ranade the foremost modern Indian philosopher uniquely
+  uniting scholarship and sadhana lifelong, recalling daily meetings in which the
+  spirit in him was ever new.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: sangam-lal-pandey
+  language: mr
+  file: mr/variants/smruti_seg087.md
+  page_or_section: unit 87
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Pandey calls Ranade the foremost modern Indian philosopher
+    uniquely uniting scholarship and sadhana lifelong, recalling daily meetings in
+    which the spirit in him was ever new.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 87 of स्मृति-संगम (Smruti Sangam) (narrator: sangam-lal-pandey).'

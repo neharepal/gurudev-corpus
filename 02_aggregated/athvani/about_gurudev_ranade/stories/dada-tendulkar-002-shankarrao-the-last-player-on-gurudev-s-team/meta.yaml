@@ -1,0 +1,37 @@
+id: dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team
+title: गुरूदेवांच्या टीममधले शेवटचे खेळाडू
+title_en: Shankarrao, the Last Player on Gurudev's Team
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- saint-mission
+- discipleship
+- naam-sadhana
+- community
+people_involved:
+- Shankarrao Tendulkar
+- Gurudev
+- Kakaso Tulpule
+- Kakaso Karkhanis
+subject_focus: Every saint comes with a team, and Shankarrao was the last player on
+  Gurudev's team, helping build and sustain the collective naam-sadhana.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg002.md
+  page_or_section: unit 2
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Every saint comes with a team, and Shankarrao was the last
+    player on Gurudev's team, helping build and sustain the collective naam-sadhana.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 2 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

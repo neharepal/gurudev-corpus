@@ -1,0 +1,39 @@
+id: dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao
+title: माणसाची पारख — आत्मा पारख करतो
+title_en: 'The Atma Tests a Person: Trials in Shankarrao''s Life'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- trials
+- tests
+- providence
+- protection
+- perseverance
+people_involved:
+- Shankarrao Tendulkar
+- Gurudev
+- Shrikant
+subject_focus: A series of hardships—accidents to his son, money troubles on the way
+  to Shravan, a milk-adulteration court case, and a house fire—are recounted to show
+  how the Atma tested Shankarrao and was protected by Gurudev's grace.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg020.md
+  page_or_section: unit 20
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A series of hardships—accidents to his son, money troubles
+    on the way to Shravan, a milk-adulteration court case, and a house fire—are recounted
+    to show how the Atma tested Shankarrao and was protected by Gurudev's grace.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 20 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

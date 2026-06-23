@@ -1,0 +1,36 @@
+id: smruti-058-tribute-by-d-c-pavate
+title: Tribute by D. C. Pavate
+title_en: Tribute by D. C. Pavate
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- karnataka-mysticism
+- lectures
+- dharwad
+- novel-method
+people_involved:
+- d-c-pavate
+- r-d-ranade
+subject_focus: Pavate recounts inviting Ranade to deliver and later publish twenty
+  lectures on Mysticism in Karnataka, delivered by his novel and interesting method.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: d-c-pavate
+  language: en
+  file: en/variants/smruti_seg058.md
+  page_or_section: unit 58
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Pavate recounts inviting Ranade to deliver and later publish
+    twenty lectures on Mysticism in Karnataka, delivered by his novel and interesting
+    method.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 58 of स्मृति-संगम (Smruti Sangam) (narrator: d-c-pavate).'

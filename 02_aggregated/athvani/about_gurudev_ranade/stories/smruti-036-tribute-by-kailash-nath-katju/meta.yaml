@@ -1,0 +1,35 @@
+id: smruti-036-tribute-by-kailash-nath-katju
+title: Tribute by Kailash Nath Katju
+title_en: Tribute by Kailash Nath Katju
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- mysticism-in-maharashtra
+- gita
+- moksha
+- inspiration
+people_involved:
+- kailash-nath-katju
+- r-d-ranade
+subject_focus: Katju says reading Gurudev's 'Mysticism in Maharashtra' impelled him
+  toward the Gita and the conviction that moksha is life's true duty.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: kailash-nath-katju
+  language: mr
+  file: mr/variants/smruti_seg036.md
+  page_or_section: unit 36
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Katju says reading Gurudev's 'Mysticism in Maharashtra' impelled
+    him toward the Gita and the conviction that moksha is life's true duty.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 36 of स्मृति-संगम (Smruti Sangam) (narrator: kailash-nath-katju).'

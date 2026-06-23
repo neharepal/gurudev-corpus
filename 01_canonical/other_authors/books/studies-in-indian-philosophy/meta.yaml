@@ -14,21 +14,25 @@ publisher: "ACPR Belgaum"
 edition: ""
 isbn: ""
 sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Studies in Indian Philosophy.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: 8797ef0d26fc442453ffb702b1bb5571eaec0fffdd0c8ffd422110ec785813eb
+    note: "Active source — clean text-layer extraction (replaced the noisy Wikimedia OCR)."
   - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/studies-in-indian-philosophy.pdf
     received_on: 2026-06-17
     received_in_batch: wikimedia_acpr_2026-06-17
     checksum_sha256: 29881e7d98d6321e720e215f2d692f0c22e33e790de25a028d6095ffcbdd313e
+    note: "Superseded 2026-06-22 — opened with OCR-garbage cover pages."
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
-text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
-quality_notes: "OCR'd from Wikimedia Commons scan, publication-grade."
+text_extraction_method: "pdf-text-layer (drive_dump_2026-06-22 source)"
+quality_notes: "Replaced 2026-06-22 with a clean text-layer extraction from the Dump 3 source; prior Wikimedia OCR began with garbled cover/noise pages."
 notes: |
-  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
-  Editor: B. R. Kulkarni.
-  Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+  Ingested 2026-06-17 (Wikimedia OCR), text replaced 2026-06-22 with a cleaner
+  Dump 3 source per operator compare-first approval. Editor: B. R. Kulkarni.
 external_verification:
   verified: false
-  reason: ocr_only_from_wikimedia_commons_scan
-  source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+  reason: extracted_not_yet_verified_against_published_source

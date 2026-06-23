@@ -1,0 +1,37 @@
+id: santsabha-003-gurudev-s-unmani-chanting-of-narayan
+title: सद्गुरूचा उन्मनी नामघोष
+title_en: Gurudev's Unmani Chanting of Narayan
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- name-chanting
+- unmani-state
+- divine-experience
+- guru-mahima
+people_involved:
+- Gurudev R. D. Ranade
+- Lele
+- Jagannath
+subject_focus: Vamanrao hears Gurudev chanting 'Narayan' in a divine ecstatic state
+  while fetching a prayer book at the new house.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg003.md
+  page_or_section: unit 3
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Vamanrao hears Gurudev chanting 'Narayan' in a divine ecstatic
+    state while fetching a prayer book at the new house.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 3 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

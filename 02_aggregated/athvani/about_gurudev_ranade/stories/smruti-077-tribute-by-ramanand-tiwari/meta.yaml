@@ -1,0 +1,38 @@
+id: smruti-077-tribute-by-ramanand-tiwari
+title: Tribute by Ramanand Tiwari
+title_en: Tribute by Ramanand Tiwari
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- allahabad
+- discipleship
+- translation
+- constructive-survey
+- living-flame
+people_involved:
+- ramanand-tiwari
+- r-d-ranade
+subject_focus: Tiwari recalls ten years of close association, being initiated while
+  translating the Constructive Survey, and describes Gurudev as a living flame of
+  philosophy and a realized mystic.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: ramanand-tiwari
+  language: en
+  file: en/variants/smruti_seg077.md
+  page_or_section: unit 77
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Tiwari recalls ten years of close association, being initiated
+    while translating the Constructive Survey, and describes Gurudev as a living flame
+    of philosophy and a realized mystic.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 77 of स्मृति-संगम (Smruti Sangam) (narrator: ramanand-tiwari).'

@@ -1,0 +1,38 @@
+id: smruti-079-tribute-by-swami-rama
+title: Tribute by Swami Rama
+title_en: Tribute by Swami Rama
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- allahabad-university
+- nimbal
+- seven-systems
+- clairvoyance
+- scholar-and-mystic
+people_involved:
+- swami-rama
+- r-d-ranade
+subject_focus: Swami Rama recalls Dr. Ranade teaching him Indian philosophy's seven
+  systems and taking him to Nimbal, a startlingly clairvoyant living example of being
+  in the world yet above it.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: swami-rama
+  language: en
+  file: en/variants/smruti_seg079.md
+  page_or_section: unit 79
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Swami Rama recalls Dr. Ranade teaching him Indian philosophy's
+    seven systems and taking him to Nimbal, a startlingly clairvoyant living example
+    of being in the world yet above it.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 79 of स्मृति-संगम (Smruti Sangam) (narrator: swami-rama).'

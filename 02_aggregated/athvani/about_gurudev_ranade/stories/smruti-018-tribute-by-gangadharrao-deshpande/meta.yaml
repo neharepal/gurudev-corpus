@@ -1,0 +1,35 @@
+id: smruti-018-tribute-by-gangadharrao-deshpande
+title: Tribute by Gangadharrao Deshpande
+title_en: Tribute by Gangadharrao Deshpande
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- god-realisation
+- tenderness-of-heart
+- sangli
+- peace
+people_involved:
+- gangadharrao-deshpande
+- r-d-ranade
+subject_focus: The 'Lion of Karnataka' finds peace through Gurudev's guidance, and
+  Gurudev praises his rare softness and yearning as nearness to God.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: gangadharrao-deshpande
+  language: en
+  file: en/variants/smruti_seg018.md
+  page_or_section: unit 18
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The 'Lion of Karnataka' finds peace through Gurudev's guidance,
+    and Gurudev praises his rare softness and yearning as nearness to God.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 18 of स्मृति-संगम (Smruti Sangam) (narrator: gangadharrao-deshpande).'

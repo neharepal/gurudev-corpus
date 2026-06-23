@@ -1,0 +1,38 @@
+id: smruti-100-tribute-by-n-s-christian
+title: Tribute by N. S. Christian
+title_en: Tribute by N. S. Christian
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- nimbal
+- initiation
+- christa-name
+- conquered-hunger
+- humility
+people_involved:
+- n-s-christian
+- r-d-ranade
+subject_focus: Surgeon N. S. Christian recalls being initiated with the Christa-Name
+  at Nimbal and describes Gurudev as an embodiment of humility who conquered hunger
+  and thirst, 'God in flesh and blood.'
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: n-s-christian
+  language: en
+  file: en/variants/smruti_seg100.md
+  page_or_section: unit 100
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Surgeon N. S. Christian recalls being initiated with the Christa-Name
+    at Nimbal and describes Gurudev as an embodiment of humility who conquered hunger
+    and thirst, 'God in flesh and blood.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 100 of स्मृति-संगम (Smruti Sangam) (narrator: n-s-christian).'

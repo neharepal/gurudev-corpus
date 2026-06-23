@@ -1,0 +1,35 @@
+id: smruti-064-tribute-by-yashwant-g-joshi
+title: Tribute by Yashwant G. Joshi
+title_en: Tribute by Yashwant G. Joshi
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- need-for-saints
+- solace
+- bhakti-path
+people_involved:
+- yashwant-g-joshi
+- r-d-ranade
+subject_focus: Writer Y. G. Joshi says society sorely needs realized saints like Ranade
+  to show the hidden path of devotion and bring solace to suffering souls.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: yashwant-g-joshi
+  language: mr
+  file: mr/variants/smruti_seg064.md
+  page_or_section: unit 64
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Writer Y. G. Joshi says society sorely needs realized saints
+    like Ranade to show the hidden path of devotion and bring solace to suffering
+    souls.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 64 of स्मृति-संगम (Smruti Sangam) (narrator: yashwant-g-joshi).'

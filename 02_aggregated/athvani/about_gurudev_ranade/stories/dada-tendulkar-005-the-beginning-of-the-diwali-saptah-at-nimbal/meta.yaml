@@ -1,0 +1,38 @@
+id: dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal
+title: दीपावली सप्ताहाची सुरवात
+title_en: The Beginning of the Diwali Saptah at Nimbal
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- diwali-saptah
+- nimbal
+- naam-practice
+- guru-grace
+people_involved:
+- Dr. Dadaso Kanitkar
+- Gurudev
+- Jagannath Lele
+subject_focus: Dr. Dadaso Kanitkar takes Shankarrao to spend Diwali at Nimbal in 1949
+  doing continuous naam on the train, and Gurudev welcomes them warmly, inaugurating
+  the Diwali saptah that continued until 1966.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg005.md
+  page_or_section: unit 5
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Dr. Dadaso Kanitkar takes Shankarrao to spend Diwali at Nimbal
+    in 1949 doing continuous naam on the train, and Gurudev welcomes them warmly,
+    inaugurating the Diwali saptah that continued until 1966.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 5 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

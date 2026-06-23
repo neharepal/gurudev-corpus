@@ -1,0 +1,41 @@
+id: smruti-085-tribute-by-sarojini-naidu
+title: Tribute by Sarojini Naidu
+title_en: Tribute by Sarojini Naidu
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- allahabad-convocation
+- d-litt
+- forgotten-degree
+- detachment
+- humour
+people_involved:
+- sarojini-naidu
+- r-d-ranade
+- jawaharlal-nehru
+- p-v-kane
+- tara-chand
+subject_focus: At the 1947 Allahabad convocation, when Gurudev leaves his D.Litt.
+  certificate on the table, Chancellor Sarojini Naidu jokes that the great philosopher
+  has forgotten his degree.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: vijaya-apte
+  language: mr
+  file: mr/variants/smruti_seg085.md
+  page_or_section: unit 85
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: At the 1947 Allahabad convocation, when Gurudev leaves his
+    D.Litt. certificate on the table, Chancellor Sarojini Naidu jokes that the great
+    philosopher has forgotten his degree.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 85 of स्मृति-संगम (Smruti Sangam) (narrator: vijaya-apte).'

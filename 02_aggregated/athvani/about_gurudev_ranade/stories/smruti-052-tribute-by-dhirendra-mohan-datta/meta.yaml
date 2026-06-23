@@ -1,0 +1,37 @@
+id: smruti-052-tribute-by-dhirendra-mohan-datta
+title: Tribute by Dhirendra Mohan Datta
+title_en: Tribute by Dhirendra Mohan Datta
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- brahma-contemplation
+- para-vidya
+- householder-sannyasi
+- home-as-ashram
+people_involved:
+- dhirendra-mohan-datta
+- r-d-ranade
+subject_focus: Datta says Ranade's true identity was his absorption in Brahman, his
+  learning a mere means to higher knowledge, his home a hermitage of constant tapas
+  and satsang.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: dhirendra-mohan-datta
+  language: mr
+  file: mr/variants/smruti_seg052.md
+  page_or_section: unit 52
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Datta says Ranade's true identity was his absorption in Brahman,
+    his learning a mere means to higher knowledge, his home a hermitage of constant
+    tapas and satsang.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 52 of स्मृति-संगम (Smruti Sangam) (narrator: dhirendra-mohan-datta).'

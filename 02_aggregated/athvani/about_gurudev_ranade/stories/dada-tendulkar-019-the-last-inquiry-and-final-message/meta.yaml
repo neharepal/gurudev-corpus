@@ -1,0 +1,39 @@
+id: dada-tendulkar-019-the-last-inquiry-and-final-message
+title: शेवटची विचारपूस व संदेश
+title_en: The Last Inquiry and Final Message
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- last-darshan
+- final-teaching
+- guru-passing
+- renunciation
+people_involved:
+- Gurudev
+- Dr. Dadaso Kanitkar
+- Bhau Nimbargi
+- Damle
+subject_focus: Gravely ill, Gurudev gives the Pune devotees his final darshan and
+  last teaching—raising his hands to show how high their sadhana has lifted them—before
+  passing on 6 June 1957.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg019.md
+  page_or_section: unit 19
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gravely ill, Gurudev gives the Pune devotees his final darshan
+    and last teaching—raising his hands to show how high their sadhana has lifted
+    them—before passing on 6 June 1957.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 19 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

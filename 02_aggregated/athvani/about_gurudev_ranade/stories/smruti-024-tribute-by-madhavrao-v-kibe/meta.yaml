@@ -1,0 +1,34 @@
+id: smruti-024-tribute-by-madhavrao-v-kibe
+title: Tribute by Madhavrao V. Kibe
+title_en: Tribute by Madhavrao V. Kibe
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- spiritual-awakening
+- materialism
+- service-to-humanity
+people_involved:
+- madhavrao-kibe
+- r-d-ranade
+subject_focus: Sardar Kibe lauds Gurudev's unique service in countering worldwide
+  materialism with spiritual awakening.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: madhavrao-kibe
+  language: en
+  file: en/variants/smruti_seg024.md
+  page_or_section: unit 24
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Sardar Kibe lauds Gurudev's unique service in countering worldwide
+    materialism with spiritual awakening.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 24 of स्मृति-संगम (Smruti Sangam) (narrator: madhavrao-kibe).'

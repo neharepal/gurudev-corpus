@@ -1,0 +1,37 @@
+id: smruti-062-tribute-by-c-a-patwardhan
+title: Tribute by C. A. Patwardhan
+title_en: Tribute by C. A. Patwardhan
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- sangli
+- adhyatma-vidya-mandir
+- scholar-and-mystic
+- naam-smarana
+people_involved:
+- c-a-patwardhan
+- r-d-ranade
+subject_focus: The Rajasaheb of Sangli describes Gurudev as a rare blend of scholar
+  and mystic, recalls founding the Adhyatma Vidya Mandir at his hands, and his teaching
+  of God-realisation through the Name.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: c-a-patwardhan
+  language: mr
+  file: mr/variants/smruti_seg062.md
+  page_or_section: unit 62
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The Rajasaheb of Sangli describes Gurudev as a rare blend of
+    scholar and mystic, recalls founding the Adhyatma Vidya Mandir at his hands, and
+    his teaching of God-realisation through the Name.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 62 of स्मृति-संगम (Smruti Sangam) (narrator: c-a-patwardhan).'

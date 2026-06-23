@@ -1,0 +1,39 @@
+id: smruti-050-tribute-by-sonopant-dandekar
+title: Tribute by Sonopant Dandekar
+title_en: Tribute by Sonopant Dandekar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- scholarship-and-sainthood
+- sadhana
+- maharashtra-saints
+- modern-saint
+people_involved:
+- sonopant-dandekar
+- r-d-ranade
+- jnaneshwara
+- ramdas
+subject_focus: Dandekar describes Gurudev as a rare confluence of erudition and sainthood
+  who spent up to fourteen hours daily in sadhana and refined the path of Maharashtra's
+  saints.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: sonopant-dandekar
+  language: mr
+  file: mr/variants/smruti_seg050.md
+  page_or_section: unit 50
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Dandekar describes Gurudev as a rare confluence of erudition
+    and sainthood who spent up to fourteen hours daily in sadhana and refined the
+    path of Maharashtra's saints.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 50 of स्मृति-संगम (Smruti Sangam) (narrator: sonopant-dandekar).'

@@ -1,0 +1,38 @@
+id: dada-tendulkar-022-other-qualities-and-bringing-souls-to-gurudev
+title: इतर गुण
+title_en: Other Qualities and Bringing Souls to Gurudev
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- devotee-qualities
+- letters
+- satsang
+- dasbodh
+people_involved:
+- Shankarrao Tendulkar
+- Kakaso Tulpule
+- Ramanna
+subject_focus: Shankarrao's mastery of Dasbodh, his devotional letters, and his lion's
+  share in bringing many people—including P.P. Ramanna—into the fold and to Gurudev's
+  feet.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg022.md
+  page_or_section: unit 22
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Shankarrao's mastery of Dasbodh, his devotional letters, and
+    his lion's share in bringing many people—including P.P. Ramanna—into the fold
+    and to Gurudev's feet.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 22 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

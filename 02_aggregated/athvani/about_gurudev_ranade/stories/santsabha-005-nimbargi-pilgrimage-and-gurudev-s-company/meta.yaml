@@ -1,0 +1,39 @@
+id: santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company
+title: निंबरगी यात्रा व सद्गुरू सहवास
+title_en: Nimbargi Pilgrimage and Gurudev's Company
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- pilgrimage
+- nimbargi
+- guru-company
+- every-inch-nimbargi
+people_involved:
+- Gurudev R. D. Ranade
+- Dr. Padki
+- Tatyasaheb Patwardhan
+- Nimbargi Maharaj
+- Bhausaheb Maharaj
+subject_focus: Vamanrao's unforgettable pilgrimage to Nimbargi with Gurudev, including
+  the 'Every inch there is Nimbargi Maharaj' remark and the abdagiri incident.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg005.md
+  page_or_section: unit 5
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Vamanrao's unforgettable pilgrimage to Nimbargi with Gurudev,
+    including the 'Every inch there is Nimbargi Maharaj' remark and the abdagiri incident.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 5 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

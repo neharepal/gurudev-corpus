@@ -1,0 +1,37 @@
+id: santsabha-040-gurudev-s-way-of-pointing-out-mistakes
+title: चूक दाखवून देण्याची खास पद्धत
+title_en: Gurudev's Way of Pointing Out Mistakes
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- correction
+- pada
+- gentleness
+- household-priest
+people_involved:
+- Gurudev R. D. Ranade
+- Jeurkar
+- Maslekar
+subject_focus: Gurudev indirectly reveals Vamanrao's mispronunciation by having the
+  pada-book read aloud rather than directly correcting him.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg040.md
+  page_or_section: unit 40
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev indirectly reveals Vamanrao's mispronunciation by having
+    the pada-book read aloud rather than directly correcting him.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 40 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

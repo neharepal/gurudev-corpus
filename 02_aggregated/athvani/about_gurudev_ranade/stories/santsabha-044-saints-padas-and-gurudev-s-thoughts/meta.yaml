@@ -1,0 +1,36 @@
+id: santsabha-044-saints-padas-and-gurudev-s-thoughts
+title: संतांची पदे आणि गुरुदेवांचे विचार
+title_en: Saints' Padas and Gurudev's Thoughts
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- poetry
+- moropant
+- sanskrit-verse
+- opportunity
+people_involved:
+- Gurudev R. D. Ranade
+- Moropant
+subject_focus: A collection of old verses and aryas Gurudev would recite, including
+  the Sanskrit verse on using the body's health for self-realization.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg044.md
+  page_or_section: unit 44
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A collection of old verses and aryas Gurudev would recite,
+    including the Sanskrit verse on using the body's health for self-realization.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 44 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

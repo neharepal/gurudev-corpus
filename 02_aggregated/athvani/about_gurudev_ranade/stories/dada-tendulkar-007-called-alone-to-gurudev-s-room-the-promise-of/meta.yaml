@@ -1,0 +1,38 @@
+id: dada-tendulkar-007-called-alone-to-gurudev-s-room-the-promise-of
+title: गुरूदेवांजवळ एकटाच — अन्नाची जबाबदारी
+title_en: Called Alone to Gurudev's Room; The Promise of Sustenance
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- guru-grace
+- sustenance-promise
+- intimacy
+- providence
+people_involved:
+- Gurudev
+- Babaso Sangoram
+- Shankarrao Mokashi
+subject_focus: On his first solo visit to Gurudev's room, Gurudev pulls him close
+  and whispers in his ear that he will never lack food and that the responsibility
+  is Gurudev's, provided he keeps coming.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg007.md
+  page_or_section: unit 7
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: On his first solo visit to Gurudev's room, Gurudev pulls him
+    close and whispers in his ear that he will never lack food and that the responsibility
+    is Gurudev's, provided he keeps coming.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 7 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

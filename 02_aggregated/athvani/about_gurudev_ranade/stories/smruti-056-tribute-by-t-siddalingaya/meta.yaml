@@ -1,0 +1,34 @@
+id: smruti-056-tribute-by-t-siddalingaya
+title: Tribute by T. Siddalingaya
+title_en: Tribute by T. Siddalingaya
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- child-mind
+- example
+- rare-souls
+people_involved:
+- t-siddalingaya
+- r-d-ranade
+subject_focus: Siddalingaya says Gurudev remains a student with a child's mind, one
+  of those rare men whose presence enriches the world.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: t-siddalingaya
+  language: en
+  file: en/variants/smruti_seg056.md
+  page_or_section: unit 56
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Siddalingaya says Gurudev remains a student with a child's
+    mind, one of those rare men whose presence enriches the world.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 56 of स्मृति-संगम (Smruti Sangam) (narrator: t-siddalingaya).'

@@ -1,0 +1,35 @@
+id: smruti-074-tribute-by-mohammad-hafiz-syed
+title: Tribute by Mohammad Hafiz Syed
+title_en: Tribute by Mohammad Hafiz Syed
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- letter
+- friendship
+- love-of-wisdom
+- true-brahmin
+people_involved:
+- mohammad-hafiz-syed
+- r-d-ranade
+subject_focus: Prof. Syed writes that Ranade is a Brahmin in the true sense who loves
+  wisdom more than wealth, and that he is proud of his friendship.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: mohammad-hafiz-syed
+  language: en
+  file: en/variants/smruti_seg074.md
+  page_or_section: unit 74
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Prof. Syed writes that Ranade is a Brahmin in the true sense
+    who loves wisdom more than wealth, and that he is proud of his friendship.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 74 of स्मृति-संगम (Smruti Sangam) (narrator: mohammad-hafiz-syed).'

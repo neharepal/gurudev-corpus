@@ -1,0 +1,42 @@
+id: dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar
+title: श्रीमती उमाबाई शंकर तेंडूलकर — श्रध्दांजली
+title_en: Tribute to Umabai Shankar Tendulkar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- tribute
+- seva
+- kitchen-seva
+- naam-sadhana
+- family
+people_involved:
+- Umabai Tendulkar
+- Shankarrao Tendulkar
+- Gurudev
+- P.P. Sharakka
+- Lilabai Shikhalkar
+- Vidyatai Kanitkar
+subject_focus: A tribute to Umabai, Shankarrao's wife, recounting her marriage, hardships,
+  decades of selfless kitchen seva at Nimbal's Shravan saptah, and her passing on
+  13 October 2001.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg024.md
+  page_or_section: unit 24
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A tribute to Umabai, Shankarrao's wife, recounting her marriage,
+    hardships, decades of selfless kitchen seva at Nimbal's Shravan saptah, and her
+    passing on 13 October 2001.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 24 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

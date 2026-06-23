@@ -1,0 +1,38 @@
+id: smruti-005-tribute-by-rajasaheb-lilavatidevi-patwardhan
+title: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+title_en: Tribute by Rajasaheb & Lilavatidevi Patwardhan
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- jamkhandi
+- birth
+- reverence
+- spiritual-tradition
+people_involved:
+- lilavatidevi-patwardhan
+- appasaheb-patwardhan
+- parvatibai-ranade
+- r-d-ranade
+subject_focus: The chiefly family of Jamkhandi recounts the holy-water blessing tied
+  to Gurudev's birth and the town's reverence for him as for Dnyaneshwar at Alandi.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: lilavatidevi-patwardhan
+  language: en
+  file: en/variants/smruti_seg005.md
+  page_or_section: unit 5
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The chiefly family of Jamkhandi recounts the holy-water blessing
+    tied to Gurudev's birth and the town's reverence for him as for Dnyaneshwar at
+    Alandi.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 5 of स्मृति-संगम (Smruti Sangam) (narrator: lilavatidevi-patwardhan).'

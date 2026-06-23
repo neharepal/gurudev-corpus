@@ -1,0 +1,38 @@
+id: smruti-014-tribute-by-vishnubuva-jog
+title: Tribute by Vishnubuva Jog
+title_en: Tribute by Vishnubuva Jog
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- varkari
+- dnyaneshwari
+- alandi-lecture
+- scholarly-approval
+people_involved:
+- vishnubuva-jog
+- r-d-ranade
+- sonopant-dandekar
+subject_focus: Varkari leader Vishnubuva Jog approves Gurudev's selected scriptural
+  extracts and, after his Alandi lecture, says he revealed the Upanishads in a wholly
+  new light.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: kakasaheb-karkhanis
+  language: mr
+  file: mr/variants/smruti_seg014.md
+  page_or_section: unit 14
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Varkari leader Vishnubuva Jog approves Gurudev's selected scriptural
+    extracts and, after his Alandi lecture, says he revealed the Upanishads in a wholly
+    new light.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 14 of स्मृति-संगम (Smruti Sangam) (narrator: kakasaheb-karkhanis).'

@@ -1,0 +1,34 @@
+id: smruti-093-tribute-by-v-p-limaye
+title: Tribute by V. P. Limaye
+title_en: Tribute by V. P. Limaye
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- living-symbol
+- amrut-mahotsav
+- blessing-through-presence
+people_involved:
+- v-p-limaye
+- r-d-ranade
+subject_focus: Acharya Limaye calls Gurudev a living embodiment of India's spiritual
+  knowledge whose very touch, glance and breath bring welfare to all.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: v-p-limaye
+  language: mr
+  file: mr/variants/smruti_seg093.md
+  page_or_section: unit 93
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Acharya Limaye calls Gurudev a living embodiment of India's
+    spiritual knowledge whose very touch, glance and breath bring welfare to all.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 93 of स्मृति-संगम (Smruti Sangam) (narrator: v-p-limaye).'

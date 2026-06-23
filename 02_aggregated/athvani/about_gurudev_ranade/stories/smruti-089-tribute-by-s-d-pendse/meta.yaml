@@ -1,0 +1,36 @@
+id: smruti-089-tribute-by-s-d-pendse
+title: Tribute by S. D. Pendse
+title_en: Tribute by S. D. Pendse
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- nimbal
+- two-wonders
+- living-spring
+- scholarship
+people_involved:
+- s-d-pendse
+- r-d-ranade
+- s-g-tulpule
+subject_focus: 'After visiting Nimbal, Pendse says he saw two wonders there: the living
+  spring in Rambhau''s well, and Rambhau himself.'
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-g-tulpule
+  language: mr
+  file: mr/variants/smruti_seg089.md
+  page_or_section: unit 89
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: 'After visiting Nimbal, Pendse says he saw two wonders there:
+    the living spring in Rambhau''s well, and Rambhau himself.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 89 of स्मृति-संगम (Smruti Sangam) (narrator: s-g-tulpule).'

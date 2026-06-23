@@ -1,0 +1,36 @@
+id: smruti-091-tribute-by-g-b-badkas
+title: Tribute by G. B. Badkas
+title_en: Tribute by G. B. Badkas
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- bhagavadgita-book
+- lifelong-study
+- redrafting-before-death
+- self-realisation
+people_involved:
+- g-b-badkas
+- r-d-ranade
+subject_focus: Badkas notes Ranade redrafted a page of his Bhagavadgita work just
+  eight days before his passing, fruit of lifelong study and personal spiritual experience.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: g-b-badkas
+  language: en
+  file: en/variants/smruti_seg091.md
+  page_or_section: unit 91
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Badkas notes Ranade redrafted a page of his Bhagavadgita work
+    just eight days before his passing, fruit of lifelong study and personal spiritual
+    experience.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 91 of स्मृति-संगम (Smruti Sangam) (narrator: g-b-badkas).'

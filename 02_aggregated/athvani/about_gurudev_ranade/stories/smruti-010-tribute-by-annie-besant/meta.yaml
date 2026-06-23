@@ -1,0 +1,37 @@
+id: smruti-010-tribute-by-annie-besant
+title: Tribute by Annie Besant
+title_en: Tribute by Annie Besant
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- theosophy
+- spiritual-experiences
+- initiation
+- banaras
+people_involved:
+- annie-besant
+- r-d-ranade
+- e-a-wodehouse
+- bhausaheb-maharaj
+subject_focus: Annie Besant, examining Maharaj's photo, affirms Rambhau is blessed
+  by a true master and in safe spiritual hands.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: annie-besant
+  language: en
+  file: en/variants/smruti_seg010.md
+  page_or_section: unit 10
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Annie Besant, examining Maharaj's photo, affirms Rambhau is
+    blessed by a true master and in safe spiritual hands.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 10 of स्मृति-संगम (Smruti Sangam) (narrator: annie-besant).'

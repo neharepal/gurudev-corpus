@@ -1,0 +1,38 @@
+id: smruti-021-tribute-by-ganganath-jha-inviting-gurudev-to
+title: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+title_en: Tribute by Ganganath Jha (inviting Gurudev to Allahabad)
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- allahabad-university
+- appointment
+- correspondence
+- academy
+people_involved:
+- ganganath-jha
+- r-d-ranade
+- h-n-randle
+subject_focus: Vice-Chancellor Ganganath Jha persistently courts the reluctant Prof.
+  Ranade by letter, assuring him climate and Academy will be no obstacle, and brings
+  him to Allahabad in 1927.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: b-r-kulkarni
+  language: en
+  file: en/variants/smruti_seg021.md
+  page_or_section: unit 21
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Vice-Chancellor Ganganath Jha persistently courts the reluctant
+    Prof. Ranade by letter, assuring him climate and Academy will be no obstacle,
+    and brings him to Allahabad in 1927.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 21 of स्मृति-संगम (Smruti Sangam) (narrator: b-r-kulkarni).'

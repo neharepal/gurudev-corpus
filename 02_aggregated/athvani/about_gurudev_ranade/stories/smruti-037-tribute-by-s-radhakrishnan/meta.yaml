@@ -1,0 +1,38 @@
+id: smruti-037-tribute-by-s-radhakrishnan
+title: Tribute by S. Radhakrishnan
+title_en: Tribute by S. Radhakrishnan
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- friendship
+- philosophy-as-passion
+- two-birds-verse
+- god-face-to-face
+- obituary
+people_involved:
+- s-radhakrishnan
+- r-d-ranade
+subject_focus: Radhakrishnan praises Ranade's integrity, linguistic gifts and life
+  of meditation, recalls the 'two birds' Mundaka verse at a tea, and mourns him as
+  one of the immortals.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-radhakrishnan
+  language: en
+  file: en/variants/smruti_seg037.md
+  page_or_section: unit 37
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Radhakrishnan praises Ranade's integrity, linguistic gifts
+    and life of meditation, recalls the 'two birds' Mundaka verse at a tea, and mourns
+    him as one of the immortals.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 37 of स्मृति-संगम (Smruti Sangam) (narrator: s-radhakrishnan).'

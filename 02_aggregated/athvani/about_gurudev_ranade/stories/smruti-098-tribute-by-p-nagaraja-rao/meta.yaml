@@ -1,0 +1,39 @@
+id: smruti-098-tribute-by-p-nagaraja-rao
+title: Tribute by P. Nagaraja Rao
+title_en: Tribute by P. Nagaraja Rao
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- dharwad
+- comparative-religion
+- jivanmukta
+- nimbal-lamp
+- tapasya
+people_involved:
+- p-nagaraja-rao
+- r-d-ranade
+- aurobindo-ghose
+subject_focus: Nagaraja Rao calls Ranade a giant among philosophers and a jivan-mukta
+  who lit a lamp at Nimbal that will never be put out, a metaphysician doubled with
+  a yogi.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: p-nagaraja-rao
+  language: en
+  file: en/variants/smruti_seg098.md
+  page_or_section: unit 98
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Nagaraja Rao calls Ranade a giant among philosophers and a
+    jivan-mukta who lit a lamp at Nimbal that will never be put out, a metaphysician
+    doubled with a yogi.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 98 of स्मृति-संगम (Smruti Sangam) (narrator: p-nagaraja-rao).'

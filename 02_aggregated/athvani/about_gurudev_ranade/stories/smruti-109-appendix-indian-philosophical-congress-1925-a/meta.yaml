@@ -1,0 +1,39 @@
+id: smruti-109-appendix-indian-philosophical-congress-1925-a
+title: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna Math'
+title_en: 'Appendix: Indian Philosophical Congress 1925 and Ramakrishna Math'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- philosophical-congress
+- calcutta-1925
+- ramakrishna-math
+- sectional-president
+people_involved:
+- r-d-ranade
+- rabindranath-tagore
+- s-radhakrishnan
+- brajendranath-seal
+subject_focus: An appendix recounting the 1925 founding session of the Indian Philosophical
+  Congress at Calcutta, Ranade's sectional presidency, the office-bearers, and his
+  role with the Vivekananda Society.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: various
+  language: en
+  file: en/variants/smruti_seg109.md
+  page_or_section: unit 109
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: An appendix recounting the 1925 founding session of the Indian
+    Philosophical Congress at Calcutta, Ranade's sectional presidency, the office-bearers,
+    and his role with the Vivekananda Society.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 109 of स्मृति-संगम (Smruti Sangam) (narrator: various).'

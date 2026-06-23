@@ -1,0 +1,38 @@
+id: smruti-059-tribute-by-b-r-rao
+title: Tribute by B. R. Rao
+title_en: Tribute by B. R. Rao
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- fergusson-college
+- discipleship
+- adhyatma-bhavan
+- greek-and-sanskrit
+- memory
+people_involved:
+- b-r-rao
+- r-d-ranade
+subject_focus: Burgula Ramakrishna Rao recalls being Ranade's philosophy student,
+  finding in him both great learning and lofty spirituality, his house aptly named
+  'Adhyatma Bhavan.'
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: b-r-rao
+  language: mr
+  file: mr/variants/smruti_seg059.md
+  page_or_section: unit 59
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Burgula Ramakrishna Rao recalls being Ranade's philosophy student,
+    finding in him both great learning and lofty spirituality, his house aptly named
+    'Adhyatma Bhavan.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 59 of स्मृति-संगम (Smruti Sangam) (narrator: b-r-rao).'

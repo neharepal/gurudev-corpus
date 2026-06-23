@@ -1,0 +1,38 @@
+id: smruti-057-tribute-by-m-s-modak
+title: Tribute by M. S. Modak
+title_en: Tribute by M. S. Modak
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- teaching
+- greek-philosophy
+- plato
+- rapt-attention
+- man-of-realisation
+people_involved:
+- m-s-modak
+- r-d-ranade
+- sidgwick
+subject_focus: Modak recalls Ranade rapidly writing original Greek on the blackboard,
+  boldly correcting Sidgwick, and being recognized by students as a great man of realisation.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: m-s-modak
+  language: en
+  file: en/variants/smruti_seg057.md
+  page_or_section: unit 57
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Modak recalls Ranade rapidly writing original Greek on the
+    blackboard, boldly correcting Sidgwick, and being recognized by students as a
+    great man of realisation.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 57 of स्मृति-संगम (Smruti Sangam) (narrator: m-s-modak).'

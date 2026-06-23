@@ -1,0 +1,35 @@
+id: smruti-003-tribute-by-parvatibai-d-ranade-mother
+title: Tribute by Parvatibai D. Ranade (mother)
+title_en: Tribute by Parvatibai D. Ranade (mother)
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- family
+- meditation
+- illness
+- morning-namasmaran
+people_involved:
+- parvatibai-ranade
+- r-d-ranade
+subject_focus: His mother wakes the TB-stricken Rambhau for morning meditation, urging
+  him not to waste the precious early hours on the Divine Name.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: parvatibai-ranade
+  language: mr
+  file: mr/variants/smruti_seg003.md
+  page_or_section: unit 3
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: His mother wakes the TB-stricken Rambhau for morning meditation,
+    urging him not to waste the precious early hours on the Divine Name.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 3 of स्मृति-संगम (Smruti Sangam) (narrator: parvatibai-ranade).'

@@ -1,0 +1,35 @@
+id: santsabha-036-bhule-man-the-lamani-caravan
+title: भूले मन समझ के लाद लदनिया
+title_en: Bhule Man - The Lamani Caravan
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- hindi-pada
+- lamani
+- kabir
+- guidance
+people_involved:
+- Gurudev R. D. Ranade
+subject_focus: Gurudev recalls explaining a Kabir pada to a Lamani caravan to settle
+  them near Nimbal during the Hyderabad liberation unrest.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg036.md
+  page_or_section: unit 36
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gurudev recalls explaining a Kabir pada to a Lamani caravan
+    to settle them near Nimbal during the Hyderabad liberation unrest.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 36 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

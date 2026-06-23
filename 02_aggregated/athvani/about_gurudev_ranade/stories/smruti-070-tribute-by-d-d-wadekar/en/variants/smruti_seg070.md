@@ -1,0 +1,9 @@
+69- Prof. D. D. Wadekar
+
+Professor of Philosophy, Fergusson College, Poona
+
+“Prof. Ranade’s career as teacher of philosophy in the Fergusson College from 1914 to 1920 was a truly great and significant event in the history of teaching of philosophy in that College. To the positivist and agnostic traditions originally laid in that College by Agarkar and Bhate, Ranade contributed the idealist and mystical strains. But his greatest contribution to the Fergusson College was the great learning and brilliance which he brought to bear upon his teaching of Philosophy in the class-room and which attracted large numbers of students even from far-off  provinces like Berar and Sind and others even more distant. He spoke in his class with a sense of inspiration, like a convinced and convincing prophet, and enthused his listeners to philosophic effort.
+
+Ranade’s scholarship and authorship had a particular pattern which, at least in India, was Ranade’s own. He had made Indian Philosophy, ancient, mediaeval and modern (including contemporary), his special field of work, though his catholic interests made inroads even into ancient Greek Philosophy. A sedulous search for the original doctrinal sources, their sequential classification, logical systematization and arrangement and technical nomenclature, and, finally, generalizations and comparisons about them, expressed in classical and chaste English, are the main features of that pattern. Zeller and Gomperz, the famous European scholars of Greek Philosophy, served him as suggestive models for his own work. Ranade was a great scholar of versatile and resourceful intellectual abilities, a teacher of impressive learning and brilliance, and an author of unusual weight and profundity.”85
+
+85- The Fergusson College Magazine  (September 1957) Pg. 12

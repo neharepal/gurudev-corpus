@@ -1,0 +1,39 @@
+id: smruti-053-tribute-by-master-krishnarao-phulambrikar
+title: Tribute by Master Krishnarao Phulambrikar
+title_en: Tribute by Master Krishnarao Phulambrikar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- music
+- abhang-composition
+- letter
+- bhajan
+- blessing
+people_involved:
+- master-krishnarao
+- r-d-ranade
+- g-v-tulpule
+- jnaneshwara
+subject_focus: Vocalist Master Krishnarao writes seeking Gurudev's blessing as he
+  sets the saint's abhangs to ragas, and once sang a Jnaneshwar abhang before him.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: master-krishnarao
+  language: mr
+  file: mr/variants/smruti_seg053.md
+  page_or_section: unit 53
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Vocalist Master Krishnarao writes seeking Gurudev's blessing
+    as he sets the saint's abhangs to ragas, and once sang a Jnaneshwar abhang before
+    him.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 53 of स्मृति-संगम (Smruti Sangam) (narrator: master-krishnarao).'

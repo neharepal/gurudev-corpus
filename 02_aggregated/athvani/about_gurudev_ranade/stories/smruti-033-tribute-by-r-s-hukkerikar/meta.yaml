@@ -1,0 +1,34 @@
+id: smruti-033-tribute-by-r-s-hukkerikar
+title: Tribute by R. S. Hukkerikar
+title_en: Tribute by R. S. Hukkerikar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- never-speaks-ill
+- appreciates-virtue
+- jamkhandi-as-holy
+people_involved:
+- r-s-hukkerikar
+- r-d-ranade
+subject_focus: Hukkerikar notes Gurudev never speaks ill of anyone and praises the
+  smallest virtue, calling Jamkhandi a holy place for giving India such a jewel.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: r-s-hukkerikar
+  language: en
+  file: en/variants/smruti_seg033.md
+  page_or_section: unit 33
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Hukkerikar notes Gurudev never speaks ill of anyone and praises
+    the smallest virtue, calling Jamkhandi a holy place for giving India such a jewel.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 33 of स्मृति-संगम (Smruti Sangam) (narrator: r-s-hukkerikar).'

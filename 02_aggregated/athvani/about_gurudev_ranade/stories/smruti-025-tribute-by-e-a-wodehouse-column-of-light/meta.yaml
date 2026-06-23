@@ -1,0 +1,39 @@
+id: smruti-025-tribute-by-e-a-wodehouse-column-of-light
+title: Tribute by E. A. Wodehouse (column of light)
+title_en: Tribute by E. A. Wodehouse (column of light)
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- fergusson-college
+- spiritual-experience
+- vision-of-light
+- alandi
+- mentorship
+people_involved:
+- e-a-wodehouse
+- r-d-ranade
+- jnaneshwara
+subject_focus: Prof. Wodehouse counsels young Ranade on self-purification, and during
+  a discussion all witness a column of light toward Alandi, prompting Wodehouse to
+  declare his spiritual life had begun.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-n-deshpande
+  language: en
+  file: en/variants/smruti_seg025.md
+  page_or_section: unit 25
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Prof. Wodehouse counsels young Ranade on self-purification,
+    and during a discussion all witness a column of light toward Alandi, prompting
+    Wodehouse to declare his spiritual life had begun.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 25 of स्मृति-संगम (Smruti Sangam) (narrator: s-n-deshpande).'

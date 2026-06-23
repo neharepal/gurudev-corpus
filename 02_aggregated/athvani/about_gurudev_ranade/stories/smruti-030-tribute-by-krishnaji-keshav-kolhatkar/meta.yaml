@@ -1,0 +1,38 @@
+id: smruti-030-tribute-by-krishnaji-keshav-kolhatkar
+title: Tribute by Krishnaji Keshav Kolhatkar
+title_en: Tribute by Krishnaji Keshav Kolhatkar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- simplicity
+- allahabad
+- plain-living-high-thinking
+- self-content
+people_involved:
+- krishnaji-keshav-kolhatkar
+- r-d-ranade
+- s-radhakrishnan
+subject_focus: A Vedic scholar is astonished to find the Allahabad Vice-Chancellor's
+  room utterly bare, embodying 'plain living and high thinking' and the futility of
+  mere learning without realization.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: krishnaji-keshav-kolhatkar
+  language: mr
+  file: mr/variants/smruti_seg030.md
+  page_or_section: unit 30
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: A Vedic scholar is astonished to find the Allahabad Vice-Chancellor's
+    room utterly bare, embodying 'plain living and high thinking' and the futility
+    of mere learning without realization.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 30 of स्मृति-संगम (Smruti Sangam) (narrator: krishnaji-keshav-kolhatkar).'

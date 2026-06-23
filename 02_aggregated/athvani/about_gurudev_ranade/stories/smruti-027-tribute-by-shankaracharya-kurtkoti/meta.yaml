@@ -1,0 +1,34 @@
+id: smruti-027-tribute-by-shankaracharya-kurtkoti
+title: Tribute by Shankaracharya Kurtkoti
+title_en: Tribute by Shankaracharya Kurtkoti
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- friendship
+- reverence
+- kinship-of-soul
+people_involved:
+- kurtkoti
+- r-d-ranade
+subject_focus: Shankaracharya Kurtkoti declares Rambhau Ranade his only true kin in
+  the world, feeling toward him an intimacy he extends to no one else.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: kurtkoti
+  language: mr
+  file: mr/variants/smruti_seg027.md
+  page_or_section: unit 27
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Shankaracharya Kurtkoti declares Rambhau Ranade his only true
+    kin in the world, feeling toward him an intimacy he extends to no one else.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 27 of स्मृति-संगम (Smruti Sangam) (narrator: kurtkoti).'

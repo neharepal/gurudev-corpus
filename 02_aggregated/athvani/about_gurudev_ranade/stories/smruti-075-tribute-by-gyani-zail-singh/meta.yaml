@@ -1,0 +1,36 @@
+id: smruti-075-tribute-by-gyani-zail-singh
+title: Tribute by Gyani Zail Singh
+title_en: Tribute by Gyani Zail Singh
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- constructive-survey
+- book-launch
+- sanskrit
+- languages
+people_involved:
+- gyani-zail-singh
+- r-d-ranade
+subject_focus: President Zail Singh recalls the honour of launching Ranade's book
+  on Upanishadic philosophy and reflects on Sanskrit as the mother of India's languages.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: gyani-zail-singh
+  language: mr
+  file: mr/variants/smruti_seg075.md
+  page_or_section: unit 75
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: President Zail Singh recalls the honour of launching Ranade's
+    book on Upanishadic philosophy and reflects on Sanskrit as the mother of India's
+    languages.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 75 of स्मृति-संगम (Smruti Sangam) (narrator: gyani-zail-singh).'

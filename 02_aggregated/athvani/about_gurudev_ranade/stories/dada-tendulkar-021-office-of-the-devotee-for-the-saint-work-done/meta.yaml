@@ -1,0 +1,37 @@
+id: dada-tendulkar-021-office-of-the-devotee-for-the-saint-work-done
+title: Office of the Devotee for the Saint
+title_en: 'Office of the Devotee for the Saint: Work Done Through Dada'
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- seva
+- devotee-duties
+- bhajan
+- saptah-organization
+people_involved:
+- Gurudev
+- Shankarrao Tendulkar
+subject_focus: 'A summary of the work Gurudev had Dada carry out for the spiritual
+  cause: managing the Diwali and Shravan saptahs, nurturing saadhaks with tea and
+  food, organizing bhajans, and accurate reporting of sittings.'
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg021.md
+  page_or_section: unit 21
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: 'A summary of the work Gurudev had Dada carry out for the spiritual
+    cause: managing the Diwali and Shravan saptahs, nurturing saadhaks with tea and
+    food, organizing bhajans, and accurate reporting of sittings.'
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 21 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

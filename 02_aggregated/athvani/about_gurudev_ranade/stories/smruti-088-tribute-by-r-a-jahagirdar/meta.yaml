@@ -1,0 +1,36 @@
+id: smruti-088-tribute-by-r-a-jahagirdar
+title: Tribute by R. A. Jahagirdar
+title_en: Tribute by R. A. Jahagirdar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- dharwad
+- welcome
+- karnataka-pride
+- philosopher-and-saint
+people_involved:
+- r-a-jahagirdar
+- r-d-ranade
+subject_focus: Vice-Chancellor Jahagirdar welcomes Dr. Ranade at Karnatak University,
+  expressing pride that Karnataka produced so eminent a philosopher and saint.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: r-a-jahagirdar
+  language: en
+  file: en/variants/smruti_seg088.md
+  page_or_section: unit 88
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Vice-Chancellor Jahagirdar welcomes Dr. Ranade at Karnatak
+    University, expressing pride that Karnataka produced so eminent a philosopher
+    and saint.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 88 of स्मृति-संगम (Smruti Sangam) (narrator: r-a-jahagirdar).'

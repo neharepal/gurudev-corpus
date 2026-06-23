@@ -1,0 +1,36 @@
+id: smruti-022-tribute-by-m-r-jayakar
+title: Tribute by M. R. Jayakar
+title_en: Tribute by M. R. Jayakar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- vedanta
+- book-review
+- scholarship
+- request
+people_involved:
+- m-r-jayakar
+- r-d-ranade
+- kirtikar
+subject_focus: Jayakar requests Prof. Ranade's review of a Vedanta book, acknowledging
+  his scholarship and offering to print it in full in the Bombay Chronicle.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: m-r-jayakar
+  language: en
+  file: en/variants/smruti_seg022.md
+  page_or_section: unit 22
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Jayakar requests Prof. Ranade's review of a Vedanta book, acknowledging
+    his scholarship and offering to print it in full in the Bombay Chronicle.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 22 of स्मृति-संगम (Smruti Sangam) (narrator: m-r-jayakar).'

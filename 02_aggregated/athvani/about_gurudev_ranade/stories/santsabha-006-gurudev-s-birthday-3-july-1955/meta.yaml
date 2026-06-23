@@ -1,0 +1,38 @@
+id: santsabha-006-gurudev-s-birthday-3-july-1955
+title: गुरुदेवांचा वाढदिवस
+title_en: Gurudev's Birthday - 3 July 1955
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- birthday
+- humility
+- professor-pandit
+- celebration
+people_involved:
+- Gurudev R. D. Ranade
+- Dr. Aroskar
+- Professor Pandit
+- Kaku
+subject_focus: The celebration of Gurudev's birthday in 1955 and Vamanrao's shame
+  at not prostrating when Professor Pandit did full prostration.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg006.md
+  page_or_section: unit 6
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: The celebration of Gurudev's birthday in 1955 and Vamanrao's
+    shame at not prostrating when Professor Pandit did full prostration.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 6 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

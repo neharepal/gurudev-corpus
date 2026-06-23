@@ -1,0 +1,37 @@
+id: smruti-080-tribute-by-s-k-devdhar
+title: Tribute by S. K. Devdhar
+title_en: Tribute by S. K. Devdhar
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- words-of-power
+- self-confidence
+- punyatma
+- actionable-speech
+people_involved:
+- s-k-devdhar
+- r-d-ranade
+subject_focus: Devdhar says every word Ranade spoke carried the weight of learning
+  and experience, settling in the listener's heart, the words of a great holy soul
+  always charged with action.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-k-devdhar
+  language: mr
+  file: mr/variants/smruti_seg080.md
+  page_or_section: unit 80
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Devdhar says every word Ranade spoke carried the weight of
+    learning and experience, settling in the listener's heart, the words of a great
+    holy soul always charged with action.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 80 of स्मृति-संगम (Smruti Sangam) (narrator: s-k-devdhar).'

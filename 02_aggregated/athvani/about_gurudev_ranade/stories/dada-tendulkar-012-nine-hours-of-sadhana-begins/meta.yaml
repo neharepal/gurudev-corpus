@@ -1,0 +1,36 @@
+id: dada-tendulkar-012-nine-hours-of-sadhana-begins
+title: नऊ तास साधन सुरू
+title_en: Nine Hours of Sadhana Begins
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- sadhana
+- healing
+- perseverance
+- guru-grace
+people_involved:
+- Gurudev
+subject_focus: Suffering from arthritis, Shankarrao is examined by Gurudev who declares
+  it trivial and instructs nine hours of daily naam, reviving the old custom and easing
+  his pain.
+location: ''
+variants:
+- source_work_id: dada-tendulkar-shesh-ruperi-pane
+  source_work_title: शेष रुपेरी पाने (Dada Tendulkar)
+  narrator: Dada Tendulkar
+  language: mr
+  file: mr/variants/dada-tendulkar_seg012.md
+  page_or_section: unit 12
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of दादा तेंडुलकर आठवणी शेष
+    रुपेरी पाने.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Suffering from arthritis, Shankarrao is examined by Gurudev
+    who declares it trivial and instructs nine hours of daily naam, reviving the old
+    custom and easing his pain.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from शेष रुपेरी पाने (Dada Tendulkar)
+    via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 12 of शेष रुपेरी पाने (Dada Tendulkar) (narrator: Dada Tendulkar).'

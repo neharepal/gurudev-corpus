@@ -1,0 +1,34 @@
+id: smruti-078-tribute-by-shankar-dayal-sharma
+title: Tribute by Shankar Dayal Sharma
+title_en: Tribute by Shankar Dayal Sharma
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- allahabad-university
+- student
+- influence
+people_involved:
+- shankar-dayal-sharma
+- r-d-ranade
+subject_focus: President Shankar Dayal Sharma recalls being Gurudev's philosophy student
+  at Allahabad and being profoundly influenced by him.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: shankar-dayal-sharma
+  language: mr
+  file: mr/variants/smruti_seg078.md
+  page_or_section: unit 78
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: President Shankar Dayal Sharma recalls being Gurudev's philosophy
+    student at Allahabad and being profoundly influenced by him.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 78 of स्मृति-संगम (Smruti Sangam) (narrator: shankar-dayal-sharma).'

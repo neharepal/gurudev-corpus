@@ -1,0 +1,36 @@
+id: santsabha-042-dhokhe-hi-dhokhe-service-accepted-at-guru-s-f
+title: धोखे हि धोखै - गुरुचरणी सेवा
+title_en: Dhokhe Hi Dhokhe - Service Accepted at Guru's Feet
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- mr
+themes:
+- hindi-pada
+- dream
+- post-nirvana-grace
+- true-dreams
+people_involved:
+- Gurudev R. D. Ranade
+- Vasantrao Jeurkar
+subject_focus: After Gurudev's passing, Jeurkar dreams Gurudev praising Vamanrao's
+  singing of a difficult pada, which Vamanrao takes as accepted service.
+location: ''
+variants:
+- source_work_id: santsabha-sittings
+  source_work_title: संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni)
+  narrator: Vamanrao Kulkarni
+  language: mr
+  file: mr/variants/santsabha_seg042.md
+  page_or_section: unit 42
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of संतसभा परमपूज्य गुरुदेवांच्या
+    सीटींग्ज, वामनराव कुलकर्णी.pdf
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: After Gurudev's passing, Jeurkar dreams Gurudev praising Vamanrao's
+    singing of a difficult pada, which Vamanrao takes as accepted service.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from संतसभा — गुरुदेवांच्या सिटींग्ज
+    (Vamanrao Kulkarni) via tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 42 of संतसभा — गुरुदेवांच्या सिटींग्ज (Vamanrao Kulkarni) (narrator:
+  Vamanrao Kulkarni).'

@@ -1,0 +1,35 @@
+id: smruti-097-tribute-by-s-k-gupta
+title: Tribute by S. K. Gupta
+title_en: Tribute by S. K. Gupta
+title_translit: ''
+about_member: gurudev_ranade
+languages_available:
+- en
+themes:
+- research-guidance
+- mysterium-tremendum
+- humour
+- books
+people_involved:
+- s-k-gupta
+- r-d-ranade
+subject_focus: Gupta bows to the 'Mysterium Tremendum' that is Ranade, recalling the
+  privilege of his research guidance and the depth and charm of his books.
+location: ''
+variants:
+- source_work_id: smruti-sangam
+  source_work_title: स्मृति-संगम (Smruti Sangam)
+  narrator: s-k-gupta
+  language: en
+  file: en/variants/smruti_seg097.md
+  page_or_section: unit 97
+  raw_source: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Smruti SangamTHE FINAL PRESS
+    COPY  2020.docx
+  received_in_batch: drive_dump_2026-06-22
+  distinctive_details: Gupta bows to the 'Mysterium Tremendum' that is Ranade, recalling
+    the privilege of his research guidance and the depth and charm of his books.
+consolidated:
+  status: single_variant
+  notes: Auto-segmented drive_dump_2026-06-22 from स्मृति-संगम (Smruti Sangam) via
+    tools/structure_athvani_2026-06-22.py.
+notes: 'Story unit 97 of स्मृति-संगम (Smruti Sangam) (narrator: s-k-gupta).'
