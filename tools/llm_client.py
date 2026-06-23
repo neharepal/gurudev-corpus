@@ -23,6 +23,7 @@ Prompt caching (per shared/prompt-caching.md):
 
 from __future__ import annotations
 
+import copy
 import os
 import sys
 from typing import Any
@@ -30,7 +31,7 @@ from typing import Any
 import anthropic
 from anthropic import Anthropic
 
-from schemas import get_response_model, get_tool
+from schemas import get_response_model, get_tool, splice_qa_citations, splice_quote_dict
 
 
 # Model routing per RFC-001 and RFC-003.
@@ -129,6 +130,7 @@ class ChatClient:
         user_message: str,
         model: str | None = None,
         max_tokens: int | None = None,
+        label_to_chunk: dict | None = None,
     ):
         """Single-turn structured ask via tool-use (ADR-011).
 
@@ -183,8 +185,15 @@ class ChatClient:
                 f"stop_reason={response.stop_reason!r}"
             )
 
+        # Reference-and-splice: fill verbatim `body` + attribution into QA
+        # citations from the referenced chunks before validation.
+        tool_input = tool_use.input
+        if mode == "qa" and label_to_chunk:
+            tool_input = copy.deepcopy(tool_input)
+            splice_qa_citations(tool_input, label_to_chunk)
+
         try:
-            parsed = response_model.model_validate(tool_use.input)
+            parsed = response_model.model_validate(tool_input)
         except Exception as e:  # pydantic.ValidationError
             raise RuntimeError(
                 f"Tool input failed pydantic validation for mode={mode!r}: {e}"
@@ -200,6 +209,7 @@ class ChatClient:
         user_message: str,
         model: str | None = None,
         max_tokens: int | None = None,
+        label_to_chunk: dict | None = None,
     ):
         """Streaming variant of ask_structured (RFC-010).
 
@@ -262,7 +272,21 @@ class ChatClient:
                                     else:
                                         yield ("field", {"name": ev.name, "value": ev.value})
                                 elif isinstance(ev, ArrayItemEvent):
-                                    yield ("array_item", {"array": ev.array, "index": ev.index, "value": ev.value})
+                                    value = ev.value
+                                    # Splice the verbatim body into a QA citation
+                                    # the moment its (short) reference fields close,
+                                    # so the full quote reaches the client without
+                                    # the model ever retyping it. See RFC-010 /
+                                    # docs/PLAN-reference-and-splice-citations.md.
+                                    if (
+                                        mode == "qa"
+                                        and ev.array == "citations"
+                                        and label_to_chunk
+                                        and isinstance(value, dict)
+                                        and isinstance(value.get("quote"), dict)
+                                    ):
+                                        splice_quote_dict(value["quote"], label_to_chunk)
+                                    yield ("array_item", {"array": ev.array, "index": ev.index, "value": value})
                                 elif isinstance(ev, DeltaEvent):
                                     yield ("delta", {"path": ev.path, "text": ev.text})
                 full_message = stream.get_final_message()
@@ -286,8 +310,13 @@ class ChatClient:
             yield ("error", {"message": f"Model returned no tool_use block for {tool['name']!r}"})
             return
 
+        tool_input = tool_use.input
+        if mode == "qa" and label_to_chunk:
+            tool_input = copy.deepcopy(tool_input)
+            splice_qa_citations(tool_input, label_to_chunk)
+
         try:
-            parsed = response_model.model_validate(tool_use.input)
+            parsed = response_model.model_validate(tool_input)
         except Exception as e:
             yield ("error", {"message": f"Validation failed for mode={mode!r}: {e}"})
             return

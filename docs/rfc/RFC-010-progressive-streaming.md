@@ -278,3 +278,13 @@ A user can navigate away mid-stream. The `fetch` from the React side gets `Abort
 - Anthropic SDK streaming docs: https://github.com/anthropics/anthropic-sdk-python (search `messages.stream`)
 - Server-Sent Events: https://html.spec.whatwg.org/multipage/server-sent-events.html
 - Next.js streaming runtime notes: https://nextjs.org/docs/app/api-reference/file-conventions/route#streaming
+
+## Amendment (2026-06-22): Q&A citation splice at the `array_item` boundary
+
+Doctrinal Q&A citations now stream as short references (passage letter + start/end
+anchors) rather than the full verbatim `quote.body`. The backend splices the
+verbatim body + attribution at the moment each citation's `array_item` event is
+emitted (`tools/llm_client.py`), so the SSE `array_item` carries the complete
+`Quote` the chat-app already renders — no frontend change. The interim
+`delta` events for the (tiny) anchor fields stream but aren't displayed. See
+ADR-011 amendment and [PLAN-reference-and-splice-citations.md](../PLAN-reference-and-splice-citations.md).

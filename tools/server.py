@@ -43,6 +43,7 @@ from pydantic import BaseModel
 import retrieve
 from llm_client import ChatClient, MissingApiKeyError, pick_model
 from prompts import (
+    _passage_label,
     build_pravachan_user_message,
     build_reading_user_message,
     build_user_message,
@@ -195,6 +196,13 @@ def _load_everything() -> None:
     STATE.model = SentenceTransformer(STATE.model_name, trust_remote_code=True)
     print(f"[startup] model ready in {time.time() - t:.1f}s", file=sys.stderr)
 
+    # Warm-up embed: the first encode() call does lazy tokenizer/forward-pass
+    # init that otherwise lands on the first real user query (~10s of cold
+    # latency). Pay it here at startup instead.
+    t = time.time()
+    _embed_query("warm up the embedding model")
+    print(f"[startup] embed warm-up in {time.time() - t:.1f}s", file=sys.stderr)
+
     STATE.client = ChatClient()
     print("[startup] ready", file=sys.stderr)
 
@@ -286,6 +294,11 @@ def ask(req: AskRequest, request: Request):
 
     mode, user_msg, system_prompt, chunks, retrieval_s = _prepare_request(req)
 
+    # Map the passage labels the model sees (A, B, C, ...) back to their chunks,
+    # so Q&A citations emitted by reference can be spliced to verbatim text.
+    # Same enumeration order as prompts.format_chunks_for_prompt.
+    label_to_chunk = {_passage_label(i): c for i, c in enumerate(chunks)}
+
     if not wants_stream:
         # ── Non-streaming JSON path (CLI, tune_sweep.py, anything sending Accept: application/json)
         try:
@@ -293,6 +306,7 @@ def ask(req: AskRequest, request: Request):
                 mode=mode,
                 system_prompt=system_prompt,
                 user_message=user_msg,
+                label_to_chunk=label_to_chunk,
             )
         except RuntimeError as e:
             raise HTTPException(status_code=502, detail=str(e))
@@ -309,6 +323,7 @@ def ask(req: AskRequest, request: Request):
             mode=mode,
             system_prompt=system_prompt,
             user_message=user_msg,
+            label_to_chunk=label_to_chunk,
         ):
             now = time.time()
             if now - last_event_ts > 15:

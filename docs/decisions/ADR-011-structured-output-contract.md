@@ -123,3 +123,20 @@ No change to the JSON Schema, the prompts, the chat-app, or the FastAPI surface.
 - `tools/schemas.py` — pydantic + JSON Schema source of truth
 - `chat-app/lib/api.ts` — TypeScript mirror
 - `tools/server.py` — FastAPI surface
+
+## Amendment (2026-06-22): Q&A citations quote by reference
+
+Doctrinal Q&A citations no longer ask the model to emit the verbatim `quote.body`
+(plus `workTitle`/`kind`/`author`). Instead the model emits a **reference** —
+`quote.passage` (the passage letter), `quote.quoteStart`, `quote.quoteEnd` — and
+the backend splices the verbatim `body` and authoritative attribution from the
+referenced chunk's metadata (`tools/schemas.py:splice_qa_citations`). The **wire
+`Quote` shape the chat-app consumes is unchanged** — splicing happens server-side
+before pydantic validation, so the frontend is untouched.
+
+Motivation was latency (the model stalled multi-seconds reproducing long verbatim
+text); measurement showed the stall is mostly intrinsic per-request grounding and
+only partly recovered, but the change is retained for its **correctness** benefit:
+quotes are now byte-identical to the source and attribution can't drift. Other
+modes (pravachan, reading) still use the verbatim `Quote`. See
+[PLAN-reference-and-splice-citations.md](../PLAN-reference-and-splice-citations.md).

@@ -270,10 +270,62 @@ _QUOTE_SCHEMA: Dict[str, Any] = {
     "required": ["body", "workTitle", "location", "kind", "author"],
 }
 
+# Q&A citations quote BY REFERENCE (latency fix — see
+# docs/PLAN-reference-and-splice-citations.md). Instead of retyping the full
+# verbatim passage (which made the model stall for ~10-25s mid-stream), the
+# model names the passage LETTER and short start/end anchors; the backend
+# splices in the real `body` and authoritative attribution from the chunk.
+_QA_CITATION_QUOTE_SCHEMA: Dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "passage": {
+            "type": "string",
+            "description": (
+                "The single passage LETTER (e.g. \"A\", \"B\", \"C\") from "
+                "<retrieved_passages> that this quote is taken from. Exactly one label."
+            ),
+        },
+        "quoteStart": {
+            "type": "string",
+            "description": (
+                "The FIRST few words (about 4-8) of the verbatim quote, copied "
+                "EXACTLY — character for character — from that passage's TEXT. "
+                "Do NOT paraphrase or translate. Marks where the quote begins."
+            ),
+        },
+        "quoteEnd": {
+            "type": "string",
+            "description": (
+                "The LAST few words (about 4-8) of the verbatim quote, copied "
+                "EXACTLY from that passage's TEXT, occurring after quoteStart. "
+                "Marks where the quote ends. For a very short quote it may equal "
+                "quoteStart. Do NOT retype the whole passage."
+            ),
+        },
+        "location": {
+            "type": "string",
+            "description": (
+                "Human-readable location in the work — chapter, page, section, "
+                "paragraph, letter number, or athvani section heading. Leave as "
+                "empty string if no natural locator is available. Never use an "
+                "internal retrieval identifier here."
+            ),
+        },
+        "paraphrase": {
+            "type": "string",
+            "description": (
+                "Optional short gloss in the user's language when the quote is "
+                "in a different language. Clearly a paraphrase, not the source."
+            ),
+        },
+    },
+    "required": ["passage", "quoteStart", "quoteEnd", "location"],
+}
+
 _CITATION_SCHEMA: Dict[str, Any] = {
     "type": "object",
     "properties": {
-        "quote": _QUOTE_SCHEMA,
+        "quote": _QA_CITATION_QUOTE_SCHEMA,
         "whyChosen": {
             "type": "string",
             "description": "One sentence in the user's language explaining why this passage answers the question.",
@@ -327,7 +379,9 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
             "type": "array",
             "items": _CITATION_SCHEMA,
             "description": (
-                "Doctrinal: 2-5 verbatim citations with rationales. "
+                "Doctrinal: 2-5 citations with rationales. Quote each passage BY "
+                "REFERENCE — give the passage letter plus the exact start/end words "
+                "of the span you want; do NOT retype the full passage text. "
                 "Meta: empty array — meta mode does not quote."
             ),
         },
@@ -343,6 +397,158 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
     },
     "required": ["classification", "question", "framing", "citations"],
 }
+
+
+# ---------------------------------------------------------------------------
+# Reference-and-splice for Q&A citations
+# (latency fix — see docs/PLAN-reference-and-splice-citations.md)
+#
+# The model emits each doctrinal quote by reference (passage letter + short
+# verbatim start/end anchors) rather than retyping the passage. These helpers
+# splice the real `body` (and authoritative attribution from the chunk's
+# metadata) back into the quote dict, producing the same wire `Quote` shape the
+# frontend already consumes. Operates on raw dicts, in place, before pydantic
+# validation — so the parsed `Quote` always has a populated `body`.
+# ---------------------------------------------------------------------------
+
+_ALLOWED_KINDS = {"canonical", "athvani", "biography"}
+
+
+def _anchor_tokens(anchor: str) -> List[str]:
+    """Word-run tokens of an anchor (punctuation dropped, Unicode-aware)."""
+    return re.findall(r"\w+", anchor or "", re.UNICODE)
+
+
+def _anchor_regex(anchor: str):
+    """Regex matching the anchor's WORDS in the source, tolerant of any
+    punctuation/whitespace differences (attached or between words). Built from
+    word-runs only, so e.g. an end anchor "amirasa." still matches a source
+    "amirasa," — the common cause of mismatches in OCR'd text."""
+    toks = _anchor_tokens(anchor)
+    if not toks:
+        return None
+    # `\W+` between tokens = one or more non-word chars (space, newline, punct).
+    return re.compile(r"\W+".join(re.escape(t) for t in toks))
+
+
+# A sentence/paragraph boundary: terminal punctuation (incl. the Devanagari
+# danda) with optional closing quote, followed by whitespace/end — or a blank line.
+_BOUNDARY = re.compile(r"[।.!?][\"'’”\)\]]?(?=\s|$)|\n\s*\n")
+
+
+def _to_boundary(text: str, start: int, after: int) -> str:
+    """Verbatim text from `start` to the next sentence/paragraph boundary at or
+    after `after` (else to the end of the chunk). Used when the start anchor
+    matched but the end anchor did not — far better than a stub."""
+    m = _BOUNDARY.search(text, after)
+    end = m.end() if m else len(text)
+    return text[start:end].strip()
+
+
+def _splice_span(text: str, start: str, end: str) -> Optional[str]:
+    """Verbatim substring of `text` from the start anchor through the end anchor,
+    tolerant of punctuation/whitespace. Returns None only if the START anchor
+    can't be located; a missing END anchor falls back to a sentence boundary."""
+    sr = _anchor_regex(start)
+    sm = sr.search(text) if sr else None
+    if not sm:
+        return None
+    start_toks = _anchor_tokens(start)
+    end_toks = _anchor_tokens(end)
+    # Short quote: end omitted or same words as start -> span is the start match.
+    if not end_toks or end_toks == start_toks:
+        return text[sm.start(): sm.end()].strip()
+    er = _anchor_regex(end)
+    em = er.search(text, sm.end()) if er else None
+    if em:
+        return text[sm.start(): em.end()].strip()
+    # End anchor not found: extend from the start match to a sentence boundary.
+    return _to_boundary(text, sm.start(), sm.end())
+
+
+def _degrade(start: str, end: str) -> str:
+    start = (start or "").strip()
+    end = (end or "").strip()
+    if end and end != start:
+        return f"{start} … {end}"
+    return start
+
+
+def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> bool:
+    """Fill body/workTitle/kind/author on a reference quote, in place.
+
+    Returns True if the verbatim body was spliced cleanly, False if it degraded
+    (unknown passage or anchor mismatch) or there was nothing to splice.
+
+    When the quote carries a reference (`passage`/`quoteStart`/`quoteEnd`), the
+    spliced text from the chunk ALWAYS overrides any `body` the model emitted —
+    non-strict tool use sometimes still fills `body`, and trusting that would
+    defeat the whole point (faithful, byte-identical quotes). Only a quote with
+    NO reference at all (other modes / legacy shape) keeps its model `body`.
+    """
+    if not isinstance(quote, dict):
+        return False
+
+    passage = (quote.get("passage") or "").strip()
+    start = quote.get("quoteStart") or ""
+    end = quote.get("quoteEnd") or ""
+    model_body = quote.get("body") or ""
+    has_ref = bool(passage or start or end)
+
+    if not has_ref:
+        # Genuine verbatim body (pravachan/reading/legacy) — leave it untouched.
+        return bool(model_body)
+
+    chunk = (label_to_chunk or {}).get(passage)
+    if chunk is None:
+        # Unknown passage letter: can't splice. Prefer the model's body if it
+        # gave one, else fall back to the anchors. Either way it's unverified.
+        if not model_body:
+            quote["body"] = _degrade(start, end)
+        quote.setdefault("workTitle", "")
+        quote.setdefault("author", "")
+        quote.setdefault("location", "")
+        if quote.get("kind") not in _ALLOWED_KINDS:
+            quote["kind"] = "canonical"
+        return False
+
+    meta = chunk.get("meta") or {}
+    text = chunk.get("text") or ""
+    body = _splice_span(text, start, end)
+    ok = body is not None
+    # Spliced text wins over any model-emitted body. On a start-anchor miss
+    # (ok is False) keep the model body if present, else the anchor stub.
+    if ok:
+        quote["body"] = body
+    elif not model_body:
+        quote["body"] = _degrade(start, end)
+    # Authoritative attribution from the chunk's metadata.
+    quote["workTitle"] = meta.get("title") or meta.get("work_id") or quote.get("workTitle") or ""
+    quote["author"] = meta.get("author") or quote.get("author") or ""
+    mkind = meta.get("kind")
+    if mkind in _ALLOWED_KINDS:
+        quote["kind"] = mkind
+    elif quote.get("kind") not in _ALLOWED_KINDS:
+        quote["kind"] = "canonical"
+    quote.setdefault("location", "")
+    return ok
+
+
+def splice_qa_citations(tool_input: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> int:
+    """Splice every citation quote in a QA tool-input dict, in place.
+
+    Returns the number of citations that degraded (anchor mismatch / unknown
+    passage) — for diagnostics. Safe to call on meta answers (no citations).
+    """
+    degraded = 0
+    cits = tool_input.get("citations")
+    if isinstance(cits, list):
+        for c in cits:
+            if isinstance(c, dict) and isinstance(c.get("quote"), dict):
+                if not splice_quote_dict(c["quote"], label_to_chunk):
+                    degraded += 1
+    return degraded
+
 
 _PRAVACHAN_EXAMPLE_SCHEMA: Dict[str, Any] = {
     "type": "object",

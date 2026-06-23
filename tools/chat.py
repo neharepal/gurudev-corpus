@@ -36,6 +36,7 @@ sys.path.insert(0, str(REPO / "tools"))
 import numpy as np
 
 from prompts import (
+    _passage_label,
     build_pravachan_user_message,
     build_reading_user_message,
     build_user_message,
@@ -241,11 +242,13 @@ def main() -> int:
         print(f"\nERROR: {e}", file=sys.stderr)
         return 2
 
+    label_to_chunk = {_passage_label(i): c for i, c in enumerate(chunks)}
     t0 = time.time()
     parsed, response = client.ask_structured(
         mode=args.mode,
         system_prompt=system_prompt,
         user_message=user_message,
+        label_to_chunk=label_to_chunk,
     )
     llm_elapsed = time.time() - t0
 

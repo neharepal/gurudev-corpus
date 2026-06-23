@@ -32,6 +32,7 @@ import numpy as np
 
 import retrieve
 from prompts import (
+    _passage_label,
     build_pravachan_user_message,
     build_reading_user_message,
     build_user_message,
@@ -319,9 +320,11 @@ def main() -> int:
         user_msg = build_user_msg(mode, q["question"], chunks, q.get("work"))
         sys_prompt = get_system_prompt(mode)
 
+        label_to_chunk = {_passage_label(j): c for j, c in enumerate(chunks)}
         t0 = time.time()
         parsed, response = client.ask_structured(
-            mode=mode, system_prompt=sys_prompt, user_message=user_msg
+            mode=mode, system_prompt=sys_prompt, user_message=user_msg,
+            label_to_chunk=label_to_chunk,
         )
         llm_s = time.time() - t0
         answer = render_markdown(parsed)

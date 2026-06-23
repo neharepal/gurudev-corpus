@@ -10,6 +10,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import AnswerToolbar from "../../components/AnswerToolbar";
+import MeditativeLoader from "../../components/MeditativeLoader";
 import QuoteBlock from "../../components/QuoteBlock";
 import { usePersistentState } from "../../hooks/usePersistentState";
 import {
@@ -49,6 +50,8 @@ const L: Record<
     sectionYourQuestion: string;
     worksReferenced: string;
     loading: string;
+    gathering: string;
+    composing: string;
     errorNoQuestion: string;
     errorGeneric: string;
     errorBadResponse: string;
@@ -70,6 +73,8 @@ const L: Record<
     sectionYourQuestion: "Your question",
     worksReferenced: "Works referenced",
     loading: "Searching the literature...",
+    gathering: "Gathering the passages...",
+    composing: "Composing the answer...",
     errorNoQuestion: "No question provided. Go back to start and ask something.",
     errorGeneric: "Couldn't load the answer. Please try again.",
     errorBadResponse: "Unexpected response from the corpus.",
@@ -90,6 +95,8 @@ const L: Record<
     sectionYourQuestion: "तुमचा प्रश्न",
     worksReferenced: "संदर्भ",
     loading: "साहित्यातून शोधत आहोत...",
+    gathering: "उतारे जमा करत आहोत...",
+    composing: "उत्तर रचत आहोत...",
     errorNoQuestion: "प्रश्न नाही. सुरुवातीला परत जाऊन प्रश्न विचारा.",
     errorGeneric: "उत्तर मिळवता आले नाही. कृपया पुन्हा प्रयत्न करा.",
     errorBadResponse: "अनपेक्षित प्रतिसाद.",
@@ -174,11 +181,12 @@ function ChatPage() {
     null,
   );
   const [loading, setLoading] = useState(true);
+  // `streaming` stays true from request start until the stream ends (done /
+  // error / abort). `loading` turns off on the FIRST content; `streaming`
+  // keeps a progress indicator alive through the later background waits
+  // (e.g. the multi-second pause while the model grounds its citations).
+  const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Diagnostic counter for streaming events. Surfaced in the answer area so
-  // we can tell at a glance whether the SSE handler is firing during the
-  // perceived "wait" period. Reset to 0 on every new question.
-  const [debugEventCount, setDebugEventCount] = useState(0);
 
   // Fetch the initial answer whenever the conversation identity changes.
   // Cancellable via AbortController so a fast back/forward doesn't race.
@@ -197,9 +205,9 @@ function ChatPage() {
     }
     const ctrl = new AbortController();
     setLoading(true);
+    setStreaming(true);
     setError(null);
     setAnswer(null);
-    setDebugEventCount(0);
 
     // Initial draft per mode — empty fields the LLM will fill in.
     const initialDraft: Record<string, unknown> =
@@ -218,8 +226,7 @@ function ChatPage() {
 
     // Throttle setAnswer to once per animation frame. Each SSE event mutates
     // `draft`; one rAF callback flushes the latest draft to setAnswer. This
-    // defends against React batching skipping frames when events burst, and
-    // guarantees the UI redraws at least every ~16ms while updates pend.
+    // coalesces bursty events into at most one redraw per frame.
     let renderPending = false;
     const scheduleRender = () => {
       if (renderPending) return;
@@ -230,23 +237,11 @@ function ChatPage() {
       });
     };
 
-    // Diagnostic: count events received. Surfaces in the loading text so you
-    // can tell at a glance whether the React handler is firing during the
-    // perceived "long wait" period.
-    let eventCount = 0;
-    let lastDebugSent = 0;
-    const bumpDebug = () => {
-      eventCount += 1;
-      const now = Date.now();
-      if (now - lastDebugSent > 100) {
-        lastDebugSent = now;
-        setDebugEventCount(eventCount);
-      }
-    };
-
     // Phase 2 (RFC-010): delta events carry dotted paths like
-    // "citations.0.quote.body". This helper walks the path, creating
-    // intermediate objects/arrays as needed, and applies `updater` to the leaf.
+    // "citations.0.quote.body". This helper walks the path top-down,
+    // copying each parent before descending, then applies `updater` at the leaf.
+    // Iterative form (recursive form was silently throwing in production —
+    // suspected closure-variable capture issue with the inner `recur`).
     const withPathUpdated = (
       obj: Record<string, unknown>,
       pathStr: string,
@@ -255,29 +250,37 @@ function ChatPage() {
       const segs: Array<string | number> = pathStr
         .split(".")
         .map((s) => (/^\d+$/.test(s) ? parseInt(s, 10) : s));
+      if (segs.length === 0) return obj;
 
-      const recur = (cur: unknown, depth: number): unknown => {
-        if (depth === segs.length) return updater(cur);
-        const seg = segs[depth];
-        if (typeof seg === "number") {
-          const arr = Array.isArray(cur) ? [...cur] : [];
-          arr[seg] = recur(arr[seg], depth + 1);
-          return arr;
+      const result: Record<string, unknown> = { ...obj };
+      // Walk down, creating shallow copies for each segment we descend into.
+      // `parent` always points at the structure we'll mutate in this iteration.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let parent: any = result;
+      for (let i = 0; i < segs.length - 1; i++) {
+        const seg = segs[i];
+        const nextSeg = segs[i + 1];
+        const existing = parent[seg];
+        let copy: unknown;
+        if (typeof nextSeg === "number") {
+          // Next level is an array index → ensure THIS level holds an array.
+          copy = Array.isArray(existing) ? [...existing] : [];
+        } else {
+          // Next level is an object key → ensure THIS level holds an object.
+          copy =
+            existing && typeof existing === "object" && !Array.isArray(existing)
+              ? { ...(existing as Record<string, unknown>) }
+              : {};
         }
-        const next: Record<string, unknown> = {
-          ...((cur && typeof cur === "object" && !Array.isArray(cur))
-            ? (cur as Record<string, unknown>)
-            : {}),
-        };
-        next[seg] = recur(next[seg], depth + 1);
-        return next;
-      };
-
-      return recur(obj, 0) as Record<string, unknown>;
+        parent[seg] = copy;
+        parent = copy;
+      }
+      const leaf = segs[segs.length - 1];
+      parent[leaf] = updater(parent[leaf]);
+      return result;
     };
 
     const handleEvent = (event: StreamEvent) => {
-      bumpDebug();
       switch (event.type) {
         case "retrieval":
           return;
@@ -320,10 +323,12 @@ function ChatPage() {
             setAnswer(event.response as QAAnswer | PravachanAnswer);
           }
           setLoading(false);
+          setStreaming(false);
           return;
         case "error":
           setError(event.message);
           setLoading(false);
+          setStreaming(false);
           return;
       }
     };
@@ -335,9 +340,13 @@ function ChatPage() {
           e instanceof AskError ? e.message : L[lang].errorGeneric;
         setError(msg);
         setLoading(false);
+        setStreaming(false);
       },
     );
-    return () => ctrl.abort();
+    return () => {
+      ctrl.abort();
+      setStreaming(false);
+    };
   }, [mode, lang, questionFromUrl]);
 
   function appendFollowUp() {
@@ -423,24 +432,9 @@ function ChatPage() {
             style={{ color: "var(--accent-maroon)" }}
           >
             {lbl.gurudevSangrah}
-            {debugEventCount > 0 ? (
-              <span style={{ marginLeft: 12, fontFamily: "monospace", fontSize: 11, opacity: 0.5, fontWeight: "normal" }}>
-                · {debugEventCount} stream events
-              </span>
-            ) : null}
           </div>
           {loading ? (
-            <p
-              className={`italic ${lang === "mr" ? "font-deva" : ""}`}
-              style={{ color: "var(--text-tertiary)" }}
-            >
-              {lbl.loading}
-              {debugEventCount > 0 ? (
-                <span style={{ marginLeft: 12, fontFamily: "monospace", fontSize: 13, opacity: 0.7 }}>
-                  · {debugEventCount} events
-                </span>
-              ) : null}
-            </p>
+            <MeditativeLoader label={lbl.loading} isDeva={lang === "mr"} />
           ) : error ? (
             <p
               className={lang === "mr" ? "font-deva" : ""}
@@ -452,6 +446,27 @@ function ChatPage() {
             <QAAnswerBody answer={answer} lbl={lbl} lang={lang} />
           ) : answer?.kind === "pravachan" ? (
             <PravachanAnswerBody answer={answer} lbl={lbl} lang={lang} />
+          ) : null}
+
+          {/* Inline progress: the first content has appeared but the stream is
+              still running (e.g. the multi-second wait while citations are
+              grounded). Keep a calm signal that work is in flight. */}
+          {!loading && streaming && !error ? (
+            <MeditativeLoader
+              compact
+              isDeva={lang === "mr"}
+              label={
+                (() => {
+                  const a = answer as
+                    | { classification?: string; citations?: unknown[] }
+                    | null;
+                  const awaitingCitations =
+                    a?.classification === "doctrinal" &&
+                    (a?.citations?.length ?? 0) === 0;
+                  return awaitingCitations ? lbl.gathering : lbl.composing;
+                })()
+              }
+            />
           ) : null}
         </div>
 

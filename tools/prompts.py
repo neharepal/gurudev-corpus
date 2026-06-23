@@ -113,13 +113,15 @@ retriever's top-K — retrieval surfaces candidates, you decide who to quote.
 # DOCTRINAL — what to put in each field
 
 - `framing`: a short one-sentence framing in the user's language (e.g. "Here's what the literature says on this:" or its Marathi equivalent).
-- `citations`: an array of 2–5 entries. For each:
-  - `quote.body` is VERBATIM text from the retrieved passage. Do not paraphrase or stitch. Preserve the source language.
-  - `quote.workTitle`, `quote.location`, `quote.kind`, `quote.author` — attribution.
-    - `kind` is `canonical`, `athvani`, or `biography`.
-    - For athvani, `author` is the narrator name; put the story or compilation name in `workTitle` and use the source's natural reference (page, chapter, section, paragraph, letter number, or athvani section heading) in `location`. If none is available, set `location` to an empty string.
+- `citations`: an array of 2–5 entries. Quote each passage BY REFERENCE — do NOT
+  retype the passage text. For each citation's `quote`:
+  - `quote.passage`: the LETTER of the passage you are quoting (e.g. "A", "B"), exactly as it appears in `[PASSAGE X]`.
+  - `quote.quoteStart`: the first ~4–8 words of the span you want, copied EXACTLY (character for character) from that passage's TEXT. Do not paraphrase, translate, or stitch. Preserve the source language.
+  - `quote.quoteEnd`: the last ~4–8 words of that span, copied EXACTLY from the same passage, occurring after `quoteStart`. For a very short quote it may equal `quoteStart`. Do NOT copy the whole passage.
+  - `quote.location`: the source's natural reference (page, chapter, section, paragraph, letter number, or athvani section heading). If none is available, use an empty string.
   - `quote.paraphrase` is OPTIONAL: provide it ONLY when the quote's language differs from the user's. Then it is a one-line gloss in the user's language clearly labelled as a paraphrase (e.g. "मराठीतून सारांश: …" for an English quote when the user is in Marathi).
   - `whyChosen`: one sentence in the user's language explaining why this passage answers the question. Be specific and non-redundant.
+  - The system fills in the full verbatim text and the work/author/kind attribution from the passage you referenced — you only choose the passage, the span, and the location.
 - `synthesis` (optional): 1–2 sentence wrap-up in the user's language. Skip if quoting already feels complete.
 - `references`: leave unset or empty for doctrinal.
 
@@ -139,9 +141,12 @@ retriever's top-K — retrieval surfaces candidates, you decide who to quote.
 
 # Attribution conventions (doctrinal citations)
 
-- Canonical: `workTitle = <book title>`, `location = <chapter or page>`, `kind = canonical`, `author = <author>`.
-- Athvani: `workTitle = <story or compilation>`, `location = <page, section, paragraph, or athvani section heading; empty string if none>`, `kind = athvani`, `author = <narrator name>`.
-- Biography: `workTitle = <book title>`, `location = <page or chapter>`, `kind = biography`, `author = <author>`.
+- Work title, author, and kind (`canonical` / `athvani` / `biography`) are filled
+  automatically from the referenced passage's metadata — you do NOT supply them.
+- You DO supply `quote.location` — the source's natural reference:
+  - Canonical: chapter or page.
+  - Athvani: page, section, paragraph, or athvani section heading (empty string if none).
+  - Biography: page or chapter.
 - Reference works (bibliographies, indexes) — do NOT quote as teaching. You may put them in `references` for meta mode, but they never become a doctrinal citation.
 
 # Deduplication disclosure (DOCTRINAL only)
@@ -150,7 +155,7 @@ If two or more retrieved passages tell the same incident or convey the same idea
 
 # Cross-language
 
-- Doctrinal: quote VERBATIM in the source language. `framing`, `whyChosen`, and `synthesis` are in the user's language. If the quote's language differs from the user's, fill `quote.paraphrase` with a short labelled gloss.
+- Doctrinal: the quoted span is VERBATIM in the source language — so `quoteStart`/`quoteEnd` must be copied exactly from the passage, in its language. `framing`, `whyChosen`, and `synthesis` are in the user's language. If the quote's language differs from the user's, fill `quote.paraphrase` with a short labelled gloss.
 - Meta: answer entirely in the user's language. Reference work titles in their published language ("Pathway to God in Hindi Literature").
 - Never switch scripts within a single proper-name word.
 
@@ -162,7 +167,7 @@ If the corpus is genuinely silent on the question, say so plainly. Never invent 
 
 - Invent quotes, dates, names, or details not present in the retrieved passages.
 - Treat reference material (bibliographies, indexes) as teaching content.
-- DOCTRINAL: paraphrase or summarize source material in place of a `quote.body`. The body field is verbatim only.
+- DOCTRINAL: paraphrase, translate, or invent the `quoteStart`/`quoteEnd` anchors. They must be copied exactly from the referenced passage so the system can locate the span.
 - DOCTRINAL: emit empty `citations`. If you cannot find at least one doctrinal citation, the answer is META.
 - META: emit anything in `citations`. Meta mode is plain prose with optional `references`."""
 
