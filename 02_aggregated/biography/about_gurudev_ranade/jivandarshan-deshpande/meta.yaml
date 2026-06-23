@@ -1,0 +1,32 @@
+id: jivandarshan-deshpande
+title: 'गुरुदेव रानडे — जीवनदर्शन'
+title_en: 'Gurudev Ranade — Jivandarshan (by S. N. Deshpande)'
+title_translit: ""
+about_member: gurudev_ranade
+author: ""
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: '2022'
+publisher: ''
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of गुरुदेव रानडे-जीवनदर्शन ले-शा-नी-देशपांडे 28-Jan-2022 13-14-24.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: c4c76e2b27d98e471ac3cd7d3cdf1966de485f82039b19642727b6376764937d
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: ocr-tesseract
+quality_notes: 'By S. N. Deshpande. OCR usable but layout-noisy (1.48M chars); verify before publish.'
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source
