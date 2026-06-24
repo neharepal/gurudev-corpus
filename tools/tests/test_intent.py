@@ -62,3 +62,38 @@ def test_confident_query_never_calls_fallback():
     assert intent.classify_intent(
         "What is the philosophy of bhakti?", llm_fallback=boom
     ) == "doctrinal"
+
+
+class _FakeBlock:
+    type = "text"
+
+    def __init__(self, text):
+        self.text = text
+
+
+class _FakeResp:
+    def __init__(self, text):
+        self.content = [_FakeBlock(text)]
+
+
+def _fake_client(reply_text):
+    class _FakeClient:
+        def __init__(self):
+            self.messages = self
+
+        def create(self, **kwargs):
+            return _FakeResp(reply_text)
+
+    return _FakeClient()
+
+
+def test_default_fallback_parses_haiku_label(monkeypatch):
+    monkeypatch.setattr(intent, "_get_client", lambda: _fake_client("narrative"))
+    intent._default_llm_fallback.cache_clear()
+    assert intent._default_llm_fallback("some genuinely ambiguous query") == "narrative"
+
+
+def test_default_fallback_unrecognised_label_returns_none(monkeypatch):
+    monkeypatch.setattr(intent, "_get_client", lambda: _fake_client("no idea at all"))
+    intent._default_llm_fallback.cache_clear()
+    assert intent._default_llm_fallback("another ambiguous query") is None

@@ -7,6 +7,7 @@ retrieval — any failure resolves to "unknown".
 
 from __future__ import annotations
 
+from functools import lru_cache
 from typing import Callable, Optional
 
 INTENTS = ("doctrinal", "narrative", "navigational", "unknown")
@@ -66,5 +67,38 @@ def classify_intent(
     return "unknown"
 
 
-def _default_llm_fallback(query: str) -> Optional[str]:  # replaced in Task 3
+_INTENT_MODEL = "claude-haiku-4-5"  # cheapest model; intent is a 1-word task
+_client = None
+
+
+def _get_client():
+    global _client
+    if _client is None:
+        from anthropic import Anthropic  # lazy import keeps unit tests SDK-free
+        _client = Anthropic()
+    return _client
+
+
+@lru_cache(maxsize=512)
+def _default_llm_fallback(query: str) -> Optional[str]:
+    """Classify an ambiguous query with Haiku. Cached per query. None on failure."""
+    prompt = (
+        "Classify this question about a spiritual corpus into exactly one intent "
+        "label. Reply with only the label word.\n"
+        "- doctrinal: teaching, philosophy, meaning, or doctrine\n"
+        "- narrative: a story, anecdote, incident, or recollection (athvani)\n"
+        "- navigational: which works/books exist, lists, structure, counts\n\n"
+        f"Question: {query}\nLabel:"
+    )
+    resp = _get_client().messages.create(
+        model=_INTENT_MODEL,
+        max_tokens=8,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = "".join(
+        b.text for b in resp.content if getattr(b, "type", None) == "text"
+    ).strip().lower()
+    for name in ("doctrinal", "narrative", "navigational"):
+        if name in text:
+            return name
     return None
