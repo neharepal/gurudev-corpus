@@ -81,6 +81,21 @@ SPECS = [
        raw="Copy of परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx", ext="nimbargi-maharaj-charitra-athavani-mr.md",
        extraction="docx-xml", publisher="", year="",
        qnotes="Charitra + athavani. Marathi body with some English front matter."),
+  # ---- re-OCR'd works (2c) — added 2026-06-23 ----
+  dict(slug="amrutavalli", kind="biography", dest="02_aggregated/biography/about_other_devotees/amrutavalli",
+       lang="mr", about_member="other_devotees", work_type="biography",
+       title="अमृतवल्ली — श्री. दादासाहेब देशपांडे यांचे आठवणीमय जीवनचरित्र",
+       title_en="Amrutavalli — Memoir of Shri Dadasaheb Deshpande",
+       raw="Copy of अमृतवल्ली_.pdf", ext="amrutavalli.surya.md",
+       extraction="ocr-surya", publisher="Gayatri Sahitya, Pune", year="2010",
+       qnotes="Re-OCR'd with Surya (tesseract failed on the 150 DPI scan). Clean Marathi (229K chars). Memoir of Dadasaheb Deshpande (Inchageri lineage) by Sou. Rama Inamdar; verify subject/lineage placement."),
+  dict(slug="pawanbhumi-jamkhandi", kind="biography", dest="02_aggregated/biography/about_gurudev_ranade/pawanbhumi-jamkhandi",
+       lang="en", about_member="gurudev_ranade", work_type="souvenir",
+       title="Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi)",
+       title_en="Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi)",
+       raw="Copy of Pawanbhumi_Jamkhandi_v2.pdf", ext="pawanbhumi-jamkhandi.vision.md",
+       extraction="vision-llm-claude", publisher="", year="",
+       qnotes="Trilingual souvenir brochure (English/Marathi/Kannada) on Gurudev's birthplace Jamkhandi and its shrines. Vision-LLM transcription of the 12pp brochure (tesseract failed on the multi-column/photo layout). languages_available widened to [en, mr, kn] post-generation."),
 ]
 
 CANON_META = """id: {slug}

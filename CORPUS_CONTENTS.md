@@ -7,10 +7,10 @@ _Generated: 2026-06-23_
 
 ## At a glance
 
-- **324 works**, **14,882 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
-- **Embedding status:** ⚠️ manifest says 13027 embedded vs 14882 chunked — re-run embedder.
-- **By kind:** canonical 38w/9,530c, biography 21w/3,833c, athvani 262w/1,464c, reference 3w/55c.
-- **By language (chunks):** en 8,522, mr 6,257, mixed 103.
+- **326 works**, **15,037 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
+- **Embedding status:** ⚠️ manifest says 13027 embedded vs 15037 chunked — re-run embedder.
+- **By kind:** canonical 38w/9,530c, biography 23w/3,988c, athvani 262w/1,464c, reference 3w/55c.
+- **By language (chunks):** en 8,536, mr 6,398, mixed 103.
 
 ## Canonical (38 works, 9,530 chunks)
 
@@ -55,7 +55,7 @@ _Generated: 2026-06-23_
 | Sevenfold Stream of Spiritual Life (`sevenfold-stream-of-spiritual-life`) | other_authors | books | en | 54 |
 | N G Damle Pravachan (`n-g-damle-pravachan`) | other_authors | lectures | mr | 4 |
 
-## Biography (21 works, 3,833 chunks)
+## Biography (23 works, 3,988 chunks)
 
 | Work | Author / source | Type | Lang | Chunks |
 |---|---|---|---|---:|
@@ -70,6 +70,7 @@ _Generated: 2026-06-23_
 | Punyasmruti (Sacred Memory) — collected sayings and incidents of Shri Gurudev Ranade (`punyasmruti`) | — | — | mr | 207 |
 | Gurudev R. D. Ranade — Allahabad University Career and Other Essays (Marathi) (`allahabad-days-mr`) | — | — | mr | 193 |
 | Golden Pages from the History of the Nimbargi Sampraday (2000) (`sonari-pane-2000`) | — | — | mr | 147 |
+| Amrutavalli — Memoir of Shri Dadasaheb Deshpande (`amrutavalli`) | — | — | mr | 141 |
 | Gurudev Ranade's Memorial in Kannada Literature (`kannada-sahityatil-punyasmruti`) | — | — | mr | 129 |
 | Shri Gurudevanchya Athvani Pustak (Reminiscences of Shri Gurudev — book-length anthology) (`shri-gurudevanchya-athvani-pustak`) | — | — | mr | 106 |
 | Nimbargi Maharaj — A Biography (`nimbargi-maharaj-biography-en`) | — | — | en | 81 |
@@ -77,6 +78,7 @@ _Generated: 2026-06-23_
 | Parampujya Shri Nimbargi Maharaj: Charitra va Athvani (Biography and Reminiscences of Shri Nimbargi Maharaj) (`devotee`) | — | — | mr | 67 |
 | Nimbargi Maharaj — Life and Recollections (`nimbargi-maharaj-charitra-athavani-mr`) | — | — | mr | 67 |
 | Shri Gurudev's Matruprema (Mother-Love) (`devotees`) | — | — | mr | 14 |
+| Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi) (`pawanbhumi-jamkhandi`) | — | — | en | 14 |
 | Radhabai Limaye: Alpa-Charitra va Shikvan (Brief Biography and Teachings of 'Aaji', Shri Radhabai Limaye), by G. V. Tulpule (`radhabai-limaye-charitra`) | — | — | mr | 10 |
 | Shri Gurudevanchya Athvani 2024 (Reminiscences of Shri Gurudev — 2024 collection) (`shri-gurudevanchya-athvani-2024`) | — | — | mr | 2 |
 | How Nimbal Was Chosen (Account of how the Nimbal site was selected for Shri Gurudev's ashram) (`how-nimbal-was-chosen`) | — | — | mr | 1 |

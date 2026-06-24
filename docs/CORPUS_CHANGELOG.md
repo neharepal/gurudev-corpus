@@ -45,11 +45,15 @@ Declined upgrade:
 
 Verified-against: no public source — flagged (verified=false) on all new works.
 
-Pending (operator decision — NOT done this batch):
-- **2c re-OCR**: amrutavalli, hindi-parmarth-sopan, pawanbhumi-jamkhandi — tesseract
-  fails. Root-cause diagnosed (see `docs/ingestion-2026-06-22-status.md` §2c): only
-  amrutavalli is image-quality limited (150 DPI); the other two are clean scans that
-  fail on typeface/layout — better images won't help them.
+Re-OCR'd + added (2c — engine chosen per root-cause diagnosis):
+- amrutavalli (about_other_devotees, mr) — 141 chunks — **Surya** re-OCR (tesseract failed
+  on the 150 DPI scan). Memoir of Dadasaheb Deshpande (Inchageri lineage) by Rama Inamdar.
+- pawanbhumi-jamkhandi (about_gurudev_ranade, en/mr/kn) — 14 chunks — **vision-LLM (Claude)**
+  transcription of the 12pp trilingual souvenir brochure (tesseract failed on the layout).
+
+Pending (2c — still in flight):
+- **hindi-parmarth-sopan** (539pp, historical Devanagari typeface) — vision-LLM pass
+  underway/queued (pages rendered). Clean scan; tesseract fails on the old typeface.
 
 ## v.2026-06-17 — Batch wikimedia_acpr_2026-06-17
 

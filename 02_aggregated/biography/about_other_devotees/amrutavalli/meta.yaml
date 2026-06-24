@@ -1,0 +1,32 @@
+id: amrutavalli
+title: 'अमृतवल्ली — श्री. दादासाहेब देशपांडे यांचे आठवणीमय जीवनचरित्र'
+title_en: 'Amrutavalli — Memoir of Shri Dadasaheb Deshpande'
+title_translit: ""
+about_member: other_devotees
+author: ""
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: '2010'
+publisher: 'Gayatri Sahitya, Pune'
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of अमृतवल्ली_.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: dca1cacaee199914ea557aba1d2e28fb8530bab20d17fd25ca232d58bddb5136
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: ocr-surya
+quality_notes: "Re-OCR'd with Surya (tesseract failed on the 150 DPI scan). Clean Marathi (229K chars). Memoir of Dadasaheb Deshpande (Inchageri lineage) by Sou. Rama Inamdar; verify subject/lineage placement."
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

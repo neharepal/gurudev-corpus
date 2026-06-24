@@ -156,6 +156,20 @@ works:
   languages:
   - mr
   path: 02_aggregated/biography/about_nimbargi_maharaj/nimbargi-maharaj-charitra-athavani-mr/
+- id: amrutavalli
+  title: अमृतवल्ली — श्री. दादासाहेब देशपांडे यांचे आठवणीमय जीवनचरित्र
+  author: other_devotees
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_other_devotees/amrutavalli/
+- id: pawanbhumi-jamkhandi
+  title: Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi)
+  author: gurudev_ranade
+  languages:
+  - en
+  - mr
+  - kn
+  path: 02_aggregated/biography/about_gurudev_ranade/pawanbhumi-jamkhandi/
 stories:
 - id: the-old-house-at-nimbal
   path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/

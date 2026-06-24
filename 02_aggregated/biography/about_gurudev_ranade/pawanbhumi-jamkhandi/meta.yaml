@@ -1,0 +1,32 @@
+id: pawanbhumi-jamkhandi
+title: 'Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi)'
+title_en: 'Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi)'
+title_translit: ""
+about_member: gurudev_ranade
+author: ""
+co_authors: []
+kind: biography
+work_type: biography
+original_language: en
+languages_available: [en, mr, kn]
+year_first_published: ""
+year_this_edition: ''
+publisher: ''
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Pawanbhumi_Jamkhandi_v2.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: 11e2643d93b8828f938f0da8aaec8bdb77bc44f70d8a174a6965b1936abad375
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: vision-llm-claude
+quality_notes: "Trilingual souvenir brochure (English/Marathi/Kannada) on Gurudev's birthplace Jamkhandi and its shrines. Vision-LLM transcription of the 12pp brochure (tesseract failed on the multi-column/photo layout). languages_available widened to [en, mr, kn] post-generation."
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source
