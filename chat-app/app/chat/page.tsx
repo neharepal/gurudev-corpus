@@ -12,7 +12,6 @@ import {
 import AnswerToolbar from "../../components/AnswerToolbar";
 import MeditativeLoader from "../../components/MeditativeLoader";
 import QuoteBlock from "../../components/QuoteBlock";
-import { usePersistentState } from "../../hooks/usePersistentState";
 import {
   type ModeId,
   type PravachanAnswer,
@@ -110,18 +109,6 @@ type FollowUpTurn = {
   whyChosen: string;
 };
 
-// Tiny deterministic hash so the localStorage key stays compact regardless
-// of question length. Not cryptographic — just a stable bucket id.
-function hashQuestion(q: string | null): string {
-  if (!q) return "default";
-  let h = 0;
-  for (let i = 0; i < q.length; i++) {
-    h = (h * 31 + q.charCodeAt(i)) | 0;
-  }
-  // Convert to unsigned, then base36 for a short readable suffix.
-  return (h >>> 0).toString(36);
-}
-
 // Pick a follow-up citation by cycling through whatever the current API
 // answer surfaced. Q&A citations carry both quote and whyChosen; Pravachan
 // examples use whyThisExample which we treat as the rationale.
@@ -165,14 +152,10 @@ function ChatPage() {
   const lang = langFromUrl;
   const lbl = L[lang];
   const [followUp, setFollowUp] = useState("");
-  // Conversation identity = (mode, question). Each unique opening question
-  // is a distinct thread — going back to landing and asking a new question
-  // must NOT inherit the previous question's follow-ups.
-  const questionKey = hashQuestion(questionFromUrl);
-  const [followUps, setFollowUps] = usePersistentState<FollowUpTurn[]>(
-    `gd:chat:${mode}:${questionKey}:followups`,
-    [],
-  );
+  // Follow-ups are intentionally in-memory / session-scoped: reopening a
+  // question always starts a fresh thread rather than rehydrating a prior
+  // session's follow-ups from storage.
+  const [followUps, setFollowUps] = useState<FollowUpTurn[]>([]);
 
   // Initial answer comes from /api/ask. Loading + error states track the
   // initial fetch only; follow-ups reuse the cached answer for citation
