@@ -74,3 +74,4 @@ Status changes are noted at the top of the document, dated.
 | 008 | Audio recordings + transcription | future |
 | [009](RFC-009-corpus-ingestion-pipeline.md) | Corpus ingestion pipeline (new-material runbook) | ACCEPTED |
 | [010](RFC-010-progressive-streaming.md) | Progressive streaming for the answer surface | ACCEPTED |
+| [011](RFC-011-intent-aware-citation-ranking.md) | Intent-aware citation ranking | PROPOSED |
