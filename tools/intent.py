@@ -18,7 +18,12 @@ _CUES: dict[str, tuple[str, ...]] = {
     "doctrinal": (
         "teaching", "philosophy", "philosophical", "doctrine", "meaning",
         "concept", "principle", "what does", "explain",
+        # quote-the-doctrine phrasings
+        "quote", "passages", "verse", "scripture", "the literature",
+        # view/thought-on-a-topic phrasings
+        "views on", "view on", "thoughts on", "thought on", "nature of",
         "शिकवण", "तत्त्वज्ञान", "अर्थ", "सिद्धांत", "तत्त्व",
+        "उतारे", "उतारा", "वचन", "उपदेश", "विचार", "स्वरूप",
     ),
     "narrative": (
         "athvani", "story", "stories", "incident", "anecdote", "memory",

@@ -97,3 +97,24 @@ def test_default_fallback_unrecognised_label_returns_none(monkeypatch):
     monkeypatch.setattr(intent, "_get_client", lambda: _fake_client("no idea at all"))
     intent._default_llm_fallback.cache_clear()
     assert intent._default_llm_fallback("another ambiguous query") is None
+
+
+def test_widened_doctrinal_phrasings_classify_without_fallback():
+    # Phrasings that previously fell through to "unknown" should now read as
+    # doctrinal on the heuristic alone (no LLM fallback).
+    cases = [
+        "Quote the passages where the texts describe self-surrender to God",
+        "What are Gurudev's views on bhakti?",
+        "What does the literature say about the nature of the mind?",
+        "गुरुदेवांचे नामस्मरणाविषयी विचार काय आहेत?",
+    ]
+    for q in cases:
+        assert intent.classify_intent(q, use_llm_fallback=False) == "doctrinal", q
+
+
+def test_narrative_query_with_describe_still_narrative():
+    # Widening doctrinal must not steal clearly-narrative queries.
+    assert intent.classify_intent(
+        "Tell me an athvani about a devotee meeting Bhausaheb Maharaj",
+        use_llm_fallback=False,
+    ) == "narrative"
