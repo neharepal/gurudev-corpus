@@ -100,6 +100,44 @@ def apply_primary_tier_boost(
     return boosted
 
 
+# Intent-aware tier weighting (RFC-011). Deltas are added to cosine BEFORE MMR.
+# Magnitudes are starting values; cosine top scores ~0.5-0.7, so these reorder
+# near-ties without swamping a genuinely strong match. Tune via tune_sweep.py.
+TIER_WEIGHTS: dict[str, dict[str, float]] = {
+    "doctrinal":    {"canonical": 0.10, "recollections": 0.04, "reference": -0.12},
+    "narrative":    {"canonical": 0.00, "recollections": 0.10, "reference": -0.08},
+    "navigational": {"canonical": 0.00, "recollections": 0.00, "reference":  0.08},
+    "unknown":      {"canonical": 0.05, "recollections": 0.00, "reference": -0.08},
+}
+PRIMARY_AUTHOR_BONUS = 0.04   # canonical works by lineage masters (PRIMARY_AUTHORS)
+DUP_THRESHOLD = 0.92          # cosine >= this between two chunks => near-duplicate
+
+
+def apply_intent_tier_weights(
+    scores: np.ndarray,
+    metas: list[dict],
+    intent: str,
+    *,
+    weights: dict[str, dict[str, float]] = TIER_WEIGHTS,
+    primary_bonus: float = PRIMARY_AUTHOR_BONUS,
+) -> np.ndarray:
+    """Add an intent-conditioned per-tier delta to each score; return a new array.
+
+    Replaces apply_primary_tier_boost. `intent` is one of the keys in `weights`;
+    an unrecognised intent falls back to the "unknown" row. Canonical chunks by
+    a lineage-master author get `primary_bonus` on top. Non-mutating.
+    """
+    table = weights.get(intent) or weights["unknown"]
+    boosted = scores.copy()
+    for i, m in enumerate(metas):
+        tier = chunk_tier(m)
+        delta = table.get(tier, 0.0)
+        if tier == "canonical" and m.get("author") in PRIMARY_AUTHORS:
+            delta += primary_bonus
+        boosted[i] += delta
+    return boosted
+
+
 def load_corpus() -> tuple[np.ndarray, list[dict], dict]:
     """Load embeddings + per-chunk metadata + manifest."""
     if not EMB_PATH.exists():
