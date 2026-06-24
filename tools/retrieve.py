@@ -181,6 +181,7 @@ def mmr_rerank(
     top_k: int,
     mmr_lambda: float,
     max_per_source: int,
+    dup_threshold: float = DUP_THRESHOLD,
 ) -> list[tuple[int, float]]:
     """Greedy MMR selection with per-source cap.
 
@@ -206,6 +207,11 @@ def mmr_rerank(
                 )
             else:
                 max_div = 0.0
+            # Authority-aware dedup: a near-duplicate of an already-selected
+            # (higher-ranked) chunk is dropped — the intent weighting made the
+            # higher-authority copy win the earlier slot. (RFC-011)
+            if selected and max_div >= dup_threshold:
+                continue
             mmr = mmr_lambda * sim - (1.0 - mmr_lambda) * max_div
             if mmr > best_score:
                 best_score = mmr
