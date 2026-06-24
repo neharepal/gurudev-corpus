@@ -67,9 +67,10 @@ Tested on the 3 worst files at 300 DPI:
 3. ✅ **2b athvani structured:** 213 stories from 3 books via `tools/structure_athvani_2026-06-22.py` (line-numbering bug found + fixed). QA'd clean.
 4. ✅ **Step 6 catalog:** 10 works added to `03_catalog/catalog.yaml` (now 26 works); 213 stories merged into `catalog.yaml` + `story_index.yaml`. *(corpus_browser.html regen still TODO — cosmetic.)*
 5. ✅ **Step 7 chunk + SoT:** `chunker.py` → 14,882 chunks; `build_corpus_manifest.py` → `CORPUS_CONTENTS.md` (flags embed-stale).
-6. ⏸️ **STOPPED before Step 8 (embed)** per operator. Changelog entry added (`docs/CORPUS_CHANGELOG.md`); smoke-test plan drafted (scratchpad).
+6. ✅ **Step 8 (embed) DONE** 2026-06-24 — incremental `tools/embedder.py` (12,749 carried over by chunk_id + 2,557 new); 327 works / 15,306 chunks, `manifest.complete`, rows aligned.
+7. ✅ **Step 9 (smoke-test) PASSED** — all 14 new/changed works retrievable at rank #1 on on-topic queries; canonical-priority ranking (RFC-011) live in `tools/retrieve.py`.
 
-**Remaining:** (a) operator decision on 2c OCR engine, then re-OCR + structure those 3 works; (b) regenerate `corpus_browser.html`; (c) run embedder (`tools/embedder.py --restart`) + smoke-test — only after 2c is resolved or explicitly deferred.
+**Batch COMPLETE.** Only cosmetic remainder: regenerate `tools/corpus_browser.html` (optional). Branch `ingestion/drive-dump-2026-06-22` ready to merge to `main`.
 
 ## 5. Where things live
 - Staging: `00_raw/drive_dump_2026-06-22/` — `_extracted/` (drafts), `_force/` (force-ocr PDFs), `_ocr/` (skip-text PDFs), `batch-triage.yaml` (full classification + resolutions). *(gitignored — local only.)*

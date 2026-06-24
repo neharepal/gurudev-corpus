@@ -57,6 +57,14 @@ Re-OCR'd + added (2c — engine chosen per root-cause diagnosis):
 
 2c complete — all three re-OCR targets ingested.
 
+Embeddings: **regenerated incrementally** 2026-06-24 (bge-m3, 12,749 carried over by
+chunk_id + 2,557 new) — corpus now 327 works / 15,306 chunks, all embedded
+(`manifest.complete`). Smoke-test passed: all 14 new/changed works retrieve at rank #1
+with on-topic queries (the 2 initial English-query "misses" on the Marathi `sadhakbodh`
+and Hindi `hindi-parmarth-sopan` resolve to #1 / cos ~0.64-0.67 with native-language
+queries — cross-lingual query phrasing, not a retrieval gap). Row alignment verified
+(15,306 == embeddings.npy rows == chunks_meta).
+
 ## v.2026-06-17 — Batch wikimedia_acpr_2026-06-17
 
 16 books ingested from Wikimedia Commons ACPR-scanned category.
