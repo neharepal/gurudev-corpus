@@ -60,6 +60,22 @@ PRIMARY_AUTHORS = frozenset({
 })
 
 
+def chunk_tier(meta: dict) -> str:
+    """Authority tier of a chunk for intent-aware ranking (RFC-011).
+
+    canonical     -> the masters' / canonical authors' own works (01_canonical)
+    recollections -> athvani + biography (souvenirs, memoirs; 00_raw, 02_aggregated)
+    reference     -> bibliographies / indexes (03_catalog)
+    Anything unrecognised defaults to recollections (never over-promoted).
+    """
+    kind = meta.get("kind")
+    if kind == "canonical":
+        return "canonical"
+    if kind == "reference":
+        return "reference"
+    return "recollections"
+
+
 def apply_primary_tier_boost(
     scores: np.ndarray,
     metas: list[dict],
