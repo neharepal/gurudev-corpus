@@ -50,10 +50,12 @@ Re-OCR'd + added (2c — engine chosen per root-cause diagnosis):
   on the 150 DPI scan). Memoir of Dadasaheb Deshpande (Inchageri lineage) by Rama Inamdar.
 - pawanbhumi-jamkhandi (about_gurudev_ranade, en/mr/kn) — 14 chunks — **vision-LLM (Claude)**
   transcription of the 12pp trilingual souvenir brochure (tesseract failed on the layout).
+- hindi-parmarth-sopan (gurudev_ranade, hi/en) — 269 chunks — **vision-LLM (Claude Sonnet)**
+  transcription of all 539pp (tesseract failed on the archaic letterpress Devanagari typeface;
+  the 600 DPI scan is pristine). Hindi companion to kannad-parmarth-sopan: padas/dohas with
+  Hindi anuvad + English preface & Gurudev's General Introduction. First `hi` work in the corpus.
 
-Pending (2c — still in flight):
-- **hindi-parmarth-sopan** (539pp, historical Devanagari typeface) — vision-LLM pass
-  underway/queued (pages rendered). Clean scan; tesseract fails on the old typeface.
+2c complete — all three re-OCR targets ingested.
 
 ## v.2026-06-17 — Batch wikimedia_acpr_2026-06-17
 

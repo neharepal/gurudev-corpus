@@ -96,6 +96,12 @@ SPECS = [
        raw="Copy of Pawanbhumi_Jamkhandi_v2.pdf", ext="pawanbhumi-jamkhandi.vision.md",
        extraction="vision-llm-claude", publisher="", year="",
        qnotes="Trilingual souvenir brochure (English/Marathi/Kannada) on Gurudev's birthplace Jamkhandi and its shrines. Vision-LLM transcription of the 12pp brochure (tesseract failed on the multi-column/photo layout). languages_available widened to [en, mr, kn] post-generation."),
+  dict(slug="hindi-parmarth-sopan", kind="canonical", dest="01_canonical/gurudev_ranade/books/hindi-parmarth-sopan",
+       lang="hi", author="gurudev_ranade", work_type="book",
+       title="हिंदी परमार्थ सोपान", title_en="Parmarth Sopan (Hindi edition)",
+       raw="Copy of हिंदी परमार्थ सोपान_.pdf", ext="hindi-parmarth-sopan.vision.md",
+       extraction="vision-llm-claude-sonnet", publisher="", year="",
+       qnotes="Hindi companion to kannad-parmarth-sopan: padas/dohas (Surdas, Kabir, Tulsidas, Mira, etc.) with Hindi anuvad, plus English preface + Gurudev Ranade's General Introduction. 539pp re-OCR'd via Claude Sonnet vision (tesseract failed on the archaic letterpress Devanagari typeface; the 600 DPI scan itself is pristine). languages_available widened to [hi, en] post-generation."),
 ]
 
 CANON_META = """id: {slug}

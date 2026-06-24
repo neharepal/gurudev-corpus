@@ -1,0 +1,30 @@
+id: hindi-parmarth-sopan
+title: 'हिंदी परमार्थ सोपान'
+title_en: 'Parmarth Sopan (Hindi edition)'
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: hi
+languages_available: [hi, en]
+year_first_published: ""
+year_this_edition: ''
+publisher: ''
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of हिंदी परमार्थ सोपान_.pdf
+    received_on: 2026-06-22
+    received_in_batch: drive_dump_2026-06-22
+    checksum_sha256: 1c25d5a8ad551f06e66c79bcbb5e640d2d862fe0aabe70897a306cf18596fe81
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: vision-llm-claude-sonnet
+quality_notes: "Hindi companion to kannad-parmarth-sopan: padas/dohas (Surdas, Kabir, Tulsidas, Mira, etc.) with Hindi anuvad, plus English preface + Gurudev Ranade's General Introduction. 539pp re-OCR'd via Claude Sonnet vision (tesseract failed on the archaic letterpress Devanagari typeface; the 600 DPI scan itself is pristine). languages_available widened to [hi, en] post-generation."
+notes: |
+  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

@@ -63,7 +63,7 @@ Tested on the 3 worst files at 300 DPI:
 
 ## 4. Next steps — progress 2026-06-23
 1. ✅ **2a applied:** studies-in-indian-philosophy replaced with clean text-layer; creative-period kept (declined).
-2. ⏸️ **2c re-OCR — BLOCKED on engine decision** (root cause diagnosed above; awaiting operator).
+2. ✅ **2c re-OCR DONE** (engines per root-cause diagnosis): amrutavalli→Surya (141 chunks); pawanbhumi→vision-LLM (14 chunks, trilingual); hindi-parmarth-sopan→Sonnet vision, all 539pp (269 chunks, first `hi` work).
 3. ✅ **2b athvani structured:** 213 stories from 3 books via `tools/structure_athvani_2026-06-22.py` (line-numbering bug found + fixed). QA'd clean.
 4. ✅ **Step 6 catalog:** 10 works added to `03_catalog/catalog.yaml` (now 26 works); 213 stories merged into `catalog.yaml` + `story_index.yaml`. *(corpus_browser.html regen still TODO — cosmetic.)*
 5. ✅ **Step 7 chunk + SoT:** `chunker.py` → 14,882 chunks; `build_corpus_manifest.py` → `CORPUS_CONTENTS.md` (flags embed-stale).

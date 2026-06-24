@@ -7,12 +7,12 @@ _Generated: 2026-06-23_
 
 ## At a glance
 
-- **326 works**, **15,037 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
-- **Embedding status:** ⚠️ manifest says 13027 embedded vs 15037 chunked — re-run embedder.
-- **By kind:** canonical 38w/9,530c, biography 23w/3,988c, athvani 262w/1,464c, reference 3w/55c.
-- **By language (chunks):** en 8,536, mr 6,398, mixed 103.
+- **327 works**, **15,306 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
+- **Embedding status:** ⚠️ manifest says 13027 embedded vs 15306 chunked — re-run embedder.
+- **By kind:** canonical 39w/9,799c, biography 23w/3,988c, athvani 262w/1,464c, reference 3w/55c.
+- **By language (chunks):** en 8,536, mr 6,398, hi 269, mixed 103.
 
-## Canonical (38 works, 9,530 chunks)
+## Canonical (39 works, 9,799 chunks)
 
 | Work | Author / source | Type | Lang | Chunks |
 |---|---|---|---|---:|
@@ -27,6 +27,7 @@ _Generated: 2026-06-23_
 | Kannad Parmarth Sopan (Marathi) (`kannad-parmarth-sopan`) | gurudev_ranade | books | mr | 312 |
 | Parmartha Mandir (`parmartha-mandir`) | gurudev_ranade | books | mr | 289 |
 | Philosophical and Other Essays (`philosophical-and-other-essays`) | gurudev_ranade | books | en | 277 |
+| Parmarth Sopan (Hindi edition) (`hindi-parmarth-sopan`) | gurudev_ranade | books | hi | 269 |
 | Spiritual Awakening in Gandhi and Other Indian Saints (`gandhi-and-other-indian-saints`) | gurudev_ranade | books | en | 242 |
 | Parmartha Sopan (`parmartha-sopan`) | gurudev_ranade | books | mixed | 103 |
 | Reflections (`reflections`) | gurudev_ranade | books | en | 64 |

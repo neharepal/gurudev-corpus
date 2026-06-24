@@ -170,6 +170,13 @@ works:
   - mr
   - kn
   path: 02_aggregated/biography/about_gurudev_ranade/pawanbhumi-jamkhandi/
+- id: hindi-parmarth-sopan
+  title: हिंदी परमार्थ सोपान
+  author: gurudev_ranade
+  languages:
+  - hi
+  - en
+  path: 01_canonical/gurudev_ranade/books/hindi-parmarth-sopan/
 stories:
 - id: the-old-house-at-nimbal
   path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/
