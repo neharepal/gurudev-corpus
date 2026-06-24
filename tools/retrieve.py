@@ -36,19 +36,6 @@ INITIAL_CANDIDATES = 30   # pull more for MMR + per-source cap to whittle down
 MMR_LAMBDA = 0.7           # 1.0 = pure relevance, 0.0 = pure diversity
 MAX_PER_SOURCE = 2         # at most N chunks per source_work_id in final result
 
-# Primary-source boost. The cosine score for a chunk authored by a lineage
-# master and classified as canonical gets this much added before MMR rerank.
-# Compensates for two known disadvantages of primary material vs. secondary:
-#   1. Marathi primary texts lose cross-language cosine against English queries
-#      (English queries score higher against English secondary sources like
-#      ACPR souvenirs that contain English excerpts of the same letters).
-#   2. OCR'd Marathi from Wikimedia scans has spacing artifacts on conjunct
-#      consonants that pull embeddings slightly off-target.
-# Tuned so that primary material reliably enters the candidate pool even when
-# a strong-matching English secondary source exists, without dominating when
-# the primary content is genuinely unrelated.
-PRIMARY_TIER_BOOST = 0.07
-
 # Lineage-master author folders. Their canonical writing is the "primary" tier
 # for source-preference rules in the prompt and the retrieval boost above.
 PRIMARY_AUTHORS = frozenset({
@@ -76,30 +63,6 @@ def chunk_tier(meta: dict) -> str:
     return "recollections"
 
 
-def apply_primary_tier_boost(
-    scores: np.ndarray,
-    metas: list[dict],
-    *,
-    boost: float = PRIMARY_TIER_BOOST,
-) -> np.ndarray:
-    """Add `boost` to scores for primary-tier canonical chunks; return a new array.
-
-    Idempotent and non-mutating. Call AFTER computing raw cosine scores and
-    BEFORE rerank. Logs nothing — callers can compare returned vs input arrays
-    if they want to instrument.
-    """
-    if boost <= 0:
-        return scores
-    boosted = scores.copy()
-    for i, m in enumerate(metas):
-        if (
-            m.get("kind") == "canonical"
-            and m.get("author") in PRIMARY_AUTHORS
-        ):
-            boosted[i] += boost
-    return boosted
-
-
 # Intent-aware tier weighting (RFC-011). Deltas are added to cosine BEFORE MMR.
 # Magnitudes are starting values; cosine top scores ~0.5-0.7, so these reorder
 # near-ties without swamping a genuinely strong match. Tune via tune_sweep.py.
@@ -123,9 +86,9 @@ def apply_intent_tier_weights(
 ) -> np.ndarray:
     """Add an intent-conditioned per-tier delta to each score; return a new array.
 
-    Replaces apply_primary_tier_boost. `intent` is one of the keys in `weights`;
-    an unrecognised intent falls back to the "unknown" row. Canonical chunks by
-    a lineage-master author get `primary_bonus` on top. Non-mutating.
+    `intent` is one of the keys in `weights`; an unrecognised intent falls back
+    to the "unknown" row. Canonical chunks by a lineage-master author get
+    `primary_bonus` on top. Non-mutating.
     """
     table = weights.get(intent) or weights["unknown"]
     boosted = scores.copy()

@@ -40,6 +40,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+import intent
 import retrieve
 from llm_client import ChatClient, MissingApiKeyError, pick_model
 from prompts import (
@@ -125,9 +126,8 @@ def _retrieve(
 
     qvec = _embed_query(question)
     scores = sub_emb @ qvec
-    # Tier the candidate pool toward primary-author canonical works before
-    # MMR rerank. See retrieve.PRIMARY_TIER_BOOST for rationale.
-    scores = retrieve.apply_primary_tier_boost(scores, sub_metas)
+    query_intent = intent.classify_intent(question)
+    scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
     cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-scores[cand_idx])]

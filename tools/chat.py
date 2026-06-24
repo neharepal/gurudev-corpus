@@ -49,6 +49,7 @@ from llm_client import (
     pick_model,
 )
 from render import render_markdown
+import intent
 import retrieve  # imports load_corpus, embed_query, mmr_rerank, load_chunk_text
 
 
@@ -83,8 +84,8 @@ def run_retrieval(
     model_name = manifest.get("model", "BAAI/bge-m3")
     qvec = retrieve.embed_query(question, model_name)
     scores = embeddings @ qvec
-    # Tier the candidate pool toward primary-author canonical works.
-    scores = retrieve.apply_primary_tier_boost(scores, metas)
+    query_intent = intent.classify_intent(question)
+    scores = retrieve.apply_intent_tier_weights(scores, metas, query_intent)
 
     cand_n = min(candidates, len(scores))
     cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]

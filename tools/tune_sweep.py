@@ -30,6 +30,7 @@ os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import numpy as np
 
+import intent
 import retrieve
 from prompts import (
     _passage_label,
@@ -130,8 +131,9 @@ def retrieve_for(
 
     qvec = embed_with(model, question, model_name)
     scores = sub_emb @ qvec
-    # Tier the candidate pool toward primary-author canonical works.
-    scores = retrieve.apply_primary_tier_boost(scores, sub_metas)
+    # Heuristic-only here so sweeps stay deterministic and make no API calls.
+    query_intent = intent.classify_intent(question, use_llm_fallback=False)
+    scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
 
     cand_n = min(candidates, len(scores))
     cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]
