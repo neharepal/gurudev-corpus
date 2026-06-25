@@ -9,7 +9,6 @@ Tested work: pathway-to-god-in-hindi-literature (PGHL)
   This work is NOT in 03_catalog/catalog.yaml but IS on disk — tests verify
   the filesystem fallback path works.
 """
-import math
 import sys
 import os
 
@@ -36,18 +35,7 @@ def client():
     from fastapi.testclient import TestClient
     import server
 
-    # Bypass the startup handler (it loads embeddings + checks ANTHROPIC_API_KEY).
-    # TestClient by default runs lifespan; we disable it via with_lifespan=False.
-    # If that kwarg isn't supported (older TestClient), we patch _load_everything.
-    try:
-        c = TestClient(server.app, raise_server_exceptions=True)
-        # Force no lifespan by calling with a context manager and not triggering startup.
-        # Actually, TestClient in newer starlette exposes this differently;
-        # simplest approach: monkeypatch the startup handler.
-    except Exception:
-        pass
-
-    # Safer approach: override the startup event handler
+    # Override the startup event handler to avoid loading embeddings and API key checks
     original_handlers = server.app.router.on_startup[:]
     server.app.router.on_startup.clear()
     c = TestClient(server.app, raise_server_exceptions=True)
