@@ -53,8 +53,11 @@ MAX_TOKENS_BY_MODE = {
 
 
 def pick_model(mode: str) -> str:
-    """Sonnet for Q&A and Reading, Opus for Pravachan (per RFC-001)."""
-    return MODEL_PRAVACHAN if mode == "pravachan" else MODEL_DEFAULT
+    """Sonnet for every mode. Pravachan used Opus (RFC-001), but was moved to
+    Sonnet on 2026-06-25 for latency parity with Q&A (user request) — Opus
+    generating pravachan's 7000-token structured discourse was the slow path.
+    Reversible: return MODEL_PRAVACHAN for pravachan to restore Opus."""
+    return MODEL_DEFAULT
 
 
 class MissingApiKeyError(RuntimeError):
