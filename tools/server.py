@@ -520,7 +520,7 @@ def _prepare_request(req: AskRequest):
         title = req.passage_title or (req.work or "(current passage)")
         user_msg = build_reading_user_message(req.passage or "", chunks, question, title)
     else:
-        user_msg = build_user_message(chunks, question)
+        user_msg = build_user_message(chunks, question, history=req.history)
 
     system_prompt = get_system_prompt(mode)
     return mode, user_msg, system_prompt, chunks, retrieval_s

@@ -16,11 +16,11 @@ import {
   type ModeId,
   type PravachanAnswer,
   type QAAnswer,
-  type Quote,
 } from "../../data/mock-conversations";
 import {
   askApiStream,
   AskError,
+  type HistoryTurn,
   type StreamEvent,
 } from "../../lib/api";
 
@@ -41,8 +41,6 @@ const L: Record<
     whyThisStory: string;
     askPlaceholder: string;
     send: string;
-    framingFollowUp1: string;
-    framingFollowUpN: string;
     sectionThesis: string;
     sectionGurudevsWords: string;
     sectionStories: string;
@@ -64,8 +62,6 @@ const L: Record<
     whyThisStory: "Why this story:",
     askPlaceholder: "Ask a follow-up...",
     send: "Send",
-    framingFollowUp1: "Here is another passage that touches on this:",
-    framingFollowUpN: "And this passage may also be relevant:",
     sectionThesis: "Thesis",
     sectionGurudevsWords: "Gurudev's words",
     sectionStories: "Stories",
@@ -86,8 +82,6 @@ const L: Record<
     whyThisStory: "ही आठवण का?:",
     askPlaceholder: "पुढील प्रश्न विचारा...",
     send: "पाठवा",
-    framingFollowUp1: "हा आणखी एक उतारा या विषयाशी संबंधित आहे:",
-    framingFollowUpN: "आणि हाही उतारा संबंधित असू शकतो:",
     sectionThesis: "मांडणी",
     sectionGurudevsWords: "गुरुदेवांचे शब्द",
     sectionStories: "आठवणी",
@@ -102,33 +96,41 @@ const L: Record<
   },
 };
 
+// A follow-up turn carries its own streamed answer, just like the initial turn.
+// `loading` / `streaming` / `error` mirror the initial-answer states.
 type FollowUpTurn = {
   question: string;
-  framing: string;
-  quote: Quote;
-  whyChosen: string;
+  answer: QAAnswer | PravachanAnswer | null;
+  loading: boolean;
+  streaming: boolean;
+  error: string | null;
 };
 
-// Pick a follow-up citation by cycling through whatever the current API
-// answer surfaced. Q&A citations carry both quote and whyChosen; Pravachan
-// examples use whyThisExample which we treat as the rationale.
-// When the real backend wires up per-follow-up retrieval, this helper goes
-// away and each follow-up triggers its own askApi call.
-// Returns null for meta-mode Q&A answers (no citations to cycle through).
-function pickCitation(
-  answer: QAAnswer | PravachanAnswer,
-  index: number,
-): { quote: Quote; whyChosen: string } | null {
-  if (answer.kind === "qa") {
-    const n = answer.citations.length;
-    if (n === 0) return null;
-    const c = answer.citations[index % n];
-    return { quote: c.quote, whyChosen: c.whyChosen };
+// Extract the compact citation list from a completed answer, used to build
+// the history payload sent to the backend so it can instruct the model not
+// to repeat already-cited passages.
+function extractCitedPassages(
+  ans: QAAnswer | PravachanAnswer | null,
+): HistoryTurn["cited_passages"] {
+  if (!ans) return [];
+  if (ans.kind === "qa") {
+    return ans.citations.map((c) => ({
+      workTitle: c.quote.workTitle,
+      location: c.quote.location,
+    }));
   }
-  const n = answer.examples.length;
-  if (n === 0) return null;
-  const ex = answer.examples[index % n];
-  return { quote: ex.quote, whyChosen: ex.whyThisExample };
+  // Pravachan: gurudevsWords + examples
+  const out: HistoryTurn["cited_passages"] = [];
+  if (ans.gurudevsWords) {
+    out.push({
+      workTitle: ans.gurudevsWords.workTitle,
+      location: ans.gurudevsWords.location,
+    });
+  }
+  for (const ex of ans.examples) {
+    out.push({ workTitle: ex.quote.workTitle, location: ex.quote.location });
+  }
+  return out;
 }
 
 // `useSearchParams` requires a Suspense boundary on the static-rendering path
@@ -157,9 +159,7 @@ function ChatPage() {
   // session's follow-ups from storage.
   const [followUps, setFollowUps] = useState<FollowUpTurn[]>([]);
 
-  // Initial answer comes from /api/ask. Loading + error states track the
-  // initial fetch only; follow-ups reuse the cached answer for citation
-  // cycling until per-follow-up retrieval is wired (POST_DEMO_TODO §2).
+  // Initial answer comes from /api/ask.
   const [answer, setAnswer] = useState<QAAnswer | PravachanAnswer | null>(
     null,
   );
@@ -335,25 +335,181 @@ function ChatPage() {
   function appendFollowUp() {
     const q = followUp.trim();
     if (!q || !answer) return;
-    const index = followUps.length;
-    const picked = pickCitation(answer, index);
-    if (!picked) {
-      // Meta-mode answers have no citations to cycle through. Skip the
-      // follow-up rather than show an empty card — real backend will
-      // issue a fresh /api/ask call per follow-up (POST_DEMO_TODO §2).
-      setFollowUp("");
-      return;
-    }
+
+    // Build conversation history: every prior turn (initial + follow-ups),
+    // carrying the question and a compact list of already-cited passages.
+    // This is sent to the backend so the model can avoid repeating them.
+    const history: HistoryTurn[] = [
+      { question: questionFromUrl ?? "", cited_passages: extractCitedPassages(answer) },
+      ...followUps.map((t) => ({
+        question: t.question,
+        cited_passages: extractCitedPassages(t.answer),
+      })),
+    ];
+
+    // Add a placeholder turn immediately so the UI shows the question + loader.
+    const turnIndex = followUps.length;
     setFollowUps((prev) => [
       ...prev,
-      {
-        question: q,
-        framing: index === 0 ? lbl.framingFollowUp1 : lbl.framingFollowUpN,
-        quote: picked.quote,
-        whyChosen: picked.whyChosen,
-      },
+      { question: q, answer: null, loading: true, streaming: true, error: null },
     ]);
     setFollowUp("");
+
+    // Stream the follow-up answer from the backend, just like the initial request.
+    const initialDraft: Record<string, unknown> =
+      mode === "qa"
+        ? { kind: "qa", question: "", framing: "", citations: [] }
+        : { kind: "pravachan", question: "", examples: [] };
+
+    let draft: Record<string, unknown> = initialDraft;
+    let firstContentSeen = false;
+
+    const markContentArrived = () => {
+      if (!firstContentSeen) {
+        firstContentSeen = true;
+        setFollowUps((prev) => {
+          const next = [...prev];
+          next[turnIndex] = { ...next[turnIndex], loading: false };
+          return next;
+        });
+      }
+    };
+
+    let renderPending = false;
+    const scheduleRender = () => {
+      if (renderPending) return;
+      renderPending = true;
+      requestAnimationFrame(() => {
+        renderPending = false;
+        const snapshot = { ...draft } as unknown as QAAnswer | PravachanAnswer;
+        setFollowUps((prev) => {
+          const next = [...prev];
+          if (next[turnIndex]) {
+            next[turnIndex] = { ...next[turnIndex], answer: snapshot };
+          }
+          return next;
+        });
+      });
+    };
+
+    const withPathUpdated = (
+      obj: Record<string, unknown>,
+      pathStr: string,
+      updater: (current: unknown) => unknown,
+    ): Record<string, unknown> => {
+      const segs: Array<string | number> = pathStr
+        .split(".")
+        .map((s) => (/^\d+$/.test(s) ? parseInt(s, 10) : s));
+      if (segs.length === 0) return obj;
+      const result: Record<string, unknown> = { ...obj };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let parent: any = result;
+      for (let i = 0; i < segs.length - 1; i++) {
+        const seg = segs[i];
+        const nextSeg = segs[i + 1];
+        const existing = parent[seg];
+        let copy: unknown;
+        if (typeof nextSeg === "number") {
+          copy = Array.isArray(existing) ? [...existing] : [];
+        } else {
+          copy =
+            existing && typeof existing === "object" && !Array.isArray(existing)
+              ? { ...(existing as Record<string, unknown>) }
+              : {};
+        }
+        parent[seg] = copy;
+        parent = copy;
+      }
+      const leaf = segs[segs.length - 1];
+      parent[leaf] = updater(parent[leaf]);
+      return result;
+    };
+
+    const handleEvent = (event: StreamEvent) => {
+      switch (event.type) {
+        case "retrieval":
+          return;
+        case "delta": {
+          draft = withPathUpdated(draft, event.path, (current) => {
+            return (typeof current === "string" ? current : "") + event.text;
+          });
+          scheduleRender();
+          markContentArrived();
+          return;
+        }
+        case "field":
+          draft = { ...draft, [event.name]: event.value };
+          scheduleRender();
+          markContentArrived();
+          return;
+        case "field_close":
+          return;
+        case "array_item": {
+          const prev = (draft[event.array] as unknown[] | undefined) ?? [];
+          const next = [...prev];
+          next[event.index] = event.value;
+          draft = { ...draft, [event.array]: next };
+          scheduleRender();
+          markContentArrived();
+          return;
+        }
+        case "done":
+          if (event.response.kind !== "reading") {
+            setFollowUps((prev) => {
+              const next = [...prev];
+              next[turnIndex] = {
+                ...next[turnIndex],
+                answer: event.response as QAAnswer | PravachanAnswer,
+                loading: false,
+                streaming: false,
+              };
+              return next;
+            });
+          } else {
+            setFollowUps((prev) => {
+              const next = [...prev];
+              next[turnIndex] = {
+                ...next[turnIndex],
+                loading: false,
+                streaming: false,
+                error: lbl.errorBadResponse,
+              };
+              return next;
+            });
+          }
+          return;
+        case "error":
+          setFollowUps((prev) => {
+            const next = [...prev];
+            next[turnIndex] = {
+              ...next[turnIndex],
+              loading: false,
+              streaming: false,
+              error: event.message,
+            };
+            return next;
+          });
+          return;
+      }
+    };
+
+    askApiStream(
+      { mode, question: q, lang, history },
+      handleEvent,
+    ).catch((e: unknown) => {
+      if ((e as { name?: string })?.name === "AbortError") return;
+      const msg = e instanceof AskError ? e.message : lbl.errorGeneric;
+      setFollowUps((prev) => {
+        const next = [...prev];
+        next[turnIndex] = {
+          ...next[turnIndex],
+          loading: false,
+          streaming: false,
+          error: msg,
+        };
+        return next;
+      });
+    });
   }
 
   function submitFollowUp(event: FormEvent<HTMLFormElement>) {
@@ -464,8 +620,8 @@ function ChatPage() {
           </div>
         ) : null}
 
-        {/* Follow-up turns — each appended question + mock passage from
-            the corpus. Replaces the previous noop submit. */}
+        {/* Follow-up turns — each makes a real /api/ask call with conversation
+            history so the model brings new material and understands context. */}
         {followUps.map((turn, i) => (
           <div
             key={i}
@@ -495,28 +651,29 @@ function ChatPage() {
               >
                 {lbl.gurudevSangrah}
               </div>
-              <p
-                className={`mb-3 text-[16.5px] ${
-                  lang === "mr" ? "font-deva" : ""
-                }`}
-              >
-                {turn.framing}
-              </p>
-              <QuoteBlock quote={turn.quote} />
-              <p
-                className={`mt-2 text-[15px] leading-snug ${
-                  lang === "mr" ? "font-deva" : ""
-                }`}
-                style={{ color: "var(--text-primary)" }}
-              >
-                <span
+              {turn.loading ? (
+                <MeditativeLoader label={lbl.loading} isDeva={lang === "mr"} />
+              ) : turn.error ? (
+                <p
                   className={lang === "mr" ? "font-deva" : ""}
-                  style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+                  style={{ color: "var(--accent-maroon)" }}
                 >
-                  {lbl.whyThisPassage}
-                </span>{" "}
-                {turn.whyChosen}
-              </p>
+                  {turn.error}
+                </p>
+              ) : turn.answer?.kind === "qa" ? (
+                <QAAnswerBody answer={turn.answer} lbl={lbl} lang={lang} />
+              ) : turn.answer?.kind === "pravachan" ? (
+                <PravachanAnswerBody answer={turn.answer} lbl={lbl} lang={lang} />
+              ) : null}
+
+              {/* Inline streaming progress for this follow-up turn */}
+              {!turn.loading && turn.streaming && !turn.error ? (
+                <MeditativeLoader
+                  compact
+                  isDeva={lang === "mr"}
+                  label={lbl.composing}
+                />
+              ) : null}
             </div>
           </div>
         ))}
