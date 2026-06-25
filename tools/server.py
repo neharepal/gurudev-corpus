@@ -233,7 +233,17 @@ def _prepare_request(req: AskRequest):
     metadata_filter: Optional[Dict[str, Any]] = None
     if mode == "reading" and req.work:
         metadata_filter = {"work_id": req.work}
-    max_per_source = top_k if (metadata_filter and "work_id" in metadata_filter) else 2
+    # Citation breadth: Q&A retrieves at most ONE chunk per work, so the model
+    # is handed one strong passage from each of the top distinct works and its
+    # citations span the corpus instead of clustering in a single book. Reading
+    # is scoped to one work (cap = top_k, no diversity needed); pravachan keeps
+    # 2 to allow a couple of passages from a rich source.
+    if metadata_filter and "work_id" in metadata_filter:
+        max_per_source = top_k
+    elif mode == "qa":
+        max_per_source = 1
+    else:
+        max_per_source = 2
 
     t0 = time.time()
     chunks = _retrieve(

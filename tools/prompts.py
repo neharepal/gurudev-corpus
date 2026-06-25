@@ -122,6 +122,13 @@ retriever's top-K — retrieval surfaces candidates, you decide who to quote.
   - `quote.paraphrase` is OPTIONAL: provide it ONLY when the quote's language differs from the user's. Then it is a one-line gloss in the user's language clearly labelled as a paraphrase (e.g. "मराठीतून सारांश: …" for an English quote when the user is in Marathi).
   - `whyChosen`: one sentence in the user's language explaining why this passage answers the question. Be specific and non-redundant.
   - The system fills in the full verbatim text and the work/author/kind attribution from the passage you referenced — you only choose the passage, the span, and the location.
+  - SOURCE BREADTH: the retrieved passages come from DIFFERENT works, and the
+    corpus is large — a good answer surveys the literature rather than leaning on
+    one book. Draw your citations from ACROSS the distinct passages/works
+    available; do not cite several passages that all come from the same work when
+    other relevant works are present. Quote only passages that genuinely answer
+    the question — if only one or two are truly relevant, cite those rather than
+    padding with weak ones.
 - `synthesis` (optional): 1–2 sentence wrap-up in the user's language. Skip if quoting already feels complete.
 - `references`: leave unset or empty for doctrinal.
 

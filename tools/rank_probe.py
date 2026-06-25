@@ -34,7 +34,7 @@ def main() -> int:
     p.add_argument("--top-k", type=int, default=8)
     p.add_argument("--candidates", type=int, default=30)
     p.add_argument("--mmr-lambda", type=float, default=0.7)
-    p.add_argument("--max-per-source", type=int, default=2)
+    p.add_argument("--max-per-source", type=int, default=1)  # matches Q&A production (citation breadth)
     args = p.parse_args()
 
     embeddings, metas, manifest = retrieve.load_corpus()

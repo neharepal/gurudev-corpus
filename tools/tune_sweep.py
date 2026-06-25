@@ -297,8 +297,14 @@ def main() -> int:
         if mode == "reading" and q.get("work"):
             metadata_filter = {"work_id": q["work"]}
 
-        # See chat.py: per-source cap is self-defeating when scoped to one work.
-        max_per_source = top_k if (metadata_filter and "work_id" in metadata_filter) else 2
+        # Per-source cap is self-defeating when scoped to one work (reading).
+        # Q&A caps at 1/work for citation breadth (matches server.py); pravachan keeps 2.
+        if metadata_filter and "work_id" in metadata_filter:
+            max_per_source = top_k
+        elif mode == "qa":
+            max_per_source = 1
+        else:
+            max_per_source = 2
 
         print(f"\n[q{i}/{len(QUESTIONS)}] ({mode}·{q['lang']}) {q['question'][:60]}...", file=sys.stderr)
         chunks, retrieval_s = retrieve_for(
