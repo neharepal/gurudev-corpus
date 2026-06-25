@@ -359,7 +359,10 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
         "framing": {
             "type": "string",
             "description": (
-                "Doctrinal: a short framing sentence (e.g. 'Here is what the literature says on this:'). "
+                "Doctrinal: an INTRODUCTORY PARAGRAPH (2-4 sentences) that frames the question and "
+                "previews what the literature holds — the thesis the citations below will support. Not "
+                "a bare label like 'Here is what the literature says'; actually introduce the topic. "
+                "Keep it to one paragraph. "
                 "Meta SHORT (one paragraph, <=4 sentences): the full answer as a single paragraph. "
                 "Meta LONGER (multiple paragraphs): leave this as an empty string and use `framingParagraphs` instead. "
                 "Do NOT include literal newline sequences (\\n\\n) inside this string."
@@ -392,7 +395,7 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
         },
         "synthesis": {
             "type": "string",
-            "description": "Doctrinal only — optional 1-2 sentence synthesis at the end.",
+            "description": "Doctrinal only — a CONCLUDING PARAGRAPH (1-3 sentences) that ties the cited passages together into a takeaway. Provide it for doctrinal answers; don't skip it.",
         },
     },
     "required": ["classification", "question", "framing", "citations"],

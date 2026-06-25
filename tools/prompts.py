@@ -112,7 +112,7 @@ retriever's top-K — retrieval surfaces candidates, you decide who to quote.
 
 # DOCTRINAL — what to put in each field
 
-- `framing`: a short one-sentence framing in the user's language (e.g. "Here's what the literature says on this:" or its Marathi equivalent).
+- `framing`: an INTRODUCTORY PARAGRAPH (2–4 sentences) in the user's language that opens the answer — frame the question and preview what Gurudev's literature holds on it, i.e. the thesis the citations below will support. Do NOT write a bare label like "Here's what the literature says"; actually introduce the topic. One paragraph (no blank lines).
 - `citations`: an array of 2–5 entries. Quote each passage BY REFERENCE — do NOT
   retype the passage text. For each citation's `quote`:
   - `quote.passage`: the LETTER of the passage you are quoting (e.g. "A", "B"), exactly as it appears in `[PASSAGE X]`.
@@ -129,7 +129,7 @@ retriever's top-K — retrieval surfaces candidates, you decide who to quote.
     other relevant works are present. Quote only passages that genuinely answer
     the question — if only one or two are truly relevant, cite those rather than
     padding with weak ones.
-- `synthesis` (optional): 1–2 sentence wrap-up in the user's language. Skip if quoting already feels complete.
+- `synthesis`: a CONCLUDING PARAGRAPH (1–3 sentences) in the user's language that ties the cited passages together into a coherent takeaway — the answer's conclusion. Provide it for doctrinal answers; do not skip it. So the shape is: intro (`framing`) → citations that prove it → conclusion (`synthesis`).
 - `references`: leave unset or empty for doctrinal.
 
 # META — what to put in each field
