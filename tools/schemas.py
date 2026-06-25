@@ -477,6 +477,35 @@ def _degrade(start: str, end: str) -> str:
     return start
 
 
+def clean_quote_body(text: str) -> str:
+    """Strip invisible scan/encoding junk from a verbatim quote body.
+
+    Character-level ONLY (garble verifier, Phase 1): drops C0/C1 control chars
+    (keeping tab/newline/CR), the zero-width space (U+200B) and BOM (U+FEFF), and
+    turns the Unicode replacement char (U+FFFD, which stood for an undecodable
+    byte) into a space so adjacent words don't merge. It does NOT attempt
+    word-level OCR correction (e.g. "Tne"->"The"), which would fabricate the
+    source — those go to the human flag (Phase 2). U+200C/U+200D (ZWNJ/ZWJ) are
+    KEPT because they are meaningful in Devanagari. Clean text returns unchanged.
+    """
+    if not text:
+        return text
+    out = []
+    for ch in text:
+        cp = ord(ch)
+        if cp == 0xFFFD:                        # replacement char -> space
+            out.append(" ")
+        elif cp in (0x200B, 0xFEFF):            # ZWSP, BOM -> drop
+            continue
+        elif cp in (0x09, 0x0A, 0x0D):          # tab, newline, CR -> keep
+            out.append(ch)
+        elif cp < 0x20 or 0x7F <= cp <= 0x9F:   # other C0/C1 controls -> drop
+            continue
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
 def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> bool:
     """Fill body/workTitle/kind/author on a reference quote, in place.
 
@@ -500,41 +529,47 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
 
     if not has_ref:
         # Genuine verbatim body (pravachan/reading/legacy) — leave it untouched.
-        return bool(model_body)
+        result = bool(model_body)
+    else:
+        chunk = (label_to_chunk or {}).get(passage)
+        if chunk is None:
+            # Unknown passage letter: can't splice. Prefer the model's body if it
+            # gave one, else fall back to the anchors. Either way it's unverified.
+            if not model_body:
+                quote["body"] = _degrade(start, end)
+            quote.setdefault("workTitle", "")
+            quote.setdefault("author", "")
+            quote.setdefault("location", "")
+            if quote.get("kind") not in _ALLOWED_KINDS:
+                quote["kind"] = "canonical"
+            result = False
+        else:
+            meta = chunk.get("meta") or {}
+            text = chunk.get("text") or ""
+            body = _splice_span(text, start, end)
+            ok = body is not None
+            # Spliced text wins over any model-emitted body. On a start-anchor
+            # miss (ok is False) keep the model body if present, else the stub.
+            if ok:
+                quote["body"] = body
+            elif not model_body:
+                quote["body"] = _degrade(start, end)
+            # Authoritative attribution from the chunk's metadata.
+            quote["workTitle"] = meta.get("title") or meta.get("work_id") or quote.get("workTitle") or ""
+            quote["author"] = meta.get("author") or quote.get("author") or ""
+            mkind = meta.get("kind")
+            if mkind in _ALLOWED_KINDS:
+                quote["kind"] = mkind
+            elif quote.get("kind") not in _ALLOWED_KINDS:
+                quote["kind"] = "canonical"
+            quote.setdefault("location", "")
+            result = ok
 
-    chunk = (label_to_chunk or {}).get(passage)
-    if chunk is None:
-        # Unknown passage letter: can't splice. Prefer the model's body if it
-        # gave one, else fall back to the anchors. Either way it's unverified.
-        if not model_body:
-            quote["body"] = _degrade(start, end)
-        quote.setdefault("workTitle", "")
-        quote.setdefault("author", "")
-        quote.setdefault("location", "")
-        if quote.get("kind") not in _ALLOWED_KINDS:
-            quote["kind"] = "canonical"
-        return False
-
-    meta = chunk.get("meta") or {}
-    text = chunk.get("text") or ""
-    body = _splice_span(text, start, end)
-    ok = body is not None
-    # Spliced text wins over any model-emitted body. On a start-anchor miss
-    # (ok is False) keep the model body if present, else the anchor stub.
-    if ok:
-        quote["body"] = body
-    elif not model_body:
-        quote["body"] = _degrade(start, end)
-    # Authoritative attribution from the chunk's metadata.
-    quote["workTitle"] = meta.get("title") or meta.get("work_id") or quote.get("workTitle") or ""
-    quote["author"] = meta.get("author") or quote.get("author") or ""
-    mkind = meta.get("kind")
-    if mkind in _ALLOWED_KINDS:
-        quote["kind"] = mkind
-    elif quote.get("kind") not in _ALLOWED_KINDS:
-        quote["kind"] = "canonical"
-    quote.setdefault("location", "")
-    return ok
+    # Garble verifier (Phase 1): strip invisible scan/encoding junk from the
+    # final verbatim body. Character-level only — no word-level OCR guessing.
+    if quote.get("body"):
+        quote["body"] = clean_quote_body(quote["body"])
+    return result
 
 
 def splice_qa_citations(tool_input: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> int:
