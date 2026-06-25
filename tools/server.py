@@ -74,6 +74,19 @@ def _author_display_name(author_id: str) -> str:
     return author_id.replace("_", " ").title()
 
 
+def _strip_inline_md(s: str) -> str:
+    """Remove markdown emphasis markers from reading text, keeping the words.
+
+    The source markdown uses **bold** / *italic* / `code`; rendered raw they show
+    literal asterisks (e.g. "**Preliminary**"). Reading mode wants clean prose, so
+    strip the delimiters. Asterisks/backticks only — underscores are left alone
+    (they appear in transliteration and ids).
+    """
+    s = re.sub(r"\*\*(.+?)\*\*", r"\1", s)   # **bold**
+    s = re.sub(r"\*(.+?)\*", r"\1", s)        # *italic*
+    return s.replace("`", "")
+
+
 def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
     """Parse a text.md file into a list of paragraph records.
 
@@ -106,13 +119,19 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
             continue
         heading_match = re.match(r"^(#{1,6})\s+(.*)", block)
         if heading_match:
-            current_heading = heading_match.group(2).strip()
+            current_heading = _strip_inline_md(heading_match.group(2).strip())
+            continue
+        # A block that is ONLY a bold line is a section heading (the source uses
+        # **Heading** instead of ## in places), e.g. "**Preliminary**".
+        bold_only = re.match(r"^\*\*(.+?)\*\*[.:]?$", block)
+        if bold_only:
+            current_heading = bold_only.group(1).strip()
             continue
         # Skip short/decorative blocks
         if len(block) < 80:
             continue
         n += 1
-        results.append({"n": n, "body": block, "chapter": current_heading})
+        results.append({"n": n, "body": _strip_inline_md(block), "chapter": current_heading})
     return results
 
 
