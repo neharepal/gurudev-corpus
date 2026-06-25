@@ -52,8 +52,72 @@ from prompts import (
 )
 from streaming import sse, sse_heartbeat
 
+import math
+import re
+import yaml
 
 PORT = int(os.environ.get("GURUDEV_BACKEND_PORT", "8765"))
+
+
+# ---------------------------------------------------------------------------
+# Reading-mode helpers
+# ---------------------------------------------------------------------------
+
+def _author_display_name(author_id: str) -> str:
+    """Convert a catalog author id to a display name.
+
+    gurudev_ranade → 'Shri Gurudev'  (per product spec)
+    everything_else → title-case the id with underscores as spaces.
+    """
+    if author_id == "gurudev_ranade":
+        return "Shri Gurudev"
+    return author_id.replace("_", " ").title()
+
+
+def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
+    """Parse a text.md file into a list of paragraph records.
+
+    Each record: {"n": int, "body": str, "chapter": str}
+
+    Algorithm:
+    1. Strip YAML front matter (between the first two '---' fences).
+    2. Split the body into blocks on blank lines.
+    3. Track the current section heading (any line starting with # ... ##).
+    4. Paragraph = a block that is NOT a heading AND has len(stripped) >= 80.
+    5. Number paragraphs from 1 across the whole work.
+    """
+    raw = text_path.read_text(encoding="utf-8")
+
+    # Strip YAML front matter: content between the very first --- and the
+    # closing ---. The front matter always starts at byte 0.
+    if raw.startswith("---"):
+        end = raw.find("\n---\n", 3)
+        if end != -1:
+            raw = raw[end + 4:]  # skip past the closing ---\n
+
+    # Split the whole body on blank lines, then classify each block.
+    blocks = re.split(r"\n{2,}", raw)
+    current_heading: str = ""
+    n = 0
+    results: List[Dict[str, Any]] = []
+    for block in blocks:
+        block = block.strip()
+        if not block:
+            continue
+        heading_match = re.match(r"^(#{1,6})\s+(.*)", block)
+        if heading_match:
+            current_heading = heading_match.group(2).strip()
+            continue
+        # Skip short/decorative blocks
+        if len(block) < 80:
+            continue
+        n += 1
+        results.append({"n": n, "body": block, "chapter": current_heading})
+    return results
+
+
+# In-process cache of parsed works. Key: (path, lang). Cleared on reload.
+_reading_cache: Dict[tuple, List[Dict[str, Any]]] = {}
 
 
 # ---------------------------------------------------------------------------
@@ -252,6 +316,7 @@ def admin_reload() -> Dict[str, Any]:
     not destructive (it only re-reads local files), but if that exposure matters
     in your deployment, front it with auth or bind to localhost.
     """
+    _reading_cache.clear()
     before = len(getattr(STATE, "metas", []) or [])
     info = _load_corpus_into_state()
     info["chunks_before"] = before
@@ -263,6 +328,126 @@ def admin_reload() -> Dict[str, Any]:
             file=sys.stderr,
         )
     return {"ok": True, **info}
+
+
+@app.get("/read/{slug}")
+def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str, Any]:
+    """Return one page of real corpus text for the given work slug.
+
+    Query params:
+      lang  — optional; defaults to the work's first language in the catalog.
+      page  — 1-based page number (default 1); 4 paragraphs per page.
+
+    Returns a ReadingPage JSON object:
+      {workSlug, workTitle, author, chapter, totalPages, paragraphs: [{n, body}]}
+
+    404 if the slug is not in the catalog or the text.md file is missing.
+    """
+    # Load catalog
+    catalog_path = REPO / "03_catalog" / "catalog.yaml"
+    with open(catalog_path, encoding="utf-8") as f:
+        catalog = yaml.safe_load(f)
+
+    work_meta = None
+    for w in catalog.get("works", []):
+        if w.get("id") == slug:
+            work_meta = w
+            break
+
+    # Fallback: if not in catalog, try to locate the text.md by scanning the
+    # canonical directory. This handles pathway-to-god-in-hindi-literature
+    # which exists on disk but is absent from catalog.yaml.
+    if work_meta is None:
+        # Try common canonical path patterns
+        candidate_dirs = [
+            REPO / "01_canonical" / "gurudev_ranade" / "books" / slug,
+            REPO / "01_canonical" / "bhausaheb_maharaj" / "letters" / slug,
+            REPO / "01_canonical" / "kakasaheb_tulpule" / "books" / slug,
+            REPO / "01_canonical" / "other_authors" / "books" / slug,
+            REPO / "02_aggregated" / "biography" / "about_gurudev_ranade" / slug,
+        ]
+        work_dir = None
+        for d in candidate_dirs:
+            if d.exists():
+                work_dir = d
+                break
+        if work_dir is None:
+            raise HTTPException(status_code=404, detail=f"Work not found: {slug!r}")
+        # Infer author from path
+        parts = work_dir.parts
+        author_id = "gurudev_ranade"
+        for i, part in enumerate(parts):
+            if part in ("01_canonical", "02_aggregated"):
+                # Next part is the author
+                if i + 1 < len(parts):
+                    candidate = parts[i + 1]
+                    if candidate not in ("biography",):
+                        author_id = candidate
+                break
+        # Infer languages from subdirectory names
+        langs_on_disk = sorted(
+            d.name for d in work_dir.iterdir()
+            if d.is_dir() and (d / "text.md").exists()
+        )
+        work_meta = {
+            "id": slug,
+            "title": slug.replace("-", " ").title(),
+            "author": author_id,
+            "languages": langs_on_disk or ["en"],
+            "path": str(work_dir.relative_to(REPO)) + "/",
+        }
+
+    # Resolve language
+    available_langs: List[str] = work_meta.get("languages", ["en"])
+    if lang is None:
+        lang = available_langs[0]
+    elif lang not in available_langs:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Language {lang!r} not available for {slug!r}. Available: {available_langs}",
+        )
+
+    # Locate text.md
+    work_path_str: str = work_meta.get("path", "")
+    if not work_path_str:
+        raise HTTPException(status_code=404, detail=f"No path for work {slug!r}")
+    text_path = REPO / work_path_str.rstrip("/") / lang / "text.md"
+    if not text_path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail=f"text.md not found at {text_path.relative_to(REPO)}",
+        )
+
+    # Parse (with cache)
+    cache_key = (str(text_path), lang)
+    if cache_key not in _reading_cache:
+        _reading_cache[cache_key] = _parse_work_text(text_path)
+    all_paragraphs = _reading_cache[cache_key]
+
+    total = len(all_paragraphs)
+    if total == 0:
+        raise HTTPException(status_code=404, detail="Work has no parseable paragraphs")
+
+    PAGE_SIZE = 4
+    total_pages = math.ceil(total / PAGE_SIZE)
+    page = max(1, min(page, total_pages))
+    start = (page - 1) * PAGE_SIZE
+    end = start + PAGE_SIZE
+    page_paras = all_paragraphs[start:end]
+
+    chapter = page_paras[0]["chapter"] if page_paras else ""
+
+    title: str = work_meta.get("title") or slug.replace("-", " ").title()
+    author_display = _author_display_name(work_meta.get("author", ""))
+
+    return {
+        "workSlug": slug,
+        "workTitle": title,
+        "author": author_display,
+        "chapter": chapter,
+        "totalPages": total_pages,
+        "paragraphs": [{"n": p["n"], "body": p["body"]} for p in page_paras],
+    }
 
 
 def _prepare_request(req: AskRequest):
