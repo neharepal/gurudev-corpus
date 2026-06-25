@@ -168,6 +168,34 @@ app.add_middleware(
 )
 
 
+def _load_corpus_into_state() -> Dict[str, Any]:
+    """(Re)load embeddings + metadata + manifest from disk into STATE.
+
+    Shared by startup and POST /admin/reload, so a re-embed (tools/embedder.py)
+    can be picked up live without a full restart. The embedding MODEL is left
+    untouched — it is corpus-independent and stays warm across reloads. If the
+    manifest's embedding model itself changed, a full restart is still required;
+    the returned dict flags that via `model_changed`.
+    """
+    t = time.time()
+    embeddings, metas, manifest = retrieve.load_corpus()
+    prev_model = getattr(STATE, "model_name", None)
+    new_model = manifest.get("model", "BAAI/bge-m3")
+    # Swap references in. These assignments are individually atomic; reload is
+    # intended for a quiet admin moment after ingestion, not under load.
+    STATE.embeddings = embeddings
+    STATE.metas = metas
+    STATE.manifest = manifest
+    STATE.model_name = new_model
+    return {
+        "chunks": len(metas),
+        "dim": int(embeddings.shape[1]),
+        "model": new_model,
+        "model_changed": prev_model is not None and prev_model != new_model,
+        "load_seconds": round(time.time() - t, 2),
+    }
+
+
 @app.on_event("startup")
 def _load_everything() -> None:
     # Fail fast if the API key is missing — the server has nothing to do without it.
@@ -178,15 +206,10 @@ def _load_everything() -> None:
         )
 
     print("[startup] loading corpus...", file=sys.stderr)
-    t = time.time()
-    embeddings, metas, manifest = retrieve.load_corpus()
-    STATE.embeddings = embeddings
-    STATE.metas = metas
-    STATE.manifest = manifest
-    STATE.model_name = manifest.get("model", "BAAI/bge-m3")
+    info = _load_corpus_into_state()
     print(
-        f"[startup] {len(metas)} chunks (dim={embeddings.shape[1]}) "
-        f"in {time.time() - t:.1f}s",
+        f"[startup] {info['chunks']} chunks (dim={info['dim']}) "
+        f"in {info['load_seconds']}s",
         file=sys.stderr,
     )
 
@@ -214,6 +237,32 @@ def health() -> Dict[str, Any]:
         "model": STATE.model_name,
         "chunks": len(STATE.metas),
     }
+
+
+@app.post("/admin/reload")
+def admin_reload() -> Dict[str, Any]:
+    """Re-read the on-disk embeddings index into memory — no full restart.
+
+    Run this after re-embedding (tools/embedder.py) so newly ingested works
+    become retrievable in the live server. Returns before/after chunk counts.
+    If the manifest's embedding model changed, `model_changed` is true and a
+    full restart is still needed to load the new model.
+
+    Note: the server binds 0.0.0.0, so this route is reachable on the LAN. It is
+    not destructive (it only re-reads local files), but if that exposure matters
+    in your deployment, front it with auth or bind to localhost.
+    """
+    before = len(getattr(STATE, "metas", []) or [])
+    info = _load_corpus_into_state()
+    info["chunks_before"] = before
+    print(f"[reload] {before} -> {info['chunks']} chunks", file=sys.stderr)
+    if info["model_changed"]:
+        print(
+            "[reload] WARNING: manifest embedding model changed "
+            f"to {info['model']!r}; a full restart is required to load it.",
+            file=sys.stderr,
+        )
+    return {"ok": True, **info}
 
 
 def _prepare_request(req: AskRequest):
