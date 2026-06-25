@@ -2,18 +2,17 @@
 
 import Link from "next/link";
 import {
-  notFound,
   useParams,
   useSearchParams,
 } from "next/navigation";
 import {
   Suspense,
-  useMemo,
+  useEffect,
   useState,
   type FormEvent,
   type KeyboardEvent,
 } from "react";
-import { getReadingPage } from "../../../data/mock-conversations";
+import type { ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError } from "../../../lib/api";
 
@@ -110,7 +109,6 @@ function ReadingPage() {
   const params = useParams<{ slug: string }>();
   const search = useSearchParams();
   const slug = params?.slug ?? "pathway-to-god-in-hindi-literature";
-  const page = useMemo(() => getReadingPage(slug), [slug]);
 
   // If we arrived from a Pravachan brief via "Read in full", surface a
   // return link so the devotee can get back to their brief without losing it.
@@ -135,9 +133,41 @@ function ReadingPage() {
   const [pending, setPending] = useState(false);
   const [askError, setAskError] = useState<string | null>(null);
 
-  if (!page) {
-    notFound();
-  }
+  // Real corpus fetch — re-runs whenever slug, lang, or currentPage changes.
+  const [pageData, setPageData] = useState<ReadingPage | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setFetchError(null);
+    const qs = new URLSearchParams({ slug, page: String(currentPage) });
+    if (lang) qs.set("lang", lang);
+    fetch(`/api/read?${qs.toString()}`)
+      .then(async (res) => {
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({})) as { error?: string };
+          throw new Error(body.error ?? `Error ${res.status}`);
+        }
+        return res.json() as Promise<ReadingPage>;
+      })
+      .then((data) => {
+        if (!cancelled) {
+          setPageData(data);
+          setLoading(false);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          setFetchError(err instanceof Error ? err.message : "Failed to load");
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, lang, currentPage]);
 
   async function ask() {
     const q = draft.trim();
@@ -186,7 +216,7 @@ function ReadingPage() {
     }
   }
 
-  const total = page.totalPages;
+  const total = pageData?.totalPages ?? 1;
   const progress = Math.min(100, Math.round((currentPage / total) * 100));
 
   return (
@@ -223,13 +253,13 @@ function ReadingPage() {
             className="text-[20px] font-semibold leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            {page.workTitle}
+            {pageData?.workTitle ?? slug.replace(/-/g, " ")}
           </div>
           <div
             className="text-[13.5px]"
             style={{ color: "var(--text-secondary)" }}
           >
-            {page.author} · {page.chapter}
+            {pageData ? `${pageData.author} · ${pageData.chapter}` : ""}
           </div>
         </div>
       </header>
@@ -259,7 +289,15 @@ function ReadingPage() {
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
       <article className="mx-auto w-full max-w-reading flex-1">
-        {page.paragraphs.map((para) => (
+        {loading ? (
+          <p className="text-[15px] italic" style={{ color: "var(--text-tertiary)" }}>
+            Loading…
+          </p>
+        ) : fetchError ? (
+          <p className="text-[15px]" style={{ color: "var(--accent-maroon)" }}>
+            {fetchError}
+          </p>
+        ) : (pageData?.paragraphs ?? []).map((para) => (
           <div key={para.n} className="mb-7 flex gap-4">
             <div
               className="shrink-0 pt-1 font-mono text-[12px]"
@@ -379,7 +417,7 @@ function ReadingPage() {
             className="text-[12px] leading-tight"
             style={{ color: "var(--text-secondary)" }}
           >
-            {page.workTitle}
+            {pageData?.workTitle ?? slug.replace(/-/g, " ")}
           </p>
         </div>
         <button
@@ -452,7 +490,7 @@ function ReadingPage() {
                 {m.passage}
               </blockquote>
               <p className="gd-quote-attr">
-                — {page.workTitle}, {page.chapter} · {page.author}
+                — {pageData?.workTitle ?? ""}, {pageData?.chapter ?? ""} · {pageData?.author ?? ""}
               </p>
             </div>
           ))
