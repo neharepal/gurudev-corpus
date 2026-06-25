@@ -344,9 +344,72 @@ def format_chunks_for_prompt(chunks: list[dict[str, Any]]) -> str:
     return "\n\n---\n\n".join(parts)
 
 
-def build_user_message(chunks: list[dict[str, Any]], question: str) -> str:
-    """Wrap chunks + question into a single user-turn content string."""
+def build_conversation_history_block(history: list[dict[str, Any]]) -> str:
+    """Render prior conversation turns as a compact transcript block.
+
+    Each entry in history must have:
+      - "question": str — the question asked in that turn
+      - "cited_passages": list of {"workTitle": str, "location": str} — compact
+        reference to what was already cited (so the model knows not to repeat them)
+
+    Returns a non-empty string when history has entries, or an empty string when
+    history is None / empty (so callers can skip inserting the block).
+    """
+    if not history:
+        return ""
+
+    parts: list[str] = []
+    for i, turn in enumerate(history):
+        q = (turn.get("question") or "").strip()
+        cited = turn.get("cited_passages") or []
+
+        cited_str = ""
+        if cited:
+            refs = []
+            for p in cited:
+                work = (p.get("workTitle") or "").strip()
+                loc = (p.get("location") or "").strip()
+                if work:
+                    refs.append(f"{work}" + (f" ({loc})" if loc else ""))
+            if refs:
+                cited_str = "  Passages already cited: " + "; ".join(refs)
+
+        turn_lines = [f"[Turn {i + 1}] Question: {q}"]
+        if cited_str:
+            turn_lines.append(cited_str)
+        parts.append("\n".join(turn_lines))
+
+    return "\n\n".join(parts)
+
+
+def build_user_message(
+    chunks: list[dict[str, Any]],
+    question: str,
+    history: list[dict[str, Any]] | None = None,
+) -> str:
+    """Wrap chunks + question into a single user-turn content string.
+
+    When *history* is provided (a list of prior conversation turns), it is
+    rendered as a compact transcript BEFORE the current question, and an
+    instruction is added asking the model to treat the question as a fresh
+    question in context and NOT repeat already-cited passages.
+    """
     chunks_block = format_chunks_for_prompt(chunks)
+    history_block = build_conversation_history_block(history or [])
+
+    if history_block:
+        return (
+            f"<retrieved_passages>\n{chunks_block}\n</retrieved_passages>\n\n"
+            f"<conversation_history>\n{history_block}\n</conversation_history>\n\n"
+            "<instruction>This is a follow-up in an ongoing conversation. "
+            "Treat the new question as a fresh question understood in the context of the previous turns. "
+            "Do NOT cite passages already shown earlier in this conversation (listed above under each prior turn); "
+            "bring NEW material from the retrieved passages above. "
+            "If the corpus genuinely has nothing new to add beyond what was already cited, "
+            "say so plainly rather than repeating.</instruction>\n\n"
+            f"<question>\n{question.strip()}\n</question>"
+        )
+
     return (
         f"<retrieved_passages>\n{chunks_block}\n</retrieved_passages>\n\n"
         f"<question>\n{question.strip()}\n</question>"

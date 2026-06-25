@@ -11,6 +11,16 @@ import type { ModeId } from "../data/mock-conversations";
 
 export type Lang = "en" | "mr";
 
+// Compact record of what was already cited in one prior conversation turn.
+// Sent in history so the backend can instruct the model not to repeat them.
+export type HistoryTurn = {
+  question: string;
+  cited_passages: Array<{
+    workTitle: string;
+    location: string;
+  }>;
+};
+
 export type AskRequest = {
   mode: ModeId;
   question: string;
@@ -18,6 +28,11 @@ export type AskRequest = {
   // Reading mode: scopes retrieval to a specific work. Ignored by Q&A
   // and Pravachan.
   work?: string;
+  // Conversational history for follow-up questions. Each entry carries the
+  // prior question and a compact list of passages already cited, so the
+  // backend can instruct the model to bring new material rather than repeat.
+  // Empty / absent for the very first question in a thread.
+  history?: HistoryTurn[];
 };
 
 // Lightweight reference used by meta-mode Q&A (ADR-010): a work the
