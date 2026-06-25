@@ -119,4 +119,39 @@ in prose.
 
 ---
 
+## F8 — Chatbot personality / voice
+
+**Request:** give the assistant a personality — **warm, happy, deeply
+respectful** to the reader; **excited** to share knowledge, insight, and
+perspectives from the vast literature; and eager for the reader to **know more
+about Gurudev and his works**. Applies across the system prompts (qa / pravachan
+/ reading framing + synthesis), while keeping quotes verbatim and not turning
+answers into gush. Fix scope: prompt changes in `tools/prompts.py`.
+
+---
+
+## F9 — Keep RFCs/ADRs updated
+
+**Request:** as these changes land, update the RFCs/ADRs accordingly (e.g.
+RFC-001 model choice now Sonnet for pravachan; reading-mode real-data endpoint;
+personality/voice; Gurudev naming convention). Fix scope: docs under
+`docs/rfc/` and `docs/adr/` (or wherever they live) — touch the affected ones as
+each fix lands, plus a sweep at the end.
+
+---
+
+## F10 — Reading mode must serve only *verified* content
+
+**Constraint (user):** reading mode now serves raw `text.md` verbatim, which can
+include OCR errors / unverified scans. Reading should only present content we
+**know is verified/clean**.
+
+**Open question:** what marks content as "verified"? (a per-work/per-section
+quality flag? canonical-only? a curated allowlist?) No explicit flag is known
+yet. **Interim plan:** restrict reading to `kind=canonical` works and run the
+garble cleaner (`clean_quote_body`) over served paragraphs, until a real
+verification flag exists. Confirm the definition before finalizing.
+
+---
+
 <!-- append new findings below as testing continues -->
