@@ -13,7 +13,8 @@ import {
   type FormEvent,
   type KeyboardEvent,
 } from "react";
-import type { ReadingPage } from "../../../data/mock-conversations";
+import QuoteBlock from "../../../components/QuoteBlock";
+import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError } from "../../../lib/api";
 import { upsertProgress } from "../../../lib/readingProgress";
@@ -22,8 +23,7 @@ type Lang = "en" | "mr";
 
 type ChatTurn = {
   question: string;
-  framing: string;
-  passage: string;
+  answer: QAAnswer;
 };
 
 // Language-aware UI labels for the reading surface. Verbatim passages
@@ -45,8 +45,7 @@ const L: Record<
     closeChat: string;
     emptyHint: string;
     youAsked: string;
-    framingFirst: string;
-    framingFollowUp: string;
+    whyThisPassage: string;
     askPlaceholderFirst: string;
     askPlaceholderFollowUp: string;
     ask: string;
@@ -66,10 +65,9 @@ const L: Record<
     aboutThisWork: "About this work",
     closeChat: "Close chat",
     emptyHint:
-      "Ask a question about this work — answers cite a passage from the text below.",
+      "Ask a question about this work — the answer draws on passages from this text.",
     youAsked: "You asked",
-    framingFirst: "Here is what this work says:",
-    framingFollowUp: "And this passage may also be relevant:",
+    whyThisPassage: "Why this passage:",
     askPlaceholderFirst: "Ask about this work...",
     askPlaceholderFollowUp: "Ask a follow-up...",
     ask: "Ask",
@@ -88,10 +86,9 @@ const L: Record<
     aboutThisWork: "या ग्रंथाविषयी",
     closeChat: "संवाद बंद करा",
     emptyHint:
-      "या ग्रंथाविषयी प्रश्न विचारा — उत्तरात खालील मजकुरातून एक उतारा दिला जाईल.",
+      "या ग्रंथाविषयी प्रश्न विचारा — उत्तर या मजकुरातील उतार्‍यांवर आधारित असेल.",
     youAsked: "तुम्ही विचारले",
-    framingFirst: "या ग्रंथात याविषयी हे सांगितले आहे:",
-    framingFollowUp: "आणि हाही उतारा संबंधित असू शकतो:",
+    whyThisPassage: "हा उतारा का?:",
     askPlaceholderFirst: "या ग्रंथाविषयी विचारा...",
     askPlaceholderFollowUp: "पुढील प्रश्न विचारा...",
     ask: "विचारा",
@@ -229,19 +226,17 @@ function ReadingPage() {
     setDraft("");
     try {
       const resp = await askApi({
-        mode: "reading",
+        mode: "qa",
         question: q,
         lang,
         work: slug,
       });
-      if (resp.kind !== "reading") {
+      if (resp.kind !== "qa") {
         throw new AskError("Unexpected response shape", 500);
       }
-      const isFollowUp = messages.length > 0;
       const turn: ChatTurn = {
         question: q,
-        framing: isFollowUp ? lbl.framingFollowUp : lbl.framingFirst,
-        passage: resp.passage,
+        answer: resp,
       };
       setMessages((m) => [...m, turn]);
     } catch (e: unknown) {
@@ -529,24 +524,42 @@ function ReadingPage() {
                   {m.question}
                 </p>
               </div>
-              {/* Answer. Framing is language-aware (set in ask()); passage
-                  body stays in its source language; attribution likewise. */}
-              <p
-                className={`mb-2 text-[14px] ${isMr ? "font-deva" : ""}`}
-                style={{ color: "var(--text-secondary)" }}
-              >
-                {m.framing}
-              </p>
-              <blockquote
-                className={`gd-quote ${
-                  /[ऀ-ॿ]/.test(m.passage) ? "font-deva" : ""
-                }`}
-              >
-                {m.passage}
-              </blockquote>
-              <p className="gd-quote-attr">
-                — {pageData?.workTitle ?? ""}, {pageData?.chapter ?? ""} · {pageData?.author ?? ""}
-              </p>
+              {/* QA answer: framing paragraph(s), citations (QuoteBlock +
+                  whyChosen rationale), optional synthesis. */}
+              {m.answer.framing ? (
+                <p
+                  className={`mb-3 text-[14px] ${isMr ? "font-deva" : ""}`}
+                  style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
+                >
+                  {m.answer.framing}
+                </p>
+              ) : null}
+              {m.answer.citations.map((c, ci) => (
+                <div key={ci} className="mb-4">
+                  <QuoteBlock quote={c.quote} lang={lang} />
+                  {c.whyChosen ? (
+                    <p
+                      className={`mt-1.5 text-[13px] leading-snug ${isMr ? "font-deva" : ""}`}
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      <span
+                        style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+                      >
+                        {lbl.whyThisPassage}
+                      </span>{" "}
+                      {c.whyChosen}
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+              {m.answer.synthesis ? (
+                <p
+                  className={`mt-2 text-[14px] ${isMr ? "font-deva" : ""}`}
+                  style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
+                >
+                  {m.answer.synthesis}
+                </p>
+              ) : null}
             </div>
           ))
         )}

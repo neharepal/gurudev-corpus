@@ -25,8 +25,8 @@ export type AskRequest = {
   mode: ModeId;
   question: string;
   lang?: Lang;
-  // Reading mode: scopes retrieval to a specific work. Ignored by Q&A
-  // and Pravachan.
+  // Scopes retrieval to a specific work. Used by Reading mode and by
+  // work-scoped Q&A (drawer "Ask about this work"). Ignored by Pravachan.
   work?: string;
   // Conversational history for follow-up questions. Each entry carries the
   // prior question and a compact list of passages already cited, so the
