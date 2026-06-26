@@ -255,4 +255,12 @@ inactive. They must be wired up first, because:
 
 ---
 
+## Status (2026-06-26): all catalogued build items complete
+
+F1–F16 are all built, merged to `main`, and live. The **only** outstanding work
+is the **garble Phase 2 maintenance step** (not a build): a tool/process for a
+maintainer to read `logs/issue_reports.jsonl`, correct the flagged source chunk's
+text, and re-embed it (then `/admin/reload` picks it up live). Everything else
+from this QA pass is done.
+
 <!-- append new findings below as testing continues -->
