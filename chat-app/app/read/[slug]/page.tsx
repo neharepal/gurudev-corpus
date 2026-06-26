@@ -240,7 +240,7 @@ function ReadingPage() {
         {/* Back links — top-left to match chat + landing surfaces. */}
         <div className="mb-3 flex items-center gap-4">
           <Link
-            href={`/?lang=${lang}`}
+            href={`/?mode=reading&lang=${lang}`}
             className={`text-[14px] ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-secondary)" }}
           >

@@ -173,4 +173,28 @@ control. Self-contained frontend feature (no backend).
 
 ---
 
+## F12 — Returning home from a book lands on Q&A, not the Reading landing  ✅ DONE
+
+**Symptom:** from inside a work, "Back to start" went to the Q&A landing.
+**Cause:** `chat-app/app/read/[slug]/page.tsx` back-link was `/?lang=…` (no mode);
+home defaults to Q&A.
+**Fix (done):** back-link now `/?mode=reading&lang=…`.
+
+---
+
+## F13 — "Mysticism in Maharashtra" gives a 404 in Reading mode
+
+**Diagnosis:** the work exists on disk
+(`01_canonical/gurudev_ranade/books/mysticism-in-maharashtra/en/text.md`,
+work_id `mysticism-in-maharashtra`) and the backend `GET /read/mysticism-in-maharashtra`
+returns **HTTP 200**. It is NOT a reading suggestion and NOT in `catalog.yaml`.
+So the 404 is a **frontend slug mismatch** — some link sends a slug that doesn't
+resolve. NEED: which surface the user clicked it from (reading suggestion?
+"Read in full" citation link? continue-reading shelf? pravachan readSlug?).
+Likely fixes: correct the offending slug, and/or register canonical readable
+works in `catalog.yaml` (also fixes the FS-fallback's wrong title-casing, e.g.
+"Pathway To God In Hindi Literature").
+
+---
+
 <!-- append new findings below as testing continues -->
