@@ -290,4 +290,19 @@ appended to `logs/issue_reports.jsonl` (or a sibling corrections queue). Builds 
 F16. (This is the user-facing half of garble Phase 2's flag-and-queue, for
 reading text specifically.)
 
+## F19 — Question/UI language mismatch (demo feedback)
+
+**Concern:** what if someone asks in English while in Marathi mode, or vice
+versa? Today the answer's prose language follows the `lang` toggle, not the
+question — so a mismatch gives an answer in the "wrong" language.
+
+**Decision/fix:** the assistant's **prose** (framing, whyChosen, synthesis;
+pravachan thesis/whyThisExample; reading framing) should be written in the
+**same language as the user's question**, regardless of the UI `lang` toggle
+(English question → English answer; Devanagari question → Marathi answer). The
+`lang` toggle remains a fallback hint for short/ambiguous questions. **Verbatim
+quotes stay in their source language** (ADR-007). The `paraphrase` gloss is
+provided when the quote's language differs from the **question's** language
+(was: the user's toggle). Prompt-only change (`tools/prompts.py`).
+
 <!-- append new findings below as testing continues -->
