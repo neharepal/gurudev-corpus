@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   Suspense,
   useEffect,
@@ -146,10 +146,20 @@ export default function ChatPageRoute() {
 
 function ChatPage() {
   const search = useSearchParams();
+  const pathname = usePathname();
 
   const modeFromUrl = (search.get("mode") as ModeId | null) ?? "qa";
   const langFromUrl = (search.get("lang") as Lang | null) ?? "en";
   const questionFromUrl = search.get("q");
+
+  // Build the current page URL to pass as the `from` origin on "Read in full"
+  // links, so the reader's back link can return to this Q&A session.
+  // Guard for SSR: usePathname/useSearchParams are safe in "use client" components
+  // but we defensively check for a non-empty pathname.
+  const searchStr = search.toString();
+  const fromUrl = pathname
+    ? `${pathname}${searchStr ? `?${searchStr}` : ""}`
+    : undefined;
 
   const mode = modeFromUrl;
   const lang = langFromUrl;
@@ -583,9 +593,9 @@ function ChatPage() {
               {error}
             </p>
           ) : answer?.kind === "qa" ? (
-            <QAAnswerBody answer={answer} lbl={lbl} lang={lang} />
+            <QAAnswerBody answer={answer} lbl={lbl} lang={lang} fromUrl={fromUrl} />
           ) : answer?.kind === "pravachan" ? (
-            <PravachanAnswerBody answer={answer} lbl={lbl} lang={lang} />
+            <PravachanAnswerBody answer={answer} lbl={lbl} lang={lang} fromUrl={fromUrl} />
           ) : null}
 
           {/* Inline progress: the first content has appeared but the stream is
@@ -662,9 +672,9 @@ function ChatPage() {
                   {turn.error}
                 </p>
               ) : turn.answer?.kind === "qa" ? (
-                <QAAnswerBody answer={turn.answer} lbl={lbl} lang={lang} />
+                <QAAnswerBody answer={turn.answer} lbl={lbl} lang={lang} fromUrl={fromUrl} />
               ) : turn.answer?.kind === "pravachan" ? (
-                <PravachanAnswerBody answer={turn.answer} lbl={lbl} lang={lang} />
+                <PravachanAnswerBody answer={turn.answer} lbl={lbl} lang={lang} fromUrl={fromUrl} />
               ) : null}
 
               {/* Inline streaming progress for this follow-up turn */}
@@ -734,10 +744,12 @@ function QAAnswerBody({
   answer,
   lbl,
   lang,
+  fromUrl,
 }: {
   answer: QAAnswer;
   lbl: (typeof L)[Lang];
   lang: Lang;
+  fromUrl?: string;
 }) {
   const isMr = lang === "mr";
 
@@ -811,7 +823,7 @@ function QAAnswerBody({
       ))}
       {answer.citations.map((c, i) => (
         <div key={i} className="mb-6">
-          <QuoteBlock quote={c.quote} lang={lang} />
+          <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} />
           <p
             className={`mt-2 text-[15px] leading-snug ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-primary)" }}
@@ -852,10 +864,12 @@ function PravachanAnswerBody({
   answer,
   lbl,
   lang,
+  fromUrl,
 }: {
   answer: PravachanAnswer;
   lbl: (typeof L)[Lang];
   lang: Lang;
+  fromUrl?: string;
 }) {
   const isMr = lang === "mr";
   const isQuestionDeva = /[ऀ-ॿ]/.test(answer.question);
@@ -886,7 +900,7 @@ function PravachanAnswerBody({
 
       {answer.gurudevsWords ? (
         <PravachanSection heading={lbl.sectionGurudevsWords} isDeva={isMr}>
-          <QuoteBlock quote={answer.gurudevsWords} lang={lang} />
+          <QuoteBlock quote={answer.gurudevsWords} lang={lang} fromUrl={fromUrl} />
         </PravachanSection>
       ) : null}
 
@@ -912,7 +926,7 @@ function PravachanAnswerBody({
                   {ex.gloss}
                 </div>
               ) : null}
-              <QuoteBlock quote={ex.quote} lang={lang} />
+              <QuoteBlock quote={ex.quote} lang={lang} fromUrl={fromUrl} />
               <div
                 className={`mt-2 text-[15px] ${isMr ? "font-deva" : ""}`}
                 style={{ color: "var(--text-primary)" }}
@@ -927,9 +941,14 @@ function PravachanAnswerBody({
               </div>
               {ex.readSlug ? (
                 <Link
-                  href={`/read/${ex.readSlug}?from=${encodeURIComponent(
-                    `/chat?mode=pravachan&lang=${lang}`,
-                  )}&lang=${lang}`}
+                  href={(() => {
+                    const qs = new URLSearchParams();
+                    // Use the real current URL when available; fall back to a
+                    // stable pravachan URL so old bookmarks keep working.
+                    qs.set("from", fromUrl ?? `/chat?mode=pravachan&lang=${lang}`);
+                    qs.set("lang", lang);
+                    return `/read/${ex.readSlug}?${qs.toString()}`;
+                  })()}
                   className={`mt-2 inline-block text-[14px] ${
                     isMr ? "font-deva" : ""
                   }`}
