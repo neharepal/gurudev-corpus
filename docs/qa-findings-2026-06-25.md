@@ -154,4 +154,21 @@ verification flag exists. Confirm the definition before finalizing.
 
 ---
 
+## F11 — "Continue reading" / reading progress surface
+
+**Request/UX gap:** a reader can't easily get back to a work they were reading,
+nor see what they've started.
+
+**Current state:** per-work resume already works — the reading page persists the
+page in `localStorage` (`gd:read:{slug}:page`), so reopening a work restores the
+page. Missing is an *entry point* listing started works.
+
+**Proposed:** as the user reads, store a progress record per work in
+`localStorage` (`{ slug, workTitle, page, totalPages, lastReadAt }`); render a
+**"Continue reading"** section on the reading landing (home, reading mode)
+listing started works ("<Title> — Page X of Y", resume link, most-recent first),
+with an optional remove control. Self-contained frontend feature.
+
+---
+
 <!-- append new findings below as testing continues -->
