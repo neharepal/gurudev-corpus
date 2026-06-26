@@ -811,7 +811,7 @@ function QAAnswerBody({
       ))}
       {answer.citations.map((c, i) => (
         <div key={i} className="mb-6">
-          <QuoteBlock quote={c.quote} />
+          <QuoteBlock quote={c.quote} lang={lang} />
           <p
             className={`mt-2 text-[15px] leading-snug ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-primary)" }}
@@ -886,7 +886,7 @@ function PravachanAnswerBody({
 
       {answer.gurudevsWords ? (
         <PravachanSection heading={lbl.sectionGurudevsWords} isDeva={isMr}>
-          <QuoteBlock quote={answer.gurudevsWords} />
+          <QuoteBlock quote={answer.gurudevsWords} lang={lang} />
         </PravachanSection>
       ) : null}
 
@@ -912,7 +912,7 @@ function PravachanAnswerBody({
                   {ex.gloss}
                 </div>
               ) : null}
-              <QuoteBlock quote={ex.quote} />
+              <QuoteBlock quote={ex.quote} lang={lang} />
               <div
                 className={`mt-2 text-[15px] ${isMr ? "font-deva" : ""}`}
                 style={{ color: "var(--text-primary)" }}

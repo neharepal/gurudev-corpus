@@ -86,6 +86,11 @@ class Quote(BaseModel):
     is used when the quote's language differs from the user's (the LLM
     supplies a brief gloss labelled as a paraphrase so the user can read
     the gist without losing the verbatim source).
+
+    `workId` is server-filled (NOT model-writable): the backend splices it
+    in from the chunk's `meta.work_id` so the frontend can build a
+    "Read in full" link for canonical works. It is always "" for non-canonical
+    kinds (athvani / biography) and for quotes that had no matching chunk.
     """
 
     body: str
@@ -94,6 +99,7 @@ class Quote(BaseModel):
     kind: Literal["canonical", "athvani", "biography"]
     author: str
     paraphrase: Optional[str] = None
+    workId: Optional[str] = ""
 
     @model_validator(mode="after")
     def _scrub(self) -> "Quote":
@@ -104,6 +110,8 @@ class Quote(BaseModel):
         self.location = _scrub_chunk_leak(self.location) or ""
         self.author = _scrub_chunk_leak(self.author) or ""
         self.paraphrase = _scrub_chunk_leak(self.paraphrase)
+        # workId is server-filled and never contains user-facing prose —
+        # no scrubbing needed (and the chunk-leak regex would mangle IDs).
         return self
 
 
@@ -635,6 +643,13 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
             elif quote.get("kind") not in _ALLOWED_KINDS:
                 quote["kind"] = "canonical"
             quote.setdefault("location", "")
+            # Server-fills workId so the frontend can build a "Read in full"
+            # link for canonical works. Only set for canonical kind; leave ""
+            # for athvani/biography (those don't have a dedicated reader URL).
+            if quote.get("kind") == "canonical":
+                quote["workId"] = meta.get("work_id") or ""
+            else:
+                quote["workId"] = ""
             result = ok
 
     # Garble verifier (Phase 1): strip invisible scan/encoding junk from the

@@ -230,3 +230,99 @@ class TestFoldHelpers:
         s = "Nârada"   # â = U+00E2
         folded = schemas._fold_text(s)
         assert folded == "Narada"
+
+
+# ---------------------------------------------------------------------------
+# 5. workId is set from chunk meta.work_id after splice (corpus-free)
+# ---------------------------------------------------------------------------
+
+class TestWorkIdSplice:
+
+    def make_chunk_with_work_id(self, text, work_id, kind="canonical"):
+        return {
+            "meta": {
+                "title": "Test Work",
+                "author": "Test Author",
+                "kind": kind,
+                "work_id": work_id,
+            },
+            "text": text,
+        }
+
+    def test_work_id_set_on_canonical_splice(self):
+        """After splice_quote_dict on a canonical chunk, workId equals chunk meta work_id."""
+        source_text = "Bhakti is the supreme means of realisation."
+        chunk = self.make_chunk_with_work_id(source_text, "pathway-to-god-in-hindi-literature", kind="canonical")
+        q = {
+            "passage": "A",
+            "quoteStart": "Bhakti is the supreme",
+            "quoteEnd": "means of realisation",
+            "location": "",
+        }
+        schemas.splice_quote_dict(q, {"A": chunk})
+        assert q.get("workId") == "pathway-to-god-in-hindi-literature", (
+            f"Expected workId='pathway-to-god-in-hindi-literature', got {q.get('workId')!r}"
+        )
+
+    def test_work_id_empty_for_athvani(self):
+        """workId is empty string for athvani quotes (no reader URL for those)."""
+        source_text = "The trunks were kept with great care."
+        chunk = self.make_chunk_with_work_id(source_text, "jaisi-ganga-vahe", kind="athvani")
+        q = {
+            "passage": "B",
+            "quoteStart": "The trunks were",
+            "quoteEnd": "great care",
+            "location": "",
+        }
+        schemas.splice_quote_dict(q, {"B": chunk})
+        assert q.get("workId") == "", (
+            f"Expected workId='' for athvani kind, got {q.get('workId')!r}"
+        )
+
+    def test_work_id_empty_for_biography(self):
+        """workId is empty string for biography quotes."""
+        source_text = "He was born in the year of grace."
+        chunk = self.make_chunk_with_work_id(source_text, "some-biography", kind="biography")
+        q = {
+            "passage": "C",
+            "quoteStart": "He was born",
+            "quoteEnd": "year of grace",
+            "location": "",
+        }
+        schemas.splice_quote_dict(q, {"C": chunk})
+        assert q.get("workId") == "", (
+            f"Expected workId='' for biography kind, got {q.get('workId')!r}"
+        )
+
+    def test_work_id_absent_when_no_work_id_in_meta(self):
+        """When the chunk meta has no work_id, workId is set to empty string."""
+        source_text = "The Name is the highest path."
+        chunk = {
+            "meta": {"title": "Some Work", "author": "Author", "kind": "canonical"},
+            "text": source_text,
+        }
+        q = {
+            "passage": "D",
+            "quoteStart": "The Name is",
+            "quoteEnd": "highest path",
+            "location": "",
+        }
+        schemas.splice_quote_dict(q, {"D": chunk})
+        assert q.get("workId") == "", (
+            f"Expected workId='' when meta has no work_id, got {q.get('workId')!r}"
+        )
+
+    def test_work_id_not_set_when_no_chunk(self):
+        """Unknown passage: workId is not set (no chunk to draw work_id from)."""
+        q = {
+            "passage": "Z",
+            "quoteStart": "some words",
+            "quoteEnd": "more words",
+            "body": "Fallback body.",
+            "location": "",
+        }
+        schemas.splice_quote_dict(q, {})
+        # workId should not be set (or absent) — no chunk provided it.
+        assert "workId" not in q or q.get("workId") == "", (
+            f"Expected workId absent/empty for unknown passage, got {q.get('workId')!r}"
+        )

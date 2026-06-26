@@ -15,6 +15,14 @@ export type Quote = {
   location: string;
   kind: "canonical" | "athvani" | "biography";
   author: string;
+  // Optional short gloss in the user's language when the quote is in a
+  // different language. Clearly a paraphrase, not the source.
+  paraphrase?: string;
+  // Server-filled: the work_id for the source work. Non-empty only for
+  // canonical quotes that had a matching chunk. Used by QuoteBlock to render
+  // a "Read in full" link to /read/{workId}. Empty string or absent for
+  // athvani / biography / quotes without a chunk match.
+  workId?: string;
 };
 
 // In Q&A mode each quote is paired with a short rationale explaining why
