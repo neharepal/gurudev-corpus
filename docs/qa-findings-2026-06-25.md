@@ -197,4 +197,18 @@ works in `catalog.yaml` (also fixes the FS-fallback's wrong title-casing, e.g.
 
 ---
 
+## F14 — "Read in full" must deep-link to the citation's page
+
+**Request:** F4's "Read in full" link opens the work at page 1; it must open at
+the **reading page that contains the cited passage** (that's where the user
+wants to go).
+
+**Approach:** server computes each citation's reading page from the cited
+chunk's `char_start` (mapped to the paragraph index via the SAME pagination the
+`/read` endpoint uses), exposes it as `Quote.readPage`; the "Read in full" link
+becomes `/read/{workId}?page={readPage}`; the reader honors a `?page=` URL param
+(overriding the saved page). Built via worktree subagent.
+
+---
+
 <!-- append new findings below as testing continues -->
