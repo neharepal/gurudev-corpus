@@ -111,3 +111,77 @@ def test_get_system_prompt_raises_for_unknown_mode():
     import pytest
     with pytest.raises(ValueError, match="Unknown mode"):
         prompts.get_system_prompt("bogus")
+
+
+# ---------------------------------------------------------------------------
+# Language-detection: answer in the language of the user's QUESTION
+# ---------------------------------------------------------------------------
+
+# Each prompt must include a stable phrase confirming question-language rule
+def test_qa_prompt_instructs_question_language():
+    assert "language of the user's question" in prompts.SYSTEM_PROMPT_QA
+
+
+def test_pravachan_prompt_instructs_question_language():
+    assert "language of the user's question" in prompts.SYSTEM_PROMPT_PRAVACHAN
+
+
+def test_reading_prompt_instructs_question_language():
+    assert "language of the user's question" in prompts.SYSTEM_PROMPT_READING
+
+
+# Each prompt must name `lang` as a fallback hint, not the primary signal
+def test_qa_prompt_lang_is_fallback():
+    assert "fallback hint" in prompts.SYSTEM_PROMPT_QA
+
+
+def test_pravachan_prompt_lang_is_fallback():
+    assert "fallback hint" in prompts.SYSTEM_PROMPT_PRAVACHAN
+
+
+def test_reading_prompt_lang_is_fallback():
+    assert "fallback hint" in prompts.SYSTEM_PROMPT_READING
+
+
+# Each prompt must instruct NOT to follow the UI toggle when it conflicts
+def test_qa_prompt_overrides_toggle():
+    assert "Do NOT follow the UI language toggle" in prompts.SYSTEM_PROMPT_QA
+
+
+def test_pravachan_prompt_overrides_toggle():
+    assert "Do NOT follow the UI language toggle" in prompts.SYSTEM_PROMPT_PRAVACHAN
+
+
+def test_reading_prompt_overrides_toggle():
+    assert "Do NOT follow the UI language toggle" in prompts.SYSTEM_PROMPT_READING
+
+
+# The paraphrase rule must now key to the question's language, not a toggle
+def test_qa_paraphrase_keyed_to_question_language():
+    assert "quote's language differs from the language of the user's question" in prompts.SYSTEM_PROMPT_QA
+
+
+def test_pravachan_paraphrase_keyed_to_question_language():
+    # Two places in Pravachan prompt reference this
+    assert "language of the user's question" in prompts.SYSTEM_PROMPT_PRAVACHAN
+    assert "differs from the language of the user's question" in prompts.SYSTEM_PROMPT_PRAVACHAN
+
+
+def test_reading_paraphrase_keyed_to_question_language():
+    assert "language of the user's question" in prompts.SYSTEM_PROMPT_READING
+
+
+# ---------------------------------------------------------------------------
+# Confirm verbatim-quote rule is NOT changed (ADR-007 still intact)
+# ---------------------------------------------------------------------------
+
+def test_qa_verbatim_rule_intact():
+    assert "VERBATIM" in prompts.SYSTEM_PROMPT_QA
+
+
+def test_pravachan_verbatim_rule_intact():
+    assert "verbatim" in prompts.SYSTEM_PROMPT_PRAVACHAN
+
+
+def test_reading_verbatim_rule_intact():
+    assert "verbatim" in prompts.SYSTEM_PROMPT_READING.lower()
