@@ -756,13 +756,15 @@ def _prepare_request(req: AskRequest):
     mmr_lambda = 0.7
 
     metadata_filter: Optional[Dict[str, Any]] = None
-    if mode == "reading" and req.work:
+    if req.work and mode in ("reading", "qa"):
         metadata_filter = {"work_id": req.work}
-    # Citation breadth: Q&A retrieves at most ONE chunk per work, so the model
-    # is handed one strong passage from each of the top distinct works and its
-    # citations span the corpus instead of clustering in a single book. Reading
-    # is scoped to one work (cap = top_k, no diversity needed); pravachan keeps
-    # 2 to allow a couple of passages from a rich source.
+    # Citation breadth: unscoped Q&A retrieves at most ONE chunk per work, so
+    # the model is handed one strong passage from each of the top distinct
+    # works and its citations span the corpus instead of clustering in a single
+    # book. Work-scoped Q&A (mode=="qa" + work set) must NOT keep that breadth
+    # cap — the filter already restricts to one work, so we allow top_k chunks
+    # from it. Reading is also scoped to one work (cap = top_k). Pravachan
+    # keeps 2 to allow a couple of passages from a rich source.
     if metadata_filter and "work_id" in metadata_filter:
         max_per_source = top_k
     elif mode == "qa":
