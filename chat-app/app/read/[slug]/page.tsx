@@ -134,7 +134,9 @@ function ReadingPage() {
     1,
   );
   const [messages, setMessages] = usePersistentState<ChatTurn[]>(
-    `gd:read:${slug}:chat`,
+    // v2: drawer chat now stores work-scoped Q&A answers (F17). Bumping the key
+    // discards old {framing, passage}-shaped entries the new renderer can't use.
+    `gd:read:${slug}:chat:v2`,
     [],
   );
   const [draft, setDraft] = useState("");
