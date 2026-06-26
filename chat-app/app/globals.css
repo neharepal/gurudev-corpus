@@ -112,6 +112,14 @@ h1 {
   line-height: 1.7;
 }
 
+/* "Noto Serif Devanagari" renders visually larger than the Latin serif at the
+   same px, so quotes containing Devanagari looked bigger than Latin-only ones.
+   Nudge Devanagari/mixed quote bodies down so every citation reads at a uniform
+   visual size regardless of source script. (Tunable.) */
+.gd-quote.font-deva {
+  font-size: 15.5px;
+}
+
 .gd-quote-attr {
   font-size: 13.5px;
   font-style: italic;
