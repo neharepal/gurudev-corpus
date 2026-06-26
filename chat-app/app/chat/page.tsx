@@ -12,6 +12,7 @@ import {
 import AnswerToolbar from "../../components/AnswerToolbar";
 import MeditativeLoader from "../../components/MeditativeLoader";
 import QuoteBlock from "../../components/QuoteBlock";
+import { authorDisplayName } from "../../lib/authors";
 import {
   type ModeId,
   type PravachanAnswer,
@@ -783,7 +784,7 @@ function QAAnswerBody({
                     <span aria-hidden style={{ marginRight: 6 }}>—</span>
                     <span style={{ fontStyle: "italic" }}>{ref.workTitle}</span>
                     {ref.location ? `, ${ref.location}` : ""}
-                    {ref.author ? ` · ${ref.author}` : ""}
+                    {ref.author ? ` · ${authorDisplayName(ref.author)}` : ""}
                   </li>
                 );
               })}

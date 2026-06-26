@@ -1,4 +1,5 @@
 import type { Quote } from "../data/mock-conversations";
+import { authorDisplayName } from "../lib/authors";
 
 // Renders a verbatim quote with its attribution directly below — per ADR-007
 // the quote IS the citation. The internal `kind` classifier (canonical /
@@ -15,7 +16,7 @@ export default function QuoteBlock({ quote }: { quote: Quote }) {
         {quote.body}
       </blockquote>
       <p className="gd-quote-attr">
-        — {quote.workTitle}, {quote.location} · {quote.author}
+        — {quote.workTitle}, {quote.location} · {authorDisplayName(quote.author)}
       </p>
     </div>
   );

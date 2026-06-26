@@ -113,7 +113,7 @@ const qaBhaktiEn: QAAnswer = {
         workTitle: "Pathway to God in Hindi Literature",
         location: "General Introduction",
         kind: "canonical",
-        author: "Shri Gurudev Ranade",
+        author: "Shri Gurudev",
       },
       whyChosen:
         "Gurudev's foundational definition of bhakti as the lived, intuitive apprehension of God — the frame within which every other passage on bhakti sits.",
@@ -125,7 +125,7 @@ const qaBhaktiEn: QAAnswer = {
         workTitle: "Pathway to God in Hindi Literature",
         location: "General Introduction — Kabir summary",
         kind: "canonical",
-        author: "Shri Gurudev Ranade",
+        author: "Shri Gurudev",
       },
       whyChosen:
         "Gurudev's reading of Kabir grounds the definition in practice — Name, breath, the Teacher — showing how bhakti is actually lived day-to-day.",
@@ -149,7 +149,7 @@ const qaBhaktiMr: QAAnswer = {
         workTitle: "Pathway to God in Hindi Literature",
         location: "General Introduction",
         kind: "canonical",
-        author: "Shri Gurudev Ranade",
+        author: "Shri Gurudev",
       },
       whyChosen:
         "गुरुदेवांची भक्तीची मूलभूत व्याख्या — ईश्वराची प्रत्यक्ष, अंतर्ज्ञानात्मक अनुभूती. भक्तीवरील प्रत्येक पुढचा उतारा याच्या अनुषंगाने उभा आहे.",
@@ -161,7 +161,7 @@ const qaBhaktiMr: QAAnswer = {
         workTitle: "Pathway to God in Hindi Literature",
         location: "General Introduction — Kabir summary",
         kind: "canonical",
-        author: "Shri Gurudev Ranade",
+        author: "Shri Gurudev",
       },
       whyChosen:
         "कबीराच्या वाचनातून गुरुदेव दाखवतात की भक्ती दैनंदिन व्यवहारात कशी उतरते — नाम, श्वास, सद्गुरू.",
@@ -184,7 +184,7 @@ const qaBhausahebEn: QAAnswer = {
   classification: "meta",
   question: "Who was Bhausaheb Maharaj?",
   framing:
-    "Bhausaheb Maharaj was a 19th-century saint of the Nimbal lineage and the guru of Shri Gurudev Ranade. He stands in the line descending from Nimbargi Maharaj, and his correspondence and oral teachings — preserved by close disciples — became a primary spiritual influence on Gurudev's namasadhana. He is remembered in the sampradaya for his emphasis on the Name and on a quiet, disciplined inwardness rather than public display.",
+    "Bhausaheb Maharaj was a 19th-century saint of the Nimbal lineage and the guru of Shri Gurudev. He stands in the line descending from Nimbargi Maharaj, and his correspondence and oral teachings — preserved by close disciples — became a primary spiritual influence on Gurudev's namasadhana. He is remembered in the sampradaya for his emphasis on the Name and on a quiet, disciplined inwardness rather than public display.",
   citations: [],
   references: [
     {
@@ -195,7 +195,7 @@ const qaBhausahebEn: QAAnswer = {
     {
       workTitle: "Pathway to God in Hindi Literature",
       location: "Author's note on lineage",
-      author: "Shri Gurudev Ranade",
+      author: "Shri Gurudev",
     },
   ],
 };
@@ -239,7 +239,7 @@ const pravachanAdhyay12En: PravachanAnswer = {
     workTitle: "Pathway to God in Hindi Literature",
     location: "General Introduction",
     kind: "canonical",
-    author: "Shri Gurudev Ranade",
+    author: "Shri Gurudev",
   },
   examples: [
     {
@@ -304,7 +304,7 @@ const pravachanAdhyay12Mr: PravachanAnswer = {
     workTitle: "Pathway to God in Hindi Literature",
     location: "General Introduction",
     kind: "canonical",
-    author: "Shri Gurudev Ranade",
+    author: "Shri Gurudev",
   },
   examples: [
     {
@@ -370,7 +370,7 @@ export type ReadingPage = {
 const pghlReading: ReadingPage = {
   workSlug: "pathway-to-god-in-hindi-literature",
   workTitle: "Pathway to God in Hindi Literature",
-  author: "Shri Gurudev Ranade",
+  author: "Shri Gurudev",
   chapter: "General Introduction — Intuitional Character",
   totalPages: 18,
   paragraphs: [

@@ -30,7 +30,7 @@ const SECTION_LABELS = {
   mode: { en: "Mode", mr: "रीत" },
   about: { en: "About this archive", mr: "या संग्रहाविषयी" },
   aboutBody: {
-    en: "Gurudev Sangrah is a chat-based research aid for the literature of Shri Gurudev Ranade and the Nimbal sampradaya. Every answer cites a verbatim source passage; nothing is paraphrased.",
+    en: "Gurudev Sangrah is a chat-based research aid for the literature of Shri Gurudev and the Nimbal sampradaya. Every answer cites a verbatim source passage; nothing is paraphrased.",
     mr: "गुरुदेव संग्रह हे श्री गुरुदेव रानडे आणि निंबाळ संप्रदायाच्या साहित्यासाठी प्रश्नोत्तरांचा अभ्यास साधन आहे. प्रत्येक उत्तर मूळ ग्रंथातून थेट उद्धृत केलेले असते.",
   },
 };
