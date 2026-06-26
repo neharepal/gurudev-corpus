@@ -430,6 +430,8 @@ function ReadingPage() {
             className="mb-7"
             onMouseEnter={() => setHoveredN(para.n)}
             onMouseLeave={() => setHoveredN(null)}
+            onFocus={() => setHoveredN(para.n)}
+            onBlur={() => setHoveredN(null)}
           >
             <div className="flex gap-4">
               <div
