@@ -90,7 +90,12 @@ function LandingPage() {
   const router = useRouter();
   const search = useSearchParams();
   const langFromUrl = search.get("lang") as Lang | null;
-  const [mode, setMode] = useState<ModeId>("qa");
+  // Honor an explicit ?mode= in the URL (e.g. returning from the reader to the
+  // Reading landing); fall back to Q&A otherwise.
+  const modeParam = search.get("mode");
+  const initialMode: ModeId =
+    modeParam === "reading" || modeParam === "pravachan" ? modeParam : "qa";
+  const [mode, setMode] = useState<ModeId>(initialMode);
   // Lang is persisted across tabs/visits via localStorage. URL `?lang=`
   // wins when present (e.g. someone shares a Marathi link); otherwise we
   // fall back to whatever the devotee last selected.
