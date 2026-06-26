@@ -653,10 +653,19 @@ def splice_qa_citations(tool_input: Dict[str, Any], label_to_chunk: Dict[str, An
     degraded = 0
     cits = tool_input.get("citations")
     if isinstance(cits, list):
+        kept = []
         for c in cits:
             if isinstance(c, dict) and isinstance(c.get("quote"), dict):
                 if not splice_quote_dict(c["quote"], label_to_chunk):
                     degraded += 1
+                # Drop a citation left with no usable verbatim body (e.g. the
+                # model referenced an unknown passage letter and the full-passage
+                # fallback had nothing to supply). Omitting it is better than
+                # failing Quote validation on a missing body or rendering blank.
+                if not (c["quote"].get("body") or "").strip():
+                    continue
+            kept.append(c)
+        tool_input["citations"] = kept
     return degraded
 
 
