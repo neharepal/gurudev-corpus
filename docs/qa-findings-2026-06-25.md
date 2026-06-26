@@ -234,4 +234,25 @@ Also still TODO: a regression test for `reading_page_for_offset` (works, unteste
 
 ---
 
+## F16 — Activate "Report issue" + "Share" buttons (gates garble Phase 2)
+
+The `AnswerToolbar`'s **"Report issue"** and **"Share"** buttons are currently
+inactive. They must be wired up first, because:
+- **Report issue = the flag-and-queue entry point** for garble Phase 2. Clicking
+  it flags the answer / a passage (optionally with a note) and POSTs to a backend
+  endpoint that records it to a **queue** (file/log). No inline editing by users.
+- **Share** = share the current answer (copy a shareable link / Web Share API).
+
+## Garble verifier — Phase 2 (decisions locked 2026-06-25)
+
+- **Flag-and-queue** (NOT inline correction): user flags via "Report issue" →
+  recorded to a queue. Maintainer applies the correction to the source chunk
+  later.
+- **Re-embed IS in scope:** after a source chunk is corrected, that chunk is
+  re-embedded (the `/admin/reload` endpoint then picks it up live).
+- **Order:** F16 (activate Report/Share) → flag-and-queue wiring → maintainer
+  correction tool → re-embed. Build on F16.
+
+---
+
 <!-- append new findings below as testing continues -->
