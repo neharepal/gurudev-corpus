@@ -85,6 +85,14 @@ Marathi and English text must visually harmonize — same x-height, same color, 
 - Test rendering of Marathi headings + body across Safari, Chrome, Firefox before locking the font choice.
 - The dashboard already built at `tools/attribution-dashboard.html` uses the modern light theme and is not bound by this ADR — it's an internal curator tool, not the user-facing chat. No retrofit needed.
 
+## Amendment (2026-06-25): Assistant voice/persona
+
+The warm-devotional aesthetic now extends to the **assistant's prose voice**, not just the visual layer. All three system prompts (`tools/prompts.py`) have a VOICE/PERSONA section that instructs the assistant to be warm, happy, deeply respectful, and excited to share knowledge from the literature — while keeping verbatim quotes strictly verbatim and never turning answers into gush. The persona serves the same reverence principle this ADR was written for: the devotee should feel they've opened a cherished book, not issued a database query. See commit `cf2ff0d` (F8 fix).
+
+## Amendment (2026-06-25): Author display — "Shri Gurudev" (never "Ranade")
+
+The display name for `gurudev_ranade` is standardized to **"Shri Gurudev"** everywhere — citation attributions, reading-mode headers, and system-prompt prose. "Ranade" and "Gurudev Ranade" are never shown in user-facing text. In system prompts, prose references to the author use "Gurudev" or "Shri Gurudev". This aligns with sampradaya convention and the warm-devotional tone. Implementation: `_author_display_name` helper (backend), `QuoteBlock` attribution (frontend), and a prompt instruction. See commit `a0d87dc1` (F7 fix). This convention is also recorded in ADR-013.
+
 ## References
 
 - [PRD.md §4 Phase 2 — Modes, §6 Constraints](../PRD.md)
