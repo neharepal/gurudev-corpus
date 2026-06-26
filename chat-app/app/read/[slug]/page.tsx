@@ -267,10 +267,16 @@ function ReadingPage() {
         className="mb-5 pb-3"
         style={{ borderBottom: "1px solid var(--border-soft)" }}
       >
-        {/* Back links — top-left to match chat + landing surfaces. */}
+        {/* Back links — top-left to match chat + landing surfaces.
+            When an origin URL is present via ?from= (e.g. a Q&A session or
+            another book in the reader), the primary back link returns there
+            instead of the reading landing. The Pravachan-specific link is
+            kept below so that legacy bookmarks with backToPravachan semantics
+            still show a labelled link (it points to the same returnTo, which
+            for Pravachan flows IS the Pravachan page). */}
         <div className="mb-3 flex items-center gap-4">
           <Link
-            href={`/?mode=reading&lang=${lang}`}
+            href={returnTo ?? `/?mode=reading&lang=${lang}`}
             className={`text-[14px] ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-secondary)" }}
           >

@@ -14,20 +14,32 @@ import { authorDisplayName } from "../lib/authors";
 // Athvani and biography quotes don't have a dedicated reader URL.
 // `lang` is optional — passed through to the reader URL when available, so the
 // reader opens in the right language; omitted if the caller doesn't have it.
+// `fromUrl` is optional — when provided, it is appended as `&from=` so the
+// reader's back link can return the user to the exact Q&A or reader session
+// they came from (back-navigation origin-awareness, ADR-???).
 export default function QuoteBlock({
   quote,
   lang,
+  fromUrl,
 }: {
   quote: Quote;
   lang?: string;
+  fromUrl?: string;
 }) {
   const containsDevanagari = /[ऀ-ॿ]/.test(quote.body);
   const isMr = lang === "mr";
   const showReadLink = quote.kind === "canonical" && !!quote.workId;
+  // Build the "Read in full" href. Use URLSearchParams so we never misplace
+  // the first `?` vs subsequent `&` separators.
   const readHref = showReadLink
-    ? quote.readPage
-      ? `/read/${quote.workId}?page=${quote.readPage}${lang ? `&lang=${lang}` : ""}`
-      : `/read/${quote.workId}${lang ? `?lang=${lang}` : ""}`
+    ? (() => {
+        const qs = new URLSearchParams();
+        if (quote.readPage) qs.set("page", String(quote.readPage));
+        if (lang) qs.set("lang", lang);
+        if (fromUrl) qs.set("from", fromUrl);
+        const qStr = qs.toString();
+        return `/read/${quote.workId}${qStr ? `?${qStr}` : ""}`;
+      })()
     : null;
   return (
     <div>
