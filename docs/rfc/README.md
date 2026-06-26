@@ -66,7 +66,7 @@ Status changes are noted at the top of the document, dated.
 |---|---|---|
 | [001](RFC-001-demo-mvp.md) | Demo MVP scope (July 12) | ACCEPTED |
 | [002](RFC-002-corpus-structure.md) | Corpus structure | ACCEPTED |
-| [003](RFC-003-retrieval-and-rag.md) | Retrieval & RAG strategy | ACCEPTED |
+| [003](RFC-003-retrieval-and-rag.md) | Retrieval & RAG strategy (amended 2026-06-25: model choice, answer shape, voice, follow-up history) | ACCEPTED |
 | [004](RFC-004-chat-ui-and-ux.md) | Chat UI & UX | ACCEPTED |
 | [005](RFC-005-multilingual-strategy.md) | Multilingual (EN + MR) strategy | ACCEPTED |
 | 006 | Access control & invite system | future |

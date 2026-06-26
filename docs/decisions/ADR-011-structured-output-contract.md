@@ -124,6 +124,20 @@ No change to the JSON Schema, the prompts, the chat-app, or the FastAPI surface.
 - `chat-app/lib/api.ts` — TypeScript mirror
 - `tools/server.py` — FastAPI surface
 
+## Amendment (2026-06-25): Citation splice robustness
+
+Three hardening changes shipped together (F1 from the QA sprint):
+
+1. **Diacritic/whitespace-tolerant anchor matching.** `splice_qa_citations` now folds diacritics and normalizes whitespace before comparing the model's `quoteStart`/`quoteEnd` anchors against the source chunk. This resolves the "Nârada vs Nārada (circumflex vs macron)" class of misses and similar OCR-normalized variants. See commit `f72775b`.
+
+2. **Full-passage fallback on unlocatable span.** When anchor matching still fails after folding, the splice falls back to the **entire source passage** (`chunk.text`) rather than the degraded `start … end` ellipsis stub. The `…` stub was confusing and incomplete; the full passage is always accurate, just longer. See commit `f72775b`.
+
+3. **Bodyless citation drop.** Citations that produce an empty `body` after splicing (e.g., if the referenced passage letter is out of range) are dropped before the pydantic `QAResponse` is constructed, avoiding a downstream validation crash. See commit `cf2ff0d` (F1 hardening).
+
+4. **Character-junk cleaner.** A `clean_quote_body()` utility in the garble verifier (`tools/`) strips control characters, zero-width characters, and the Unicode replacement character (U+FFFD) from spliced quote bodies before they reach the wire. This is Phase 1 of the citation garble verifier (F1 follow-up). See commit `f260da1`.
+
+The wire `Quote` shape is unchanged; all cleanup happens server-side.
+
 ## Amendment (2026-06-22): Q&A citations quote by reference
 
 Doctrinal Q&A citations no longer ask the model to emit the verbatim `quote.body`

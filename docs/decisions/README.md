@@ -67,3 +67,5 @@ Status changes are noted at the top of the document, dated. **Do not delete or r
 | [010](ADR-010-qa-doctrinal-vs-meta-classification.md) | Q&A internal classification — doctrinal (quote-first) vs meta (plain prose) | ACCEPTED | 2026-06-14 |
 | [011](ADR-011-structured-output-contract.md) | Structured-output JSON contract for `/api/ask` via tool-use | PROPOSED | 2026-06-17 |
 | [012](ADR-012-chunk-id-keyed-embeddings.md) | Chunk-id-keyed embeddings + sorted chunker scan | ACCEPTED | 2026-06-17 |
+| [013](ADR-013-reading-mode-real-data-path.md) | Reading mode — real-data backend endpoint, pagination, and citation deep-links | ACCEPTED | 2026-06-25 |
+| [014](ADR-014-conversational-followups-with-history.md) | Conversational follow-ups carry history and new-material enforcement | ACCEPTED | 2026-06-25 |

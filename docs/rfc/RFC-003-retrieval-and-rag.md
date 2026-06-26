@@ -72,6 +72,8 @@ User question (EN or MR)
 
 Decided 2026-06-13 (default). All three modes route to the same model in v1. If Pravachan quality is insufficient during polish, route Pravachan to Opus 4.7 (one-line change in code). Estimated cost: ~$33/mo for 500 devotees × 2 Q/month with prompt caching enabled.
 
+**Update (2026-06-25):** Pravachan was briefly routed to Opus for quality exploration (F6 diagnosis), but this caused 7 000-token generation to take noticeably longer than Q&A. Pravachan is now back on Sonnet for all modes — latency parity was judged more important than the marginal quality gain at this scale. See commit `5f0a851`.
+
 ### Embeddings: BGE-M3 (multilingual, open-source, runs locally)
 
 Why: free at inference, handles Marathi + English well, 1024-dim vectors are manageable, well-supported in Python via `sentence-transformers`. Runs on CPU acceptably for a corpus this size.
@@ -138,6 +140,12 @@ Each mode has its own system prompt template:
 - If the corpus doesn't have quotable passages on the topic, say "the corpus doesn't directly address this" — moderate honesty, and naturally enforced (no quotable text → nothing to fabricate).
 - Match the user's language. If the question is Marathi and best sources are English, quote English verbatim and offer a Marathi paraphrase below the quote (clearly distinguished).
 - Distinguish *canonical teaching* (from `01_canonical/`) from *oral recollection* (from `02_aggregated/athvani/`) via a source-type label in the attribution line: e.g., `— Pathway to God in Hindi Literature, ch. 4 (canonical)` or `— निंबाळचे जुने घर (athvani, narrator: Vijaya Apte)`.
+
+**Update (2026-06-25): answer shape.** Doctrinal Q&A answers now have an explicit **intro paragraph** before the citations and a **concluding paragraph** after them (rounding out the structure). This was added to make answers feel complete rather than list-like. The retrieval breadth rule is: **at most one passage per source work** in the final answer (prevents one verbose source from dominating); implemented via per-source cap + survey-the-literature prompt instruction. See commit `f96612e` (citation breadth) and `19d0feb` (intro/conclusion).
+
+**Update (2026-06-25): voice/persona.** All three system prompts now carry a **VOICE/PERSONA section** instructing the assistant to be warm, deeply respectful, and eager to share insight from the literature — while keeping verbatim quotes strictly verbatim and avoiding turning answers into effusive praise. See commit `cf2ff0d` and ADR-006 (warm-devotional aesthetic).
+
+**Update (2026-06-25): conversational follow-ups.** Q&A follow-up questions now carry the **full conversation history** (prior turns) and the system prompt instructs the model not to repeat passages already cited. The `AskRequest.history` field (previously annotated "not used") is live. See ADR-014 and commit `020647e`.
 
 **Pravachan** — structured outline:
 ```
