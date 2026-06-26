@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Suspense,
@@ -17,6 +18,11 @@ import {
   type ModeId,
 } from "../data/mock-conversations";
 import { usePersistentState } from "../hooks/usePersistentState";
+import {
+  loadProgress,
+  removeProgress,
+  type ProgressRecord,
+} from "../lib/readingProgress";
 
 // Single-language labels. English is the default per user direction
 // (2026-06-14) — Marathi is reachable via the EN/मराठी toggle next to the
@@ -302,6 +308,13 @@ function LandingPage() {
             {MODE_HELPER[mode][lang]}
           </p>
 
+          {/* "Continue reading" shelf — only shown in Reading mode, above
+              the begin-a-new-work suggestions. Reads from localStorage on
+              mount; hides itself when the list is empty. */}
+          {mode === "reading" && (
+            <ContinueReadingShelf lang={lang} />
+          )}
+
           {/* Suggestions as a 3-column row of example chips beneath the
               composer — "or try one of these" rather than a preamble. */}
           <div className="mt-5">
@@ -364,6 +377,127 @@ function LandingPage() {
         </div>
       </main>
     </>
+  );
+}
+
+// "Continue reading" shelf — displayed above the "begin a new work"
+// suggestions when the Reading mode is active and the reader has opened at
+// least one work. Reads `gd:read:progress` once on mount; re-reads after a
+// remove action so the shelf stays in sync without a page reload.
+function ContinueReadingShelf({ lang }: { lang: Lang }) {
+  const [records, setRecords] = useState<ProgressRecord[]>([]);
+  const isMr = lang === "mr";
+
+  useEffect(() => {
+    setRecords(loadProgress());
+  }, []);
+
+  function handleRemove(slug: string) {
+    removeProgress(slug);
+    setRecords(loadProgress());
+  }
+
+  if (records.length === 0) return null;
+
+  return (
+    <div className="mt-5">
+      <p
+        className={`mb-2 text-[13.5px] ${isMr ? "font-deva" : ""}`}
+        style={{ color: "var(--text-tertiary)" }}
+      >
+        {isMr ? "वाचन चालू ठेवा:" : "Continue reading:"}
+      </p>
+      <ul className="flex flex-col gap-2">
+        {records.map((rec) => {
+          const pct = Math.min(
+            100,
+            Math.round((rec.page / Math.max(1, rec.totalPages)) * 100),
+          );
+          const isDeva = /[ऀ-ॿ]/.test(rec.workTitle);
+          return (
+            <li key={rec.slug} className="flex items-center gap-3">
+              <Link
+                href={`/read/${rec.slug}?lang=${lang}`}
+                className="group flex min-w-0 flex-1 items-center gap-3 rounded-[6px] px-3 py-2.5 text-left transition-all"
+                style={{
+                  background: "rgba(244, 234, 201, 0.5)",
+                  border: "1px solid rgba(122, 46, 42, 0.22)",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(244, 234, 201, 0.85)";
+                  e.currentTarget.style.borderColor = "rgba(122, 46, 42, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(244, 234, 201, 0.5)";
+                  e.currentTarget.style.borderColor = "rgba(122, 46, 42, 0.22)";
+                }}
+              >
+                {/* Title */}
+                <span
+                  className={`min-w-0 flex-1 truncate text-[14px] leading-snug ${
+                    isDeva || isMr ? "font-deva" : ""
+                  }`}
+                  style={{ color: "#5A2520" }}
+                >
+                  {rec.workTitle}
+                </span>
+                {/* Progress bar + page label */}
+                <span className="flex shrink-0 items-center gap-2">
+                  <span
+                    className="h-[5px] w-[64px] overflow-hidden rounded-full"
+                    style={{ background: "rgba(122, 46, 42, 0.15)" }}
+                  >
+                    <span
+                      className="block h-full rounded-full"
+                      style={{
+                        width: `${pct}%`,
+                        background: "var(--accent-gold, #C89A3C)",
+                      }}
+                    />
+                  </span>
+                  <span
+                    className={`text-[12px] tabular-nums ${isMr ? "font-deva" : ""}`}
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {isMr
+                      ? `पा.${rec.page}/${rec.totalPages}`
+                      : `p.${rec.page}/${rec.totalPages}`}
+                  </span>
+                </span>
+              </Link>
+              {/* Remove control */}
+              <button
+                type="button"
+                aria-label={
+                  isMr
+                    ? `${rec.workTitle} हटवा`
+                    : `Remove ${rec.workTitle}`
+                }
+                onClick={() => handleRemove(rec.slug)}
+                className="shrink-0 text-[16px] leading-none"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "var(--text-tertiary)",
+                  padding: "4px 6px",
+                  opacity: 0.6,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = "1";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = "0.6";
+                }}
+              >
+                ×
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 

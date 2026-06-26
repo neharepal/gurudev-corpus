@@ -15,6 +15,7 @@ import {
 import type { ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError } from "../../../lib/api";
+import { upsertProgress } from "../../../lib/readingProgress";
 
 type Lang = "en" | "mr";
 
@@ -156,6 +157,16 @@ function ReadingPage() {
         if (!cancelled) {
           setPageData(data);
           setLoading(false);
+          // Record reading progress so the landing page can show a
+          // "Continue reading" shelf. Upsert on every successful page load
+          // (initial load + page turns) to keep lastReadAt fresh.
+          upsertProgress({
+            slug,
+            workTitle: data.workTitle,
+            page: currentPage,
+            totalPages: data.totalPages,
+            lastReadAt: Date.now(),
+          });
         }
       })
       .catch((err: unknown) => {
