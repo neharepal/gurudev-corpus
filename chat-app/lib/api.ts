@@ -104,6 +104,10 @@ type Quote = {
   // a "Read in full" link to /read/{workId}. Empty string or absent for
   // athvani / biography / quotes without a chunk match.
   workId?: string;
+  // Server-filled: 1-based page in the reading surface where the cited
+  // passage appears. When present, the "Read in full" link opens the reader
+  // directly at this page instead of page 1.
+  readPage?: number;
 };
 
 export class AskError extends Error {

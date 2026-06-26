@@ -90,31 +90,60 @@ def _strip_inline_md(s: str) -> str:
 def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
     """Parse a text.md file into a list of paragraph records.
 
-    Each record: {"n": int, "body": str, "chapter": str}
+    Each record: {"n": int, "body": str, "chapter": str,
+                  "char_start": int, "char_end": int}
+
+    `char_start` and `char_end` are absolute byte offsets into the original
+    full `text.md` string (including the front-matter bytes that are stripped
+    before parsing). They use the same coordinate system as the chunk
+    meta `char_start` / `char_end` produced by the chunker, so callers can
+    map a chunk offset directly to the paragraph that contains it.
 
     Algorithm:
     1. Strip YAML front matter (between the first two '---' fences).
-    2. Split the body into blocks on blank lines.
+       Record the byte length of the stripped prefix so offsets can be
+       added back to produce absolute positions.
+    2. Find blocks by iterating blank-line boundaries via re.finditer so
+       each block's start position within the post-front-matter body is
+       known.
     3. Track the current section heading (any line starting with # ... ##).
     4. Paragraph = a block that is NOT a heading AND has len(stripped) >= 80.
     5. Number paragraphs from 1 across the whole work.
     """
-    raw = text_path.read_text(encoding="utf-8")
+    full_text = text_path.read_text(encoding="utf-8")
 
     # Strip YAML front matter: content between the very first --- and the
     # closing ---. The front matter always starts at byte 0.
+    fm_len = 0  # number of chars consumed by front matter (added back to offsets)
+    raw = full_text
     if raw.startswith("---"):
         end = raw.find("\n---\n", 3)
         if end != -1:
-            raw = raw[end + 4:]  # skip past the closing ---\n
+            fm_len = end + 4  # length of "---...---\n"
+            raw = raw[fm_len:]  # body after front matter
 
-    # Split the whole body on blank lines, then classify each block.
-    blocks = re.split(r"\n{2,}", raw)
+    # Find block boundaries using re.finditer so we track each block's
+    # start position within `raw` (and therefore absolute position in `full_text`).
+    # Strategy: iterate over the runs of non-blank content separated by \n{2,}.
+    # re.split loses positions; instead find all separator spans and infer blocks.
     current_heading: str = ""
     n = 0
     results: List[Dict[str, Any]] = []
-    for block in blocks:
-        block = block.strip()
+
+    # Build a list of (block_text, raw_start, raw_end) for every inter-separator chunk.
+    # raw_start/raw_end are offsets within `raw` (before fm_len is added back).
+    block_spans: List[tuple] = []
+    pos = 0
+    for sep_match in re.finditer(r"\n{2,}", raw):
+        block_text = raw[pos:sep_match.start()]
+        block_spans.append((block_text, pos, sep_match.start()))
+        pos = sep_match.end()
+    # Remainder after the last separator (or the whole string if no separators)
+    if pos <= len(raw):
+        block_spans.append((raw[pos:], pos, len(raw)))
+
+    for (block_raw, raw_start, raw_end) in block_spans:
+        block = block_raw.strip()
         if not block:
             continue
         heading_match = re.match(r"^(#{1,6})\s+(.*)", block)
@@ -131,12 +160,121 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
         if len(block) < 80:
             continue
         n += 1
-        results.append({"n": n, "body": _strip_inline_md(block), "chapter": current_heading})
+        # Absolute offsets: raw_start/raw_end are within the post-front-matter
+        # body; add fm_len to get absolute offsets in full_text (same coordinate
+        # system as chunk meta char_start / char_end).
+        results.append({
+            "n": n,
+            "body": _strip_inline_md(block),
+            "chapter": current_heading,
+            "char_start": fm_len + raw_start,
+            "char_end": fm_len + raw_end,
+        })
     return results
 
 
 # In-process cache of parsed works. Key: (path, lang). Cleared on reload.
 _reading_cache: Dict[tuple, List[Dict[str, Any]]] = {}
+
+# Page size for reading mode — must match the constant used in read_work().
+_PAGE_SIZE = 4
+
+
+def _resolve_text_path(slug: str, lang: Optional[str]) -> Optional[Path]:
+    """Return the resolved text.md path for (slug, lang), or None if not found.
+
+    This mirrors the lookup logic in read_work() so reading_page_for_offset
+    can locate the same file without duplicating catalog loading in hot paths.
+    """
+    import yaml as _yaml
+    catalog_path = REPO / "03_catalog" / "catalog.yaml"
+    work_meta = None
+    try:
+        with open(catalog_path, encoding="utf-8") as f:
+            catalog = _yaml.safe_load(f)
+        for w in (catalog.get("works") or []):
+            if w.get("id") == slug:
+                work_meta = w
+                break
+    except Exception:
+        pass
+
+    if work_meta is None:
+        candidate_dirs = [
+            REPO / "01_canonical" / "gurudev_ranade" / "books" / slug,
+            REPO / "01_canonical" / "bhausaheb_maharaj" / "letters" / slug,
+            REPO / "01_canonical" / "kakasaheb_tulpule" / "books" / slug,
+            REPO / "01_canonical" / "other_authors" / "books" / slug,
+            REPO / "02_aggregated" / "biography" / "about_gurudev_ranade" / slug,
+        ]
+        work_dir = None
+        for d in candidate_dirs:
+            if d.exists():
+                work_dir = d
+                break
+        if work_dir is None:
+            return None
+        langs_on_disk = sorted(
+            d.name for d in work_dir.iterdir()
+            if d.is_dir() and (d / "text.md").exists()
+        )
+        resolved_lang = lang if lang and lang in langs_on_disk else (langs_on_disk[0] if langs_on_disk else None)
+        if resolved_lang is None:
+            return None
+        return work_dir / resolved_lang / "text.md"
+
+    available_langs: List[str] = work_meta.get("languages", ["en"])
+    resolved_lang = lang if lang and lang in available_langs else available_langs[0]
+    work_path_str: str = work_meta.get("path", "")
+    if not work_path_str:
+        return None
+    text_path = REPO / work_path_str.rstrip("/") / resolved_lang / "text.md"
+    return text_path if text_path.exists() else None
+
+
+def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) -> Optional[int]:
+    """Return the 1-based reading page that contains `char_offset` in (slug, lang).
+
+    `char_offset` must be in the same coordinate system as chunk meta
+    `char_start` / `char_end` (absolute offset into the full text.md including
+    front matter).  Returns None if the work cannot be resolved or has no
+    qualifying paragraphs.
+
+    Uses the same _PAGE_SIZE and paragraph-filtering logic as read_work() so
+    the page number matches what the reader shows.
+    """
+    text_path = _resolve_text_path(slug, lang)
+    if text_path is None:
+        return None
+
+    cache_key = (str(text_path), lang)
+    if cache_key not in _reading_cache:
+        try:
+            _reading_cache[cache_key] = _parse_work_text(text_path)
+        except Exception:
+            return None
+    all_paragraphs = _reading_cache[cache_key]
+    if not all_paragraphs:
+        return None
+
+    # Find the paragraph whose [char_start, char_end) contains char_offset,
+    # or the first paragraph that starts at or after char_offset.
+    # Paragraphs are in document order; use a linear scan (fast enough for
+    # typical works with hundreds of paragraphs).
+    target_idx: Optional[int] = None
+    for i, para in enumerate(all_paragraphs):
+        if para["char_start"] <= char_offset < para["char_end"]:
+            target_idx = i
+            break
+        if para["char_start"] > char_offset and target_idx is None:
+            target_idx = i
+            break
+
+    if target_idx is None:
+        # char_offset is past the last paragraph — return the last page.
+        target_idx = len(all_paragraphs) - 1
+
+    return (target_idx // _PAGE_SIZE) + 1
 
 
 # ---------------------------------------------------------------------------
@@ -447,7 +585,7 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     if total == 0:
         raise HTTPException(status_code=404, detail="Work has no parseable paragraphs")
 
-    PAGE_SIZE = 4
+    PAGE_SIZE = _PAGE_SIZE
     total_pages = math.ceil(total / PAGE_SIZE)
     page = max(1, min(page, total_pages))
     start = (page - 1) * PAGE_SIZE
@@ -526,6 +664,51 @@ def _prepare_request(req: AskRequest):
     return mode, user_msg, system_prompt, chunks, retrieval_s
 
 
+def _enrich_citation_readpage(
+    citation: Dict[str, Any],
+    label_to_chunk: Dict[str, Any],
+) -> None:
+    """Set readPage on a citation's quote dict, in place.
+
+    Looks up the passage label in label_to_chunk to get char_start, then
+    calls reading_page_for_offset. Only acts on canonical quotes that have a
+    workId already set (i.e. after splice_quote_dict has run). Safe to call
+    multiple times (idempotent).
+    """
+    if not isinstance(citation, dict):
+        return
+    quote = citation.get("quote")
+    if not isinstance(quote, dict):
+        return
+    if quote.get("kind") != "canonical":
+        return
+    work_id = quote.get("workId") or ""
+    if not work_id:
+        return
+    # Retrieve the chunk that backs this citation to get char_start and language.
+    passage_label = (quote.get("passage") or "").strip()
+    chunk = (label_to_chunk or {}).get(passage_label)
+    if chunk is None:
+        return
+    meta = chunk.get("meta") or {}
+    char_start = meta.get("char_start")
+    if char_start is None:
+        return
+    lang = meta.get("language")
+    page = reading_page_for_offset(work_id, lang, char_start)
+    if page is not None:
+        quote["readPage"] = page
+
+
+def _enrich_citations_readpage(
+    citations: List[Dict[str, Any]],
+    label_to_chunk: Dict[str, Any],
+) -> None:
+    """Apply _enrich_citation_readpage to every citation in the list."""
+    for c in citations:
+        _enrich_citation_readpage(c, label_to_chunk)
+
+
 def _retrieval_event_payload(chunks: List[Dict[str, Any]], retrieval_s: float) -> Dict[str, Any]:
     """Shape for the `retrieval` SSE event (RFC-010): chunk metadata + elapsed time.
     Strips the chunk text body (too large for an SSE event) — that's only needed server-side.
@@ -573,7 +756,12 @@ def ask(req: AskRequest, request: Request):
             )
         except RuntimeError as e:
             raise HTTPException(status_code=502, detail=str(e))
-        return parsed.model_dump(exclude_none=True)
+        result = parsed.model_dump(exclude_none=True)
+        # Enrich Q&A citations with the reading page so the frontend can open
+        # the reader at the exact page containing the cited passage.
+        if mode == "qa":
+            _enrich_citations_readpage(result.get("citations") or [], label_to_chunk)
+        return result
 
     # ── Streaming SSE path (chat-app)
     def event_stream():
@@ -591,6 +779,19 @@ def ask(req: AskRequest, request: Request):
             now = time.time()
             if now - last_event_ts > 15:
                 yield sse_heartbeat()
+            # Enrich Q&A citations with readPage at two points:
+            # 1. On each array_item event so the frontend can use it immediately.
+            # 2. On the done event's reconciled citations list for consistency.
+            if mode == "qa":
+                if kind == "array_item" and payload.get("array") == "citations":
+                    value = payload.get("value")
+                    if isinstance(value, dict):
+                        _enrich_citation_readpage(value, label_to_chunk)
+                elif kind == "done":
+                    response_dict = payload.get("response") or {}
+                    _enrich_citations_readpage(
+                        response_dict.get("citations") or [], label_to_chunk
+                    )
             yield sse(kind, **payload)
             last_event_ts = now
 

@@ -100,6 +100,10 @@ class Quote(BaseModel):
     author: str
     paraphrase: Optional[str] = None
     workId: Optional[str] = ""
+    # Server-filled: 1-based page in the reading surface where the cited passage
+    # appears. Only set for canonical quotes with a resolved chunk offset. None
+    # (excluded from serialisation via exclude_none) when unresolvable.
+    readPage: Optional[int] = None
 
     @model_validator(mode="after")
     def _scrub(self) -> "Quote":

@@ -25,7 +25,9 @@ export default function QuoteBlock({
   const isMr = lang === "mr";
   const showReadLink = quote.kind === "canonical" && !!quote.workId;
   const readHref = showReadLink
-    ? `/read/${quote.workId}${lang ? `?lang=${lang}` : ""}`
+    ? quote.readPage
+      ? `/read/${quote.workId}?page=${quote.readPage}${lang ? `&lang=${lang}` : ""}`
+      : `/read/${quote.workId}${lang ? `?lang=${lang}` : ""}`
     : null;
   return (
     <div>

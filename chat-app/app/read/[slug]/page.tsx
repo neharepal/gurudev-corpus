@@ -8,6 +8,7 @@ import {
 import {
   Suspense,
   useEffect,
+  useRef,
   useState,
   type FormEvent,
   type KeyboardEvent,
@@ -118,6 +119,14 @@ function ReadingPage() {
   const lbl = L[lang];
   const isMr = lang === "mr";
 
+  // If a ?page= param is present (e.g. from a "Read in full" citation link
+  // that carries readPage), parse it so we can jump to the right page after
+  // the persistent state hydrates. NaN-safe: if the param is not an integer,
+  // urlPage stays null and the persisted page is used unchanged.
+  const urlPageRaw = search.get("page");
+  const urlPage = urlPageRaw !== null ? parseInt(urlPageRaw, 10) : null;
+  const hasUrlPage = urlPage !== null && !Number.isNaN(urlPage) && urlPage >= 1;
+
   // Reading position + drawer chat are scoped to this work and persisted
   // across visits so the devotee can leave and come back where they were.
   const [currentPage, setCurrentPage] = usePersistentState<number>(
@@ -139,6 +148,23 @@ function ReadingPage() {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
+  // When a ?page= URL param is present, override the persisted page once on
+  // mount. We use a ref so this override fires exactly once per navigation to
+  // this URL (not on every re-render). The clamping to [1, totalPages] is
+  // deferred until totalPages is available via the fetch; if the page is valid
+  // before we have totalPages, we still apply it immediately and re-clamp below
+  // once the fetch completes.
+  const urlPageApplied = useRef(false);
+  useEffect(() => {
+    if (hasUrlPage && !urlPageApplied.current) {
+      urlPageApplied.current = true;
+      // Apply immediately (pre-clamp). The fetch useEffect below will re-clamp
+      // to [1, totalPages] once data arrives if needed.
+      setCurrentPage(urlPage!);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasUrlPage]);
+
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
@@ -157,6 +183,10 @@ function ReadingPage() {
         if (!cancelled) {
           setPageData(data);
           setLoading(false);
+          // Clamp currentPage to [1, totalPages]. Needed when the ?page= URL
+          // param was out of the valid range for this work. setCurrentPage is
+          // a no-op if already in range, so this is safe to call always.
+          setCurrentPage((p) => Math.max(1, Math.min(data.totalPages, p)));
           // Record reading progress so the landing page can show a
           // "Continue reading" shelf. Upsert on every successful page load
           // (initial load + page turns) to keep lastReadAt fresh.
