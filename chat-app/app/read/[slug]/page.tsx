@@ -190,6 +190,7 @@ function ReadingPage() {
   // before we have totalPages, we still apply it immediately and re-clamp below
   // once the fetch completes.
   const urlPageApplied = useRef(false);
+  const correctionCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (hasUrlPage && !urlPageApplied.current) {
       urlPageApplied.current = true;
@@ -199,6 +200,18 @@ function ReadingPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasUrlPage]);
+
+  // Reset correction editor when the page or work changes.
+  useEffect(() => {
+    if (correctionCloseTimer.current !== null) {
+      clearTimeout(correctionCloseTimer.current);
+      correctionCloseTimer.current = null;
+    }
+    setActiveCorrectionN(null);
+    setCorrectionDraft("");
+    setCorrectionStatus(null);
+    setHoveredN(null);
+  }, [slug, currentPage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -329,7 +342,11 @@ function ReadingPage() {
       await reportCorrection(req);
       setCorrectionStatus("sent");
       // Auto-close after 2 s so the reader returns to normal.
-      setTimeout(() => {
+      if (correctionCloseTimer.current !== null) {
+        clearTimeout(correctionCloseTimer.current);
+      }
+      correctionCloseTimer.current = setTimeout(() => {
+        correctionCloseTimer.current = null;
         closeCorrectionEditor();
       }, 2000);
     } catch {
