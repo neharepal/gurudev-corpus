@@ -127,3 +127,36 @@ def test_report_missing_required_field_returns_422(client, tmp_queue):
     """question is required — omitting it must return 422."""
     resp = client.post("/report", json={"mode": "qa"})
     assert resp.status_code == 422
+
+
+def test_report_correction_appends_correct_fields(client, tmp_queue):
+    """A correction-shaped body is appended with kind, slug, paragraph, original, corrected."""
+    payload = {
+        "question": "",
+        "mode": "reading",
+        "kind": "correction",
+        "slug": "pathway-to-god-in-hindi-literature",
+        "page": 3,
+        "paragraph": 12,
+        "original": "गरबल्ड txt हेरे",
+        "corrected": "गार्बल्ड मजकूर येथे",
+        "lang": "mr",
+    }
+    resp = client.post("/report", json=payload)
+    assert resp.status_code == 200, resp.text
+    assert resp.json() == {"ok": True}
+
+    lines = [l for l in tmp_queue.read_text(encoding="utf-8").splitlines() if l.strip()]
+    assert len(lines) == 1
+    record = json.loads(lines[0])
+    assert record["kind"] == "correction"
+    assert record["slug"] == "pathway-to-god-in-hindi-literature"
+    assert record["page"] == 3
+    assert record["paragraph"] == 12
+    assert record["original"] == "गरबल्ड txt हेरे"
+    assert record["corrected"] == "गार्बल्ड मजकूर येथे"
+    assert record["lang"] == "mr"
+    # Timestamp must be present and UTC
+    from datetime import datetime
+    ts = datetime.fromisoformat(record["timestamp"])
+    assert ts.tzinfo is not None

@@ -311,6 +311,15 @@ class ReportRequest(BaseModel):
     mode: str
     citations: Optional[List[ReportCitation]] = None
     note: Optional[str] = None
+    # Correction fields (garble Phase 2 — flag-and-queue).
+    # All optional so plain issue reports remain backward-compatible.
+    kind: Optional[str] = None        # "correction" | "issue" (default None = "issue")
+    slug: Optional[str] = None        # work slug
+    page: Optional[int] = None        # 1-based page number
+    paragraph: Optional[int] = None   # paragraph n value
+    original: Optional[str] = None    # verbatim text as rendered
+    corrected: Optional[str] = None   # user's corrected text
+    lang: Optional[str] = None        # "en" | "mr"
 
 
 # ---------------------------------------------------------------------------
@@ -599,7 +608,8 @@ def list_works() -> Dict[str, Any]:
 def report_issue(req: ReportRequest) -> Dict[str, Any]:
     """Append a flagged-answer report to the issue queue.
 
-    Accepts: { question, mode, citations?: [{workTitle, location}], note?: str }
+    Accepts: { question, mode, citations?, note?, kind?, slug?, page?,
+               paragraph?, original?, corrected?, lang? }
     Returns: { ok: true }
 
     Each report is one JSON line in ISSUE_QUEUE_PATH (logs/issue_reports.jsonl).
@@ -609,13 +619,28 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
     maintenance step (garble Phase 2) — this endpoint only queues the flag.
     """
     ISSUE_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    record = {
+    record: Dict[str, Any] = {
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "question": req.question,
         "mode": req.mode,
         "citations": [c.model_dump() for c in (req.citations or [])],
         "note": req.note or "",
     }
+    # Correction fields — only included when the caller sends them.
+    if req.kind is not None:
+        record["kind"] = req.kind
+    if req.slug is not None:
+        record["slug"] = req.slug
+    if req.page is not None:
+        record["page"] = req.page
+    if req.paragraph is not None:
+        record["paragraph"] = req.paragraph
+    if req.original is not None:
+        record["original"] = req.original
+    if req.corrected is not None:
+        record["corrected"] = req.corrected
+    if req.lang is not None:
+        record["lang"] = req.lang
     with open(ISSUE_QUEUE_PATH, "a", encoding="utf-8") as fh:
         fh.write(json.dumps(record, ensure_ascii=False) + "\n")
     return {"ok": True}
