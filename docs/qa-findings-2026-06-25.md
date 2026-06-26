@@ -163,11 +163,13 @@ nor see what they've started.
 page in `localStorage` (`gd:read:{slug}:page`), so reopening a work restores the
 page. Missing is an *entry point* listing started works.
 
-**Proposed:** as the user reads, store a progress record per work in
-`localStorage` (`{ slug, workTitle, page, totalPages, lastReadAt }`); render a
-**"Continue reading"** section on the reading landing (home, reading mode)
-listing started works ("<Title> — Page X of Y", resume link, most-recent first),
-with an optional remove control. Self-contained frontend feature.
+**DECIDED (2026-06-25): a "Continue reading" shelf on the Reading landing.** As
+the user reads, store a progress record per work in `localStorage`
+(`{ slug, workTitle, page, totalPages, lastReadAt }`). Render a **"Continue
+reading"** row at the TOP of the reading landing (home, reading mode), ABOVE
+"begin a new work" — cards with the work title, a progress bar, and "p.X/Y",
+most-recent first, each resuming that work at its saved page; optional remove
+control. Self-contained frontend feature (no backend).
 
 ---
 
