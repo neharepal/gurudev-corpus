@@ -305,4 +305,30 @@ quotes stay in their source language** (ADR-007). The `paraphrase` gloss is
 provided when the quote's language differs from the **question's** language
 (was: the user's toggle). Prompt-only change (`tools/prompts.py`).
 
+## F20 — Retrieval misses keyword-specific passages (e.g. "idol worship")
+
+**Symptom:** "What do the books say about Idol Worship?" returns a meta answer
+("the retrieved passages do not contain material… on idol worship"), but the
+corpus clearly covers it — *Vindication of Indian Philosophy*, *Philosophical and
+Other Essays*, *Herakleitos*, *Patankar Pravachan 3* all discuss "idol-worship".
+
+**Diagnosis (free probe, no API):** the relevant passage ("*Bhakti does not
+consist…in formal idol-worships: it consists in love to God*") has only MODERATE
+**dense similarity** to the query — cosine **rank 34** (Vindication) / **147**
+(Philosophical Essays) of 15,306 — because the passage is semantically about
+Bhakti/love-of-God and names "idol-worship" only in contrast. General-devotion
+chunks outscore it. Verified: even `candidates=100` doesn't surface it, because
+the **1-chunk-per-work cap** then gives each work's slot to its higher-scoring
+non-idol chunk. So this is a dense-retrieval RECALL limit, not a candidate-window
+or content gap.
+
+**Fix:** HYBRID retrieval — complement dense embeddings with **lexical/keyword
+matching** (e.g. BM25 or a term-overlap scorer) so passages containing the
+query's distinctive terms are recalled even when dense similarity is moderate.
+Implementation sketch: inject lexical candidates (chunks containing the query's
+rare content words) into the candidate pool before MMR, and/or reciprocal-rank-
+fuse dense+lexical scores; ensure a keyword-matched chunk can win its work's slot.
+Touches `tools/retrieve.py` + `server.py` `_retrieve` — sequence AFTER F18
+(server.py overlap). Highest-value remaining retrieval-quality item.
+
 <!-- append new findings below as testing continues -->
