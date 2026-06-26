@@ -211,4 +211,27 @@ becomes `/read/{workId}?page={readPage}`; the reader honors a `?page=` URL param
 
 ---
 
+## F15 — "Read in full" / reader back-nav should return to the origin
+
+**Symptom:** opening a work via a "Read in full" link and pressing "Back to
+start" goes to the Reading landing, losing where you came from — whether that
+was a **Q&A session** (#2) or **another book** you were reading (#3).
+
+**Cause:** the F4 "Read in full" link omits `?from=`, so the reader's
+origin-aware back (`returnTo = search.get("from")`) has nothing to use, and falls
+through to the default (`/?mode=reading`, the landing).
+
+**Fix:** every "Read in full" link (QnA citations via `QuoteBlock`, and any
+in-reader citation links) passes `from` = the current URL (the QnA session, or
+the current book's reader URL). The reader's back link then returns there; only
+fall back to the Reading landing when there's no origin. Make "Back to start"
+prefer `returnTo` when present.
+
+**Note (F14 verify):** if "Read in full" still opens page 1, suspect a stale
+frontend (hard-refresh) or a citation from a work with no ingested `text.md`
+(no `readPage` computable — overlaps F13). Code chain verified correct.
+Also still TODO: a regression test for `reading_page_for_offset` (works, untested).
+
+---
+
 <!-- append new findings below as testing continues -->
