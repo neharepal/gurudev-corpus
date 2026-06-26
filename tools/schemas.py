@@ -19,6 +19,7 @@ the Python 3.8 / anthropic 0.72 environment cannot run the newer SDK).
 from __future__ import annotations
 
 import re
+import unicodedata
 from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field, model_validator
@@ -417,6 +418,37 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
 _ALLOWED_KINDS = {"canonical", "athvani", "biography"}
 
 
+# ---------------------------------------------------------------------------
+# Length-preserving diacritic fold
+#
+# Maps each character to its base letter by NFKD-decomposing and stripping
+# combining marks, BUT preserves the original character if the result would
+# change the string's length (one char → one char is required so that match
+# offsets in the folded form correspond exactly to offsets in the original).
+# Examples: â → a, ā → a, ñ → n, é → e.  Characters whose NFKD expansion
+# would be multi-char or whose base is still non-ASCII but not a letter are
+# kept as-is so the fold is length-neutral.  Whitespace and punctuation are
+# NOT collapsed here — anchor regex handles whitespace tolerance separately.
+# ---------------------------------------------------------------------------
+
+def _fold_char(ch: str) -> str:
+    """Return the ASCII base letter for a single diacritic character, or the
+    character itself if no length-preserving fold is possible."""
+    nfkd = unicodedata.normalize("NFKD", ch)
+    # Strip combining marks (category "Mn" = Mark, Nonspacing).
+    base = "".join(c for c in nfkd if unicodedata.category(c) != "Mn")
+    # Keep fold only when it's exactly one ASCII letter (preserves length).
+    if len(base) == 1 and base.isascii() and base.isalpha():
+        return base
+    return ch
+
+
+def _fold_text(text: str) -> str:
+    """Fold `text` character-by-character; result has exactly len(text) chars
+    so that span offsets align between the folded and original strings."""
+    return "".join(_fold_char(c) for c in text)
+
+
 def _anchor_tokens(anchor: str) -> List[str]:
     """Word-run tokens of an anchor (punctuation dropped, Unicode-aware)."""
     return re.findall(r"\w+", anchor or "", re.UNICODE)
@@ -432,6 +464,17 @@ def _anchor_regex(anchor: str):
         return None
     # `\W+` between tokens = one or more non-word chars (space, newline, punct).
     return re.compile(r"\W+".join(re.escape(t) for t in toks))
+
+
+def _folded_anchor_regex(anchor: str):
+    """Like _anchor_regex but operates in the diacritic-folded domain.
+
+    The anchor itself is folded (so ā→a) and the regex is built from its
+    folded tokens. Because _fold_text is length-preserving, match offsets
+    in the folded text translate directly to offsets in the original text.
+    Falls back gracefully to None when the anchor has no word tokens."""
+    folded_anchor = _fold_text(anchor or "")
+    return _anchor_regex(folded_anchor)
 
 
 # A sentence/paragraph boundary: terminal punctuation (incl. the Devanagari
@@ -450,12 +493,37 @@ def _to_boundary(text: str, start: int, after: int) -> str:
 
 def _splice_span(text: str, start: str, end: str) -> Optional[str]:
     """Verbatim substring of `text` from the start anchor through the end anchor,
-    tolerant of punctuation/whitespace. Returns None only if the START anchor
-    can't be located; a missing END anchor falls back to a sentence boundary."""
+    tolerant of punctuation/whitespace AND diacritics/spelling variations.
+
+    Strategy:
+    1. Try an exact (word-tolerant) anchor match in the original text.
+    2. If that fails, fold both the text and the anchor to their ASCII base
+       letters (length-preserving) and repeat the search.  Offsets from the
+       folded match are used to slice from the ORIGINAL text so the returned
+       body is byte-for-byte the real source (original diacritics intact).
+    Returns None only if the START anchor can't be located by either method;
+    a missing END anchor falls back to a sentence boundary."""
     sr = _anchor_regex(start)
     sm = sr.search(text) if sr else None
-    if not sm:
-        return None
+
+    if sm is None:
+        # Diacritic-tolerant retry: search in the folded text.
+        folded_text = _fold_text(text)
+        fsr = _folded_anchor_regex(start)
+        sm = fsr.search(folded_text) if fsr else None
+        if sm is None:
+            return None
+        # sm offsets are in folded_text space == original text space (length-preserved).
+        start_toks = _anchor_tokens(_fold_text(start))
+        end_toks = _anchor_tokens(_fold_text(end))
+        if not end_toks or end_toks == start_toks:
+            return text[sm.start(): sm.end()].strip()
+        fer = _folded_anchor_regex(end)
+        em = fer.search(folded_text, sm.end()) if fer else None
+        if em:
+            return text[sm.start(): em.end()].strip()
+        return _to_boundary(text, sm.start(), sm.end())
+
     start_toks = _anchor_tokens(start)
     end_toks = _anchor_tokens(end)
     # Short quote: end omitted or same words as start -> span is the start match.
@@ -533,10 +601,11 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
     else:
         chunk = (label_to_chunk or {}).get(passage)
         if chunk is None:
-            # Unknown passage letter: can't splice. Prefer the model's body if it
-            # gave one, else fall back to the anchors. Either way it's unverified.
+            # Unknown passage letter: can't splice. Use the model's own body if
+            # it gave one; otherwise leave body absent (no stub — the caller will
+            # handle a missing body rather than showing a broken ellipsis citation).
             if not model_body:
-                quote["body"] = _degrade(start, end)
+                pass  # body stays absent; do NOT emit a stub
             quote.setdefault("workTitle", "")
             quote.setdefault("author", "")
             quote.setdefault("location", "")
@@ -549,11 +618,14 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
             body = _splice_span(text, start, end)
             ok = body is not None
             # Spliced text wins over any model-emitted body. On a start-anchor
-            # miss (ok is False) keep the model body if present, else the stub.
+            # miss (ok is False) use the full source chunk as the body rather
+            # than a degraded "start … end" stub — the user always sees real
+            # verbatim text, never a broken ellipsis citation.
             if ok:
                 quote["body"] = body
-            elif not model_body:
-                quote["body"] = _degrade(start, end)
+            else:
+                # Full-passage fallback: show the whole chunk, cleaned.
+                quote["body"] = clean_quote_body(text) if text else (model_body or "")
             # Authoritative attribution from the chunk's metadata.
             quote["workTitle"] = meta.get("title") or meta.get("work_id") or quote.get("workTitle") or ""
             quote["author"] = meta.get("author") or quote.get("author") or ""
