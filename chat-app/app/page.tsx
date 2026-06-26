@@ -16,6 +16,7 @@ import {
   DEFAULT_READING_SLUG,
   SUGGESTIONS,
   type ModeId,
+  type Suggestion,
 } from "../data/mock-conversations";
 import { usePersistentState } from "../hooks/usePersistentState";
 import {
@@ -23,6 +24,14 @@ import {
   removeProgress,
   type ProgressRecord,
 } from "../lib/readingProgress";
+
+// Shape returned by /api/works (proxied from the Python backend).
+type ReadableWork = {
+  slug: string;
+  title: string;
+  author: string;
+  languages: string[];
+};
 
 // Single-language labels. English is the default per user direction
 // (2026-06-14) — Marathi is reachable via the EN/मराठी toggle next to the
@@ -103,6 +112,29 @@ function LandingPage() {
   const [draft, setDraft] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Real readable works fetched from the backend. Used to replace the
+  // hardcoded Reading chips with works that actually have a text.md.
+  // `null` means "not yet fetched / still loading"; `[]` means "fetched but
+  // no readable works" (fallback to nothing shown).
+  const [readableWorks, setReadableWorks] = useState<ReadableWork[] | null>(null);
+
+  // Fetch the readable works list once on mount so the Reading chips
+  // advertise only works with real content. We do not re-fetch on mode
+  // change because the list is corpus-wide and doesn't change during a session.
+  useEffect(() => {
+    fetch("/api/works")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: { works?: ReadableWork[] } | null) => {
+        if (data && Array.isArray(data.works)) {
+          setReadableWorks(data.works);
+        }
+      })
+      .catch(() => {
+        // Backend unreachable; leave readableWorks null so we fall back to
+        // not showing any Reading chips rather than showing broken ones.
+      });
+  }, []);
+
   // URL takes priority when present.
   useEffect(() => {
     if (langFromUrl === "en" || langFromUrl === "mr") {
@@ -117,23 +149,43 @@ function LandingPage() {
     setDraft("");
   }, [mode, lang]);
 
+  // Build the suggestion chips for the current mode and language.
+  // For Reading mode, we use the real works list from the backend; for
+  // Q&A and Pravachan we keep the hardcoded suggestions unchanged.
+  function getSuggestions(): Suggestion[] {
+    if (mode !== "reading") {
+      return SUGGESTIONS[mode][lang];
+    }
+    if (readableWorks === null) {
+      // Still loading; show nothing (no chips yet).
+      return [];
+    }
+    // Show up to 6 works as chips. Each chip's text is the work title;
+    // the slug goes to /read/<slug>. Language: prefer the current UI
+    // language if available, otherwise the first available language.
+    return readableWorks.slice(0, 6).map((w) => {
+      const preferredLang = w.languages.includes(lang) ? lang : w.languages[0];
+      return {
+        text: w.title,
+        slug: w.slug,
+        lang: preferredLang,
+      };
+    });
+  }
+
   function submit(question: string) {
     const trimmed = question.trim();
     if (!trimmed) return;
     if (mode === "reading") {
-      // Match the draft against the active language's Reading suggestions
-      // and use the chip's own slug. This replaces the previous bug where
-      // a global READING_SLUG[lang] routed every Reading chip to the same
-      // work regardless of which chip text was clicked (the EN chip
-      // "Open Pathway to God in Marathi Literature" routed to the Hindi
-      // work). If the user typed a custom Reading question that doesn't
-      // match any chip, fall back to DEFAULT_READING_SLUG[lang].
-      // TODO (POST_DEMO_TODO §3): replace with a real work picker — the
-      // user should choose a work from a list rather than us guessing
-      // based on string match.
-      const chip = SUGGESTIONS.reading[lang].find((s) => s.text === trimmed);
+      // Match the draft against the active reading suggestions and use
+      // the chip's own slug. If the user typed a custom question that
+      // doesn't match any chip, fall back to DEFAULT_READING_SLUG[lang].
+      const suggestions = getSuggestions();
+      const chip = suggestions.find((s) => s.text === trimmed);
       const slug = chip?.slug ?? DEFAULT_READING_SLUG[lang];
-      router.push(`/read/${slug}?lang=${lang}`);
+      // Use the chip's preferred language if present; otherwise current lang.
+      const chipLang = (chip as (Suggestion & { lang?: string }) | undefined)?.lang ?? lang;
+      router.push(`/read/${slug}?lang=${chipLang}`);
       return;
     }
     // Propagate lang too so the chat surface renders in the same language
@@ -330,7 +382,7 @@ function LandingPage() {
               {TRY_PREFIX[lang]}
             </p>
             <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
-              {SUGGESTIONS[mode][lang].map(({ text }) => {
+              {getSuggestions().map(({ text }) => {
                 const isDeva = /[ऀ-ॿ]/.test(text);
                 return (
                   <li key={text}>

@@ -474,6 +474,8 @@ def admin_reload() -> Dict[str, Any]:
     in your deployment, front it with auth or bind to localhost.
     """
     _reading_cache.clear()
+    global _works_cache
+    _works_cache = None
     before = len(getattr(STATE, "metas", []) or [])
     info = _load_corpus_into_state()
     info["chunks_before"] = before
@@ -485,6 +487,94 @@ def admin_reload() -> Dict[str, Any]:
             file=sys.stderr,
         )
     return {"ok": True, **info}
+
+
+# In-process cache for the /works list. Populated lazily on the first request;
+# cleared alongside _reading_cache in /admin/reload so a new ingestion is
+# visible without a restart.
+_works_cache: Optional[List[Dict[str, Any]]] = None
+
+
+def _humanize_slug(slug: str) -> str:
+    """Convert a work slug to a display title when meta.yaml has no title."""
+    return slug.replace("-", " ").title()
+
+
+def _scan_readable_works() -> List[Dict[str, Any]]:
+    """Walk 01_canonical and return metadata for every work with a text.md.
+
+    Canonical structure:
+        01_canonical/<author_id>/<work_type>/<work_id>/<lang>/text.md
+    A work is readable iff at least one <lang>/text.md exists.
+    Title and author are read from <work_id>/meta.yaml if present;
+    the author display name is formatted via _author_display_name().
+    Returns a list of dicts sorted by title (case-insensitive).
+    """
+    canonical_root = REPO / "01_canonical"
+    results: List[Dict[str, Any]] = []
+    # Guard: canonical_root must exist (it always does in the corpus, but
+    # be defensive so the endpoint doesn't 500 in a stripped test env).
+    if not canonical_root.exists():
+        return results
+
+    for author_dir in sorted(canonical_root.iterdir()):
+        if not author_dir.is_dir():
+            continue
+        author_id = author_dir.name
+        for work_type_dir in sorted(author_dir.iterdir()):
+            if not work_type_dir.is_dir():
+                continue
+            for work_dir in sorted(work_type_dir.iterdir()):
+                if not work_dir.is_dir():
+                    continue
+                # Collect language subdirectories that have a text.md.
+                langs = sorted(
+                    d.name for d in work_dir.iterdir()
+                    if d.is_dir() and (d / "text.md").exists()
+                )
+                if not langs:
+                    continue
+                work_id = work_dir.name
+                # Try to read meta.yaml for proper title and author override.
+                meta_path = work_dir / "meta.yaml"
+                title: str = _humanize_slug(work_id)
+                meta_author_id = author_id
+                if meta_path.exists():
+                    try:
+                        with open(meta_path, encoding="utf-8") as fh:
+                            meta = yaml.safe_load(fh) or {}
+                        # Prefer title_en if set, else title.
+                        raw_title = (meta.get("title_en") or "").strip() or (meta.get("title") or "").strip()
+                        if raw_title:
+                            title = raw_title
+                        # meta.yaml may override the author (rare but possible).
+                        if meta.get("author"):
+                            meta_author_id = meta["author"]
+                    except Exception:
+                        pass
+                results.append({
+                    "slug": work_id,
+                    "title": title,
+                    "author": _author_display_name(meta_author_id),
+                    "languages": langs,
+                })
+
+    results.sort(key=lambda w: w["title"].lower())
+    return results
+
+
+@app.get("/works")
+def list_works() -> Dict[str, Any]:
+    """Return all canonical works that have at least one readable text.md.
+
+    Response: { "works": [ { "slug", "title", "author", "languages" }, ... ] }
+    Sorted by title (case-insensitive). Result is cached in-process;
+    /admin/reload clears the cache so newly ingested works appear.
+    """
+    global _works_cache
+    if _works_cache is None:
+        _works_cache = _scan_readable_works()
+    return {"works": _works_cache}
 
 
 @app.get("/read/{slug}")

@@ -52,6 +52,7 @@ const L: Record<
     ask: string;
     loading: string;
     errorGeneric: string;
+    errorNotReadable: string;
   }
 > = {
   en: {
@@ -74,6 +75,7 @@ const L: Record<
     ask: "Ask",
     loading: "Searching this work...",
     errorGeneric: "Couldn't load an answer. Please try again.",
+    errorNotReadable: "This work isn't available to read yet.",
   },
   mr: {
     backToStart: "◁ सुरुवातीला परत",
@@ -95,6 +97,7 @@ const L: Record<
     ask: "विचारा",
     loading: "या ग्रंथातून शोधत आहोत...",
     errorGeneric: "उत्तर मिळवता आले नाही. कृपया पुन्हा प्रयत्न करा.",
+    errorNotReadable: "हा ग्रंथ अद्याप वाचण्यासाठी उपलब्ध नाही.",
   },
 };
 
@@ -174,6 +177,11 @@ function ReadingPage() {
     fetch(`/api/read?${qs.toString()}`)
       .then(async (res) => {
         if (!res.ok) {
+          // 404 means the work has no readable text yet — show a friendly
+          // message rather than the raw "Error 404" / backend detail.
+          if (res.status === 404) {
+            throw new Error(lbl.errorNotReadable);
+          }
           const body = await res.json().catch(() => ({})) as { error?: string };
           throw new Error(body.error ?? `Error ${res.status}`);
         }
