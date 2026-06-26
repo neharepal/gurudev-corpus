@@ -627,7 +627,12 @@ function ChatPage() {
             className="mb-8 pt-3"
             style={{ borderTop: "1px solid var(--border-soft)" }}
           >
-            <AnswerToolbar lang={lang} />
+            <AnswerToolbar
+              lang={lang}
+              question={questionFromUrl ?? answer.question ?? ""}
+              mode={mode}
+              citations={extractCitedPassages(answer)}
+            />
           </div>
         ) : null}
 

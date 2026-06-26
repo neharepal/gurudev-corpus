@@ -52,11 +52,17 @@ from prompts import (
 )
 from streaming import sse, sse_heartbeat
 
+import datetime
+import json
 import math
 import re
 import yaml
 
 PORT = int(os.environ.get("GURUDEV_BACKEND_PORT", "8765"))
+
+# Path to the issue-report queue file.
+# Written once at module load so tests can monkeypatch `server.ISSUE_QUEUE_PATH`.
+ISSUE_QUEUE_PATH: Path = REPO / "logs" / "issue_reports.jsonl"
 
 
 # ---------------------------------------------------------------------------
@@ -293,6 +299,18 @@ class AskRequest(BaseModel):
     # Reserved for the threaded-follow-up refactor; not used by the single-turn
     # pipeline today. Included so the wire shape doesn't need to change later.
     history: Optional[List[Dict[str, Any]]] = None
+
+
+class ReportCitation(BaseModel):
+    workTitle: str
+    location: str
+
+
+class ReportRequest(BaseModel):
+    question: str
+    mode: str
+    citations: Optional[List[ReportCitation]] = None
+    note: Optional[str] = None
 
 
 # ---------------------------------------------------------------------------
@@ -575,6 +593,32 @@ def list_works() -> Dict[str, Any]:
     if _works_cache is None:
         _works_cache = _scan_readable_works()
     return {"works": _works_cache}
+
+
+@app.post("/report")
+def report_issue(req: ReportRequest) -> Dict[str, Any]:
+    """Append a flagged-answer report to the issue queue.
+
+    Accepts: { question, mode, citations?: [{workTitle, location}], note?: str }
+    Returns: { ok: true }
+
+    Each report is one JSON line in ISSUE_QUEUE_PATH (logs/issue_reports.jsonl).
+    ISSUE_QUEUE_PATH is a module-level constant so tests can monkeypatch it.
+
+    Applying corrections or re-embedding garbled passages is a separate
+    maintenance step (garble Phase 2) — this endpoint only queues the flag.
+    """
+    ISSUE_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    record = {
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "question": req.question,
+        "mode": req.mode,
+        "citations": [c.model_dump() for c in (req.citations or [])],
+        "note": req.note or "",
+    }
+    with open(ISSUE_QUEUE_PATH, "a", encoding="utf-8") as fh:
+        fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+    return {"ok": True}
 
 
 @app.get("/read/{slug}")

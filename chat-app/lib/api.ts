@@ -110,6 +110,45 @@ type Quote = {
   readPage?: number;
 };
 
+// ────────────────────────────────────────────────────────────────────────────
+// Report-issue API
+// ────────────────────────────────────────────────────────────────────────────
+
+export type ReportCitation = {
+  workTitle: string;
+  location: string;
+};
+
+export type ReportRequest = {
+  question: string;
+  mode: string;
+  citations?: ReportCitation[];
+  note?: string;
+};
+
+/**
+ * POST `/api/report` — flag a garbled or incorrect answer for the queue.
+ * Resolves to `{ ok: true }` on success; throws on network or server error.
+ */
+export async function reportIssue(req: ReportRequest): Promise<{ ok: boolean }> {
+  const res = await fetch("/api/report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+  if (!res.ok) {
+    let msg = `Report failed (${res.status})`;
+    try {
+      const body = (await res.json()) as { error?: string };
+      if (body.error) msg = body.error;
+    } catch {
+      // Body wasn't JSON.
+    }
+    throw new Error(msg);
+  }
+  return (await res.json()) as { ok: boolean };
+}
+
 export class AskError extends Error {
   status: number;
   constructor(message: string, status: number) {
