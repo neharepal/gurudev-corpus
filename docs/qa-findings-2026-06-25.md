@@ -263,4 +263,31 @@ maintainer to read `logs/issue_reports.jsonl`, correct the flagged source chunk'
 text, and re-embed it (then `/admin/reload` picks it up live). Everything else
 from this QA pass is done.
 
+## F17 — Reading-mode "Ask about this work" chat isn't intelligent (demo feedback)
+
+**Symptom:** the reader's drawer chat only quotes a passage from the work; it
+can't actually answer basic questions.
+
+**Cause:** the drawer posts `/ask` with **mode=reading**, which returns a
+`ReadingResponse` (framing + ONE verbatim passage), not a synthesized answer.
+
+**Fix:** route the drawer's questions through the **Q&A pipeline scoped to the
+current work** — backend: when `mode=="qa"` and `req.work` is set, apply
+`metadata_filter={"work_id": req.work}` (the existing max_per_source line already
+gives `top_k` for work-filtered retrieval). Frontend: the drawer sends `mode=qa`
++ `work=slug` and renders the full Q&A answer (framing + citations + synthesis),
+drawn only from that work.
+
+## F18 — Correct paragraphs in Reading mode → review queue (demo feedback)
+
+**Request:** in the reader, let the user select/highlight a paragraph, submit the
+corrected text, and add it to the review queue.
+
+**Fix:** per-paragraph "suggest correction" affordance → a form prefilled with the
+paragraph text → submit to the queue. Extend the F16 `/report` endpoint with a
+correction type carrying `{ slug, page, paragraphN, original, corrected }`,
+appended to `logs/issue_reports.jsonl` (or a sibling corrections queue). Builds on
+F16. (This is the user-facing half of garble Phase 2's flag-and-queue, for
+reading text specifically.)
+
 <!-- append new findings below as testing continues -->
