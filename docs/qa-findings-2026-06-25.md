@@ -331,4 +331,28 @@ fuse dense+lexical scores; ensure a keyword-matched chunk can win its work's slo
 Touches `tools/retrieve.py` + `server.py` `_retrieve` — sequence AFTER F18
 (server.py overlap). Highest-value remaining retrieval-quality item.
 
+## F21 — Align Report + Share to RFC-004 (demo feedback)
+
+The F16 build was generic; **RFC-004 §"Content flagging" + line 25** specify more.
+
+**Report issue (currently just a free-text box):** add the RFC-004 modal —
+"What's wrong?" **category radios**: Wrong attribution / Quoted text doesn't match
+the source / Mentions something not actually in the corpus / Translation or
+paraphrase issue / Missing important context / Sources mislabeled or in wrong
+section / Other — plus the optional detail box. Auto-attach: question, full
+answer text, retrieved chunks + citations, conversation id, timestamp, selected
+category, free text, language. **Storage per RFC-004: `03_catalog/flag_queue.yaml`**
+(append-only YAML) — not the current `logs/issue_reports.jsonl`. Confirmation:
+"Thank you. Neha will review and correct if needed." (mr variant). Backend
+`/report` gains a `category` field + YAML append.
+
+**Share (currently native share sheet → no WhatsApp on desktop):** RFC-004 line
+25 — "WhatsApp share for every answer (sampradaya-WhatsApp is the distribution
+channel)." Replace/augment with an explicit share menu including **WhatsApp**
+(`https://wa.me/?text=<encoded answer link>`) + Copy link (+ optionally Telegram);
+keep native share as a "More…" option on mobile.
+
+**Sequencing:** both touch `AnswerToolbar`; report touches `server.py` → do as ONE
+task AFTER F20 merges (server.py overlap).
+
 <!-- append new findings below as testing continues -->
