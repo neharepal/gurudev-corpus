@@ -60,9 +60,9 @@ import yaml
 
 PORT = int(os.environ.get("GURUDEV_BACKEND_PORT", "8765"))
 
-# Path to the issue-report queue file.
-# Written once at module load so tests can monkeypatch `server.ISSUE_QUEUE_PATH`.
-ISSUE_QUEUE_PATH: Path = REPO / "logs" / "issue_reports.jsonl"
+# Path to the RFC-004 flag queue file.
+# Written once at module load so tests can monkeypatch `server.FLAG_QUEUE_PATH`.
+FLAG_QUEUE_PATH: Path = REPO / "03_catalog" / "flag_queue.yaml"
 
 
 # ---------------------------------------------------------------------------
@@ -311,6 +311,8 @@ class ReportRequest(BaseModel):
     mode: str
     citations: Optional[List[ReportCitation]] = None
     note: Optional[str] = None
+    # RFC-004 flag category (radio selection from the UI).
+    category: Optional[str] = None
     # Correction fields (garble Phase 2 — flag-and-queue).
     # All optional so plain issue reports remain backward-compatible.
     kind: Optional[str] = None        # "correction" | "issue" (default None = "issue")
@@ -616,43 +618,57 @@ def list_works() -> Dict[str, Any]:
 
 @app.post("/report")
 def report_issue(req: ReportRequest) -> Dict[str, Any]:
-    """Append a flagged-answer report to the issue queue.
+    """Append a flagged-answer report to the RFC-004 YAML flag queue.
 
-    Accepts: { question, mode, citations?, note?, kind?, slug?, page?,
-               paragraph?, original?, corrected?, lang? }
+    Accepts: { question, mode, citations?, note?, category?,
+               kind?, slug?, page?, paragraph?, original?, corrected?, lang? }
     Returns: { ok: true }
 
-    Each report is one JSON line in ISSUE_QUEUE_PATH (logs/issue_reports.jsonl).
-    ISSUE_QUEUE_PATH is a module-level constant so tests can monkeypatch it.
+    Each report is one mapping appended to FLAG_QUEUE_PATH
+    (03_catalog/flag_queue.yaml).  FLAG_QUEUE_PATH is a module-level constant
+    so tests can monkeypatch it.
 
-    Applying corrections or re-embedding garbled passages is a separate
-    maintenance step (garble Phase 2) — this endpoint only queues the flag.
+    Both plain issue reports and F18 in-reader corrections write to this
+    same queue; the `kind` field distinguishes them ("issue" vs "correction").
     """
-    ISSUE_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    record: Dict[str, Any] = {
-        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    FLAG_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    entry: Dict[str, Any] = {
+        "flagged_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "kind": req.kind or "issue",
         "question": req.question,
         "mode": req.mode,
         "citations": [c.model_dump() for c in (req.citations or [])],
+        "category": req.category or "",
         "note": req.note or "",
+        "lang": req.lang or "",
     }
-    # Correction fields — only included when the caller sends them.
-    if req.kind is not None:
-        record["kind"] = req.kind
+    # Correction-specific fields — only included when the caller sends them.
     if req.slug is not None:
-        record["slug"] = req.slug
+        entry["slug"] = req.slug
     if req.page is not None:
-        record["page"] = req.page
+        entry["page"] = req.page
     if req.paragraph is not None:
-        record["paragraph"] = req.paragraph
+        entry["paragraph"] = req.paragraph
     if req.original is not None:
-        record["original"] = req.original
+        entry["original"] = req.original
     if req.corrected is not None:
-        record["corrected"] = req.corrected
-    if req.lang is not None:
-        record["lang"] = req.lang
-    with open(ISSUE_QUEUE_PATH, "a", encoding="utf-8") as fh:
-        fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+        entry["corrected"] = req.corrected
+
+    # Append to the YAML list safely:
+    # read existing content → parse as list (or default to []) → append → dump.
+    existing: List[Dict[str, Any]] = []
+    if FLAG_QUEUE_PATH.exists():
+        try:
+            raw = yaml.safe_load(FLAG_QUEUE_PATH.read_text(encoding="utf-8"))
+            if isinstance(raw, list):
+                existing = raw
+        except Exception:
+            existing = []
+    existing.append(entry)
+    FLAG_QUEUE_PATH.write_text(
+        yaml.dump(existing, allow_unicode=True, default_flow_style=False, sort_keys=False),
+        encoding="utf-8",
+    )
     return {"ok": True}
 
 
