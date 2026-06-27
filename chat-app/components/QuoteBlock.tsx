@@ -26,6 +26,9 @@ export default function QuoteBlock({
   lang?: string;
   fromUrl?: string;
 }) {
+  // During streaming a citation/example can render before its quote/body is
+  // populated; bail out until there's something to show (avoids a crash).
+  if (!quote || !quote.body) return null;
   const containsDevanagari = /[ऀ-ॿ]/.test(quote.body);
   const isMr = lang === "mr";
   const showReadLink = quote.kind === "canonical" && !!quote.workId;
