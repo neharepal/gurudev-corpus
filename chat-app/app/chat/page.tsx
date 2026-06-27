@@ -765,13 +765,15 @@ function QAAnswerBody({
   const isMr = lang === "mr";
 
   // Meta layout — no quotes, no "Why this passage" lines, no synthesis.
-  if (answer.citations.length === 0) {
+  // Guard: during streaming `citations` can be undefined before the first delta.
+  if ((answer.citations ?? []).length === 0) {
     // Prefer `framingParagraphs` (real array, reliable) over splitting
     // `framing` on \n{2,} (LLMs often skip the newlines and emit one wall).
+    // Guard: `framing` may be empty string or undefined early in streaming.
     const metaParagraphs =
       answer.framingParagraphs && answer.framingParagraphs.length > 0
         ? answer.framingParagraphs
-        : answer.framing.split(/\n{2,}/);
+        : (answer.framing ?? "").split(/\n{2,}/).filter(Boolean);
     return (
       <div>
         {metaParagraphs.map((para, i) => (
@@ -821,10 +823,11 @@ function QAAnswerBody({
   // Doctrinal layout — unchanged from ADR-007.
   // Same paragraph-array fallback as meta: prefer the structured array
   // when present, otherwise split the string.
+  // Guard: `framing` may be empty string or undefined early in streaming.
   const doctrinalParagraphs =
     answer.framingParagraphs && answer.framingParagraphs.length > 0
       ? answer.framingParagraphs
-      : answer.framing.split(/\n{2,}/);
+      : (answer.framing ?? "").split(/\n{2,}/).filter(Boolean);
   return (
     <div>
       {doctrinalParagraphs.map((para, i) => (
@@ -832,21 +835,27 @@ function QAAnswerBody({
           {para}
         </p>
       ))}
-      {answer.citations.map((c, i) => (
+      {/* Guard: filter to citations whose quote.body is present before rendering.
+          During streaming a citation slot can exist before its quote is filled;
+          QuoteBlock returns null for missing body but c.whyChosen beside it
+          would still appear stray — skip the whole item until it's renderable. */}
+      {(answer.citations ?? []).filter((c) => c?.quote?.body).map((c, i) => (
         <div key={i} className="mb-6">
           <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} />
-          <p
-            className={`mt-2 text-[15px] leading-snug ${isMr ? "font-deva" : ""}`}
-            style={{ color: "var(--text-primary)" }}
-          >
-            <span
-              className={isMr ? "font-deva" : ""}
-              style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+          {c.whyChosen ? (
+            <p
+              className={`mt-2 text-[15px] leading-snug ${isMr ? "font-deva" : ""}`}
+              style={{ color: "var(--text-primary)" }}
             >
-              {lbl.whyThisPassage}
-            </span>{" "}
-            {c.whyChosen}
-          </p>
+              <span
+                className={isMr ? "font-deva" : ""}
+                style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+              >
+                {lbl.whyThisPassage}
+              </span>{" "}
+              {c.whyChosen}
+            </p>
+          ) : null}
         </div>
       ))}
       {answer.synthesis
@@ -917,7 +926,10 @@ function PravachanAnswerBody({
 
       <PravachanSection heading={lbl.sectionStories} isDeva={isMr}>
         <ol className="m-0 list-decimal pl-5">
-          {answer.examples.map((ex, i) => (
+          {/* Guard: filter to examples that have at least a title so we never
+              render a completely empty list item mid-stream. quote.body is
+              guarded inside QuoteBlock; whyThisExample is guarded inline. */}
+          {(answer.examples ?? []).filter((ex) => ex?.title).map((ex, i) => (
             <li key={i} className="mb-6">
               <div
                 className={`mb-1 text-[16.5px] font-semibold ${
@@ -937,19 +949,24 @@ function PravachanAnswerBody({
                   {ex.gloss}
                 </div>
               ) : null}
+              {/* QuoteBlock already returns null if !quote?.body; pass
+                  ex.quote as-is (may be undefined until its delta arrives). */}
               <QuoteBlock quote={ex.quote} lang={lang} fromUrl={fromUrl} />
-              <div
-                className={`mt-2 text-[15px] ${isMr ? "font-deva" : ""}`}
-                style={{ color: "var(--text-primary)" }}
-              >
-                <span
-                  className={isMr ? "font-deva" : ""}
-                  style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+              {/* Guard: skip the "Why this story" line until the field arrives. */}
+              {ex.whyThisExample ? (
+                <div
+                  className={`mt-2 text-[15px] ${isMr ? "font-deva" : ""}`}
+                  style={{ color: "var(--text-primary)" }}
                 >
-                  {lbl.whyThisStory}
-                </span>{" "}
-                {ex.whyThisExample}
-              </div>
+                  <span
+                    className={isMr ? "font-deva" : ""}
+                    style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
+                  >
+                    {lbl.whyThisStory}
+                  </span>{" "}
+                  {ex.whyThisExample}
+                </div>
+              ) : null}
               {ex.readSlug ? (
                 <Link
                   href={(() => {

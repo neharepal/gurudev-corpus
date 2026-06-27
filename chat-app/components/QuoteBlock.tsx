@@ -22,7 +22,10 @@ export default function QuoteBlock({
   lang,
   fromUrl,
 }: {
-  quote: Quote;
+  // Accept undefined so callers can pass partially-streamed fields (e.g.
+  // `ex.quote` before its delta arrives) without a type assertion.
+  // The runtime guard below handles it safely.
+  quote: Quote | undefined;
   lang?: string;
   fromUrl?: string;
 }) {

@@ -775,7 +775,11 @@ function ReadingPage() {
                   {m.answer.framing}
                 </p>
               ) : null}
-              {m.answer.citations.map((c, ci) => (
+              {/* Guard: filter to citations whose quote.body is present.
+                  Persisted messages from localStorage could theoretically hold
+                  stale/partial shapes; QuoteBlock guards internally but we also
+                  skip the whyChosen rationale for incomplete citations. */}
+              {(m.answer.citations ?? []).filter((c) => c?.quote?.body).map((c, ci) => (
                 <div key={ci} className="mb-4">
                   <QuoteBlock quote={c.quote} lang={lang} />
                   {c.whyChosen ? (
