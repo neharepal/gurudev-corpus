@@ -355,4 +355,16 @@ keep native share as a "More…" option on mobile.
 **Sequencing:** both touch `AnswerToolbar`; report touches `server.py` → do as ONE
 task AFTER F20 merges (server.py overlap).
 
+## F22 — Reader: hide ¶ numbers + add page-jump navigation (demo feedback)
+
+1. **Remove the visible `¶ N` paragraph numbers** from the reader — they confuse
+   (look like page/heading numbers). Keep `para.n` in the data so the F18
+   "suggest a correction" flow still targets the right paragraph; only the
+   on-screen marker goes away.
+2. **Page-jump navigation:** works can be hundreds of pages, so add a way to go
+   to a specific page (e.g. make "Page X of Y" an editable input, or a small
+   "Go to page" field) — on submit, clamp to [1, totalPages] and set
+   `currentPage` (which triggers the fetch). Keep the progress bar + Prev/Next.
+   Localize (en/mr). Frontend-only (`read/[slug]/page.tsx`); no conflict with F20.
+
 <!-- append new findings below as testing continues -->
