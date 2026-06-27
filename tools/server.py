@@ -56,6 +56,7 @@ import datetime
 import json
 import math
 import re
+import uuid
 import yaml
 
 PORT = int(os.environ.get("GURUDEV_BACKEND_PORT", "8765"))
@@ -637,7 +638,9 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
     """
     FLAG_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
     entry: Dict[str, Any] = {
+        "id": uuid.uuid4().hex[:12],
         "flagged_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "status": "pending",
         "kind": req.kind or "issue",
         "question": req.question,
         "mode": req.mode,
@@ -674,6 +677,309 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
         encoding="utf-8",
     )
     return {"ok": True}
+
+
+# ---------------------------------------------------------------------------
+# Admin flag-queue helpers
+# ---------------------------------------------------------------------------
+
+def _load_flag_queue() -> List[Dict[str, Any]]:
+    """Load all entries from FLAG_QUEUE_PATH, backfilling ids for legacy entries."""
+    if not FLAG_QUEUE_PATH.exists():
+        return []
+    try:
+        raw = yaml.safe_load(FLAG_QUEUE_PATH.read_text(encoding="utf-8"))
+        entries: List[Dict[str, Any]] = raw if isinstance(raw, list) else []
+    except Exception:
+        entries = []
+    # Backfill stable ids for legacy entries that predate the id field.
+    changed = False
+    for i, e in enumerate(entries):
+        if not e.get("id"):
+            ts = e.get("flagged_at", "unknown")
+            e["id"] = f"{ts}-{i}"
+            changed = True
+    if changed:
+        _save_flag_queue(entries)
+    return entries
+
+
+def _save_flag_queue(entries: List[Dict[str, Any]]) -> None:
+    """Atomically rewrite FLAG_QUEUE_PATH."""
+    FLAG_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp = FLAG_QUEUE_PATH.with_suffix(".yaml.tmp")
+    tmp.write_text(
+        yaml.dump(entries, allow_unicode=True, default_flow_style=False, sort_keys=False),
+        encoding="utf-8",
+    )
+    tmp.replace(FLAG_QUEUE_PATH)
+
+
+# ---------------------------------------------------------------------------
+# Admin dashboard routes
+# ---------------------------------------------------------------------------
+
+_ADMIN_DASHBOARD_HTML = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flag Queue — Gurudev Corpus</title>
+<style>
+  :root {
+    --bg: #fdf6e3; --card: #fffdf5; --border: #d6c89a;
+    --txt: #3b2e0f; --muted: #7a6940; --accent: #5a4a1c;
+    --green: #2d6a2d; --red: #8b1a1a; --gray: #666;
+    --diff-add: #e6ffe6; --diff-add-txt: #1a4d1a;
+    --diff-del: #ffe6e6; --diff-del-txt: #6b0000;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: var(--bg); color: var(--txt);
+         font-family: Georgia, 'Times New Roman', serif; font-size: 15px; }
+  h1 { font-size: 1.5rem; color: var(--accent); margin: 0 0 4px; }
+  .subtitle { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .filters { margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .filters label { font-size: 0.85rem; color: var(--muted); }
+  .filters select { font-size: 0.85rem; padding: 4px 8px; border: 1px solid var(--border);
+                    border-radius: 4px; background: var(--card); color: var(--txt); }
+  #count { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 14px 16px; margin-bottom: 12px; }
+  .card-header { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .badge { display: inline-block; font-size: 0.72rem; font-family: monospace; font-weight: bold;
+           padding: 2px 7px; border-radius: 3px; text-transform: uppercase; white-space: nowrap; }
+  .badge-correction { background: #fff3cd; color: #7a5000; border: 1px solid #d4a820; }
+  .badge-issue      { background: #e8ecff; color: #1a2a80; border: 1px solid #5060c0; }
+  .badge-pending    { background: #f0f0f0; color: #555; border: 1px solid #bbb; }
+  .badge-approved   { background: #d4edda; color: #155724; border: 1px solid #6db87a; }
+  .badge-rejected   { background: #f8d7da; color: #721c24; border: 1px solid #e07a80; }
+  .meta { color: var(--muted); font-size: 0.8rem; font-family: monospace; }
+  .slug { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+  .diff-block { margin: 10px 0; border: 1px solid var(--border); border-radius: 4px;
+                overflow: hidden; font-family: monospace; font-size: 0.82rem; }
+  .diff-del { background: var(--diff-del); color: var(--diff-del-txt); padding: 6px 10px;
+              white-space: pre-wrap; word-break: break-word; }
+  .diff-add { background: var(--diff-add); color: var(--diff-add-txt); padding: 6px 10px;
+              white-space: pre-wrap; word-break: break-word; }
+  .diff-label { font-size: 0.7rem; color: var(--muted); padding: 2px 10px;
+                background: #f5f0e0; border-bottom: 1px solid var(--border); }
+  .note-block { font-size: 0.85rem; color: var(--txt); margin: 8px 0; line-height: 1.5; }
+  .note-label { font-weight: bold; color: var(--accent); }
+  .actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  button { padding: 5px 14px; border-radius: 4px; border: none; cursor: pointer;
+           font-size: 0.85rem; font-family: inherit; font-weight: bold; transition: opacity 0.15s; }
+  button:hover { opacity: 0.82; }
+  .btn-approve { background: var(--green); color: #fff; }
+  .btn-reject  { background: var(--red); color: #fff; }
+  .btn-reset   { background: #888; color: #fff; }
+  .msg { font-size: 0.8rem; color: var(--muted); margin-left: 6px; }
+  .err { color: var(--red); }
+  #toast { position: fixed; top: 14px; right: 18px; background: #333; color: #fff;
+           padding: 8px 18px; border-radius: 5px; font-size: 0.85rem;
+           opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 1000; }
+  #toast.show { opacity: 1; }
+  .empty { color: var(--muted); font-style: italic; padding: 30px 0; text-align: center; }
+  .at { font-size: 0.75rem; color: var(--gray); font-family: monospace; }
+</style>
+</head>
+<body>
+<h1>Flag Queue</h1>
+<div class="subtitle">Gurudev Corpus — maintainer review dashboard</div>
+<div class="filters">
+  <label>Kind: <select id="fKind">
+    <option value="">All</option>
+    <option value="correction">Correction</option>
+    <option value="issue">Issue</option>
+  </select></label>
+  <label>Status: <select id="fStatus">
+    <option value="">All</option>
+    <option value="pending">Pending</option>
+    <option value="approved">Approved</option>
+    <option value="rejected">Rejected</option>
+  </select></label>
+  <span id="count"></span>
+</div>
+<div id="list"><p class="empty">Loading…</p></div>
+<div id="toast"></div>
+<script>
+let ALL = [];
+
+function escHtml(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function showToast(msg, isErr) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = isErr ? '#8b1a1a' : '#2d6a2d';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function statusBadge(s) {
+  s = s || 'pending';
+  return `<span class="badge badge-${s}">${s}</span>`;
+}
+
+function kindBadge(k) {
+  return `<span class="badge badge-${k}">${k}</span>`;
+}
+
+function renderDiff(original, corrected) {
+  return `<div class="diff-block">
+    <div class="diff-label">BEFORE</div>
+    <div class="diff-del">${escHtml(original)}</div>
+    <div class="diff-label">AFTER</div>
+    <div class="diff-add">${escHtml(corrected)}</div>
+  </div>`;
+}
+
+function renderEntry(e) {
+  const kind = e.kind || 'issue';
+  const status = e.status || 'pending';
+  let body = '';
+  if (kind === 'correction') {
+    const slug = e.slug || '';
+    const pg = e.page != null ? `p.${e.page}` : '';
+    const para = e.paragraph != null ? `¶${e.paragraph}` : '';
+    const lang = e.lang ? ` [${e.lang}]` : '';
+    body += `<div style="margin:6px 0"><span class="slug">${escHtml(slug)}</span>`;
+    if (pg || para) body += ` <span class="meta">${pg} ${para}</span>`;
+    body += `<span class="meta">${escHtml(lang)}</span></div>`;
+    if (e.original != null || e.corrected != null) {
+      body += renderDiff(e.original || '', e.corrected || '');
+    }
+  } else {
+    if (e.category) body += `<div class="note-block"><span class="note-label">Category:</span> ${escHtml(e.category)}</div>`;
+    if (e.note) body += `<div class="note-block"><span class="note-label">Note:</span> ${escHtml(e.note)}</div>`;
+    if (e.question) body += `<div class="note-block"><span class="note-label">Question:</span> ${escHtml(e.question)}</div>`;
+    if (e.citations && e.citations.length) {
+      const cits = e.citations.map(c => `${escHtml(c.workTitle)} — ${escHtml(c.location)}`).join('; ');
+      body += `<div class="note-block"><span class="note-label">Citations:</span> ${cits}</div>`;
+    }
+  }
+  const flaggedAt = e.flagged_at ? `<span class="at" title="${escHtml(e.flagged_at)}">${e.flagged_at.slice(0,19).replace('T',' ')} UTC</span>` : '';
+  const entryId = escHtml(e.id || '');
+  return `<div class="card" id="entry-${entryId}" data-kind="${kind}" data-status="${status}">
+  <div class="card-header">
+    ${kindBadge(kind)}
+    ${statusBadge(status)}
+    <span class="meta" style="margin-left:auto">${flaggedAt}</span>
+  </div>
+  ${body}
+  <div class="actions" id="actions-${entryId}">
+    <button class="btn-approve" onclick="setStatus('${entryId}','approved')">Approve</button>
+    <button class="btn-reject"  onclick="setStatus('${entryId}','rejected')">Reject</button>
+    <button class="btn-reset"   onclick="setStatus('${entryId}','pending')">Reset</button>
+    <span class="msg" id="msg-${entryId}"></span>
+  </div>
+</div>`;
+}
+
+async function setStatus(id, status) {
+  const msgEl = document.getElementById('msg-' + id);
+  msgEl.textContent = 'Saving…'; msgEl.className = 'msg';
+  try {
+    const resp = await fetch('/admin/flags/' + encodeURIComponent(id) + '/status', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({status}),
+    });
+    if (!resp.ok) { throw new Error(await resp.text()); }
+    const entry = ALL.find(e => e.id === id);
+    if (entry) entry.status = status;
+    const card = document.getElementById('entry-' + id);
+    if (card) {
+      card.dataset.status = status;
+      card.querySelector('.badge-pending, .badge-approved, .badge-rejected').outerHTML =
+        `<span class="badge badge-${status}">${status}</span>`;
+    }
+    msgEl.textContent = 'Saved'; msgEl.className = 'msg';
+    showToast('Status set to ' + status);
+    applyFilters();
+  } catch(err) {
+    msgEl.textContent = 'Error: ' + err.message; msgEl.className = 'msg err';
+    showToast('Failed: ' + err.message, true);
+  }
+}
+
+function applyFilters() {
+  const fKind = document.getElementById('fKind').value;
+  const fStatus = document.getElementById('fStatus').value;
+  let visible = 0;
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(c => {
+    const ok = (!fKind || c.dataset.kind === fKind) &&
+               (!fStatus || c.dataset.status === fStatus);
+    c.style.display = ok ? '' : 'none';
+    if (ok) visible++;
+  });
+  document.getElementById('count').textContent = `Showing ${visible} of ${ALL.length}`;
+}
+
+async function load() {
+  try {
+    const resp = await fetch('/admin/flags.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    ALL = await resp.json();
+    const list = document.getElementById('list');
+    if (!ALL.length) { list.innerHTML = '<p class="empty">No flagged entries yet.</p>'; return; }
+    // newest first
+    const sorted = [...ALL].sort((a,b) => (b.flagged_at||'').localeCompare(a.flagged_at||''));
+    list.innerHTML = sorted.map(renderEntry).join('');
+    applyFilters();
+  } catch(err) {
+    document.getElementById('list').innerHTML = `<p class="empty err">Failed to load: ${err.message}</p>`;
+  }
+}
+
+document.getElementById('fKind').addEventListener('change', applyFilters);
+document.getElementById('fStatus').addEventListener('change', applyFilters);
+load();
+</script>
+</body>
+</html>
+"""
+
+
+@app.get("/admin/flags")
+def admin_flags_dashboard():
+    """Serve the maintainer flag-review dashboard (self-contained HTML)."""
+    from fastapi.responses import HTMLResponse
+    return HTMLResponse(content=_ADMIN_DASHBOARD_HTML, status_code=200)
+
+
+@app.get("/admin/flags.json")
+def admin_flags_json() -> List[Dict[str, Any]]:
+    """Return all flag-queue entries as JSON, with ids and statuses backfilled."""
+    return _load_flag_queue()
+
+
+class FlagStatusUpdate(BaseModel):
+    status: str  # "approved" | "rejected" | "pending"
+
+
+@app.post("/admin/flags/{flag_id}/status")
+def admin_flag_set_status(flag_id: str, body: FlagStatusUpdate) -> Dict[str, Any]:
+    """Set the status of a flag-queue entry by id.
+
+    Accepts: { "status": "approved" | "rejected" | "pending" }
+    Returns: { "ok": true, "id": <id>, "status": <new_status> }
+    """
+    allowed = {"approved", "rejected", "pending"}
+    if body.status not in allowed:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid status {body.status!r}. Must be one of: {sorted(allowed)}",
+        )
+    entries = _load_flag_queue()
+    for e in entries:
+        if e.get("id") == flag_id:
+            e["status"] = body.status
+            _save_flag_queue(entries)
+            return {"ok": True, "id": flag_id, "status": body.status}
+    raise HTTPException(status_code=404, detail=f"No flag entry with id={flag_id!r}")
 
 
 @app.get("/read/{slug}")

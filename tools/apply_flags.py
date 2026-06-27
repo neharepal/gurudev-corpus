@@ -32,9 +32,11 @@ from __future__ import annotations
 import argparse
 import datetime
 import difflib
+import json
 import os
 import shutil
 import sys
+import uuid
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -46,6 +48,7 @@ import yaml
 
 REPO: Path = Path(os.environ.get("GURUDEV_REPO", "")).resolve() or Path(__file__).resolve().parent.parent
 FLAG_QUEUE_PATH: Path = REPO / "03_catalog" / "flag_queue.yaml"
+LEGACY_JSONL_PATH: Path = REPO / "logs" / "issue_reports.jsonl"
 
 
 # ---------------------------------------------------------------------------
@@ -147,10 +150,17 @@ def save_queue(entries: List[Dict[str, Any]]) -> None:
 
 
 def pending_corrections(entries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Return entries that are kind=correction AND have not been applied yet."""
+    """Return entries that are kind=correction, status=approved, and not yet applied.
+
+    `status` missing is treated as "pending" (not approved), so legacy entries
+    without a status field are NOT applied until explicitly approved via the
+    dashboard.  Entries already applied (applied_at set) are also excluded.
+    """
     return [
         e for e in entries
-        if e.get("kind") == "correction" and e.get("applied_at") is None
+        if e.get("kind") == "correction"
+        and e.get("status") == "approved"
+        and e.get("applied_at") is None
         and e.get("slug") and e.get("original") is not None and e.get("corrected") is not None
     ]
 
@@ -184,25 +194,37 @@ def _make_diff(a: str, b: str, label_a: str = "original", label_b: str = "correc
 # ---------------------------------------------------------------------------
 
 def cmd_list() -> int:
-    """Print pending correction entries with readable diff."""
+    """Print all correction entries (all statuses) with readable diff and status."""
     entries = load_queue()
-    corrections = pending_corrections(entries)
+    corrections = [
+        e for e in entries
+        if e.get("kind") == "correction"
+        and e.get("slug") and e.get("original") is not None and e.get("corrected") is not None
+    ]
 
     if not corrections:
-        print("No pending corrections in the flag queue.")
+        print("No corrections in the flag queue.")
         return 0
 
-    print(f"Pending corrections: {len(corrections)}\n")
+    print(f"Corrections in queue: {len(corrections)}\n")
     for i, entry in enumerate(corrections, 1):
         slug = entry.get("slug", "?")
         page = entry.get("page", "?")
         paragraph = entry.get("paragraph", "?")
         lang = entry.get("lang", "")
         flagged_at = entry.get("flagged_at", "?")
+        status = entry.get("status", "pending")
+        applied_at = entry.get("applied_at")
         original = entry.get("original", "")
         corrected = entry.get("corrected", "")
+        entry_id = entry.get("id", "?")
 
-        print(f"[{i}] slug={slug!r}  page={page}  para={paragraph}  lang={lang!r}  flagged={flagged_at}")
+        print(
+            f"[{i}] id={entry_id!r}  slug={slug!r}  page={page}  para={paragraph}  "
+            f"lang={lang!r}  status={status!r}  flagged={flagged_at}"
+        )
+        if applied_at:
+            print(f"     applied_at={applied_at}")
         diff = _make_diff(original, corrected, label_a=f"original (slug={slug})", label_b="corrected")
         # Indent the diff for readability
         for line in diff.splitlines():
@@ -374,6 +396,124 @@ def _print_reembed_instructions(slugs: List[str], *, reembed: bool) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Legacy migration: logs/issue_reports.jsonl → 03_catalog/flag_queue.yaml
+# ---------------------------------------------------------------------------
+
+def cmd_migrate_legacy(
+    *,
+    legacy_path: Optional[Path] = None,
+    queue_path: Optional[Path] = None,
+) -> int:
+    """Convert entries in logs/issue_reports.jsonl into 03_catalog/flag_queue.yaml.
+
+    Idempotent: entries already present in the queue (matched by `flagged_at` +
+    `slug` + `paragraph`) are skipped.  New entries are appended with a generated
+    `id` and default `status: "pending"`.
+
+    Usage:
+        python tools/apply_flags.py --migrate-legacy
+    """
+    src = legacy_path or LEGACY_JSONL_PATH
+    dst = queue_path or FLAG_QUEUE_PATH
+
+    if not src.exists():
+        print(f"Legacy file not found: {src}  (nothing to migrate).")
+        return 0
+
+    # Read legacy jsonl
+    legacy_entries: List[Dict[str, Any]] = []
+    with open(src, encoding="utf-8") as fh:
+        for lineno, line in enumerate(fh, 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                legacy_entries.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                print(f"WARNING: skipping line {lineno} (invalid JSON): {exc}", file=sys.stderr)
+
+    if not legacy_entries:
+        print("Legacy file is empty — nothing to migrate.")
+        return 0
+
+    # Load existing queue (backfill ids as needed)
+    existing: List[Dict[str, Any]] = []
+    if dst.exists():
+        try:
+            raw = yaml.safe_load(dst.read_text(encoding="utf-8"))
+            if isinstance(raw, list):
+                existing = raw
+        except Exception as exc:
+            print(f"WARNING: could not parse existing queue: {exc}", file=sys.stderr)
+
+    # Build a dedup key set from the existing queue
+    def _dedup_key(e: Dict[str, Any]) -> tuple:
+        return (
+            e.get("flagged_at") or e.get("timestamp", ""),
+            e.get("slug", ""),
+            e.get("paragraph", ""),
+        )
+
+    existing_keys = {_dedup_key(e) for e in existing}
+
+    # Map jsonl fields to the YAML schema
+    added = 0
+    for raw in legacy_entries:
+        # jsonl uses "timestamp" not "flagged_at"
+        flagged_at = raw.get("timestamp") or raw.get("flagged_at", "")
+        slug = raw.get("slug", "")
+        paragraph = raw.get("paragraph", "")
+
+        key = (flagged_at, slug, paragraph)
+        if key in existing_keys:
+            print(f"  SKIP (already imported): slug={slug!r}  para={paragraph}  flagged_at={flagged_at}")
+            continue
+
+        entry: Dict[str, Any] = {
+            "id": uuid.uuid4().hex[:12],
+            "flagged_at": flagged_at,
+            "status": "pending",
+            "kind": raw.get("kind", "correction"),
+            "question": raw.get("question", ""),
+            "mode": raw.get("mode", "reading"),
+            "citations": raw.get("citations", []),
+            "category": raw.get("category", ""),
+            "note": raw.get("note", ""),
+            "lang": raw.get("lang", ""),
+        }
+        # Correction-specific fields
+        if slug:
+            entry["slug"] = slug
+        if raw.get("page") is not None:
+            entry["page"] = raw["page"]
+        if paragraph != "":
+            entry["paragraph"] = paragraph
+        if raw.get("original") is not None:
+            entry["original"] = raw["original"]
+        if raw.get("corrected") is not None:
+            entry["corrected"] = raw["corrected"]
+
+        existing.append(entry)
+        existing_keys.add(key)
+        added += 1
+        print(f"  IMPORT: slug={slug!r}  para={paragraph}  flagged_at={flagged_at}")
+
+    if added:
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        tmp = dst.with_suffix(".yaml.tmp")
+        tmp.write_text(
+            yaml.dump(existing, allow_unicode=True, default_flow_style=False, sort_keys=False),
+            encoding="utf-8",
+        )
+        tmp.replace(dst)
+        print(f"\nMigrated {added} entry/entries → {dst}")
+    else:
+        print("No new entries to migrate.")
+
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # CLI entry point
 # ---------------------------------------------------------------------------
 
@@ -386,12 +526,20 @@ def build_parser() -> argparse.ArgumentParser:
     mode.add_argument(
         "--list",
         action="store_true",
-        help="List pending correction entries (diff of original → corrected).",
+        help="List all corrections (all statuses) with diff and status.",
     )
     mode.add_argument(
         "--apply",
         action="store_true",
-        help="Apply pending corrections to source text.md files.",
+        help="Apply approved corrections (status=approved) to source text.md files.",
+    )
+    mode.add_argument(
+        "--migrate-legacy",
+        action="store_true",
+        help=(
+            "One-time migration: convert entries from logs/issue_reports.jsonl "
+            "into 03_catalog/flag_queue.yaml (idempotent)."
+        ),
     )
     p.add_argument(
         "--dry-run",
@@ -425,6 +573,9 @@ def main(argv: Optional[List[str]] = None) -> int:
         if args.reembed and args.dry_run:
             parser.error("--reembed and --dry-run are mutually exclusive")
         return cmd_apply(dry_run=args.dry_run, yes=args.yes, reembed=args.reembed)
+
+    if getattr(args, "migrate_legacy", False):
+        return cmd_migrate_legacy()
 
     parser.print_help()
     return 1
