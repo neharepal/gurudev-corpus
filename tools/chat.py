@@ -97,7 +97,7 @@ def run_retrieval(
     fused = retrieve.fused_candidate_scores(question, scores, metas, texts=subset_texts)
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
-    cand_scores = scores[cand_idx]
+    cand_scores = fused[cand_idx]  # MMR ranks on fused (dense+lexical), not raw dense
 
     reranked = retrieve.mmr_rerank(
         qvec, cand_idx, cand_scores, embeddings, metas,

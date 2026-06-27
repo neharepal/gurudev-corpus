@@ -58,7 +58,7 @@ def main() -> int:
     cand_idx = np.argpartition(-selection_scores, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-selection_scores[cand_idx])]
     reranked = retrieve.mmr_rerank(
-        qvec, cand_idx, weighted[cand_idx], embeddings, metas,
+        qvec, cand_idx, selection_scores[cand_idx], embeddings, metas,
         top_k=args.top_k, mmr_lambda=args.mmr_lambda,
         max_per_source=args.max_per_source,
     )

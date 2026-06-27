@@ -390,7 +390,11 @@ def _retrieve(
     fused = retrieve.fused_candidate_scores(question, scores, sub_metas, texts=subset_texts)
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
-    cand_scores = scores[cand_idx]
+    # Use the FUSED (dense+lexical) relevance for MMR ranking + the per-work cap,
+    # not raw dense — otherwise a lexically-surfaced chunk (e.g. the idol-worship
+    # passage) gets into the pool but loses its work's slot to a higher-dense
+    # sibling. MMR's diversity term still uses the embeddings.
+    cand_scores = fused[cand_idx]
     reranked = retrieve.mmr_rerank(
         qvec, cand_idx, cand_scores, sub_emb, sub_metas,
         top_k=top_k,
