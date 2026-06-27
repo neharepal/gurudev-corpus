@@ -305,6 +305,10 @@ class AskRequest(BaseModel):
 class ReportCitation(BaseModel):
     workTitle: str
     location: str
+    # RFC-004: quote body included for issue context so reviewers can see what
+    # was actually cited. Optional for backward-compat (plain location-only
+    # reports from old clients or correction flows still work).
+    body: Optional[str] = None
 
 
 class ReportRequest(BaseModel):
@@ -314,6 +318,10 @@ class ReportRequest(BaseModel):
     note: Optional[str] = None
     # RFC-004 flag category (radio selection from the UI).
     category: Optional[str] = None
+    # RFC-004: full answer text (framing/synthesis joined) so reviewers can
+    # see exactly what the model said without re-running the query. Optional
+    # for backward-compat.
+    answer_text: Optional[str] = None
     # Correction fields (garble Phase 2 — flag-and-queue).
     # All optional so plain issue reports remain backward-compatible.
     kind: Optional[str] = None        # "correction" | "issue" (default None = "issue")
@@ -637,6 +645,11 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
     same queue; the `kind` field distinguishes them ("issue" vs "correction").
     """
     FLAG_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    # Serialize citations, keeping body when present so reviewers see the quoted text.
+    serialized_citations = [
+        {k: v for k, v in c.model_dump().items() if v is not None}
+        for c in (req.citations or [])
+    ]
     entry: Dict[str, Any] = {
         "id": uuid.uuid4().hex[:12],
         "flagged_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -644,11 +657,14 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
         "kind": req.kind or "issue",
         "question": req.question,
         "mode": req.mode,
-        "citations": [c.model_dump() for c in (req.citations or [])],
+        "citations": serialized_citations,
         "category": req.category or "",
         "note": req.note or "",
         "lang": req.lang or "",
     }
+    # Persist the full answer text for reviewer context (RFC-004).
+    if req.answer_text is not None:
+        entry["answer_text"] = req.answer_text
     # Correction-specific fields — only included when the caller sends them.
     if req.slug is not None:
         entry["slug"] = req.slug
@@ -854,9 +870,15 @@ function renderEntry(e) {
     if (e.category) body += `<div class="note-block"><span class="note-label">Category:</span> ${escHtml(e.category)}</div>`;
     if (e.note) body += `<div class="note-block"><span class="note-label">Note:</span> ${escHtml(e.note)}</div>`;
     if (e.question) body += `<div class="note-block"><span class="note-label">Question:</span> ${escHtml(e.question)}</div>`;
+    if (e.answer_text) body += `<div class="note-block"><span class="note-label">Answer:</span> <span style="white-space:pre-wrap">${escHtml(e.answer_text)}</span></div>`;
     if (e.citations && e.citations.length) {
-      const cits = e.citations.map(c => `${escHtml(c.workTitle)} — ${escHtml(c.location)}`).join('; ');
-      body += `<div class="note-block"><span class="note-label">Citations:</span> ${cits}</div>`;
+      body += `<div class="note-block"><span class="note-label">Citations:</span></div>`;
+      for (const c of e.citations) {
+        body += `<div class="diff-block" style="margin:4px 0 8px 0">`;
+        body += `<div class="diff-label">${escHtml(c.workTitle)} · ${escHtml(c.location)}</div>`;
+        if (c.body) body += `<div class="diff-add" style="background:var(--card)">${escHtml(c.body)}</div>`;
+        body += `</div>`;
+      }
     }
   }
   const flaggedAt = e.flagged_at ? `<span class="at" title="${escHtml(e.flagged_at)}">${e.flagged_at.slice(0,19).replace('T',' ')} UTC</span>` : '';

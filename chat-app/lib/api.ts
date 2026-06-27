@@ -117,6 +117,8 @@ type Quote = {
 export type ReportCitation = {
   workTitle: string;
   location: string;
+  /** RFC-004: the verbatim quote body, so reviewers see what was cited. */
+  body?: string;
 };
 
 export type ReportRequest = {
@@ -126,6 +128,11 @@ export type ReportRequest = {
   note?: string;
   /** RFC-004 flag category selected from the radio group. */
   category?: string;
+  /**
+   * RFC-004: the full answer text (framing/synthesis joined) so reviewers
+   * can see exactly what the model said without re-running the query.
+   */
+  answer_text?: string;
 };
 
 /**

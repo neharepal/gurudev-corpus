@@ -122,6 +122,8 @@ export type AnswerToolbarProps = {
   question?: string;
   mode?: string;
   citations?: ReportCitation[];
+  /** RFC-004: full answer prose (framing + synthesis joined) for reviewer context. */
+  answerText?: string;
 };
 
 export default function AnswerToolbar({
@@ -129,6 +131,7 @@ export default function AnswerToolbar({
   question = "",
   mode = "qa",
   citations = [],
+  answerText,
 }: AnswerToolbarProps) {
   const l = LABELS[lang];
   const isMr = lang === "mr";
@@ -169,6 +172,7 @@ export default function AnswerToolbar({
         citations,
         note: reportDetail.trim() || undefined,
         category: reportCategory,
+        answer_text: answerText || undefined,
       });
       setReportDone(true);
       setReportOpen(false);

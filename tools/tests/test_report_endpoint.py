@@ -211,3 +211,98 @@ def test_report_yaml_stays_valid_after_multiple_appends(client, tmp_queue):
     for entry in raw:
         assert "flagged_at" in entry
         assert entry["category"] == "other"
+
+
+def test_report_answer_text_persisted(client, tmp_queue):
+    """answer_text is stored in the YAML entry when provided."""
+    payload = {
+        "question": "What did Gurudev say about nāmasādhana?",
+        "mode": "qa",
+        "category": "quote-mismatch",
+        "answer_text": "Gurudev emphasised nāmasādhana as the central practice.\n\nHe wrote extensively about this in Pathway to God.",
+    }
+    resp = client.post("/report", json=payload)
+    assert resp.status_code == 200, resp.text
+
+    entries = _load_entries(tmp_queue)
+    assert len(entries) == 1
+    record = entries[0]
+    assert record["answer_text"] == payload["answer_text"]
+
+
+def test_report_citations_with_body_persisted(client, tmp_queue):
+    """Citations that carry a body field are persisted including the body."""
+    payload = {
+        "question": "What is the nature of bhakti?",
+        "mode": "qa",
+        "category": "quote-mismatch",
+        "citations": [
+            {
+                "workTitle": "Pathway to God",
+                "location": "General Introduction",
+                "body": "The path of devotion leads the aspirant directly to the divine presence.",
+            },
+            {
+                "workTitle": "Mysticism in Maharashtra",
+                "location": "Ch. 3",
+                # No body — backward-compat: old clients may omit it.
+            },
+        ],
+    }
+    resp = client.post("/report", json=payload)
+    assert resp.status_code == 200, resp.text
+
+    entries = _load_entries(tmp_queue)
+    assert len(entries) == 1
+    record = entries[0]
+    assert len(record["citations"]) == 2
+    # First citation has body.
+    first = record["citations"][0]
+    assert first["workTitle"] == "Pathway to God"
+    assert first["body"] == "The path of devotion leads the aspirant directly to the divine presence."
+    # Second citation has no body key (omitted from serialization).
+    second = record["citations"][1]
+    assert second["workTitle"] == "Mysticism in Maharashtra"
+    assert "body" not in second
+
+
+def test_report_answer_text_absent_when_not_sent(client, tmp_queue):
+    """answer_text is NOT present in the entry when the client doesn't send it."""
+    resp = client.post(
+        "/report",
+        json={"question": "Who was Gurudev?", "mode": "qa", "category": "other"},
+    )
+    assert resp.status_code == 200
+
+    entries = _load_entries(tmp_queue)
+    assert len(entries) == 1
+    record = entries[0]
+    assert "answer_text" not in record
+
+
+def test_admin_flags_json_returns_answer_text_and_citation_body(client, tmp_queue):
+    """GET /admin/flags.json returns answer_text and citation body in the entry."""
+    payload = {
+        "question": "What is Gurudev's teaching on yoga?",
+        "mode": "pravachan",
+        "category": "missing-context",
+        "answer_text": "Gurudev saw yoga as inner discipline.",
+        "citations": [
+            {
+                "workTitle": "Pathway to God",
+                "location": "p. 12",
+                "body": "Yoga is the union of the self with the supreme.",
+            }
+        ],
+    }
+    resp = client.post("/report", json=payload)
+    assert resp.status_code == 200, resp.text
+
+    json_resp = client.get("/admin/flags.json")
+    assert json_resp.status_code == 200
+    entries = json_resp.json()
+    assert isinstance(entries, list)
+    assert len(entries) == 1
+    record = entries[0]
+    assert record["answer_text"] == "Gurudev saw yoga as inner discipline."
+    assert record["citations"][0]["body"] == "Yoga is the union of the self with the supreme."

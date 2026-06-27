@@ -22,6 +22,7 @@ import {
   askApiStream,
   AskError,
   type HistoryTurn,
+  type ReportCitation,
   type StreamEvent,
 } from "../../lib/api";
 
@@ -138,6 +139,56 @@ function extractCitedPassages(
     }
   }
   return out;
+}
+
+// Extract richer citations (including quote body) for the RFC-004 report payload.
+// Separate from extractCitedPassages (history-only, no body) to keep the types clean.
+function extractReportCitations(
+  ans: QAAnswer | PravachanAnswer | null,
+): ReportCitation[] {
+  if (!ans) return [];
+  if (ans.kind === "qa") {
+    return (ans.citations ?? [])
+      .filter((c) => c?.quote)
+      .map((c) => ({
+        workTitle: c.quote.workTitle,
+        location: c.quote.location,
+        body: c.quote.body || undefined,
+      }));
+  }
+  // Pravachan: gurudevsWords + examples.
+  const out: ReportCitation[] = [];
+  if (ans.gurudevsWords?.workTitle) {
+    out.push({
+      workTitle: ans.gurudevsWords.workTitle,
+      location: ans.gurudevsWords.location,
+      body: ans.gurudevsWords.body || undefined,
+    });
+  }
+  for (const ex of ans.examples ?? []) {
+    if (ex?.quote) {
+      out.push({
+        workTitle: ex.quote.workTitle,
+        location: ex.quote.location,
+        body: ex.quote.body || undefined,
+      });
+    }
+  }
+  return out;
+}
+
+// Build the answer prose text for RFC-004 reviewer context.
+// Joins framing/synthesis for QA; thesis for Pravachan.
+function buildAnswerText(ans: QAAnswer | PravachanAnswer | null): string | undefined {
+  if (!ans) return undefined;
+  if (ans.kind === "qa") {
+    const parts: string[] = [];
+    if (ans.framing) parts.push(ans.framing);
+    if (ans.synthesis) parts.push(ans.synthesis);
+    return parts.join("\n\n") || undefined;
+  }
+  // Pravachan: thesis is the answer voice text.
+  return ans.thesis || undefined;
 }
 
 // `useSearchParams` requires a Suspense boundary on the static-rendering path
@@ -637,7 +688,8 @@ function ChatPage() {
               lang={lang}
               question={questionFromUrl ?? answer.question ?? ""}
               mode={mode}
-              citations={extractCitedPassages(answer)}
+              citations={extractReportCitations(answer)}
+              answerText={buildAnswerText(answer)}
             />
           </div>
         ) : null}
