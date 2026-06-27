@@ -38,6 +38,7 @@ const L: Record<
     backToStart: string;
     backToPravachan: string;
     pageXofY: (current: number, total: number) => string;
+    pageOf: string;
     previous: string;
     next: string;
     askAboutThisWork: string;
@@ -66,6 +67,7 @@ const L: Record<
     backToStart: "◁ Back to start",
     backToPravachan: "◁ Back to your Pravachan",
     pageXofY: (c, t) => `Page ${c} of ${t}`,
+    pageOf: "of",
     previous: "◁ Previous",
     next: "Next ▷",
     askAboutThisWork: "Ask about this work",
@@ -94,6 +96,7 @@ const L: Record<
     backToStart: "◁ सुरुवातीला परत",
     backToPravachan: "◁ तुमच्या प्रवचनाकडे परत",
     pageXofY: (c, t) => `पान ${c} / ${t}`,
+    pageOf: "/",
     previous: "◁ मागे",
     next: "पुढे ▷",
     askAboutThisWork: "या ग्रंथाविषयी विचारा",
@@ -178,6 +181,10 @@ function ReadingPage() {
   >(null);
   const [hoveredN, setHoveredN] = useState<number | null>(null);
 
+  // Page-jump input: tracks the raw string value while the user is typing.
+  // Initialised to empty string; synced to currentPage on blur/commit.
+  const [pageInputValue, setPageInputValue] = useState<string>("");
+
   // Real corpus fetch — re-runs whenever slug, lang, or currentPage changes.
   const [pageData, setPageData] = useState<ReadingPage | null>(null);
   const [loading, setLoading] = useState(true);
@@ -212,6 +219,12 @@ function ReadingPage() {
     setCorrectionStatus(null);
     setHoveredN(null);
   }, [slug, currentPage]);
+
+  // Keep the page-jump input in sync with the authoritative currentPage
+  // whenever it changes via Prev/Next, URL deep-link, or fetch clamp.
+  useEffect(() => {
+    setPageInputValue(String(currentPage));
+  }, [currentPage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -357,6 +370,31 @@ function ReadingPage() {
   const total = pageData?.totalPages ?? 1;
   const progress = Math.min(100, Math.round((currentPage / total) * 100));
 
+  // Commit the page-jump input: parse, clamp to [1, total], navigate.
+  // If invalid (NaN / empty), snap back to currentPage.
+  function commitPageJump() {
+    const parsed = parseInt(pageInputValue, 10);
+    if (!Number.isNaN(parsed)) {
+      const clamped = Math.max(1, Math.min(total, parsed));
+      setCurrentPage(clamped);
+      setPageInputValue(String(clamped));
+    } else {
+      // Revert to current page on bad input
+      setPageInputValue(String(currentPage));
+    }
+  }
+
+  function onPageInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      commitPageJump();
+      e.currentTarget.blur();
+    } else if (e.key === "Escape") {
+      setPageInputValue(String(currentPage));
+      e.currentTarget.blur();
+    }
+  }
+
   return (
     <>
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
@@ -408,7 +446,7 @@ function ReadingPage() {
         </div>
       </header>
 
-      {/* Progress bar — Page X of Y. */}
+      {/* Progress bar — Page [input] of Y. */}
       <div className="mb-6 flex items-center gap-3">
         <div
           className="h-[6px] flex-1 overflow-hidden rounded-full"
@@ -423,11 +461,37 @@ function ReadingPage() {
             }}
           />
         </div>
+        {/* Editable page-jump: "Page [N] of T". The number part is a small
+            number input; pressing Enter or blurring commits the jump.
+            Pressing Escape snaps back to the current page. */}
         <span
-          className={`text-[13px] ${isMr ? "font-deva" : ""}`}
-          style={{ color: "var(--text-secondary)" }}
+          className={`flex items-baseline gap-1 text-[13px] ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-secondary)", whiteSpace: "nowrap" }}
         >
-          {lbl.pageXofY(currentPage, total)}
+          {isMr ? "पान" : "Page"}
+          <input
+            type="number"
+            min={1}
+            max={total}
+            value={pageInputValue}
+            onChange={(e) => setPageInputValue(e.target.value)}
+            onKeyDown={onPageInputKeyDown}
+            onBlur={commitPageJump}
+            onFocus={(e) => e.currentTarget.select()}
+            aria-label={lbl.pageXofY(currentPage, total)}
+            className="rounded-[3px] px-1 text-center text-[13px]"
+            style={{
+              width: `${Math.max(2, String(total).length + 0.5)}ch`,
+              color: "var(--text-secondary)",
+              background: "var(--bg-panel)",
+              border: "1px solid var(--border-soft)",
+              fontFamily: "inherit",
+              lineHeight: "inherit",
+              /* Hide browser spinner arrows */
+              MozAppearance: "textfield",
+            } as React.CSSProperties}
+          />
+          {lbl.pageOf} {total}
         </span>
       </div>
 
@@ -450,14 +514,7 @@ function ReadingPage() {
             onFocus={() => setHoveredN(para.n)}
             onBlur={() => setHoveredN(null)}
           >
-            <div className="flex gap-4">
-              <div
-                className="shrink-0 pt-1 font-mono text-[12px]"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                ¶ {para.n}
-              </div>
-              <div style={{ flex: 1 }}>
+            <div>
                 {activeCorrectionN === para.n ? (
                   /* Inline correction editor */
                   <div>
@@ -563,7 +620,6 @@ function ReadingPage() {
                     ✏ {lbl.suggestCorrection}
                   </button>
                 )}
-              </div>
             </div>
           </div>
         ))}
