@@ -66,12 +66,12 @@ Status changes are noted at the top of the document, dated.
 |---|---|---|
 | [001](RFC-001-demo-mvp.md) | Demo MVP scope (July 12) | ACCEPTED |
 | [002](RFC-002-corpus-structure.md) | Corpus structure | ACCEPTED |
-| [003](RFC-003-retrieval-and-rag.md) | Retrieval & RAG strategy (amended 2026-06-25: model choice, answer shape, voice, follow-up history) | ACCEPTED |
-| [004](RFC-004-chat-ui-and-ux.md) | Chat UI & UX | ACCEPTED |
+| [003](RFC-003-retrieval-and-rag.md) | Retrieval & RAG strategy (amended 2026-06-25: model choice, answer shape, voice, follow-up history; amended 2026-06-27: hybrid BM25+RRF retrieval) | ACCEPTED |
+| [004](RFC-004-chat-ui-and-ux.md) | Chat UI & UX (amended 2026-06-27: content-flagging section implemented — flag queue, review dashboard, apply CLI) | ACCEPTED |
 | [005](RFC-005-multilingual-strategy.md) | Multilingual (EN + MR) strategy | ACCEPTED |
 | 006 | Access control & invite system | future |
 | 007 | Deployment & hosting | future |
 | 008 | Audio recordings + transcription | future |
 | [009](RFC-009-corpus-ingestion-pipeline.md) | Corpus ingestion pipeline (new-material runbook) | ACCEPTED |
 | [010](RFC-010-progressive-streaming.md) | Progressive streaming for the answer surface | ACCEPTED |
-| [011](RFC-011-intent-aware-citation-ranking.md) | Intent-aware citation ranking | PROPOSED |
+| [011](RFC-011-intent-aware-citation-ranking.md) | Intent-aware citation ranking | ACCEPTED |

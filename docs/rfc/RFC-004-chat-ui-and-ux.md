@@ -3,7 +3,7 @@
 **Status:** ACCEPTED 2026-06-13 (finer visual details deferred to Phase 2 implementation per §Deferred)
 **Author:** Neha (with Claude)
 **Created:** 2026-06-13
-**Last updated:** 2026-06-13 (amended for ADR-007 quote-first; mode dropdown; subtle suggested questions; real text in Simple Reading)
+**Last updated:** 2026-06-27 (amended for ADR-007 quote-first; mode dropdown; suggested questions; 2026-06-27 content-flagging section implemented)
 
 ## Summary
 
@@ -490,3 +490,27 @@ Captured 2026-06-13 — user explicitly chose to refine these during build, not 
 - RFC-005 (Multilingual EN+MR) — for language-detect specifics
 - RFC-007 (Deployment) — for hosting and auth
 - `/tools/citation-panel-mockups.html` — the Layout 3 selection
+
+## Amendment (2026-06-27): Content-flagging section implemented
+
+The §"Content flagging mechanism" specified in this RFC is now fully built and
+merged. Key implementation notes against the spec:
+
+- **Storage:** `03_catalog/flag_queue.yaml` as specified (migrated from an
+  interim `logs/issue_reports.jsonl` in commit `25ab503`).
+- **Flag entry shape:** matches the RFC-004 schema; adds a `correction` block
+  for in-reader paragraph corrections (F18, garble Phase 2).
+- **Status field values:** `pending | approved | rejected | applied` (the RFC
+  specified `open | reviewing | fixed | not-an-issue | wontfix`; the shipped
+  values are simpler and map directly to the `apply_flags.py` workflow).
+- **Report modal:** category radios per RFC-004 spec, plus optional detail,
+  with Marathi confirmation toast.
+- **WhatsApp share:** per RFC-004 line 25, the share menu includes WhatsApp
+  (`https://wa.me/?text=…`), Copy link, and native Web Share API fallback.
+- **Admin review surface:** `/admin/flags` dashboard with approve/reject
+  (not deferred as the RFC originally said — built in commit `d0fb2dd`).
+- **Corpus update workflow:** `tools/apply_flags.py` CLI — review approved
+  corrections, apply to `text.md` with backup + diff, mark applied, re-embed.
+
+See [ADR-016](../decisions/ADR-016-content-flagging-workflow.md) for the full
+design decision, alternatives, and commit references.
