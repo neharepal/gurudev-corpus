@@ -148,3 +148,89 @@ input:focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
+
+/* ── Reader progress slider (gd-page-slider) ─────────────────────────────
+   Replaces the static progress bar + editable number input with a draggable
+   range slider. The filled left portion uses the gold accent; the empty
+   right portion uses the panel background to match the old empty-track look.
+   --slider-pct is set inline from React so the fill gradient tracks the
+   current thumb position during scrubbing without needing JS to repaint. */
+.gd-page-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    to right,
+    var(--accent-gold) 0%,
+    var(--accent-gold) var(--slider-pct, 0%),
+    var(--bg-panel) var(--slider-pct, 0%),
+    var(--bg-panel) 100%
+  );
+}
+
+/* WebKit / Blink track */
+.gd-page-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: transparent; /* track colour is on the element itself via background */
+}
+
+/* WebKit / Blink thumb */
+.gd-page-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 4px rgba(60, 30, 10, 0.30);
+  cursor: pointer;
+  margin-top: -4px; /* centre vertically on the 6 px track */
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+.gd-page-slider::-webkit-slider-thumb:hover {
+  background: #6B1F1F;
+  box-shadow: 0 2px 8px rgba(60, 30, 10, 0.40);
+}
+
+/* Firefox track */
+.gd-page-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--bg-panel);
+}
+
+/* Firefox fill (the part left of the thumb) */
+.gd-page-slider::-moz-range-progress {
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--accent-gold);
+}
+
+/* Firefox thumb */
+.gd-page-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 4px rgba(60, 30, 10, 0.30);
+  cursor: pointer;
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+.gd-page-slider::-moz-range-thumb:hover {
+  background: #6B1F1F;
+  box-shadow: 0 2px 8px rgba(60, 30, 10, 0.40);
+}
+
+/* Focus ring on the slider itself */
+.gd-page-slider:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}

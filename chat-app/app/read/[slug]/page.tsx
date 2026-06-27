@@ -10,8 +10,12 @@ import {
   useEffect,
   useRef,
   useState,
+  type ChangeEvent,
+  type CSSProperties,
   type FormEvent,
   type KeyboardEvent,
+  type MouseEvent,
+  type TouchEvent,
 } from "react";
 import QuoteBlock from "../../../components/QuoteBlock";
 import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
@@ -38,7 +42,6 @@ const L: Record<
     backToStart: string;
     backToPravachan: string;
     pageXofY: (current: number, total: number) => string;
-    pageOf: string;
     previous: string;
     next: string;
     askAboutThisWork: string;
@@ -67,7 +70,6 @@ const L: Record<
     backToStart: "◁ Back to start",
     backToPravachan: "◁ Back to your Pravachan",
     pageXofY: (c, t) => `Page ${c} of ${t}`,
-    pageOf: "of",
     previous: "◁ Previous",
     next: "Next ▷",
     askAboutThisWork: "Ask about this work",
@@ -96,7 +98,6 @@ const L: Record<
     backToStart: "◁ सुरुवातीला परत",
     backToPravachan: "◁ तुमच्या प्रवचनाकडे परत",
     pageXofY: (c, t) => `पान ${c} / ${t}`,
-    pageOf: "/",
     previous: "◁ मागे",
     next: "पुढे ▷",
     askAboutThisWork: "या ग्रंथाविषयी विचारा",
@@ -181,9 +182,10 @@ function ReadingPage() {
   >(null);
   const [hoveredN, setHoveredN] = useState<number | null>(null);
 
-  // Page-jump input: tracks the raw string value while the user is typing.
-  // Initialised to empty string; synced to currentPage on blur/commit.
-  const [pageInputValue, setPageInputValue] = useState<string>("");
+  // Slider scrub value: tracks the live drag position so "Page X of Y" updates
+  // in real time without triggering a fetch on every tick. Commits (calls
+  // setCurrentPage) only on pointer/keyboard release events.
+  const [sliderValue, setSliderValue] = useState<number>(currentPage);
 
   // Real corpus fetch — re-runs whenever slug, lang, or currentPage changes.
   const [pageData, setPageData] = useState<ReadingPage | null>(null);
@@ -220,10 +222,10 @@ function ReadingPage() {
     setHoveredN(null);
   }, [slug, currentPage]);
 
-  // Keep the page-jump input in sync with the authoritative currentPage
+  // Keep the slider handle in sync with the authoritative currentPage
   // whenever it changes via Prev/Next, URL deep-link, or fetch clamp.
   useEffect(() => {
-    setPageInputValue(String(currentPage));
+    setSliderValue(currentPage);
   }, [currentPage]);
 
   useEffect(() => {
@@ -368,30 +370,27 @@ function ReadingPage() {
   }
 
   const total = pageData?.totalPages ?? 1;
-  const progress = Math.min(100, Math.round((currentPage / total) * 100));
 
-  // Commit the page-jump input: parse, clamp to [1, total], navigate.
-  // If invalid (NaN / empty), snap back to currentPage.
-  function commitPageJump() {
-    const parsed = parseInt(pageInputValue, 10);
-    if (!Number.isNaN(parsed)) {
-      const clamped = Math.max(1, Math.min(total, parsed));
-      setCurrentPage(clamped);
-      setPageInputValue(String(clamped));
-    } else {
-      // Revert to current page on bad input
-      setPageInputValue(String(currentPage));
-    }
+  // Update the live scrub position without triggering a fetch. Called on
+  // every change event (drag tick, arrow key press).
+  function onSliderChange(e: ChangeEvent<HTMLInputElement>) {
+    setSliderValue(parseInt(e.target.value, 10));
   }
 
-  function onPageInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      commitPageJump();
-      e.currentTarget.blur();
-    } else if (e.key === "Escape") {
-      setPageInputValue(String(currentPage));
-      e.currentTarget.blur();
+  // Commit the final slider position to currentPage, which triggers the
+  // fetch useEffect. Reading from the event target avoids stale-closure
+  // issues since React may still be batching the onChange state update at
+  // the time these events fire. Called on mouseup, touchend, and keyup.
+  function commitSliderFromEvent(
+    e:
+      | MouseEvent<HTMLInputElement>
+      | TouchEvent<HTMLInputElement>
+      | KeyboardEvent<HTMLInputElement>,
+  ) {
+    const v = parseInt(e.currentTarget.value, 10);
+    if (!Number.isNaN(v)) {
+      setSliderValue(v);   // keep local state in sync
+      setCurrentPage(v);   // commit → triggers fetch
     }
   }
 
@@ -446,56 +445,38 @@ function ReadingPage() {
         </div>
       </header>
 
-      {/* Progress bar — Page [input] of Y. */}
-      <div className="mb-6 flex items-center gap-3">
+      {/* Progress slider — draggable/clickable range input styled as the
+          parchment progress bar. Scrubbing updates the live readout only;
+          setCurrentPage (and the fetch) fire on pointer/keyboard release so
+          we avoid a fetch-storm while the user drags. */}
+      <div className="mb-6">
+        <input
+          type="range"
+          min={1}
+          max={total}
+          step={1}
+          value={sliderValue}
+          onChange={onSliderChange}
+          onMouseUp={commitSliderFromEvent}
+          onTouchEnd={commitSliderFromEvent}
+          onKeyUp={commitSliderFromEvent}
+          aria-label={lbl.pageXofY(sliderValue, total)}
+          aria-valuemin={1}
+          aria-valuemax={total}
+          aria-valuenow={sliderValue}
+          className="gd-page-slider"
+          style={
+            {
+              "--slider-pct": `${Math.min(100, Math.round(((sliderValue - 1) / Math.max(1, total - 1)) * 100))}%`,
+            } as CSSProperties
+          }
+        />
         <div
-          className="h-[6px] flex-1 overflow-hidden rounded-full"
-          style={{ background: "var(--bg-panel)" }}
+          className={`mt-1.5 text-[12px] text-right ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-secondary)" }}
         >
-          <div
-            className="h-full"
-            style={{
-              width: `${progress}%`,
-              background: "var(--accent-gold)",
-              transition: "width 220ms ease",
-            }}
-          />
+          {lbl.pageXofY(sliderValue, total)}
         </div>
-        {/* Editable page-jump: "Page [N] of T". The number part is a small
-            number input; pressing Enter or blurring commits the jump.
-            Pressing Escape snaps back to the current page. */}
-        <span
-          className={`flex items-baseline gap-1 text-[13px] ${isMr ? "font-deva" : ""}`}
-          style={{ color: "var(--text-secondary)", whiteSpace: "nowrap" }}
-        >
-          {isMr ? "पान" : "Page"}
-          {/* Plain numeric text field — no type=number spinner arrows (which hid
-              the value); the current page number is clearly shown and editable. */}
-          <input
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            value={pageInputValue}
-            onChange={(e) =>
-              setPageInputValue(e.target.value.replace(/[^0-9]/g, ""))
-            }
-            onKeyDown={onPageInputKeyDown}
-            onBlur={commitPageJump}
-            onFocus={(e) => e.currentTarget.select()}
-            aria-label={lbl.pageXofY(currentPage, total)}
-            title={lbl.pageXofY(currentPage, total)}
-            className="rounded-[4px] px-2 py-0.5 text-center text-[13px]"
-            style={{
-              width: `${Math.max(3, String(total).length + 2)}ch`,
-              color: "var(--text-primary)",
-              background: "var(--bg-panel)",
-              border: "1px solid var(--border-soft)",
-              fontFamily: "inherit",
-              lineHeight: "inherit",
-            } as React.CSSProperties}
-          />
-          {lbl.pageOf} {total}
-        </span>
       </div>
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
