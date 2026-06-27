@@ -377,8 +377,9 @@ def _retrieve(
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
-    cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]
-    cand_idx = cand_idx[np.argsort(-scores[cand_idx])]
+    fused = retrieve.fused_candidate_scores(question, scores, sub_metas)
+    cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
+    cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     cand_scores = scores[cand_idx]
     reranked = retrieve.mmr_rerank(
         qvec, cand_idx, cand_scores, sub_emb, sub_metas,
