@@ -124,6 +124,8 @@ export type ReportRequest = {
   mode: string;
   citations?: ReportCitation[];
   note?: string;
+  /** RFC-004 flag category selected from the radio group. */
+  category?: string;
 };
 
 /**
