@@ -248,6 +248,60 @@ def rrf_fuse(
     return fused.astype(np.float32)
 
 
+# ---------------------------------------------------------------------------
+# Corpus-level BM25 cache (lazy, built on first hybrid retrieval call)
+# ---------------------------------------------------------------------------
+
+# Cache: id(metas_list) -> BM25Index.  Keyed by object identity because
+# server.py holds a single STATE.metas list across requests; chat.py and
+# tune_sweep.py rebuild metas each call (different id), so they get a fresh
+# index, which is fine (those are one-shot scripts).
+_BM25_CACHE: dict = {}
+
+
+def _get_or_build_bm25_index(
+    metas: list,
+    *,
+    texts: list = None,
+) -> "BM25Index":
+    """Return a cached BM25Index for `metas`, building it on first call.
+
+    If `texts` is provided (same length as metas), it is used as the document
+    corpus.  Otherwise each chunk's text is loaded from chunks.jsonl via
+    load_chunk_text — this is the slow path (one disk seek per chunk), so it
+    is only hit once and the result is cached.
+    """
+    cache_key = id(metas)
+    if cache_key not in _BM25_CACHE:
+        if texts is None:
+            texts = [load_chunk_text(m, i) for i, m in enumerate(metas)]
+        _BM25_CACHE[cache_key] = BM25Index.build(texts)
+    return _BM25_CACHE[cache_key]
+
+
+def fused_candidate_scores(
+    query: str,
+    dense_scores: np.ndarray,
+    metas: list,
+    *,
+    texts: list = None,
+    rrf_k: int = 60,
+) -> np.ndarray:
+    """Return RRF-fused scores for candidate selection.
+
+    `dense_scores` must already include intent tier-weight adjustments.
+    `texts` is optional pre-loaded text list for the BM25 index; if omitted,
+    texts are loaded lazily (and cached) from disk.
+
+    The fused score is only used to pick the top-`candidates` pool that feeds
+    MMR rerank. MMR still uses the raw dense vectors for diversity scoring.
+    """
+    bm25_idx = _get_or_build_bm25_index(metas, texts=texts)
+    qtoks = _tokenize_bm25(query)
+    lex = bm25_idx.score(qtoks) if qtoks else np.zeros(len(dense_scores), dtype=np.float32)
+    return rrf_fuse(dense_scores, lex, k=rrf_k)
+
+
 def chunk_tier(meta: dict) -> str:
     """Authority tier of a chunk for intent-aware ranking (RFC-011).
 
