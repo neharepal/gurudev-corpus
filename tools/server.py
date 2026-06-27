@@ -372,12 +372,20 @@ def _retrieve(
         sub_emb = STATE.embeddings
         sub_metas = STATE.metas
 
+    # Pre-load subset texts with correct absolute indices so BM25 gets the right document.
+    # On the unfiltered path texts=None is fine (index covers the full corpus with identity mapping).
+    subset_texts = (
+        [retrieve.load_chunk_text(sub_metas[i], int(keep_idx[i])) for i in range(len(sub_metas))]
+        if keep_idx is not None
+        else None
+    )
+
     qvec = _embed_query(question)
     scores = sub_emb @ qvec
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
-    fused = retrieve.fused_candidate_scores(question, scores, sub_metas)
+    fused = retrieve.fused_candidate_scores(question, scores, sub_metas, texts=subset_texts)
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     cand_scores = scores[cand_idx]
@@ -502,6 +510,7 @@ def admin_reload() -> Dict[str, Any]:
     in your deployment, front it with auth or bind to localhost.
     """
     _reading_cache.clear()
+    retrieve._BM25_CACHE.clear()
     global _works_cache
     _works_cache = None
     before = len(getattr(STATE, "metas", []) or [])

@@ -259,6 +259,34 @@ def rrf_fuse(
 _BM25_CACHE: dict = {}
 
 
+def _load_all_chunk_texts(metas: list) -> list:
+    """Read 04_processed/chunks.jsonl once sequentially, returning a text per chunk.
+
+    Each element aligns with metas[i] — the i-th line of chunks.jsonl.
+    Returns '' for any missing or malformed line.
+    This is O(n) vs the O(n²) repeated-seek of calling load_chunk_text per chunk.
+    """
+    import json as _json
+    chunks_path = REPO / "04_processed" / "chunks.jsonl"
+    if not chunks_path.exists():
+        return [""] * len(metas)
+    texts: list = []
+    with chunks_path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    texts.append(_json.loads(line).get("text", ""))
+                except Exception:
+                    texts.append("")
+            else:
+                texts.append("")
+    # Pad if file is shorter than expected
+    while len(texts) < len(metas):
+        texts.append("")
+    return texts
+
+
 def _get_or_build_bm25_index(
     metas: list,
     *,
@@ -267,14 +295,13 @@ def _get_or_build_bm25_index(
     """Return a cached BM25Index for `metas`, building it on first call.
 
     If `texts` is provided (same length as metas), it is used as the document
-    corpus.  Otherwise each chunk's text is loaded from chunks.jsonl via
-    load_chunk_text — this is the slow path (one disk seek per chunk), so it
-    is only hit once and the result is cached.
+    corpus.  Otherwise texts are loaded from chunks.jsonl in a single sequential
+    pass via _load_all_chunk_texts — O(n), not O(n²).
     """
     cache_key = id(metas)
     if cache_key not in _BM25_CACHE:
         if texts is None:
-            texts = [load_chunk_text(m, i) for i, m in enumerate(metas)]
+            texts = _load_all_chunk_texts(metas)
         _BM25_CACHE[cache_key] = BM25Index.build(texts)
     return _BM25_CACHE[cache_key]
 
