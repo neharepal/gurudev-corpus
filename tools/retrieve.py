@@ -313,6 +313,7 @@ def fused_candidate_scores(
     *,
     texts: list = None,
     rrf_k: int = 60,
+    primary_fused_bonus: float = None,  # resolved below; default = PRIMARY_FUSED_BONUS
 ) -> np.ndarray:
     """Return RRF-fused scores for candidate selection.
 
@@ -322,11 +323,31 @@ def fused_candidate_scores(
 
     The fused score is only used to pick the top-`candidates` pool that feeds
     MMR rerank. MMR still uses the raw dense vectors for diversity scoring.
+
+    After RRF fusion, chunks whose author is in PRIMARY_AUTHORS *and* whose
+    tier is "canonical" receive `primary_fused_bonus` so that Gurudev's own
+    works are preferred over secondary sources even when the lexical (BM25)
+    signal is absent or weaker on the dense side.  The bonus is additive and
+    modest (~0.015 vs RRF range 0.01–0.03) so a secondary source with a much
+    higher relevance signal can still outrank a primary-author chunk.
     """
     bm25_idx = _get_or_build_bm25_index(metas, texts=texts)
     qtoks = _tokenize_bm25(query)
     lex = bm25_idx.score(qtoks) if qtoks else np.zeros(len(dense_scores), dtype=np.float32)
-    return rrf_fuse(dense_scores, lex, k=rrf_k)
+    fused = rrf_fuse(dense_scores, lex, k=rrf_k)
+
+    # Apply fused-side primary-author / canonical bonus (uniform across call sites).
+    # Default resolves after module load to avoid forward-reference in signature.
+    if primary_fused_bonus is None:
+        primary_fused_bonus = PRIMARY_FUSED_BONUS
+    if primary_fused_bonus and metas:
+        fused = fused.astype(np.float64)
+        for i, m in enumerate(metas):
+            if chunk_tier(m) == "canonical" and m.get("author") in PRIMARY_AUTHORS:
+                fused[i] += primary_fused_bonus
+        fused = fused.astype(np.float32)
+
+    return fused
 
 
 def chunk_tier(meta: dict) -> str:
@@ -355,6 +376,16 @@ TIER_WEIGHTS: dict[str, dict[str, float]] = {
     "unknown":      {"canonical": 0.05, "recollections": 0.00, "reference": -0.08},
 }
 PRIMARY_AUTHOR_BONUS = 0.04   # canonical works by lineage masters (PRIMARY_AUTHORS)
+# Fused-side bonus added AFTER RRF fusion so the preference applies uniformly
+# across all retrieval paths (dense-only + lexical).  RRF scores sit in the
+# range ~0.01–0.033 for a k=60 kernel (max ~1/61 per signal; ~2/61 when both
+# dense and lexical fire).  A bonus of 0.003 is roughly 2–3× the gap between
+# adjacent ranks at the top (1/61 - 1/62 ≈ 0.00026 per rank-step), enough to
+# lift a primary-author chunk over a comparably-ranked secondary in a near-tie,
+# while a secondary source that scores strongly on BOTH dense and lexical signals
+# will still outrank the primary-author chunk (its raw fused score ≈ 0.033
+# easily exceeds primary_fused 0.016 + 0.003 = 0.019 for dense-only primary).
+PRIMARY_FUSED_BONUS = 0.003   # added to RRF fused score for canonical primary-author chunks
 DUP_THRESHOLD = 0.92          # cosine >= this between two chunks => near-duplicate
 
 
