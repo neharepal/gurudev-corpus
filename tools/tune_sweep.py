@@ -129,6 +129,12 @@ def retrieve_for(
         sub_emb = embeddings
         sub_metas = metas
 
+    subset_texts = (
+        [retrieve.load_chunk_text(sub_metas[i], int(keep_idx[i])) for i in range(len(sub_metas))]
+        if keep_idx is not None
+        else None
+    )
+
     qvec = embed_with(model, question, model_name)
     scores = sub_emb @ qvec
     # Heuristic-only here so sweeps stay deterministic and make no API calls.
@@ -136,8 +142,9 @@ def retrieve_for(
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
 
     cand_n = min(candidates, len(scores))
-    cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]
-    cand_idx = cand_idx[np.argsort(-scores[cand_idx])]
+    fused = retrieve.fused_candidate_scores(question, scores, sub_metas, texts=subset_texts)
+    cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
+    cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     cand_scores = scores[cand_idx]
 
     reranked = retrieve.mmr_rerank(

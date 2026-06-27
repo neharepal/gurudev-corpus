@@ -81,6 +81,12 @@ def run_retrieval(
     else:
         keep_idx = None
 
+    subset_texts = (
+        [retrieve.load_chunk_text(metas[i], int(keep_idx[i])) for i in range(len(metas))]
+        if keep_idx is not None
+        else None
+    )
+
     model_name = manifest.get("model", "BAAI/bge-m3")
     qvec = retrieve.embed_query(question, model_name)
     scores = embeddings @ qvec
@@ -88,8 +94,9 @@ def run_retrieval(
     scores = retrieve.apply_intent_tier_weights(scores, metas, query_intent)
 
     cand_n = min(candidates, len(scores))
-    cand_idx = np.argpartition(-scores, cand_n - 1)[:cand_n]
-    cand_idx = cand_idx[np.argsort(-scores[cand_idx])]
+    fused = retrieve.fused_candidate_scores(question, scores, metas, texts=subset_texts)
+    cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
+    cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     cand_scores = scores[cand_idx]
 
     reranked = retrieve.mmr_rerank(

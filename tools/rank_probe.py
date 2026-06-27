@@ -29,12 +29,14 @@ import retrieve
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Intent-aware retrieval ranking probe (no API).")
+    p = argparse.ArgumentParser(description="Hybrid retrieval ranking probe (no API).")
     p.add_argument("query", help="the question to rank citations for")
     p.add_argument("--top-k", type=int, default=8)
     p.add_argument("--candidates", type=int, default=30)
     p.add_argument("--mmr-lambda", type=float, default=0.7)
-    p.add_argument("--max-per-source", type=int, default=1)  # matches Q&A production (citation breadth)
+    p.add_argument("--max-per-source", type=int, default=1)
+    p.add_argument("--no-hybrid", action="store_true",
+                   help="Use dense-only candidate selection (pre-hybrid behaviour).")
     args = p.parse_args()
 
     embeddings, metas, manifest = retrieve.load_corpus()
@@ -45,9 +47,16 @@ def main() -> int:
     qintent = intent.classify_intent(args.query, use_llm_fallback=False)
     weighted = retrieve.apply_intent_tier_weights(cos, metas, qintent)
 
-    cand_n = min(args.candidates, len(weighted))
-    cand_idx = np.argpartition(-weighted, cand_n - 1)[:cand_n]
-    cand_idx = cand_idx[np.argsort(-weighted[cand_idx])]
+    if args.no_hybrid:
+        selection_scores = weighted
+        mode_label = "dense-only"
+    else:
+        selection_scores = retrieve.fused_candidate_scores(args.query, weighted, metas)
+        mode_label = "hybrid (dense+BM25+RRF)"
+
+    cand_n = min(args.candidates, len(selection_scores))
+    cand_idx = np.argpartition(-selection_scores, cand_n - 1)[:cand_n]
+    cand_idx = cand_idx[np.argsort(-selection_scores[cand_idx])]
     reranked = retrieve.mmr_rerank(
         qvec, cand_idx, weighted[cand_idx], embeddings, metas,
         top_k=args.top_k, mmr_lambda=args.mmr_lambda,
@@ -55,7 +64,8 @@ def main() -> int:
     )
 
     print(f"query  : {args.query}")
-    print(f"intent : {qintent}  (heuristic-only — no API call)\n")
+    print(f"intent : {qintent}  (heuristic-only — no API call)")
+    print(f"mode   : {mode_label}\n")
     print(f"{'#':>2}  {'tier':<13} {'kind':<10} {'cos':>6} {'wt':>6}  work")
     print(f"{'--':>2}  {'-'*13} {'-'*10} {'-'*6} {'-'*6}  {'-'*40}")
     for rank, (idx, _mmr) in enumerate(reranked, 1):
