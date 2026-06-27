@@ -16,7 +16,8 @@ import {
 import QuoteBlock from "../../../components/QuoteBlock";
 import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
-import { askApi, AskError } from "../../../lib/api";
+import { askApi, AskError, reportCorrection } from "../../../lib/api";
+import type { CorrectionRequest } from "../../../lib/api";
 import { upsertProgress } from "../../../lib/readingProgress";
 
 type Lang = "en" | "mr";
@@ -52,6 +53,13 @@ const L: Record<
     loading: string;
     errorGeneric: string;
     errorNotReadable: string;
+    suggestCorrection: string;
+    correctionPlaceholder: string;
+    submitCorrection: string;
+    cancelCorrection: string;
+    correctionSent: string;
+    correctionSending: string;
+    correctionError: string;
   }
 > = {
   en: {
@@ -74,6 +82,13 @@ const L: Record<
     loading: "Searching this work...",
     errorGeneric: "Couldn't load an answer. Please try again.",
     errorNotReadable: "This work isn't available to read yet.",
+    suggestCorrection: "suggest a correction",
+    correctionPlaceholder: "Edit the paragraph text…",
+    submitCorrection: "Submit",
+    cancelCorrection: "Cancel",
+    correctionSent: "Thank you — sent for review",
+    correctionSending: "Sending…",
+    correctionError: "Could not send — please try again.",
   },
   mr: {
     backToStart: "◁ सुरुवातीला परत",
@@ -95,6 +110,13 @@ const L: Record<
     loading: "या ग्रंथातून शोधत आहोत...",
     errorGeneric: "उत्तर मिळवता आले नाही. कृपया पुन्हा प्रयत्न करा.",
     errorNotReadable: "हा ग्रंथ अद्याप वाचण्यासाठी उपलब्ध नाही.",
+    suggestCorrection: "सुधारणा सुचवा",
+    correctionPlaceholder: "परिच्छेदाचा मजकूर संपादित करा…",
+    submitCorrection: "पाठवा",
+    cancelCorrection: "रद्द करा",
+    correctionSent: "धन्यवाद — पुनरावलोकनासाठी पाठवले",
+    correctionSending: "पाठवत आहे…",
+    correctionError: "पाठवता आले नाही — कृपया पुन्हा प्रयत्न करा.",
   },
 };
 
@@ -145,6 +167,17 @@ function ReadingPage() {
   const [pending, setPending] = useState(false);
   const [askError, setAskError] = useState<string | null>(null);
 
+  // Per-paragraph correction editor state.
+  // activeCorrectionN: the para.n of the currently-open editor, or null.
+  const [activeCorrectionN, setActiveCorrectionN] = useState<number | null>(null);
+  // Draft text in the correction textarea, keyed by para.n.
+  const [correctionDraft, setCorrectionDraft] = useState<string>("");
+  // "sending" | "sent" | "error" | null — status of the last POST.
+  const [correctionStatus, setCorrectionStatus] = useState<
+    "sending" | "sent" | "error" | null
+  >(null);
+  const [hoveredN, setHoveredN] = useState<number | null>(null);
+
   // Real corpus fetch — re-runs whenever slug, lang, or currentPage changes.
   const [pageData, setPageData] = useState<ReadingPage | null>(null);
   const [loading, setLoading] = useState(true);
@@ -157,6 +190,7 @@ function ReadingPage() {
   // before we have totalPages, we still apply it immediately and re-clamp below
   // once the fetch completes.
   const urlPageApplied = useRef(false);
+  const correctionCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (hasUrlPage && !urlPageApplied.current) {
       urlPageApplied.current = true;
@@ -166,6 +200,18 @@ function ReadingPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasUrlPage]);
+
+  // Reset correction editor when the page or work changes.
+  useEffect(() => {
+    if (correctionCloseTimer.current !== null) {
+      clearTimeout(correctionCloseTimer.current);
+      correctionCloseTimer.current = null;
+    }
+    setActiveCorrectionN(null);
+    setCorrectionDraft("");
+    setCorrectionStatus(null);
+    setHoveredN(null);
+  }, [slug, currentPage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -262,6 +308,52 @@ function ReadingPage() {
     }
   }
 
+  function openCorrectionEditor(n: number, body: string) {
+    setActiveCorrectionN(n);
+    setCorrectionDraft(body);
+    setCorrectionStatus(null);
+  }
+
+  function closeCorrectionEditor() {
+    setActiveCorrectionN(null);
+    setCorrectionDraft("");
+    setCorrectionStatus(null);
+  }
+
+  async function submitCorrection(n: number, original: string) {
+    const edited = correctionDraft.trim();
+    if (!edited || edited === original) {
+      closeCorrectionEditor();
+      return;
+    }
+    setCorrectionStatus("sending");
+    const req: CorrectionRequest = {
+      kind: "correction",
+      slug,
+      page: currentPage,
+      paragraph: n,
+      original,
+      corrected: edited,
+      lang,
+      question: "",
+      mode: "reading",
+    };
+    try {
+      await reportCorrection(req);
+      setCorrectionStatus("sent");
+      // Auto-close after 2 s so the reader returns to normal.
+      if (correctionCloseTimer.current !== null) {
+        clearTimeout(correctionCloseTimer.current);
+      }
+      correctionCloseTimer.current = setTimeout(() => {
+        correctionCloseTimer.current = null;
+        closeCorrectionEditor();
+      }, 2000);
+    } catch {
+      setCorrectionStatus("error");
+    }
+  }
+
   const total = pageData?.totalPages ?? 1;
   const progress = Math.min(100, Math.round((currentPage / total) * 100));
 
@@ -350,22 +442,129 @@ function ReadingPage() {
             {fetchError}
           </p>
         ) : (pageData?.paragraphs ?? []).map((para) => (
-          <div key={para.n} className="mb-7 flex gap-4">
-            <div
-              className="shrink-0 pt-1 font-mono text-[12px]"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              ¶ {para.n}
+          <div
+            key={para.n}
+            className="mb-7"
+            onMouseEnter={() => setHoveredN(para.n)}
+            onMouseLeave={() => setHoveredN(null)}
+            onFocus={() => setHoveredN(para.n)}
+            onBlur={() => setHoveredN(null)}
+          >
+            <div className="flex gap-4">
+              <div
+                className="shrink-0 pt-1 font-mono text-[12px]"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                ¶ {para.n}
+              </div>
+              <div style={{ flex: 1 }}>
+                {activeCorrectionN === para.n ? (
+                  /* Inline correction editor */
+                  <div>
+                    <textarea
+                      value={correctionDraft}
+                      onChange={(e) => setCorrectionDraft(e.target.value)}
+                      rows={4}
+                      placeholder={lbl.correctionPlaceholder}
+                      disabled={correctionStatus === "sending" || correctionStatus === "sent"}
+                      className={`block w-full resize-none rounded-[6px] px-2.5 py-1.5 text-[16px] ${isMr ? "font-deva" : ""}`}
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        color: "var(--text-primary)",
+                        lineHeight: 1.7,
+                        border: "1px solid var(--accent-maroon)",
+                        background: "var(--bg-surface)",
+                        outline: "none",
+                      }}
+                    />
+                    <div className="mt-2 flex items-center gap-3">
+                      {correctionStatus === "sent" ? (
+                        <span
+                          className={`text-[13px] ${isMr ? "font-deva" : ""}`}
+                          style={{ color: "var(--accent-maroon)" }}
+                        >
+                          {lbl.correctionSent}
+                        </span>
+                      ) : correctionStatus === "error" ? (
+                        <>
+                          <span
+                            className={`text-[13px] ${isMr ? "font-deva" : ""}`}
+                            style={{ color: "var(--accent-maroon)" }}
+                          >
+                            {lbl.correctionError}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => void submitCorrection(para.n, para.body)}
+                            className={`text-[13px] underline ${isMr ? "font-deva" : ""}`}
+                            style={{ color: "var(--accent-maroon)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                          >
+                            {lbl.submitCorrection}
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => void submitCorrection(para.n, para.body)}
+                            disabled={correctionStatus === "sending"}
+                            className={`rounded-[4px] px-3 py-1 text-[13px] font-semibold disabled:opacity-50 ${isMr ? "font-deva" : ""}`}
+                            style={{
+                              background: "#6B1F1F",
+                              color: "#F4EAC9",
+                              border: "1px solid #4F1414",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {correctionStatus === "sending" ? lbl.correctionSending : lbl.submitCorrection}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={closeCorrectionEditor}
+                            className={`text-[13px] ${isMr ? "font-deva" : ""}`}
+                            style={{ color: "var(--text-secondary)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                          >
+                            {lbl.cancelCorrection}
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  /* Normal paragraph display */
+                  <p
+                    className="text-[17.5px]"
+                    style={{
+                      color: "var(--text-primary)",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {para.body}
+                  </p>
+                )}
+                {/* Correction affordance — shown only when editor is not open for this para. */}
+                {activeCorrectionN !== para.n && (
+                  <button
+                    type="button"
+                    onClick={() => openCorrectionEditor(para.n, para.body)}
+                    className={`mt-1 text-[11px] ${isMr ? "font-deva" : ""}`}
+                    aria-label={`${lbl.suggestCorrection} ¶${para.n}`}
+                    style={{
+                      color: "var(--text-tertiary)",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
+                      display: "block",
+                      opacity: hoveredN === para.n ? 1 : 0,
+                      transition: "opacity 150ms ease",
+                    }}
+                  >
+                    ✏ {lbl.suggestCorrection}
+                  </button>
+                )}
+              </div>
             </div>
-            <p
-              className="text-[17.5px]"
-              style={{
-                color: "var(--text-primary)",
-                lineHeight: 1.7,
-              }}
-            >
-              {para.body}
-            </p>
           </div>
         ))}
       </article>

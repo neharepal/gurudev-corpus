@@ -149,6 +149,52 @@ export async function reportIssue(req: ReportRequest): Promise<{ ok: boolean }> 
   return (await res.json()) as { ok: boolean };
 }
 
+export type CorrectionRequest = {
+  /** Always "correction" — allows the queue consumer to distinguish from plain issues. */
+  kind: "correction";
+  /** Work slug, e.g. "pathway-to-god-in-hindi-literature". */
+  slug: string;
+  /** 1-based page number in the reader. */
+  page: number;
+  /** Paragraph n value as returned by the backend (1-based, sequential across the whole work). */
+  paragraph: number;
+  /** The paragraph text as rendered to the user before editing. */
+  original: string;
+  /** The user's corrected text. */
+  corrected: string;
+  /** UI language at submission time. */
+  lang: Lang;
+  /** Required by pydantic ReportRequest — empty string for corrections. */
+  question: string;
+  /** Required by pydantic ReportRequest. */
+  mode: string;
+};
+
+/**
+ * POST `/api/report` with a correction payload.
+ * Resolves to `{ ok: true }` on success; throws on network or server error.
+ */
+export async function reportCorrection(
+  req: CorrectionRequest,
+): Promise<{ ok: boolean }> {
+  const res = await fetch("/api/report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+  if (!res.ok) {
+    let msg = `Report failed (${res.status})`;
+    try {
+      const body = (await res.json()) as { error?: string };
+      if (body.error) msg = body.error;
+    } catch {
+      // Body wasn't JSON.
+    }
+    throw new Error(msg);
+  }
+  return (await res.json()) as { ok: boolean };
+}
+
 export class AskError extends Error {
   status: number;
   constructor(message: string, status: number) {
