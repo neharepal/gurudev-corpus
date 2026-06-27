@@ -115,21 +115,27 @@ function extractCitedPassages(
 ): HistoryTurn["cited_passages"] {
   if (!ans) return [];
   if (ans.kind === "qa") {
-    return ans.citations.map((c) => ({
-      workTitle: c.quote.workTitle,
-      location: c.quote.location,
-    }));
+    // Guard: during streaming a citation can exist before its `quote` is filled.
+    return (ans.citations ?? [])
+      .filter((c) => c?.quote)
+      .map((c) => ({
+        workTitle: c.quote.workTitle,
+        location: c.quote.location,
+      }));
   }
-  // Pravachan: gurudevsWords + examples
+  // Pravachan: gurudevsWords + examples. Guard against partially-streamed
+  // items whose `quote` isn't populated yet (reading it would crash mid-stream).
   const out: HistoryTurn["cited_passages"] = [];
-  if (ans.gurudevsWords) {
+  if (ans.gurudevsWords?.workTitle) {
     out.push({
       workTitle: ans.gurudevsWords.workTitle,
       location: ans.gurudevsWords.location,
     });
   }
-  for (const ex of ans.examples) {
-    out.push({ workTitle: ex.quote.workTitle, location: ex.quote.location });
+  for (const ex of ans.examples ?? []) {
+    if (ex?.quote) {
+      out.push({ workTitle: ex.quote.workTitle, location: ex.quote.location });
+    }
   }
   return out;
 }
