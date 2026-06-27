@@ -69,3 +69,5 @@ Status changes are noted at the top of the document, dated. **Do not delete or r
 | [012](ADR-012-chunk-id-keyed-embeddings.md) | Chunk-id-keyed embeddings + sorted chunker scan | ACCEPTED | 2026-06-17 |
 | [013](ADR-013-reading-mode-real-data-path.md) | Reading mode — real-data backend endpoint, pagination, and citation deep-links | ACCEPTED | 2026-06-25 |
 | [014](ADR-014-conversational-followups-with-history.md) | Conversational follow-ups carry history and new-material enforcement | ACCEPTED | 2026-06-25 |
+| [015](ADR-015-hybrid-retrieval-bm25-rrf.md) | Hybrid retrieval — BM25 lexical index fused with dense via Reciprocal Rank Fusion | ACCEPTED | 2026-06-27 |
+| [016](ADR-016-content-flagging-workflow.md) | Content-flagging workflow — flag queue, review dashboard, and apply CLI | ACCEPTED | 2026-06-27 |

@@ -3,7 +3,7 @@
 **Status:** ACCEPTED 2026-06-13
 **Author:** Neha (with Claude)
 **Created:** 2026-06-13
-**Last updated:** 2026-06-14 (amended for ADR-007 quote-first; ADR-008 retrieval-side dedup replaces story aggregation)
+**Last updated:** 2026-06-27 (amended for ADR-007 quote-first; ADR-008 retrieval-side dedup; 2026-06-25 model/voice/follow-up updates; 2026-06-27 hybrid retrieval)
 
 ## Summary
 
@@ -224,3 +224,26 @@ Use Anthropic prompt caching for the system prompt + the per-mode template. Cach
 - BGE-M3 model: https://huggingface.co/BAAI/bge-m3
 - Chroma: https://www.trychroma.com/
 - Anthropic prompt caching docs
+
+## Amendment (2026-06-27): Hybrid retrieval — BM25 + Reciprocal Rank Fusion
+
+Dense-only retrieval missed keyword-specific queries where the relevant passage
+uses the query's distinctive term only in contrast (e.g. "Bhakti does not
+consist … in formal idol-worships" scored cosine rank 34 for "idol worship").
+The 1-per-work MMR cap then excluded it in favour of higher-scoring general-devotion chunks.
+
+The retrieval pipeline now fuses dense cosine scores with **BM25 lexical
+scores** via **Reciprocal Rank Fusion (RRF)** before candidate selection. A
+`BM25Index` is built lazily over all corpus chunks at startup and cached
+in-process; `rrf_fuse(dense_ranks, lexical_ranks, k=60)` produces the fused
+score array; `fused_candidate_scores()` is the single helper used by all four
+call sites (`server._retrieve`, `chat.run_retrieval`, `tune_sweep`,
+`rank_probe`). Intent-tier weights (RFC-011) are applied to the dense scores
+before fusion.
+
+**Critical constraint:** MMR must rank on the **fused** score, not the raw
+dense score. A lexically-surfaced chunk entering the candidate pool with a low
+raw-dense score would be dropped by the 1-per-work cap under MMR, making hybrid
+retrieval a no-op. This was a real bug (commit `80e2b2d`) fixed at all four
+call sites. See [ADR-015](../decisions/ADR-015-hybrid-retrieval-bm25-rrf.md)
+for the full design, alternative analysis, and commit references.

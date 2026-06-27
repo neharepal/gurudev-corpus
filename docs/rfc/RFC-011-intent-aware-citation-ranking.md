@@ -1,9 +1,9 @@
 # RFC-011: Intent-aware citation ranking
 
-**Status:** PROPOSED
+**Status:** ACCEPTED 2026-06-24
 **Author:** Neha (with Claude)
 **Created:** 2026-06-23
-**Last updated:** 2026-06-23
+**Last updated:** 2026-06-27
 
 ## Picks confirmed (2026-06-23 discussion)
 
