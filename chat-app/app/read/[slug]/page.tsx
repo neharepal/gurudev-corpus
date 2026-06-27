@@ -469,26 +469,29 @@ function ReadingPage() {
           style={{ color: "var(--text-secondary)", whiteSpace: "nowrap" }}
         >
           {isMr ? "पान" : "Page"}
+          {/* Plain numeric text field — no type=number spinner arrows (which hid
+              the value); the current page number is clearly shown and editable. */}
           <input
-            type="number"
-            min={1}
-            max={total}
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={pageInputValue}
-            onChange={(e) => setPageInputValue(e.target.value)}
+            onChange={(e) =>
+              setPageInputValue(e.target.value.replace(/[^0-9]/g, ""))
+            }
             onKeyDown={onPageInputKeyDown}
             onBlur={commitPageJump}
             onFocus={(e) => e.currentTarget.select()}
             aria-label={lbl.pageXofY(currentPage, total)}
-            className="rounded-[3px] px-1 text-center text-[13px]"
+            title={lbl.pageXofY(currentPage, total)}
+            className="rounded-[4px] px-2 py-0.5 text-center text-[13px]"
             style={{
-              width: `${Math.max(2, String(total).length + 0.5)}ch`,
-              color: "var(--text-secondary)",
+              width: `${Math.max(3, String(total).length + 2)}ch`,
+              color: "var(--text-primary)",
               background: "var(--bg-panel)",
               border: "1px solid var(--border-soft)",
               fontFamily: "inherit",
               lineHeight: "inherit",
-              /* Hide browser spinner arrows */
-              MozAppearance: "textfield",
             } as React.CSSProperties}
           />
           {lbl.pageOf} {total}
