@@ -47,6 +47,207 @@ PRIMARY_AUTHORS = frozenset({
 })
 
 
+# ---------------------------------------------------------------------------
+# Lexical (BM25) scoring — no external dependencies
+# ---------------------------------------------------------------------------
+
+import math
+import re as _re
+
+# Small English + Marathi stopword set for BM25 tokenisation.
+# Keeps the index lean without over-pruning (proper nouns like "Bhakti" survive).
+_STOPWORDS: frozenset = frozenset({
+    # English function words
+    "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "of",
+    "for", "with", "by", "from", "as", "is", "are", "was", "were", "be",
+    "been", "being", "have", "has", "had", "do", "does", "did", "not",
+    "that", "this", "it", "its", "he", "she", "they", "we", "you", "i",
+    "his", "her", "their", "our", "your", "my", "what", "which", "who",
+    "whom", "when", "where", "why", "how", "all", "each", "every", "both",
+    "more", "than", "so", "if", "no", "nor", "yet", "still", "such",
+    "about", "also", "just", "there", "then", "now", "will", "would",
+    "could", "should", "may", "might", "must", "can",
+    # Marathi common function words (transliterated common stop forms)
+    "आणि", "किंवा", "पण", "तर", "हे", "हा", "ही", "त्या", "त्यांचे",
+    "मध्ये", "वर", "च", "ला", "ने", "से", "को",
+})
+
+
+def _tokenize_bm25(text: str) -> list:
+    """Tokenize `text` for BM25.
+
+    - Lowercases the entire string
+    - Splits on whitespace to get raw tokens
+    - For each hyphenated token "a-b", also emits "a" and "b" individually
+    - Drops single-character tokens and EN/MR stopwords
+    - Devanagari tokens are kept as-is (after lowercasing has no effect on them)
+    """
+    lowered = text.lower()
+    raw_tokens = _re.split(r"[\s]+", lowered)
+    result: list = []
+    for raw in raw_tokens:
+        # Strip leading/trailing punctuation except hyphens within words
+        tok = raw.strip(".,;:!?\"'()[]{}…")
+        if not tok:
+            continue
+        # If the token contains a hyphen, emit the full form AND sub-parts
+        if "-" in tok:
+            result.append(tok)
+            parts = tok.split("-")
+            for p in parts:
+                p = p.strip()
+                if p and len(p) > 1 and p not in _STOPWORDS:
+                    result.append(p)
+        else:
+            if len(tok) > 1 and tok not in _STOPWORDS:
+                result.append(tok)
+    return result
+
+
+class BM25Index:
+    """In-memory BM25 index over a fixed list of texts.
+
+    Build once with BM25Index.build(texts), then call .score(query_tokens)
+    as many times as needed.  Thread-safe for reads after construction.
+
+    BM25 parameters: k1=1.5, b=0.75 (standard defaults).
+    """
+
+    K1: float = 1.5
+    B: float = 0.75
+
+    def __init__(
+        self,
+        n_docs: int,
+        avgdl: float,
+        df: dict,           # term -> document frequency (int)
+        postings: dict,     # term -> list of (doc_id, tf)
+        doc_lengths: list,  # list[int] — token count per doc
+    ) -> None:
+        self._n = n_docs
+        self._avgdl = avgdl
+        self._df = df
+        self._postings = postings
+        self._doc_lengths = doc_lengths  # list of ints, index == doc_id
+
+    @classmethod
+    def build(cls, texts: list) -> "BM25Index":
+        """Build the index from a list of text strings.
+
+        Each element of `texts` corresponds to a chunk at the same position
+        in the embeddings array.  Tokenisation uses _tokenize_bm25.
+        """
+        import time as _time
+        t0 = _time.time()
+        n = len(texts)
+        df: dict = {}
+        postings: dict = {}
+        doc_lengths: list = []
+
+        for doc_id, text in enumerate(texts):
+            toks = _tokenize_bm25(text)
+            doc_lengths.append(len(toks))
+            tf_local: dict = {}
+            for tok in toks:
+                tf_local[tok] = tf_local.get(tok, 0) + 1
+            for tok, tf in tf_local.items():
+                df[tok] = df.get(tok, 0) + 1
+                if tok not in postings:
+                    postings[tok] = []
+                postings[tok].append((doc_id, tf))
+
+        avgdl = float(sum(doc_lengths) / n) if n > 0 else 1.0
+        elapsed = _time.time() - t0
+        print(
+            f"[BM25] index built: {n} docs, {len(df)} terms, avgdl={avgdl:.1f}, "
+            f"time={elapsed:.2f}s",
+            file=sys.stderr,
+        )
+        return cls(n_docs=n, avgdl=avgdl, df=df, postings=postings,
+                   doc_lengths=doc_lengths)
+
+    def score(self, query_tokens: list) -> np.ndarray:
+        """Return a BM25 score array of length n_docs.
+
+        Chunks with no query-term overlap score exactly 0.0.
+        """
+        out = np.zeros(self._n, dtype=np.float32)
+        if not query_tokens or self._n == 0:
+            return out
+
+        seen: set = set()
+        for tok in query_tokens:
+            if tok in seen or tok not in self._postings:
+                seen.add(tok)
+                continue
+            seen.add(tok)
+            df_t = self._df[tok]
+            idf = math.log((self._n - df_t + 0.5) / (df_t + 0.5) + 1.0)
+            for doc_id, tf in self._postings[tok]:
+                dl = self._doc_lengths[doc_id]
+                tf_norm = (tf * (self.K1 + 1)) / (
+                    tf + self.K1 * (1.0 - self.B + self.B * (dl / max(self._avgdl, 1.0)))
+                )
+                out[doc_id] += idf * tf_norm
+        return out
+
+
+def lexical_scores(query: str, texts: list) -> np.ndarray:
+    """Build a one-shot BM25 index from `texts` and return scores for `query`.
+
+    For the production path, the index is built lazily and cached by the caller.
+    This function is exposed for unit tests that pass synthetic texts directly.
+
+    Returns a float32 array of length len(texts).  All-zero when query is empty
+    or has no token overlap with any text.
+    """
+    if not texts:
+        return np.zeros(0, dtype=np.float32)
+    qtoks = _tokenize_bm25(query)
+    if not qtoks:
+        return np.zeros(len(texts), dtype=np.float32)
+    idx = BM25Index.build(texts)
+    return idx.score(qtoks)
+
+
+def rrf_fuse(
+    dense_scores: np.ndarray,
+    lex_scores: np.ndarray,
+    *,
+    k: int = 60,
+) -> np.ndarray:
+    """Reciprocal Rank Fusion of dense + lexical scores.
+
+    fused[i] = 1/(k + dense_rank[i]) + 1/(k + lex_rank[i])
+
+    - dense_rank[i] is the 1-based rank of chunk i by dense score (rank 1 = highest).
+    - lex_rank[i]   is the 1-based rank of chunk i by lex score, but ONLY for
+      chunks with lex_score > 0.  Chunks with lex_score == 0 receive no lexical
+      contribution (effectively lex component = 0).
+
+    When all lex_scores are zero (pure-concept query), the lexical term vanishes
+    and fused order == dense order — existing behaviour is fully preserved.
+    """
+    n = len(dense_scores)
+    fused = np.zeros(n, dtype=np.float64)
+
+    # Dense rank component (all chunks participate)
+    dense_order = np.argsort(-dense_scores)  # highest first
+    dense_rank = np.empty(n, dtype=np.int64)
+    dense_rank[dense_order] = np.arange(1, n + 1)
+    fused += 1.0 / (k + dense_rank)
+
+    # Lexical rank component (only chunks with lex_score > 0)
+    lex_mask = lex_scores > 0
+    if lex_mask.any():
+        lex_nonzero_idx = np.where(lex_mask)[0]
+        lex_order = lex_nonzero_idx[np.argsort(-lex_scores[lex_nonzero_idx])]
+        for rank_1based, chunk_idx in enumerate(lex_order, 1):
+            fused[chunk_idx] += 1.0 / (k + rank_1based)
+
+    return fused.astype(np.float32)
+
+
 def chunk_tier(meta: dict) -> str:
     """Authority tier of a chunk for intent-aware ranking (RFC-011).
 
