@@ -198,17 +198,22 @@ function ReadingPage() {
   // deferred until totalPages is available via the fetch; if the page is valid
   // before we have totalPages, we still apply it immediately and re-clamp below
   // once the fetch completes.
-  const urlPageApplied = useRef(false);
+  // Track the last ?page= value we applied. We must re-apply whenever the URL's
+  // page changes — not just once on mount — because clicking "Read in full" for a
+  // book that's ALREADY open is a same-route navigation (Next.js updates the query
+  // without remounting), so a once-on-mount guard would leave the reader on its
+  // saved page. Prev/Next/slider change currentPage WITHOUT changing ?page, so
+  // they never re-trigger this and don't get clobbered.
+  const lastAppliedUrlPage = useRef<number | null>(null);
   const correctionCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
-    if (hasUrlPage && !urlPageApplied.current) {
-      urlPageApplied.current = true;
-      // Apply immediately (pre-clamp). The fetch useEffect below will re-clamp
+    if (hasUrlPage && urlPage !== lastAppliedUrlPage.current) {
+      lastAppliedUrlPage.current = urlPage;
+      // Apply immediately (pre-clamp). The fetch useEffect below re-clamps
       // to [1, totalPages] once data arrives if needed.
       setCurrentPage(urlPage!);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasUrlPage]);
+  }, [hasUrlPage, urlPage]);
 
   // Reset correction editor when the page or work changes.
   useEffect(() => {
