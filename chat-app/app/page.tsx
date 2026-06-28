@@ -42,7 +42,7 @@ const TITLE = {
 } as const;
 
 const TAGLINE = {
-  en: "Philosopher-saint of the Nimbal sampradaya · 1886–1957",
+  en: "Philosopher-saint of the Nimbargi sampradaya · 1886–1957",
   mr: "निंबाळ संप्रदायाचे संत आणि तत्त्वज्ञ · १८८६–१९५७",
 } as const;
 

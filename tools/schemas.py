@@ -155,7 +155,10 @@ class QAResponse(BaseModel):
     kind: Literal["qa"] = "qa"
     classification: Literal["doctrinal", "meta"]
     question: str
-    framing: str
+    # Defaults to "" so a (meta) answer that uses `framingParagraphs` instead of
+    # `framing` doesn't fail pydantic's "field required" before the validator
+    # below (which enforces that at least one of the two is present) can run.
+    framing: str = ""
     # Optional paragraph array for longer meta answers. LLMs reliably emit
     # JSON arrays but unreliably emit literal "\n\n" inside JSON strings, so
     # we let the model choose: short answer → `framing`; longer answer →
