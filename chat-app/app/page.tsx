@@ -43,7 +43,7 @@ const TITLE = {
 
 const TAGLINE = {
   en: "Philosopher-saint of the Nimbargi sampradaya · 1886–1957",
-  mr: "निंबाळ संप्रदायाचे संत आणि तत्त्वज्ञ · १८८६–१९५७",
+  mr: "निंबरगी संप्रदायाचे संत आणि तत्त्वज्ञ · १८८६–१९५७",
 } as const;
 
 const PLACEHOLDERS: Record<Lang, Record<ModeId, string>> = {

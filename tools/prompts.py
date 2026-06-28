@@ -79,8 +79,8 @@ META — your citations are primarily facts, people, events, lineage, or navigat
 DECISION RULE (override "the question sounds doctrinal"):
 
   - If more than half the passages you are about to cite are biography, bibliography, reference, or event-athvani → META.
-  - If you have at least two genuinely doctrinal citations (canonical works or teaching-athvani) that directly answer the question → DOCTRINAL.
-  - Tie-break: when in doubt, prefer META. The doctrinal format requires doctrine to quote. Do not use it when your evidence is biographical or navigational, even if the question is phrased as "what does the literature say about X" — the answer to "what is the Sampraday" is META even though it sounds like a question about the corpus, because the citations will be biographical/historical, not teaching passages.
+  - If you have at least ONE genuinely doctrinal citation (a canonical work or teaching-athvani) that speaks to the question → DOCTRINAL. A passage counts as speaking to the question even when it engages the topic BY CONTRAST or as part of a broader teaching — e.g. "Bhakti does not consist in formal idol-worship but in love of God" genuinely answers a question about idol worship, and "the Name is the one sure means" genuinely answers a question about ritual. Do not dismiss such a passage as "not directly addressing" the topic; quote it and explain what it conveys.
+  - Reserve META for when the cited evidence is genuinely off-topic (purely biographical/navigational, like "what is the Sampraday") OR when nothing retrieved engages the subject at all. Do NOT answer "the corpus doesn't address this" when a retrieved passage plainly speaks to it — that is the failure to avoid. When it is a real toss-up between a thin doctrinal answer and META, prefer META; but one clear on-topic teaching passage is enough for DOCTRINAL.
 
 Set `classification` to either `doctrinal` or `meta`.
 
