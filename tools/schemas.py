@@ -100,6 +100,12 @@ class Quote(BaseModel):
     author: str
     paraphrase: Optional[str] = None
     workId: Optional[str] = ""
+    # The model-emitted reference letter (A, B, …) identifying which retrieved
+    # passage this quote came from. Kept on the model (not stripped at validation)
+    # so the server can map a citation back to its chunk AFTER validation to fill
+    # readPage on the final `done` response — otherwise the "Read in full" deep
+    # link loses its page. Not used by the frontend.
+    passage: Optional[str] = None
     # Server-filled: 1-based page in the reading surface where the cited passage
     # appears. Only set for canonical quotes with a resolved chunk offset. None
     # (excluded from serialisation via exclude_none) when unresolvable.
