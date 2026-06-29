@@ -1,0 +1,38 @@
+id: charitra-tatvajnan-tulpule
+title: गुरुदेव रा. द. रानडे चरित्र व तत्वज्ञान
+title_en: Gurudev R. D. Ranade — Charitra va Tatvajnan (Life and Philosophy, by S.
+  G. Tulpule)
+title_translit: ''
+about_member: gurudev_ranade
+author: shankar_gopal_tulpule
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
+sources:
+- raw_path: 00_raw/गुरुदेव रा. द. रानडे चरित्र आणि तत्वज्ञान.docx
+  received_on: '2026-06-29'
+  received_in_batch: standalone_2026-06-29
+  checksum_sha256: 0771971f02fab8886744195a23729d530bb6b3a1d051fc9c73700059798a4ed9
+tags: []
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: docx-pandoc (markdown_strict)
+quality_notes: Clean Marathi extraction via pandoc (~674K chars, 95% Devanagari).
+  Full-length charitra (life) + tatvajnan (philosophy) of Gurudev Ranade by S. G.
+  Tulpule; opens with kulvruttant/genealogy.
+notes: 'Ingested 2026-06-29 as a standalone doc added to 00_raw/. Author: Sh. Go.
+  (Shankar Gopal) Tulpule.
+
+  '
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

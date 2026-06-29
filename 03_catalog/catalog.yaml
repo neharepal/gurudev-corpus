@@ -177,6 +177,12 @@ works:
   - hi
   - en
   path: 01_canonical/gurudev_ranade/books/hindi-parmarth-sopan/
+- id: charitra-tatvajnan-tulpule
+  title: गुरुदेव रा. द. रानडे चरित्र व तत्वज्ञान
+  author: shankar_gopal_tulpule
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_gurudev_ranade/charitra-tatvajnan-tulpule/
 stories:
 - id: the-old-house-at-nimbal
   path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/
