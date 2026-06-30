@@ -3,6 +3,23 @@
 Per RFC-009 §Step 10. Authoritative answer to "what's in the corpus as of date X" and
 "when did we add work Y."
 
+## v.2026-06-29 — Standalone: charitra-tatvajnan-tulpule
+
+One biography ingested from a standalone docx added to `00_raw/`.
+
+Added (biography):
+- charitra-tatvajnan-tulpule (about_gurudev_ranade, mr) — 475 chunks — गुरुदेव रा. द. रानडे
+  चरित्र व तत्वज्ञान, by S. G. Tulpule. Full-length life (charitra) + philosophy
+  (tatvajnan); 4 chapters (life outline, spiritual life, philosophy of self-realization,
+  personality). Extracted via pandoc (docx → markdown_strict), ~674K chars, 95% Devanagari,
+  clean (no extraction garble).
+
+Embeddings: regenerated incrementally (bge-m3) — 15,306 carried over by chunk_id + 475 new
+→ 328 works / 15,781 chunks, all embedded (`manifest.complete`, rows aligned). Retrieval
+verified: ranks #1 on native-language (Marathi) queries. Verbatim- and semantic-overlap vs
+existing Ranade biographies is minimal (≤4 of 475 chunks near-duplicate; ~99% distinct).
+Verified-against: no public source (verified=false).
+
 ## v.2026-06-23 — Batch drive_dump_2026-06-22 (Drive "Dump 3")
 
 10 new works + 1 upgrade + 213 athvani recollection stories segmented from 3 anthologies.

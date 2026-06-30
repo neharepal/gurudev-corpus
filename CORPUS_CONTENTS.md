@@ -8,7 +8,7 @@ _Generated: 2026-06-29_
 ## At a glance
 
 - **328 works**, **15,781 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
-- **Embedding status:** ⚠️ manifest says 15306 embedded vs 15781 chunked — re-run embedder.
+- **Embedding status:** ✅ all 15,781 chunks embedded (manifest `complete`).
 - **By kind:** canonical 39w/9,799c, biography 24w/4,463c, athvani 262w/1,464c, reference 3w/55c.
 - **By language (chunks):** en 8,536, mr 6,873, hi 269, mixed 103.
 
