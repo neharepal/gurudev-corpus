@@ -41,6 +41,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 import intent
+import query_translation
 import retrieve
 from llm_client import ChatClient, MissingApiKeyError, pick_model
 from prompts import (
@@ -186,6 +187,29 @@ _reading_cache: Dict[tuple, List[Dict[str, Any]]] = {}
 # Page size for reading mode — must match the constant used in read_work().
 _PAGE_SIZE = 4
 
+# Roots under which canonical/aggregated works live. The per-author/per-kind
+# layout varies (books/, letters/, lectures/, …), so rather than hardcode every
+# (author, kind) pair we glob `<root>/<author>/<kind>/<slug>` as a general
+# fallback. This covers works absent from catalog.yaml whose kind isn't `books`
+# (e.g. kakasaheb_tulpule/lectures, nimbargi_maharaj/books) — see RUNBOOK R1.
+_WORK_ROOTS = ("01_canonical", "02_aggregated")
+
+
+def _glob_work_dir(slug: str) -> Optional[Path]:
+    """Find a work directory named `slug` anywhere under the corpus roots.
+
+    General fallback for works not in catalog.yaml and not under a hardcoded
+    candidate dir. Returns the first matching directory that contains at least
+    one `<lang>/text.md`, or None.
+    """
+    for root in _WORK_ROOTS:
+        for d in (REPO / root).glob(f"*/*/{slug}"):
+            if d.is_dir() and any(
+                sub.is_dir() and (sub / "text.md").exists() for sub in d.iterdir()
+            ):
+                return d
+    return None
+
 
 def _resolve_text_path(slug: str, lang: Optional[str]) -> Optional[Path]:
     """Return the resolved text.md path for (slug, lang), or None if not found.
@@ -219,6 +243,10 @@ def _resolve_text_path(slug: str, lang: Optional[str]) -> Optional[Path]:
             if d.exists():
                 work_dir = d
                 break
+        if work_dir is None:
+            # General fallback: glob the corpus roots for the slug (covers
+            # non-`books` kinds and authors not in the hardcoded list).
+            work_dir = _glob_work_dir(slug)
         if work_dir is None:
             return None
         langs_on_disk = sorted(
@@ -282,6 +310,61 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
         target_idx = len(all_paragraphs) - 1
 
     return (target_idx // _PAGE_SIZE) + 1
+
+
+def _norm_for_match(s: str) -> str:
+    """Normalise text for substring matching across the chunk/reader boundary.
+
+    The verbatim quote `body` and the reader's paragraph text both derive from
+    the same `text.md`, but go through slightly different cleaning (chunk garble
+    scrub vs `_strip_inline_md`) and carry different whitespace. Collapsing all
+    runs of whitespace to a single space and stripping markdown emphasis makes a
+    prefix of the quote reliably matchable against the paragraph that contains
+    it — independent of the (unreliable) `char_start` offset.
+    """
+    return re.sub(r"\s+", " ", _strip_inline_md(s)).strip()
+
+
+def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
+    """Return the 1-based reading page whose paragraph contains `body`.
+
+    Anchors on the verbatim quote TEXT rather than the chunk's `char_start`
+    offset. The chunker's `char_start` is a synthetic counter (stripped,
+    `\\n\\n`-rejoined paragraphs) that drifts from true `text.md` offsets and
+    accumulates error with depth (see docs/RUNBOOK.md R1), so offset-based page
+    lookup lands on the wrong page. Searching the parsed paragraphs for the
+    quote's leading text is drift-proof: it finds the paragraph the devotee is
+    actually looking for.
+
+    Returns None if the text can't be parsed or no paragraph matches.
+    """
+    if not body:
+        return None
+    cache_key = (str(text_path), None)
+    if cache_key not in _reading_cache:
+        try:
+            _reading_cache[cache_key] = _parse_work_text(text_path)
+        except Exception:
+            return None
+    paragraphs = _reading_cache[cache_key]
+    if not paragraphs:
+        return None
+
+    needle = _norm_for_match(body)
+    if not needle:
+        return None
+    # A quote always STARTS inside a single paragraph (even if it later spans
+    # boundaries), so a prefix of the quote is contained in that paragraph.
+    # Try a generous prefix first, then shorter ones, to tolerate minor
+    # cleaning differences near the tail of the window.
+    for prefix_len in (60, 40, 24):
+        key = needle[:prefix_len]
+        if len(key) < 12:
+            continue
+        for i, para in enumerate(paragraphs):
+            if key in _norm_for_match(para["body"]):
+                return (i // _PAGE_SIZE) + 1
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -393,6 +476,14 @@ def _retrieve(
 
     qvec = _embed_query(question)
     scores = sub_emb @ qvec
+    # Cross-lingual expansion: an English/romanized query embeds far from the
+    # corpus's Devanagari passages, so relevant Marathi/Hindi works get crowded
+    # below the top-k cutoff. Render the query into Marathi, embed it too, and
+    # take the per-passage MAX — a Devanagari passage then competes at its
+    # monolingual-strength score. Fail-safe: None => English-only (unchanged).
+    q_dev = query_translation.translate_query(question)
+    if q_dev:
+        scores = np.maximum(scores, sub_emb @ _embed_query(q_dev))
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
@@ -1046,6 +1137,11 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
                 work_dir = d
                 break
         if work_dir is None:
+            # General fallback: glob the corpus roots for the slug (covers
+            # non-`books` kinds and authors not in the hardcoded list), so a
+            # cited canonical work always opens instead of 404-ing. RUNBOOK R1.
+            work_dir = _glob_work_dir(slug)
+        if work_dir is None:
             raise HTTPException(status_code=404, detail=f"Work not found: {slug!r}")
         # Infer author from path
         parts = work_dir.parts
@@ -1189,10 +1285,12 @@ def _enrich_citation_readpage(
 ) -> None:
     """Set readPage on a citation's quote dict, in place.
 
-    Looks up the passage label in label_to_chunk to get char_start, then
-    calls reading_page_for_offset. Only acts on canonical quotes that have a
+    Resolves the cited passage to its reading page by anchoring on the verbatim
+    quote TEXT inside the work's `text.md` (drift-proof), located via the chunk's
+    own `meta.source_path`. Falls back to the (unreliable) char_start offset only
+    when the text can't be located. Only acts on canonical quotes that have a
     workId already set (i.e. after splice_quote_dict has run). Safe to call
-    multiple times (idempotent).
+    multiple times (idempotent). See docs/RUNBOOK.md R1.
     """
     if not isinstance(citation, dict):
         return
@@ -1204,17 +1302,32 @@ def _enrich_citation_readpage(
     work_id = quote.get("workId") or ""
     if not work_id:
         return
-    # Retrieve the chunk that backs this citation to get char_start and language.
+    # Retrieve the chunk that backs this citation for its source path, language,
+    # and (fallback) char_start.
     passage_label = (quote.get("passage") or "").strip()
     chunk = (label_to_chunk or {}).get(passage_label)
     if chunk is None:
         return
     meta = chunk.get("meta") or {}
-    char_start = meta.get("char_start")
-    if char_start is None:
-        return
-    lang = meta.get("language")
-    page = reading_page_for_offset(work_id, lang, char_start)
+
+    # Primary: anchor on the verbatim quote body inside the chunk's own
+    # source_path text.md. This sidesteps the broken char_start entirely and
+    # works even for works absent from catalog.yaml / the slug-based fallback
+    # dirs (R1 defect 1a), because the chunk already carries its exact path.
+    page: Optional[int] = None
+    source_path = meta.get("source_path") or ""
+    text_path = (REPO / source_path) if source_path else None
+    body = quote.get("body") or ""
+    if text_path is not None and text_path.exists() and body:
+        page = reading_page_for_body(text_path, body)
+
+    # Fallback: offset-based lookup (drifts, but better than page 1 when the
+    # body can't be matched, e.g. heavy cleaning divergence).
+    if page is None:
+        char_start = meta.get("char_start")
+        if char_start is not None:
+            page = reading_page_for_offset(work_id, meta.get("language"), char_start)
+
     if page is not None:
         quote["readPage"] = page
 
