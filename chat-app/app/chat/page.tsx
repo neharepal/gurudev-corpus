@@ -254,6 +254,26 @@ function ChatPage() {
       setError(L[lang].errorNoQuestion);
       return;
     }
+
+    // Answer cache (session-scoped): the initial answer for a given
+    // mode|lang|question is deterministic enough to reuse, so returning to this
+    // page (e.g. Back from "Read in full") should rehydrate the prior answer
+    // rather than re-stream it. Re-asking costs a full billable LLM call and
+    // makes Back feel broken. A cache HIT skips the fetch entirely.
+    const cacheKey = `gd:qa:v1:${mode}|${lang}|${q}`;
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        setAnswer(JSON.parse(cached) as QAAnswer | PravachanAnswer);
+        setLoading(false);
+        setStreaming(false);
+        setError(null);
+        return; // do NOT re-fetch
+      }
+    } catch {
+      // storage unavailable / bad JSON — fall through to a normal fetch.
+    }
+
     const ctrl = new AbortController();
     setLoading(true);
     setStreaming(true);
@@ -371,7 +391,15 @@ function ChatPage() {
           if (event.response.kind === "reading") {
             setError(L[lang].errorBadResponse);
           } else {
-            setAnswer(event.response as QAAnswer | PravachanAnswer);
+            const finalAnswer = event.response as QAAnswer | PravachanAnswer;
+            setAnswer(finalAnswer);
+            // Cache the completed answer so returning to this page rehydrates
+            // it instead of re-streaming (see cache note above).
+            try {
+              sessionStorage.setItem(cacheKey, JSON.stringify(finalAnswer));
+            } catch {
+              // storage full / unavailable — caching is best-effort.
+            }
           }
           setLoading(false);
           setStreaming(false);

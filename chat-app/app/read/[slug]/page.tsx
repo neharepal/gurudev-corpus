@@ -41,6 +41,8 @@ const L: Record<
   {
     backToStart: string;
     backToPravachan: string;
+    backToAnswer: string;
+    backToPrevious: string;
     pageXofY: (current: number, total: number) => string;
     previous: string;
     next: string;
@@ -69,6 +71,8 @@ const L: Record<
   en: {
     backToStart: "◁ Back to start",
     backToPravachan: "◁ Back to your Pravachan",
+    backToAnswer: "◁ Back to your answer",
+    backToPrevious: "◁ Back",
     pageXofY: (c, t) => `Page ${c} of ${t}`,
     previous: "◁ Previous",
     next: "Next ▷",
@@ -97,6 +101,8 @@ const L: Record<
   mr: {
     backToStart: "◁ सुरुवातीला परत",
     backToPravachan: "◁ तुमच्या प्रवचनाकडे परत",
+    backToAnswer: "◁ तुमच्या उत्तराकडे परत",
+    backToPrevious: "◁ मागे परत",
     pageXofY: (c, t) => `पान ${c} / ${t}`,
     previous: "◁ मागे",
     next: "पुढे ▷",
@@ -138,9 +144,22 @@ function ReadingPage() {
   const search = useSearchParams();
   const slug = params?.slug ?? "pathway-to-god-in-hindi-literature";
 
-  // If we arrived from a Pravachan brief via "Read in full", surface a
-  // return link so the devotee can get back to their brief without losing it.
+  // If we arrived from a Q&A or Pravachan via "Read in full", surface a return
+  // link so the devotee can get back to where they were without losing it.
   const returnTo = search.get("from");
+  // The `from` URL encodes the origin surface in its own `?mode=` query (e.g.
+  // `/chat?mode=qa&...`). Parse it so the back link reads "Back to your answer"
+  // for Q&A vs "Back to your Pravachan" for pravachan — not a hardcoded label.
+  const returnMode = (() => {
+    if (!returnTo) return null;
+    const qIdx = returnTo.indexOf("?");
+    if (qIdx === -1) return null;
+    try {
+      return new URLSearchParams(returnTo.slice(qIdx + 1)).get("mode");
+    } catch {
+      return null;
+    }
+  })();
   const lang: Lang = (search.get("lang") as Lang | null) ?? "en";
   const lbl = L[lang];
   const isMr = lang === "mr";
@@ -427,7 +446,11 @@ function ReadingPage() {
               className={`text-[14px] ${isMr ? "font-deva" : ""}`}
               style={{ color: "var(--accent-maroon)" }}
             >
-              {lbl.backToPravachan}
+              {returnMode === "qa"
+                ? lbl.backToAnswer
+                : returnMode === "pravachan"
+                  ? lbl.backToPravachan
+                  : lbl.backToPrevious}
             </Link>
           ) : null}
         </div>
