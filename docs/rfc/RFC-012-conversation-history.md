@@ -21,9 +21,15 @@ to look back at the answers."*
 There is no login and no server-side user state (that is post-demo work, see
 RFC-004 and the reading-mode precedent). So history must be **device-local**. The
 app already does exactly this for reading position: `lib/readingProgress.ts`
-keeps a capped list in `localStorage` and surfaces it as a mode-scoped
-"Continue reading" shelf. Conversation history is the same shape for the QnA and
-Pravachan modes.
+keeps a list in `localStorage` and surfaces it as a mode-scoped "Continue reading"
+shelf. Conversation history is the same shape.
+
+**Pravachan mode is being decommissioned from the UI** (code retained, mode tab
+and entry points hidden — a separate minor UI change). So **Q&A is the only
+visible chat mode** going forward. This RFC keeps the history data model
+**mode-general** (`mode: "qa" | "pravachan"`) so any legacy/hidden Pravachan
+threads still render in `/history`, but the only entry point that creates new
+threads is Q&A.
 
 ## Goals & non-goals
 
@@ -73,12 +79,14 @@ export type SavedThread = {
 
 API (same shape/error-handling as `readingProgress.ts`):
 
-- `KEY = "gd:chat:history:v1"`, `CAP = 50`.
+- `KEY = "gd:chat:history:v1"`.
 - `threadId(mode, lang, question)` — deterministic id; same basis as the existing
   `gd:qa:v1:${mode}|${lang}|${q}` session-cache key (RFC-010 follow-up work).
 - `loadThreads()` → newest-first array; corrupt/absent → `[]`.
-- `upsertThread(t)` → replace any entry with the same `id`, move to front,
-  `slice(0, CAP)`, persist; best-effort `try/catch`.
+- `upsertThread(t)` → replace any entry with the same `id`, move to front, persist.
+  **No fixed count cap** — keep everything. On a `QuotaExceededError`, evict the
+  **oldest** thread(s) and retry until the write succeeds (or the list is empty),
+  so the newest conversation is never the one silently dropped.
 - `removeThread(id)`, `clearAll()`.
 
 ### Save + reopen flow — `app/chat/page.tsx`
@@ -137,18 +145,23 @@ Versioned key (`:v1`) allows a clean future migration.
   question replaces the stored answer (LLM output is non-deterministic). Fine for
   looking back; not a version history.
 - **Storage limits:** `localStorage` is ~5 MB and synchronous. Full threads with
-  citations are a few KB each; the `CAP = 50` bound keeps total size small and
-  writes cheap. Quota-exceeded is caught and degrades to "not saved."
+  citations are a few KB each (hundreds fit). Rather than an arbitrary count cap,
+  writes keep everything and evict the **oldest** on `QuotaExceededError`, so the
+  newest thread always saves and only the least-recent history is shed under
+  pressure.
 - **Privacy:** questions may be personal; they stay on-device, and "Clear all" +
   per-thread delete give the user control.
 
 ## Open questions
 
-- Should the QnA-mode shelf show recent **Q&A only** (current plan, mode-scoped) or
-  recent threads across both chat modes? Current plan: Q&A only; both appear on
-  `/history`.
-- Is `CAP = 50` right, or should the shelf/history cap differ?
-- Do we want a Pravachan-mode shelf later, or is `/history` sufficient for those?
+Resolved during review (2026-07-03):
+
+- **Shelf scope:** Q&A only (Pravachan is being decommissioned from the UI).
+- **Cap:** none — keep all threads, evict oldest only on quota (see storage module).
+- **Pravachan shelf:** not needed; `/history` covers any legacy Pravachan threads.
+
+Depends on a separate change: hiding the Pravachan mode tab + entry points in the
+UI (code retained). Tracked outside this RFC.
 
 ## References
 

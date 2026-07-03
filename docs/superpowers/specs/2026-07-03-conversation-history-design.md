@@ -1,7 +1,10 @@
 # Conversation history (saved question threads) — design
 
 **Date:** 2026-07-03
-**Status:** Approved (brainstorm) — pending implementation plan
+**Status:** Approved (brainstorm) — formalized in **RFC-012**, which supersedes
+this doc where they differ. Finalized after review: **no fixed cap** (keep all,
+evict oldest on quota) and **Q&A is the only visible chat mode** (Pravachan
+decommissioned from the UI, code kept; data model stays mode-general).
 **Surface:** chat-app (Next.js)
 
 ## Problem
