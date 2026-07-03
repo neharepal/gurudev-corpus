@@ -646,8 +646,12 @@ export const SUGGESTIONS: Record<ModeId, Record<Lang, Suggestion[]>> = {
   },
 };
 
+// Pravachan mode is decommissioned from the UI (2026-07-03) but its code is
+// retained: the `pravachan` ModeId, its answer schema/rendering, prompts, and
+// retrieval all still work. It is simply omitted from MODES so it no longer
+// appears in any mode selector (ModeTabs / ModeDropdown / MenuDrawer all iterate
+// MODES). Direct ?mode=pravachan URLs and legacy saved threads still render.
 export const MODES: { id: ModeId; label: string }[] = [
   { id: "qa", label: "Q&A" },
-  { id: "pravachan", label: "Pravachan" },
   { id: "reading", label: "Reading" },
 ];
