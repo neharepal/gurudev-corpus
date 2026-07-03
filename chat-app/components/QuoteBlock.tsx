@@ -47,6 +47,24 @@ export default function QuoteBlock({
         return `/read/${quote.workId}${qStr ? `?${qStr}` : ""}`;
       })()
     : null;
+  // Attribution line. `location` is LLM-supplied and, for sources without a
+  // clean page/section (e.g. OCR'd pravachan), it sometimes just repeats the
+  // work title or author — which rendered as "Title, Title · Author". Drop it
+  // when empty or redundant so the reference reads "Title · Author".
+  const authorName = authorDisplayName(quote.author);
+  const norm = (s: string) => (s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+  const title = (quote.workTitle ?? "").trim();
+  const loc = (quote.location ?? "").trim();
+  const nLoc = norm(loc);
+  const locRedundant =
+    !nLoc ||
+    nLoc === norm(title) ||
+    nLoc === norm(authorName) ||
+    nLoc.startsWith(norm(title)) ||
+    nLoc.includes(norm(authorName));
+  const attribution = locRedundant
+    ? `— ${title} · ${authorName}`
+    : `— ${title}, ${loc} · ${authorName}`;
   return (
     <div>
       <blockquote
@@ -55,7 +73,7 @@ export default function QuoteBlock({
         {quote.body}
       </blockquote>
       <p className="gd-quote-attr">
-        — {quote.workTitle}, {quote.location} · {authorDisplayName(quote.author)}
+        {attribution}
       </p>
       {readHref ? (
         <Link
