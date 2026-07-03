@@ -64,3 +64,4 @@ photos/
 
 # ===== Local Claude Code settings =====
 .claude/
+.superpowers/
