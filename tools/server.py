@@ -1167,15 +1167,14 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
             "path": str(work_dir.relative_to(REPO)) + "/",
         }
 
-    # Resolve language
+    # Resolve language. Fall back to the work's primary language rather than
+    # 404-ing when the requested lang is unavailable: a citation's "Read in
+    # full" link carries the UI language (e.g. `en`), but most works exist only
+    # in Marathi/Hindi, and the passage the reader clicked was in that language.
+    # Serve what's on disk. (Mirrors _resolve_text_path.)
     available_langs: List[str] = work_meta.get("languages", ["en"])
-    if lang is None:
+    if lang is None or lang not in available_langs:
         lang = available_langs[0]
-    elif lang not in available_langs:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Language {lang!r} not available for {slug!r}. Available: {available_langs}",
-        )
 
     # Locate text.md
     work_path_str: str = work_meta.get("path", "")
