@@ -375,6 +375,7 @@ export type ReadingPage = {
   workTitle: string;
   author: string;
   chapter: string;
+  chapterStart?: boolean;
   totalPages: number;
   paragraphs: { n: number; body: string }[];
 };

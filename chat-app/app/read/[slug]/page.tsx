@@ -421,6 +421,10 @@ function ReadingPage() {
   return (
     <>
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
+      <div className={`gd-runhead ${isMr ? "font-deva" : ""}`}>
+        <span>{pageData?.workTitle ?? slug.replace(/-/g, " ")}</span>
+        <span>{pageData?.chapter ?? ""}</span>
+      </div>
       <header
         className="mb-5 pb-3"
         style={{ borderBottom: "1px solid var(--border-soft)" }}
@@ -467,7 +471,7 @@ function ReadingPage() {
             className="text-[13.5px]"
             style={{ color: "var(--text-secondary)" }}
           >
-            {pageData ? `${pageData.author} · ${pageData.chapter}` : ""}
+            {pageData ? pageData.author : ""}
           </div>
         </div>
       </header>
@@ -516,10 +520,10 @@ function ReadingPage() {
           <p className="text-[15px]" style={{ color: "var(--accent-maroon)" }}>
             {fetchError}
           </p>
-        ) : (pageData?.paragraphs ?? []).map((para) => (
+        ) : (pageData?.paragraphs ?? []).map((para, idx) => (
           <div
             key={para.n}
-            className="mb-7"
+            className="mb-0"
             onMouseEnter={() => setHoveredN(para.n)}
             onMouseLeave={() => setHoveredN(null)}
             onFocus={() => setHoveredN(para.n)}
@@ -601,7 +605,9 @@ function ReadingPage() {
                 ) : (
                   /* Normal paragraph display */
                   <p
-                    className="text-[17.5px]"
+                    className={`gd-read-p text-[17.5px] ${
+                      idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
+                    }`}
                     style={{
                       color: "var(--text-primary)",
                       lineHeight: 1.7,
