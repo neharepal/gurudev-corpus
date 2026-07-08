@@ -422,8 +422,7 @@ function ReadingPage() {
     <>
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
       <div className={`gd-runhead ${isMr ? "font-deva" : ""}`}>
-        <span>{pageData?.workTitle ?? slug.replace(/-/g, " ")}</span>
-        <span>{pageData?.chapter ?? ""}</span>
+        {pageData?.workTitle ?? slug.replace(/-/g, " ")}
       </div>
       <header
         className="mb-5 pb-3"
@@ -461,12 +460,6 @@ function ReadingPage() {
             published language; chapter label is descriptive metadata so we
             translate it where we have an MR equivalent. */}
         <div>
-          <div
-            className="text-[20px] font-semibold leading-tight"
-            style={{ color: "var(--text-primary)" }}
-          >
-            {pageData?.workTitle ?? slug.replace(/-/g, " ")}
-          </div>
           <div
             className="text-[13.5px]"
             style={{ color: "var(--text-secondary)" }}
@@ -607,11 +600,13 @@ function ReadingPage() {
                       lineHeight: 1.7,
                     }}
                   >
-                    {para.body}
+                    {para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "")}
                   </p>
                 )}
-                {/* Correction affordance — shown only when editor is not open for this para. */}
-                {activeCorrectionN !== para.n && (
+                {/* Correction affordance — mounted only while this paragraph is
+                    hovered/focused, so it reserves no space otherwise and
+                    paragraphs stay flush (book look). */}
+                {activeCorrectionN !== para.n && hoveredN === para.n && (
                   <button
                     type="button"
                     onClick={() => openCorrectionEditor(para.n, para.body)}
@@ -624,8 +619,6 @@ function ReadingPage() {
                       cursor: "pointer",
                       padding: 0,
                       display: "block",
-                      opacity: hoveredN === para.n ? 1 : 0,
-                      transition: "opacity 150ms ease",
                     }}
                   >
                     ✏ {lbl.suggestCorrection}
