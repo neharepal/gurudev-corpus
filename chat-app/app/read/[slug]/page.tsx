@@ -502,12 +502,6 @@ function ReadingPage() {
             } as CSSProperties
           }
         />
-        <div
-          className={`mt-1.5 text-[12px] text-right ${isMr ? "font-deva" : ""}`}
-          style={{ color: "var(--text-secondary)" }}
-        >
-          {lbl.pageXofY(sliderValue, total)}
-        </div>
       </div>
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
@@ -641,6 +635,10 @@ function ReadingPage() {
           </div>
         ))}
       </article>
+
+      <div className={`gd-folio ${isMr ? "font-deva" : ""}`}>
+        {lbl.pageXofY(sliderValue, total)}
+      </div>
 
       {/* Forward/back navigation. */}
       <div
