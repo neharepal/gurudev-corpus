@@ -11,6 +11,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import MenuDrawer from "../components/MenuDrawer";
+import YourQuestionsShelf from "../components/YourQuestionsShelf";
 import { type Lang } from "../components/ModeTabs";
 import {
   DEFAULT_READING_SLUG,
@@ -371,6 +372,7 @@ function LandingPage() {
           {mode === "reading" && (
             <ContinueReadingShelf lang={lang} />
           )}
+          {mode === "qa" && <YourQuestionsShelf lang={lang} />}
 
           {/* Suggestions as a 3-column row of example chips beneath the
               composer — "or try one of these" rather than a preamble. */}
