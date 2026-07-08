@@ -474,14 +474,18 @@ def _retrieve(
 
     qvec = _embed_query(question)
     scores = sub_emb @ qvec
-    # Cross-lingual expansion: an English/romanized query embeds far from the
-    # corpus's Devanagari passages, so relevant Marathi/Hindi works get crowded
-    # below the top-k cutoff. Render the query into Marathi, embed it too, and
-    # take the per-passage MAX — a Devanagari passage then competes at its
-    # monolingual-strength score. Fail-safe: None => English-only (unchanged).
+    # Cross-lingual expansion (bidirectional):
+    # EN/romanized → Marathi: relevant Devanagari passages compete at their
+    #   monolingual-strength cosine instead of being depressed cross-lingually.
+    # Devanagari → EN: relevant English-language canonical works (Gurudev's own
+    #   scholarly writings are ~60% English) compete at their monolingual strength.
+    # Both directions take the per-passage MAX. Fail-safe: None => single-vector.
     q_dev = query_translation.translate_query(question)
     if q_dev:
         scores = np.maximum(scores, sub_emb @ _embed_query(q_dev))
+    q_en = query_translation.translate_to_english(question)
+    if q_en:
+        scores = np.maximum(scores, sub_emb @ _embed_query(q_en))
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
@@ -1231,14 +1235,14 @@ def _prepare_request(req: AskRequest):
         raise HTTPException(status_code=400, detail="`question` is required")
 
     top_k = {"qa": 8, "pravachan": 15, "reading": 5}[mode]
-    candidates = 30
+    candidates = 100
     mmr_lambda = 0.7
 
     metadata_filter: Optional[Dict[str, Any]] = None
     if req.work and mode in ("reading", "qa"):
         metadata_filter = {"work_id": req.work}
-    # Citation breadth: unscoped Q&A retrieves at most ONE chunk per work, so
-    # the model is handed one strong passage from each of the top distinct
+    # Citation breadth: unscoped Q&A retrieves at most 2 chunks per work so
+    # the model sees one or two strong passages from each of the top distinct
     # works and its citations span the corpus instead of clustering in a single
     # book. Work-scoped Q&A (mode=="qa" + work set) must NOT keep that breadth
     # cap — the filter already restricts to one work, so we allow top_k chunks
@@ -1247,7 +1251,7 @@ def _prepare_request(req: AskRequest):
     if metadata_filter and "work_id" in metadata_filter:
         max_per_source = top_k
     elif mode == "qa":
-        max_per_source = 1
+        max_per_source = 2
     else:
         max_per_source = 2
 

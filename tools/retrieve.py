@@ -32,7 +32,7 @@ META_PATH = REPO / "04_processed" / "embeddings" / "chunks_meta.jsonl"
 MANIFEST_PATH = REPO / "04_processed" / "embeddings" / "manifest.json"
 
 DEFAULT_TOP_K = 8
-INITIAL_CANDIDATES = 30   # pull more for MMR + per-source cap to whittle down
+INITIAL_CANDIDATES = 100  # pull more for MMR + per-source cap to whittle down
 MMR_LAMBDA = 0.7           # 1.0 = pure relevance, 0.0 = pure diversity
 MAX_PER_SOURCE = 2         # at most N chunks per source_work_id in final result
 
