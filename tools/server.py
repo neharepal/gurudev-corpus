@@ -42,6 +42,7 @@ from pydantic import BaseModel
 
 import intent
 import query_translation
+from pagination import paginate, page_for_paragraph_index, is_chapter_start
 import retrieve
 from llm_client import ChatClient, MissingApiKeyError, pick_model
 from prompts import (
@@ -184,9 +185,6 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
 # In-process cache of parsed works. Key: (path, lang). Cleared on reload.
 _reading_cache: Dict[tuple, List[Dict[str, Any]]] = {}
 
-# Page size for reading mode — must match the constant used in read_work().
-_PAGE_SIZE = 4
-
 # Roots under which canonical/aggregated works live. The per-author/per-kind
 # layout varies (books/, letters/, lectures/, …), so rather than hardcode every
 # (author, kind) pair we glob `<root>/<author>/<kind>/<slug>` as a general
@@ -275,7 +273,7 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
     front matter).  Returns None if the work cannot be resolved or has no
     qualifying paragraphs.
 
-    Uses the same _PAGE_SIZE and paragraph-filtering logic as read_work() so
+    Uses the same pagination logic as read_work() so
     the page number matches what the reader shows.
     """
     text_path = _resolve_text_path(slug, lang)
@@ -309,7 +307,7 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
         # char_offset is past the last paragraph — return the last page.
         target_idx = len(all_paragraphs) - 1
 
-    return (target_idx // _PAGE_SIZE) + 1
+    return page_for_paragraph_index(all_paragraphs, target_idx)
 
 
 def _norm_for_match(s: str) -> str:
@@ -363,7 +361,7 @@ def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
             continue
         for i, para in enumerate(paragraphs):
             if key in _norm_for_match(para["body"]):
-                return (i // _PAGE_SIZE) + 1
+                return page_for_paragraph_index(paragraphs, i)
     return None
 
 
@@ -1197,14 +1195,12 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     if total == 0:
         raise HTTPException(status_code=404, detail="Work has no parseable paragraphs")
 
-    PAGE_SIZE = _PAGE_SIZE
-    total_pages = math.ceil(total / PAGE_SIZE)
+    pages = paginate(all_paragraphs)
+    total_pages = len(pages)
     page = max(1, min(page, total_pages))
-    start = (page - 1) * PAGE_SIZE
-    end = start + PAGE_SIZE
-    page_paras = all_paragraphs[start:end]
-
+    page_paras = pages[page - 1]
     chapter = page_paras[0]["chapter"] if page_paras else ""
+    chapter_start = is_chapter_start(pages, page)
 
     title: str = work_meta.get("title") or slug.replace("-", " ").title()
     author_display = _author_display_name(work_meta.get("author", ""))
@@ -1214,6 +1210,7 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
         "workTitle": title,
         "author": author_display,
         "chapter": chapter,
+        "chapterStart": chapter_start,
         "totalPages": total_pages,
         "paragraphs": [{"n": p["n"], "body": p["body"]} for p in page_paras],
     }
