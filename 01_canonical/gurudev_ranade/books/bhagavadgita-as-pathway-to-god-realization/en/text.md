@@ -3,7 +3,7 @@ work_id: bhagavadgita-as-pathway-to-god-realization
 author: gurudev_ranade
 work_type: book
 language: en
-title_en: "Bhagavadgita as Pathway to God Realization"
+title_en: "The Bhagavadgita as a Philosophy of God-Realisation"
 sources:
   - 2. BGPGR.docx
   - BGPGR CHAPTER XX FOR PRAVACHAN.docx

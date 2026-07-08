@@ -3,7 +3,7 @@ work_id: vedant
 author: gurudev_ranade
 work_type: book
 language: en
-title_en: "Vedant"
+title_en: "Vedanta: The Culmination of Indian Thought"
 sources:
   - Vedant.docx
 extracted_via: "pandoc 2.10 (docx → markdown_strict)"

@@ -17,6 +17,18 @@ works:
   languages:
   - en
   path: 01_canonical/gurudev_ranade/books/philosophical-and-other-essays/
+- id: bhagavadgita-as-pathway-to-god-realization
+  title: The Bhagavadgita as a Philosophy of God-Realisation
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/bhagavadgita-as-pathway-to-god-realization/
+- id: vedant
+  title: 'Vedanta: The Culmination of Indian Thought'
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/vedant/
 - id: kannad-parmarth-sopan
   title: कन्नड परमार्थ सोपान (Kannad Parmarth Sopan, Marathi)
   author: gurudev_ranade

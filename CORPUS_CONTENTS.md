@@ -22,7 +22,7 @@ _Generated: 2026-06-29_
 | Pathway to God in Kannada Literature (`pathway-to-god-in-kannada-literature`) | gurudev_ranade | books | en | 810 |
 | A Constructive Survey of Upanishadic Philosophy (`constructive-survey-of-upanishadic-philosophy`) | gurudev_ranade | books | en | 715 |
 | Pathway to God in Hindi Literature (`pathway-to-god-in-hindi-literature`) | gurudev_ranade | books | en | 552 |
-| Bhagavadgita as Pathway to God Realization (`bhagavadgita-as-pathway-to-god-realization`) | gurudev_ranade | books | en | 404 |
+| The Bhagavadgita as a Philosophy of God-Realisation (`bhagavadgita-as-pathway-to-god-realization`) | gurudev_ranade | books | en | 404 |
 | Hindu Mysticism (`hindu-mysticism`) | gurudev_ranade | books | en | 392 |
 | Kannad Parmarth Sopan (Marathi) (`kannad-parmarth-sopan`) | gurudev_ranade | books | mr | 312 |
 | Parmartha Mandir (`parmartha-mandir`) | gurudev_ranade | books | mr | 289 |
@@ -35,7 +35,7 @@ _Generated: 2026-06-29_
 | The Evolution of My Own Thought (`evolution-of-my-own-thought`) | gurudev_ranade | books | en | 47 |
 | Amar Sandesh Sudha (`amar-sandesh-sudha`) | gurudev_ranade | books | mr | 41 |
 | A Vindication of Indian Philosophy (`vindication-of-indian-philosophy`) | gurudev_ranade | books | en | 32 |
-| Vedant (`vedant`) | gurudev_ranade | books | en | 29 |
+| Vedanta: The Culmination of Indian Thought (`vedant`) | gurudev_ranade | books | en | 29 |
 | Herakleitos (`herakleitos`) | gurudev_ranade | books | en | 27 |
 | Essays and Reflections (`essays-and-reflections`) | gurudev_ranade | books | en | 16 |
 | Gurudeos Abhang (`gurudeos-abhang`) | gurudev_ranade | books | en | 8 |
