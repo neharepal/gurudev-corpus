@@ -13,6 +13,7 @@ import AnswerToolbar from "../../components/AnswerToolbar";
 import MeditativeLoader from "../../components/MeditativeLoader";
 import QuoteBlock from "../../components/QuoteBlock";
 import { authorDisplayName } from "../../lib/authors";
+import { threadId, upsertThread, loadThreads } from "../../lib/conversationHistory";
 import {
   type ModeId,
   type PravachanAnswer,
@@ -261,6 +262,29 @@ function ChatPage() {
     // rather than re-stream it. Re-asking costs a full billable LLM call and
     // makes Back feel broken. A cache HIT skips the fetch entirely.
     const cacheKey = `gd:qa:v1:${mode}|${lang}|${q}`;
+
+    // Durable rehydrate: a saved thread restores the answer AND follow-ups, so
+    // reopening from the shelf/history shows the whole conversation with no new
+    // /api/ask call.
+    const saved = loadThreads().find((t) => t.id === threadId(mode, lang, q));
+    if (saved) {
+      setAnswer(saved.answer);
+      setFollowUps(
+        saved.followUps.map((t) => ({
+          question: t.question,
+          answer: t.answer,
+          loading: false,
+          streaming: false,
+          error: null,
+        })),
+      );
+      setLoading(false);
+      setStreaming(false);
+      setError(null);
+      return; // do NOT re-fetch
+    }
+
+    // Fallback: session cache (answer only) — the fast path within a tab.
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
@@ -427,6 +451,29 @@ function ChatPage() {
       setStreaming(false);
     };
   }, [mode, lang, questionFromUrl]);
+
+  // Persist the thread whenever the initial answer or any follow-up settles.
+  // In-flight follow-ups (streaming) are excluded until complete. upsertThread
+  // preserves the prior createdAt, so reopening doesn't reset it.
+  useEffect(() => {
+    const q = questionFromUrl?.trim();
+    if (!q || !answer || streaming) return; // wait for the initial stream to finish
+    const settled = followUps
+      .filter((t) => t.answer && !t.streaming)
+      .map((t) => ({ question: t.question, answer: t.answer! }));
+    const now = Date.now();
+    upsertThread({
+      id: threadId(mode, lang, q),
+      // /chat only ever serves qa/pravachan; reading never routes here.
+      mode: mode as "qa" | "pravachan",
+      lang,
+      question: q,
+      answer,
+      followUps: settled,
+      createdAt: now,
+      updatedAt: now,
+    });
+  }, [answer, followUps, streaming, mode, lang, questionFromUrl]);
 
   function appendFollowUp() {
     const q = followUp.trim();
