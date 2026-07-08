@@ -411,6 +411,7 @@ class ReportRequest(BaseModel):
     original: Optional[str] = None    # verbatim text as rendered
     corrected: Optional[str] = None   # user's corrected text
     lang: Optional[str] = None        # "en" | "mr"
+    name: Optional[str] = None        # contributor name (corrections; no login)
 
 
 # ---------------------------------------------------------------------------
@@ -764,6 +765,9 @@ def report_issue(req: ReportRequest) -> Dict[str, Any]:
         entry["original"] = req.original
     if req.corrected is not None:
         entry["corrected"] = req.corrected
+    # Contributor name — who suggested this (no login), for the review queue.
+    if req.name:
+        entry["name"] = req.name
 
     # Append to the YAML list safely:
     # read existing content → parse as list (or default to []) → append → dump.
@@ -970,12 +974,13 @@ function renderEntry(e) {
     }
   }
   const flaggedAt = e.flagged_at ? `<span class="at" title="${escHtml(e.flagged_at)}">${e.flagged_at.slice(0,19).replace('T',' ')} UTC</span>` : '';
+  const by = e.name ? `✍ ${escHtml(e.name)}` : '';
   const entryId = escHtml(e.id || '');
   return `<div class="card" id="entry-${entryId}" data-kind="${kind}" data-status="${status}">
   <div class="card-header">
     ${kindBadge(kind)}
     ${statusBadge(status)}
-    <span class="meta" style="margin-left:auto">${flaggedAt}</span>
+    <span class="meta" style="margin-left:auto">${by ? by + ' · ' : ''}${flaggedAt}</span>
   </div>
   ${body}
   <div class="actions" id="actions-${entryId}">

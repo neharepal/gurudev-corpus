@@ -177,6 +177,9 @@ export type CorrectionRequest = {
   question: string;
   /** Required by pydantic ReportRequest. */
   mode: string;
+  /** Contributor name (required) — surfaced in the flag queue so reviewers
+   * know who suggested the change (there is no login). */
+  name: string;
 };
 
 /**

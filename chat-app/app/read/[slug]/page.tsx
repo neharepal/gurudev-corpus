@@ -61,6 +61,7 @@ const L: Record<
     errorNotReadable: string;
     suggestCorrection: string;
     correctionPlaceholder: string;
+    yourNamePlaceholder: string;
     submitCorrection: string;
     cancelCorrection: string;
     correctionSent: string;
@@ -92,6 +93,7 @@ const L: Record<
     errorNotReadable: "This work isn't available to read yet.",
     suggestCorrection: "suggest a correction",
     correctionPlaceholder: "Edit the paragraph text…",
+    yourNamePlaceholder: "Your name (required)",
     submitCorrection: "Submit",
     cancelCorrection: "Cancel",
     correctionSent: "Thank you — sent for review",
@@ -122,6 +124,7 @@ const L: Record<
     errorNotReadable: "हा ग्रंथ अद्याप वाचण्यासाठी उपलब्ध नाही.",
     suggestCorrection: "सुधारणा सुचवा",
     correctionPlaceholder: "परिच्छेदाचा मजकूर संपादित करा…",
+    yourNamePlaceholder: "तुमचे नाव (आवश्यक)",
     submitCorrection: "पाठवा",
     cancelCorrection: "रद्द करा",
     correctionSent: "धन्यवाद — पुनरावलोकनासाठी पाठवले",
@@ -195,6 +198,12 @@ function ReadingPage() {
   const [activeCorrectionN, setActiveCorrectionN] = useState<number | null>(null);
   // Draft text in the correction textarea, keyed by para.n.
   const [correctionDraft, setCorrectionDraft] = useState<string>("");
+  // Contributor name for corrections — required, and remembered on-device so a
+  // repeat contributor types it once (no login). Feeds the RFC-004 flag queue.
+  const [correctionName, setCorrectionName] = usePersistentState<string>(
+    "gd:correction:name",
+    "",
+  );
   // "sending" | "sent" | "error" | null — status of the last POST.
   const [correctionStatus, setCorrectionStatus] = useState<
     "sending" | "sent" | "error" | null
@@ -361,10 +370,12 @@ function ReadingPage() {
 
   async function submitCorrection(n: number, original: string) {
     const edited = correctionDraft.trim();
+    const name = correctionName.trim();
     if (!edited || edited === original) {
       closeCorrectionEditor();
       return;
     }
+    if (!name) return; // name is required; Submit is also disabled without it
     setCorrectionStatus("sending");
     const req: CorrectionRequest = {
       kind: "correction",
@@ -376,6 +387,7 @@ function ReadingPage() {
       lang,
       question: "",
       mode: "reading",
+      name,
     };
     try {
       await reportCorrection(req);
@@ -552,6 +564,21 @@ function ReadingPage() {
                         outline: "none",
                       }}
                     />
+                    <input
+                      type="text"
+                      value={correctionName}
+                      onChange={(e) => setCorrectionName(e.target.value)}
+                      placeholder={lbl.yourNamePlaceholder}
+                      disabled={correctionStatus === "sending" || correctionStatus === "sent"}
+                      className={`mt-2 block w-full rounded-[6px] px-2.5 py-1.5 text-[14px] ${isMr ? "font-deva" : ""}`}
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        color: "var(--text-primary)",
+                        border: "1px solid var(--accent-maroon)",
+                        background: "var(--bg-surface)",
+                        outline: "none",
+                      }}
+                    />
                     <div className="mt-2 flex items-center gap-3">
                       {correctionStatus === "sent" ? (
                         <span
@@ -582,7 +609,7 @@ function ReadingPage() {
                           <button
                             type="button"
                             onClick={() => void submitCorrection(para.n, para.body)}
-                            disabled={correctionStatus === "sending"}
+                            disabled={correctionStatus === "sending" || !correctionName.trim()}
                             className={`rounded-[4px] px-3 py-1 text-[13px] font-semibold disabled:opacity-50 ${isMr ? "font-deva" : ""}`}
                             style={{
                               background: "#6B1F1F",
