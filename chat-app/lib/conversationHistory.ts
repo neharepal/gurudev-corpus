@@ -46,6 +46,7 @@ export function loadThreads(): SavedThread[] {
 
 /** Persist newest-first; on quota error, drop the oldest and retry. */
 function persist(threads: SavedThread[]): void {
+  if (typeof window === "undefined") return;
   let list = threads.slice().sort((a, b) => b.updatedAt - a.updatedAt);
   // eslint-disable-next-line no-constant-condition
   while (true) {
@@ -63,10 +64,20 @@ export function upsertThread(thread: SavedThread): void {
   if (typeof window === "undefined") return;
   const all = loadThreads();
   const prior = all.find((t) => t.id === thread.id);
-  // Preserve the original createdAt so re-saves/reopens don't reset it.
-  const merged: SavedThread = prior
-    ? { ...thread, createdAt: prior.createdAt }
-    : thread;
+  let merged: SavedThread = thread;
+  if (prior) {
+    // Preserve createdAt. Also preserve updatedAt when the content is unchanged
+    // (e.g. merely reopening a thread re-runs the save), so viewing a thread
+    // doesn't reorder history — only a new answer/follow-up bumps it to the top.
+    const unchanged =
+      JSON.stringify({ a: prior.answer, f: prior.followUps }) ===
+      JSON.stringify({ a: thread.answer, f: thread.followUps });
+    merged = {
+      ...thread,
+      createdAt: prior.createdAt,
+      updatedAt: unchanged ? prior.updatedAt : thread.updatedAt,
+    };
+  }
   persist([merged, ...all.filter((t) => t.id !== thread.id)]);
 }
 

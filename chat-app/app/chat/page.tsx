@@ -223,9 +223,8 @@ function ChatPage() {
   const lang = langFromUrl;
   const lbl = L[lang];
   const [followUp, setFollowUp] = useState("");
-  // Follow-ups are intentionally in-memory / session-scoped: reopening a
-  // question always starts a fresh thread rather than rehydrating a prior
-  // session's follow-ups from storage.
+  // Follow-ups are saved with the thread (RFC-012) and rehydrated on reopen —
+  // see the fetch effect below, which restores followUps from a SavedThread.
   const [followUps, setFollowUps] = useState<FollowUpTurn[]>([]);
 
   // Initial answer comes from /api/ask.
@@ -458,14 +457,16 @@ function ChatPage() {
   useEffect(() => {
     const q = questionFromUrl?.trim();
     if (!q || !answer || streaming) return; // wait for the initial stream to finish
+    // /chat only serves qa/pravachan; guard defensively so a crafted
+    // ?mode=reading URL can't store a SavedThread with an invalid mode.
+    if (mode !== "qa" && mode !== "pravachan") return;
     const settled = followUps
       .filter((t) => t.answer && !t.streaming)
       .map((t) => ({ question: t.question, answer: t.answer! }));
     const now = Date.now();
     upsertThread({
       id: threadId(mode, lang, q),
-      // /chat only ever serves qa/pravachan; reading never routes here.
-      mode: mode as "qa" | "pravachan",
+      mode,
       lang,
       question: q,
       answer,

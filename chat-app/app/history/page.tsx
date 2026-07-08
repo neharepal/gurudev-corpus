@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import type { Lang } from "../../components/ModeTabs";
 import {
   loadThreads,
   removeThread,
@@ -10,14 +12,25 @@ import {
 } from "../../lib/conversationHistory";
 import { answerSnippet } from "../../lib/answerSnippet";
 
-function relDate(ms: number): string {
+function relDate(ms: number, isMr: boolean): string {
   const d = Math.floor((Date.now() - ms) / 86400000);
-  if (d <= 0) return "today";
-  if (d === 1) return "yesterday";
-  return `${d} days ago`;
+  if (d <= 0) return isMr ? "आज" : "today";
+  if (d === 1) return isMr ? "काल" : "yesterday";
+  return isMr ? `${d} दिवसांपूर्वी` : `${d} days ago`;
 }
 
-export default function HistoryPage() {
+export default function HistoryPageRoute() {
+  return (
+    <Suspense fallback={null}>
+      <HistoryPage />
+    </Suspense>
+  );
+}
+
+function HistoryPage() {
+  const search = useSearchParams();
+  const lang: Lang = (search.get("lang") as Lang | null) ?? "en";
+  const isMr = lang === "mr";
   const [threads, setThreads] = useState<SavedThread[]>([]);
 
   useEffect(() => {
@@ -39,20 +52,27 @@ export default function HistoryPage() {
         className="mb-5 flex items-center justify-between pb-3"
         style={{ borderBottom: "1px solid var(--border-soft)" }}
       >
-        <Link href="/" className="text-[14px]" style={{ color: "var(--text-secondary)" }}>
-          ◁ Back
+        <Link
+          href={`/?lang=${lang}`}
+          className={`text-[14px] ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-secondary)" }}
+        >
+          {isMr ? "◁ मागे" : "◁ Back"}
         </Link>
-        <span className="text-[17px] font-semibold" style={{ color: "var(--text-primary)" }}>
-          Your questions
+        <span
+          className={`text-[17px] font-semibold ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-primary)" }}
+        >
+          {isMr ? "तुमचे प्रश्न" : "Your questions"}
         </span>
         {threads.length > 0 ? (
           <button
             type="button"
             onClick={handleClearAll}
-            className="text-[13px]"
+            className={`text-[13px] ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-tertiary)", background: "transparent" }}
           >
-            Clear all
+            {isMr ? "सर्व हटवा" : "Clear all"}
           </button>
         ) : (
           <span style={{ width: 52 }} />
@@ -60,14 +80,30 @@ export default function HistoryPage() {
       </header>
 
       {threads.length === 0 ? (
-        <p className="mt-10 text-center text-[15px]" style={{ color: "var(--text-tertiary)" }}>
-          No saved questions yet.
+        <p
+          className={`mt-10 text-center text-[15px] ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-tertiary)" }}
+        >
+          {isMr ? "अजून जतन केलेले प्रश्न नाहीत." : "No saved questions yet."}
         </p>
       ) : (
         <ul className="flex flex-col gap-3">
           {threads.map((t) => {
             const isDeva = /[ऀ-ॿ]/.test(t.question);
             const followN = t.followUps.length;
+            const badge = isMr
+              ? t.mode === "qa"
+                ? "प्रश्नोत्तर"
+                : "प्रवचन"
+              : t.mode === "qa"
+                ? "Q&A"
+                : "Pravachan";
+            const followLabel =
+              followN > 0
+                ? isMr
+                  ? ` · ${followN} पाठपुरावा`
+                  : ` · ${followN} follow-up${followN > 1 ? "s" : ""}`
+                : "";
             return (
               <li key={t.id} className="flex items-start gap-2">
                 <Link
@@ -81,14 +117,17 @@ export default function HistoryPage() {
                 >
                   <div className="mb-0.5 flex items-center gap-2">
                     <span
-                      className="rounded-full px-2 py-0.5 text-[11px]"
+                      className={`rounded-full px-2 py-0.5 text-[11px] ${isMr ? "font-deva" : ""}`}
                       style={{ background: "rgba(122,46,42,0.12)", color: "#5A2520" }}
                     >
-                      {t.mode === "qa" ? "Q&A" : "Pravachan"}
+                      {badge}
                     </span>
-                    <span className="text-[12px]" style={{ color: "var(--text-tertiary)" }}>
-                      {relDate(t.updatedAt)}
-                      {followN > 0 ? ` · ${followN} follow-up${followN > 1 ? "s" : ""}` : ""}
+                    <span
+                      className={`text-[12px] ${isMr ? "font-deva" : ""}`}
+                      style={{ color: "var(--text-tertiary)" }}
+                    >
+                      {relDate(t.updatedAt, isMr)}
+                      {followLabel}
                     </span>
                   </div>
                   <div
@@ -103,7 +142,7 @@ export default function HistoryPage() {
                 </Link>
                 <button
                   type="button"
-                  aria-label="Delete"
+                  aria-label={isMr ? "हटवा" : "Delete"}
                   onClick={() => handleRemove(t.id)}
                   className="shrink-0 px-2 py-2 text-[15px]"
                   style={{ color: "var(--text-tertiary)", background: "transparent" }}

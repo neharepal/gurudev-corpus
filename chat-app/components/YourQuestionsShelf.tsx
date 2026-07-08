@@ -29,7 +29,7 @@ export default function YourQuestionsShelf({ lang }: { lang: Lang }) {
           {isMr ? "तुमचे प्रश्न:" : "Your questions:"}
         </p>
         <Link
-          href="/history"
+          href={`/history?lang=${lang}`}
           className={`text-[13px] ${isMr ? "font-deva" : ""}`}
           style={{ color: "var(--accent-maroon)" }}
         >
