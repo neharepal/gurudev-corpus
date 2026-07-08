@@ -25,7 +25,7 @@
 - Create: `chat-app/lib/conversationHistory.ts`
 
 **Interfaces:**
-- Consumes: `QAAnswer`, `PravachanAnswer` from `chat-app/lib/api.ts`.
+- Consumes: `QAAnswer`, `PravachanAnswer` from `chat-app/data/mock-conversations.ts`.
 - Produces:
   - `type SavedTurn = { question: string; answer: QAAnswer | PravachanAnswer }`
   - `type SavedThread = { id: string; mode: "qa" | "pravachan"; lang: "en" | "mr"; question: string; answer: QAAnswer | PravachanAnswer; followUps: SavedTurn[]; createdAt: number; updatedAt: number }`
@@ -47,7 +47,7 @@
  * No fixed cap: keep all threads; on QuotaExceededError evict oldest and retry
  * so the newest thread is never the one dropped.
  */
-import type { QAAnswer, PravachanAnswer } from "./api";
+import type { QAAnswer, PravachanAnswer } from "../data/mock-conversations";
 
 export type SavedTurn = {
   question: string;
@@ -150,7 +150,7 @@ git commit -m "feat(history): device-local conversation storage module (RFC-012)
 - Create: `chat-app/lib/answerSnippet.ts`
 
 **Interfaces:**
-- Consumes: `QAAnswer`, `PravachanAnswer` from `lib/api.ts`.
+- Consumes: `QAAnswer`, `PravachanAnswer` from `data/mock-conversations.ts`.
 - Produces: `answerSnippet(answer: QAAnswer | PravachanAnswer, max?: number): string`
 
 - [ ] **Step 1: Write the module**
@@ -160,7 +160,7 @@ git commit -m "feat(history): device-local conversation storage module (RFC-012)
 /** Short preview text for a saved thread. Pure. Mirrors buildAnswerText's field
  * priority (chat/page.tsx): QA → framing/synthesis/first citation; Pravachan →
  * thesis/first example. */
-import type { QAAnswer, PravachanAnswer } from "./api";
+import type { QAAnswer, PravachanAnswer } from "../data/mock-conversations";
 
 export function answerSnippet(
   answer: QAAnswer | PravachanAnswer,
@@ -596,4 +596,4 @@ git commit -m "feat(history): /history page with reopen, delete, and clear-all"
 
 **Placeholders:** none — every step has complete code.
 
-**Note / verify during Task 2 & 3:** confirm `QAAnswer` has a `synthesis` field in `lib/api.ts`; if not, drop that clause in `answerSnippet` and the hydrate has no dependency on it. `framing` and `citations` are confirmed present.
+**Confirmed against `data/mock-conversations.ts`:** `QAAnswer` has `framing: string` (required), `synthesis?: string` (optional), `citations: QACitation[]` (each `{ quote: Quote; whyChosen }`, `Quote.body`). `PravachanAnswer` has `thesis?: string`, `examples: PravachanExample[]` (each `{ quote: Quote }`). All field accesses in the snippet helper are valid.
