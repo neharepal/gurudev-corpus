@@ -236,37 +236,10 @@ input:focus-visible {
 }
 
 /* Reading Mode — book layout (2026-07-03) */
-.gd-runhead {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
-  padding: 0.5rem 0 0.4rem;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-soft);
-  /* Replicate the body's fixed paper so the sticky bar's texture aligns
-     seamlessly and masks text scrolling beneath it. */
-  background-color: var(--bg-page);
-  background-image: url("/paper-bg.jpg");
-  background-size: 100vw 100vh;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
 .gd-read-p {
   text-indent: 1.4em;
   margin: 0;
 }
 .gd-read-p--flush {
   text-indent: 0;
-}
-.gd-folio {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 13px;
-  color: var(--text-secondary);
 }

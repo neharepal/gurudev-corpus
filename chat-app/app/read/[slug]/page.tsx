@@ -421,9 +421,6 @@ function ReadingPage() {
   return (
     <>
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
-      <div className={`gd-runhead ${isMr ? "font-deva" : ""}`}>
-        {pageData?.workTitle ?? slug.replace(/-/g, " ")}
-      </div>
       <header
         className="mb-5 pb-3"
         style={{ borderBottom: "1px solid var(--border-soft)" }}
@@ -461,10 +458,23 @@ function ReadingPage() {
             translate it where we have an MR equivalent. */}
         <div>
           <div
+            className="text-[20px] font-semibold leading-tight"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {pageData?.workTitle ?? slug.replace(/-/g, " ")}
+          </div>
+          <div
             className="text-[13.5px]"
             style={{ color: "var(--text-secondary)" }}
           >
-            {pageData ? pageData.author : ""}
+            {pageData
+              ? pageData.chapter &&
+                pageData.chapter.length <= 60 &&
+                !/(19|20)\d{2}/.test(pageData.chapter) &&
+                !/[|I]\s+\S+\s+[|I]\s/.test(pageData.chapter)
+                ? `${pageData.author} · ${pageData.chapter}`
+                : pageData.author
+              : ""}
           </div>
         </div>
       </header>
@@ -495,6 +505,12 @@ function ReadingPage() {
             } as CSSProperties
           }
         />
+        <div
+          className={`mt-1.5 text-[12px] text-right ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-secondary)" }}
+        >
+          {lbl.pageXofY(sliderValue, total)}
+        </div>
       </div>
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
@@ -629,9 +645,6 @@ function ReadingPage() {
         ))}
       </article>
 
-      <div className={`gd-folio ${isMr ? "font-deva" : ""}`}>
-        {lbl.pageXofY(sliderValue, total)}
-      </div>
 
       {/* Forward/back navigation. */}
       <div
