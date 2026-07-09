@@ -489,7 +489,14 @@ def _retrieve(
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
-    fused = retrieve.fused_candidate_scores(question, scores, sub_metas, texts=subset_texts)
+    # GAP 2 fix: pass translated queries to BM25 so cross-lingual results get a
+    # lexical RRF component.  q_dev (Marathi) helps EN queries find Marathi athvani;
+    # q_en (English) helps MR queries find English canonical works.
+    _bm25_extras = [q for q in (q_dev, q_en) if q]
+    fused = retrieve.fused_candidate_scores(
+        question, scores, sub_metas, texts=subset_texts,
+        bm25_queries=_bm25_extras or None,
+    )
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     # Use the FUSED (dense+lexical) relevance for MMR ranking + the per-work cap,

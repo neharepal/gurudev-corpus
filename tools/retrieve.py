@@ -54,6 +54,8 @@ PRIMARY_AUTHORS = frozenset({
 import math
 import re as _re
 
+_DEVANAGARI_RE = _re.compile(r"[ऀ-ॿ]")
+
 # Small English + Marathi stopword set for BM25 tokenisation.
 # Keeps the index lean without over-pruning (proper nouns like "Bhakti" survive).
 _STOPWORDS: frozenset = frozenset({
@@ -72,6 +74,46 @@ _STOPWORDS: frozenset = frozenset({
     "मध्ये", "वर", "च", "ला", "ने", "से", "को",
 })
 
+# Marathi grammatical suffixes for BM25 stemming, longest first.
+# Stripping these lets inflected forms match their base word in the BM25 index:
+#   "भुवनातील" → base "भुवन"; "आश्रमातील" → "आश्रम"; "गुरुदेवाचे" → "गुरुदेव".
+# Applied to both query tokens AND document tokens (same tokenizer), so both
+# sides get the same normalization.  Original inflected form is kept alongside
+# the stem so exact matches are not broken.
+_MR_SUFFIXES: tuple = (
+    # 7-char
+    "ांविषयी", "ांमध्ये",
+    # 6-char
+    "ांमधील", "ाविषयी", "ामध्ये",
+    # 5-char
+    "ामधील", "ावरील",
+    # 4-char
+    "ातील", "ांचे", "ांचा", "ांची", "ांना", "ांनी", "ाकडे",
+    # 3-char
+    "ांत", "ाचे", "ाचा", "ाची", "ाने", "ाशी", "ाला", "ावर",
+    "ेचे", "ेचा", "ेची", "ेने", "ेशी", "ेला", "ेवर",
+    "ीचे", "ीचा", "ीची", "ीने", "ीशी", "ीला",
+    "हून", "तून",
+)
+
+
+def _devanagari_stem(tok: str) -> str | None:
+    """Strip the longest matching Marathi case suffix; return stem or None.
+
+    The stem must be at least 2 Unicode code points (Devanagari characters)
+    to avoid over-stripping very short tokens.  The original inflected form
+    is always kept in the result list alongside the stem so that exact-match
+    queries still work; this function only produces the *additional* token.
+
+    Example: "भुवनातील" → "भुवन" (stem returned; caller appends it).
+    """
+    for suffix in _MR_SUFFIXES:
+        if tok.endswith(suffix):
+            stem = tok[: len(tok) - len(suffix)]
+            if len(stem) >= 2:
+                return stem
+    return None
+
 
 def _tokenize_bm25(text: str) -> list:
     """Tokenize `text` for BM25.
@@ -81,6 +123,10 @@ def _tokenize_bm25(text: str) -> list:
     - For each hyphenated token "a-b", also emits "a" and "b" individually
     - Drops single-character tokens and EN/MR stopwords
     - Devanagari tokens are kept as-is (after lowercasing has no effect on them)
+    - For Devanagari tokens, also emits a morphological stem (suffix-stripped)
+      so that inflected Marathi forms match their base word in the index.
+      E.g. "भुवनातील" → ["भुवनातील", "भुवन"] — the BM25 index sees "भुवन"
+      from documents, and "भुवन" from the stemmed query token, producing a hit.
     """
     lowered = text.lower()
     raw_tokens = _re.split(r"[\s]+", lowered)
@@ -101,6 +147,13 @@ def _tokenize_bm25(text: str) -> list:
         else:
             if len(tok) > 1 and tok not in _STOPWORDS:
                 result.append(tok)
+                # GAP 1 fix: Marathi inflection normalisation.
+                # For Devanagari tokens, also emit the morphological stem so
+                # inflected forms ("भुवनातील") match their base ("भुवन").
+                if _DEVANAGARI_RE.search(tok):
+                    stem = _devanagari_stem(tok)
+                    if stem and stem != tok and stem not in _STOPWORDS:
+                        result.append(stem)
     return result
 
 
@@ -314,12 +367,23 @@ def fused_candidate_scores(
     texts: list = None,
     rrf_k: int = 60,
     primary_fused_bonus: float = None,  # resolved below; default = PRIMARY_FUSED_BONUS
+    bm25_queries: list = None,
 ) -> np.ndarray:
     """Return RRF-fused scores for candidate selection.
 
     `dense_scores` must already include intent tier-weight adjustments.
     `texts` is optional pre-loaded text list for the BM25 index; if omitted,
     texts are loaded lazily (and cached) from disk.
+
+    `bm25_queries` is an optional list of *additional* query strings to score
+    via BM25 (e.g. a Marathi translation of an English query, or an English
+    translation of a Marathi query).  For each query in this list the BM25
+    score is computed and the per-chunk maximum is taken across all queries.
+    This closes the cross-lingual BM25 gap (GAP 2): an English query has no
+    token overlap with Marathi corpus text, so Marathi athvani works cannot
+    earn a lexical RRF contribution — but their Marathi translation of the
+    query does overlap, giving those works the same RRF dual-signal that
+    same-language matches enjoy.
 
     The fused score is only used to pick the top-`candidates` pool that feeds
     MMR rerank. MMR still uses the raw dense vectors for diversity scoring.
@@ -332,8 +396,17 @@ def fused_candidate_scores(
     higher relevance signal can still outrank a primary-author chunk.
     """
     bm25_idx = _get_or_build_bm25_index(metas, texts=texts)
-    qtoks = _tokenize_bm25(query)
-    lex = bm25_idx.score(qtoks) if qtoks else np.zeros(len(dense_scores), dtype=np.float32)
+
+    # GAP 2 fix: max-combine BM25 across original query + any translated queries.
+    # On a pure monolingual query (bm25_queries=None) this collapses to the old
+    # single-query BM25 path — no behaviour change for existing callers.
+    all_bm25_queries = [query] + (list(bm25_queries) if bm25_queries else [])
+    lex = np.zeros(len(dense_scores), dtype=np.float32)
+    for q in all_bm25_queries:
+        qtoks = _tokenize_bm25(q)
+        if qtoks:
+            lex = np.maximum(lex, bm25_idx.score(qtoks))
+
     fused = rrf_fuse(dense_scores, lex, k=rrf_k)
 
     # Apply fused-side primary-author / canonical bonus (uniform across call sites).

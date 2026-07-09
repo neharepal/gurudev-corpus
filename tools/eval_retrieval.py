@@ -137,6 +137,64 @@ GOLD = [
         ],
         "MR: self-knowledge (आत्मज्ञान) → Marathi canonical or biography work",
     ),
+    # -----------------------------------------------------------------------
+    # GAP 1 cases: entity/place queries with Marathi inflection
+    # BM25 suffix-stripping fix: "भुवनातील" → stem "भुवन", "आश्रमातील" → "आश्रम"
+    # -----------------------------------------------------------------------
+    # (a) Entity/place query — Adhyatma Bhuvan incidents
+    # "भुवनातील" → stem "भुवन" → BM25 hits guru-ha-parabrahma-kewal (12 chunks
+    #   with both अध्यात्म+भुवन) and charitra-tatvajnan-tulpule (10 chunks).
+    # "घटना" (incidents) is an uninflected exact match in those biography works.
+    # In offline eval: BM25 fix alone should surface at least one biography.
+    (
+        "अध्यात्म भुवनातील सर्व घटना",
+        [
+            "guru-ha-parabrahma-kewal",
+            "charitra-tatvajnan-tulpule",
+            "shri-gurudevanchya-athvani-pustak",
+            "punyasmruti",
+            "पुण्यस्मृती",
+            "jivandarshan-deshpande",
+        ],
+        "GAP1-a MR entity: Adhyatma Bhuvan incidents (inflected भुवनातील) → biography/athvani",
+    ),
+    # (b) Common-word entity query — Inchgeri ashram (place name)
+    # "इंचगेरी" is an exact match (no inflection); "आश्रमातील" → stem "आश्रम".
+    # javak-patre-tipane (130 chunks), guru-ha-parabrahma-kewal (86 chunks),
+    # charitra-tatvajnan-tulpule (67 chunks) all mention इंचगेरी.
+    (
+        "इंचगेरी आश्रमातील संत आणि भक्त",
+        [
+            "guru-ha-parabrahma-kewal",
+            "charitra-tatvajnan-tulpule",
+            "sonari-pane-2000",
+            "nimbargi-maharaj-charitra-athavani-mr",
+            "javak-patre-tipane",
+            "jivandarshan-deshpande",
+        ],
+        "GAP1-b MR entity: Inchgeri ashram (place name + inflected आश्रमातील) → biography/athvani",
+    ),
+    # -----------------------------------------------------------------------
+    # GAP 2 case: English query whose answer is Marathi athvani/biography
+    # In OFFLINE eval (use_llm=False): translation is skipped; this tests
+    # bge-m3's native cross-lingual ability alone.  A FAIL here does NOT mean
+    # the GAP 2 fix is broken — the server-side EN→MR translation + cross-
+    # lingual BM25 (bm25_queries fix) carry it in production.
+    # -----------------------------------------------------------------------
+    (
+        "What incidents happened with Gurudev Ranade at the Inchgeri ashram?",
+        [
+            "guru-ha-parabrahma-kewal",
+            "charitra-tatvajnan-tulpule",
+            "shri-gurudevanchya-athvani-pustak",
+            "jivandarshan-deshpande",
+            "nimbargi-maharaj-charitra-athavani-mr",
+            "ranade-and-his-spiritual-lineage",
+            "acpr-silver-jubilee-vol1",
+        ],
+        "GAP2 EN→MR-athvani: incidents at Inchgeri → Marathi biography/athvani "
+        "[cross-lingual baseline; EN→MR translation + BM25 fix needed for full recall]",
+    ),
 ]
 
 
