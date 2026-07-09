@@ -1241,7 +1241,7 @@ def _prepare_request(req: AskRequest):
     if not question:
         raise HTTPException(status_code=400, detail="`question` is required")
 
-    top_k = {"qa": 8, "pravachan": 15, "reading": 5}[mode]
+    top_k = {"qa": 12, "pravachan": 15, "reading": 5}[mode]
     candidates = 100
     mmr_lambda = 0.7
 
