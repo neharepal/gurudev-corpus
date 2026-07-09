@@ -1,6 +1,15 @@
 # ADR-010: Q&A internal classification — doctrinal (quote-first) vs meta (plain prose)
 
-**Status:** ACCEPTED
+> **SUPERSEDED — 2026-07-08**
+> The doctrinal/meta split described in this ADR is reversed. Q&A is now a single
+> unified quote-and-synthesize mode: every answer may include `citations` (verbatim,
+> by reference), `framingParagraphs`, `synthesis`, and `references` in any combination.
+> The LLM no longer classifies before branching; `classification` is retained in the
+> schema only as an optional audit hint. The frontend already branches on
+> `citations.length`, not on this field. See `tools/prompts.py` and `tools/schemas.py`
+> for the updated rules.
+
+**Status:** SUPERSEDED (see note above)
 **Date:** 2026-06-14
 **Author:** Neha (with Claude)
 **Amends:** [ADR-007 quote-first curation pattern](ADR-007-quote-first-curation-pattern.md)

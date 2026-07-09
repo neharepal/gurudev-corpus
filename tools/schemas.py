@@ -153,13 +153,16 @@ class Reference(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Q&A response — doctrinal or meta (ADR-010)
+# Q&A response — unified quote-and-synthesize (ADR-010 superseded 2026-07-08)
 # ---------------------------------------------------------------------------
 
 
 class QAResponse(BaseModel):
     kind: Literal["qa"] = "qa"
-    classification: Literal["doctrinal", "meta"]
+    # `classification` is now optional — kept as an audit hint only.
+    # The doctrinal/meta branch logic was removed (ADR-010 reversal, 2026-07-08).
+    # The frontend branches on citations.length, not on this field.
+    classification: Optional[Literal["doctrinal", "meta"]] = "doctrinal"
     question: str
     # Defaults to "" so a (meta) answer that uses `framingParagraphs` instead of
     # `framing` doesn't fail pydantic's "field required" before the validator
@@ -372,7 +375,11 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
         "classification": {
             "type": "string",
             "enum": ["doctrinal", "meta"],
-            "description": "Classification of the question per ADR-010 — based on the SOURCES you cite, not on the question phrasing.",
+            "description": (
+                "Optional audit hint — omit or set to 'doctrinal' for most answers. "
+                "The doctrinal/meta branch was removed (ADR-010 reversal 2026-07-08); "
+                "the frontend branches on citations.length, not on this field."
+            ),
         },
         "question": {
             "type": "string",
@@ -381,12 +388,12 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
         "framing": {
             "type": "string",
             "description": (
-                "Doctrinal: an INTRODUCTORY PARAGRAPH (2-4 sentences) that frames the question and "
-                "previews what the literature holds — the thesis the citations below will support. Not "
-                "a bare label like 'Here is what the literature says'; actually introduce the topic. "
-                "Keep it to one paragraph. "
-                "Meta SHORT (one paragraph, <=4 sentences): the full answer as a single paragraph. "
-                "Meta LONGER (multiple paragraphs): leave this as an empty string and use `framingParagraphs` instead. "
+                "An INTRODUCTORY PARAGRAPH (2-4 sentences) that frames the question and "
+                "previews what the literature holds. Not a bare label like 'Here is what "
+                "the literature says'; actually introduce the topic. Keep it to one paragraph. "
+                "For SHORT answers (one paragraph, <=4 sentences): the full prose answer as a "
+                "single paragraph. For LONGER answers (multiple paragraphs): leave this as an "
+                "empty string and use `framingParagraphs` instead. "
                 "Do NOT include literal newline sequences (\\n\\n) inside this string."
             ),
         },
@@ -394,7 +401,7 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
             "type": "array",
             "items": {"type": "string"},
             "description": (
-                "Meta only, for answers that need multiple paragraphs. One element per paragraph "
+                "For answers that need multiple paragraphs. One element per paragraph "
                 "(~3-5 sentences each). When you use this field, leave `framing` empty. The UI "
                 "renders each element as a separate <p>. Do NOT include literal newline sequences "
                 "inside a paragraph string."
@@ -404,23 +411,33 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
             "type": "array",
             "items": _CITATION_SCHEMA,
             "description": (
-                "Doctrinal: 2-5 citations with rationales. Quote each passage BY "
-                "REFERENCE — give the passage letter plus the exact start/end words "
-                "of the span you want; do NOT retype the full passage text. "
-                "Meta: empty array — meta mode does not quote."
+                "Typically 3-8 citations with rationales — cite as many genuinely relevant "
+                "passages as the retrieved set supports; never pad with weak passages. "
+                "Quote each passage BY REFERENCE — give the passage letter plus the exact "
+                "start/end words of the span you want; do NOT retype the full passage text. "
+                "For navigational or biographical questions with no quotable passage, an "
+                "empty array is fine — answer in framing/framingParagraphs with references."
             ),
         },
         "references": {
             "type": "array",
             "items": _REFERENCE_SCHEMA,
-            "description": "Meta only — works the answer drew on without quoting. Omit or empty for doctrinal.",
+            "description": (
+                "Works the answer drew on without quoting verbatim — biographies, bibliographies, "
+                "indexes, navigational works, and any other source synthesized in prose. List ALL "
+                "relevant works; omitting works that were drawn on is an error."
+            ),
         },
         "synthesis": {
             "type": "string",
-            "description": "Doctrinal only — a CONCLUDING PARAGRAPH (1-3 sentences) that ties the cited passages together into a takeaway. Provide it for doctrinal answers; don't skip it.",
+            "description": (
+                "A CONCLUDING PARAGRAPH (1-3 sentences) that ties the cited passages together "
+                "into a coherent takeaway. Provide it when you have 2 or more citations. "
+                "Omit it when the answer is entirely prose with no citations."
+            ),
         },
     },
-    "required": ["classification", "question", "framing", "citations"],
+    "required": ["question", "framing", "citations"],
 }
 
 
@@ -783,8 +800,9 @@ TOOLS_BY_MODE: Dict[str, Dict[str, Any]] = {
     "qa": {
         "name": "emit_qa_response",
         "description": (
-            "Emit the structured Q&A answer. Classification is per ADR-010 — "
-            "based on the SOURCES you cite, not the question phrasing."
+            "Emit the structured Q&A answer. Every answer may include citations, "
+            "framingParagraphs, synthesis, and references in any combination — "
+            "the doctrinal/meta split was removed (ADR-010 reversal 2026-07-08)."
         ),
         "input_schema": QA_INPUT_SCHEMA,
     },
