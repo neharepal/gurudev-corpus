@@ -549,17 +549,32 @@ def mmr_rerank(
             src = meta.get("work_id") or meta.get("source_path") or ""
             if per_source.get(src, 0) >= max_per_source:
                 continue
-            # diversity penalty: max similarity to any already-selected chunk
+            # Similarity of this candidate to everything already selected.
             if selected:
-                max_div = float(
-                    np.max(embeddings[selected] @ embeddings[idx])
+                sims_sel = embeddings[selected] @ embeddings[idx]
+                max_div_all = float(np.max(sims_sel))
+                # Diversity penalty is scoped to the SAME work only: different
+                # works that cover the same topic/entity (e.g. several sources on
+                # "Carlyle Cottage") must NOT suppress each other — that breadth is
+                # exactly what we want. Cross-work near-identical reprints are still
+                # dropped by the dedup check below. (2026-07-09)
+                same_src = np.fromiter(
+                    (
+                        (metas[s].get("work_id") or metas[s].get("source_path") or "")
+                        == src
+                        for s in selected
+                    ),
+                    dtype=bool,
+                    count=len(selected),
                 )
+                max_div = float(np.max(sims_sel[same_src])) if same_src.any() else 0.0
             else:
+                max_div_all = 0.0
                 max_div = 0.0
-            # Authority-aware dedup: a near-duplicate of an already-selected
-            # (higher-ranked) chunk is dropped — the intent weighting made the
-            # higher-authority copy win the earlier slot. (RFC-011)
-            if selected and max_div >= dup_threshold:
+            # Authority-aware dedup (cross-work true near-duplicates): a chunk
+            # nearly identical to an already-selected higher-ranked one is dropped —
+            # the intent weighting made the higher-authority copy win. (RFC-011)
+            if selected and max_div_all >= dup_threshold:
                 continue
             mmr = mmr_lambda * sim - (1.0 - mmr_lambda) * max_div
             if mmr > best_score:
