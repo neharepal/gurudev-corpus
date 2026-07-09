@@ -26,9 +26,12 @@ _CUES: dict[str, tuple[str, ...]] = {
         "उतारे", "उतारा", "वचन", "उपदेश", "विचार", "स्वरूप",
     ),
     "narrative": (
-        "athvani", "story", "stories", "incident", "anecdote", "memory",
-        "memories", "recollection",
+        "athvani", "story", "stories", "incident", "incidents", "anecdote",
+        "anecdotes", "memory", "memories", "recollection", "recollections",
+        "event", "events", "happened", "episode",
         "आठवण", "प्रसंग", "गोष्ट", "कथा",
+        "घटना",   # event / incident (e.g. "भुवनातील घटना")
+        "घडले", "घडला", "घडली",   # happened (past-tense Marathi)
     ),
     "navigational": (
         "which works", "which books", "what books", "list", "index",
