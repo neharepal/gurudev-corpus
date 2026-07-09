@@ -69,13 +69,7 @@ RAW_ATHVANI_FOLDERS = [
     ("00_raw/drive_dump_2026-06-11/Neha/निम्बर्गी महाराज आठवणी", "nimbargi_maharaj"),
     ("00_raw/drive_dump_2026-06-11/Neha/बाबांच्या आठवणी", "other_devotees"),
     ("00_raw/drive_dump_2026-06-11/Neha/साधूबुवांच्या आठवणी.", "other_devotees"),
-    ("00_raw/neha-initial-download-2026-07-08", "gurudev_ranade"),
 ]
-
-# Raw athvani docx filenames to skip (already ingested as separate canonical works).
-RAW_ATHVANI_SKIP_FILES = {
-    "श्री न. ग. दामले यांचे प्रवचन.docx",  # already ingested as n-g-damle-pravachan
-}
 
 
 # ---------------------------------------------------------------------------
@@ -388,8 +382,6 @@ def scan_athvani_raw() -> Iterator[dict]:
             continue
         for f in sorted(folder.iterdir()):
             if not f.is_file() or f.suffix.lower() != ".docx":
-                continue
-            if f.name in RAW_ATHVANI_SKIP_FILES:
                 continue
             visited.add(f.resolve())
             yield from _emit_raw_athvani(f, member)

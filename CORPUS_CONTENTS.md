@@ -7,10 +7,10 @@ _Generated: 2026-07-08_
 
 ## At a glance
 
-- **339 works**, **16,677 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
-- **Embedding status:** ✅ all 16,677 chunks embedded (manifest `complete`).
-- **By kind:** canonical 40w/10,038c, biography 25w/4,892c, athvani 271w/1,692c, reference 3w/55c.
-- **By language (chunks):** en 8,536, mr 7,769, hi 269, mixed 103.
+- **330 works**, **16,373 chunks**, embedding model `BAAI/bge-m3` (dim 1024).
+- **Embedding status:** ✅ all 16,373 chunks embedded (manifest `complete`).
+- **By kind:** canonical 40w/10,038c, biography 25w/4,816c, athvani 262w/1,464c, reference 3w/55c.
+- **By language (chunks):** en 8,536, mr 7,465, hi 269, mixed 103.
 
 ## Canonical (40 works, 10,038 chunks)
 
@@ -57,7 +57,7 @@ _Generated: 2026-07-08_
 | Sevenfold Stream of Spiritual Life (`sevenfold-stream-of-spiritual-life`) | other_authors | books | en | 54 |
 | N G Damle Pravachan (`n-g-damle-pravachan`) | other_authors | lectures | mr | 4 |
 
-## Biography (25 works, 4,892 chunks)
+## Biography (25 works, 4,816 chunks)
 
 | Work | Author / source | Type | Lang | Chunks |
 |---|---|---|---|---:|
@@ -75,30 +75,29 @@ _Generated: 2026-07-08_
 | Gurudev R. D. Ranade — Allahabad University Career and Other Essays (Marathi) (`allahabad-days-mr`) | — | — | mr | 193 |
 | Golden Pages from the History of the Nimbargi Sampraday (2000) (`sonari-pane-2000`) | — | — | mr | 147 |
 | Amrutavalli — Memoir of Shri Dadasaheb Deshpande (`amrutavalli`) | — | — | mr | 141 |
-| Matoshri Sharakka (`matoshri-sharakka`) | — | — | en,mr | 137 |
 | Gurudev Ranade's Memorial in Kannada Literature (`kannada-sahityatil-punyasmruti`) | — | — | mr | 129 |
 | Shri Gurudevanchya Athvani Pustak (Reminiscences of Shri Gurudev — book-length anthology) (`shri-gurudevanchya-athvani-pustak`) | — | — | mr | 106 |
 | Nimbargi Maharaj — A Biography (`nimbargi-maharaj-biography-en`) | — | — | en | 81 |
+| Matoshri Sharakka (`matoshri-sharakka`) | — | — | en | 71 |
 | Parampujya Shri Nimbargi Maharaj: Charitra va Athvani (Biography and Reminiscences of Shri Nimbargi Maharaj) (`devotee`) | — | — | mr | 67 |
 | Nimbargi Maharaj — Life and Recollections (`nimbargi-maharaj-charitra-athavani-mr`) | — | — | mr | 67 |
-| Radhabai Limaye: Alpa-Charitra va Shikvan (Brief Biography and Teachings of 'Aaji', Shri Radhabai Limaye), by G. V. Tulpule (`radhabai-limaye-charitra`) | — | — | mr | 20 |
 | Shri Gurudev's Matruprema (Mother-Love) (`devotees`) | — | — | mr | 14 |
 | Pawanbhumi Jamkhandi (Sacred Land of Jamkhandi) (`pawanbhumi-jamkhandi`) | — | — | en | 14 |
+| Radhabai Limaye: Alpa-Charitra va Shikvan (Brief Biography and Teachings of 'Aaji', Shri Radhabai Limaye), by G. V. Tulpule (`radhabai-limaye-charitra`) | — | — | mr | 10 |
 | Shri Gurudevanchya Athvani 2024 (Reminiscences of Shri Gurudev — 2024 collection) (`shri-gurudevanchya-athvani-2024`) | — | — | mr | 2 |
 | How Nimbal Was Chosen (Account of how the Nimbal site was selected for Shri Gurudev's ashram) (`how-nimbal-was-chosen`) | — | — | mr | 1 |
 
-## Athvani (271 works, 1,692 chunks)
+## Athvani (262 works, 1,464 chunks)
 
 | Work | Author / source | Type | Lang | Chunks |
 |---|---|---|---|---:|
 | पुण्यस्मृती (`पुण्यस्मृती`) | — | — | mr | 179 |
 | १९२७-१९५७ (`१९२७-१९५७`) | — | — | mr | 127 |
-| श्री गुरुदेवांच्या आठवणी पुस्तक (`श्री-गुरुदेवांच्या-आठवणी-पुस्तक`) | — | — | mr | 106 |
-| संकीर्ण (`संकीर्ण`) | — | — | mr | 104 |
 | श्री भाऊसाहेब महाराज पुस्तक (`श्री-भाऊसाहेब-महाराज-पुस्तक`) | — | — | mr | 87 |
 | महाराजांच्या आठवणी_ (`महाराजांच्या-आठवणी`) | — | — | mr | 80 |
 | बाबांच्या आठवणी (`बाबांच्या-आठवणी`) | — | — | mr | 64 |
 | अप्पा जोगळेकर आठवणी (`अप्पा-जोगळेकर-आठवणी`) | — | — | mr | 58 |
+| संकीर्ण (`संकीर्ण`) | — | — | mr | 52 |
 |  श्रीअंबुराव महाराज आठवणी पुस्तक (`श्रीअंबुराव-महाराज-आठवणी-पुस्तक`) | — | — | mr | 48 |
 | The Old House at Nimbal (`१९१४-१९२७`) | — | — | mr | 41 |
 | संत बोधामृत (`संत-बोधामृत`) | — | — | mr | 37 |
@@ -108,36 +107,33 @@ _Generated: 2026-07-08_
 | निम्बर्गी महाराज आठवणी (`निम्बर्गी-महाराज-आठवणी`) | — | — | mr | 28 |
 | १९१४ पर्यंत (`१९१४-पर्यंत`) | — | — | mr | 25 |
 | श्री कबीरप्पांच्या आठवणी (`श्री-कबीरप्पांच्या-आठवणी`) | — | — | mr | 22 |
-| ईश्वर शरण आश्रम अलाहाबाद (`ईश्वर-शरण-आश्रम-अलाहाबाद`) | — | — | mr | 16 |
-| श्री गुरुदेवांचे मातृप्रेम (`श्री-गुरुदेवांचे-मातृप्रेम`) | — | — | mr | 14 |
 | आठवणी to review_ (`आठवणी-to-review`) | — | — | mr | 13 |
 | Reviews on 'Mysticism in Maharashtra' (`smruti-106-reviews-on-mysticism-in-maharashtra`) | — | — | en | 12 |
 | उमदी पादुका स्थापना (`उमदी-पादुका-स्थापना`) | — | — | mr | 12 |
 | बाबांच्या व आणप्पाच्या आठवणी (`बाबांच्या-व-आणप्पाच्या-आठवणी`) | — | — | mr | 12 |
-| हरिदास यांच्या आठवणी (`हरिदास-यांच्या-आठवणी`) | — | — | mr | 12 |
 | एक शोधनिबंध -आठवणी (`एक-शोधनिबंध-आठवणी`) | — | — | mr | 11 |
-| सुखसहिता दुखरहिता निर्मल एकांता। (`सुखसहिता-दुखरहिता-निर्मल-एकांता।`) | — | — | mr | 11 |
 | Two Important Memories - Gurudev's Last Days (`santsabha-033-two-important-memories-gurudev-s-last-days`) | — | — | mr | 10 |
-| ललिताक्कांच्या आठवणी (`ललिताक्कांच्या-आठवणी`) | — | — | mr | 10 |
-| लिंगप्पा सावळगी यांच्या आठवणी. _ (`लिंगप्पा-सावळगी-यांच्या-आठवणी`) | — | — | mr | 10 |
-| शेट्यप्पा आठवणी (`शेट्यप्पा-आठवणी`) | — | — | mr | 10 |
 | Reviews on 'A Constructive Survey of Upanishadic Philosophy' (`smruti-104-reviews-on-a-constructive-survey-of-upanishad`) | — | — | en | 9 |
 | Tribute to Umabai Shankar Tendulkar (`dada-tendulkar-024-tribute-to-umabai-shankar-tendulkar`) | — | — | mr | 8 |
 | दासबोध सुधा आठवणी (`दासबोध-सुधा-आठवणी`) | — | — | mr | 8 |
 | सप्ताह माहिती (`सप्ताह-माहिती`) | — | — | mr | 8 |
+| ईश्वर शरण आश्रम अलाहाबाद (`ईश्वर-शरण-आश्रम-अलाहाबाद`) | — | — | mr | 8 |
 | भा. रा. पटवर्धन (`भा-रा-पटवर्धन`) | — | — | mr | 7 |
 | Spiritual Worthiness: The Dream and Final Visions (`dada-tendulkar-023-spiritual-worthiness-the-dream-and-final-visi`) | — | — | mr | 6 |
 | Appendix: Tribute to Tatyasaheb Damle (`dada-tendulkar-026-appendix-tribute-to-tatyasaheb-damle`) | — | — | mr | 6 |
 | Nimbargi Pilgrimage and Gurudev's Company (`santsabha-005-nimbargi-pilgrimage-and-gurudev-s-company`) | — | — | mr | 6 |
 | Dr. Sarvepalli Radhakrishnan (`santsabha-048-dr-sarvepalli-radhakrishnan`) | — | — | mr | 6 |
 | अंबुराव महाराज जीवन दर्शन (`अंबुराव-महाराज-जीवन-दर्शन`) | — | — | mr | 6 |
-| श्रीरघुनाथाचार्य आद्य (`श्रीरघुनाथाचार्य-आद्य`) | — | — | mr | 6 |
+| हरिदास यांच्या आठवणी (`हरिदास-यांच्या-आठवणी`) | — | — | mr | 6 |
 | Gurudev Takes Charge of His Yoga-Kshema (Livelihood) (`dada-tendulkar-006-gurudev-takes-charge-of-his-yoga-kshema-livel`) | — | — | mr | 5 |
 | Appointed for Every Shravan: 'A Nail Driven by Maharaj' (`dada-tendulkar-011-appointed-for-every-shravan-a-nail-driven-by`) | — | — | mr | 5 |
 | The Pilgrimage to Nimbargi and Its Legends (`dada-tendulkar-015-the-pilgrimage-to-nimbargi-and-its-legends`) | — | — | mr | 5 |
 | American Prof. Burch (`santsabha-065-american-prof-burch`) | — | — | mr | 5 |
 | Children's Education and Guru's Grace (`santsabha-077-children-s-education-and-guru-s-grace`) | — | — | mr | 5 |
 | शेट्ट्यप्पांच्या आठवणी (`शेट्ट्यप्पांच्या-आठवणी`) | — | — | mr | 5 |
+| शेट्यप्पा आठवणी (`शेट्यप्पा-आठवणी`) | — | — | mr | 5 |
+| ललिताक्कांच्या आठवणी (`ललिताक्कांच्या-आठवणी`) | — | — | mr | 5 |
+| लिंगप्पा सावळगी यांच्या आठवणी. _ (`लिंगप्पा-सावळगी-यांच्या-आठवणी`) | — | — | mr | 5 |
 | The Atma Tests a Person: Trials in Shankarrao's Life (`dada-tendulkar-020-the-atma-tests-a-person-trials-in-shankarrao`) | — | — | mr | 4 |
 | Reviews on Carlyle's Essays and 'Psychology in the Upanishads' (`smruti-103-reviews-on-carlyle-s-essays-and-psychology-in`) | — | — | en | 4 |
 | Appendix: The Academy of Philosophy and Religion and opinions on it (`smruti-108-appendix-the-academy-of-philosophy-and-religi`) | — | — | en | 4 |
@@ -146,8 +142,6 @@ _Generated: 2026-07-08_
 | Allahabad days (`allahabad-days`) | — | — | mr | 4 |
 | निंबाळचे जुने घर (`निंबाळचे-जुने-घर`) | — | — | mr | 4 |
 | स्वर्गाचे वर्णन , शरच्चंद्र गोखलेंची आठवण (`स्वर्गाचे-वर्णन-शरच्चंद्र-गोखलेंची-आठवण`) | — | — | mr | 4 |
-| बापूसाहेब करंदीकर (`बापूसाहेब-करंदीकर`) | — | — | mr | 4 |
-| लच्याण संदेश (`लच्याण-संदेश`) | — | — | mr | 4 |
 | Faith Strengthened: Reassurances from Gurudev (`dada-tendulkar-004-faith-strengthened-reassurances-from-gurudev`) | — | — | mr | 3 |
 | The Coconut, the Cholera Crisis, and 'See How a Disciple Is Used' (`dada-tendulkar-010-the-coconut-the-cholera-crisis-and-see-how-a`) | — | — | mr | 3 |
 | First Darshan of Gurudev (`santsabha-001-first-darshan-of-gurudev`) | — | — | mr | 3 |
@@ -165,6 +159,7 @@ _Generated: 2026-07-08_
 | सोनोपंत दांडेकर (`सोनोपंत-दांडेकर`) | — | — | mr | 3 |
 | महाराजांचे शिष्य (`महाराजांचे-शिष्य`) | — | — | mr | 3 |
 | श्री रघुनाथप्रिय महाराजांच्या आठवणी (`श्री-रघुनाथप्रिय-महाराजांच्या-आठवणी`) | — | — | mr | 3 |
+| श्रीरघुनाथाचार्य आद्य (`श्रीरघुनाथाचार्य-आद्य`) | — | — | mr | 3 |
 | Incentive to Spiritual Life: Receiving the Naam Mantra (`dada-tendulkar-003-incentive-to-spiritual-life-receiving-the-naa`) | — | — | mr | 2 |
 | Use of a Disciple: Debt Settled and a Foretelling Saint (`dada-tendulkar-008-use-of-a-disciple-debt-settled-and-a-foretell`) | — | — | mr | 2 |
 | Gurudev's 'Pet' Devotee and the Lesson on Speaking with Disciples (`dada-tendulkar-014-gurudev-s-pet-devotee-and-the-lesson-on-speak`) | — | — | mr | 2 |
@@ -211,8 +206,7 @@ _Generated: 2026-07-08_
 | shesh (`shesh`) | — | — | mr | 2 |
 | स्पष्टवक्ते गुरुदेव (`स्पष्टवक्ते-गुरुदेव`) | — | — | mr | 2 |
 | बाबांच्या दासबोध सुधा मधील आठवणी (`बाबांच्या-दासबोध-सुधा-मधील-आठवणी`) | — | — | mr | 2 |
-| महाराजांचे चरित्र लिहिणे Vivekanand gurudeo (`महाराजांचे-चरित्र-लिहिणे-vivekanand-gurudeo`) | — | — | mr | 2 |
-| श्री गुरुदेवांच्या आठवणी २०२४ (`श्री-गुरुदेवांच्या-आठवणी-२०२४`) | — | — | mr | 2 |
+| बापूसाहेब करंदीकर (`बापूसाहेब-करंदीकर`) | — | — | mr | 2 |
 | Opening Apology and Purpose of the Tribute (`dada-tendulkar-001-opening-apology-and-purpose-of-the-tribute`) | — | — | mr | 1 |
 | Shankarrao, the Last Player on Gurudev's Team (`dada-tendulkar-002-shankarrao-the-last-player-on-gurudev-s-team`) | — | — | mr | 1 |
 | The Beginning of the Diwali Saptah at Nimbal (`dada-tendulkar-005-the-beginning-of-the-diwali-saptah-at-nimbal`) | — | — | mr | 1 |
@@ -359,9 +353,6 @@ _Generated: 2026-07-08_
 | डॉक्टर विनायक दाते आठवण- (`डॉक्टर-विनायक-दाते-आठवण`) | — | — | mr | 1 |
 | दास गणू महाराजांची आठवण (`दास-गणू-महाराजांची-आठवण`) | — | — | mr | 1 |
 | महाराजांची शाळा (`महाराजांची-शाळा`) | — | — | mr | 1 |
-| नादाच्या संबंधी (`नादाच्या-संबंधी`) | — | — | mr | 1 |
-| निंबाळची निवड कशी झाली (`निंबाळची-निवड-कशी-झाली`) | — | — | mr | 1 |
-| विनायकराव दाते (`विनायकराव-दाते`) | — | — | mr | 1 |
 
 ## Reference (3 works, 55 chunks)
 
