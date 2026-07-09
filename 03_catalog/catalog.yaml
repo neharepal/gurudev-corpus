@@ -2991,3 +2991,15 @@ stories:
   languages_available:
   - mr
   variant_count: 1
+- id: dhyangita-anvayarth
+  title: ध्यानगीता अन्वयार्थ
+  author: gurudev_ranade
+  languages:
+  - mr
+  path: 01_canonical/gurudev_ranade/books/dhyangita-anvayarth/
+- id: guru-ha-parabrahma-kewal
+  title: गुरु हा परब्रम्ह केवळ
+  author: about_gurudev_ranade
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_gurudev_ranade/guru-ha-parabrahma-kewal/

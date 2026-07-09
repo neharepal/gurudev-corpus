@@ -1,0 +1,44 @@
+id: guru-ha-parabrahma-kewal
+title: "गुरु हा परब्रम्ह केवळ"
+title_en: "Guru Ha Parabrahma Kewal"
+title_translit: ""
+about_member: gurudev_ranade
+author: shri_da_kulkarni
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available:
+- mr
+year_first_published: ""
+year_this_edition: "2018"
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+- raw_path: 00_raw/neha-initial-download-2026-07-08/गुरु हा परब्रम्ह केवळ/copy गुरू हा परब्रह्म केवळ भाग - १.docx
+  received_on: 2026-07-08
+  received_in_batch: neha-initial-download-2026-07-08
+  checksum_sha256: ""
+- raw_path: 00_raw/neha-initial-download-2026-07-08/गुरु हा परब्रम्ह केवळ/copy गुरू हा परब्रह्म केवळ भाग - २.docx
+  received_on: 2026-07-08
+  received_in_batch: neha-initial-download-2026-07-08
+  checksum_sha256: ""
+- raw_path: 00_raw/neha-initial-download-2026-07-08/गुरु हा परब्रम्ह केवळ/copy गुरू हा परब्रह्म केवळ भाग - ३.docx
+  received_on: 2026-07-08
+  received_in_batch: neha-initial-download-2026-07-08
+  checksum_sha256: ""
+tags:
+  - biography
+  - gurudev_ranade
+  - marathi
+subject_persons:
+  - gurudev_ranade
+related_works: []
+status: verified
+text_extraction_method: docx-pandoc (markdown_strict)
+quality_notes: "Clean Marathi extraction via pandoc (~1.55M chars, 3 vols). Compiled biography of Gurudev Ranade by Shri. Da. Kulkarni (2018), drawing from earlier biographies, pravachan notes, and devotee accounts."
+notes: "Ingested 2026-07-08 from 3 docx volumes. Compiler/editor: Shri. Da. (Da.) Kulkarni. Vol 1 starts with संकलकाचे मनोगत and covers early life. Vol 2 continues with Allahabad period. Vol 3 covers post-retirement Nimbal years."
+external_verification:
+  verified: false
+  reason: "no public source available"

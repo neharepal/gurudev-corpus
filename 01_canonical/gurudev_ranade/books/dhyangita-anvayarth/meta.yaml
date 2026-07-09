@@ -1,0 +1,34 @@
+id: dhyangita-anvayarth
+title: "ध्यानगीता अन्वयार्थ"
+title_en: "Dhyangita Anvayarth (Word-Meaning Commentary)"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 00_raw/neha-initial-download-2026-07-08/ध्यानगीता अन्वयार्थ फाईल्स/
+    received_on: 2026-07-08
+    received_in_batch: neha-initial-download-2026-07-08
+    checksum_sha256: ""
+tags:
+  - dhyangita
+  - bhagavadgita
+  - anvayarth
+  - marathi
+subject_persons: []
+related_works:
+  - dhyangita
+status: verified
+text_extraction_method: docx-pandoc (markdown_strict)
+quality_notes: "Clean Marathi + Sanskrit extraction via pandoc (~964K chars). 12 chapters of word-by-word (anvayarth) commentary on the Dhyangita, with Sanskrit verses followed by padacchhed and word meanings in Marathi."
+notes: "Ingested 2026-07-08 from 13 docx files (chapters ०१–१२; ०१(1).docx is a duplicate of ०१.docx and was skipped). This is a different work from dhyangita (which is the main text with meanings; this is the chapter-by-chapter annotation/commentary)."
+external_verification:
+  verified: false
+  reason: "no public source available"
