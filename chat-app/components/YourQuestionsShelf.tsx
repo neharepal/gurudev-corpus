@@ -13,8 +13,10 @@ export default function YourQuestionsShelf({ lang }: { lang: Lang }) {
   const isMr = lang === "mr";
 
   useEffect(() => {
-    setThreads(loadThreads().filter((t) => t.mode === "qa"));
-  }, []);
+    // Show only threads in the current UI language — English mode lists English
+    // threads, Marathi mode lists Marathi ones (no cross-language pollution).
+    setThreads(loadThreads().filter((t) => t.mode === "qa" && t.lang === lang));
+  }, [lang]);
 
   if (threads.length === 0) return null;
   const recent = threads.slice(0, RECENT);

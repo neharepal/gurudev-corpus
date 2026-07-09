@@ -34,12 +34,13 @@ function HistoryPage() {
   const [threads, setThreads] = useState<SavedThread[]>([]);
 
   useEffect(() => {
-    setThreads(loadThreads());
-  }, []);
+    // Only show threads in the current UI language (no cross-language mixing).
+    setThreads(loadThreads().filter((t) => t.lang === lang));
+  }, [lang]);
 
   function handleRemove(id: string) {
     removeThread(id);
-    setThreads(loadThreads());
+    setThreads(loadThreads().filter((t) => t.lang === lang));
   }
   function handleClearAll() {
     clearAll();
