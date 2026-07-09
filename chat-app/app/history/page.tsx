@@ -7,7 +7,7 @@ import type { Lang } from "../../components/ModeTabs";
 import {
   loadThreads,
   removeThread,
-  clearAll,
+  clearThreadsByLang,
   type SavedThread,
 } from "../../lib/conversationHistory";
 import { answerSnippet } from "../../lib/answerSnippet";
@@ -43,7 +43,7 @@ function HistoryPage() {
     setThreads(loadThreads().filter((t) => t.lang === lang));
   }
   function handleClearAll() {
-    clearAll();
+    clearThreadsByLang(lang);
     setThreads([]);
   }
 

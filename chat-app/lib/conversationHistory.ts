@@ -94,3 +94,9 @@ export function clearAll(): void {
     // ignore
   }
 }
+
+/** Clear only threads in the given UI language (keeps the other language). */
+export function clearThreadsByLang(lang: "en" | "mr"): void {
+  if (typeof window === "undefined") return;
+  persist(loadThreads().filter((t) => t.lang !== lang));
+}
