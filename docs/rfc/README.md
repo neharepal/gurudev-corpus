@@ -77,3 +77,4 @@ Status changes are noted at the top of the document, dated.
 | [011](RFC-011-intent-aware-citation-ranking.md) | Intent-aware citation ranking | ACCEPTED |
 | [012](RFC-012-conversation-history.md) | Conversation history (saved question threads) | PROPOSED |
 | [013](RFC-013-source-text-page-furniture-cleanup.md) | Source-text cleanup — page furniture (running headers/footers) | PROPOSED |
+| [014](RFC-014-retrieval-grounding-rearchitecture.md) | Retrieval + grounding re-architecture (rerank, query understanding, junk scoring, citations) | PROPOSED |
