@@ -31,8 +31,15 @@ corpus. Latency is an acceptable trade for quality.
   (Deeper chunking / re-OCR are Phase 2 / 3, separate specs.)
 - **Architecture:** a **fixed enhanced pipeline** (not agentic). One synthesis
   call; each stage testable in isolation.
-- **Grounding:** **both** Claude Citations API (spans valid by construction)
-  **and** a server-side enforcement guard + deterministic quote verifier.
+- **Grounding:** **AMENDED 2026-07-09 to Option A** (enforce + verify on the
+  current mechanism). The Citations API was dropped after reading the synthesis
+  code: quotes are **already spliced verbatim from source** (`splice_qa_citations`
+  overrides the model's body with the real chunk text), so the API's
+  "valid-by-construction" benefit already exists; and `/ask` runs on forced
+  tool-use + streaming (RFC-010), which the Citations API is incompatible with.
+  Phase 1B therefore adds a server-side **enforcement guard** (retry when
+  under-cited — fixes the zero-citation essay) + a **quote verifier** (reuses the
+  splice "degraded" signal + fuzzy source match — flags garble), no Citations API.
 - **Query understanding:** **rewrite + HyDE**, fused, with BM25 on the original
   query as the exact-match backbone.
 

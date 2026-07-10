@@ -18,8 +18,10 @@ drop-in, flag-gated, fail-safe capabilities **without re-embedding the corpus**:
    as the exact-match backbone.
 3. **Index-time junk scoring** — deterministic, script-agnostic quality signal to
    downweight OCR/structural garbage.
-4. **Grounding** — Claude Citations API (spans valid by construction) + a
-   server-side enforcement guard + a deterministic quote verifier.
+4. **Grounding** — a server-side **enforcement guard** (retry when under-cited)
+   + a deterministic **quote verifier**, on the existing verbatim-splice
+   mechanism. *(Amended 2026-07-09: the Claude Citations API was dropped — see
+   "Grounding decision" below.)*
 
 Phase 1 is split for delivery into **1A (retrieval quality)** and **1B
 (grounding)**. Deeper chunking and re-OCR are deferred to Phase 2/3.
@@ -61,7 +63,7 @@ latency; agentic retrieval is a future phase):
 1. QUERY UNDERSTANDING  original + LLM rewrite + HyDE → dense (MAX) ; BM25 on original (backbone)
 2. WIDENED HYBRID       RRF fuse → top ~80 candidates × quality_score (junk downweighted)
 3. CROSS-ENCODER RERANK bge-reranker-v2-m3 (original question, passage) → keep top 12  (MMR → dedup only)
-4. GROUNDED SYNTHESIS   Claude Citations API + enforcement guard + quote verifier + deep-link from spans
+4. GROUNDED SYNTHESIS   existing verbatim-splice + enforcement guard (retry if under-cited) + quote verifier
 ```
 
 Design details, module interfaces, and per-task code live in the design spec and
@@ -81,10 +83,21 @@ plans (see References). Key decisions:
   the LLM has never heard of.
 - **Junk is downweighted, never deleted** (score multiplier + hard floor),
   protecting short-but-legitimate content (shlokas, aphorisms).
-- **Grounding uses both** Citations-API (span validity by construction) **and** a
-  server-side enforcement guard (fixes the zero-citation essay) **and** a quote
-  verifier (a mismatch means the *source* is OCR-corrupt → flag for repair, the
-  detection half of the citation-garble Phase 2 work).
+- **Grounding decision (amended 2026-07-09 — Option A).** The Citations API was
+  dropped after reading the synthesis code. Two facts govern: (1) quotes are
+  **already spliced verbatim from source** — `splice_qa_citations` overrides any
+  model-emitted body with the real chunk text, so the API's "valid span by
+  construction" guarantee already exists; (2) `/ask` runs on **forced tool-use +
+  streaming (RFC-010)**, which the Citations API (citations on free-form text) is
+  incompatible with — adopting it would rip out streaming and the UI data
+  contract for near-zero marginal benefit. Phase 1B instead adds, on the existing
+  mechanism: a **server-side enforcement guard** (retry once when a substantive
+  answer has zero citations while relevant passages were supplied — fixes the
+  Bhakti zero-citation essay) and a **quote verifier** (reuse the splice
+  "degraded" return + fuzzy source match; a mismatch means the *source* is
+  OCR-corrupt → flag for repair, the detection half of citation-garble Phase 2).
+  The one thing the Citations API would add — per-sentence claim attribution —
+  is a separate future RFC, weighed against keeping the streamed-answer UX.
 
 ### Correction to the frontier report's junk heuristic
 
