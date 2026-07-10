@@ -72,18 +72,36 @@ Bare 1–2 word entity queries are a **fundamental weak-signal case**:
 - This is why naive expansion ≠ what frontier systems do: they **rewrite/replace**
   the query (and rerank), they don't max-combine a second embedding.
 
-### ➡️ Open directions (unverified — candidates, not conclusions)
-- LLM **query rewriting** that *replaces* a short query (not max-combine) — but
-  early tests show even engineered "focused" strings are unstable; likely needs
-  a reranker to be reliable.
-- **Cross-encoder / late-interaction reranking** to rescue a buried-but-relevant
-  passage after hybrid retrieval.
-- **Contextual Retrieval / better chunking** so an entity mention isn't diluted
-  inside a multi-topic chunk.
-- **OCR junk-chunk filtering at ingestion** (overlaps the citation-garble-verifier
-  Phase 2 task).
-- A background research task (2026-07-09) is surveying how Gemini/ChatGPT/
-  Perplexity/Claude close these gaps; fold its findings in here when done.
+### ➡️ Next directions — from the frontier-techniques research (2026-07-09)
+Full write-up: [`rag-frontier-techniques-report.md`](./rag-frontier-techniques-report.md).
+Top 3 by impact-to-effort (each independently shippable + gold-validatable):
+
+1. **Cross-encoder reranker over a widened candidate set** (S→M, very high
+   impact). Retrieve top 50–100 → RRF → rerank with `BAAI/bge-reranker-v2-m3`
+   (multilingual, self-hostable, M3-native) → keep 8–12. MMR optimizes
+   *diversity* and structurally cannot rescue a buried-but-relevant passage; a
+   cross-encoder re-scores query↔passage relevance from scratch. Decoupling
+   retrieval width from final width ensures the buried passage is even present
+   to rescue — directly targets the #7-buried-10524 case.
+2. **Query understanding — LLM rewriting and/or HyDE, as a retrieval tool**
+   (S, very high impact for short queries). The bare-entity failure is a
+   *representation* problem (a 2-token vector in a sparse region). Rewriting/HyDE
+   moves the search *anchor* into the descriptive-prose neighborhood
+   (reproduces the 0.32→~0.46 effect). Categorically different from the failed
+   max-combine, which reused the same bad vector. Keep BM25 for exact entity
+   match.
+3. **OCR junk filtering at index time + query-time length floor** (S, high
+   impact). Store a `quality_score`/`junk_flag` from Devanagari-script-ratio
+   (<0.5), digit-ratio (>0.2), length gate (<~30 words), Marathi-stopword count.
+   Flag-and-downweight, never hard-delete (protects shlokas/aphorisms).
+
+Cross-cutting: per the "OCR Hinders RAG" study, both BM25 and dense BGE-M3
+degrade on OCR noise, with corrupted named entities (deity/place/author names)
+causing outsized failures — cleaning OCR'd proper nouns before indexing may beat
+any retriever swap, and connects to the citation-garble Phase 2 task.
+
+**When we act on this, run it through brainstorming → spec → phased plan.** Do
+not big-bang; ship + gold-validate one lever at a time.
 
 ### 🧪 How to reproduce (offline, no API)
 ```
