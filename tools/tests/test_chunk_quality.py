@@ -27,7 +27,11 @@ def test_heading_marker_is_junk():
 
 def test_village_digit_list_is_junk():
     lst = "२० मोजे डि कसाळ  ३१ मोजे कागनरी  २१ मोजे कात्राळ  ३२ मौजे गुरवि नाळ  २२ मोजे करनाळ  ३३ मौजे करोळी"
-    assert cq.is_junk(lst) is True  # high digit ratio + no stopwords
+    assert cq.is_junk(lst) is True  # short + digit-heavy list -> junk
 
 def test_symbol_garble_is_junk():
     assert cq.is_junk("aataziga ळटपवृक्षवन्जयु काणि रय्य ( राग-पुरि या धनाध्रि ; तार") is True
+
+def test_quality_score_stays_in_unit_range():
+    for s in ["", "०१२३४५६७८९ ०१२३४५६७८९ ०१२३", "## Part 13", MR_PROSE, EN_PROSE, "!!!@@@###$$$"]:
+        assert 0.0 <= cq.quality_score(s) <= 1.0

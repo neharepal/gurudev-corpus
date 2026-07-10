@@ -31,7 +31,7 @@ def _ratios(text: str) -> tuple[float, float, float]:
     if not non_space:
         return 0.0, 0.0, 1.0
     n = len(non_space)
-    letters = sum(1 for c in non_space if _DEVA.match(c) or _LATIN.match(c))
+    letters = sum(1 for c in non_space if (_DEVA.match(c) or _LATIN.match(c)) and not c.isdigit())
     digits = sum(1 for c in non_space if c.isdigit())
     symbols = n - letters - digits
     return letters / n, digits / n, symbols / n
