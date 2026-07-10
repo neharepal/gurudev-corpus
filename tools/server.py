@@ -1458,6 +1458,23 @@ def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate):
     return result, flags
 
 
+def _replay_qa_as_sse(result):
+    """Yield (kind, payload) events equivalent to the live QA stream, from a
+    completed result dict. Scalars -> field events; list fields -> array_item
+    events; then a final done event. Mirrors ask_structured_stream's shapes so
+    the frontend needs no change."""
+    for name in ("kind", "classification", "question", "framing", "synthesis"):
+        if name in result and result[name] is not None:
+            yield "field", {"name": name, "value": result[name]}
+    for name in ("framingParagraphs", "citations", "references"):
+        items = result.get(name)
+        if isinstance(items, list):
+            for i, value in enumerate(items):
+                yield "array_item", {"array": name, "index": i, "value": value}
+            yield "field_close", {"name": name}
+    yield "done", {"response": result, "usage": {}}
+
+
 def _retrieval_event_payload(chunks: List[Dict[str, Any]], retrieval_s: float) -> Dict[str, Any]:
     """Shape for the `retrieval` SSE event (RFC-010): chunk metadata + elapsed time.
     Strips the chunk text body (too large for an SSE event) — that's only needed server-side.
@@ -1528,6 +1545,34 @@ def ask(req: AskRequest, request: Request):
         # First: retrieval event so the UI can show "Found N passages in Xs"
         # while the LLM is still warming up.
         yield sse("retrieval", **_retrieval_event_payload(chunks, retrieval_s))
+
+        if mode == "qa" and os.environ.get("GROUNDING_MODE") == "enforce":
+            # Buffered path (RFC-014): generate non-streaming, enforce/verify,
+            # then replay as SSE. Trades progressive type-out for guaranteed
+            # grounding; preserves the SSE event contract (no frontend change).
+            try:
+                parsed, _r = STATE.client.ask_structured(
+                    mode=mode, system_prompt=system_prompt,
+                    user_message=user_msg, label_to_chunk=label_to_chunk,
+                )
+                result = parsed.model_dump(exclude_none=True)
+                _enrich_citations_readpage(result.get("citations") or [], label_to_chunk)
+                def _regen():
+                    p2, _ = STATE.client.ask_structured(
+                        mode=mode, system_prompt=system_prompt + grounding.CITE_HARDER_SUFFIX,
+                        user_message=user_msg, label_to_chunk=label_to_chunk,
+                    )
+                    r2 = p2.model_dump(exclude_none=True)
+                    _enrich_citations_readpage(r2.get("citations") or [], label_to_chunk)
+                    return r2
+                result, _flags = _enforce_and_verify_qa(result, label_to_chunk, regenerate=_regen)
+                _append_flags(_flags, req)
+                for kind, payload in _replay_qa_as_sse(result):
+                    yield sse(kind, **payload)
+                return
+            except RuntimeError as e:
+                yield sse("error", message=str(e)); return
+        # else: existing true-streaming loop unchanged
 
         last_event_ts = time.time()
         for kind, payload in STATE.client.ask_structured_stream(
