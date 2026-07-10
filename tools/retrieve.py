@@ -495,6 +495,28 @@ def apply_intent_tier_weights(
     return boosted
 
 
+def apply_quality_weights(
+    fused: np.ndarray,
+    metas: list,
+    *,
+    enabled: bool,
+) -> np.ndarray:
+    """Multiply fused candidate scores by each chunk's quality_score.
+
+    Downweights OCR/structural junk so it cannot crowd the top-k on weak
+    queries. Fail-open: a missing quality_score is treated as 1.0 (no penalty),
+    so a corpus without the field behaves exactly as before. `enabled=False`
+    returns the input unchanged.
+    """
+    if not enabled:
+        return fused
+    w = np.fromiter(
+        (float(m.get("quality_score", 1.0)) for m in metas),
+        dtype=np.float32, count=len(metas),
+    )
+    return fused * w
+
+
 def load_corpus() -> tuple[np.ndarray, list[dict], dict]:
     """Load embeddings + per-chunk metadata + manifest."""
     if not EMB_PATH.exists():

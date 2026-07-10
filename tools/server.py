@@ -497,6 +497,9 @@ def _retrieve(
         question, scores, sub_metas, texts=subset_texts,
         bm25_queries=_bm25_extras or None,
     )
+    fused = retrieve.apply_quality_weights(
+        fused, sub_metas, enabled=os.environ.get("ENABLE_JUNK_WEIGHT") == "1"
+    )
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     # Use the FUSED (dense+lexical) relevance for MMR ranking + the per-work cap,
