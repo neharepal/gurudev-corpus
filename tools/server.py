@@ -441,6 +441,22 @@ def _embed_query(question: str) -> np.ndarray:
     return vec[0].astype(np.float32)
 
 
+def _rerank_candidates(question, candidates, reranker_obj, *, top_k):
+    """Reorder [(idx, text), ...] by cross-encoder relevance; keep top_k.
+
+    Fail-safe: if the reranker is unavailable or returns the wrong count,
+    keep the input order (already MMR-ranked) and just truncate to top_k.
+    """
+    if not reranker_obj.available() or not candidates:
+        return candidates[:top_k]
+    texts = [t for _, t in candidates]
+    scores = reranker_obj.rerank(question, texts)
+    if len(scores) != len(candidates):
+        return candidates[:top_k]
+    order = sorted(range(len(candidates)), key=lambda i: scores[i], reverse=True)
+    return [candidates[i] for i in order[:top_k]]
+
+
 def _retrieve(
     question: str,
     *,
@@ -507,12 +523,27 @@ def _retrieve(
     # passage) gets into the pool but loses its work's slot to a higher-dense
     # sibling. MMR's diversity term still uses the embeddings.
     cand_scores = fused[cand_idx]
-    reranked = retrieve.mmr_rerank(
-        qvec, cand_idx, cand_scores, sub_emb, sub_metas,
-        top_k=top_k,
-        mmr_lambda=mmr_lambda,
-        max_per_source=max_per_source,
-    )
+    import reranker as _reranker_mod
+    rerank_on = os.environ.get("ENABLE_RERANK") == "1"
+    if rerank_on:
+        widen = int(os.environ.get("RERANK_CANDIDATES", str(retrieve.INITIAL_CANDIDATES)))
+        pool = cand_idx[:widen]
+        # MMR first only to drop near-duplicate OCR chunks, generous cap.
+        deduped = retrieve.mmr_rerank(
+            qvec, pool, fused[pool], sub_emb, sub_metas,
+            top_k=len(pool), mmr_lambda=mmr_lambda, max_per_source=max_per_source,
+        )
+        cand_pairs = []
+        for idx, _mmr in deduped:
+            oidx = int(keep_idx[idx]) if keep_idx is not None else int(idx)
+            cand_pairs.append((idx, retrieve.load_chunk_text(sub_metas[idx], oidx)))
+        top = _rerank_candidates(question, cand_pairs, _reranker_mod.get_reranker(), top_k=top_k)
+        reranked = [(idx, 0.0) for idx, _txt in top]  # score slot unused downstream
+    else:
+        reranked = retrieve.mmr_rerank(
+            qvec, cand_idx, cand_scores, sub_emb, sub_metas,
+            top_k=top_k, mmr_lambda=mmr_lambda, max_per_source=max_per_source,
+        )
     out: List[Dict[str, Any]] = []
     for idx, mmr_score in reranked:
         meta = sub_metas[idx]
