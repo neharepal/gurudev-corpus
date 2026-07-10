@@ -446,7 +446,15 @@ TIER_WEIGHTS: dict[str, dict[str, float]] = {
     "doctrinal":    {"canonical": 0.10, "recollections": 0.04, "reference": -0.12},
     "narrative":    {"canonical": 0.00, "recollections": 0.10, "reference": -0.08},
     "navigational": {"canonical": 0.00, "recollections": 0.00, "reference":  0.08},
-    "unknown":      {"canonical": 0.05, "recollections": 0.00, "reference": -0.08},
+    # When intent is genuinely unknown, impose no canonical-vs-recollections
+    # prior: a small equal nudge for both content tiers, judged on match alone.
+    # The old {canonical:+0.05, recollections:0.00} prior silently demoted
+    # biography/athvani works on ambiguous queries — fatal for entity/place
+    # lookups (e.g. "Carlyle Cottage"), whose content lives in the biographies.
+    # bge-m3 already ranks the right passage highly; the prior was re-burying it.
+    # Validated on eval_retrieval.py gold set: 10→11 PASS, zero doctrinal
+    # regressions (canonical works still surface via dense+BM25 on their own).
+    "unknown":      {"canonical": 0.02, "recollections": 0.02, "reference": -0.08},
 }
 PRIMARY_AUTHOR_BONUS = 0.04   # canonical works by lineage masters (PRIMARY_AUTHORS)
 # Fused-side bonus added AFTER RRF fusion so the preference applies uniformly

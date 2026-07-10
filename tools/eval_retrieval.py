@@ -195,6 +195,24 @@ GOLD = [
         "GAP2 EN→MR-athvani: incidents at Inchgeri → Marathi biography/athvani "
         "[cross-lingual baseline; EN→MR translation + BM25 fix needed for full recall]",
     ),
+    # -----------------------------------------------------------------------
+    # GAP 3 case: verbose entity query whose distinctive term is diluted by
+    # generic Marathi question/meta filler words (बद्दल, या, काय, माहिती, मिळेल).
+    # charitra-tatvajnan-tulpule holds the most Carlyle Cottage chunks (15) but
+    # the filler words dilute the distinctive "कॉटेज" BM25 signal.  The BM25
+    # stopword extension drops the filler so कार्लाईल/कॉटेज + the book-title
+    # words (चरित्र/तत्वज्ञान) dominate.  Content words (चरित्र, तत्वज्ञान) are
+    # deliberately NOT stopwords — here they are the target book's title.
+    (
+        "कार्लाईल कॉटेज बद्दल चरित्र आणि तत्वज्ञान या ग्रंथातून काय माहिती मिळेल",
+        [
+            # Only charitra: guru-ha-parabrahma-kewal always surfaces and would
+            # mask the real target.  The dilution bug is that charitra (which
+            # holds the most Carlyle chunks) drops out.
+            "charitra-tatvajnan-tulpule",
+        ],
+        "GAP3 MR verbose-entity: Carlyle Cottage (filler-diluted) → charitra-tatvajnan-tulpule",
+    ),
 ]
 
 
