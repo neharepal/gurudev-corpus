@@ -20,3 +20,10 @@ def test_hyde_uses_injected():
 def test_hyde_failsafe_on_exception():
     def boom(q): raise RuntimeError("down")
     assert qu.hypothetical_doc("q", generator=boom) is None
+
+def test_hyde_none_on_echo_or_empty():
+    assert qu.hypothetical_doc("bhakti", generator=lambda q: "bhakti") is None
+    assert qu.hypothetical_doc("bhakti", generator=lambda q: "  ") is None
+
+def test_hyde_none_when_llm_disabled():
+    assert qu.hypothetical_doc("anything", use_llm=False) is None

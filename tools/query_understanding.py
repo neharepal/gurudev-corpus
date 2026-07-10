@@ -51,8 +51,7 @@ def hypothetical_doc(query, *, use_llm=True, generator: Optional[Callable[[str],
         return None
     fn = generator or _default_hyde
     try:
-        out = fn(query)
-        return out.strip() if out and out.strip() else None
+        return _clean(fn(query), query)
     except Exception:
         return None
 
