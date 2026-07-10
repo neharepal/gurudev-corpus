@@ -25,11 +25,12 @@ TOOLS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, TOOLS_DIR)
 
 import server  # noqa: E402
+from pagination import PAGE_SIZE  # noqa: E402
 
 REPO = Path(TOOLS_DIR).parent
 
-# _PAGE_SIZE paragraphs per page; mirrors server._PAGE_SIZE.
-PAGE_SIZE = server._PAGE_SIZE
+# PAGE_SIZE paragraphs per page (pagination.py); server no longer owns this
+# constant since pagination was refactored to page_for_paragraph_index.
 
 _FRONT_MATTER = "---\ntitle: Synthetic Work\nauthor: test_author\n---\n"
 

@@ -128,12 +128,17 @@ def test_read_page1_author_is_shri_gurudev(pghl_page1):
     assert pghl_page1["author"] == "Shri Gurudev"
 
 
-def test_read_page1_has_four_paragraphs(pghl_page1):
-    # Page 1 should have exactly 4 paragraphs (unless totalPages == 1)
+def test_read_page1_has_at_most_four_paragraphs(pghl_page1):
+    # Pagination is chapter-aware (see pagination.py / RFC 2026-07-03 reading
+    # mode book layout): a page holds AT MOST PAGE_SIZE (4) paragraphs, but a
+    # chapter boundary always starts a fresh page even with fewer than 4 — so
+    # a short front-matter chapter (PGHL's page 1 is "Publishers' Note to the
+    # Fourth Edition", 1 paragraph) legitimately yields <4. Assert the upper
+    # bound (and non-empty), not exact equality.
     paras = pghl_page1["paragraphs"]
     total_pages = pghl_page1["totalPages"]
     if total_pages > 1:
-        assert len(paras) == 4, f"Expected 4 paragraphs on page 1, got {len(paras)}"
+        assert 1 <= len(paras) <= 4, f"Expected 1-4 paragraphs on page 1, got {len(paras)}"
 
 
 def test_read_total_pages_is_sane(pghl_page1):
@@ -169,10 +174,15 @@ def test_read_unknown_slug_returns_404(client):
     assert resp.status_code == 404
 
 
-def test_read_invalid_lang_returns_404(client):
-    # 'xx' is not a valid language for any work
+def test_read_invalid_lang_falls_back_to_primary_language(client):
+    # Policy change (server.py read_work, ~line 1275): an unavailable/invalid
+    # `lang` no longer 404s — it falls back to the work's primary available
+    # language. This supports "Read in full" links that carry the UI's
+    # language even when the target work only exists in another language.
     resp = client.get("/read/pathway-to-god-in-hindi-literature?lang=xx")
-    assert resp.status_code == 404
+    assert resp.status_code == 200
+    data = resp.json()
+    assert len(data["paragraphs"]) >= 1
 
 
 def test_read_page_clamps_to_valid_range(client):

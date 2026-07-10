@@ -6,8 +6,8 @@ Anthropic API. The approach: monkeypatch _retrieve to capture what
 parameters it was called with, then assert on those captured values.
 
 Four cases:
-  1. mode=qa, no work  → no filter, max_per_source=1
-  2. mode=qa, work set  → filter={"work_id": slug}, max_per_source=top_k (8)
+  1. mode=qa, no work  → no filter, max_per_source=2
+  2. mode=qa, work set  → filter={"work_id": slug}, max_per_source=top_k (12)
   3. mode=reading, work set  → filter={"work_id": slug}, max_per_source=top_k (5)
   4. mode=pravachan, no work  → no filter, max_per_source=2
 """
@@ -93,29 +93,29 @@ def _run(mode: str, work: Optional[str] = None):
 
 
 def test_qa_no_work_has_no_filter_and_single_chunk_cap(patch_retrieve_and_llm):
-    """Unscoped Q&A: no metadata_filter, max_per_source==1."""
+    """Unscoped Q&A: no metadata_filter, max_per_source==2 (drifted from 1)."""
     _run(mode="qa", work=None)
     captured = patch_retrieve_and_llm
     assert captured["metadata_filter"] is None, (
         "Unscoped Q&A must not apply a work filter"
     )
-    assert captured["max_per_source"] == 1, (
-        "Unscoped Q&A must cap at 1 chunk per source for corpus breadth"
+    assert captured["max_per_source"] == 2, (
+        "Unscoped Q&A must cap at 2 chunks per source for corpus breadth"
     )
 
 
 def test_qa_with_work_applies_filter_and_full_top_k(patch_retrieve_and_llm):
-    """Work-scoped Q&A: filter={"work_id": slug}, max_per_source==top_k (8)."""
+    """Work-scoped Q&A: filter={"work_id": slug}, max_per_source==top_k (12)."""
     _run(mode="qa", work="pathway-to-god-in-hindi-literature")
     captured = patch_retrieve_and_llm
     assert captured["metadata_filter"] == {
         "work_id": "pathway-to-god-in-hindi-literature"
     }, "Work-scoped Q&A must set work_id filter"
-    # top_k for qa is 8; with a work filter max_per_source must equal top_k
+    # top_k for qa is 12; with a work filter max_per_source must equal top_k
     assert captured["max_per_source"] == captured["top_k"], (
         "Work-scoped Q&A must allow top_k chunks from the single filtered work"
     )
-    assert captured["top_k"] == 8, "Q&A top_k must be 8"
+    assert captured["top_k"] == 12, "Q&A top_k must be 12"
 
 
 def test_reading_with_work_applies_filter_and_full_top_k(patch_retrieve_and_llm):

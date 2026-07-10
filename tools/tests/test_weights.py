@@ -35,8 +35,13 @@ def test_narrative_weights_prefer_recollections():
 def test_unknown_intent_used_for_unrecognised_label():
     scores = np.zeros(4, dtype=np.float32)
     out = retrieve.apply_intent_tier_weights(scores, _metas(), "banana")
-    # falls back to the "unknown" row: canonical +0.05, recollections 0, reference -0.08
-    assert out[1] == np.float32(0.05)
+    # falls back to the "unknown" row. RFC-011 retuning (retrieve.py
+    # TIER_WEIGHTS comment) replaced the old {canonical:+0.05, recollections:0}
+    # prior — which silently demoted biography/athvani on ambiguous queries —
+    # with an equal small nudge for both content tiers: canonical +0.02,
+    # recollections +0.02, reference -0.08. Validated on eval_retrieval.py
+    # gold set (10->11 PASS, zero doctrinal regressions).
+    assert out[1] == np.float32(0.02)
     assert out[3] == np.float32(-0.08)
 
 
