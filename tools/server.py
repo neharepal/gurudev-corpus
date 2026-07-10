@@ -42,6 +42,7 @@ from pydantic import BaseModel
 
 import intent
 import query_translation
+import query_understanding
 from pagination import paginate, page_for_paragraph_index, is_chapter_start
 import retrieve
 from llm_client import ChatClient, MissingApiKeyError, pick_model
@@ -457,6 +458,20 @@ def _rerank_candidates(question, candidates, reranker_obj, *, top_k):
     return [candidates[i] for i in order[:top_k]]
 
 
+def _extra_query_strings(question):
+    """Rewrite + HyDE strings to fold into retrieval, per env flags. [] if off."""
+    extras = []
+    if os.environ.get("ENABLE_QUERY_REWRITE") == "1":
+        rw = query_understanding.rewrite_query(question)
+        if rw:
+            extras.append(rw)
+    if os.environ.get("ENABLE_HYDE") == "1":
+        hy = query_understanding.hypothetical_doc(question)
+        if hy:
+            extras.append(hy)
+    return extras
+
+
 def _retrieve(
     question: str,
     *,
@@ -502,13 +517,16 @@ def _retrieve(
     q_en = query_translation.translate_to_english(question)
     if q_en:
         scores = np.maximum(scores, sub_emb @ _embed_query(q_en))
+    _extras = _extra_query_strings(question)
+    for _e in _extras:
+        scores = np.maximum(scores, sub_emb @ _embed_query(_e))
     query_intent = intent.classify_intent(question)
     scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
     cand_n = min(candidates, len(scores))
     # GAP 2 fix: pass translated queries to BM25 so cross-lingual results get a
     # lexical RRF component.  q_dev (Marathi) helps EN queries find Marathi athvani;
     # q_en (English) helps MR queries find English canonical works.
-    _bm25_extras = [q for q in (q_dev, q_en) if q]
+    _bm25_extras = [q for q in ([q_dev, q_en] + _extras) if q]
     fused = retrieve.fused_candidate_scores(
         question, scores, sub_metas, texts=subset_texts,
         bm25_queries=_bm25_extras or None,
