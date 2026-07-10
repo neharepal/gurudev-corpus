@@ -21,8 +21,10 @@ def _load_texts(chunks_path: Path) -> list[str]:
     with chunks_path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
+            if not line:
+                continue
             try:
-                texts.append(json.loads(line).get("text", "") if line else "")
+                texts.append(json.loads(line).get("text", ""))
             except Exception:
                 texts.append("")
     return texts
@@ -36,6 +38,11 @@ def build_quality(meta_path: Path, chunks_path: Path) -> int:
             line = line.strip()
             if line:
                 rows.append(json.loads(line))
+    if len(texts) != len(rows):
+        raise ValueError(
+            f"chunks.jsonl ({len(texts)}) and chunks_meta.jsonl ({len(rows)}) "
+            f"line counts differ — cannot align quality_score safely."
+        )
     updated = 0
     for i, row in enumerate(rows):
         text = texts[i] if i < len(texts) else ""
