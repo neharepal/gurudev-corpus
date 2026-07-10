@@ -13,7 +13,6 @@ def test_replay_emits_fields_arrays_and_done():
     kinds = [k for k, _ in events]
     assert kinds[-1] == "done"
     # framing came through as a field, the citation as an array_item
-    assert ("field", ) or True  # shape check below
     assert any(k == "field" and p.get("name") == "framing" for k, p in events)
     assert any(k == "array_item" and p.get("array") == "citations" for k, p in events)
     done = [p for k, p in events if k == "done"][0]

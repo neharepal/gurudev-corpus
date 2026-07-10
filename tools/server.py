@@ -1459,10 +1459,10 @@ def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate):
 
 
 def _replay_qa_as_sse(result):
-    """Yield (kind, payload) events equivalent to the live QA stream, from a
-    completed result dict. Scalars -> field events; list fields -> array_item
-    events; then a final done event. Mirrors ask_structured_stream's shapes so
-    the frontend needs no change."""
+    """Yield (kind, payload) events functionally compatible with the live QA stream
+    from a completed result dict. Emits scalar field events, then array_item events for
+    list fields, and finally a done event. Events are shaped for frontend consumption;
+    the done event payload (with exclude_none) replaces the draft wholesale."""
     for name in ("kind", "classification", "question", "framing", "synthesis"):
         if name in result and result[name] is not None:
             yield "field", {"name": name, "value": result[name]}
