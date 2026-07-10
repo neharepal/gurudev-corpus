@@ -24,3 +24,16 @@ def test_unknown_passage_is_flagged():
 def test_empty_body_skipped():
     cits = [{"quote": {"passage": "A", "body": ""}}]
     assert g.verify_citations(cits, {"A": _chunk("text")}) == []
+
+def test_fuzzy_close_quote_passes():
+    # A quote that differs only by a couple of chars from source should still match
+    # (partial_ratio >= 85). Requires rapidfuzz; if absent this asserts exact-only
+    # behavior instead, which is acceptable degradation.
+    src = "Bhakti consists in love to God, and through the love of God, in the love of man."
+    body = "love to God, and through the love of Gd, in the love of man"  # 'Gd' typo
+    cits = [{"quote": {"passage": "A", "body": body}}]
+    flags = g.verify_citations(cits, {"A": _chunk(src)})
+    if g._partial_ratio is not None:
+        assert flags == []          # fuzzy match tolerates the typo
+    else:
+        assert len(flags) == 1      # exact-only degradation flags it

@@ -4,6 +4,7 @@ Builds on the EXISTING verbatim-splice mechanism (schemas.splice_qa_citations),
 NOT the Citations API. See RFC-014 (Grounding decision, amended 2026-07-09).
 """
 from __future__ import annotations
+import unicodedata
 
 _MIN_SUBSTANTIVE_CHARS = 200
 
@@ -58,17 +59,15 @@ def enforce_qa(first: dict, *, passages_supplied: int, regenerate) -> dict:
     return first
 
 
-import unicodedata
-
 try:
     from rapidfuzz.fuzz import partial_ratio as _partial_ratio
 except Exception:  # rapidfuzz optional — degrade to exact substring
     _partial_ratio = None
 
 
-def _norm(s: str) -> str:
+def _norm(s) -> str:
     # NFC-normalize (Devanagari matras) + collapse whitespace for robust matching.
-    return " ".join(unicodedata.normalize("NFC", s or "").split())
+    return " ".join(unicodedata.normalize("NFC", str(s) if s else "").split())
 
 
 def _matches(body: str, source: str, threshold: int) -> bool:
