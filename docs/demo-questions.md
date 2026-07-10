@@ -14,7 +14,11 @@ as informal quality anchors. Add new ones as they prove themselves.
 - साधनेचे टप्पे कोणते? गुरुदेव काय सांगतात?
 
 ## Impromptu — 2026-07-09 small demo (audience-asked, "beautiful answers")
-<!-- TODO: Neha to paste the exact impromptu questions the audience asked. -->
+- What does this mean — "Modal bhaktige badalav aagade" (Kannada)?
+  <!-- Kannada-phrase meaning question — model handled a non-EN/MR script well. -->
+- Which was the first book Shri Gurudev wrote?
+  <!-- Answer ties to the Carlyle 'Signs of the Times' editing (1916/1917) — good
+       cross-reference with the Carlyle Cottage story. -->
 
 ## Notes
 - Full natural-language questions cite reliably; bare 1–2 word topics are the
