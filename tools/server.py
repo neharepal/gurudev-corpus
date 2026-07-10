@@ -40,6 +40,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+import grounding
 import intent
 import query_translation
 import query_understanding
@@ -896,6 +897,35 @@ def _save_flag_queue(entries: List[Dict[str, Any]]) -> None:
     tmp.replace(FLAG_QUEUE_PATH)
 
 
+def _append_flags(flags: List[Dict[str, Any]], req: "AskRequest") -> None:
+    """Append auto-verify flags (from grounding.verify_citations) to the flag queue.
+
+    Reuses the same FLAG_QUEUE_PATH read/append/write path as /report and the
+    F18 correction flow, so these show up in the same review queue. Each flag
+    record from grounding.verify_citations has passage/workTitle/score/reason;
+    `source: "auto-verify"` distinguishes these from user-submitted reports.
+    No-op when `flags` is empty (never touches the file for the common case).
+    """
+    if not flags:
+        return
+    entries = _load_flag_queue()
+    for f in flags:
+        entries.append({
+            "id": uuid.uuid4().hex[:12],
+            "flagged_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "status": "pending",
+            "kind": "issue",
+            "source": "auto-verify",
+            "question": req.question,
+            "mode": req.mode,
+            "passage": f.get("passage", ""),
+            "workTitle": f.get("workTitle", ""),
+            "score": f.get("score"),
+            "note": f.get("reason", ""),
+        })
+    _save_flag_queue(entries)
+
+
 # ---------------------------------------------------------------------------
 # Admin dashboard routes
 # ---------------------------------------------------------------------------
@@ -1414,6 +1444,20 @@ def _enrich_citations_readpage(
         _enrich_citation_readpage(c, label_to_chunk)
 
 
+def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate):
+    """Apply the grounding guard to a QA result dict. Returns (result, flags).
+
+    No-op unless GROUNDING_MODE == 'enforce'. `regenerate` produces a second
+    QA result dict (already spliced) for the enforcement retry.
+    """
+    if os.environ.get("GROUNDING_MODE") != "enforce":
+        return result, []
+    passages = sum(1 for _ in (label_to_chunk or {}))
+    result = grounding.enforce_qa(result, passages_supplied=passages, regenerate=regenerate)
+    flags = grounding.verify_citations(result.get("citations") or [], label_to_chunk)
+    return result, flags
+
+
 def _retrieval_event_payload(chunks: List[Dict[str, Any]], retrieval_s: float) -> Dict[str, Any]:
     """Shape for the `retrieval` SSE event (RFC-010): chunk metadata + elapsed time.
     Strips the chunk text body (too large for an SSE event) — that's only needed server-side.
@@ -1466,6 +1510,17 @@ def ask(req: AskRequest, request: Request):
         # the reader at the exact page containing the cited passage.
         if mode == "qa":
             _enrich_citations_readpage(result.get("citations") or [], label_to_chunk)
+
+            def _regen():
+                p2, _ = STATE.client.ask_structured(
+                    mode=mode, system_prompt=system_prompt + grounding.CITE_HARDER_SUFFIX,
+                    user_message=user_msg, label_to_chunk=label_to_chunk,
+                )
+                r2 = p2.model_dump(exclude_none=True)
+                _enrich_citations_readpage(r2.get("citations") or [], label_to_chunk)
+                return r2
+            result, _flags = _enforce_and_verify_qa(result, label_to_chunk, regenerate=_regen)
+            _append_flags(_flags, req)
         return result
 
     # ── Streaming SSE path (chat-app)
