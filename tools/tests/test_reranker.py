@@ -19,3 +19,13 @@ def test_unavailable_when_load_fails():
     r = rr.Reranker(loader=boom)
     assert r.available() is False
     assert r.rerank("q", ["a", "b"]) == []   # fail-safe: empty -> caller falls back
+
+def test_rerank_returns_empty_when_scorer_raises():
+    def boom(pairs):
+        raise RuntimeError("scoring failed")
+    r = rr.Reranker(scorer=boom)
+    assert r.rerank("q", ["a", "b"]) == []
+    assert r.available() is True   # available, but scoring failed -> [] (caller falls back)
+
+def test_get_reranker_is_singleton():
+    assert rr.get_reranker() is rr.get_reranker()

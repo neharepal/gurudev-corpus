@@ -53,6 +53,8 @@ class Reranker:
         try:
             pairs = [[query, p] for p in passages]
             scores = self._scorer(pairs)
+            if len(scores) != len(passages):
+                return []
             return [float(s) for s in scores]
         except Exception:
             return []
