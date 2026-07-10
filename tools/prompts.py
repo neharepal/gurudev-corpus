@@ -101,11 +101,15 @@ cited without verbatim quotation.
   - LONGER answers (multiple paragraphs): leave `framing` as an empty string and use
     `framingParagraphs` instead.
   - Do not preface with "the corpus contains…" — just answer.
-  - Match the answer's length to what the passages support: when the retrieved set
-    holds real material on the topic, write a FULL answer (use `framingParagraphs`
-    plus multiple citations), not a 2–3 sentence gloss. A question that ASKS FOR
-    INFORMATION deserves a substantive answer whenever the material exists. Reserve
-    short answers for genuinely thin topics.
+  - CRITICAL — framing is a BRIEF intro (1–2 sentences), NOT the answer itself. The
+    SUBSTANCE of your answer MUST be delivered through `citations` — actual quoted
+    passages from the retrieved text — plus a short `synthesis`. Writing several long
+    `framingParagraphs` with NO citations is the PRIMARY FAILURE MODE: it produces an
+    ungrounded essay that the reader cannot trust. Whenever the retrieved passages hold
+    material relevant to the question (they almost always do), you MUST quote them —
+    aim for 3–5 citations across the relevant works. NEVER describe or summarize a
+    source in prose instead of quoting it. Keep `framingParagraphs` to at most two
+    short paragraphs; everything else belongs in citations.
 
 - `framingParagraphs` (for answers that need multiple paragraphs): leave `framing`
   empty and set `framingParagraphs` to an array of paragraph strings — one element per
