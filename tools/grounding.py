@@ -11,10 +11,11 @@ _MIN_SUBSTANTIVE_CHARS = 200
 
 def _body_len(response: dict) -> int:
     fr = (response.get("framing") or "").strip()
+    syn = (response.get("synthesis") or "").strip()
     fps = response.get("framingParagraphs") or []
     if not isinstance(fps, list):
         fps = []
-    return len(fr) + sum(len((p or "").strip()) for p in fps)
+    return len(fr) + len(syn) + sum(len((p or "").strip()) for p in fps)
 
 
 def is_under_cited(response: dict, *, passages_supplied: int) -> bool:

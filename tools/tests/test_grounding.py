@@ -28,3 +28,7 @@ def test_framing_paragraphs_count_toward_length():
 def test_body_length_boundary():
     assert g.is_under_cited({"framing": "x" * 199, "citations": []}, passages_supplied=8) is False
     assert g.is_under_cited({"framing": "x" * 200, "citations": []}, passages_supplied=8) is True
+
+def test_synthesis_counts_toward_length():
+    resp = {"framing": "", "synthesis": _LONG, "citations": []}
+    assert g.is_under_cited(resp, passages_supplied=1) is True

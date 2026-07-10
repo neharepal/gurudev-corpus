@@ -689,6 +689,7 @@ def admin_reload() -> Dict[str, Any]:
     """
     _reading_cache.clear()
     retrieve._BM25_CACHE.clear()
+    retrieve._TEXTS_CACHE.clear()
     global _works_cache
     _works_cache = None
     before = len(getattr(STATE, "metas", []) or [])
