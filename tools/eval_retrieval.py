@@ -40,6 +40,8 @@ sys.path.insert(0, str(REPO / "tools"))
 import retrieve  # noqa: E402
 import intent   # noqa: E402
 import query_translation  # noqa: E402
+import chunk_quality  # noqa: E402
+import reranker as reranker_mod  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Gold set
@@ -213,7 +215,37 @@ GOLD = [
         ],
         "GAP3 MR verbose-entity: Carlyle Cottage (filler-diluted) → charitra-tatvajnan-tulpule",
     ),
+    # -----------------------------------------------------------------------
+    # New entity/doctrinal gold cases (Task 8)
+    # -----------------------------------------------------------------------
+    (
+        "कारलाईल कॉटेज",
+        ["charitra-tatvajnan-tulpule", "guru-ha-parabrahma-kewal"],
+        "BARE entity: Carlyle Cottage (2-word) -> a biography with cottage content",
+    ),
+    (
+        "What are Gurudev's views on Bhakti?",
+        ["pathway-to-god-in-kannada-literature", "pathway-to-god-in-hindi-literature",
+         "gurudev-paramarthik-shikvan", "kakanchi-pravachane", "bhagavadgita-as-pathway-to-god-realization"],
+        "DOCTRINAL: Bhakti -> a canonical/pravachan work",
+    ),
 ]
+
+
+def _rerank_candidates(query, candidates, reranker_obj, *, top_k):
+    """Reorder [(idx, text), ...] by cross-encoder relevance; keep top_k.
+
+    Fail-safe: if reranker is unavailable or returns wrong count, keep MMR order.
+    Mirrors server._rerank_candidates.
+    """
+    if not reranker_obj.available() or not candidates:
+        return candidates[:top_k]
+    texts = [t for _, t in candidates]
+    scores = reranker_obj.rerank(query, texts)
+    if len(scores) != len(candidates):
+        return candidates[:top_k]
+    order = sorted(range(len(candidates)), key=lambda i: scores[i], reverse=True)
+    return [candidates[i] for i in order[:top_k]]
 
 
 def run_retrieval(
@@ -224,8 +256,15 @@ def run_retrieval(
     model_name: str,
     top_k: int,
     candidates: int,
+    junk: bool = False,
+    rerank: bool = False,
 ) -> list[dict]:
-    """Run the full retrieval pipeline (mirrors server._retrieve, no LLM calls)."""
+    """Run the full retrieval pipeline (mirrors server._retrieve, no LLM calls).
+
+    When junk=True, applies quality-weight downranking (mirrors ENABLE_JUNK_WEIGHT).
+    When rerank=True, applies widen→MMR-dedup→cross-encoder rerank (mirrors ENABLE_RERANK).
+    Each result dict includes a 'chunk_text' key for junk-in-top-k counting.
+    """
     qvec = retrieve.embed_query(query, model_name)
     scores = embeddings @ qvec
 
@@ -239,20 +278,42 @@ def run_retrieval(
 
     cand_n = min(candidates, len(scores))
     fused = retrieve.fused_candidate_scores(query, scores, metas)
+
+    # Apply quality-weight downranking when --junk is active.
+    if junk:
+        fused = retrieve.apply_quality_weights(fused, metas, enabled=True)
+
     cand_idx = np.argpartition(-fused, cand_n - 1)[:cand_n]
     cand_idx = cand_idx[np.argsort(-fused[cand_idx])]
     cand_scores = fused[cand_idx]
 
-    reranked = retrieve.mmr_rerank(
-        qvec, cand_idx, cand_scores, embeddings, metas,
-        top_k=top_k,
-        mmr_lambda=retrieve.MMR_LAMBDA,
-        max_per_source=2,
-    )
+    if rerank:
+        # Mirror server._retrieve rerank path:
+        # widen to candidates, MMR-dedup pre-pass (generous cap), then cross-encoder.
+        widen = min(retrieve.INITIAL_CANDIDATES, len(cand_idx))
+        pool = cand_idx[:widen]
+        deduped = retrieve.mmr_rerank(
+            qvec, pool, fused[pool], embeddings, metas,
+            top_k=len(pool),
+            mmr_lambda=retrieve.MMR_LAMBDA,
+            max_per_source=2,
+        )
+        cand_pairs = [(int(idx), retrieve.load_chunk_text(metas[idx], int(idx)))
+                      for idx, _mmr in deduped]
+        top = _rerank_candidates(query, cand_pairs, reranker_mod.get_reranker(), top_k=top_k)
+        reranked = [(idx, 0.0) for idx, _txt in top]
+    else:
+        reranked = retrieve.mmr_rerank(
+            qvec, cand_idx, cand_scores, embeddings, metas,
+            top_k=top_k,
+            mmr_lambda=retrieve.MMR_LAMBDA,
+            max_per_source=2,
+        )
 
     results = []
     for idx, mmr_score in reranked:
         meta = metas[idx]
+        chunk_text = retrieve.load_chunk_text(meta, int(idx))
         results.append({
             "work_id": meta.get("work_id", ""),
             "title": meta.get("title", ""),
@@ -260,6 +321,7 @@ def run_retrieval(
             "cos_score": float(scores[idx]),
             "mmr_score": float(mmr_score),
             "lang": meta.get("language", "?"),
+            "chunk_text": chunk_text,
         })
     return results
 
@@ -270,10 +332,19 @@ def main() -> int:
     p.add_argument("--candidates", type=int, default=retrieve.INITIAL_CANDIDATES,
                    help="Initial candidate pool (default from retrieve.INITIAL_CANDIDATES)")
     p.add_argument("--verbose", "-v", action="store_true", help="Show all top-k results per query")
+    p.add_argument("--junk", action="store_true", help="Apply quality-weight downranking")
+    p.add_argument("--rerank", action="store_true", help="Cross-encoder rerank the candidate pool")
     args = p.parse_args()
 
+    flags = []
+    if args.junk:
+        flags.append("junk-downweight")
+    if args.rerank:
+        flags.append("cross-encoder-rerank")
+    flag_str = " + ".join(flags) if flags else "baseline"
+
     print("=" * 72)
-    print(f"Retrieval eval harness  (top_k={args.top_k}, candidates={args.candidates})")
+    print(f"Retrieval eval harness  (top_k={args.top_k}, candidates={args.candidates}, mode={flag_str})")
     print("No LLM calls — bge-m3 cross-lingual baseline only.")
     print("=" * 72)
 
@@ -298,6 +369,7 @@ def main() -> int:
 
     n_pass = 0
     n_fail = 0
+    total_junk_in_topk = 0
 
     for query, expected_ids, description in GOLD:
         t0 = time.time()
@@ -308,6 +380,8 @@ def main() -> int:
             model_name=model_name,
             top_k=args.top_k,
             candidates=args.candidates,
+            junk=args.junk,
+            rerank=args.rerank,
         )
         elapsed = time.time() - t0
 
@@ -320,21 +394,28 @@ def main() -> int:
         else:
             n_fail += 1
 
+        # Count junk chunks in this query's top-k.
+        junk_count = sum(1 for r in results if chunk_quality.is_junk(r["chunk_text"]))
+        total_junk_in_topk += junk_count
+
         print(f"[{status}]  {description}")
         print(f"       Query   : {query[:90]}")
         print(f"       Expected: {expected_ids}")
-        print(f"       Got     : {returned_work_ids}  ({elapsed:.2f}s)")
+        print(f"       Got     : {returned_work_ids}  ({elapsed:.2f}s)  junk_in_top_k={junk_count}")
 
         if args.verbose:
             for rank, r in enumerate(results, 1):
+                is_junk_flag = chunk_quality.is_junk(r["chunk_text"])
                 print(
                     f"         #{rank:2d}  cos={r['cos_score']:.4f}  mmr={r['mmr_score']:.4f}"
                     f"  [{r['lang']}]  {r['work_id']}  ({r['title'][:50]})"
+                    f"{'  [JUNK]' if is_junk_flag else ''}"
                 )
         print()
 
     print("=" * 72)
     print(f"Results: {n_pass} PASS / {n_fail} FAIL out of {n_pass + n_fail} queries")
+    print(f"Junk-in-top-k (total across gold set): {total_junk_in_topk}")
     print("=" * 72)
     return 0
 
