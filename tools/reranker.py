@@ -61,12 +61,18 @@ class Reranker:
 
 
 def _default_loader() -> Callable[[list], list]:
-    """Load bge-reranker-v2-m3 via FlagEmbedding; return a pair-scoring fn."""
-    from FlagEmbedding import FlagReranker
-    fr = FlagReranker(_MODEL, use_fp16=True)  # auto-detects CUDA; CPU/MPS otherwise
+    """Load bge-reranker-v2-m3 as a sentence-transformers CrossEncoder.
+
+    Uses sentence-transformers (already a dependency for BGE-M3 embeddings) rather
+    than FlagEmbedding, so no extra heavy dependency is required. `predict` returns
+    a query-conditioned relevance score per (query, passage) pair; higher = more
+    relevant. Ordering is what the reranker consumes.
+    """
+    from sentence_transformers import CrossEncoder
+    ce = CrossEncoder(_MODEL, max_length=512)  # device auto-detected (MPS/CUDA/CPU)
     def score(pairs: list) -> list:
-        out = fr.compute_score(pairs, normalize=True)
-        return out if isinstance(out, list) else [out]
+        out = ce.predict(pairs)  # pairs: [[query, passage], ...]
+        return [float(s) for s in out]
     return score
 
 
