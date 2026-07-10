@@ -4,7 +4,6 @@ Builds on the EXISTING verbatim-splice mechanism (schemas.splice_qa_citations),
 NOT the Citations API. See RFC-014 (Grounding decision, amended 2026-07-09).
 """
 from __future__ import annotations
-from typing import Any
 
 _MIN_SUBSTANTIVE_CHARS = 200
 
@@ -12,6 +11,8 @@ _MIN_SUBSTANTIVE_CHARS = 200
 def _body_len(response: dict) -> int:
     fr = (response.get("framing") or "").strip()
     fps = response.get("framingParagraphs") or []
+    if not isinstance(fps, list):
+        fps = []
     return len(fr) + sum(len((p or "").strip()) for p in fps)
 
 

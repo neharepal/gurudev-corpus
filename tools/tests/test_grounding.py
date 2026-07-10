@@ -24,3 +24,7 @@ def test_trivial_answer_not_under_cited():
 def test_framing_paragraphs_count_toward_length():
     resp = {"framing": "", "framingParagraphs": ["y" * 130, "z" * 130], "citations": []}
     assert g.is_under_cited(resp, passages_supplied=5) is True
+
+def test_body_length_boundary():
+    assert g.is_under_cited({"framing": "x" * 199, "citations": []}, passages_supplied=8) is False
+    assert g.is_under_cited({"framing": "x" * 200, "citations": []}, passages_supplied=8) is True
