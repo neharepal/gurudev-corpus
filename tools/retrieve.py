@@ -311,6 +311,24 @@ def rrf_fuse(
 # index, which is fine (those are one-shot scripts).
 _BM25_CACHE: dict = {}
 
+# Cache of the full per-chunk text list, keyed by id(metas) like _BM25_CACHE.
+# Work-scoped retrieval needs subset texts; loading them one chunk at a time via
+# load_chunk_text re-scans chunks.jsonl per call (O(n^2) — ~22s for a 552-chunk
+# work). This caches a single sequential read so subsetting is O(1) per chunk.
+_TEXTS_CACHE: dict = {}
+
+
+def get_all_chunk_texts(metas: list) -> list:
+    """Return the full per-chunk text list for `metas`, cached by object identity.
+
+    Reads chunks.jsonl once (sequential, O(n)) on first call, then reuses it.
+    Row i aligns with metas[i] / embeddings[i]. Callers subset by absolute index.
+    """
+    key = id(metas)
+    if key not in _TEXTS_CACHE:
+        _TEXTS_CACHE[key] = _load_all_chunk_texts(metas)
+    return _TEXTS_CACHE[key]
+
 
 def _load_all_chunk_texts(metas: list) -> list:
     """Read 04_processed/chunks.jsonl once sequentially, returning a text per chunk.

@@ -355,13 +355,20 @@ def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
     # boundaries), so a prefix of the quote is contained in that paragraph.
     # Try a generous prefix first, then shorter ones, to tolerate minor
     # cleaning differences near the tail of the window.
-    for prefix_len in (60, 40, 24):
-        key = needle[:prefix_len]
-        if len(key) < 12:
-            continue
-        for i, para in enumerate(paragraphs):
-            if key in _norm_for_match(para["body"]):
-                return page_for_paragraph_index(paragraphs, i)
+    # Try windows taken from progressively LATER in the quote, not only the
+    # prefix. A quote may begin with a verse / dohā / bold line that
+    # _parse_work_text treats as a section heading and excludes from
+    # `paragraphs` (common in pravachan works) — a later window (the prose
+    # commentary) still anchors it to the right page. Prefix-first (start=0)
+    # preserves the fast common case and its exact prior behaviour.
+    for start in (0, 30, 60, 100, 150):
+        for win in (60, 40, 24):
+            key = needle[start:start + win]
+            if len(key) < 12:
+                continue
+            for i, para in enumerate(paragraphs):
+                if key in _norm_for_match(para["body"]):
+                    return page_for_paragraph_index(paragraphs, i)
     return None
 
 
@@ -497,11 +504,14 @@ def _retrieve(
 
     # Pre-load subset texts with correct absolute indices so BM25 gets the right document.
     # On the unfiltered path texts=None is fine (index covers the full corpus with identity mapping).
-    subset_texts = (
-        [retrieve.load_chunk_text(sub_metas[i], int(keep_idx[i])) for i in range(len(sub_metas))]
-        if keep_idx is not None
-        else None
-    )
+    if keep_idx is not None:
+        # Load the full corpus texts ONCE (cached) and subset by absolute index.
+        # The old per-chunk load_chunk_text re-scanned chunks.jsonl for every
+        # chunk (O(n^2) — ~22s for a 552-chunk work); this is O(1) per chunk.
+        _all_texts = retrieve.get_all_chunk_texts(STATE.metas)
+        subset_texts = [_all_texts[int(keep_idx[i])] for i in range(len(sub_metas))]
+    else:
+        subset_texts = None
 
     qvec = _embed_query(question)
     scores = sub_emb @ qvec
