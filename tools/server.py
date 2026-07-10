@@ -53,6 +53,7 @@ from prompts import (
     build_reading_user_message,
     build_user_message,
     get_system_prompt,
+    get_citation_extraction_prompt,
 )
 from streaming import sse, sse_heartbeat
 
@@ -1445,6 +1446,27 @@ def _enrich_citations_readpage(
         _enrich_citation_readpage(c, label_to_chunk)
 
 
+def _citation_extraction_regen(mode, user_message, label_to_chunk, first_result, lang):
+    """Enforcement retry as focused citation EXTRACTION (shared by both ask paths).
+
+    A full "cite harder" re-gen fails for Marathi answers over English sources: the
+    model won't quote English passages while writing Marathi prose, so it emits an
+    uncited essay again. This instead asks ONLY for the citations — a language-neutral
+    reference task ("copy the passage's own anchor words") the model does fine — then
+    keeps the original framing/synthesis and merges in the extracted, spliced citations.
+    """
+    parsed, _ = STATE.client.ask_structured(
+        mode=mode,
+        system_prompt=get_citation_extraction_prompt(lang),
+        user_message=user_message,
+        label_to_chunk=label_to_chunk,
+    )
+    r = parsed.model_dump(exclude_none=True)
+    merged = {**first_result, "citations": r.get("citations") or []}
+    _enrich_citations_readpage(merged.get("citations") or [], label_to_chunk)
+    return merged
+
+
 def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate):
     """Apply the grounding guard to a QA result dict. Returns (result, flags).
 
@@ -1529,15 +1551,11 @@ def ask(req: AskRequest, request: Request):
         if mode == "qa":
             _enrich_citations_readpage(result.get("citations") or [], label_to_chunk)
 
-            def _regen():
-                p2, _ = STATE.client.ask_structured(
-                    mode=mode, system_prompt=system_prompt + grounding.CITE_HARDER_SUFFIX,
-                    user_message=user_msg, label_to_chunk=label_to_chunk,
-                )
-                r2 = p2.model_dump(exclude_none=True)
-                _enrich_citations_readpage(r2.get("citations") or [], label_to_chunk)
-                return r2
-            result, _flags = _enforce_and_verify_qa(result, label_to_chunk, regenerate=_regen)
+            result, _flags = _enforce_and_verify_qa(
+                result, label_to_chunk,
+                regenerate=lambda: _citation_extraction_regen(
+                    mode, user_msg, label_to_chunk, result, req.lang or "en"),
+            )
             _append_flags(_flags, req)
         return result
 
@@ -1558,15 +1576,11 @@ def ask(req: AskRequest, request: Request):
                 )
                 result = parsed.model_dump(exclude_none=True)
                 _enrich_citations_readpage(result.get("citations") or [], label_to_chunk)
-                def _regen():
-                    p2, _ = STATE.client.ask_structured(
-                        mode=mode, system_prompt=system_prompt + grounding.CITE_HARDER_SUFFIX,
-                        user_message=user_msg, label_to_chunk=label_to_chunk,
-                    )
-                    r2 = p2.model_dump(exclude_none=True)
-                    _enrich_citations_readpage(r2.get("citations") or [], label_to_chunk)
-                    return r2
-                result, _flags = _enforce_and_verify_qa(result, label_to_chunk, regenerate=_regen)
+                result, _flags = _enforce_and_verify_qa(
+                    result, label_to_chunk,
+                    regenerate=lambda: _citation_extraction_regen(
+                        mode, user_msg, label_to_chunk, result, req.lang or "en"),
+                )
                 _append_flags(_flags, req)
                 for kind, payload in _replay_qa_as_sse(result):
                     yield sse(kind, **payload)

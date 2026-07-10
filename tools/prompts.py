@@ -132,6 +132,13 @@ cited without verbatim quotation.
   - SOURCE BREADTH — when relevant passages come from MORE THAN ONE work, your citations
     MUST span those different works, not concentrate on the single most-relevant one.
     Prefer 3–5 citations across the distinct works present over 4 from one book.
+  - CROSS-LANGUAGE — the source language NEVER excuses skipping a citation. Many of the
+    works are in ENGLISH while the answer may be in Marathi (or vice-versa). You MUST
+    STILL quote the relevant passage VERBATIM in its own source language and add a
+    one-line paraphrase gloss (`quote.paraphrase`) in the answer language. A Marathi
+    answer drawing on English sources MUST quote those English passages with a Marathi
+    gloss — writing an uncited Marathi essay because the sources are English is a
+    FAILURE. Quoting across languages is expected and required, not optional.
   For each citation's `quote`:
   - `quote.passage`: the LETTER of the passage you are quoting (e.g. "A", "B"),
     exactly as it appears in `[PASSAGE X]`.
@@ -539,6 +546,39 @@ SYSTEM_PROMPTS = {
     "pravachan": SYSTEM_PROMPT_PRAVACHAN,
     "reading": SYSTEM_PROMPT_READING,
 }
+
+
+def get_citation_extraction_prompt(lang: str = "en") -> str:
+    """System prompt for the enforcement RETRY: extract citations only.
+
+    Separates 'pick + copy passage anchors' (a language-neutral reference task the
+    model does fine) from 'write Marathi prose over English sources' (which the model
+    balks at, emitting an uncited essay). Used when a first answer came back
+    under-cited. The caller keeps the original framing/synthesis and merges in these
+    citations.
+    """
+    lang_name = "Marathi (Devanagari script)" if lang == "mr" else "English"
+    return (
+        "# CITATION EXTRACTION (this is your ONLY task)\n"
+        "You are given a question and a set of [PASSAGE X] source blocks. Do NOT write an "
+        "answer. Select the passages that support an answer to the question and emit them "
+        "as `citations` via the tool.\n"
+        "- Emit AT LEAST 3 citations (ideally 3–5) spanning DIFFERENT works. Returning zero "
+        "citations is a FAILURE.\n"
+        "- For each citation: `quote.passage` = the passage LETTER; `quote.quoteStart` = the "
+        "first ~4–8 words of the span copied EXACTLY (character-for-character) from that "
+        "passage's TEXT, in the passage's OWN language; `quote.quoteEnd` = the last ~4–8 "
+        "words, copied exactly; `quote.location` = the source reference; `whyChosen` = one "
+        f"sentence in {lang_name}.\n"
+        "- CRITICAL: most passages are in ENGLISH. Copying an English passage's own words "
+        "into quoteStart/quoteEnd is REQUIRED and correct — it is REFERENCING a source, NOT "
+        "writing in English. NEVER skip a relevant English passage because the reader's "
+        f"language is {lang_name}.\n"
+        f"- For any citation whose passage language differs from {lang_name}, also fill "
+        f"`quote.paraphrase` with a one-line {lang_name} gloss.\n"
+        "- Set `framing` to the single word \"Citations\" (it is discarded by the caller). "
+        "Do NOT produce framingParagraphs or synthesis."
+    )
 
 
 def get_system_prompt(mode: str, lang: str = "en") -> str:
