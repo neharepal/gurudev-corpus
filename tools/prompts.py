@@ -118,6 +118,16 @@ cited without verbatim quotation.
 
 - `citations`: cite as many genuinely relevant passages as the retrieved set supports —
   typically 3–8. Quote each passage BY REFERENCE — do NOT retype the passage text.
+  - HARD REQUIREMENT — you MUST produce at least one citation whenever the retrieved
+    passages contain ANY material relevant to the question. An answer that makes
+    substantive claims (a full framing paragraph or more) with ZERO citations while
+    relevant passages are available is a FAILURE. Do not describe the topic in prose and
+    then stop — quote the passages your description is based on. Only a genuinely
+    navigational question ("which books exist?") or a retrieved set with nothing on the
+    topic may have zero citations.
+  - SOURCE BREADTH — when relevant passages come from MORE THAN ONE work, your citations
+    MUST span those different works, not concentrate on the single most-relevant one.
+    Prefer 3–5 citations across the distinct works present over 4 from one book.
   For each citation's `quote`:
   - `quote.passage`: the LETTER of the passage you are quoting (e.g. "A", "B"),
     exactly as it appears in `[PASSAGE X]`.
