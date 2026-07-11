@@ -24,6 +24,7 @@ Prompt caching (per shared/prompt-caching.md):
 from __future__ import annotations
 
 import copy
+import json
 import os
 import sys
 from typing import Any
@@ -32,6 +33,29 @@ import anthropic
 from anthropic import Anthropic
 
 from schemas import get_response_model, get_tool, splice_qa_citations, splice_quote_dict
+
+
+def _coerce_json_containers(tool_input):
+    """Repair a tool_use input where the model stringified a list/object field.
+
+    Models occasionally emit a structured field (e.g. QAResponse.citations) as a
+    JSON *string* — `citations: "[\\n {\\n \\"quote\\": …}]"` — instead of an actual
+    array, which fails pydantic validation. For each top-level field whose value is
+    a string that looks like a JSON array/object, parse it and substitute the
+    parsed list/dict. Non-JSON strings (prose like `framing`) are left untouched.
+    """
+    if not isinstance(tool_input, dict):
+        return tool_input
+    out = dict(tool_input)
+    for k, v in out.items():
+        if isinstance(v, str) and v.strip()[:1] in ("[", "{"):
+            try:
+                parsed = json.loads(v)
+            except (ValueError, TypeError):
+                continue
+            if isinstance(parsed, (list, dict)):
+                out[k] = parsed
+    return out
 
 
 # Model routing per RFC-001 and RFC-003.
@@ -190,7 +214,7 @@ class ChatClient:
 
         # Reference-and-splice: fill verbatim `body` + attribution into QA
         # citations from the referenced chunks before validation.
-        tool_input = tool_use.input
+        tool_input = _coerce_json_containers(tool_use.input)
         if mode == "qa" and label_to_chunk:
             tool_input = copy.deepcopy(tool_input)
             splice_qa_citations(tool_input, label_to_chunk)
@@ -313,7 +337,7 @@ class ChatClient:
             yield ("error", {"message": f"Model returned no tool_use block for {tool['name']!r}"})
             return
 
-        tool_input = tool_use.input
+        tool_input = _coerce_json_containers(tool_use.input)
         if mode == "qa" and label_to_chunk:
             tool_input = copy.deepcopy(tool_input)
             splice_qa_citations(tool_input, label_to_chunk)
