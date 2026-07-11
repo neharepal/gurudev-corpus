@@ -97,13 +97,48 @@ Convert each file to UTF-8 Markdown.
 
 | Source format | Extraction method | Notes |
 |---|---|---|
-| `.pdf` (text layer) | `pdftotext -layout` | Verify layout; multi-column PDFs often need `-raw` |
-| `.pdf` (scanned) | `pandoc` after OCR via `ocrmypdf` | Manual quality check required — OCR noise is the largest source of bad chunks (see Q1 sweep findings: index pages, page numbers, headers) |
-| `.docx` | `pandoc -t markdown_strict` | |
+| `.pdf` (text layer) | `pdftotext -layout` | **Verify the layer is real Unicode, not legacy-font mojibake** (see below); multi-column PDFs often need `-raw` |
+| `.pdf` (scanned or legacy-font) | render + tesseract (OCR sub-procedure below) | OCR noise is the largest source of bad chunks (index pages, page numbers, headers) |
+| `.docx` | `pandoc -t markdown_strict` | Native text — always prefer over a PDF of the same work |
 | `.txt` | direct copy with charset normalization | |
 | `.html` | `pandoc -f html -t markdown_strict` | Strip nav/footer noise manually |
 
 Extraction goes into the file's eventual structured destination **as `extracted.md`** (not `text.md` yet — `text.md` is the verified version produced by Step 4).
+
+> **A "text layer" can be a trap.** Some Marathi PDFs embed a legacy display font
+> (Shree-Lipi / Lipika-style) that renders as Devanagari on screen but has **no Unicode
+> mapping**, so `pdftotext` emits mojibake (`pi˜iRy Ï]tbo]¡ti>`). `pdffonts` shows the fonts
+> with `uni=no`. Always eyeball `pdftotext … | head` before trusting a text layer; if it's
+> garbled, treat the file as **scanned** and run the OCR sub-procedure (rasterize + OCR
+> recovers clean text, since the glyphs render correctly as an image).
+
+#### OCR sub-procedure — Devanagari scans (validated 2026-07-10, `tools/ocr_ingest_2026-07-10.py`)
+
+Marathi devotional scans OCR **cleanly and for free with tesseract** when the scan is a
+modern print at ≥300 DPI — no Surya, no paid vision-LLM needed. (Our 2026-06-22 finding
+that "tesseract fails on Devanagari" was specific to *bad* scans: 150 DPI, archaic
+letterpress typefaces. Judge per scan.)
+
+1. **Render** each page to PNG at **300 DPI**: `pdftoppm -r 300 -png in.pdf out/pg`.
+2. **OCR** each page with **`-l mar+san+eng`**. Many editions are trilingual (Marathi verse
+   + English translation + Marathi commentary); `mar` alone garbles the English lines, and
+   adding `eng` does not hurt the Devanagari. Add `san` for Sanskrit shlokas.
+3. **Two environment gotchas — both silent failures:**
+   - Run under a **UTF-8 locale** (`LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8`) or text tools
+     (`sed`, and tesseract stderr handling) choke on Devanagari bytes.
+   - **Pipe the image to tesseract via stdin** (`tesseract stdin stdout -l …`, feeding the
+     PNG bytes) rather than by path. Leptonica's C `fopen` fails intermittently on this box
+     (`failed to open locally … image file not found`) regardless of locale or cwd; stdin
+     bypasses it. (Running from an ASCII cwd helps but stdin is the reliable fix.)
+4. **Cleanup (conservative — do not reflow verse):** drop standalone page-number lines
+   (bare digits, but keep `॥…॥` verse markers), de-hyphenate English line-break hyphens,
+   collapse 3+ blank lines. Leave tesseract's line structure otherwise intact.
+5. **Quality gate (Step 4):** spot-check ≥3 random pages against the PDF — Devanagari ratio
+   plausible, diacritics intact, no mojibake, English clean. The bar is *no hand-cleaning
+   needed downstream*; if a book fails, re-run at higher DPI or reconsider the engine.
+
+> _Phase 3 (retro re-OCR of already-ingested garbled scans) remains a separate tracked
+> effort; this sub-procedure is the standard for all **new** batches going forward._
 
 ### Step 4 — Verify
 
