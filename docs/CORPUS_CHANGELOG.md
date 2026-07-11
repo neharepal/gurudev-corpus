@@ -3,6 +3,40 @@
 Per RFC-009 §Step 10. Authoritative answer to "what's in the corpus as of date X" and
 "when did we add work Y."
 
+## v.2026-07-11 — Batch drive_dump_2026-07-10 (Drive "Neha 3") Track A + authorship audit
+
+Neha3 = 13 files. **Track A** (unambiguous) ingested; **Track B** (7 "अर्थासहित" vachanamrut
++ dhyanopakarani-gita) HELD for the retrieve-vs-cite build (sadhak compilations of Gurudev's
+verse + mixed-author meaning — must cite only Gurudev's verse; see docs + task #35).
+
+Added / extended (Track A):
+- kakanchi-pravachane (kakasaheb_tulpule, mr) — **extended vols 1-3 → 1-5** with OCR'd भाग ४
+  (280p) & ५ (224p); now 968 chunks.
+- sadhakachi-atmakatha (kakasaheb_tulpule, mr) — 163 chunks — Kaka's own spiritual
+  autobiography (1968; docx-pandoc).
+- swanandacha-gabha (about_other_devotees biography, mr) — 266 chunks — Marathi charitra of
+  Shri Sharakka (Nimbargi lineage saint); tesseract OCR.
+
+OCR: all 10 Neha3 scans OCR'd free/local via tesseract mar+san+eng @300dpi (stdin-piped;
+`ocr_qa.py` PASS, no header/footer leak). Declined dups: charitra docx (0.08% vs ingested),
+आत्मकथा pdf (docx wins).
+
+**Authorship audit (RFC-009 Step 4):** front-matter/preface review of all 66 works →
+**24 author corrections**. 17 works mis-attributed to `gurudev_ranade` were actually
+biographies/compilations/anthology/translation by others (e.g. contemporary-indian-philosophy
+= Radhakrishnan/Muirhead anthology; ranade-and-his-spiritual-lineage = V.H. Date;
+amar-sandesh-sudha = Deshpande compilation; glimpses/jivandarshan/kushal-pradhyapak/
+allahabad-days = biographies). 3 nimbargi over-attributions fixed. 1 reverse:
+studies-in-indian-philosophy → gurudev_ranade (his notes, ed. Kulkarni). Full table:
+docs/authorship-audit-2026-07-11.md. Chunker now treats `meta.yaml` author as authoritative
+(not the folder); biography chunks now carry `author`.
+
+Embeddings: incremental (bge-m3) — 15,994 carry-over + 894 new = **16,888 chunks / 16,888
+rows** (aligned, verified). Author corrections propagated by regenerating chunks_meta from
+chunks.jsonl (embedder's count-match short-circuit was patched to refresh metadata).
+Smoke-test: new works retrieve at rank #1 on native queries; corrected authors visible in
+retrieval metadata. Verified-against: no public source (verified=false).
+
 ## v.2026-06-29 — Standalone: charitra-tatvajnan-tulpule
 
 One biography ingested from a standalone docx added to `00_raw/`.

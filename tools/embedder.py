@@ -241,7 +241,17 @@ def main() -> int:
     print(f"Model: {model_name}  |  max_seq={max_seq}  |  passage_prefix={prefix!r}", file=sys.stderr)
 
     if not args.restart and manifest_complete(model_name, n):
-        print("\n✓ Existing build for this model + chunk count matches — nothing to do.", file=sys.stderr)
+        # Vectors are unchanged (same model + count), but chunk METADATA may have been
+        # edited (e.g. an author correction) with no change to text/ids. Row order is
+        # deterministic and ids are stable, so refresh chunks_meta from chunks.jsonl
+        # (cheap) rather than silently serving stale metadata. Only skip if it matches.
+        existing_meta = read_meta(META_PATH) if META_PATH.exists() else []
+        stripped = [{k: v for k, v in c.items() if k != "text"} for c in chunks]
+        if existing_meta != stripped:
+            write_meta(chunks, META_PATH)
+            print("\n✓ Vectors unchanged; refreshed chunks_meta.jsonl from edited metadata.", file=sys.stderr)
+        else:
+            print("\n✓ Existing build for this model + chunk count matches — nothing to do.", file=sys.stderr)
         return 0
 
     # --- Decide source for the id→vec map (existing vs. snapshot for resume) ----
