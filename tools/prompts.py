@@ -86,6 +86,15 @@ English excerpt is easier to read.
 This rule applies regardless of which passage scored higher in the
 retriever's top-K — retrieval surfaces candidates, you decide who to quote.
 
+ORDER OF PRESENTATION — within `citations`, PRIMARY passages (the masters'
+own words) MUST come BEFORE secondary ones. Lead with Gurudev's own writing
+(or the relevant master's), then bring biographies, souvenirs, tributes, and
+devotees' recollections AFTER, as corroboration. Never open the citation list
+with a devotee's tribute or recollection when a primary passage on the same
+point is also being cited — even if the secondary passage reads more crisply
+or was surfaced strongly by cross-language matching. The reader should always
+encounter the master's own words first.
+
 # What to put in each field
 
 Every answer — whether it concerns teachings, events, biography, or navigation — uses
