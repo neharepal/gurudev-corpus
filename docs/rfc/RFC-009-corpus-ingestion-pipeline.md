@@ -3,7 +3,16 @@
 **Status:** ACCEPTED 2026-06-17
 **Author:** Neha (with Claude)
 **Created:** 2026-06-16
-**Last updated:** 2026-06-17
+**Last updated:** 2026-07-10
+
+## Amendments
+
+- **2026-07-10** — Added **Step 4.5 (Duplicate quality gate)**: a batch file matching an
+  existing work is no longer auto-skipped; extract it, compare quality, and replace the
+  ingested text if the new source is cleaner/more complete. Updated **Step 8** and
+  **Risks §1** for ADR-012 (chunk_id-keyed embedding carry-over — row reordering no longer
+  forces a full rebuild). Added **Step 7.5 (Chunk-quality scores)** for the junk-weight
+  retrieval feature.
 
 ## Summary
 
@@ -124,6 +133,41 @@ If **no IA (or other published) source exists** for a canonical work, treat it l
 
 Catalog metadata only; no verification needed. These are bibliographic, not teaching material — the prompt already forbids citing reference as Gurudev's words (per `SYSTEM_PROMPT_QA`).
 
+### Step 4.5 — Duplicate quality gate (replace-if-better)
+
+A batch file that matches an already-ingested work is **NOT auto-skipped.** A later drive
+dump often carries a cleaner scan, a native `.docx` in place of an OCR'd PDF, or a more
+complete edition. Triage (Step 1) marks such a file `type: duplicate-candidate`; resolve
+it here, after extraction (Step 3), because the decision needs the extracted text.
+
+**Action — for each `duplicate-candidate`:**
+
+1. **Identify the ingested twin.** Match by title/author against `03_catalog/catalog.yaml`
+   and locate its `text.md`.
+2. **Extract the new source** to `extracted.md` (Step 3) and compare against the ingested
+   `text.md` on:
+   - **Extraction cleanliness** — mojibake, legacy-font garble (a PDF text layer can render
+     visually yet extract as junk — check with `pdftotext | head` before trusting size),
+     residual page-headers/index noise, broken diacritics.
+   - **Completeness** — char count, chapter/section coverage, dropped footnotes.
+   - **Fidelity** — native `.docx` text beats OCR; a higher-DPI or text-layer PDF beats a
+     noisy scan.
+3. **Decide and log** (mirror the changelog's `Upgraded:` / `Declined upgrade:` entries):
+   - **Replace** — new source is materially cleaner/more complete. Overwrite the existing
+     `text.md` **in place, keeping the same `work_id`** (so chunk_ids stay stable and the
+     embedder carries over unchanged chunks by id — Step 8). Update `meta.yaml` `sources`
+     with the new `raw_path`/`received_in_batch`/`checksum`. This edits an existing work,
+     so its chunks WILL re-embed (Step 8 detects changed text by id) — expected and cheap.
+   - **Decline** — near-identical or worse. Move the file to `00_raw/_skipped/` with a
+     one-line reason. A <1% char-count delta with no cleanliness gain is a decline.
+4. **Never create a second work_id for the same work.** Replacement is in-place; declining
+   drops the file. Two ids for one work double it in retrieval.
+
+> Precedent: 2026-06-22 batch *Upgraded* `studies-in-indian-philosophy` (swapped garbage
+> Wikimedia OCR for a clean text-layer extract, same id) but *Declined* `creative-period`
+> (new source near-identical). 2026-07-10 batch *Declined* the `charitra-tatvajnan-tulpule`
+> docx (1,725,268 vs 1,723,830 chars — 0.08% delta, no cleanliness gain).
+
 ### Step 5 — Structure into `01_canonical/` or `02_aggregated/`
 
 **Action:**
@@ -155,20 +199,42 @@ Run `tools/build_corpus_browser.py` to regenerate `tools/corpus_browser.html` so
 
 **Sanity-check** the output: chunker prints per-source counts. Confirm the new work appears in the relevant kind bucket and the chunk count looks plausible (rough heuristic: ~1 chunk per ~600 tokens of text).
 
+### Step 7.5 — Chunk-quality scores
+
+The junk-weight retrieval feature (`ENABLE_JUNK_WEIGHT`) reads a `quality_score` per chunk
+to demote low-signal chunks (index pages, page-number litter, OCR noise). This is the
+partial fix to Risks §2's "extraction quality is human-gated" gap. After chunking (and
+after the embed in Step 8 regenerates `chunks_meta.jsonl`), run the idempotent scorer:
+
+```bash
+/Users/neharepal/opt/anaconda3/bin/python tools/build_chunk_quality.py
+```
+
+It writes `quality_score` into each `chunks_meta.jsonl` row from the row-aligned chunk text.
+It does **not** touch `embeddings.npy` (no re-embed) and is safe to re-run. Run it whenever
+`chunks_meta.jsonl` is regenerated (i.e. after every batch's Step 8).
+
 ### Step 8 — Embed
 
-**Default mode: incremental.** `tools/embedder.py` is resumable per `progress.json`. When new rows appear at the end of `chunks.jsonl`, it embeds only the new rows and appends to `embeddings.npy`. Per-run cost: a few minutes per new work on BGE-M3, vs. 11-14h for a full rebuild.
+**Default mode: incremental, keyed by `chunk_id` (ADR-012).** `tools/embedder.py` builds a
+`{chunk_id → vector}` map from the existing embeddings, then for the new `chunks.jsonl`:
+copies the vector for any chunk whose `id` is unchanged, and encodes only genuinely new or
+text-changed chunks. Because carry-over is keyed by id (not row position), **chunker
+row-reordering no longer invalidates existing embeddings** — inserting an alphabetically-earlier
+work is safe. Per-run cost: a few minutes per new work on BGE-M3, vs. 11-14h for a full rebuild.
 
 ```bash
 /Users/neharepal/opt/anaconda3/bin/python tools/embedder.py
 ```
 
+Editing an already-ingested work (Step 4.5 replace) changes that work's chunk text; the
+embedder detects this by id and re-encodes just those chunks — no `--restart` needed.
+
 **Full rebuild** (`--restart`) only when:
 - The embedding model changes (per ADR-009 the old embeddings are archived to `04_processed/embeddings/_archive/`).
-- The chunker re-ordered rows in a way that broke append safety (see Risks §1).
-- A previously-ingested work was substantively edited (its chunks at fixed row indices no longer match their text).
+- The `chunk_id` scheme itself changes (ids no longer match, so carry-over can't map them).
 
-If you must `--restart`, run it overnight. Confirm `ANTHROPIC_API_KEY` is NOT needed (embedder is local; no API calls).
+If you must `--restart`, run it overnight. Confirm `ANTHROPIC_API_KEY` is NOT needed (embedder is local; no API calls). After any embed, re-run **Step 7.5** (chunk-quality) since `chunks_meta.jsonl` was rewritten.
 
 ### Step 9 — Smoke-test
 
@@ -212,16 +278,18 @@ Mechanically simpler — no incremental concerns — but 11-14h on BGE-M3 makes 
 
 ## Tradeoffs & risks
 
-### 1. Chunker is non-incremental — row-order stability is fragile
+### 1. Chunker row-order stability — RESOLVED by ADR-012
 
-`tools/chunker.py` rewrites `chunks.jsonl` from scratch on every run, scanning `iterdir()` without `sorted()` in `scan_canonical_text_md`. This means:
+**Resolved 2026-06-24.** The embedder now keys carry-over by `chunk_id`, not row index
+(ADR-012), so `tools/chunker.py` rewriting `chunks.jsonl` in a different order no longer
+invalidates existing embeddings — the `{chunk_id → vector}` map re-aligns them regardless of
+row position. Inserting an alphabetically-earlier work is safe; no `--restart` needed. Two
+batches (2026-06-24, 2026-06-29) have since run incremental across reordering with rows
+verified aligned.
 
-- Filesystem-dependent ordering: re-running on a different machine could shuffle row indices.
-- Inserting a new author or work alphabetically-earlier than an existing one shifts every subsequent row index, breaking the embedder's row-keyed resume.
-
-**Mitigation today:** until chunker is patched to deterministic-sort, treat any chunker run that touches existing works as a potential `--restart` trigger. The safest pattern is: add NEW authors/works only at the alphabetic end, OR accept the 11-14h embedder rebuild.
-
-**Permanent fix (open question §1):** key embeddings by `chunk_id` instead of row index, so chunker can re-order without invalidating prior embeddings. Tracked separately; not blocking this RFC.
+_Historical note:_ originally the chunker's unsorted `iterdir()` shuffled row indices and the
+embedder's row-keyed resume could corrupt embeddings — which is why the 2026-06-17 batch
+deferred a 14h full rebuild. ADR-012 removed that coupling; the open question below is closed.
 
 ### 2. Extraction quality is the dominant variable
 
@@ -237,7 +305,7 @@ Q1 sweep surfaced an index page from *Hindu Mysticism* as chunk 8 — high cosin
 
 ## Open questions
 
-1. **Chunker → embedder coupling.** Should we refactor to key by `chunk_id` rather than row index, so chunker re-orderings don't invalidate embeddings? Estimated effort: M (~half a day). Recommended once we have >25 works.
+1. **Chunker → embedder coupling.** ~~Should we refactor to key by `chunk_id` rather than row index…~~ **RESOLVED (ADR-012, 2026-06-24)** — carry-over is now keyed by `chunk_id`; chunker re-orderings no longer invalidate embeddings. See Risks §1.
 2. **Re-ingestion of edited works.** If a user reports a transcription error in an already-ingested work and we fix it, how do we surface the affected embeddings for re-computation? Open.
 3. **Multi-language single work.** A canonical work that exists in both EN and MR (e.g., *Pathway to God in Marathi Literature*) needs two `text.md` files under separate `<lang>/` folders. Are they one logical work with two language editions, or two distinct works? RFC-002 implies one work; chunker.py emits separate chunks per language. Pin this for future verification work.
 4. **Triage YAML schema.** Step 1 calls for `batch-triage.yaml` but its exact schema isn't specified. Settle this on the next ingestion (will surface naturally) and back-fill the schema into RFC-002 §3.
