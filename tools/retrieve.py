@@ -462,7 +462,15 @@ def chunk_tier(meta: dict) -> str:
 # near-ties without swamping a genuinely strong match. Tune via tune_sweep.py.
 TIER_WEIGHTS: dict[str, dict[str, float]] = {
     "doctrinal":    {"canonical": 0.10, "recollections": 0.04, "reference": -0.12},
-    "narrative":    {"canonical": 0.00, "recollections": 0.10, "reference": -0.08},
+    # Canonical FLOOR (0.05): narrative still lifts recollections for genuine
+    # stories, but philosophical questions that misclassify as narrative
+    # ("How did Gurudev attain God-realization?") must not rank souvenirs BELOW
+    # ↑ i.e. above ↑ Gurudev's own works. With the +0.04 primary-author bonus,
+    # Gurudev's canonical (0.09) now leads recollections (0.08); other-author
+    # canonical (0.05) still sits just under recollections. (Fix 2026-07-10:
+    # was canonical 0.00 / recollections 0.10, which inverted canonical priority
+    # once Phase-1A rewrite/HyDE expansion inflated recollections in the pool.)
+    "narrative":    {"canonical": 0.05, "recollections": 0.08, "reference": -0.08},
     "navigational": {"canonical": 0.00, "recollections": 0.00, "reference":  0.08},
     # When intent is genuinely unknown, impose no canonical-vs-recollections
     # prior: a small equal nudge for both content tiers, judged on match alone.
