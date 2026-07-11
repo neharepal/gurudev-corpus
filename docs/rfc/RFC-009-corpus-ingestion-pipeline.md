@@ -154,6 +154,32 @@ letterpress typefaces. Judge per scan.)
 
 The single most important step. Different rules per material type.
 
+#### Authorship verification (ALL material types) — read the front matter + preface
+
+A work's **author is not the folder it landed in.** Devotees compile a master's sayings,
+write biographies about him, and edit anthologies — all of which routinely get mis-filed as
+"by the master." This mis-attribution is invisible until a user asks "who wrote this?" and
+the answer is wrong (e.g. *Amar Sandesh Sudha*, a compilation by Dadasaheb Deshpande of
+Gurudev's words, was recorded as `author: gurudev_ranade`; several biographies *about*
+Gurudev under `about_gurudev_ranade/` were also attributed to him).
+
+**For every work, before finalizing `meta.yaml`:** read the title page, colophon, and
+**preface/प्रस्तावना** (grep the text for `संपादक / संकलन / संकलित / संपादन / प्रस्तावना /
+अर्पण / लेखक / प्रकाशक / कृत / edited / compiled / foreword / author`). Classify the work's
+nature and set `author` accordingly:
+
+| Nature | `author` = | Tier / notes |
+|---|---|---|
+| **OWN** — the master's own writing | the master (`gurudev_ranade`, …) | canonical PRIMARY |
+| **COMPILATION** — a devotee compiled/edited the master's words | the **compiler** | canonical but SECONDARY; the *content* is quotable as the master's teaching, but "who wrote this" = the compiler. Record `compiler` + note "compilation of <master>'s words". |
+| **BIOGRAPHY / ATHVANI** — an account *about* the master by someone else | the **biographer/narrator** | secondary; `kind: biography`/`athvani` |
+| **OTHER** — a non-lineage or clearly-named author | that author | `author: other_authors` |
+
+Record the evidence (the front-matter/preface line that establishes authorship) in
+`meta.yaml` `quality_notes`. When the true author can't be determined from the text, set
+`author: unknown` rather than defaulting to the master. A batch-wide sweep can be
+parallelized (one reader per work) — see the 2026-07-11 authorship audit.
+
 #### Canonical works
 
 **Hard gate.** A canonical work cannot proceed to Step 5 (final placement) until verification passes.
