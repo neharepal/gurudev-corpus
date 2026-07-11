@@ -293,7 +293,11 @@ def scan_canonical_text_md() -> Iterator[dict]:
                     fm, body = split_frontmatter(raw)
                     base = {
                         "kind": "canonical",
-                        "author": author,
+                        # meta.yaml author is authoritative (RFC-009 Step 4 authorship
+                        # verification) — a compilation/anthology sitting under an author
+                        # folder is NOT necessarily by that author. Fall back to the folder
+                        # name only when meta doesn't specify one.
+                        "author": work_meta.get("author") or author,
                         "work_type": work_type,
                         "work_id": fm.get("work_id") or work_meta.get("id") or work_dir.name,
                         "title": fm.get("title_en") or work_meta.get("title_en") or work_meta.get("title") or work_dir.name,
@@ -323,6 +327,7 @@ def scan_biography() -> Iterator[dict]:
                 base = {
                     "kind": "biography",
                     "about_member": member,
+                    "author": work_meta.get("author") or "",  # the biographer/compiler (RFC-009 Step 4)
                     "work_id": fm.get("work_id") or work_meta.get("id") or work_dir.name,
                     "title": fm.get("title_en") or work_meta.get("title_en") or work_meta.get("title") or work_dir.name,
                     "language": fm.get("language") or lang_dir.name,
