@@ -14,6 +14,14 @@ Hard-won environment notes (see RFC-009 Step 3):
 
 Resumable: a book whose extracted.md already exists is skipped.
 Local + free: no API calls, no paid OCR.
+
+TODO (next batch): books are processed sequentially — each book renders all pages
+(pdftoppm, ~single-threaded) THEN OCRs them (8 workers), so OCR cores idle during
+render and vice-versa. Faster: one global queue of (book, page) tasks with per-page
+rendering (pdftoppm -f N -l N), so render/OCR interleave and all cores stay saturated.
+Throughput is still CPU-bound (~total_pages / cores) — the gain is recovering the
+render/OCR idle bubbles, not multiplying throughput. Do NOT just nest book-parallelism
+inside the existing 8-way page pool; that oversubscribes cores.
 """
 from __future__ import annotations
 import os, re, sys, shutil, subprocess, tempfile

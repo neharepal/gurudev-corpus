@@ -133,9 +133,19 @@ letterpress typefaces. Judge per scan.)
 4. **Cleanup (conservative — do not reflow verse):** drop standalone page-number lines
    (bare digits, but keep `॥…॥` verse markers), de-hyphenate English line-break hyphens,
    collapse 3+ blank lines. Leave tesseract's line structure otherwise intact.
-5. **Quality gate (Step 4):** spot-check ≥3 random pages against the PDF — Devanagari ratio
-   plausible, diacritics intact, no mojibake, English clean. The bar is *no hand-cleaning
-   needed downstream*; if a book fails, re-run at higher DPI or reconsider the engine.
+5. **Quality gate (Step 4) — automated + manual.** The bar is *no hand-cleaning needed
+   downstream*.
+   - **Automated:** run `tools/ocr_qa.py <slug>.extracted.md [--pages N]` (N from
+     `pdfinfo`). It flags the four failure modes that silently ruin Reading Mode and
+     retrieval: (a) U+FFFD decode garbage, (b) legacy-font mojibake leakage, (c) implausibly
+     low Devanagari ratio (OCR failure / wrong `-l`), and (d) **running header/footer
+     leakage** — a short line recurring on ≥20% of pages (a title/chapter banner leaking
+     into the body, the exact defect that pollutes PGHL's Reading Mode). Exit 0 = pass.
+   - **Manual:** eyeball ≥3 random pages against the PDF — diacritics intact, verse line
+     structure preserved, English clean.
+   - If a book flags: header/footer leak → add a running-line stripping pass; low-Devanagari
+     → re-run at higher DPI or fix `-l`; mojibake → the source was a legacy-font text layer,
+     confirm it was rasterized (not `pdftotext`'d).
 
 > _Phase 3 (retro re-OCR of already-ingested garbled scans) remains a separate tracked
 > effort; this sub-procedure is the standard for all **new** batches going forward._
