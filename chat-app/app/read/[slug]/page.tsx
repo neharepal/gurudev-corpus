@@ -177,9 +177,14 @@ function ReadingPage() {
 
   // Reading position + drawer chat are scoped to this work and persisted
   // across visits so the devotee can leave and come back where they were.
+  // When a `?page=` deep-link is present it is the source of truth: seed
+  // currentPage from it AND skip localStorage hydration so the persisted page
+  // can't clobber it (see usePersistentState `skipHydration`). Without a URL
+  // page, behave normally — restore the reader's last position.
   const [currentPage, setCurrentPage] = usePersistentState<number>(
     `gd:read:${slug}:page`,
-    1,
+    hasUrlPage ? urlPage! : 1,
+    { skipHydration: hasUrlPage },
   );
   const [messages, setMessages] = usePersistentState<ChatTurn[]>(
     // v2: drawer chat now stores work-scoped Q&A answers (F17). Bumping the key

@@ -19,14 +19,27 @@ import { useEffect, useState } from "react";
 export function usePersistentState<T>(
   key: string,
   initial: T,
+  opts?: { skipHydration?: boolean },
 ): readonly [T, React.Dispatch<React.SetStateAction<T>>] {
   const [state, setState] = useState<T>(initial);
   const [hydrated, setHydrated] = useState(false);
+  const skipHydration = opts?.skipHydration ?? false;
 
   // Hydrate from storage on mount (and whenever the key changes — relevant
   // when the route param changes, e.g. user navigates between two reading
   // works in the same session).
+  //
+  // `skipHydration` lets a caller keep `initial` as the source of truth and
+  // NOT be overwritten by localStorage — used by the reader when a `?page=`
+  // deep-link must win over the persisted page. Without this, the hydration
+  // read here (which also re-runs under dev StrictMode) clobbers the URL page
+  // back to whatever was last stored. Persistence of subsequent changes still
+  // works, so Prev/Next are remembered.
   useEffect(() => {
+    if (skipHydration) {
+      setHydrated(true);
+      return;
+    }
     try {
       const stored = localStorage.getItem(key);
       if (stored !== null) {
