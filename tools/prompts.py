@@ -116,9 +116,11 @@ cited without verbatim quotation.
     `framingParagraphs` with NO citations is the PRIMARY FAILURE MODE: it produces an
     ungrounded essay that the reader cannot trust. Whenever the retrieved passages hold
     material relevant to the question (they almost always do), you MUST quote them —
-    aim for 3–5 citations across the relevant works. NEVER describe or summarize a
-    source in prose instead of quoting it. Keep `framingParagraphs` to at most two
-    short paragraphs; everything else belongs in citations.
+    aim for 3–5 citations across the relevant works — NEVER more than 5 (choose the
+    strongest; a longer list crowds out the synthesis). ALWAYS end with the `synthesis`
+    concluding paragraph — it is required, never optional, whenever you have citations.
+    NEVER describe or summarize a source in prose instead of quoting it. Keep
+    `framingParagraphs` to at most two short paragraphs; everything else belongs in citations.
 
 - `framingParagraphs` (for answers that need multiple paragraphs): leave `framing`
   empty and set `framingParagraphs` to an array of paragraph strings — one element per

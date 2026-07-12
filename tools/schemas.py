@@ -411,8 +411,9 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
             "type": "array",
             "items": _CITATION_SCHEMA,
             "description": (
-                "Typically 3-8 citations with rationales — cite as many genuinely relevant "
-                "passages as the retrieved set supports; never pad with weak passages. "
+                "Between 3 and 5 citations — choose the STRONGEST; quality over quantity. "
+                "NEVER exceed 5: a longer list crowds out the concluding `synthesis` and slows "
+                "the answer. Never pad with weak passages. "
                 "Quote each passage BY REFERENCE — give the passage letter plus the exact "
                 "start/end words of the span you want; do NOT retype the full passage text. "
                 "For navigational or biographical questions with no quotable passage, an "
@@ -432,8 +433,10 @@ QA_INPUT_SCHEMA: Dict[str, Any] = {
             "type": "string",
             "description": (
                 "A CONCLUDING PARAGRAPH (1-3 sentences) that ties the cited passages together "
-                "into a coherent takeaway. Provide it when you have 2 or more citations. "
-                "Omit it when the answer is entirely prose with no citations."
+                "into a coherent takeaway. REQUIRED whenever you have 1 or more citations — "
+                "always write it; it must never be omitted. Budget for it: keep to at most 5 "
+                "citations so this closing paragraph always fits. "
+                "Omit it ONLY when the answer is entirely prose with no citations."
             ),
         },
     },

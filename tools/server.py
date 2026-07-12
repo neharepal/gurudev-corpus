@@ -1567,6 +1567,12 @@ def ask(req: AskRequest, request: Request):
 
     # ── Streaming SSE path (chat-app)
     def event_stream():
+        # Flush past small-chunk buffering (Next dev / undici) so the first tiny
+        # events — retrieval + the enforce opener — reach the browser immediately
+        # instead of sitting in a buffer until later output pushes past the
+        # threshold. A large SSE comment is ignored by the client parser, which
+        # drops any line starting with ":" (chat-app lib/api.ts).
+        yield ":" + (" " * 8192) + "\n\n"
         # First: retrieval event so the UI can show "Found N passages in Xs"
         # while the LLM is still warming up.
         yield sse("retrieval", **_retrieval_event_payload(chunks, retrieval_s))
