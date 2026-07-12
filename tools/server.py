@@ -1566,6 +1566,18 @@ def ask(req: AskRequest, request: Request):
         yield sse("retrieval", **_retrieval_event_payload(chunks, retrieval_s))
 
         if mode == "qa" and os.environ.get("GROUNDING_MODE") == "enforce":
+            # Instant opener: enforce buffers the whole answer (it needs the full
+            # text to verify citations), which reads as a long silent wait. Emit a
+            # warm 1-2 line immediately as the `framing` field so the reader sees
+            # something the moment they ask; the final `done` event replaces the
+            # draft wholesale, so this is cleared when the grounded answer lands.
+            _opener = (
+                "🙏 गुरुदेवांचे लेखन आणि भक्तांच्या आठवणींमध्ये शोधत आहे — आधारसहित उत्तर तयार होत आहे…"
+                if (req.lang or "en") == "mr"
+                else "🙏 Searching Gurudev's own writings and the devotees' recollections — composing a grounded, cited answer…"
+            )
+            yield sse("field", name="framing", value=_opener)
+
             # Buffered path (RFC-014): generate non-streaming, enforce/verify,
             # then replay as SSE. Trades progressive type-out for guaranteed
             # grounding; preserves the SSE event contract (no frontend change).
