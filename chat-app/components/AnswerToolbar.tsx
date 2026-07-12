@@ -78,9 +78,11 @@ const LABELS: Record<
     share: string;
     shareAria: string;
     shareWhatsApp: string;
+    shareCopyText: string;
     shareCopyLink: string;
     shareMore: string;
     linkCopied: string;
+    textCopied: string;
   }
 > = {
   en: {
@@ -95,9 +97,11 @@ const LABELS: Record<
     share: "Share",
     shareAria: "Share this answer",
     shareWhatsApp: "WhatsApp",
+    shareCopyText: "Copy text",
     shareCopyLink: "Copy link",
     shareMore: "More…",
     linkCopied: "Link copied",
+    textCopied: "Answer copied",
   },
   mr: {
     report: "त्रुटी कळवा",
@@ -111,9 +115,11 @@ const LABELS: Record<
     share: "शेअर करा",
     shareAria: "हे उत्तर शेअर करा",
     shareWhatsApp: "WhatsApp",
+    shareCopyText: "मजकूर कॉपी करा",
     shareCopyLink: "लिंक कॉपी करा",
     shareMore: "आणखी…",
     linkCopied: "लिंक कॉपी केली",
+    textCopied: "उत्तर कॉपी केले",
   },
 };
 
@@ -146,6 +152,7 @@ export default function AnswerToolbar({
   // ── Share state ───────────────────────────────────────────────────────────
   const [shareOpen, setShareOpen] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [textCopied, setTextCopied] = useState(false);
   const shareRef = useRef<HTMLDivElement>(null);
 
   // Close share popover on outside click
@@ -206,6 +213,67 @@ export default function AnswerToolbar({
   function getShareText(): string {
     const q = question.trim();
     return q ? q : "Gurudev Sangrah answer";
+  }
+
+  // Full answer as plain text for pasting anywhere: question + prose + each
+  // verbatim citation with its attribution + the link.
+  function getShareBody(): string {
+    const parts: string[] = [];
+    const q = question.trim();
+    if (q) parts.push(q);
+    if (answerText && answerText.trim()) parts.push(answerText.trim());
+    for (const c of citations) {
+      if (c.body && c.body.trim()) {
+        const attrib = [c.workTitle, c.location].filter(Boolean).join(", ");
+        parts.push(`“${c.body.trim()}”${attrib ? "\n— " + attrib : ""}`);
+      }
+    }
+    const url = getShareUrl();
+    if (url) parts.push(url);
+    return parts.join("\n\n");
+  }
+
+  // Robust copy: prefer the async Clipboard API (needs a secure context —
+  // the tunnel is https), fall back to a hidden-textarea execCommand for
+  // older devices/browsers where clipboard.writeText is unavailable.
+  function copyToClipboard(text: string, onDone: () => void) {
+    if (
+      typeof navigator !== "undefined" &&
+      navigator.clipboard &&
+      typeof navigator.clipboard.writeText === "function"
+    ) {
+      navigator.clipboard.writeText(text).then(onDone).catch(() => fallbackCopy(text, onDone));
+    } else {
+      fallbackCopy(text, onDone);
+    }
+  }
+
+  function fallbackCopy(text: string, onDone: () => void) {
+    if (typeof document === "undefined") return;
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "0";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      onDone();
+    } catch {
+      // Copy unavailable — fail silently.
+    }
+  }
+
+  function handleCopyText() {
+    copyToClipboard(getShareBody(), () => {
+      setTextCopied(true);
+      setTimeout(() => setTextCopied(false), 2500);
+    });
+    setShareOpen(false);
   }
 
   function handleWhatsApp() {
@@ -301,7 +369,7 @@ export default function AnswerToolbar({
             style={btn}
           >
             <span aria-hidden>↗</span>
-            <span>{linkCopied ? l.linkCopied : l.share}</span>
+            <span>{textCopied ? l.textCopied : linkCopied ? l.linkCopied : l.share}</span>
           </button>
 
           {/* Share popover */}
@@ -314,6 +382,21 @@ export default function AnswerToolbar({
                 border: "1px solid var(--border-soft)",
               }}
             >
+              {/* Copy text — full answer for pasting anywhere (primary, since
+                  WhatsApp deep-linking is unreliable on some devices) */}
+              <button
+                type="button"
+                role="menuitem"
+                onClick={handleCopyText}
+                className={`flex w-full items-center gap-2 px-3 py-2 text-left text-[13px] hover:bg-[var(--bg-panel)] ${
+                  isMr ? "font-deva" : ""
+                }`}
+                style={{ fontFamily: isMr ? undefined : "var(--font-serif)", color: "var(--text-primary)" }}
+              >
+                <span aria-hidden>📋</span>
+                {l.shareCopyText}
+              </button>
+
               {/* WhatsApp */}
               <button
                 type="button"
