@@ -662,6 +662,12 @@ def _load_everything() -> None:
     _embed_query("warm up the embedding model")
     print(f"[startup] embed warm-up in {time.time() - t:.1f}s", file=sys.stderr)
 
+    # Build the BM25 lexical index now (it's otherwise built lazily on the FIRST
+    # query — a ~12-15s cold-start that lands on whoever asks first). Pay it here.
+    t = time.time()
+    retrieve._get_or_build_bm25_index(STATE.metas)
+    print(f"[startup] BM25 index build in {time.time() - t:.1f}s", file=sys.stderr)
+
     STATE.client = ChatClient()
     print("[startup] ready", file=sys.stderr)
 

@@ -70,7 +70,10 @@ MODEL_PRAVACHAN = "claude-opus-4-7"
 # and Marathi UTF-8 chars cost ~3 tokens each — at 3500 the examples array
 # was truncated to empty. 7000 fits all 5 examples + thesis + Gurudev's words.
 MAX_TOKENS_BY_MODE = {
-    "qa": 2000,
+    # 2400 (was 2000): a rich Marathi answer (framing + several citation rationales
+    # + synthesis) was hitting 2000 and truncating the concluding `synthesis`, which
+    # is emitted last. Marathi costs ~3 tokens/char, so the ceiling is reached sooner.
+    "qa": 2400,
     "pravachan": 7000,
     "reading": 1200,
 }
