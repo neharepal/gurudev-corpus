@@ -516,32 +516,43 @@ def _retrieve(
         subset_texts = None
 
     qvec = _embed_query(question)
-    scores = sub_emb @ qvec
-    # Cross-lingual expansion (bidirectional):
-    # EN/romanized → Marathi: relevant Devanagari passages compete at their
-    #   monolingual-strength cosine instead of being depressed cross-lingually.
-    # Devanagari → EN: relevant English-language canonical works (Gurudev's own
-    #   scholarly writings are ~60% English) compete at their monolingual strength.
-    # Both directions take the per-passage MAX. Fail-safe: None => single-vector.
+    # Dual-retrieval union (ADR-017): keep each query variant's dense scores as a
+    # SEPARATE ranking and RRF-fuse the rankings, rather than MAX-combining into
+    # one score array. Under MAX the highest-absolute-cosine variant dominated, so
+    # a passage that was rank-1 for the Marathi translation but modest in absolute
+    # cosine got diluted out of the top-k. RRF gives each variant's rank-1 full
+    # credit.
+    #   EN/romanized → Marathi: Devanagari passages compete at monolingual strength.
+    #   Devanagari → EN: Gurudev's ~60%-English scholarly works compete likewise.
+    # Fail-safe: a variant that doesn't translate is simply absent from the list.
+    dense_variants = [sub_emb @ qvec]
     q_dev = query_translation.translate_query(question)
     if q_dev:
-        scores = np.maximum(scores, sub_emb @ _embed_query(q_dev))
+        dense_variants.append(sub_emb @ _embed_query(q_dev))
     q_en = query_translation.translate_to_english(question)
     if q_en:
-        scores = np.maximum(scores, sub_emb @ _embed_query(q_en))
+        dense_variants.append(sub_emb @ _embed_query(q_en))
     _extras = _extra_query_strings(question)
     for _e in _extras:
-        scores = np.maximum(scores, sub_emb @ _embed_query(_e))
+        dense_variants.append(sub_emb @ _embed_query(_e))
     query_intent = intent.classify_intent(question)
-    scores = retrieve.apply_intent_tier_weights(scores, sub_metas, query_intent)
+    # Tier-weight EACH variant, then fuse. (Tier deltas are additive per chunk, so
+    # `scores` — the per-passage max, kept only for the cos_score readout — is
+    # identical whether the weight is applied before or after the max.)
+    dense_variants = [
+        retrieve.apply_intent_tier_weights(d, sub_metas, query_intent)
+        for d in dense_variants
+    ]
+    scores = dense_variants[0] if len(dense_variants) == 1 else np.maximum.reduce(dense_variants)
     cand_n = min(candidates, len(scores))
     # GAP 2 fix: pass translated queries to BM25 so cross-lingual results get a
     # lexical RRF component.  q_dev (Marathi) helps EN queries find Marathi athvani;
     # q_en (English) helps MR queries find English canonical works.
     _bm25_extras = [q for q in ([q_dev, q_en] + _extras) if q]
     fused = retrieve.fused_candidate_scores(
-        question, scores, sub_metas, texts=subset_texts,
+        question, dense_variants[0], sub_metas, texts=subset_texts,
         bm25_queries=_bm25_extras or None,
+        extra_dense=dense_variants[1:] or None,
     )
     fused = retrieve.apply_quality_weights(
         fused, sub_metas, enabled=os.environ.get("ENABLE_JUNK_WEIGHT") == "1"

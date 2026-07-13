@@ -263,34 +263,39 @@ def lexical_scores(query: str, texts: list) -> np.ndarray:
     return idx.score(qtoks)
 
 
-def rrf_fuse(
-    dense_scores: np.ndarray,
+def rrf_fuse_multi(
+    dense_scores_list: list[np.ndarray],
     lex_scores: np.ndarray,
     *,
     k: int = 60,
 ) -> np.ndarray:
-    """Reciprocal Rank Fusion of dense + lexical scores.
+    """Reciprocal Rank Fusion over MULTIPLE dense rankings + one lexical ranking.
 
-    fused[i] = 1/(k + dense_rank[i]) + 1/(k + lex_rank[i])
+    fused[i] = Σ_v 1/(k + dense_rank_v[i])  +  1/(k + lex_rank[i])
 
-    - dense_rank[i] is the 1-based rank of chunk i by dense score (rank 1 = highest).
-    - lex_rank[i]   is the 1-based rank of chunk i by lex score, but ONLY for
-      chunks with lex_score > 0.  Chunks with lex_score == 0 receive no lexical
-      contribution (effectively lex component = 0).
+    Each dense score array `v` contributes 1/(k+rank) from its OWN ranking, so a
+    passage ranked highly by ANY single variant (e.g. a Marathi translation of an
+    English query) earns full rank credit regardless of its absolute cosine. This
+    is the dual-retrieval union (ADR-017): it replaces the score-level MAX combine,
+    under which the highest-absolute-cosine variant dominated and cross-lingual
+    matches got diluted out of the top-k.
 
-    When all lex_scores are zero (pure-concept query), the lexical term vanishes
-    and fused order == dense order — existing behaviour is fully preserved.
+    Lexical handling matches the single-ranking case: rank only over chunks with
+    lex_score > 0. `rrf_fuse(d, lex) == rrf_fuse_multi([d], lex)`.
     """
-    n = len(dense_scores)
+    if not dense_scores_list:
+        raise ValueError("dense_scores_list must be non-empty")
+    n = len(dense_scores_list[0])
     fused = np.zeros(n, dtype=np.float64)
 
-    # Dense rank component (all chunks participate)
-    dense_order = np.argsort(-dense_scores)  # highest first
-    dense_rank = np.empty(n, dtype=np.int64)
-    dense_rank[dense_order] = np.arange(1, n + 1)
-    fused += 1.0 / (k + dense_rank)
+    # Dense rank component — one per query variant (all chunks participate).
+    for dense_scores in dense_scores_list:
+        dense_order = np.argsort(-dense_scores)  # highest first
+        dense_rank = np.empty(n, dtype=np.int64)
+        dense_rank[dense_order] = np.arange(1, n + 1)
+        fused += 1.0 / (k + dense_rank)
 
-    # Lexical rank component (only chunks with lex_score > 0)
+    # Lexical rank component (only chunks with lex_score > 0).
     lex_mask = lex_scores > 0
     if lex_mask.any():
         lex_nonzero_idx = np.where(lex_mask)[0]
@@ -299,6 +304,21 @@ def rrf_fuse(
             fused[chunk_idx] += 1.0 / (k + rank_1based)
 
     return fused.astype(np.float32)
+
+
+def rrf_fuse(
+    dense_scores: np.ndarray,
+    lex_scores: np.ndarray,
+    *,
+    k: int = 60,
+) -> np.ndarray:
+    """Reciprocal Rank Fusion of a single dense ranking + lexical scores.
+
+    Thin wrapper over rrf_fuse_multi with one dense ranking. When all lex_scores
+    are zero (pure-concept query) the lexical term vanishes and fused order ==
+    dense order — existing behaviour is fully preserved.
+    """
+    return rrf_fuse_multi([dense_scores], lex_scores, k=k)
 
 
 # ---------------------------------------------------------------------------
@@ -386,6 +406,7 @@ def fused_candidate_scores(
     rrf_k: int = 60,
     primary_fused_bonus: float = None,  # resolved below; default = PRIMARY_FUSED_BONUS
     bm25_queries: list = None,
+    extra_dense: list = None,  # additional per-variant dense score arrays (dual-retrieval)
 ) -> np.ndarray:
     """Return RRF-fused scores for candidate selection.
 
@@ -425,7 +446,8 @@ def fused_candidate_scores(
         if qtoks:
             lex = np.maximum(lex, bm25_idx.score(qtoks))
 
-    fused = rrf_fuse(dense_scores, lex, k=rrf_k)
+    dense_list = [dense_scores] + (list(extra_dense) if extra_dense else [])
+    fused = rrf_fuse_multi(dense_list, lex, k=rrf_k)
 
     # Apply fused-side primary-author / canonical bonus (uniform across call sites).
     # Default resolves after module load to avoid forward-reference in signature.
