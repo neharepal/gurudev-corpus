@@ -9,6 +9,7 @@ def test_prose_splits_into_sentences():
     kids = split_into_children(txt, window=0)
     assert [k["text"] for k in kids] == [
         "Bhakti is the soul.", "Namasmaran is its practice.", "Grace descends."]
+    assert all(k["text"] == k["embed_text"] for k in kids)  # window=0 ⇒ no window added
 
 
 def test_embed_text_includes_neighbor_window():
