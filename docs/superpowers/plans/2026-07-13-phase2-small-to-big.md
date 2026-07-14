@@ -371,27 +371,38 @@ _ARTHASAHIT_WORK_IDS = frozenset({
     "dhyanopakarani-gita",
 })
 ```
-Replace the child loop body (from Task 3) with:
+Replace the child loop body (from Task 3) with a branch. **For arthasahit works the child unit is a full ENTRY (a verse+meaning paragraph), NOT a childsplit sentence** — `split_verse_meaning` needs the verse and meaning together; splitting into sentences first would put verse and meaning in *separate* children and the parse could never pair them. So iterate the section's paragraphs (`PARA_SPLIT_RE`) as arthasahit children; use `childsplit` only for normal works:
 ```python
-        is_artha = work_id in _ARTHASAHIT_WORK_IDS
-        for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
-            child = dict(base_meta)
-            child.update({
-                "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
-                "chunk_index": pi, "chunk_total": total, "source_path": spath,
-                "text": kid["text"], "token_estimate": estimate_tokens(kid["text"]),
-            })
-            if is_artha:
-                verse, meaning = arthasahit_parse.split_verse_meaning(kid["text"])
-                child["embed_text"] = (verse + " " + meaning) if meaning else kid["embed_text"]
-                if meaning is not None:
-                    child["cite_text"] = verse            # cite the verse only
+        if work_id in _ARTHASAHIT_WORK_IDS:
+            # child = one entry (verse + its meaning). Embed the whole entry
+            # (meaning boosts recall); cite ONLY the verse; retrieval-only when
+            # no confident verse/meaning split (verse empty or no marker).
+            units = [p.strip() for p in PARA_SPLIT_RE.split(sec["text"]) if p.strip()]
+            for ci, para in enumerate(units):
+                verse, meaning = arthasahit_parse.split_verse_meaning(para)
+                child = dict(base_meta)
+                child.update({
+                    "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
+                    "chunk_index": pi, "chunk_total": total, "source_path": spath,
+                    "text": para, "embed_text": para,
+                    "token_estimate": estimate_tokens(para),
+                })
+                if meaning is not None and verse.strip():
+                    child["cite_text"] = verse          # cite the verse only
                 # else: no cite_text key ⇒ retrieval-only (never cited)
-            else:
-                child["embed_text"] = kid["embed_text"]
-                child["cite_text"] = kid["text"]
-            yield child
+                yield child
+        else:
+            for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
+                child = dict(base_meta)
+                child.update({
+                    "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
+                    "chunk_index": pi, "chunk_total": total, "source_path": spath,
+                    "text": kid["text"], "embed_text": kid["embed_text"],
+                    "cite_text": kid["text"], "token_estimate": estimate_tokens(kid["text"]),
+                })
+                yield child
 ```
+(`PARA_SPLIT_RE` and `estimate_tokens` are module-level in chunker.py already.)
 
 - [ ] **Step 4: Run test to verify it passes**
 
