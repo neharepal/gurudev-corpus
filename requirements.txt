@@ -1,0 +1,40 @@
+# Gurudev Sangrah — Python runtime dependencies (backend: tools/server.py + pipeline)
+#
+# Captured 2026-07-14 from the working Intel-Mac env (anaconda py3.8) as MIGRATION
+# PREP for the M4. Versions are the ones currently running, EXCEPT where the Intel
+# pin would break on a modern Python — those are relaxed with a note.
+#
+# Install on the M4 (Apple Silicon, Python >= 3.11):
+#     python3.12 -m venv .venv && source .venv/bin/activate
+#     pip install -r requirements.txt
+# (BGE-M3 + Anthropic models download on first run; needs internet.)
+#
+# Not listed because they are NOT dependencies:
+#   BM25 is hand-implemented (no rank-bm25); SSE uses starlette's StreamingResponse
+#   (no sse-starlette); OCR shells out to the tesseract/ocrmypdf CLIs (no py bindings).
+
+# --- web backend ---
+fastapi==0.124.4
+uvicorn==0.33.0
+pydantic==2.10.6
+
+# --- LLM + retrieval ---
+anthropic==0.72.0
+sentence-transformers==3.2.1
+rapidfuzz==3.9.7
+
+# --- torch: DO NOT pin to the Intel 2.2.2 build. On the M4 install the latest
+#     arm64 wheel so you get MPS GPU acceleration (sentence-transformers pulls it,
+#     or `pip install torch` explicitly). Floor only: ---
+torch>=2.2
+
+# --- numpy: Intel env has 1.18.5, far too old for a modern stack. Pin below 2.0
+#     for torch / sentence-transformers compatibility: ---
+numpy>=1.26,<2
+
+# --- utils ---
+PyYAML>=6.0        # Intel env is 5.3.1, which fails to build on Python 3.12
+tqdm==4.47.0
+
+# --- dev / test (optional) ---
+# pytest>=7
