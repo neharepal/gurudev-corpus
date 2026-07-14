@@ -436,6 +436,10 @@ class _State:
     model: Any  # sentence_transformers.SentenceTransformer
     model_name: str
     client: ChatClient
+    # RFC-017 (Phase 2 small-to-big chunking): parent_id -> {"text": ..., ...}.
+    # Empty dict until Task 9's re-embed produces 04_processed/parents.jsonl —
+    # NOT yet consumed by `_retrieve` (see expand_children_to_parents docstring).
+    parents_by_id: Dict[str, Any]
 
 
 STATE = _State()
@@ -599,6 +603,37 @@ def _retrieve(
     return out
 
 
+def expand_children_to_parents(ranked_idxs, metas, parents_by_id, *, max_per_parent, top_k):
+    """Group ranked child rows into their distinct parents (child-rank order).
+
+    Returns [{parent_id, parent_text, children:[{...}]}] — the parent is the
+    context the answer model reads; children are the precise anchors to quote.
+
+    RFC-017 (Phase 2 small-to-big chunking): NOT yet wired into `_retrieve`.
+    See docs/rfc/RFC-017-phase2-small-to-big-chunking.md and
+    .superpowers/sdd/task-6-report.md for why the wiring is deferred pending a
+    Task-7 splice/grounding co-design decision.
+    """
+    groups, order = {}, []
+    for idx in ranked_idxs:
+        m = metas[idx]
+        pid = m.get("parent_id")
+        if pid is None:
+            continue
+        if pid not in groups:
+            if len(order) >= top_k:
+                continue
+            groups[pid] = {"parent_id": pid,
+                           "parent_text": (parents_by_id.get(pid) or {}).get("text", ""),
+                           "children": []}
+            order.append(pid)
+        g = groups[pid]
+        if len(g["children"]) < max_per_parent:
+            g["children"].append({"child_idx": int(idx),
+                                  "text": m.get("cite_text") or m.get("text", "")})
+    return [groups[p] for p in order]
+
+
 # ---------------------------------------------------------------------------
 # FastAPI app
 # ---------------------------------------------------------------------------
@@ -613,6 +648,35 @@ app.add_middleware(
     allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
 )
+
+
+PARENTS_PATH = REPO / "04_processed" / "parents.jsonl"
+
+
+def _load_parents_by_id() -> Dict[str, Any]:
+    """Load `04_processed/parents.jsonl` (RFC-017) into a parent_id -> row dict.
+
+    Returns {} if the file doesn't exist yet (it won't until Task 9's re-embed
+    produces parent/child chunks) or is unreadable — this must never block
+    startup or corpus reload on today's flat-chunk corpus.
+    """
+    if not PARENTS_PATH.exists():
+        return {}
+    out: Dict[str, Any] = {}
+    try:
+        with PARENTS_PATH.open("r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                row = json.loads(line)
+                pid = row.get("id") or row.get("parent_id")
+                if pid:
+                    out[pid] = row
+    except Exception as e:
+        print(f"[startup] WARNING: failed to load {PARENTS_PATH}: {e}", file=sys.stderr)
+        return {}
+    return out
 
 
 def _load_corpus_into_state() -> Dict[str, Any]:
@@ -634,6 +698,9 @@ def _load_corpus_into_state() -> Dict[str, Any]:
     STATE.metas = metas
     STATE.manifest = manifest
     STATE.model_name = new_model
+    # RFC-017: parents.jsonl doesn't exist until Task 9's re-embed; guarded to
+    # {} so this is a no-op on today's corpus. Not yet read by `_retrieve`.
+    STATE.parents_by_id = _load_parents_by_id()
     return {
         "chunks": len(metas),
         "dim": int(embeddings.shape[1]),
