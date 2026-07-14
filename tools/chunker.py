@@ -29,8 +29,19 @@ from typing import Any, Iterator
 
 import yaml
 
+import arthasahit_parse
+
 REPO = Path(__file__).resolve().parent.parent
 OUT_PATH = REPO / "04_processed" / "chunks.jsonl"
+
+# Works whose text is verse+meaning entries (RFC-017 arthasahit special case):
+# a child unit is a full ENTRY, not a childsplit sentence, so split_verse_meaning
+# gets the verse and meaning together (see emit_chunks_for_source).
+_ARTHASAHIT_WORK_IDS = frozenset({
+    "tukaram-vachanamrut", "eknath-vachanamrut", "ramdas-vachanamrut",
+    "sant-vachanamrut", "jnaneshwar-vachanamrut", "eknathi-bhagvat-vachanamrut",
+    "dhyanopakarani-gita",
+})
 
 
 def _sorted_dir(p: Path):
@@ -287,21 +298,34 @@ def emit_chunks_for_source(
         })
         yield parent
 
-        for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
-            child = dict(base_meta)
-            child.update({
-                "id": f"{pid}--{ci:03d}",
-                "kind_level": "child",
-                "parent_id": pid,
-                "chunk_index": pi,
-                "chunk_total": total,
-                "source_path": spath,
-                "text": kid["text"],
-                "embed_text": kid["embed_text"],
-                "cite_text": kid["text"],
-                "token_estimate": estimate_tokens(kid["text"]),
-            })
-            yield child
+        if work_id in _ARTHASAHIT_WORK_IDS:
+            # child = one entry (verse + its meaning). Embed the whole entry
+            # (meaning boosts recall); cite ONLY the verse; retrieval-only when
+            # no confident verse/meaning split (verse empty or no marker).
+            units = [p.strip() for p in PARA_SPLIT_RE.split(sec["text"]) if p.strip()]
+            for ci, para in enumerate(units):
+                verse, meaning = arthasahit_parse.split_verse_meaning(para)
+                child = dict(base_meta)
+                child.update({
+                    "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
+                    "chunk_index": pi, "chunk_total": total, "source_path": spath,
+                    "text": para, "embed_text": para,
+                    "token_estimate": estimate_tokens(para),
+                })
+                if meaning is not None and verse.strip():
+                    child["cite_text"] = verse          # cite the verse only
+                # else: no cite_text key ⇒ retrieval-only (never cited)
+                yield child
+        else:
+            for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
+                child = dict(base_meta)
+                child.update({
+                    "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
+                    "chunk_index": pi, "chunk_total": total, "source_path": spath,
+                    "text": kid["text"], "embed_text": kid["embed_text"],
+                    "cite_text": kid["text"], "token_estimate": estimate_tokens(kid["text"]),
+                })
+                yield child
 
 
 def scan_canonical_text_md() -> Iterator[dict]:
