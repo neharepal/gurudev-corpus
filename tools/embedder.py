@@ -90,6 +90,13 @@ def load_chunks() -> list[dict]:
     return chunks
 
 
+def text_for_embedding(chunk: dict) -> str:
+    """RFC-017: embed the child's embed_text (neighbor window) when present,
+    falling back to `text`. chunks.jsonl is children-only (tools/chunker.py
+    routes parent rows to parents.jsonl), so no kind_level filtering here."""
+    return chunk.get("embed_text") or chunk.get("text") or ""
+
+
 def write_meta(chunks: list[dict], path: Path) -> None:
     with path.open("w", encoding="utf-8") as f:
         for c in chunks:
@@ -385,7 +392,7 @@ def main() -> int:
     if new_rows and resume_from < len(new_rows):
         prefix = passage_prefix(model_name)
         # Build the text list and corresponding corpus rows in lockstep.
-        to_embed_texts = [prefix + chunks[r]["text"] for r in new_rows]
+        to_embed_texts = [prefix + text_for_embedding(chunks[r]) for r in new_rows]
 
         bs = args.batch_size
         n_new = len(new_rows)

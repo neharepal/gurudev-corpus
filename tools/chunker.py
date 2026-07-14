@@ -33,6 +33,10 @@ import arthasahit_parse
 
 REPO = Path(__file__).resolve().parent.parent
 OUT_PATH = REPO / "04_processed" / "chunks.jsonl"
+# RFC-017 small-to-big: parent rows (full-section context units, never embedded)
+# are routed to a sidecar file so chunks.jsonl stays children-only — that keeps
+# embeddings.npy 1:1 row-aligned with chunks.jsonl (see tools/embedder.py).
+PARENTS_PATH = REPO / "04_processed" / "parents.jsonl"
 
 # Works whose text is verse+meaning entries (RFC-017 arthasahit special case):
 # a child unit is a full ENTRY, not a childsplit sentence, so split_verse_meaning
@@ -538,13 +542,17 @@ def scan_reference() -> Iterator[dict]:
 # ---------------------------------------------------------------------------
 def main() -> int:
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    # `total`/`by_kind`/`by_lang`/`total_tokens` describe chunks.jsonl (children
+    # only — the retrieval/embedding unit). Parent rows are tallied separately
+    # (`total_parents`) since they land in parents.jsonl, not chunks.jsonl.
     total = 0
+    total_parents = 0
     by_kind: dict[str, int] = {}
     by_lang: dict[str, int] = {}
     total_tokens = 0
 
     print("Scanning corpus and chunking...", file=sys.stderr)
-    with OUT_PATH.open("w", encoding="utf-8") as out:
+    with OUT_PATH.open("w", encoding="utf-8") as out, PARENTS_PATH.open("w", encoding="utf-8") as pout:
         for scan_fn, label in [
             (scan_canonical_text_md, "canonical"),
             (scan_biography, "biography"),
@@ -555,6 +563,10 @@ def main() -> int:
         ]:
             count = 0
             for chunk in scan_fn():
+                if chunk.get("kind_level") == "parent":
+                    pout.write(json.dumps(chunk, ensure_ascii=False) + "\n")
+                    total_parents += 1
+                    continue
                 out.write(json.dumps(chunk, ensure_ascii=False) + "\n")
                 total += 1
                 count += 1
@@ -567,6 +579,8 @@ def main() -> int:
 
     print(f"\n✓ Wrote {total:,} chunks to {OUT_PATH.relative_to(REPO)}", file=sys.stderr)
     print(f"  Size: {OUT_PATH.stat().st_size / 1024 / 1024:.1f} MB", file=sys.stderr)
+    print(f"✓ Wrote {total_parents:,} parents to {PARENTS_PATH.relative_to(REPO)}", file=sys.stderr)
+    print(f"  Size: {PARENTS_PATH.stat().st_size / 1024 / 1024:.1f} MB", file=sys.stderr)
     print(f"  Estimated total tokens: {total_tokens:,}", file=sys.stderr)
     print(f"\n  By kind:", file=sys.stderr)
     for k, c in sorted(by_kind.items(), key=lambda x: -x[1]):
