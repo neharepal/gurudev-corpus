@@ -24,3 +24,16 @@ def test_no_confident_boundary_returns_none_meaning():
     verse, meaning = split_verse_meaning(entry)
     assert verse == entry.strip()
     assert meaning is None
+
+
+def test_arthat_line_is_not_a_marker():
+    entry = "पहिला चरण ॥१॥\nअर्थात दुसरा चरण आहे ॥२॥"
+    verse, meaning = split_verse_meaning(entry)
+    assert meaning is None
+
+
+def test_marker_at_start_gives_empty_verse():
+    entry = "अर्थ - या अभंगात तुकाराम म्हणतात."
+    verse, meaning = split_verse_meaning(entry)
+    assert verse == ""
+    assert meaning == "अर्थ - या अभंगात तुकाराम म्हणतात."
