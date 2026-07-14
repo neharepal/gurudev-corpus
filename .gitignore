@@ -65,3 +65,9 @@ photos/
 # ===== Local Claude Code settings =====
 .claude/
 .superpowers/
+
+# Surya OCR venv (py3.12, large)
+.venv-surya/
+
+# Surya OCR handoff kit (source PDFs, large)
+_surya_ocr_job/
