@@ -252,21 +252,56 @@ def emit_chunks_for_source(
     body_text: str,
     base_meta: dict,
 ) -> Iterator[dict]:
-    """Yield chunk dicts for a single text source, merging base_meta + chunk-local fields."""
-    chunks = chunk_text(body_text)
-    total = len(chunks)
+    """Yield one parent row per section + its child rows (RFC-017 small-to-big).
+
+    Parents (kind_level="parent") carry the full section text and are the context
+    unit; they are NOT embedded (embedder skips them). Children (kind_level="child")
+    are the retrieval unit: sentence/verse, with embed_text (neighbor window) and
+    cite_text. `kind` (canonical/biography/... tier) is untouched — kind_level is
+    a separate, new axis.
+    """
+    import childsplit
+
+    sections = chunk_text(body_text)
+    total = len(sections)
     work_id = base_meta.get("work_id") or base_meta.get("id") or source_path.stem
-    for i, c in enumerate(chunks):
-        chunk = dict(base_meta)
-        chunk["chunk_index"] = i
-        chunk["chunk_total"] = total
-        chunk["char_start"] = c["char_start"]
-        chunk["char_end"] = c["char_end"]
-        chunk["text"] = c["text"]
-        chunk["token_estimate"] = estimate_tokens(c["text"])
-        chunk["id"] = f"{work_id}--{base_meta.get('language', 'unk')}--{i:04d}"
-        chunk["source_path"] = str(source_path.relative_to(REPO))
-        yield chunk
+    lang = base_meta.get("language", "unk")
+    try:
+        spath = str(source_path.relative_to(REPO))
+    except ValueError:
+        spath = str(source_path)
+
+    for pi, sec in enumerate(sections):
+        pid = f"{work_id}--{lang}--{pi:04d}"
+        parent = dict(base_meta)
+        parent.update({
+            "id": pid,
+            "kind_level": "parent",
+            "chunk_index": pi,
+            "chunk_total": total,
+            "char_start": sec["char_start"],
+            "char_end": sec["char_end"],
+            "text": sec["text"],
+            "token_estimate": estimate_tokens(sec["text"]),
+            "source_path": spath,
+        })
+        yield parent
+
+        for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
+            child = dict(base_meta)
+            child.update({
+                "id": f"{pid}--{ci:03d}",
+                "kind_level": "child",
+                "parent_id": pid,
+                "chunk_index": pi,
+                "chunk_total": total,
+                "source_path": spath,
+                "text": kid["text"],
+                "embed_text": kid["embed_text"],
+                "cite_text": kid["text"],
+                "token_estimate": estimate_tokens(kid["text"]),
+            })
+            yield child
 
 
 def scan_canonical_text_md() -> Iterator[dict]:
