@@ -71,3 +71,6 @@ photos/
 
 # Surya OCR handoff kit (source PDFs, large)
 _surya_ocr_job/
+
+# Surya re-OCR generated decisions (transient)
+tools/surya_ocr/replace_decisions.yaml
