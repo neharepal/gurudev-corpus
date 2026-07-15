@@ -1,30 +1,38 @@
 id: vindication-of-indian-philosophy
-title: 'A Vindication of Indian Philosophy'
-title_en: 'A Vindication of Indian Philosophy'
-title_translit: ""
+title: A Vindication of Indian Philosophy
+title_en: A Vindication of Indian Philosophy
+title_translit: ''
 author: gurudev_ranade
 co_authors: []
 work_type: essay
 original_language: en
-languages_available: [en]
-year_first_published: ""
+languages_available:
+- en
+year_first_published: ''
 year_this_edition: ''
 publisher: ''
-edition: ""
-isbn: ""
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of A Vindication Of Indian Philosophy_.pdf
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: 3575a5c5536497e97697a09b3f80411140f5b654f4f6938289bcaeba51607be6
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of A Vindication Of Indian Philosophy_.pdf
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: 3575a5c5536497e97697a09b3f80411140f5b654f4f6938289bcaeba51607be6
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
-text_extraction_method: ocr-tesseract
-quality_notes: 'OCR from scan; not yet line-checked against a published source.'
-notes: |
-  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
+quality_notes: OCR from scan; not yet line-checked against a published source. | Re-OCR'd
+  2026-07-15 with Surya (Apple-Silicon) to replace garbled tesseract output; deva
+  0.4%→0.0%, mojibake 1→0, repl 0→0.
+notes: 'Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive ''Dump 3.zip'').
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)

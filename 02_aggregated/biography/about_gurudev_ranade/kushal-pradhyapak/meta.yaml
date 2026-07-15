@@ -1,36 +1,48 @@
 id: kushal-pradhyapak
-title: "प्रा. रा. द. रानडे — एक कुशल प्राध्यापक व नामवंत ग्रंथकार"
-title_en: "Prof. R. D. Ranade — A Skilled Professor and Renowned Author"
-title_translit: "Pra. R. D. Ranade — Ek Kushal Pradhyapak va Namvant Granthkar"
+title: प्रा. रा. द. रानडे — एक कुशल प्राध्यापक व नामवंत ग्रंथकार
+title_en: Prof. R. D. Ranade — A Skilled Professor and Renowned Author
+title_translit: Pra. R. D. Ranade — Ek Kushal Pradhyapak va Namvant Granthkar
 about_member: gurudev_ranade
-author: ""
+author: b_r_kulkarni
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: "ACPR Belgaum"
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ACPR Belgaum
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/kushal-pradhyapak.pdf
-    received_on: 2026-06-17
-    received_in_batch: wikimedia_acpr_2026-06-17
-    checksum_sha256: 50f2f0aef55f55223364c3c0f011b6e8a8b464ca5548944b409996b1363eb932
+- raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/kushal-pradhyapak.pdf
+  received_on: 2026-06-17
+  received_in_batch: wikimedia_acpr_2026-06-17
+  checksum_sha256: 50f2f0aef55f55223364c3c0f011b6e8a8b464ca5548944b409996b1363eb932
 tags: []
 subject_persons:
-  - gurudev_ranade
+- gurudev_ranade
 related_works: []
 status: extracted
-text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
 extracted_on: 2026-06-17
-quality_notes: "OCR'd from Wikimedia Commons scan; spacing artifacts on conjunct consonants and occasional misrecognized English-transliterated proper nouns."
-notes: |
-  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+quality_notes: 'OCR''d from Wikimedia Commons scan; spacing artifacts on conjunct
+  consonants and occasional misrecognized English-transliterated proper nouns. [authorship-audit
+  2026-07-11] author ''''→''b_r_kulkarni'': ''Ranade as a Teacher and Author'' by
+  B. R. Kulkarni, Marathi trans. Padma Kulkarni — biography | Re-OCR''d 2026-07-15
+  with Surya (Apple-Silicon) to replace garbled tesseract output; deva 66.9%→76.1%,
+  mojibake 8→0, repl 0→0.'
+notes: 'Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+
   Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+
+  '
 external_verification:
   verified: false
   reason: ocr_only_from_wikimedia_commons_scan
   source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)

@@ -1,37 +1,48 @@
 id: sonari-pane-2000
-title: "निंबरगी संप्रदायाच्या इतिहासातील सोनेरी पाने (2000)"
-title_en: "Golden Pages from the History of the Nimbargi Sampraday (2000)"
-title_translit: "Nimbargi Sampradayachya Itihasatil Sonari Pane (2000)"
+title: निंबरगी संप्रदायाच्या इतिहासातील सोनेरी पाने (2000)
+title_en: Golden Pages from the History of the Nimbargi Sampraday (2000)
+title_translit: Nimbargi Sampradayachya Itihasatil Sonari Pane (2000)
 about_member: other_devotees
-author: ""
+author: padma_kulkarni
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: "2000"
-year_this_edition: "2000"
-publisher: "ACPR Belgaum"
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: '2000'
+year_this_edition: '2000'
+publisher: ACPR Belgaum
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/sonari-pane-2000.pdf
-    received_on: 2026-06-17
-    received_in_batch: wikimedia_acpr_2026-06-17
-    checksum_sha256: 7ae585f0f7ed09a90230afbcf038253d168ca5b4a4a3d33a3b23ed5594b846ee
+- raw_path: 00_raw/drive_dump_2026-06-17/wikimedia_acpr/sonari-pane-2000.pdf
+  received_on: 2026-06-17
+  received_in_batch: wikimedia_acpr_2026-06-17
+  checksum_sha256: 7ae585f0f7ed09a90230afbcf038253d168ca5b4a4a3d33a3b23ed5594b846ee
 tags:
-  - nimbargi-sampraday
-  - lineage-history
+- nimbargi-sampraday
+- lineage-history
 subject_persons: []
 related_works: []
 status: extracted
-text_extraction_method: "ocrmypdf+tesseract (eng+mar+hin+san)"
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
 extracted_on: 2026-06-17
-quality_notes: "OCR'd from Wikimedia Commons scan; spacing artifacts on conjunct consonants and occasional misrecognized English-transliterated proper nouns."
-notes: |
-  Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+quality_notes: 'OCR''d from Wikimedia Commons scan; spacing artifacts on conjunct
+  consonants and occasional misrecognized English-transliterated proper nouns. [authorship-audit
+  2026-07-11] author ''''→''padma_kulkarni'': History of the Nimbargi sampradaya by
+  Padma Kulkarni, 2000 | Re-OCR''d 2026-07-15 with Surya (Apple-Silicon) to replace
+  garbled tesseract output; deva 70.0%→80.9%, mojibake 0→0, repl 0→0.'
+notes: 'Ingested 2026-06-17 via tools/download_wikimedia_batch.sh and tools/ocr_wikimedia_batch.sh.
+
   Source: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+
+  '
 external_verification:
   verified: false
   reason: ocr_only_from_wikimedia_commons_scan
   source_url: https://commons.wikimedia.org/wiki/Category:Books_scanned_by_ACPR
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)

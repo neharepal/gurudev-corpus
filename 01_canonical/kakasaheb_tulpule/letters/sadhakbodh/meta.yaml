@@ -1,39 +1,53 @@
 id: sadhakbodh
-title: "साधक-बोध"
-title_en: "Sadhak-Bodh"
-title_translit: "Sadhak-Bodh"
+title: साधक-बोध
+title_en: Sadhak-Bodh
+title_translit: Sadhak-Bodh
 author: kakasaheb_tulpule
 co_authors: []
 work_type: letter
 original_language: mr
-languages_available: [mr]
-year_first_published: "1961"
-year_this_edition: "2000"
-publisher: "Shri Gurudev Ranade Samadhi Trust, Nimbal"
-edition: "3rd (2000); 1st 1961, 2nd 1992"
-isbn: ""
+languages_available:
+- mr
+year_first_published: '1961'
+year_this_edition: '2000'
+publisher: Shri Gurudev Ranade Samadhi Trust, Nimbal
+edition: 3rd (2000); 1st 1961, 2nd 1992
+isbn: ''
 sources:
-  - raw_path: 01_canonical/kakasaheb_tulpule/letters/sadhakbodh/mr/Sadhakbodh pdf.pdf
-    received_on: 2026-06-11
-    received_in_batch: drive_dump_2026-06-11
-    checksum_sha256: ""
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of साधक - बोध-993.pdf
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: 71c67c09f867eccb3d3a4ffdd1e7aa0f2dbd474d728e6bcc6490b386681007d9
+- raw_path: 01_canonical/kakasaheb_tulpule/letters/sadhakbodh/mr/Sadhakbodh pdf.pdf
+  received_on: 2026-06-11
+  received_in_batch: drive_dump_2026-06-11
+  checksum_sha256: ''
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of साधक - बोध-993.pdf
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: 71c67c09f867eccb3d3a4ffdd1e7aa0f2dbd474d728e6bcc6490b386681007d9
 tags:
-  - letters
-  - sadhak-guidance
+- letters
+- sadhak-guidance
 subject_persons: []
 related_works: []
-source_material: "Compiled by Kakasaheb Tulpule from the key points of Bhausaheb Maharaj's letters."
+source_material: Compiled by Kakasaheb Tulpule from the key points of Bhausaheb Maharaj's
+  letters.
 status: extracted
-text_extraction_method: ocr-tesseract
-quality_notes: "OCR clean (490K chars, coherent Marathi) from the drive_dump_2026-06-22 source — completes the prior stub whose 2026-06-13 extraction failed (image-only / non-Unicode font)."
-notes: |
-  Stub from drive_dump_2026-06-11 failed extraction (ALL SOURCES FAILED — image-only / non-Unicode Devanagari font).
-  Completed 2026-06-22 by OCR'ing the cleaner Dump 3 source (Copy of साधक - बोध-993.pdf) via
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
+quality_notes: OCR clean (490K chars, coherent Marathi) from the drive_dump_2026-06-22
+  source — completes the prior stub whose 2026-06-13 extraction failed (image-only
+  / non-Unicode font). | Re-OCR'd 2026-07-15 with Surya (Apple-Silicon) to replace
+  garbled tesseract output; deva 57.0%→79.1%, mojibake 2→0, repl 0→0.
+notes: 'Stub from drive_dump_2026-06-11 failed extraction (ALL SOURCES FAILED — image-only
+  / non-Unicode Devanagari font).
+
+  Completed 2026-06-22 by OCR''ing the cleaner Dump 3 source (Copy of साधक - बोध-993.pdf)
+  via
+
   tools/ocr_batch_2026-06-22_tbd.sh (ocrmypdf eng+mar+hin+san).
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)

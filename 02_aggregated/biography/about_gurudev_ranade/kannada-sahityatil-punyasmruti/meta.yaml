@@ -1,32 +1,43 @@
 id: kannada-sahityatil-punyasmruti
-title: 'कन्नड साहित्यातील गुरुदेव रानडे यांच्या पुण्यस्मृती'
-title_en: "Gurudev Ranade's Memorial in Kannada Literature"
-title_translit: ""
+title: कन्नड साहित्यातील गुरुदेव रानडे यांच्या पुण्यस्मृती
+title_en: Gurudev Ranade's Memorial in Kannada Literature
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: unknown_devotee
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
+languages_available:
+- mr
+year_first_published: ''
 year_this_edition: ''
 publisher: ''
-edition: ""
-isbn: ""
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of कन्नड साहित्यातील गुरुदेव रानडे यांच्या पुण्यस्मृती.pdf
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: 1e77562e08e66a483d35f2a46fd095cd29f83976aea9420360b2fec9d09e87bd
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of कन्नड साहित्यातील गुरुदेव
+    रानडे यांच्या पुण्यस्मृती.pdf
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: 1e77562e08e66a483d35f2a46fd095cd29f83976aea9420360b2fec9d09e87bd
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
-text_extraction_method: ocr-tesseract
-quality_notes: "OCR clean Marathi (398K chars). Distinct from existing 'punyasmruti' anthology."
-notes: |
-  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
+quality_notes: 'OCR clean Marathi (398K chars). Distinct from existing ''punyasmruti''
+  anthology. [authorship-audit 2026-07-11] author ''''→''unknown_devotee'': Kannada
+  disciples'' memories translated to Marathi, signed ''साधक'' — athvani ABOUT Gurudev
+  | Re-OCR''d 2026-07-15 with Surya (Apple-Silicon) to replace garbled tesseract output;
+  deva 47.1%→81.6%, mojibake 3→0, repl 0→0.'
+notes: 'Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive ''Dump 3.zip'').
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)

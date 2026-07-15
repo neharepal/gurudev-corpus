@@ -1,0 +1,48 @@
+id: swanandacha-gabha
+title: स्वानंदाचा गाभा
+title_en: Swanandacha Gabha (life of Shri Sharakka)
+title_translit: ''
+about_member: other_devotees
+author: ''
+co_authors: []
+kind: biography
+work_type: biography
+original_language: mr
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
+sources:
+- raw_path: 02_aggregated/biography/about_other_devotees/swanandacha-gabha/mr/स्वानंदाचा
+    गाभा संपूर्ण .pdf
+  received_on: '2026-07-11'
+  received_in_batch: drive_dump_2026-07-10
+  checksum_sha256: 63a460d5370f902fc9ea3b83e4fd38067a29eb01826394d7849e86cdd84bbe9c
+tags:
+- biography
+- sharakka
+- nimbargi-sampradaya
+- marathi
+subject_persons:
+- Shri Sharakka
+related_works:
+- matoshri-sharakka
+status: extracted
+text_extraction_method: surya-ocr (M4 re-OCR 2026-07-15)
+quality_notes: OCR via tesseract (ocr_qa PASS, no header/footer leak). ~400K chars,
+  80% Devanagari. | Re-OCR'd 2026-07-15 with Surya (Apple-Silicon) to replace garbled
+  tesseract output; deva 80.4%→81.9%, mojibake 1→0, repl 0→0.
+notes: Marathi charitra of Shri Sharakka — last self-realized saint of the Nimbargi
+  lineage (naam from Amburao Maharaj 1927; guided by Gurudev Ranade 1934-56; d. 27
+  Mar 1986, Dharwad). Fuller/distinct from the English matoshri-sharakka article.
+  Neha3 batch.
+external_verification:
+  verified: false
+  reason: no_public_source_available
+re_ocr:
+- date: '2026-07-15'
+  engine: surya-ocr
+  reason: tesseract garble (audit 2026-07-14)
