@@ -42,6 +42,7 @@ import intent   # noqa: E402
 import query_translation  # noqa: E402
 import chunk_quality  # noqa: E402
 import reranker as reranker_mod  # noqa: E402
+import server as server_mod  # noqa: E402  # RFC-017 small-to-big helper + parents loader
 
 # ---------------------------------------------------------------------------
 # Gold set
@@ -230,18 +231,38 @@ GOLD = [
         "DOCTRINAL: Bhakti -> a canonical/pravachan work",
     ),
     # -----------------------------------------------------------------------
-    # Phase 2 (RFC-017) small-to-big recall. A specific sentence buried inside a
-    # big multi-topic athvani section ranks low on whole-chunk cosine under flat
-    # chunking (the motivating "lightning" miss ranked ~2300th). The child index
-    # must surface it in top_k. VALIDATE ON THE M4 AFTER THE RE-EMBED — these need
-    # the child index (parent_id present); running them on the old flat index
-    # is the pre-fix baseline and may FAIL (expected). Add more buried-sentence
-    # cases here once the index is live and work_ids can be reconfirmed.
+    # RFC-017 Task 8 gold cases: small-to-big recall on a buried sentence.
+    # The "lightning" incident sits as one sentence inside a big biography /
+    # athvani section, so its whole-parent cosine is low and pre-Phase-2 it
+    # never surfaces (the motivating miss ranked ~2300th). On the CHILD index
+    # the sentence's own cosine ranks it directly; with ENABLE_SMALL_TO_BIG=1
+    # the ranked child expands back to its parent for context. The optional
+    # 4th field is a dict of options — `expected_text_substr` asserts the
+    # surfaced result's text actually contains the specific sentence, not
+    # just any chunk of the same work. Three phrasings of the same incident
+    # exercise complementary retrieval paths (specific-room MR phrasing hits
+    # `devotee`/nimbargi bio; house-level EN/MR hit charitra/guru-ha/etc.).
     # -----------------------------------------------------------------------
     (
         "निंबाळला महाराजांच्या राहत्या खोलीजवळ वीज पडली होती का?",
         ["devotee", "nimbargi-maharaj-charitra-athavani-mr"],
         "PHASE2 buried-sentence: lightning struck near Maharaj's room (one line in a big athvani section)",
+    ),
+    (
+        "the incident when lightning struck Gurudev's house",
+        ["charitra-tatvajnan-tulpule", "guru-ha-parabrahma-kewal",
+         "punyasmruti", "पुण्यस्मृती", "shri-gurudevanchya-athvani-pustak",
+         "jivandarshan-deshpande"],
+        "RFC-017 recall EN: lightning at Gurudev's house -> biography w/ वीज पडली",
+        {"expected_text_substr": "वीज"},
+    ),
+    (
+        "गुरुदेवांच्या घरावर वीज पडली त्या घटनेबद्दल सांगा",
+        ["charitra-tatvajnan-tulpule", "guru-ha-parabrahma-kewal",
+         "punyasmruti", "पुण्यस्मृती", "shri-gurudevanchya-athvani-pustak",
+         "jivandarshan-deshpande"],
+        "RFC-017 recall MR: lightning at Gurudev's house (Devanagari) -> biography",
+        {"expected_text_substr": "वीज"},
     ),
 ]
 
@@ -272,11 +293,17 @@ def run_retrieval(
     candidates: int,
     junk: bool = False,
     rerank: bool = False,
+    small_to_big: bool = False,
+    parents_by_id: dict | None = None,
 ) -> list[dict]:
     """Run the full retrieval pipeline (mirrors server._retrieve, no LLM calls).
 
     When junk=True, applies quality-weight downranking (mirrors ENABLE_JUNK_WEIGHT).
     When rerank=True, applies widen→MMR-dedup→cross-encoder rerank (mirrors ENABLE_RERANK).
+    When small_to_big=True, ranked children are grouped into distinct parents
+    (RFC-017 Task 6): each result's `chunk_text` is the PARENT section (the
+    context the answer model would read) and `cite_text` is the top matched
+    child's citable span. work_id / title / author come from the parent.
     Each result dict includes a 'chunk_text' key for junk-in-top-k counting.
     """
     qvec = retrieve.embed_query(query, model_name)
@@ -324,6 +351,23 @@ def run_retrieval(
             max_per_source=2,
         )
 
+    if small_to_big and parents_by_id:
+        rows = server_mod.small_to_big_results(
+            reranked, metas, keep_idx=None, parents_by_id=parents_by_id,
+            dense_scores=scores, max_per_parent=2, top_k=top_k,
+        )
+        return [{
+            "work_id": r["meta"].get("work_id", ""),
+            "title": r["meta"].get("title", ""),
+            "author": r["meta"].get("author", ""),
+            "cos_score": r["cos_score"],
+            "mmr_score": r["mmr_score"],
+            "lang": r["meta"].get("language", "?"),
+            "chunk_text": r["text"],                    # parent (context)
+            "cite_text": r["meta"].get("cite_text", ""),  # top child's citable span
+            "retrieval_only": bool(r["meta"].get("retrieval_only")),
+        } for r in rows]
+
     results = []
     for idx, mmr_score in reranked:
         meta = metas[idx]
@@ -336,6 +380,7 @@ def run_retrieval(
             "mmr_score": float(mmr_score),
             "lang": meta.get("language", "?"),
             "chunk_text": chunk_text,
+            "cite_text": meta.get("cite_text", ""),
         })
     return results
 
@@ -348,6 +393,8 @@ def main() -> int:
     p.add_argument("--verbose", "-v", action="store_true", help="Show all top-k results per query")
     p.add_argument("--junk", action="store_true", help="Apply quality-weight downranking")
     p.add_argument("--rerank", action="store_true", help="Cross-encoder rerank the candidate pool")
+    p.add_argument("--small-to-big", action="store_true",
+                   help="RFC-017: group ranked children into distinct parents (loads parents.jsonl)")
     args = p.parse_args()
 
     flags = []
@@ -355,6 +402,8 @@ def main() -> int:
         flags.append("junk-downweight")
     if args.rerank:
         flags.append("cross-encoder-rerank")
+    if args.small_to_big:
+        flags.append("small-to-big")
     flag_str = " + ".join(flags) if flags else "baseline"
 
     print("=" * 72)
@@ -381,11 +430,28 @@ def main() -> int:
     retrieve.embed_query("warmup", model_name)
     print(f"done ({time.time() - t0:.1f}s)\n")
 
+    parents_by_id: dict | None = None
+    if args.small_to_big:
+        t0 = time.time()
+        parents_by_id = server_mod._load_parents_by_id()
+        if not parents_by_id:
+            print("ERROR: --small-to-big requires 04_processed/parents.jsonl (found empty).",
+                  file=sys.stderr)
+            return 1
+        print(f"Parents: {len(parents_by_id):,} loaded in {time.time() - t0:.1f}s\n")
+
     n_pass = 0
     n_fail = 0
     total_junk_in_topk = 0
 
-    for query, expected_ids, description in GOLD:
+    for gold_entry in GOLD:
+        # Gold entries are 3-tuples; RFC-017 gold cases add an optional 4th dict
+        # of assertions (e.g. `expected_text_substr`).
+        opts: dict = {}
+        if len(gold_entry) == 4:
+            query, expected_ids, description, opts = gold_entry
+        else:
+            query, expected_ids, description = gold_entry
         t0 = time.time()
         results = run_retrieval(
             query,
@@ -396,14 +462,27 @@ def main() -> int:
             candidates=args.candidates,
             junk=args.junk,
             rerank=args.rerank,
+            small_to_big=args.small_to_big,
+            parents_by_id=parents_by_id,
         )
         elapsed = time.time() - t0
 
         returned_work_ids = [r["work_id"] for r in results]
         hit = any(wid in returned_work_ids for wid in expected_ids)
 
-        status = "PASS" if hit else "FAIL"
-        if hit:
+        # Optional stricter check: the surfaced chunk_text must contain a
+        # specific substring (verifies the specific sentence/verse surfaced,
+        # not just any chunk from the same work).
+        expected_substr = opts.get("expected_text_substr")
+        substr_hit = True
+        if expected_substr:
+            substr_hit = any(
+                (wid in expected_ids) and (expected_substr in (r.get("chunk_text") or ""))
+                for wid, r in zip(returned_work_ids, results)
+            )
+
+        status = "PASS" if (hit and substr_hit) else "FAIL"
+        if status == "PASS":
             n_pass += 1
         else:
             n_fail += 1
@@ -416,14 +495,24 @@ def main() -> int:
         print(f"       Query   : {query[:90]}")
         print(f"       Expected: {expected_ids}")
         print(f"       Got     : {returned_work_ids}  ({elapsed:.2f}s)  junk_in_top_k={junk_count}")
+        if expected_substr:
+            marker = "OK" if substr_hit else "MISSING"
+            print(f"       Substr  : {expected_substr!r} in top-k → {marker}")
 
         if args.verbose:
             for rank, r in enumerate(results, 1):
                 is_junk_flag = chunk_quality.is_junk(r["chunk_text"])
+                extra = ""
+                if args.small_to_big:
+                    ct = (r.get("cite_text") or "").replace("\n"," ")[:60]
+                    if r.get("retrieval_only"):
+                        extra = "  [retrieval-only]"
+                    elif ct:
+                        extra = f"  cite={ct!r}"
                 print(
                     f"         #{rank:2d}  cos={r['cos_score']:.4f}  mmr={r['mmr_score']:.4f}"
                     f"  [{r['lang']}]  {r['work_id']}  ({r['title'][:50]})"
-                    f"{'  [JUNK]' if is_junk_flag else ''}"
+                    f"{'  [JUNK]' if is_junk_flag else ''}{extra}"
                 )
         print()
 
