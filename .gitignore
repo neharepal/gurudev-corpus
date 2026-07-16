@@ -80,3 +80,6 @@ logs/
 
 # transient backups
 04_processed/_bak-*/
+
+# M4 migration transfer bundle
+_m4_transfer/
