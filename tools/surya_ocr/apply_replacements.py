@@ -41,6 +41,8 @@ def main() -> int:
     ap.add_argument("--decisions", default=str(DECISIONS))
     args = ap.parse_args()
 
+    import os
+    os.chdir(REPO)  # decisions store repo-relative paths
     dec = yaml.safe_load(Path(args.decisions).read_text(encoding="utf-8")) or {}
     todo = {w: d for w, d in dec.items() if d.get("replace")}
     if not todo:
@@ -58,7 +60,7 @@ def main() -> int:
         print(f"     text.md : {cur}   ({d['old']['chars']:,} → {d['new']['chars']:,} chars)")
         print(f"     reason  : {d['reason']}")
         if args.apply:
-            rel = cur.relative_to(REPO)
+            rel = cur.relative_to(REPO) if cur.is_absolute() else cur
             bak = bak_root / rel
             bak.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(cur, bak)                 # keep the tesseract original
