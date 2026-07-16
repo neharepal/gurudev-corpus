@@ -589,6 +589,15 @@ def _retrieve(
             qvec, cand_idx, cand_scores, sub_emb, sub_metas,
             top_k=top_k, mmr_lambda=mmr_lambda, max_per_source=max_per_source,
         )
+    if os.environ.get("ENABLE_SMALL_TO_BIG") == "1" and STATE.parents_by_id:
+        # RFC-017 Task 6: group ranked children into distinct parents; the answer
+        # model reads the parent (context) while `cite_text` on the meta is the
+        # child's precise span for splice.
+        return small_to_big_results(
+            reranked, sub_metas, keep_idx, STATE.parents_by_id,
+            dense_scores=scores,
+            max_per_parent=max_per_source, top_k=top_k,
+        )
     out: List[Dict[str, Any]] = []
     for idx, mmr_score in reranked:
         meta = sub_metas[idx]
@@ -609,10 +618,8 @@ def expand_children_to_parents(ranked_idxs, metas, parents_by_id, *, max_per_par
     Returns [{parent_id, parent_text, children:[{...}]}] — the parent is the
     context the answer model reads; children are the precise anchors to quote.
 
-    RFC-017 (Phase 2 small-to-big chunking): NOT yet wired into `_retrieve`.
-    See docs/rfc/RFC-017-phase2-small-to-big-chunking.md and
-    .superpowers/sdd/task-6-report.md for why the wiring is deferred pending a
-    Task-7 splice/grounding co-design decision.
+    RFC-017 Task 6: called via `small_to_big_results` from `_retrieve` when
+    `ENABLE_SMALL_TO_BIG=1`.
     """
     groups, order = {}, []
     for idx in ranked_idxs:
@@ -632,6 +639,62 @@ def expand_children_to_parents(ranked_idxs, metas, parents_by_id, *, max_per_par
             g["children"].append({"child_idx": int(idx),
                                   "text": m.get("cite_text") or m.get("text", "")})
     return [groups[p] for p in order]
+
+
+def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
+                          dense_scores, max_per_parent, top_k):
+    """RFC-017 wiring: turn ranked child rows into per-parent output rows.
+
+    Each row's `text` is the PARENT section (context handed to the answer model)
+    and `meta` merges the parent's meta with `cite_text` copied from the top-
+    matched child so `splice_qa_citations` quotes the precise child span. When
+    the top child was retrieval-only (no `cite_text`, e.g. an arthasahit
+    uncertain split), the meta is marked `retrieval_only=True` so splice drops
+    that citation rather than quoting a parent that may contain the sadhak's
+    meaning. Preserves the `{meta, text, cos_score, mmr_score}` shape flat
+    retrieval emits, so downstream code (build_user_message, splice,
+    _enrich_citation_readpage) stays untouched.
+    """
+    groups: Dict[str, Any] = {}
+    order: List[str] = []
+    for idx, mmr_score in reranked:
+        m = sub_metas[idx]
+        pid = m.get("parent_id")
+        if pid is None:
+            continue
+        if pid not in groups:
+            if len(order) >= top_k:
+                continue
+            parent = parents_by_id.get(pid) or {}
+            groups[pid] = {
+                "parent": parent,
+                "children": [],
+                "mmr_score": float(mmr_score),
+                "cos_score": float(dense_scores[idx]),
+            }
+            order.append(pid)
+        g = groups[pid]
+        if len(g["children"]) < max_per_parent:
+            g["children"].append(m)
+    out: List[Dict[str, Any]] = []
+    for pid in order:
+        g = groups[pid]
+        parent = g["parent"]
+        top_child = g["children"][0] if g["children"] else {}
+        cite = top_child.get("cite_text")
+        meta = dict(parent)
+        meta["parent_id"] = pid
+        if cite:
+            meta["cite_text"] = cite
+        else:
+            meta["retrieval_only"] = True
+        out.append({
+            "meta": meta,
+            "text": parent.get("text", ""),
+            "cos_score": g["cos_score"],
+            "mmr_score": g["mmr_score"],
+        })
+    return out
 
 
 # ---------------------------------------------------------------------------
