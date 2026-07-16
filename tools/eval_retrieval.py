@@ -229,6 +229,20 @@ GOLD = [
          "gurudev-paramarthik-shikvan", "kakanchi-pravachane", "bhagavadgita-as-pathway-to-god-realization"],
         "DOCTRINAL: Bhakti -> a canonical/pravachan work",
     ),
+    # -----------------------------------------------------------------------
+    # Phase 2 (RFC-017) small-to-big recall. A specific sentence buried inside a
+    # big multi-topic athvani section ranks low on whole-chunk cosine under flat
+    # chunking (the motivating "lightning" miss ranked ~2300th). The child index
+    # must surface it in top_k. VALIDATE ON THE M4 AFTER THE RE-EMBED — these need
+    # the child index (parent_id present); running them on the old flat index
+    # is the pre-fix baseline and may FAIL (expected). Add more buried-sentence
+    # cases here once the index is live and work_ids can be reconfirmed.
+    # -----------------------------------------------------------------------
+    (
+        "निंबाळला महाराजांच्या राहत्या खोलीजवळ वीज पडली होती का?",
+        ["devotee", "nimbargi-maharaj-charitra-athavani-mr"],
+        "PHASE2 buried-sentence: lightning struck near Maharaj's room (one line in a big athvani section)",
+    ),
 ]
 
 
