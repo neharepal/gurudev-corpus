@@ -1,0 +1,35 @@
+id: sadhakachi-atmakatha
+title: साधकाची आत्मकथा
+title_en: Sadhakachi Atmakatha (A Seeker's Autobiography)
+title_translit: ''
+author: kakasaheb_tulpule
+co_authors: []
+work_type: book
+original_language: mr
+languages_available:
+- mr
+year_first_published: '1968'
+year_this_edition: '1994'
+publisher: ''
+edition: second
+isbn: ''
+sources:
+- raw_path: 01_canonical/kakasaheb_tulpule/books/sadhakachi-atmakatha/mr/साधकाची आत्मकथा
+    संपूर्ण_.docx
+  received_on: '2026-07-11'
+  received_in_batch: drive_dump_2026-07-10
+  checksum_sha256: acf43467552dcd02d568a1bd719ee38d15a637185f79a99ca3f6275b89f1dfd7
+tags:
+- autobiography
+- kakasaheb
+- marathi
+subject_persons: []
+related_works: []
+status: extracted
+text_extraction_method: docx-pandoc (markdown_strict)
+quality_notes: Clean Marathi extraction via pandoc (~270K chars, 81% Devanagari).
+notes: Kakasaheb Tulpule's own spiritual autobiography, written 1968; 2nd-edition
+  foreword by S. G. Tulpule (1994). Neha3 batch.
+external_verification:
+  verified: false
+  reason: extracted_not_yet_verified_against_published_source

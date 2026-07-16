@@ -1,24 +1,26 @@
 id: punyasmruti
-title: "पुण्यस्मृती"
-title_en: "Punyasmruti (Sacred Memory) — collected sayings and incidents of Shri Gurudev Ranade"
-title_translit: ""
+title: पुण्यस्मृती
+title_en: Punyasmruti (Sacred Memory) — collected sayings and incidents of Shri Gurudev
+  Ranade
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: unknown_compiler
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: पुण्यस्मृती.pdf
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +28,10 @@ status: extracted
 text_extraction_method: pdf-text
 extracted_on: 2026-06-14
 word_count: 46917
-quality_notes: ""
-notes: |
-  Substantial Marathi anthology of Gurudev's sayings organised thematically (ईश्वर-विषयक, सद्गुरु-विषयक, साधना, etc.) with page-anchored excerpts. PDF extraction is good Unicode Devanagari.
+quality_notes: '[authorship-audit 2026-07-11] author ''''→''unknown_compiler'': COMPILATION:
+  collected sayings and incidents of Shri Gurudev by an unnamed devotee'
+notes: 'Substantial Marathi anthology of Gurudev''s sayings organised thematically
+  (ईश्वर-विषयक, सद्गुरु-विषयक, साधना, etc.) with page-anchored excerpts. PDF extraction
+  is good Unicode Devanagari.
+
+  '

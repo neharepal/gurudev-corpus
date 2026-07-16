@@ -1,0 +1,49 @@
+- id: bca8e03caf11
+  flagged_at: '2026-06-27T20:10:54.756577+00:00'
+  status: pending
+  kind: issue
+  question: What are Gurudev's views on idol workship?
+  mode: qa
+  citations: []
+  category: quote-mismatch
+  note: ''
+  lang: ''
+- id: 4156ee6943ee
+  flagged_at: '2026-06-28T15:25:16.287782+00:00'
+  status: pending
+  kind: issue
+  question: Can you provide athvani of Amburao maharaj in the context of namasmaran
+  mode: qa
+  citations:
+  - workTitle: बाबांच्या आठवणी
+    location: Bābāñcyā Āṭhavaṇī, Appendix, pp. 257–258
+    body: God behaves with his devotees in the manner in which they behave towards
+      Him
+  - workTitle: बाबांच्या आठवणी
+    location: Bābāñcyā Āṭhavaṇī, Appendix, pp. 257–258
+    body: if the Guru is cross with you, no being in the world will come to help you
+  - workTitle: Glimpses of Sri Gurudev (ed. B. R. Kulkarni, ACPR Belgaum, 1990)
+    location: Glimpses of Sri Gurudev, 'Harbinger of Renaissance' section
+    body: 'when a man
+
+      makes continuously for three hours, he feels as if he has drunk half a seer
+      of rich
+
+      milk'
+  category: translation-issue
+  note: '"when a man makes continuously for three hours, he feels as if he has drunk
+    half a seer of rich milk" -  the word makes here seems wrong'
+  lang: ''
+  answer_text: 'Amburao Maharaj — Shri Baba of Jigjeewani and senior spiritual brother
+    of Shri Gurudev — was, by all accounts, a living embodiment of nāmasmaraṇa. The
+    athvani literature preserves several beautiful glimpses of how he spoke about
+    God''s response to the devotee, how the Name sustained him even through hunger,
+    and how he guided aspirants in their daily practice. The passages retrieved here
+    offer a small but precious window into that teaching.
+
+
+    These athvani together reveal the richness of Amburao Maharaj''s teaching on nāmasmaraṇa:
+    it is not a mechanical repetition but a living relationship with God — one that
+    mirrors the devotee''s inner sincerity, draws upon Guru-grace, and is so nourishing
+    that it can literally satisfy hunger. For a fuller immersion in these recollections,
+    the work "Bābāñcyā Āṭhavaṇī" is warmly worth exploring.'

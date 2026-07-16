@@ -1,24 +1,25 @@
 id: devotees
-title: "श्री गुरुदेवांचे मातृप्रेम"
-title_en: "Shri Gurudev's Matruprema (Mother-Love)"
-title_translit: ""
+title: श्री गुरुदेवांचे मातृप्रेम
+title_en: Shri Gurudev's Matruprema (Mother-Love)
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: dilip_naik
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: श्री गुरुदेवांचे मातृप्रेम.docx
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +27,10 @@ status: extracted
 text_extraction_method: pandoc
 extracted_on: 2026-06-14
 word_count: 3140
-quality_notes: ""
-notes: |
-  Short anthology of recollections about Gurudev Ranade's mother and her influence on his spiritual life. Folder slug is `devotees/` but the work title is `Matruprema` — slug was chosen at attribution time; preserved as-is per attribution decisions.
+quality_notes: '[authorship-audit 2026-07-11] author ''''→''dilip_naik'': Biographical
+  reminiscences of Gurudev''s Matruprema compiled by Dilip R. Naik'
+notes: 'Short anthology of recollections about Gurudev Ranade''s mother and her influence
+  on his spiritual life. Folder slug is `devotees/` but the work title is `Matruprema`
+  — slug was chosen at attribution time; preserved as-is per attribution decisions.
+
+  '

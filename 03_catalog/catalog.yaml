@@ -195,6 +195,24 @@ works:
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/charitra-tatvajnan-tulpule/
+- id: kakanchi-pravachane
+  title: काकांची प्रवचने
+  author: kakasaheb_tulpule
+  languages:
+  - mr
+  path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/
+- id: sadhakachi-atmakatha
+  title: साधकाची आत्मकथा
+  author: kakasaheb_tulpule
+  languages:
+  - mr
+  path: 01_canonical/kakasaheb_tulpule/books/sadhakachi-atmakatha/
+- id: swanandacha-gabha
+  title: स्वानंदाचा गाभा
+  author: about_other_devotees
+  languages:
+  - mr
+  path: 02_aggregated/biography/about_other_devotees/swanandacha-gabha/
 stories:
 - id: the-old-house-at-nimbal
   path: 02_aggregated/athvani/about_gurudev_ranade/stories/the-old-house-at-nimbal/

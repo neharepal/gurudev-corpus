@@ -1,24 +1,25 @@
 id: shri-gurudevanchya-athvani-2024
-title: "श्री गुरुदेवांच्या आठवणी २०२४"
-title_en: "Shri Gurudevanchya Athvani 2024 (Reminiscences of Shri Gurudev — 2024 collection)"
-title_translit: ""
+title: श्री गुरुदेवांच्या आठवणी २०२४
+title_en: Shri Gurudevanchya Athvani 2024 (Reminiscences of Shri Gurudev — 2024 collection)
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: unknown_compiler
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: श्री गुरुदेवांच्या आठवणी २०२४.docx
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +27,10 @@ status: extracted
 text_extraction_method: pandoc
 extracted_on: 2026-06-14
 word_count: 498
-quality_notes: ""
-notes: |
-  Compact 2024 collection of thematic athvani: bhutadaya/sarvatmabhav, Maharaj's remembrance, fearlessness, and Approximation siddhanta. Drawn from Punyasmruti and other sources.
+quality_notes: '[authorship-audit 2026-07-11] author ''''→''unknown_compiler'': Devotees''
+  athvani (reminiscences) about Gurudev; compiler unnamed'
+notes: 'Compact 2024 collection of thematic athvani: bhutadaya/sarvatmabhav, Maharaj''s
+  remembrance, fearlessness, and Approximation siddhanta. Drawn from Punyasmruti and
+  other sources.
+
+  '

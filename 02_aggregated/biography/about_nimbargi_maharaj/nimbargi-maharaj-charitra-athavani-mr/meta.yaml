@@ -1,32 +1,37 @@
 id: nimbargi-maharaj-charitra-athavani-mr
-title: 'परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी'
-title_en: 'Nimbargi Maharaj — Life and Recollections'
-title_translit: ""
+title: परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी
+title_en: Nimbargi Maharaj — Life and Recollections
+title_translit: ''
 about_member: nimbargi_maharaj
-author: ""
+author: disciples_compilers
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
+languages_available:
+- mr
+year_first_published: ''
 year_this_edition: ''
 publisher: ''
-edition: ""
-isbn: ""
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी.docx
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: bf3d69289bd8ab30110c3fbb7050beffe44762fed689382df82aa44f0e2f470b
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of परमपूज्य श्रीनिम्बर्गी महाराज
+    चरित्र व आठवणी.docx
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: bf3d69289bd8ab30110c3fbb7050beffe44762fed689382df82aa44f0e2f470b
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
 text_extraction_method: docx-xml
-quality_notes: 'Charitra + athavani. Marathi body with some English front matter.'
-notes: |
-  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+quality_notes: 'Charitra + athavani. Marathi body with some English front matter.
+  [authorship-audit 2026-07-11] author ''''→''disciples_compilers'': Reminiscences
+  ABOUT Nimbargi Maharaj compiled by disciples'
+notes: 'Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive ''Dump 3.zip'').
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source

@@ -1,24 +1,26 @@
 id: gurusamarpit-jivan
-title: "गुरुसमर्पित जीवन"
-title_en: "Gurusamarpit Jivan: Biography of Dr. Vinayak Hari Date (1900–1986), a disciple of Shri Gurudev Ranade"
-title_translit: ""
+title: गुरुसमर्पित जीवन
+title_en: 'Gurusamarpit Jivan: Biography of Dr. Vinayak Hari Date (1900–1986), a disciple
+  of Shri Gurudev Ranade'
+title_translit: ''
 about_member: other_devotees
-author: ""
+author: moreshwar_rabade
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: GuruSamrpit Jivan - 1-8 th Demmy 280 pages.pdf
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +28,14 @@ status: extracted
 text_extraction_method: pdf-text
 extracted_on: 2026-06-14
 word_count: 66304
-quality_notes: "partial-devanagari-fragmentation"
-notes: |
-  Marathi biography of Dr. Vinayak Hari Date (b. 1-6-1900, d. 22-4-1986), compiled by Moreshwar Shankar Rabade, Pune (2022). Mixed Marathi-Hindi-English text. PDF extraction shows partial Devanagari glyph fragmentation (~30% short tokens, vs ~18% in well-extracted PDFs) — ligature/matra clustering is not fully preserved by pdftotext. Devanagari is mostly legible but quality is below pandoc/clean-PDF baseline. Recommend re-extraction with OCR or font-mapping for production retrieval.
+quality_notes: 'partial-devanagari-fragmentation [authorship-audit 2026-07-11] author
+  ''''→''moreshwar_rabade'': Biography of V. H. Date; compiler Moreshwar Shankar Rabade,
+  2022'
+notes: 'Marathi biography of Dr. Vinayak Hari Date (b. 1-6-1900, d. 22-4-1986), compiled
+  by Moreshwar Shankar Rabade, Pune (2022). Mixed Marathi-Hindi-English text. PDF
+  extraction shows partial Devanagari glyph fragmentation (~30% short tokens, vs ~18%
+  in well-extracted PDFs) — ligature/matra clustering is not fully preserved by pdftotext.
+  Devanagari is mostly legible but quality is below pandoc/clean-PDF baseline. Recommend
+  re-extraction with OCR or font-mapping for production retrieval.
+
+  '

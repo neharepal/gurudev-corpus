@@ -1,32 +1,36 @@
 id: ranade-and-his-spiritual-lineage
-title: 'R. D. Ranade and His Spiritual Lineage'
-title_en: 'R. D. Ranade and His Spiritual Lineage'
-title_translit: ""
+title: R. D. Ranade and His Spiritual Lineage
+title_en: R. D. Ranade and His Spiritual Lineage
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: v_h_date
 co_authors: []
 kind: biography
 work_type: biography
 original_language: en
-languages_available: [en]
-year_first_published: ""
+languages_available:
+- en
+year_first_published: ''
 year_this_edition: '2015'
 publisher: ''
-edition: ""
-isbn: ""
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Date Spiritual Lineage 2015.117278.R-D-Ranade-And-His-Spiritual-Lineage.pdf
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: d9febfae81d099e9235e49f3f6c39a2dca5451fe9cba8d45534c5d1ccea48213
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Date Spiritual Lineage 2015.117278.R-D-Ranade-And-His-Spiritual-Lineage.pdf
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: d9febfae81d099e9235e49f3f6c39a2dca5451fe9cba8d45534c5d1ccea48213
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
 text_extraction_method: ocr-tesseract
-quality_notes: 'OCR clean (642K chars). Tail carries a Ramdas abhang.'
-notes: |
-  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+quality_notes: 'OCR clean (642K chars). Tail carries a Ramdas abhang. [authorship-audit
+  2026-07-11] author ''''→''v_h_date'': ''R. D. Ranade and His Spiritual Lineage''
+  by V. H. Date, 1982 — biography'
+notes: 'Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive ''Dump 3.zip'').
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source

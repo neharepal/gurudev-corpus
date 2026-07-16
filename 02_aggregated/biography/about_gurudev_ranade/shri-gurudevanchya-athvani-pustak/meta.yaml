@@ -1,24 +1,26 @@
 id: shri-gurudevanchya-athvani-pustak
-title: "श्री गुरुदेवांच्या आठवणी पुस्तक"
-title_en: "Shri Gurudevanchya Athvani Pustak (Reminiscences of Shri Gurudev — book-length anthology)"
-title_translit: ""
+title: श्री गुरुदेवांच्या आठवणी पुस्तक
+title_en: Shri Gurudevanchya Athvani Pustak (Reminiscences of Shri Gurudev — book-length
+  anthology)
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: unknown_devotee
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: श्री गुरुदेवांच्या आठवणी पुस्तक.docx
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +28,9 @@ status: extracted
 text_extraction_method: pandoc
 extracted_on: 2026-06-14
 word_count: 25252
-quality_notes: ""
-notes: |
-  Book-length anthology of Marathi athvani about Shri Gurudev. Multiple narrators, numbered sections (तेजोदर्शन, सहस्त्राक्षदर्शन, etc.). Clean pandoc extraction.
+quality_notes: '[authorship-audit 2026-07-11] author ''''→''unknown_devotee'': 1st-person
+  disciple recollections about Gurudev'
+notes: 'Book-length anthology of Marathi athvani about Shri Gurudev. Multiple narrators,
+  numbered sections (तेजोदर्शन, सहस्त्राक्षदर्शन, etc.). Clean pandoc extraction.
+
+  '

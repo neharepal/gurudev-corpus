@@ -1,38 +1,59 @@
 id: kakanchi-pravachane
-title: "Kakanchi Pravachane"
-title_en: "Kakanchi Pravachane"
-title_translit: ""
+title: Kakanchi Pravachane
+title_en: Kakanchi Pravachane
+title_translit: ''
 author: kakasaheb_tulpule
 co_authors: []
 work_type: lecture
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग १_.pdf
-    received_on: 2026-06-11
-    received_in_batch: drive_dump_2026-06-11
-    checksum_sha256: ""
-  - raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग २_.pdf
-    received_on: 2026-06-11
-    received_in_batch: drive_dump_2026-06-11
-    checksum_sha256: ""
-  - raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची प्रवचने भाग ३.pdf
-    received_on: 2026-06-11
-    received_in_batch: drive_dump_2026-06-11
-    checksum_sha256: ""
+- raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची
+    प्रवचने भाग १_.pdf
+  received_on: 2026-06-11
+  received_in_batch: drive_dump_2026-06-11
+  checksum_sha256: ''
+- raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची
+    प्रवचने भाग २_.pdf
+  received_on: 2026-06-11
+  received_in_batch: drive_dump_2026-06-11
+  checksum_sha256: ''
+- raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची
+    प्रवचने भाग ३.pdf
+  received_on: 2026-06-11
+  received_in_batch: drive_dump_2026-06-11
+  checksum_sha256: ''
+- raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची
+    प्रवचने भाग ४.pdf
+  received_on: '2026-07-11'
+  received_in_batch: drive_dump_2026-07-10
+  checksum_sha256: bb70946b5d8495be12827d9eb596b8c51c0aa2d73c1252d55ff8fbdf09708ecc
+- raw_path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/mr/काकांची
+    प्रवचने भाग ५.pdf
+  received_on: '2026-07-11'
+  received_in_batch: drive_dump_2026-07-10
+  checksum_sha256: 23779bc0b08fc8a7b39a4857e5039732575bde41e30c98321ed462c4bd10fc46
 tags:
-  - lectures
-  - kakasaheb
-  - marathi
+- lectures
+- kakasaheb
+- marathi
 subject_persons: []
 related_works: []
 status: extracted
-text_extraction_method: pdftotext
-quality_notes: ""
-notes: |
-  Extracted 2026-06-13 in bulk task #11. Method: pdftotext.
+text_extraction_method: 'vols 1-3: pdftotext -layout; vols 4-5: tesseract mar+san+eng
+  @300dpi (Neha3 OCR)'
+quality_notes: Vols 4-5 added 2026-07-11 from Neha3 scans via tesseract OCR (ocr_qa
+  PASS, no header/footer leak).
+notes: 'Extracted 2026-06-13 in bulk task #11. Method: pdftotext.
+
+
+  Vols 4 (280p) & 5 (224p) appended 2026-07-11 (Neha3), completing the 1-5 lecture
+  series.
+
+  '

@@ -1,32 +1,36 @@
 id: nimbargi-maharaj-biography-en
-title: 'Nimbargi Maharaj — A Biography'
-title_en: 'Nimbargi Maharaj — A Biography'
-title_translit: ""
+title: Nimbargi Maharaj — A Biography
+title_en: Nimbargi Maharaj — A Biography
+title_translit: ''
 about_member: nimbargi_maharaj
-author: ""
+author: acpr_disciples
 co_authors: []
 kind: biography
 work_type: biography
 original_language: en
-languages_available: [en]
-year_first_published: ""
+languages_available:
+- en
+year_first_published: ''
 year_this_edition: ''
-publisher: 'Academy of Comparative Philosophy and Religion, Belgaum'
-edition: ""
-isbn: ""
+publisher: Academy of Comparative Philosophy and Religion, Belgaum
+edition: ''
+isbn: ''
 sources:
-  - raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Nimbargi Maharaj Biography_.pdf
-    received_on: 2026-06-22
-    received_in_batch: drive_dump_2026-06-22
-    checksum_sha256: b2022e853b7d769b51b0bc42e4cc460c6611e0c58b1757fff0a90d09040512d7
+- raw_path: 00_raw/drive_dump_2026-06-22/Neha 2/Copy of Nimbargi Maharaj Biography_.pdf
+  received_on: 2026-06-22
+  received_in_batch: drive_dump_2026-06-22
+  checksum_sha256: b2022e853b7d769b51b0bc42e4cc460c6611e0c58b1757fff0a90d09040512d7
 tags: []
 subject_persons: []
 related_works: []
 status: extracted
 text_extraction_method: ocr-tesseract
-quality_notes: 'OCR from scan.'
-notes: |
-  Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive 'Dump 3.zip').
+quality_notes: 'OCR from scan. [authorship-audit 2026-07-11] author ''''→''acpr_disciples'':
+  ''Sri Nimbargi Maharaj (His Life and Teaching)'', ''Disciples'', ACPR Belgaum 1978
+  — about him'
+notes: 'Ingested 2026-06-22 from batch drive_dump_2026-06-22 (Drive ''Dump 3.zip'').
+
+  '
 external_verification:
   verified: false
   reason: extracted_not_yet_verified_against_published_source

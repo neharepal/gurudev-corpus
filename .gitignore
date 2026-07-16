@@ -74,3 +74,9 @@ _surya_ocr_job/
 
 # Surya re-OCR generated decisions (transient)
 tools/surya_ocr/replace_decisions.yaml
+
+# runtime logs
+logs/
+
+# transient backups
+04_processed/_bak-*/

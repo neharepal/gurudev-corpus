@@ -1,24 +1,26 @@
 id: how-nimbal-was-chosen
-title: "निंबाळची निवड कशी झाली"
-title_en: "How Nimbal Was Chosen (Account of how the Nimbal site was selected for Shri Gurudev's ashram)"
-title_translit: ""
+title: निंबाळची निवड कशी झाली
+title_en: How Nimbal Was Chosen (Account of how the Nimbal site was selected for Shri
+  Gurudev's ashram)
+title_translit: ''
 about_member: gurudev_ranade
-author: ""
+author: unknown_devotee
 co_authors: []
 kind: biography
 work_type: biography
 original_language: mr
-languages_available: [mr]
-year_first_published: ""
-year_this_edition: ""
-publisher: ""
-edition: ""
-isbn: ""
+languages_available:
+- mr
+year_first_published: ''
+year_this_edition: ''
+publisher: ''
+edition: ''
+isbn: ''
 sources:
-  - raw_path: ""  # source file: निंबाळची निवड कशी झाली.docx
-    received_on: ""
-    received_in_batch: ""
-    checksum_sha256: ""
+- raw_path: ''
+  received_on: ''
+  received_in_batch: ''
+  checksum_sha256: ''
 tags: []
 subject_persons: []
 related_works: []
@@ -26,6 +28,9 @@ status: extracted
 text_extraction_method: pandoc
 extracted_on: 2026-06-14
 word_count: 243
-quality_notes: ""
-notes: |
-  Single-page narrative excerpt describing Rambhau (Gurudev Ranade)'s 1922 vision at Inchgeri and the subsequent selection of the Nimbal site for the ashram.
+quality_notes: '[authorship-audit 2026-07-11] author ''''→''unknown_devotee'': 3rd-person
+  account ABOUT Gurudev selecting Nimbal; no author named'
+notes: 'Single-page narrative excerpt describing Rambhau (Gurudev Ranade)''s 1922
+  vision at Inchgeri and the subsequent selection of the Nimbal site for the ashram.
+
+  '
