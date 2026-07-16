@@ -655,7 +655,18 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
             result = False
         else:
             meta = chunk.get("meta") or {}
-            text = chunk.get("text") or ""
+            # RFC-017 Task 7: retrieval-only children (e.g. arthasahit uncertain
+            # split) are non-quotable — clear any model-provided body so the
+            # caller drops the citation rather than expose the sadhak-authored
+            # meaning as if it were Gurudev's words.
+            if meta.get("retrieval_only"):
+                quote["body"] = ""
+                return False
+            # Prefer the child's citable span (`cite_text`) over the whole
+            # passage the LLM saw (`chunk["text"]` = parent in small-to-big):
+            # anchors match inside the cite_text on the happy path, and the
+            # full-passage fallback stays cite-only (verse only for arthasahit).
+            text = meta.get("cite_text") or chunk.get("text") or ""
             body = _splice_span(text, start, end)
             ok = body is not None
             # Spliced text wins over any model-emitted body. On a start-anchor
