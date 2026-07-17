@@ -1,0 +1,64 @@
+# RFC-016 backend + reverse-proxy stack for a Lightsail (or any Docker host)
+# deploy. Runs two services:
+#
+#   backend  — FastAPI + BGE-M3 + in-RAM embeddings/BM25 index
+#   caddy    — reverse proxy + automatic Let's Encrypt TLS on ${DOMAIN}
+#
+# Data (04_processed/, 01_canonical/) is bind-mounted from the host so the
+# corpus can be refreshed without rebuilding the image. Logs go to a named
+# volume so they survive `docker compose down`.
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: gurudev-backend:latest
+    container_name: gurudev-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # ENABLE_SMALL_TO_BIG defaults ON in-code when parents.jsonl loads; set to
+      # "0" here only to force the flat-index fallback (pre-Phase-2 rollback).
+      # ANTHROPIC_API_KEY / INVITE_CODE / FRONTEND_ORIGIN come from .env.
+      GURUDEV_BACKEND_PORT: "8765"
+    volumes:
+      # Corpus data — rsync'd once, refreshed via rsync + docker compose restart.
+      - ${DATA_ROOT:-/home/ubuntu/data}/04_processed:/app/04_processed:ro
+      - ${DATA_ROOT:-/home/ubuntu/data}/01_canonical:/app/01_canonical:ro
+      # Feedback / issue logs — persistent so a redeploy doesn't lose them.
+      - backend_logs:/app/logs
+    expose:
+      - "8765"
+    # No direct host port — traffic funnels through Caddy so TLS + rate limits
+    # apply uniformly.
+    networks:
+      - edge
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: gurudev-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"     # HTTP → 301 to HTTPS via Caddyfile
+      - "443:443"   # HTTPS
+    env_file:
+      - .env
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data           # Let's Encrypt certs — MUST persist
+      - caddy_config:/config
+    depends_on:
+      - backend
+    networks:
+      - edge
+
+volumes:
+  backend_logs:
+  caddy_data:
+  caddy_config:
+
+networks:
+  edge:
+    driver: bridge

@@ -1,0 +1,41 @@
+# Caddy reverse proxy: automatic Let's Encrypt TLS, HTTP→HTTPS redirect,
+# reasonable timeouts for our long-lived LLM streams (up to ~40 s per /ask).
+#
+# {$DOMAIN}, {$LETSENCRYPT_EMAIL} come from .env via docker-compose env_file.
+# On the host: set DOMAIN=api.yourdomain.com and LETSENCRYPT_EMAIL=you@... in
+# `deploy/.env` before `docker compose up -d`.
+
+{
+	# Global options — email drives Let's Encrypt account for renewal notices.
+	email {$LETSENCRYPT_EMAIL}
+	# Skip these entirely in local dev; production defaults are fine.
+}
+
+{$DOMAIN} {
+	# All /ask + /report + /read traffic hits FastAPI. Streaming is enabled by
+	# default in modern Caddy for text/event-stream.
+	reverse_proxy backend:8765 {
+		# LLM answers can take ~30-40 s under Sonnet enforce mode; give the
+		# upstream generous read/write timeouts so streams aren't cut mid-flight.
+		transport http {
+			response_header_timeout 90s
+			read_timeout            120s
+			write_timeout           120s
+			dial_timeout            10s
+		}
+	}
+
+	# Access log to stdout so `docker compose logs caddy` shows requests.
+	log {
+		output stdout
+		format console
+	}
+
+	# Reasonable security headers. CORS is set on the FastAPI side (locks to
+	# the Vercel origin); this is defence-in-depth for the browser side.
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options    "nosniff"
+		Referrer-Policy           "no-referrer"
+	}
+}
