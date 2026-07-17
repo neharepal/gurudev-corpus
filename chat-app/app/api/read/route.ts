@@ -7,6 +7,7 @@
 // — same constant as /api/ask/route.ts.
 
 import { NextRequest, NextResponse } from "next/server";
+import { COOKIE_NAME as GATE_COOKIE } from "../gate/route";
 
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";
@@ -27,9 +28,14 @@ export async function GET(req: NextRequest) {
 
   const url = `${BACKEND_URL}/read/${encodeURIComponent(slug)}${qs.toString() ? "?" + qs.toString() : ""}`;
 
+  const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+
   let upstream: Response;
   try {
-    upstream = await fetch(url, { cache: "no-store" });
+    upstream = await fetch(url, {
+      cache: "no-store",
+      headers: { "X-Invite-Code": invite },
+    });
   } catch {
     return NextResponse.json(
       {
@@ -37,6 +43,15 @@ export async function GET(req: NextRequest) {
       },
       { status: 502 },
     );
+  }
+
+  if (upstream.status === 401) {
+    const res = NextResponse.json(
+      { error: "invite_required", redirect: "/gate?reason=invalid" },
+      { status: 401 },
+    );
+    res.cookies.delete(GATE_COOKIE);
+    return res;
   }
 
   const data = await upstream.json();

@@ -14,9 +14,10 @@
 //
 // Backend URL: process.env.GURUDEV_BACKEND_URL || "http://localhost:8765".
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import type { ModeId } from "../../../data/mock-conversations";
+import { COOKIE_NAME as GATE_COOKIE } from "../gate/route";
 
 export const runtime = "nodejs"; // SSE doesn't work cleanly on the edge runtime.
 
@@ -35,7 +36,7 @@ type AskRequest = {
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   let body: AskRequest;
   try {
     body = (await req.json()) as AskRequest;
@@ -59,6 +60,11 @@ export async function POST(req: Request) {
   const accept = req.headers.get("accept") || "";
   const wantsStream = accept.includes("text/event-stream");
 
+  // Forward the invite cookie as an X-Invite-Code header — the middleware
+  // guarantees a cookie is present (401'd otherwise) so this always has a
+  // value in prod. Backend validates against INVITE_CODE (tools/gate.py).
+  const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+
   let upstream: Response;
   try {
     upstream = await fetch(`${BACKEND_URL}/ask`, {
@@ -66,6 +72,7 @@ export async function POST(req: Request) {
       headers: {
         "Content-Type": "application/json",
         Accept: wantsStream ? "text/event-stream" : "application/json",
+        "X-Invite-Code": invite,
       },
       body: JSON.stringify({ ...body, question: question.trim() }),
     });
@@ -79,6 +86,27 @@ export async function POST(req: Request) {
   }
 
   if (!upstream.ok) {
+    // 401 from the backend gate = stale/invalid invite cookie. Bounce back to
+    // /gate with a reason flag so the sadhak sees a helpful hint.
+    if (upstream.status === 401) {
+      const res = NextResponse.json(
+        { error: "invite_required", redirect: "/gate?reason=invalid" },
+        { status: 401 },
+      );
+      res.cookies.delete(GATE_COOKIE);
+      return res;
+    }
+    // 429 = daily cap. Pass through so the UI can show the friendly detail.
+    if (upstream.status === 429) {
+      const data = (await upstream.json().catch(() => ({}))) as {
+        detail?: string;
+        error?: string;
+      };
+      return NextResponse.json(
+        { error: data.error || "daily_cap_reached", detail: data.detail },
+        { status: 429 },
+      );
+    }
     let detail = `Backend returned ${upstream.status}`;
     try {
       const data = (await upstream.json()) as { detail?: string; error?: string };
