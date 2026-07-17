@@ -37,6 +37,11 @@ os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from gate import InviteAndCapMiddleware
+import logging_config  # noqa: E402  # side-effect module
+
+# Wire structured logging early so uvicorn access logs use the same handler.
+logging_config.configure()
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
@@ -724,13 +729,28 @@ def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
 
 app = FastAPI(title="Gurudev Sangrah backend", version="0.1.0")
 
-# Allow the local Next.js dev server to call us cross-origin.
+# CORS: comma-separated list from FRONTEND_ORIGIN env; defaults to the local
+# Next.js dev server so `make dev` still works. In production
+# (RFC-016 §3), set FRONTEND_ORIGIN=https://<your-vercel-domain> — no other
+# origin can drive the paid backend. Multiple deploys (prod + preview) can be
+# comma-separated.
+_cors_origins = [
+    o.strip()
+    for o in os.environ.get("FRONTEND_ORIGIN", "http://localhost:3000").split(",")
+    if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_cors_origins,
     allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
 )
+
+# RFC-016 §3 light gate: invite-code header check + hard daily cap on /ask.
+# Both are no-ops when their env vars are unset, so `make dev` isn't affected.
+# Middlewares run outermost-first: CORS handles preflight before the gate ever
+# sees the request (preflights carry no auth headers by design).
+app.add_middleware(InviteAndCapMiddleware)
 
 
 PARENTS_PATH = REPO / "04_processed" / "parents.jsonl"
@@ -835,11 +855,62 @@ def _load_everything() -> None:
 
 @app.get("/health")
 def health() -> Dict[str, Any]:
+    """LB-style health probe (RFC-016 §4 + scale-ready seam).
+
+    Returns 200 with `status`:
+      - "warming"  — startup hasn't finished (model/BM25 still loading)
+      - "ready"    — serving traffic
+      - "degraded" — running but a subsystem is off (e.g. parents.jsonl absent,
+                     small-to-big disabled but flag was on)
+
+    Callable without the invite header; middleware allowlists /health. Load
+    balancers should require "ready" before routing traffic.
+    """
+    embeddings = getattr(STATE, "embeddings", None)
+    metas = getattr(STATE, "metas", None) or []
+    model_ready = getattr(STATE, "model", None) is not None
+    parents_ready = bool(getattr(STATE, "parents_by_id", None))
+
+    if embeddings is None or not model_ready or not metas:
+        status = "warming"
+    elif not parents_ready and os.environ.get("ENABLE_SMALL_TO_BIG", "1") != "0":
+        # Flag says small-to-big should be on, but no parents.jsonl loaded.
+        status = "degraded"
+    else:
+        status = "ready"
+
+    # Include the gate/cap counter so a future admin dashboard can render it.
+    gate_status: Dict[str, Any] = {}
+    for m in getattr(app, "user_middleware", []) or []:
+        cls = getattr(m, "cls", None)
+        if cls is InviteAndCapMiddleware:
+            # Middleware is instantiated by starlette; find the live instance.
+            # (No supported public API — pull from app.middleware_stack lazily.)
+            stack = getattr(app, "middleware_stack", None)
+            gate_status = _resolve_gate_status(stack)
+            break
+
     return {
-        "ok": True,
-        "model": STATE.model_name,
-        "chunks": len(STATE.metas),
+        "status": status,
+        "model": getattr(STATE, "model_name", None),
+        "chunks": len(metas),
+        "parents_loaded": len(getattr(STATE, "parents_by_id", None) or {}),
+        "gate": gate_status,
     }
+
+
+def _resolve_gate_status(node) -> Dict[str, Any]:
+    """Walk starlette's middleware chain to find the live InviteAndCapMiddleware
+    instance and return its status() dict. Silent no-op if the chain isn't
+    built yet (during initial reload) or the instance can't be found."""
+    while node is not None:
+        if isinstance(node, InviteAndCapMiddleware):
+            try:
+                return node.status()
+            except Exception:
+                return {}
+        node = getattr(node, "app", None)
+    return {}
 
 
 @app.post("/admin/reload")
