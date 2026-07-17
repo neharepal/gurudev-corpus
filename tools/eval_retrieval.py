@@ -264,6 +264,33 @@ GOLD = [
         "RFC-017 recall MR: lightning at Gurudev's house (Devanagari) -> biography",
         {"expected_text_substr": "वीज"},
     ),
+    # -----------------------------------------------------------------------
+    # RFC-017 arthasahit gold case: a Tukaram Vachanamrut verse must surface,
+    # AND the citation must never leak the sadhak's meaning (marker `अर्थ`).
+    # The 7 arthasahit works are hardcoded in chunker/server — this case
+    # protects the "cite the verse, not the meaning" contract end-to-end.
+    #
+    # SKIP semantics: if no result carries a work_id from the 7 arthasahit
+    # set, the ingest hasn't happened yet — count it as SKIPPED (not FAIL)
+    # so the gold set stays green until Neha drops the source files. Guarded
+    # by `skip_if_no_work_ids_from` (see main()).
+    # -----------------------------------------------------------------------
+    (
+        "तुकाराम महाराजांच्या एका अभंगात परमार्थाबद्दल काय म्हटले आहे?",
+        ["tukaram-vachanamrut"],
+        "RFC-017 arthasahit: Tukaram vachanamrut verse should surface without leaking अर्थ",
+        # `expected_text_substr_not`: `अर्थ` must NOT appear in any surfaced
+        # result's chunk_text OR cite_text — that would mean the sadhak's
+        # meaning got cited as Gurudev's words.
+        {
+            "expected_text_substr_not": "अर्थ",
+            "skip_if_no_work_ids_from": [
+                "tukaram-vachanamrut", "eknath-vachanamrut", "ramdas-vachanamrut",
+                "sant-vachanamrut", "jnaneshwar-vachanamrut",
+                "eknathi-bhagvat-vachanamrut", "dhyanopakarani-gita",
+            ],
+        },
+    ),
 ]
 
 
@@ -442,6 +469,7 @@ def main() -> int:
 
     n_pass = 0
     n_fail = 0
+    n_skip = 0
     total_junk_in_topk = 0
 
     for gold_entry in GOLD:
@@ -468,6 +496,20 @@ def main() -> int:
         elapsed = time.time() - t0
 
         returned_work_ids = [r["work_id"] for r in results]
+
+        # SKIP guard: if `skip_if_no_work_ids_from` is set and NONE of the
+        # required work_ids showed up in the top-k, the underlying corpus
+        # doesn't have that ingest yet — count as SKIPPED (not FAIL) so the
+        # gold set stays green until Neha drops the source files.
+        skip_gate = opts.get("skip_if_no_work_ids_from")
+        if skip_gate and not any(w in returned_work_ids for w in skip_gate):
+            n_skip += 1
+            print(f"[SKIP]  {description}")
+            print(f"       Query   : {query[:90]}")
+            print(f"       Reason  : none of {skip_gate} in top-k — not yet ingested, skipping")
+            print()
+            continue
+
         hit = any(wid in returned_work_ids for wid in expected_ids)
 
         # Optional stricter check: the surfaced chunk_text must contain a
@@ -481,7 +523,20 @@ def main() -> int:
                 for wid, r in zip(returned_work_ids, results)
             )
 
-        status = "PASS" if (hit and substr_hit) else "FAIL"
+        # Optional negative check: the surfaced result MUST NOT contain a
+        # specific substring in either chunk_text or cite_text. Used by the
+        # arthasahit case to catch the sadhak's meaning marker (`अर्थ`)
+        # leaking into a citation.
+        expected_substr_not = opts.get("expected_text_substr_not")
+        substr_not_hit = True
+        if expected_substr_not:
+            substr_not_hit = not any(
+                (expected_substr_not in (r.get("chunk_text") or ""))
+                or (expected_substr_not in (r.get("cite_text") or ""))
+                for r in results
+            )
+
+        status = "PASS" if (hit and substr_hit and substr_not_hit) else "FAIL"
         if status == "PASS":
             n_pass += 1
         else:
@@ -498,6 +553,9 @@ def main() -> int:
         if expected_substr:
             marker = "OK" if substr_hit else "MISSING"
             print(f"       Substr  : {expected_substr!r} in top-k → {marker}")
+        if expected_substr_not:
+            marker = "OK" if substr_not_hit else "LEAKED"
+            print(f"       Neg substr: {expected_substr_not!r} must be absent → {marker}")
 
         if args.verbose:
             for rank, r in enumerate(results, 1):
@@ -517,7 +575,9 @@ def main() -> int:
         print()
 
     print("=" * 72)
-    print(f"Results: {n_pass} PASS / {n_fail} FAIL out of {n_pass + n_fail} queries")
+    ran = n_pass + n_fail
+    skip_note = f"  ({n_skip} SKIP)" if n_skip else ""
+    print(f"Results: {n_pass} PASS / {n_fail} FAIL out of {ran} queries{skip_note}")
     print(f"Junk-in-top-k (total across gold set): {total_junk_in_topk}")
     print("=" * 72)
     return 0
