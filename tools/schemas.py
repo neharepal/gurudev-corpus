@@ -662,11 +662,18 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
             if meta.get("retrieval_only"):
                 quote["body"] = ""
                 return False
-            # Prefer the child's citable span (`cite_text`) over the whole
-            # passage the LLM saw (`chunk["text"]` = parent in small-to-big):
-            # anchors match inside the cite_text on the happy path, and the
-            # full-passage fallback stays cite-only (verse only for arthasahit).
-            text = meta.get("cite_text") or chunk.get("text") or ""
+            # RFC-017 splice source:
+            #   arthasahit (restrict_to_cite=True) → cite_text (verse only,
+            #     never leak the sadhak meaning that sits next to it in parent)
+            #   everything else → chunk["text"] (= the parent section in
+            #     small-to-big, or the flat chunk pre-Phase-2) so the LLM's
+            #     quoteStart/quoteEnd can span multiple sentences and the
+            #     citation body carries proper context, not just the child's
+            #     one-sentence anchor.
+            if meta.get("restrict_to_cite"):
+                text = meta.get("cite_text") or chunk.get("text") or ""
+            else:
+                text = chunk.get("text") or meta.get("cite_text") or ""
             body = _splice_span(text, start, end)
             ok = body is not None
             # Spliced text wins over any model-emitted body. On a start-anchor

@@ -63,15 +63,21 @@ def test_small_to_big_results_groups_children_into_parent_context():
 
 
 def test_small_to_big_retrieval_only_child_marks_meta_uncitable():
-    """A child without cite_text (arthasahit uncertain split) still contributes
-    parent context but is marked so splice drops the citation."""
-    metas = [{"id": "art--mr--0000--000", "parent_id": "art--mr--0000",
-              "kind_level": "child", "work_id": "art", "title": "Art",
-              "kind": "canonical", "language": "mr"}]
-    parents = {"art--mr--0000": {
-        "id": "art--mr--0000", "text": "verse and meaning here",
-        "work_id": "art", "title": "Art", "kind": "canonical",
-        "source_path": "01_canonical/art/mr/text.md", "language": "mr"}}
+    """An arthasahit child without cite_text (uncertain verse/meaning split)
+    still contributes parent context but is marked so splice drops the
+    citation — never risk quoting the sadhak's meaning as Gurudev's words."""
+    metas = [{"id": "tukaram-vachanamrut--mr--0000--000",
+              "parent_id": "tukaram-vachanamrut--mr--0000",
+              "kind_level": "child", "work_id": "tukaram-vachanamrut",
+              "title": "Tukaram Vachanamrut", "kind": "canonical",
+              "language": "mr"}]
+    parents = {"tukaram-vachanamrut--mr--0000": {
+        "id": "tukaram-vachanamrut--mr--0000",
+        "text": "verse and meaning here",
+        "work_id": "tukaram-vachanamrut", "title": "Tukaram Vachanamrut",
+        "kind": "canonical",
+        "source_path": "01_canonical/tukaram_vachanamrut/mr/text.md",
+        "language": "mr"}}
 
     out = server.small_to_big_results(
         [(0, 0.9)], metas, keep_idx=None, parents_by_id=parents,
@@ -81,6 +87,56 @@ def test_small_to_big_retrieval_only_child_marks_meta_uncitable():
     assert len(out) == 1
     assert "cite_text" not in out[0]["meta"]
     assert out[0]["meta"].get("retrieval_only") is True
+
+
+def test_small_to_big_arthasahit_child_sets_restrict_to_cite():
+    """An arthasahit child WITH cite_text must be marked `restrict_to_cite=True`
+    so splice reads from cite_text (verse only), never the parent that also
+    contains the meaning."""
+    metas = [{"id": "tukaram-vachanamrut--mr--0000--001",
+              "parent_id": "tukaram-vachanamrut--mr--0000",
+              "kind_level": "child", "work_id": "tukaram-vachanamrut",
+              "title": "Tukaram Vachanamrut", "kind": "canonical",
+              "language": "mr", "cite_text": "करीं धंदा परि आवडती पाय"}]
+    parents = {"tukaram-vachanamrut--mr--0000": {
+        "id": "tukaram-vachanamrut--mr--0000",
+        "text": "करीं धंदा परि आवडती पाय\nअर्थ - सादाकाचा गूढ अर्थ.",
+        "work_id": "tukaram-vachanamrut", "title": "Tukaram Vachanamrut",
+        "kind": "canonical",
+        "source_path": "01_canonical/tukaram_vachanamrut/mr/text.md",
+        "language": "mr"}}
+    out = server.small_to_big_results(
+        [(0, 0.9)], metas, keep_idx=None, parents_by_id=parents,
+        dense_scores=np.array([0.5], dtype=np.float32),
+        max_per_parent=2, top_k=8,
+    )
+    assert out[0]["meta"].get("cite_text") == "करीं धंदा परि आवडती पाय"
+    assert out[0]["meta"].get("restrict_to_cite") is True
+
+
+def test_small_to_big_prose_does_not_set_restrict_to_cite():
+    """Non-arthasahit (prose) small-to-big rows keep `cite_text` for reference
+    but must NOT set `restrict_to_cite` — splice defaults to the parent so the
+    LLM can quote 2–4 sentences of context, not just the child's one anchor."""
+    metas = [{"id": "charitra-tatvajnan-tulpule--mr--0088--008",
+              "parent_id": "charitra-tatvajnan-tulpule--mr--0088",
+              "kind_level": "child",
+              "work_id": "charitra-tatvajnan-tulpule",
+              "title": "Charitra", "kind": "canonical", "language": "mr",
+              "cite_text": "शेजारच्या घरावर वीज पडल्याचें ऐकून"}]
+    parents = {"charitra-tatvajnan-tulpule--mr--0088": {
+        "id": "charitra-tatvajnan-tulpule--mr--0088",
+        "text": "PARENT with several sentences of context around the lightning.",
+        "work_id": "charitra-tatvajnan-tulpule", "title": "Charitra",
+        "kind": "canonical",
+        "source_path": "01_canonical/charitra/mr/text.md", "language": "mr"}}
+    out = server.small_to_big_results(
+        [(0, 0.9)], metas, keep_idx=None, parents_by_id=parents,
+        dense_scores=np.array([0.5], dtype=np.float32),
+        max_per_parent=2, top_k=8,
+    )
+    assert out[0]["meta"].get("restrict_to_cite") is not True
+    assert out[0]["meta"].get("retrieval_only") is not True
 
 
 def test_small_to_big_uses_keep_idx_for_metadata_filter():

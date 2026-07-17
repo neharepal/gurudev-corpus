@@ -48,7 +48,8 @@ def test_splice_body_prefers_cite_text_over_parent_text():
 def test_splice_full_passage_fallback_uses_cite_text_not_parent():
     """When the anchors miss and the code falls back to the whole passage, the
     fallback body must be the citable `cite_text`, not the parent (which for
-    arthasahit contains the sadhak's meaning)."""
+    arthasahit contains the sadhak's meaning). Production wires
+    `restrict_to_cite=True` on arthasahit metas via `small_to_big_results`."""
     parent_text = ("करीं धंदा परि आवडती पाय ॥१॥\n"
                    "अर्थ - तुकाराम म्हणतात हे भक्तीचे वर्णन आहे.")
     cite_text = "करीं धंदा परि आवडती पाय"
@@ -57,6 +58,7 @@ def test_splice_full_passage_fallback_uses_cite_text_not_parent():
             "title": "Tukaram Vachanamrut", "author": "tukaram",
             "kind": "canonical", "work_id": "tukaram-vachanamrut",
             "cite_text": cite_text,
+            "restrict_to_cite": True,
         }),
     }
     tool_input = {
@@ -115,3 +117,61 @@ def test_splice_unchanged_when_cite_text_absent():
     schemas.splice_qa_citations(tool_input, label_to_chunk)
     body = tool_input["citations"][0]["quote"]["body"]
     assert body.startswith("Bhakti is the supreme means")
+
+
+def test_non_arthasahit_prose_splice_pulls_from_parent_not_cite_text():
+    """RFC-017 refinement: for prose (non-arthasahit) small-to-big output, the
+    LLM sees the full parent section and its quoteStart/quoteEnd should be able
+    to span multiple sentences. If splice sourced only from the child's
+    cite_text (one sentence), bodies would be capped at that single sentence
+    even when the LLM tried to quote a paragraph. Splice must default to
+    chunk['text'] (the parent) unless the meta explicitly says restrict_to_cite
+    (arthasahit)."""
+    parent_text = (
+        "First sentence about bhakti. Second sentence with the lightning miss. "
+        "Third sentence closes the paragraph."
+    )
+    child_cite = "Second sentence with the lightning miss."
+    label_to_chunk = {
+        "A": _chunk(parent_text, {
+            "title": "Charitra", "author": "tulpule",
+            "kind": "canonical", "work_id": "charitra-tatvajnan-tulpule",
+            "cite_text": child_cite,  # present but should not cap the body
+        }),
+    }
+    tool_input = {
+        "citations": [{
+            "quote": {"passage": "A",
+                       "quoteStart": "First sentence about bhakti",
+                       "quoteEnd": "closes the paragraph"}
+        }]
+    }
+    schemas.splice_qa_citations(tool_input, label_to_chunk)
+    body = tool_input["citations"][0]["quote"]["body"]
+    assert body.startswith("First sentence about bhakti")
+    assert body.rstrip(".").endswith("closes the paragraph")
+
+
+def test_arthasahit_restrict_to_cite_still_uses_cite_text():
+    """Arthasahit meta with `restrict_to_cite=True` must still splice from
+    cite_text (verse only), never falling through to the parent that could
+    include the sadhak-authored meaning."""
+    parent_text = "करीं धंदा परि आवडती पाय\nअर्थ - सादाकाचा गूढ अर्थ."
+    label_to_chunk = {
+        "V": _chunk(parent_text, {
+            "title": "Tukaram Vachanamrut", "author": "tukaram",
+            "kind": "canonical", "work_id": "tukaram-vachanamrut",
+            "cite_text": "करीं धंदा परि आवडती पाय",
+            "restrict_to_cite": True,
+        }),
+    }
+    tool_input = {
+        "citations": [{
+            "quote": {"passage": "V",
+                       "quoteStart": "करीं धंदा",
+                       "quoteEnd": "पाय"}
+        }]
+    }
+    schemas.splice_qa_citations(tool_input, label_to_chunk)
+    body = tool_input["citations"][0]["quote"]["body"]
+    assert "अर्थ" not in body, f"leaked meaning: {body!r}"

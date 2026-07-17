@@ -641,6 +641,13 @@ def expand_children_to_parents(ranked_idxs, metas, parents_by_id, *, max_per_par
     return [groups[p] for p in order]
 
 
+_ARTHASAHIT_WORK_IDS = frozenset({
+    "tukaram-vachanamrut", "eknath-vachanamrut", "ramdas-vachanamrut",
+    "sant-vachanamrut", "jnaneshwar-vachanamrut", "eknathi-bhagvat-vachanamrut",
+    "dhyanopakarani-gita",
+})
+
+
 def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
                           dense_scores, max_per_parent, top_k):
     """RFC-017 wiring: turn ranked child rows into per-parent output rows.
@@ -684,10 +691,21 @@ def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
         cite = top_child.get("cite_text")
         meta = dict(parent)
         meta["parent_id"] = pid
+        is_arthasahit = parent.get("work_id") in _ARTHASAHIT_WORK_IDS
         if cite:
             meta["cite_text"] = cite
-        else:
+            # Only arthasahit citations must be capped to cite_text — for prose,
+            # splice reads from the parent so the LLM can quote 2–4 sentences of
+            # context (RFC-017 refinement post-live-eval).
+            if is_arthasahit:
+                meta["restrict_to_cite"] = True
+        elif is_arthasahit:
+            # Arthasahit child with no cite_text = the verse/meaning split was
+            # uncertain; never cite it (would risk quoting the sadhak's meaning).
             meta["retrieval_only"] = True
+        # Non-arthasahit child without cite_text is unusual (regular chunker
+        # sets cite_text on every child) but not fatal — splice will fall
+        # through to chunk["text"] (the parent).
         out.append({
             "meta": meta,
             "text": parent.get("text", ""),
