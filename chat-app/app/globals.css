@@ -32,20 +32,19 @@ body {
   color: var(--text-primary);
   font-family: var(--font-serif);
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Aged-paper texture covers the full viewport now that the portrait sits
-   inline as a frontispiece (Round 3), not as a side rail. Full image
-   stretches edge-to-edge so all four aged dark borders show at the
-   viewport edges. */
+   inline as a frontispiece (Round 3), not as a side rail. `cover` fills the
+   viewport and preserves aspect ratio across any display size. */
 body {
   background-color: var(--bg-page);
   background-image: url("/paper-bg.jpg");
-  background-size: 100vw 100vh;
-  background-position: center top;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;

@@ -48,6 +48,10 @@ venv/
 *.gif
 *.webp
 *.psd
+# UI assets bundled with the chat-app — small, curated, versioned.
+!chat-app/public/*.jpg
+!chat-app/public/*.jpeg
+!chat-app/public/*.png
 
 # ===== Processed ML artifacts / bulk data =====
 *.npy
