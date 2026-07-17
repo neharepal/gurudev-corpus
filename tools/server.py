@@ -589,10 +589,12 @@ def _retrieve(
             qvec, cand_idx, cand_scores, sub_emb, sub_metas,
             top_k=top_k, mmr_lambda=mmr_lambda, max_per_source=max_per_source,
         )
-    if os.environ.get("ENABLE_SMALL_TO_BIG") == "1" and STATE.parents_by_id:
+    if os.environ.get("ENABLE_SMALL_TO_BIG", "1") != "0" and STATE.parents_by_id:
         # RFC-017 Task 6: group ranked children into distinct parents; the answer
         # model reads the parent (context) while `cite_text` on the meta is the
-        # child's precise span for splice.
+        # child's precise span for splice. Default ON when parents.jsonl loaded
+        # (child index) — set ENABLE_SMALL_TO_BIG=0 to force the flat fallback
+        # for the old pre-Phase-2 index, per RFC-017 handover.
         return small_to_big_results(
             reranked, sub_metas, keep_idx, STATE.parents_by_id,
             dense_scores=scores,
