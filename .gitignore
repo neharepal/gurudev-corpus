@@ -6,6 +6,9 @@
 # ===== Secrets / env =====
 .env
 .env.*
+# But do commit the deploy config template — it's the only safe way for a
+# fresh clone (Lightsail, ECS, whatever) to know which env vars matter.
+!deploy/.env.example
 *.pem
 *.key
 secrets.*
