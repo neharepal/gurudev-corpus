@@ -212,37 +212,46 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
             except Exception:
                 pass  # never let logging break the request
 
+        # Build a partial log entry now (request-side fields) and hand it to
+        # the /ask handler via request.state so it can attach the answer +
+        # retrieved chunks before the log line is written. Handlers that
+        # don't touch this fall back to the middleware's own auto-write.
+        client = request.client
+        entry: dict = {
+            "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "name": (request.headers.get("x-sadhak-name") or "").strip()[:80],
+            "ip": (client.host if client else "") or "",
+            "method": request.method,
+            "path": path,
+        }
+        if peeked:
+            if "mode" in peeked:
+                entry["mode"] = peeked.get("mode")
+            if "lang" in peeked:
+                entry["lang"] = peeked.get("lang")
+            if "work" in peeked:
+                entry["work"] = peeked.get("work")
+            if "question" in peeked and isinstance(peeked["question"], str):
+                entry["question"] = peeked["question"][:1000]
+            if "category" in peeked:
+                entry["category"] = peeked.get("category")
+            if "note" in peeked and isinstance(peeked["note"], str):
+                entry["note"] = peeked["note"][:500]
+        request.state.access_log = self.access_log
+        request.state.log_entry = entry
+
         t0 = time.time()
         response = await call_next(request)
         elapsed_ms = int((time.time() - t0) * 1000)
 
+        # If the handler already wrote the full log (with answer + chunks),
+        # respect that and don't double-log.
+        if getattr(request.state, "access_logged_by_handler", False):
+            return response
+
         if self.access_log.enabled and path in _LOGGED_PATHS:
-            client = request.client
-            entry: dict = {
-                "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                "name": (request.headers.get("x-sadhak-name") or "").strip()[:80],
-                "ip": (client.host if client else "") or "",
-                "method": request.method,
-                "path": path,
-                "status": response.status_code,
-                "ms": elapsed_ms,
-            }
-            # Full detail on /ask so the maintainer can reconstruct any
-            # citation query later ("why did it cite that passage?").
-            if peeked:
-                if "mode" in peeked:
-                    entry["mode"] = peeked.get("mode")
-                if "lang" in peeked:
-                    entry["lang"] = peeked.get("lang")
-                if "work" in peeked:
-                    entry["work"] = peeked.get("work")
-                if "question" in peeked and isinstance(peeked["question"], str):
-                    entry["question"] = peeked["question"][:1000]
-                # /report specifics
-                if "category" in peeked:
-                    entry["category"] = peeked.get("category")
-                if "note" in peeked and isinstance(peeked["note"], str):
-                    entry["note"] = peeked["note"][:500]
+            entry["status"] = response.status_code
+            entry["ms"] = elapsed_ms
             self.access_log.append(entry)
 
         return response

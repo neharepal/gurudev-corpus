@@ -1449,6 +1449,27 @@ _ADMIN_ACTIVITY_HTML = """<!doctype html>
           background: #eae0c2; font-size: 0.7rem; color: var(--muted); }
   .empty { color: var(--muted); font-style: italic; padding: 30px 0;
            text-align: center; }
+  .row-toggle { cursor: pointer; color: var(--accent); user-select: none;
+                font-family: monospace; font-size: 0.9rem; }
+  .row-detail { display: none; background: #f9f2dc; }
+  .row-detail.open { display: table-row; }
+  .row-detail-cell { padding: 12px 20px; border-bottom: 1px solid #d4c69a; }
+  .ans-framing { font-family: Georgia, serif; line-height: 1.5;
+                 margin: 4px 0 12px; color: var(--txt); }
+  .ans-cite { border-left: 3px solid var(--accent); margin: 8px 0;
+              padding: 6px 12px; background: #fffdf6; }
+  .ans-cite-body { font-family: Georgia, serif; font-style: italic;
+                   line-height: 1.5; color: var(--txt); font-size: 0.92rem; }
+  .ans-cite-attr { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+  .ans-synth { font-family: Georgia, serif; line-height: 1.5;
+               margin: 12px 0 4px; color: var(--txt); }
+  .ans-label { font-size: 0.7rem; text-transform: uppercase;
+               letter-spacing: 0.05em; color: var(--muted);
+               margin: 12px 0 4px; font-weight: 600; }
+  .retrieved-list { font-family: monospace; font-size: 0.72rem;
+                    color: var(--muted); line-height: 1.5; }
+  .retrieved-item { padding: 2px 0; }
+  .retrieved-item .wid { color: var(--accent); }
 </style></head><body>
 <h1>Activity Log</h1>
 <div class="subtitle">Gurudev Corpus — who is using the app, in real time</div>
@@ -1464,10 +1485,10 @@ _ADMIN_ACTIVITY_HTML = """<!doctype html>
 </div>
 <table>
   <thead><tr>
-    <th>Time (PT)</th><th>Name</th><th>Path</th><th>Question</th>
+    <th></th><th>Time (PT)</th><th>Name</th><th>Path</th><th>Question</th>
     <th>Mode</th><th>Lang</th><th style="text-align:right">ms</th><th>Status</th>
   </tr></thead>
-  <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
+  <tbody id="rows"><tr><td colspan="9" class="empty">Loading…</td></tr></tbody>
 </table>
 <script>
 let ALL = [];
@@ -1485,14 +1506,12 @@ function render() {
   document.getElementById('count').textContent =
     `Showing ${filtered.length} of ${ALL.length}`;
   if (!filtered.length) {
-    rows.innerHTML = '<tr><td colspan="8" class="empty">No entries.</td></tr>';
+    rows.innerHTML = '<tr><td colspan="9" class="empty">No entries.</td></tr>';
     return;
   }
-  rows.innerHTML = filtered.map(e => {
+  rows.innerHTML = filtered.map((e, idx) => {
     const st = e.status || 0;
     const stCls = 'st-' + Math.floor(st / 100);
-    // Render in Pacific Time (auto handles PST/PDT via IANA zone) with the raw
-    // UTC string as a hover title so the maintainer can copy the exact ISO ts.
     let t = '';
     if (e.ts) {
       try {
@@ -1507,7 +1526,12 @@ function render() {
     const q = e.question || '';
     const noteBadge = e.category
       ? ` <span class="pill">${esc(e.category)}</span>` : '';
+    const expandable = e.answer || (e.retrieved && e.retrieved.length);
+    const toggle = expandable
+      ? `<span class="row-toggle" onclick="toggleDetail(${idx})" id="tgl-${idx}">▸</span>`
+      : '';
     return `<tr>
+      <td>${toggle}</td>
       <td class="time">${tCell}</td>
       <td class="name">${esc(e.name || '—')}</td>
       <td><code>${esc(e.path || '')}</code></td>
@@ -1516,8 +1540,84 @@ function render() {
       <td>${esc(e.lang || '')}</td>
       <td class="ms">${esc(e.ms || '')}</td>
       <td class="status ${stCls}">${esc(st)}</td>
-    </tr>`;
+    </tr>` + (expandable
+      ? `<tr class="row-detail" id="det-${idx}">
+           <td colspan="9" class="row-detail-cell">${renderDetail(e)}</td>
+         </tr>` : '');
   }).join('');
+}
+
+function renderDetail(e) {
+  let html = '';
+  const ans = e.answer;
+  if (ans) {
+    // Framing: string OR array of paragraphs (RFC-014 QA structure).
+    const framing = ans.framingParagraphs || (ans.framing ? [ans.framing] : []);
+    if (Array.isArray(framing) && framing.length) {
+      html += '<div class="ans-label">Framing</div>';
+      for (const p of framing) {
+        if (typeof p === 'string' && p.trim()) {
+          html += `<div class="ans-framing">${esc(p)}</div>`;
+        }
+      }
+    }
+    // Citations: quote.body + workTitle + author.
+    const cits = ans.citations || [];
+    if (cits.length) {
+      html += `<div class="ans-label">Citations (${cits.length})</div>`;
+      for (const c of cits) {
+        const q = c.quote || {};
+        const body = q.body || '';
+        const wt = q.workTitle || '';
+        const au = q.author || '';
+        const loc = q.location || '';
+        const attrib = [wt, loc].filter(Boolean).join(', ') + (au ? ' · ' + au : '');
+        html += `<div class="ans-cite">
+          <div class="ans-cite-body">${esc(body)}</div>
+          <div class="ans-cite-attr">— ${esc(attrib)}</div>
+        </div>`;
+      }
+    }
+    // Synthesis (closing paragraph).
+    if (ans.synthesis) {
+      html += '<div class="ans-label">Synthesis</div>';
+      html += `<div class="ans-synth">${esc(ans.synthesis)}</div>`;
+    }
+    // References (works drawn on but not quoted).
+    const refs = ans.references || [];
+    if (refs.length) {
+      html += `<div class="ans-label">References (${refs.length})</div>`;
+      html += '<div class="retrieved-list">';
+      for (const r of refs) {
+        html += `<div class="retrieved-item">${esc(r.workTitle || '')}${r.author ? ' · ' + esc(r.author) : ''}</div>`;
+      }
+      html += '</div>';
+    }
+  }
+  // Retrieved chunks — what actually got surfaced BEFORE the LLM saw it.
+  // Critical for "why did it cite that passage?" debugging.
+  const ret = e.retrieved || [];
+  if (ret.length) {
+    html += `<div class="ans-label">Retrieved passages (top ${ret.length})</div>`;
+    html += '<div class="retrieved-list">';
+    for (const r of ret) {
+      html += `<div class="retrieved-item">
+        <span class="wid">${esc(r.work_id)}</span> ${esc(r.title)}
+        · cos=${r.cos_score} mmr=${r.mmr_score}
+        <div style="padding-left:14px">${esc((r.cite_text||'').slice(0,220))}</div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+  return html || '<em style="color:var(--muted)">no answer captured</em>';
+}
+
+function toggleDetail(idx) {
+  const det = document.getElementById('det-' + idx);
+  const tgl = document.getElementById('tgl-' + idx);
+  if (!det) return;
+  det.classList.toggle('open');
+  tgl.textContent = det.classList.contains('open') ? '▾' : '▸';
 }
 async function load() {
   try {
@@ -1911,6 +2011,51 @@ def _retrieval_event_payload(chunks: List[Dict[str, Any]], retrieval_s: float) -
     }
 
 
+def _summarize_retrieved_chunks(chunks) -> list:
+    """Compact record of what was surfaced for the activity log — enough to
+    answer 'why did it cite that passage?' later without re-running the
+    query. Only work_id / cite_text / cos+mmr scores; drops full chunk text."""
+    out = []
+    for c in chunks or []:
+        m = c.get("meta") or {}
+        cite = m.get("cite_text") or ""
+        if not isinstance(cite, str):
+            cite = str(cite)
+        out.append({
+            "work_id": m.get("work_id", ""),
+            "title": m.get("title", ""),
+            "chunk_id": m.get("id", ""),
+            "parent_id": m.get("parent_id"),
+            "cite_text": cite[:500],
+            "cos_score": round(float(c.get("cos_score", 0.0)), 4),
+            "mmr_score": round(float(c.get("mmr_score", 0.0)), 4),
+        })
+    return out
+
+
+def _finalize_ask_log(request: Request, *, result: dict | None,
+                       retrieved: list, status: int, elapsed_ms: int) -> None:
+    """Write the full-context /ask access log line (question + answer +
+    retrieved chunks). Silent no-op if the gate middleware isn't wiring
+    logs (dev/CI). Marks the request so the middleware skips its
+    auto-write."""
+    try:
+        entry = getattr(request.state, "log_entry", None)
+        log = getattr(request.state, "access_log", None)
+        if entry is None or log is None:
+            return
+        entry["status"] = status
+        entry["ms"] = elapsed_ms
+        if retrieved:
+            entry["retrieved"] = retrieved
+        if result is not None:
+            entry["answer"] = result
+        log.append(entry)
+        request.state.access_logged_by_handler = True
+    except Exception:
+        pass  # logging must never break the request
+
+
 @app.post("/ask")
 def ask(req: AskRequest, request: Request):
     """Main entry point.
@@ -1921,7 +2066,9 @@ def ask(req: AskRequest, request: Request):
     accept = (request.headers.get("accept") or "").lower()
     wants_stream = "text/event-stream" in accept
 
+    ask_t0 = time.time()
     mode, user_msg, system_prompt, chunks, retrieval_s = _prepare_request(req)
+    retrieved_summary = _summarize_retrieved_chunks(chunks)
 
     # Map the passage labels the model sees (A, B, C, ...) back to their chunks,
     # so Q&A citations emitted by reference can be spliced to verbatim text.
@@ -1951,6 +2098,8 @@ def ask(req: AskRequest, request: Request):
                     mode, user_msg, label_to_chunk, result, req.lang or "en"),
             )
             _append_flags(_flags, req)
+        _finalize_ask_log(request, result=result, retrieved=retrieved_summary,
+                          status=200, elapsed_ms=int((time.time() - ask_t0) * 1000))
         return result
 
     # ── Streaming SSE path (chat-app)
@@ -1994,10 +2143,16 @@ def ask(req: AskRequest, request: Request):
                         mode, user_msg, label_to_chunk, result, req.lang or "en"),
                 )
                 _append_flags(_flags, req)
+                _finalize_ask_log(request, result=result,
+                                    retrieved=retrieved_summary, status=200,
+                                    elapsed_ms=int((time.time() - ask_t0) * 1000))
                 for kind, payload in _replay_qa_as_sse(result):
                     yield sse(kind, **payload)
                 return
             except RuntimeError as e:
+                _finalize_ask_log(request, result=None,
+                                    retrieved=retrieved_summary, status=502,
+                                    elapsed_ms=int((time.time() - ask_t0) * 1000))
                 yield sse("error", message=str(e)); return
         # else: existing true-streaming loop unchanged
 
@@ -2024,6 +2179,9 @@ def ask(req: AskRequest, request: Request):
                     _enrich_citations_readpage(
                         response_dict.get("citations") or [], label_to_chunk
                     )
+                    _finalize_ask_log(request, result=response_dict,
+                                        retrieved=retrieved_summary, status=200,
+                                        elapsed_ms=int((time.time() - ask_t0) * 1000))
             yield sse(kind, **payload)
             last_event_ts = now
 
