@@ -5,11 +5,57 @@
 // forwarded on every backend proxy call as the `X-Invite-Code` header.
 // Validation happens on the backend (`tools/gate.py`); on 401 the API proxies
 // redirect back here.
+//
+// The form component uses `useSearchParams`, which under Next 15's strict
+// static-render checks must sit inside a Suspense boundary — otherwise the
+// build fails. The wrapper below is the boundary; nothing in it changes the
+// rendered result at runtime.
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function GatePage() {
+  return (
+    <Suspense fallback={<GateFallback />}>
+      <GateForm />
+    </Suspense>
+  );
+}
+
+function GateFallback() {
+  // Match the shell of GateForm's card so the layout doesn't jump between the
+  // (rare) suspense flash and hydration.
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "24px",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 440,
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-soft)",
+          borderRadius: 12,
+          padding: "40px 32px",
+          opacity: 0.7,
+        }}
+      >
+        <h1 style={{ fontSize: 28, lineHeight: 1.2, marginTop: 0, marginBottom: 8 }}>
+          Gurudev Sangrah
+        </h1>
+        <p style={{ color: "var(--text-secondary)" }}>Loading…</p>
+      </div>
+    </main>
+  );
+}
+
+function GateForm() {
   const router = useRouter();
   const search = useSearchParams();
   const returnTo = search.get("from") || "/";
