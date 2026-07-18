@@ -17,7 +17,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import type { ModeId } from "../../../data/mock-conversations";
-import { COOKIE_NAME as GATE_COOKIE } from "../gate/route";
+import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
 
 export const runtime = "nodejs"; // SSE doesn't work cleanly on the edge runtime.
 

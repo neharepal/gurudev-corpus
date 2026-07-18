@@ -7,7 +7,7 @@
 // — same constant as /api/ask/route.ts.
 
 import { NextRequest, NextResponse } from "next/server";
-import { COOKIE_NAME as GATE_COOKIE } from "../gate/route";
+import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
 
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";

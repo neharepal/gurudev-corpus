@@ -6,12 +6,7 @@
 // happens server-side (backend) so we don't leak the expected value here.
 
 import { NextResponse } from "next/server";
-
-// 30-day session — sadhaks shouldn't have to re-enter the code every visit.
-// Rotating the code (host-side INVITE_CODE change + restart) invalidates all
-// prior cookies automatically on the next request → they land back on /gate.
-const COOKIE_MAX_AGE_SEC = 60 * 60 * 24 * 30;
-export const COOKIE_NAME = "gurudev-invite";
+import { COOKIE_NAME, COOKIE_MAX_AGE_SEC } from "../../../lib/gate-cookie";
 
 export async function POST(req: Request) {
   let body: { code?: unknown };
