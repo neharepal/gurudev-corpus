@@ -1408,6 +1408,150 @@ def admin_flags_dashboard():
     return HTMLResponse(content=_ADMIN_DASHBOARD_HTML, status_code=200)
 
 
+_ADMIN_ACTIVITY_HTML = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Activity — Gurudev Sangrah</title>
+<style>
+  :root { --bg:#f5f1e6; --card:#fffdf6; --border:#c4b895; --txt:#2d2410;
+          --muted:#665741; --accent:#8b5a2b; --ok:#4b6b34; --warn:#8b5a1a;
+          --err:#8b3a3a; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; background: var(--bg);
+         color: var(--txt); margin: 0; padding: 26px 22px; }
+  h1 { font-family: Georgia, serif; margin: 0 0 4px; font-size: 1.4rem; }
+  .subtitle { color: var(--muted); margin-bottom: 18px; font-size: 0.85rem; }
+  .filters { margin: 8px 0 20px; display: flex; gap: 14px; flex-wrap: wrap;
+             align-items: center; font-size: 0.9rem; }
+  .filters input, .filters select { padding: 4px 8px; border: 1px solid var(--border);
+              border-radius: 3px; background: var(--card); font: inherit; }
+  #count { color: var(--muted); font-size: 0.85rem; }
+  table { width: 100%; border-collapse: collapse; background: var(--card);
+          border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+          font-size: 0.85rem; }
+  th, td { padding: 6px 10px; text-align: left; vertical-align: top;
+           border-bottom: 1px solid #eae0c2; }
+  th { background: #f0e8cf; font-weight: 600; color: var(--muted);
+       font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+  td.name { color: var(--accent); font-weight: 600; }
+  td.time { color: var(--muted); font-family: monospace; font-size: 0.75rem;
+            white-space: nowrap; }
+  td.q { max-width: 480px; overflow: hidden; text-overflow: ellipsis;
+         white-space: nowrap; }
+  td.q:hover { white-space: normal; word-break: break-word; }
+  td.ms { text-align: right; font-family: monospace; font-size: 0.78rem;
+          color: var(--muted); }
+  td.status { font-family: monospace; font-size: 0.75rem; }
+  .st-2, .st-1 { color: var(--ok); }
+  .st-4 { color: var(--warn); }
+  .st-5 { color: var(--err); }
+  .pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
+          background: #eae0c2; font-size: 0.7rem; color: var(--muted); }
+  .empty { color: var(--muted); font-style: italic; padding: 30px 0;
+           text-align: center; }
+</style></head><body>
+<h1>Activity Log</h1>
+<div class="subtitle">Gurudev Corpus — who is using the app, in real time</div>
+<div class="filters">
+  <label>Name: <input id="fName" placeholder="filter by name…"></label>
+  <label>Path: <select id="fPath">
+    <option value="">All</option>
+    <option value="/ask">/ask</option>
+    <option value="/report">/report</option>
+  </select></label>
+  <span id="count"></span>
+  <span style="margin-left:auto"><a href="/admin/flags" style="color:var(--accent)">Flag Queue →</a></span>
+</div>
+<table>
+  <thead><tr>
+    <th>Time (UTC)</th><th>Name</th><th>Path</th><th>Question</th>
+    <th>Mode</th><th>Lang</th><th style="text-align:right">ms</th><th>Status</th>
+  </tr></thead>
+  <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
+</table>
+<script>
+let ALL = [];
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function render() {
+  const fn = (document.getElementById('fName').value || '').toLowerCase();
+  const fp = document.getElementById('fPath').value;
+  const rows = document.getElementById('rows');
+  const filtered = ALL.filter(e =>
+    (!fn || (e.name || '').toLowerCase().includes(fn)) &&
+    (!fp || e.path === fp)
+  );
+  document.getElementById('count').textContent =
+    `Showing ${filtered.length} of ${ALL.length}`;
+  if (!filtered.length) {
+    rows.innerHTML = '<tr><td colspan="8" class="empty">No entries.</td></tr>';
+    return;
+  }
+  rows.innerHTML = filtered.map(e => {
+    const st = e.status || 0;
+    const stCls = 'st-' + Math.floor(st / 100);
+    const t = (e.ts || '').slice(0,19).replace('T',' ');
+    const q = e.question || '';
+    const noteBadge = e.category
+      ? ` <span class="pill">${esc(e.category)}</span>` : '';
+    return `<tr>
+      <td class="time">${esc(t)}</td>
+      <td class="name">${esc(e.name || '—')}</td>
+      <td><code>${esc(e.path || '')}</code></td>
+      <td class="q">${esc(q)}${noteBadge}</td>
+      <td>${esc(e.mode || '')}</td>
+      <td>${esc(e.lang || '')}</td>
+      <td class="ms">${esc(e.ms || '')}</td>
+      <td class="status ${stCls}">${esc(st)}</td>
+    </tr>`;
+  }).join('');
+}
+async function load() {
+  try {
+    const r = await fetch('/admin/activity.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    ALL = (await r.json()).slice().reverse();  // newest first
+    render();
+  } catch (err) {
+    document.getElementById('rows').innerHTML =
+      `<tr><td colspan="8" class="empty">Failed to load: ${esc(err.message)}</td></tr>`;
+  }
+}
+document.getElementById('fName').addEventListener('input', render);
+document.getElementById('fPath').addEventListener('change', render);
+load();
+setInterval(load, 15000);  // refresh every 15 s
+</script></body></html>
+"""
+
+
+@app.get("/admin/activity")
+def admin_activity_dashboard():
+    """Serve the activity log dashboard (self-contained HTML). Refreshes every
+    15 s so the maintainer sees new requests without reload."""
+    from fastapi.responses import HTMLResponse
+    return HTMLResponse(content=_ADMIN_ACTIVITY_HTML, status_code=200)
+
+
+@app.get("/admin/activity.json")
+def admin_activity_json() -> List[Dict[str, Any]]:
+    """Return recent access-log entries (last 500) as JSON. Powers the
+    /admin/activity page. Silent [] if the log isn't wired up yet."""
+    for m in getattr(app, "user_middleware", []) or []:
+        if getattr(m, "cls", None) is InviteAndCapMiddleware:
+            stack = getattr(app, "middleware_stack", None)
+            node = stack
+            while node is not None:
+                if isinstance(node, InviteAndCapMiddleware):
+                    log = getattr(node, "access_log", None)
+                    if log is not None:
+                        return log.tail(500)
+                    break
+                node = getattr(node, "app", None)
+    return []
+
+
 @app.get("/admin/flags.json")
 def admin_flags_json() -> List[Dict[str, Any]]:
     """Return all flag-queue entries as JSON, with ids and statuses backfilled."""
