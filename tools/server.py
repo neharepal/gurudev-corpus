@@ -1464,7 +1464,7 @@ _ADMIN_ACTIVITY_HTML = """<!doctype html>
 </div>
 <table>
   <thead><tr>
-    <th>Time (UTC)</th><th>Name</th><th>Path</th><th>Question</th>
+    <th>Time (PT)</th><th>Name</th><th>Path</th><th>Question</th>
     <th>Mode</th><th>Lang</th><th style="text-align:right">ms</th><th>Status</th>
   </tr></thead>
   <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
@@ -1491,12 +1491,24 @@ function render() {
   rows.innerHTML = filtered.map(e => {
     const st = e.status || 0;
     const stCls = 'st-' + Math.floor(st / 100);
-    const t = (e.ts || '').slice(0,19).replace('T',' ');
+    // Render in Pacific Time (auto handles PST/PDT via IANA zone) with the raw
+    // UTC string as a hover title so the maintainer can copy the exact ISO ts.
+    let t = '';
+    if (e.ts) {
+      try {
+        t = new Date(e.ts).toLocaleString('en-US', {
+          timeZone: 'America/Los_Angeles',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+        }).replace(',', '');
+      } catch (_) { t = e.ts.slice(0,19).replace('T',' '); }
+    }
+    const tCell = `<span title="${esc(e.ts || '')}">${esc(t)}</span>`;
     const q = e.question || '';
     const noteBadge = e.category
       ? ` <span class="pill">${esc(e.category)}</span>` : '';
     return `<tr>
-      <td class="time">${esc(t)}</td>
+      <td class="time">${tCell}</td>
       <td class="name">${esc(e.name || '—')}</td>
       <td><code>${esc(e.path || '')}</code></td>
       <td class="q">${esc(q)}${noteBadge}</td>
