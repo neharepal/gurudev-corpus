@@ -6,6 +6,11 @@
 # ===== Secrets / env =====
 .env
 .env.*
+# Lightsail/AWS SSH keys — never commit even by accident.
+lightsail/
+# Ad-hoc pipeline snapshots (chunker/parents backups) — MB-to-GB scale;
+# recreate from the current source-of-truth files if needed.
+04_processed/*.bak
 # But do commit the deploy config template — it's the only safe way for a
 # fresh clone (Lightsail, ECS, whatever) to know which env vars matter.
 !deploy/.env.example

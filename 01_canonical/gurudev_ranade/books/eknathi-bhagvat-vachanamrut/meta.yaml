@@ -1,0 +1,35 @@
+id: eknathi-bhagvat-vachanamrut
+title: "Eknathi Bhagvat Vachanamrut"
+title_en: "Eknathi Bhagvat Vachanamrut"
+title_translit: ""
+author: gurudev_ranade
+co_authors: []
+work_type: book
+original_language: mr
+languages_available: [mr]
+year_first_published: ""
+year_this_edition: ""
+publisher: ""
+edition: ""
+isbn: ""
+sources:
+  - raw_path: 01_canonical/gurudev_ranade/books/eknathi-bhagvat-vachanamrut/mr/eknathi-bhagvat-vachanamrut.pdf
+    received_on: 2026-06-11
+    received_in_batch: drive_dump_2026-06-11
+    checksum_sha256: ""
+tags:
+  - bhakti
+  - eknath
+  - bhagavata
+  - marathi-sant-tradition
+subject_persons: []
+related_works:
+  - eknath-vachanamrut
+status: ready
+text_extraction_method: ocr:surya-2-2026-07
+quality_notes: ""
+notes: |
+  Verse+meaning (arthasahit) work: verse followed by sadhak-authored meaning.
+  Per RFC-017, cite_text = verse only; the meaning is retrieval-only context.
+  Text extracted 2026-07-17 via Surya OCR on M4 (MPS), replacing tesseract path.
+  OCR'd via Surya OCR-2 on 2026-07-18 as part of the arthasahit batch.

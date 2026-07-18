@@ -23,8 +23,8 @@ tags:
   - marathi-sant-tradition
 subject_persons: []
 related_works: []
-status: cataloged
-text_extraction_method: ocr-needed
+status: ready
+text_extraction_method: ocr:surya-2-2026-07
 quality_notes: ""
 notes: |
   Extraction attempted 2026-06-13 in bulk task #11 — ALL SOURCES FAILED.
@@ -32,3 +32,4 @@ notes: |
   OCR (tesseract with mar/hin/kan trained data) required.
   Source files attempted:
     - एकनाथ वचनामृत अर्थासहित.pdf: pdftotext returned only 475 chars — likely image-only PDF (needs OCR)
+  OCR'd via Surya OCR-2 on 2026-07-18 as part of the arthasahit batch.
