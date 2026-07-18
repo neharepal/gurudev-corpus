@@ -10,19 +10,23 @@
 // — same constant used by /api/ask and /api/read.
 
 import { NextRequest, NextResponse } from "next/server";
-import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
+import { COOKIE_NAME as GATE_COOKIE, NAME_COOKIE } from "../../../lib/gate-cookie";
 
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";
 
 export async function GET(req: NextRequest) {
   const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+  const sadhak = req.cookies.get(NAME_COOKIE)?.value || "";
 
   let upstream: Response;
   try {
     upstream = await fetch(`${BACKEND_URL}/works`, {
       cache: "no-store",
-      headers: { "X-Invite-Code": invite },
+      headers: {
+        "X-Invite-Code": invite,
+        "X-Sadhak-Name": sadhak,
+      },
     });
   } catch {
     return NextResponse.json(

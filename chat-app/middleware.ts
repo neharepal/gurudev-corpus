@@ -7,6 +7,7 @@
 // Invalid cookies bounce back here with ?reason=invalid via the API proxies.
 
 import { NextRequest, NextResponse } from "next/server";
+import { COOKIE_NAME, NAME_COOKIE } from "./lib/gate-cookie";
 
 const PUBLIC_PATHS = new Set([
   "/gate",
@@ -14,7 +15,6 @@ const PUBLIC_PATHS = new Set([
 const PUBLIC_API_PATHS = new Set([
   "/api/gate",
 ]);
-const COOKIE_NAME = "gurudev-invite";
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -38,8 +38,9 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasCookie = !!req.cookies.get(COOKIE_NAME)?.value;
-  if (hasCookie) return NextResponse.next();
+  const hasInvite = !!req.cookies.get(COOKIE_NAME)?.value;
+  const hasName = !!req.cookies.get(NAME_COOKIE)?.value;
+  if (hasInvite && hasName) return NextResponse.next();
 
   // For an API call, respond with 401 (client will surface + redirect) so we
   // don't send an HTML redirect to a fetch() that's expecting JSON.

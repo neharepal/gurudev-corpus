@@ -17,7 +17,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import type { ModeId } from "../../../data/mock-conversations";
-import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
+import { COOKIE_NAME as GATE_COOKIE, NAME_COOKIE } from "../../../lib/gate-cookie";
 
 export const runtime = "nodejs"; // SSE doesn't work cleanly on the edge runtime.
 
@@ -60,10 +60,11 @@ export async function POST(req: NextRequest) {
   const accept = req.headers.get("accept") || "";
   const wantsStream = accept.includes("text/event-stream");
 
-  // Forward the invite cookie as an X-Invite-Code header — the middleware
-  // guarantees a cookie is present (401'd otherwise) so this always has a
-  // value in prod. Backend validates against INVITE_CODE (tools/gate.py).
+  // Forward the invite cookie as an X-Invite-Code header + the sadhak's name
+  // as X-Sadhak-Name so the backend can log activity by name. The middleware
+  // guarantees both cookies are present in prod (401'd otherwise).
   const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+  const sadhak = req.cookies.get(NAME_COOKIE)?.value || "";
 
   let upstream: Response;
   try {
@@ -73,6 +74,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
         Accept: wantsStream ? "text/event-stream" : "application/json",
         "X-Invite-Code": invite,
+        "X-Sadhak-Name": sadhak,
       },
       body: JSON.stringify({ ...body, question: question.trim() }),
     });

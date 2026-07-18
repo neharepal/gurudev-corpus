@@ -13,6 +13,12 @@ stays fast:
 Both env vars unset → gate is a no-op. Set INVITE_CODE alone to gate without
 capping; set DAILY_ANSWER_CAP alone to cap without an invite check.
 
+The `/admin/*` routes are intentionally allowlisted here (see
+`_UNGATED_PATHS`) so the maintainer can hit them from a plain browser without
+needing to send the invite header. The admin surface still lives on the
+non-obvious `api.<domain>` subdomain — replace with a real admin-token
+header when the sadhak group grows past a trusted handful.
+
 Not a rate-limiter — a first-line "keep the URL from becoming a public toy"
 gate. If usage grows past a handful, replace with a real store (Redis) and
 per-IP sliding-window limits (RFC-016 §3 open path).
@@ -29,9 +35,10 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
 
 
-# Endpoints that must not be gated — health probes, CORS preflights, and
-# static / read routes that don't spend LLM budget.
+# Endpoints that must not be gated — health probes, CORS preflights, and the
+# maintainer admin surface (viewed from a plain browser at api.<domain>).
 _UNGATED_PATHS = {"/", "/health"}
+_UNGATED_PREFIXES = ("/admin/",)
 # Only /ask counts against the daily cap (it's the only endpoint that calls
 # Anthropic in the paid path). /read and /report stay open behind the invite
 # code (they don't spend, but they shouldn't be public either).
@@ -87,6 +94,10 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
         # OPTIONS (CORS preflight) is never gated — the CORS middleware handles
         # policy; adding auth to preflight breaks browsers.
         if request.method == "OPTIONS" or path in _UNGATED_PATHS:
+            return await call_next(request)
+        # Admin routes are visited from a plain browser (maintainer's device);
+        # the invite-cookie flow is a chat-app concern. Skip the gate here.
+        if any(path.startswith(p) for p in _UNGATED_PREFIXES):
             return await call_next(request)
 
         # Invite code required on every non-preflight, non-health request when

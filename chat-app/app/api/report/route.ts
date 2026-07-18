@@ -8,7 +8,7 @@
 // — same constant as the other proxy routes.
 
 import { NextRequest, NextResponse } from "next/server";
-import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
+import { COOKIE_NAME as GATE_COOKIE, NAME_COOKIE } from "../../../lib/gate-cookie";
 
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";
@@ -22,6 +22,12 @@ export async function POST(req: NextRequest) {
   }
 
   const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+  const sadhak = req.cookies.get(NAME_COOKIE)?.value || "";
+
+  // Auto-attach the sadhak's name from the gate cookie so the flag queue always
+  // has attribution, even if the AnswerToolbar report modal doesn't ask again.
+  const bodyObj = (body && typeof body === "object" ? body : {}) as Record<string, unknown>;
+  if (sadhak && !bodyObj.name) bodyObj.name = sadhak;
 
   let upstream: Response;
   try {
@@ -30,8 +36,9 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         "X-Invite-Code": invite,
+        "X-Sadhak-Name": sadhak,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(bodyObj),
       cache: "no-store",
     });
   } catch {

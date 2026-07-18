@@ -1,15 +1,10 @@
 "use client";
 
 // RFC-016 §3 light gate — one shared invite code the operator distributes to
-// sadhaks via WhatsApp/email. The code lives in an HTTP-only cookie so it's
-// forwarded on every backend proxy call as the `X-Invite-Code` header.
-// Validation happens on the backend (`tools/gate.py`); on 401 the API proxies
-// redirect back here.
-//
-// The form component uses `useSearchParams`, which under Next 15's strict
-// static-render checks must sit inside a Suspense boundary — otherwise the
-// build fails. The wrapper below is the boundary; nothing in it changes the
-// rendered result at runtime.
+// sadhaks via WhatsApp/email + the sadhak's name for usage attribution. Both
+// values live in HTTP-only cookies and are forwarded on every backend proxy
+// call as `X-Invite-Code` + `X-Sadhak-Name` headers. Backend validates the
+// code (tools/gate.py) and logs each request against the name.
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -23,8 +18,6 @@ export default function GatePage() {
 }
 
 function GateFallback() {
-  // Match the shell of GateForm's card so the layout doesn't jump between the
-  // (rare) suspense flash and hydration.
   return (
     <main
       style={{
@@ -61,25 +54,29 @@ function GateForm() {
   const returnTo = search.get("from") || "/";
   const flag = search.get("reason") || "";
 
+  const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(
     flag === "invalid" ? "The code you entered isn't recognised — try again."
-      : flag === "expired" ? "Your access has expired. Enter your code to continue."
+      : flag === "expired" ? "Your access has expired. Enter your details to continue."
       : null
   );
 
-  useEffect(() => setErr(null), [code]);
+  useEffect(() => setErr(null), [code, name]);
+
+  const canSubmit = !!name.trim() && !!code.trim() && !busy;
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (!canSubmit) return;
     setBusy(true);
     setErr(null);
     try {
       const r = await fetch("/api/gate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: code.trim() }),
+        body: JSON.stringify({ code: code.trim(), name: name.trim() }),
       });
       if (!r.ok) {
         setErr("Something went wrong. Please try again in a moment.");
@@ -90,6 +87,22 @@ function GateForm() {
       setBusy(false);
     }
   }
+
+  const fieldLabelStyle = {
+    color: "var(--text-tertiary)",
+    display: "block",
+    marginBottom: 6,
+  } as const;
+  const inputStyle = {
+    width: "100%",
+    fontSize: 18,
+    padding: "10px 12px",
+    borderRadius: 6,
+    outline: "none",
+    background: "var(--bg-page)",
+    border: "1px solid var(--border-stronger)",
+    boxSizing: "border-box" as const,
+  };
 
   return (
     <main
@@ -117,33 +130,34 @@ function GateForm() {
           Gurudev Sangrah
         </h1>
         <p style={{ color: "var(--text-secondary)", marginTop: 0, marginBottom: 24 }}>
-          Private preview — enter the invite code you were sent.
+          Private preview — enter your name and the invite code you were sent.
         </p>
 
-        <label
-          htmlFor="invite"
-          className="gd-label"
-          style={{ color: "var(--text-tertiary)", display: "block", marginBottom: 6 }}
-        >
+        <label htmlFor="sadhak-name" className="gd-label" style={fieldLabelStyle}>
+          Your name
+        </label>
+        <input
+          id="sadhak-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          autoFocus
+          autoComplete="name"
+          maxLength={80}
+          style={inputStyle}
+        />
+
+        <div style={{ height: 16 }} />
+
+        <label htmlFor="invite" className="gd-label" style={fieldLabelStyle}>
           Invite code
         </label>
         <input
           id="invite"
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          autoFocus
           autoComplete="off"
           spellCheck={false}
-          style={{
-            width: "100%",
-            fontSize: 18,
-            padding: "10px 12px",
-            borderRadius: 6,
-            outline: "none",
-            background: "var(--bg-page)",
-            border: "1px solid var(--border-stronger)",
-            boxSizing: "border-box",
-          }}
+          style={inputStyle}
         />
 
         {err ? (
@@ -154,7 +168,7 @@ function GateForm() {
 
         <button
           type="submit"
-          disabled={busy || !code.trim()}
+          disabled={!canSubmit}
           style={{
             marginTop: 24,
             padding: "10px 20px",
@@ -163,8 +177,8 @@ function GateForm() {
             background: "var(--accent-maroon)",
             color: "#F4EAC9",
             border: "none",
-            cursor: busy || !code.trim() ? "not-allowed" : "pointer",
-            opacity: busy || !code.trim() ? 0.6 : 1,
+            cursor: canSubmit ? "pointer" : "not-allowed",
+            opacity: canSubmit ? 1 : 0.6,
           }}
         >
           {busy ? "Verifying…" : "Continue"}
