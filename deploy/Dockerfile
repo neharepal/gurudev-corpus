@@ -38,6 +38,12 @@ USER root
 COPY --chown=gurudev:gurudev tools/    ./tools/
 COPY --chown=gurudev:gurudev 03_catalog/ ./03_catalog/
 COPY --chown=gurudev:gurudev 02_aggregated/ ./02_aggregated/
+# Named log volume mounts on top of /app/logs; Docker copies the image dir's
+# ownership + content into a FRESH volume, so pre-creating the dir with the
+# right owner is what stops the container's log writes from silently failing
+# with EACCES. Existing volumes are unaffected — remove them (`docker volume
+# rm <compose>_backend_logs`) before `docker compose up` to pick this up.
+RUN mkdir -p /app/logs && chown gurudev:gurudev /app/logs
 USER gurudev
 
 # Runtime knobs (documented; overridden by docker-compose env).
