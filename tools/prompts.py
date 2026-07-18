@@ -83,6 +83,17 @@ excerpts Bhausaheb Maharaj's letters in English is still a secondary
 source; cite the actual letter if it's in the retrieved set, even if the
 English excerpt is easier to read.
 
+CITE THE ORIGINAL WORK, NEVER THE ANTHOLOGY THAT QUOTES IT. When a retrieved
+passage is a verbatim quotation of one of Gurudev's own works (Pathway to
+God series, Parmartha Sopan, Constructive Survey of Upanishadic Philosophy,
+Vedanta, Mysticism in Maharashtra, etc.) surfacing INSIDE a compilation,
+anthology, biography, or arthasahit edition, cite the ORIGINAL work by
+name — not the compilation. The compilation is a container; the teaching
+lives in the original. Only cite the compilation itself when the quoted
+material is genuinely NOT drawn from an original Gurudev work in our
+corpus (e.g., a devotee's oral recollection that was never written down
+elsewhere).
+
 This rule applies regardless of which passage scored higher in the
 retriever's top-K — retrieval surfaces candidates, you decide who to quote.
 

@@ -687,7 +687,18 @@ def splice_quote_dict(quote: Dict[str, Any], label_to_chunk: Dict[str, Any]) -> 
                 quote["body"] = clean_quote_body(text) if text else (model_body or "")
             # Authoritative attribution from the chunk's metadata.
             quote["workTitle"] = meta.get("title") or meta.get("work_id") or quote.get("workTitle") or ""
-            quote["author"] = meta.get("author") or quote.get("author") or ""
+            # Arthasahit works (`restrict_to_cite=True`) are devotee-compiled
+            # editions of saints' verses that Gurudev selected. The devotee
+            # compiler's name is metadata (used for the flag queue, `Read in
+            # full` link, etc.) but MUST NOT appear on the citation itself —
+            # attributing a Tukaram verse to the devotee who compiled the
+            # collection would be misleading. The work title carries the saint
+            # ("Tukaram Vachanamrut"), so dropping the author from the display
+            # loses nothing.
+            if meta.get("restrict_to_cite"):
+                quote["author"] = ""
+            else:
+                quote["author"] = meta.get("author") or quote.get("author") or ""
             mkind = meta.get("kind")
             if mkind in _ALLOWED_KINDS:
                 quote["kind"] = mkind
