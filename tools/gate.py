@@ -48,7 +48,9 @@ _UNGATED_PREFIXES = ("/admin/",)
 _PAID_PATHS = {"/ask"}
 # Paths whose activity is worth remembering — the maintainer surfaces this at
 # /admin/activity to see who is using the app and what they're asking about.
-_LOGGED_PATHS = {"/ask", "/report"}
+# /works logs a homepage load ≈ session-start (chat-app fetches it on mount);
+# useful proxy for "who logged in when" without a dedicated auth endpoint.
+_LOGGED_PATHS = {"/ask", "/report", "/works"}
 # Log file (bind-mounted from the host so it survives container restarts).
 _ACCESS_LOG_DEFAULT = str(Path(__file__).resolve().parent.parent / "logs" / "access.jsonl")
 
