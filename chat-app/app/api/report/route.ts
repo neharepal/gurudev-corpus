@@ -8,6 +8,7 @@
 // — same constant as the other proxy routes.
 
 import { NextRequest, NextResponse } from "next/server";
+import { COOKIE_NAME as GATE_COOKIE } from "../../../lib/gate-cookie";
 
 const BACKEND_URL =
   process.env.GURUDEV_BACKEND_URL || "http://localhost:8765";
@@ -20,11 +21,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
+  const invite = req.cookies.get(GATE_COOKIE)?.value || "";
+
   let upstream: Response;
   try {
     upstream = await fetch(`${BACKEND_URL}/report`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Invite-Code": invite,
+      },
       body: JSON.stringify(body),
       cache: "no-store",
     });
