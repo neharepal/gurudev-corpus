@@ -600,10 +600,20 @@ def _retrieve(
         # child's precise span for splice. Default ON when parents.jsonl loaded
         # (child index) — set ENABLE_SMALL_TO_BIG=0 to force the flat fallback
         # for the old pre-Phase-2 index, per RFC-017 handover.
+        #
+        # `max_per_work` restores the pre-Phase-2 breadth guarantee: a single
+        # source work (biography, compilation, large canonical) can't grab
+        # more than N distinct parent sections in the top-k, so Gurudev's own
+        # smaller works get room to surface alongside a big biography. Only
+        # applies when the caller HASN'T already restricted to a single work
+        # via metadata_filter — in the scoped case (Amar Sandesh Sudha etc.)
+        # we want all top-k parents from that one work.
+        _max_per_work = None if metadata_filter else 1
         return small_to_big_results(
             reranked, sub_metas, keep_idx, STATE.parents_by_id,
             dense_scores=scores,
             max_per_parent=max_per_source, top_k=top_k,
+            max_per_work=_max_per_work,
         )
     out: List[Dict[str, Any]] = []
     for idx, mmr_score in reranked:
@@ -656,7 +666,8 @@ _ARTHASAHIT_WORK_IDS = frozenset({
 
 
 def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
-                          dense_scores, max_per_parent, top_k):
+                          dense_scores, max_per_parent, top_k,
+                          max_per_work: Optional[int] = None):
     """RFC-017 wiring: turn ranked child rows into per-parent output rows.
 
     Each row's `text` is the PARENT section (context handed to the answer model)
@@ -668,9 +679,16 @@ def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
     meaning. Preserves the `{meta, text, cos_score, mmr_score}` shape flat
     retrieval emits, so downstream code (build_user_message, splice,
     _enrich_citation_readpage) stays untouched.
+
+    `max_per_work` caps distinct parent sections per source work_id — restores
+    the pre-Phase-2 breadth guarantee that a single work (biography,
+    compilation, etc.) can't dominate the top-k. Under unscoped Q&A this is
+    typically 1; under scoped Q&A (metadata_filter set) leave as None so all
+    top-k parents can come from the one requested work.
     """
     groups: Dict[str, Any] = {}
     order: List[str] = []
+    work_counts: Dict[str, int] = {}
     for idx, mmr_score in reranked:
         m = sub_metas[idx]
         pid = m.get("parent_id")
@@ -680,6 +698,12 @@ def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
             if len(order) >= top_k:
                 continue
             parent = parents_by_id.get(pid) or {}
+            wid = parent.get("work_id") or m.get("work_id") or ""
+            # Enforce the per-work cap BEFORE registering the new parent, so
+            # a work that already hit its allowance can't claim another slot.
+            if max_per_work is not None and wid:
+                if work_counts.get(wid, 0) >= max_per_work:
+                    continue
             groups[pid] = {
                 "parent": parent,
                 "children": [],
@@ -687,6 +711,8 @@ def small_to_big_results(reranked, sub_metas, keep_idx, parents_by_id, *,
                 "cos_score": float(dense_scores[idx]),
             }
             order.append(pid)
+            if wid:
+                work_counts[wid] = work_counts.get(wid, 0) + 1
         g = groups[pid]
         if len(g["children"]) < max_per_parent:
             g["children"].append(m)
@@ -804,6 +830,20 @@ def _load_corpus_into_state() -> Dict[str, Any]:
     # RFC-017: parents.jsonl doesn't exist until Task 9's re-embed; guarded to
     # {} so this is a no-op on today's corpus. Not yet read by `_retrieve`.
     STATE.parents_by_id = _load_parents_by_id()
+    # Works catalog: one row per distinct work_id, powers query_understanding's
+    # substring/LLM detection of "the query is about a specific book". Built
+    # once at load time; ~100 rows, trivial memory.
+    works: Dict[str, Dict[str, Any]] = {}
+    for m in metas:
+        wid = m.get("work_id")
+        if wid and wid not in works:
+            works[wid] = {
+                "work_id": wid,
+                "title": m.get("title"),
+                "title_en": m.get("title_en"),
+                "title_translit": m.get("title_translit"),
+            }
+    STATE.works_catalog = list(works.values())
     return {
         "chunks": len(metas),
         "dim": int(embeddings.shape[1]),
@@ -1819,9 +1859,13 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     }
 
 
-def _prepare_request(req: AskRequest):
+def _prepare_request(req: AskRequest, request: Optional[Request] = None):
     """Validate the request and run retrieval. Returns (mode, user_msg, system_prompt,
-    chunks, mode_retrieval_meta) or raises HTTPException."""
+    chunks, mode_retrieval_meta) or raises HTTPException.
+
+    When `request` is provided, auto-scope decisions are written to
+    `request.state.log_entry["auto_scope"]` so the /admin/activity dashboard
+    can surface them (ADR-018)."""
     mode = req.mode
     if mode not in ("qa", "pravachan", "reading"):
         raise HTTPException(status_code=400, detail=f"Unknown mode: {mode!r}")
@@ -1833,9 +1877,51 @@ def _prepare_request(req: AskRequest):
     candidates = 100
     mmr_lambda = 0.7
 
+    # Diagnostic: surface the shape of the history payload on the access log
+    # so we can tell whether follow-up bodies are reaching the server.
+    # Compact: turn count + max title chars + max body chars, per turn.
+    if request is not None and req.history:
+        try:
+            summary = []
+            for turn in req.history:
+                cp = turn.get("cited_passages") or []
+                bodies = [len((p.get("body") or "")) for p in cp]
+                summary.append({
+                    "n_cited": len(cp),
+                    "bodies_len": bodies,
+                    "any_body": any(b > 0 for b in bodies),
+                })
+            request.state.log_entry["history_shape"] = summary
+        except (AttributeError, KeyError, TypeError):
+            pass
+
     metadata_filter: Optional[Dict[str, Any]] = None
+    auto_scope_info: Optional[Dict[str, Any]] = None
     if req.work and mode in ("reading", "qa"):
         metadata_filter = {"work_id": req.work}
+    elif mode == "qa" and getattr(STATE, "works_catalog", None):
+        # Auto-scope: two deterministic tiers, no LLM.
+        #  1. Quoted title in the query — hard user-explicit signal.
+        #  2. Unquoted title substring — natural-phrasing fallback.
+        # Fires only when the sadhak hasn't already explicitly selected a
+        # work in the UI. See ADR-018 (with 2026-07-18 revision).
+        if os.environ.get("ENABLE_QUERY_UNDERSTANDING", "1") != "0":
+            try:
+                auto_scope_info = query_understanding.extract_mentioned_work(
+                    question, STATE.works_catalog,
+                )
+                if auto_scope_info and auto_scope_info.get("work_id"):
+                    metadata_filter = {"work_id": auto_scope_info["work_id"]}
+                # Surface the detection outcome on the activity log so the
+                # maintainer can see when auto-scope fired, to which work,
+                # and via which tier (quoted / substring / ambiguous).
+                if request is not None and auto_scope_info:
+                    try:
+                        request.state.log_entry["auto_scope"] = auto_scope_info
+                    except (AttributeError, KeyError, TypeError):
+                        pass
+            except Exception:
+                pass  # never let auto-scope break retrieval
     # Citation breadth: unscoped Q&A retrieves at most 2 chunks per work so
     # the model sees one or two strong passages from each of the top distinct
     # works and its citations span the corpus instead of clustering in a single
@@ -1961,16 +2047,24 @@ def _citation_extraction_regen(mode, user_message, label_to_chunk, first_result,
     return merged
 
 
-def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate):
+def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate,
+                            has_history: bool = False):
     """Apply the grounding guard to a QA result dict. Returns (result, flags).
 
     No-op unless GROUNDING_MODE == 'enforce'. `regenerate` produces a second
     QA result dict (already spliced) for the enforcement retry.
+
+    `has_history` short-circuits the retry (a follow-up may legitimately
+    answer with zero citations — the user has the prior turn's citations
+    already). See grounding.enforce_qa docstring.
     """
     if os.environ.get("GROUNDING_MODE") != "enforce":
         return result, []
     passages = sum(1 for _ in (label_to_chunk or {}))
-    result = grounding.enforce_qa(result, passages_supplied=passages, regenerate=regenerate)
+    result = grounding.enforce_qa(
+        result, passages_supplied=passages, regenerate=regenerate,
+        has_history=has_history,
+    )
     flags = grounding.verify_citations(result.get("citations") or [], label_to_chunk)
     return result, flags
 
@@ -2067,7 +2161,7 @@ def ask(req: AskRequest, request: Request):
     wants_stream = "text/event-stream" in accept
 
     ask_t0 = time.time()
-    mode, user_msg, system_prompt, chunks, retrieval_s = _prepare_request(req)
+    mode, user_msg, system_prompt, chunks, retrieval_s = _prepare_request(req, request)
     retrieved_summary = _summarize_retrieved_chunks(chunks)
 
     # Map the passage labels the model sees (A, B, C, ...) back to their chunks,
@@ -2096,6 +2190,7 @@ def ask(req: AskRequest, request: Request):
                 result, label_to_chunk,
                 regenerate=lambda: _citation_extraction_regen(
                     mode, user_msg, label_to_chunk, result, req.lang or "en"),
+                has_history=bool(req.history),
             )
             _append_flags(_flags, req)
         _finalize_ask_log(request, result=result, retrieved=retrieved_summary,
@@ -2141,6 +2236,7 @@ def ask(req: AskRequest, request: Request):
                     result, label_to_chunk,
                     regenerate=lambda: _citation_extraction_regen(
                         mode, user_msg, label_to_chunk, result, req.lang or "en"),
+                    has_history=bool(req.history),
                 )
                 _append_flags(_flags, req)
                 _finalize_ask_log(request, result=result,

@@ -109,9 +109,11 @@ type FollowUpTurn = {
   error: string | null;
 };
 
-// Extract the compact citation list from a completed answer, used to build
-// the history payload sent to the backend so it can instruct the model not
-// to repeat already-cited passages.
+// Extract the citation list from a completed answer, used to build the
+// history payload sent to the backend. Includes the citation body so
+// follow-ups asking to translate / summarize / elaborate on prior citations
+// can operate on them directly without re-retrieval (Option A follow-up
+// fix, 2026-07-18).
 function extractCitedPassages(
   ans: QAAnswer | PravachanAnswer | null,
 ): HistoryTurn["cited_passages"] {
@@ -123,6 +125,9 @@ function extractCitedPassages(
       .map((c) => ({
         workTitle: c.quote.workTitle,
         location: c.quote.location,
+        body: c.quote.body || undefined,
+        kind: c.quote.kind || undefined,
+        author: c.quote.author || undefined,
       }));
   }
   // Pravachan: gurudevsWords + examples. Guard against partially-streamed
@@ -132,11 +137,20 @@ function extractCitedPassages(
     out.push({
       workTitle: ans.gurudevsWords.workTitle,
       location: ans.gurudevsWords.location,
+      body: ans.gurudevsWords.body || undefined,
+      kind: ans.gurudevsWords.kind || undefined,
+      author: ans.gurudevsWords.author || undefined,
     });
   }
   for (const ex of ans.examples ?? []) {
     if (ex?.quote) {
-      out.push({ workTitle: ex.quote.workTitle, location: ex.quote.location });
+      out.push({
+        workTitle: ex.quote.workTitle,
+        location: ex.quote.location,
+        body: ex.quote.body || undefined,
+        kind: ex.quote.kind || undefined,
+        author: ex.quote.author || undefined,
+      });
     }
   }
   return out;

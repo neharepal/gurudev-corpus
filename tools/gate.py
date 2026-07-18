@@ -35,7 +35,7 @@ from typing import Optional
 
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, StreamingResponse
 
 
 # Endpoints that must not be gated — health probes, CORS preflights, and the
@@ -243,6 +243,14 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
         t0 = time.time()
         response = await call_next(request)
         elapsed_ms = int((time.time() - t0) * 1000)
+
+        # For a StreamingResponse the response body hasn't finished yet — the
+        # generator runs AFTER middleware returns. So the handler owns logging
+        # via `_finalize_ask_log` inside the generator. Skip auto-log here to
+        # avoid duplicate rows (one without answer written now, one with
+        # answer written later).
+        if isinstance(response, StreamingResponse):
+            return response
 
         # If the handler already wrote the full log (with answer + chunks),
         # respect that and don't double-log.

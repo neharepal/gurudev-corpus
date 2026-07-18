@@ -467,8 +467,13 @@ def build_conversation_history_block(history: list[dict[str, Any]]) -> str:
 
     Each entry in history must have:
       - "question": str — the question asked in that turn
-      - "cited_passages": list of {"workTitle": str, "location": str} — compact
-        reference to what was already cited (so the model knows not to repeat them)
+      - "cited_passages": list of {"workTitle": str, "location": str,
+                                    "body"?: str}
+        The optional "body" is the verbatim quoted text of the citation. When
+        present, we include it so the model can OPERATE on prior citations
+        (translate them, summarize them, elaborate on them) without needing
+        to re-retrieve — see build_user_message's instruction for the two-case
+        follow-up handling.
 
     Returns a non-empty string when history has entries, or an empty string when
     history is None / empty (so callers can skip inserting the block).
@@ -481,20 +486,51 @@ def build_conversation_history_block(history: list[dict[str, Any]]) -> str:
         q = (turn.get("question") or "").strip()
         cited = turn.get("cited_passages") or []
 
-        cited_str = ""
-        if cited:
-            refs = []
-            for p in cited:
-                work = (p.get("workTitle") or "").strip()
-                loc = (p.get("location") or "").strip()
-                if work:
-                    refs.append(f"{work}" + (f" ({loc})" if loc else ""))
-            if refs:
-                cited_str = "  Passages already cited: " + "; ".join(refs)
-
         turn_lines = [f"[Turn {i + 1}] Question: {q}"]
-        if cited_str:
-            turn_lines.append(cited_str)
+        if cited:
+            has_any_body = any((p.get("body") or "").strip() for p in cited)
+            if has_any_body:
+                # Verbose form: enumerated citations with body text, so the
+                # model can quote / translate / summarize them directly.
+                # kind and author are surfaced too so the model can copy them
+                # into case-(b) prior-turn citations (see build_user_message).
+                turn_lines.append("  Passages already cited:")
+                for j, p in enumerate(cited, 1):
+                    work = (p.get("workTitle") or "").strip()
+                    loc = (p.get("location") or "").strip()
+                    kind = (p.get("kind") or "").strip()
+                    author = (p.get("author") or "").strip()
+                    body = (p.get("body") or "").strip()
+                    if not work:
+                        continue
+                    header = f"    ({j}) {work}" + (f" — {loc}" if loc else "")
+                    turn_lines.append(header)
+                    meta_bits = []
+                    if kind:
+                        meta_bits.append(f"kind={kind}")
+                    if author:
+                        meta_bits.append(f"author={author}")
+                    if meta_bits:
+                        turn_lines.append(f"        [{', '.join(meta_bits)}]")
+                    if body:
+                        # Indent body under its header so the transcript reads
+                        # cleanly. Two-space indent inside the 4-space citation
+                        # indent = 6 spaces.
+                        for line in body.splitlines() or [body]:
+                            turn_lines.append(f"      {line}")
+            else:
+                # Legacy compact form: title+location only, when no bodies
+                # were provided (older cached threads, or a non-body caller).
+                refs = []
+                for p in cited:
+                    work = (p.get("workTitle") or "").strip()
+                    loc = (p.get("location") or "").strip()
+                    if work:
+                        refs.append(f"{work}" + (f" ({loc})" if loc else ""))
+                if refs:
+                    turn_lines.append(
+                        "  Passages already cited: " + "; ".join(refs)
+                    )
         parts.append("\n".join(turn_lines))
 
     return "\n\n".join(parts)
@@ -520,11 +556,59 @@ def build_user_message(
             f"<retrieved_passages>\n{chunks_block}\n</retrieved_passages>\n\n"
             f"<conversation_history>\n{history_block}\n</conversation_history>\n\n"
             "<instruction>This is a follow-up in an ongoing conversation. "
-            "Treat the new question as a fresh question understood in the context of the previous turns. "
-            "Do NOT cite passages already shown earlier in this conversation (listed above under each prior turn); "
-            "bring NEW material from the retrieved passages above. "
-            "If the corpus genuinely has nothing new to add beyond what was already cited, "
-            "say so plainly rather than repeating.</instruction>\n\n"
+            "Prior turns are shown above; when the assistant's earlier "
+            "citations include their body text, that text is verbatim.\n\n"
+            "Handle the new question in one of two ways based on its intent:\n\n"
+            "(a) MORE material / different angle — if the user is asking for "
+            "additional passages on the topic or a new angle, use "
+            "<retrieved_passages> above; do NOT repeat passages already cited "
+            "in prior turns; bring NEW material. Emit `citations` grounded in "
+            "<retrieved_passages> per the usual contract (passage letter + "
+            "quoteStart/quoteEnd). If the corpus genuinely has nothing new to "
+            "add, say so plainly rather than repeating.\n\n"
+            "(b) OPERATE on prior citations — the user is asking you to "
+            "translate / summarize / explain / gloss / elaborate on the "
+            "passages already cited earlier. Work DIRECTLY from the citation "
+            "bodies shown in <conversation_history>.\n\n"
+            "IMPORTANT — CASE (b) OVERRIDES THE STANDARD CITATION CONTRACT.\n"
+            "The system-prompt rules that say `quote.passage` must be a "
+            "LETTER copied from a [PASSAGE X] block, and that `body` / "
+            "`workTitle` / `kind` / `author` are server-filled, apply to the "
+            "INITIAL answer only. For case (b) follow-ups, the target "
+            "passages are NOT in <retrieved_passages> — they were shown in "
+            "the previous turn. Emit ONE citation per prior-turn passage "
+            "you're operating on, in this shape (which the splicer accepts "
+            "when passage/quoteStart/quoteEnd are all empty):\n"
+            "  • `quote.passage` = \"\" (empty string — NOT a letter).\n"
+            "  • `quote.quoteStart` = \"\" and `quote.quoteEnd` = \"\".\n"
+            "  • `quote.body` = the verbatim ORIGINAL passage from "
+            "<conversation_history> (the Devanagari or Marathi source text, "
+            "unchanged). You DO fill this yourself here.\n"
+            "  • `quote.paraphrase` = your translation / summary / "
+            "explanation of that body, in the reader's language.\n"
+            "  • `quote.workTitle`, `quote.location` = copy exactly from the "
+            "same prior-turn citation.\n"
+            "  • `quote.kind`, `quote.author` = copy from the "
+            "`[kind=..., author=...]` line under the citation in "
+            "<conversation_history>. If missing, use `kind=\"canonical\"` "
+            "and `author=\"gurudev_ranade\"` as a safe fallback for corpus "
+            "passages.\n"
+            "  • `whyChosen` = one sentence in the reader's language "
+            "naming the operation (\"Translation of the passage cited "
+            "above.\", \"Summary of the earlier passage.\", etc.).\n"
+            "Emitting citations in this shape is the ONLY way to render "
+            "the operation as proper side-by-side cards (original body + "
+            "translation) for the reader. A framing-only answer without "
+            "citations loses that view — do not fall back to prose-only.\n"
+            "Do NOT copy `quote.body` from <retrieved_passages> in case (b). "
+            "Grafting a prior-turn paraphrase onto an unrelated retrieved "
+            "chunk is WRONG (observed 2026-07-18 misfire). If retrieval "
+            "genuinely surfaced additional relevant passages, you MAY "
+            "additionally cite them in the STANDARD shape (passage letter "
+            "+ quoteStart + quoteEnd) — but as SEPARATE citations, never "
+            "grafted onto the prior-turn output.\n\n"
+            "Decide which case fits from the wording of the new question."
+            "</instruction>\n\n"
             f"<question>\n{question.strip()}\n</question>"
         )
 

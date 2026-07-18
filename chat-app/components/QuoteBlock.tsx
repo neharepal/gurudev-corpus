@@ -65,6 +65,14 @@ export default function QuoteBlock({
   const attribution = locRedundant
     ? `— ${title} · ${authorName}`
     : `— ${title}, ${loc} · ${authorName}`;
+  // Paraphrase / translation gloss — the LLM populates `quote.paraphrase`
+  // when the quote's source language differs from the reader's language, and
+  // for follow-up "translate above" operations where the paraphrase carries
+  // the translation of the body. Rendered as an italic gloss beneath the
+  // verbatim body so the reader sees the original AND the reading-language
+  // rendering side-by-side.
+  const paraphrase = (quote.paraphrase ?? "").trim();
+  const paraphraseContainsDeva = paraphrase && /[ऀ-ॿ]/.test(paraphrase);
   return (
     <div>
       <blockquote
@@ -72,6 +80,16 @@ export default function QuoteBlock({
       >
         {quote.body}
       </blockquote>
+      {paraphrase ? (
+        <p
+          className={`gd-quote-paraphrase mt-1 italic ${
+            paraphraseContainsDeva ? "font-deva" : ""
+          }`}
+          style={{ color: "var(--text-secondary, #5A4632)", opacity: 0.85 }}
+        >
+          {paraphrase}
+        </p>
+      ) : null}
       <p className="gd-quote-attr">
         {attribution}
       </p>

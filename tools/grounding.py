@@ -41,14 +41,26 @@ CITE_HARDER_SUFFIX = (
 )
 
 
-def enforce_qa(first: dict, *, passages_supplied: int, regenerate) -> dict:
+def enforce_qa(first: dict, *, passages_supplied: int, regenerate,
+                has_history: bool = False) -> dict:
     """Return `first`, or a regenerated response if `first` was under-cited.
 
     One retry only. The retry is accepted only if it actually has citations;
     otherwise the original is kept (never loop, never make it worse). Any
     exception from `regenerate` yields `first`. Caller wires `regenerate` to a
     second LLM call whose system/user prompt carries CITE_HARDER_SUFFIX.
+
+    When `has_history` is True (i.e., this is a follow-up in an ongoing
+    conversation), the retry is SKIPPED. The reader has already seen the
+    prior turn's citations, and follow-up operations (translate / summarize /
+    elaborate on prior passages) legitimately produce zero-citation answers
+    per the case-(b) branch of build_user_message. Forcing a cite-harder
+    retry there causes the model to graft translations onto unrelated
+    retrieved passages (observed 2026-07-18) — worse UX than the empty-
+    citations path.
     """
+    if has_history:
+        return first
     if not is_under_cited(first, passages_supplied=passages_supplied):
         return first
     try:

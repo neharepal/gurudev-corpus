@@ -11,13 +11,21 @@ import type { ModeId } from "../data/mock-conversations";
 
 export type Lang = "en" | "mr";
 
-// Compact record of what was already cited in one prior conversation turn.
-// Sent in history so the backend can instruct the model not to repeat them.
+// Record of what was already cited in one prior conversation turn. Sent in
+// history so the backend can (a) tell the model not to repeat these when the
+// user asks for more material, AND (b) let the model translate / summarize /
+// elaborate on them directly by emitting prior-turn citations with the
+// original body + translated paraphrase (2026-07-18 follow-up fix).
+// `body`, `kind`, `author` are optional because older cached threads
+// predate the fields — the backend degrades gracefully.
 export type HistoryTurn = {
   question: string;
   cited_passages: Array<{
     workTitle: string;
     location: string;
+    body?: string;
+    kind?: string;
+    author?: string;
   }>;
 };
 
