@@ -1,0 +1,301 @@
+# Work priority order — source of truth for the "which books matter most"
+# question across features.
+#
+# Consumed by:
+#   - query_understanding.extract_mentioned_work (ADR-018): the LLM
+#     candidate list is restricted to `section_1_gurudev_literature` +
+#     tiers below so nickname/paraphrase queries can't misroute to a
+#     smruti-XXX tribute paper.
+#   - retrieve.py chunk_tier weighting: higher-tier chunks get an additive
+#     score bump so a Gurudev-own passage beats a smruti mention of the
+#     same topic.
+#   - RFC-018 citation-alias index: the `alias_originals` list is drawn
+#     from Section 1 (and tier 2 primary works below).
+#
+# Source: Neha's authoritative list 2026-07-18
+# (docs/books-reference-list-2026-07-18.md). Ordering within each section
+# is PRIORITY order — item 1 is highest priority, not alphabetical.
+#
+# For each item: work_id when present in the corpus, `MISSING` when the
+# book is on Neha's list but not yet ingested. The `MISSING` entries drive
+# the future ingestion checklist.
+
+# ─────────────────────────────────────────────────────────────────────────
+# SECTION 1 — Shri Gurudev's Literature (highest priority)
+# The teaching. When a sadhak asks about a topic Gurudev wrote about, this
+# is where the citation MUST come from. Priority order matches Neha's list.
+# ─────────────────────────────────────────────────────────────────────────
+section_1_gurudev_literature:
+  - order: 1
+    name: Nityanemavali
+    work_id: MISSING                                # not ingested yet
+  - order: 2
+    name: Bodhsudha
+    work_id: bodhsudha
+  - order: 3
+    name: Dhyan Gita / ध्यानोपकारिणी गीता
+    work_id: dhyanopakarani-gita                     # arthasahit OCR in progress 2026-07-18
+    note: title also `dhyanopakarani-gita-arthasahit`; verify after ingest
+  - order: 4
+    name: Dnyaneshwar Vachanamrut
+    work_id: jnaneshwar-vachanamrut                  # arthasahit OCR in progress 2026-07-18
+  - order: 5
+    name: Tukaram Vachanamrut
+    work_id: tukaram-vachanamrut                     # arthasahit OCR in progress 2026-07-18
+  - order: 6
+    name: Ramdasa Vachanamrut
+    work_id: ramdas-vachanamrut                      # arthasahit OCR in progress 2026-07-18
+  - order: 7
+    name: Sant Vachanamrut
+    work_id: sant-vachanamrut                        # arthasahit OCR in progress 2026-07-18
+  - order: 8
+    name: Eknath Vachanamrut
+    work_id: eknath-vachanamrut                      # arthasahit OCR in progress 2026-07-18
+  - order: 9
+    name: A Constructive Survey of Upanishadic Philosophy
+    work_id: constructive-survey-of-upanishadic-philosophy
+  - order: 10
+    name: Pathway to God in Marathi Literature (Mysticism in Maharashtra)
+    work_id: mysticism-in-maharashtra
+    note: also known as "Pathway to God in Marathi Literature"
+  - order: 11
+    name: Pathway to God in Hindi Literature
+    work_id: pathway-to-god-in-hindi-literature
+  - order: 12
+    name: Parmarth Sopan — the Source Book on PGHL
+    work_id: parmartha-sopan
+  - order: 13
+    name: Pathway to God in Kannada Literature
+    work_id: pathway-to-god-in-kannada-literature
+  - order: 14
+    name: Kannad Parmarth Sopan (Padma Kulkarni)
+    work_id: kannad-parmarth-sopan
+  - order: 15
+    name: Kannad Parmarth Sopan (Sunil Gajendragadkar)
+    work_id: MISSING                                 # not ingested yet
+  - order: 16
+    name: The Bhagavad-gita as a Philosophy of God-Realisation
+    work_id: bhagavadgita-as-pathway-to-god-realization
+  - order: 17
+    name: Vedanta, the Culmination of Indian Thought
+    work_id: vedant
+  - order: 18
+    name: Evolution of my Own Thought
+    work_id: evolution-of-my-own-thought
+  - order: 19
+    name: Signs of the Times and Characteristics (Thomas Carlyle)
+    work_id: MISSING                                 # only smruti-103 review exists in corpus
+  - order: 20
+    name: The Creative Period
+    work_id: creative-period
+  - order: 21
+    name: Philosophical and Other Essays Part 1
+    work_id: philosophical-and-other-essays
+  - order: 22
+    name: Essays and Reflections
+    work_id: essays-and-reflections
+  - order: 23
+    name: The Conception of Spiritual Life in Mahatma Gandhi and Hindi Saints
+    work_id: gandhi-and-other-indian-saints
+  - order: 24
+    name: Parmarth Mandir
+    work_id: parmartha-mandir
+  - order: 25
+    name: हे प्रचितीचे बोलणे
+    work_id: MISSING                                 # not ingested yet
+  - order: 26
+    name: Reflections / अंतरंगीचे तरंग
+    work_id: essays-and-reflections
+    note: |
+      MAY be same as order 22 (`essays-and-reflections`) — Neha's list
+      names both separately. Verify whether these are ONE book (two names)
+      or TWO distinct works; if two, order 26 is currently MISSING.
+
+# ─────────────────────────────────────────────────────────────────────────
+# SECTION 2 — Kakasaheb Tulpule's Literature (Gurudev's foremost disciple)
+# Neha's Section 5 in the reference doc. Kaka's books systematize and
+# transmit the lineage's teaching; treated as primary for anything Kaka
+# articulates.
+# ─────────────────────────────────────────────────────────────────────────
+section_2_kakasaheb_literature:
+  # Full list at docs/books-reference-list-2026-07-18.md §5.
+  # Populate work_ids and per-item order below as they get audited /
+  # ingested. Placeholder entries for the works already in the corpus:
+  - name: Sadhak-Bodh
+    work_id: sadhakbodh
+  - name: Sadhakachi Atmakatha
+    work_id: sadhakachi-atmakatha
+  - name: Kakanchi Pravachane (all 5 vols)
+    work_id: kakanchi-pravachane
+  - name: Gurudev Ranade v Tyanchi Parmarthik Shikvan
+    work_id: gurudev-paramarthik-shikvan
+  - name: Sukhasahita-Dukharahita
+    work_id: sukhasahita-dukharahita
+  - name: Maharajanchi Sutre
+    work_id: maharajachi-sutre
+  - name: Kakanchi Charcha
+    work_id: kakanchi-charcha
+  - name: Bhagvadgeeta (Ranade / Kakasaheb)
+    work_id: bhagvadgeeta
+
+# ─────────────────────────────────────────────────────────────────────────
+# SECTION 3 — Other lineage masters' direct writing (Bhausaheb, Nimbargi)
+# ─────────────────────────────────────────────────────────────────────────
+section_3_lineage_masters:
+  - name: Javak Patre-Tipane (Bhausaheb Maharaj outgoing letters)
+    work_id: javak-patre-tipane
+  # (Amburao Maharaj — no known primary writing survives.)
+
+# ─────────────────────────────────────────────────────────────────────────
+# SECTION 4 — Biographies of Gurudev (Neha's Section 3)
+# Secondary for teachings but authoritative for events / personal
+# character. Order preserves Neha's numbering.
+# ─────────────────────────────────────────────────────────────────────────
+section_4_gurudev_biographies:
+  - order: 1
+    name: गुरुदेव रा.द. रानडे - चरित्र व तत्वज्ञान (Kakasaheb Tulpule)
+    work_id: charitra-tatvajnan-tulpule
+  - order: 5
+    name: श्री गुरुदेव दर्शन (Ramanna Kulkarni)
+    work_id: MISSING
+  - order: 7
+    name: Gurudev R.D. Ranade — A Glance At His Allahabad University Days
+    work_id: allahabad-days-en
+  - order: 9
+    name: Gurudev Ranade — Biography and Mysticism (S.N. Deshpande)
+    work_id: jivandarshan-deshpande
+  - order: 15
+    name: गुरु हा परब्रह्म केवळ
+    work_id: guru-ha-parabrahma-kewal
+  # ... other biographies in the reference doc not yet mapped
+
+# ─────────────────────────────────────────────────────────────────────────
+# SECTION 5 — Arthasahit editions (Section 12 in reference doc)
+# Currently being OCR'd on the M4 (2026-07-18).
+# Citation rule per Neha 2026-07-18: quote ONLY headings and verses
+# (Gurudev's selection); never the explanations (mixed provenance:
+# some Gurudev's from Pathway to God series, some reputed Marathi
+# sources). Enforced by cite_text in the chunker (RFC-017 §4).
+# ─────────────────────────────────────────────────────────────────────────
+section_5_arthasahit:
+  - name: Eknathi Bhagavat Vachanamrut Arthasahit
+    work_id: eknathi-bhagvat-vachanamrut
+  - name: Dnyaneshwar Vachanamrut Arthasahit
+    work_id: jnaneshwar-vachanamrut
+  - name: Tukaram Vachanamrut Arthasahit
+    work_id: tukaram-vachanamrut
+  - name: Eknath Vachanamrut Arthasahit
+    work_id: eknath-vachanamrut
+  - name: Sant Vachanamrut Arthasahit
+    work_id: sant-vachanamrut
+  - name: Ramdas Vachanamrut Arthasahit
+    work_id: ramdas-vachanamrut
+  - name: Dhyanopakarani Gita Arthasahit
+    work_id: dhyanopakarani-gita
+  # Divine Thoughts (4 parts) also referenced as arthasahit — verify.
+
+# ─────────────────────────────────────────────────────────────────────────
+# Derived lists — regenerate when tiers change. A helper
+# tools/build_work_priorities.py is planned but not built yet; edit
+# these by hand for now.
+# ─────────────────────────────────────────────────────────────────────────
+
+# Works considered when ADR-018 auto-scope's LLM fallback runs, ordered by
+# Section 1 priority (highest first). Excludes MISSING entries so the LLM
+# only picks from what's actually retrievable. When "MISSING" items are
+# ingested, add them here in the same order slot.
+scope_candidates:
+  # Section 1 present-in-corpus, in Neha's priority order:
+  - bodhsudha                                        # 2
+  - dhyanopakarani-gita                              # 3 (arthasahit — verify post-OCR)
+  - jnaneshwar-vachanamrut                           # 4 (arthasahit)
+  - tukaram-vachanamrut                              # 5 (arthasahit)
+  - ramdas-vachanamrut                               # 6 (arthasahit)
+  - sant-vachanamrut                                 # 7 (arthasahit)
+  - eknath-vachanamrut                               # 8 (arthasahit)
+  - constructive-survey-of-upanishadic-philosophy    # 9
+  - mysticism-in-maharashtra                         # 10
+  - pathway-to-god-in-hindi-literature               # 11
+  - parmartha-sopan                                  # 12
+  - pathway-to-god-in-kannada-literature             # 13
+  - kannad-parmarth-sopan                            # 14
+  - bhagavadgita-as-pathway-to-god-realization       # 16
+  - vedant                                           # 17
+  - evolution-of-my-own-thought                      # 18
+  - creative-period                                  # 20
+  - philosophical-and-other-essays                   # 21
+  - essays-and-reflections                           # 22 (also 26)
+  - gandhi-and-other-indian-saints                   # 23
+  - parmartha-mandir                                 # 24
+  # Section 2 — Kakasaheb's own writing (all treated as primary):
+  - sadhakbodh
+  - sadhakachi-atmakatha
+  - kakanchi-pravachane
+  - gurudev-paramarthik-shikvan
+  - sukhasahita-dukharahita
+  - maharajachi-sutre
+  - kakanchi-charcha
+  - bhagvadgeeta
+  - eknathi-bhagvat-vachanamrut
+  # Section 3 — lineage masters' direct writing:
+  - javak-patre-tipane
+
+# Works that RFC-018 treats as "originals" for citation-alias
+# re-attribution. When a compilation/biography/anthology chunk verbatim-
+# reproduces text from any of these, the citation swaps to the original.
+# Restricted to Section 1 (Gurudev's own writings) + Section 2
+# (Kakasaheb's own writings) + Section 3 (lineage masters' direct writing).
+# Excludes arthasahit — those are themselves compilations under RFC-017
+# and cannot be alias targets.
+alias_originals:
+  # Section 1 Gurudev's own writings (present-in-corpus):
+  - bodhsudha
+  - constructive-survey-of-upanishadic-philosophy
+  - mysticism-in-maharashtra
+  - pathway-to-god-in-hindi-literature
+  - parmartha-sopan
+  - pathway-to-god-in-kannada-literature
+  - kannad-parmarth-sopan
+  - bhagavadgita-as-pathway-to-god-realization
+  - vedant
+  - evolution-of-my-own-thought
+  - creative-period
+  - philosophical-and-other-essays
+  - essays-and-reflections
+  - gandhi-and-other-indian-saints
+  - parmartha-mandir
+  # Section 2 Kakasaheb's own writings:
+  - sadhakbodh
+  - sadhakachi-atmakatha
+  - kakanchi-pravachane
+  - gurudev-paramarthik-shikvan
+  - sukhasahita-dukharahita
+  - maharajachi-sutre
+  - kakanchi-charcha
+  - bhagvadgeeta
+  - eknathi-bhagvat-vachanamrut
+  # Section 3 lineage masters:
+  - javak-patre-tipane
+
+# ─────────────────────────────────────────────────────────────────────────
+# Ingestion checklist — Section 1 items not yet in the corpus.
+# Track these separately so they don't get lost.
+# ─────────────────────────────────────────────────────────────────────────
+missing_ingestion:
+  - name: Nityanemavali
+    section_1_order: 1
+    priority: highest — foundational daily-practice text
+    known_related: नेमावली विवरण (Kakasaheb), नित्यनेमावलीचे अंतरंग (Ramanna Kulkarni)
+  - name: Kannad Parmarth Sopan (Sunil Gajendragadkar)
+    section_1_order: 15
+    priority: medium — alternate/supplementary Marathi edition
+  - name: Signs of the Times and Characteristics by Thomas Carlyle
+    section_1_order: 19
+    priority: medium — Gurudev's translation/commentary; only a review
+      (smruti-103) currently in corpus
+  - name: हे प्रचितीचे बोलणे
+    section_1_order: 25
+    priority: medium — Marathi teachings collection
+  - name: Reflections / अंतरंगीचे तरंग (if distinct from Essays and Reflections)
+    section_1_order: 26
+    priority: verify first — may be same book as order 22

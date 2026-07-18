@@ -87,6 +87,15 @@ const MODE_HELPER: Record<ModeId, { en: string; mr: string }> = {
   },
 };
 
+// Q&A-only tip: quoting a title scopes retrieval to that one book. ADR-018
+// (2026-07-18 revision) — the quoted-title tier replaces the LLM fallback
+// that misfired on topical queries; users need to know the convention
+// exists or adoption is zero.
+const QA_QUOTE_TIP = {
+  en: 'Tip — put a book title in quotes ("Amar Sandesh Sudha") to search only that book.',
+  mr: 'टीप — विशिष्ट ग्रंथावर शोध मर्यादित करण्यासाठी ग्रंथाचे नाव अवतरण चिन्हांत लिहा ("अमर संदेश सुधा").',
+} as const;
+
 // useSearchParams requires a Suspense boundary in Next 15.
 export default function LandingPageRoute() {
   return (
@@ -365,6 +374,20 @@ function LandingPage() {
           >
             {MODE_HELPER[mode][lang]}
           </p>
+
+          {/* Q&A tip: quoting a book title scopes retrieval to that book.
+              Only shown in qa mode; smaller/lighter than MODE_HELPER so it
+              reads as a secondary tip rather than a mode description. */}
+          {mode === "qa" && (
+            <p
+              className={`mx-auto mt-1.5 max-w-[560px] text-center text-[12.5px] leading-snug italic ${
+                lang === "mr" ? "font-deva" : ""
+              }`}
+              style={{ color: "#5A4632", opacity: 0.65 }}
+            >
+              {QA_QUOTE_TIP[lang]}
+            </p>
+          )}
 
           {/* "Continue reading" shelf — only shown in Reading mode, above
               the begin-a-new-work suggestions. Reads from localStorage on

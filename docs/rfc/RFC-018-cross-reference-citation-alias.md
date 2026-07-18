@@ -1,6 +1,7 @@
 # RFC-018: Cross-reference citation-alias index
 
-**Status:** DRAFT 2026-07-18
+**Status:** ACCEPTED 2026-07-18 (implementation deferred — build after
+arthasahit ingestion + calibration pass lands)
 **Author:** Neha (with Claude)
 **Created:** 2026-07-18
 **Related:** RFC-014 (retrieval/grounding), RFC-017 (small-to-big chunking + arthasahit)
