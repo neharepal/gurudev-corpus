@@ -1521,6 +1521,7 @@ _ADMIN_ACTIVITY_HTML = """<!doctype html>
     <option value="/report">/report</option>
   </select></label>
   <span id="count"></span>
+  <a href="#" id="pauseBtn" style="color:var(--accent); text-decoration:none; cursor:pointer">⏸ Pause auto-refresh</a>
   <span style="margin-left:auto"><a href="/admin/flags" style="color:var(--accent)">Flag Queue →</a></span>
 </div>
 <table>
@@ -1532,9 +1533,20 @@ _ADMIN_ACTIVITY_HTML = """<!doctype html>
 </table>
 <script>
 let ALL = [];
+// Set of `ts` strings for rows the user has expanded. Stable across the 15s
+// auto-refresh so a details pane doesn't snap shut mid-read (was: the render
+// replaced tbody innerHTML wholesale, losing every .open class + resetting
+// every ▾ triangle back to ▸).
+const OPEN = new Set();
+// Pause auto-refresh while the user is actively interacting — prevents any
+// jitter/collapse even if we ever regress the OPEN-state preservation.
+let PAUSED = false;
 function esc(s) {
   return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
+// Stable per-row key. Timestamp is unique enough within a session (microsecond
+// precision on the server) and survives the auto-refresh cycle unchanged.
+function rowKey(e) { return e.ts || ''; }
 function render() {
   const fn = (document.getElementById('fName').value || '').toLowerCase();
   const fp = document.getElementById('fPath').value;
@@ -1549,7 +1561,9 @@ function render() {
     rows.innerHTML = '<tr><td colspan="9" class="empty">No entries.</td></tr>';
     return;
   }
-  rows.innerHTML = filtered.map((e, idx) => {
+  rows.innerHTML = filtered.map((e) => {
+    const key = rowKey(e);
+    const isOpen = OPEN.has(key);
     const st = e.status || 0;
     const stCls = 'st-' + Math.floor(st / 100);
     let t = '';
@@ -1567,9 +1581,11 @@ function render() {
     const noteBadge = e.category
       ? ` <span class="pill">${esc(e.category)}</span>` : '';
     const expandable = e.answer || (e.retrieved && e.retrieved.length);
+    const glyph = isOpen ? '▾' : '▸';
     const toggle = expandable
-      ? `<span class="row-toggle" onclick="toggleDetail(${idx})" id="tgl-${idx}">▸</span>`
+      ? `<span class="row-toggle" onclick="toggleDetail('${esc(key)}')" data-key="${esc(key)}">${glyph}</span>`
       : '';
+    const detailClass = isOpen ? 'row-detail open' : 'row-detail';
     return `<tr>
       <td>${toggle}</td>
       <td class="time">${tCell}</td>
@@ -1581,7 +1597,7 @@ function render() {
       <td class="ms">${esc(e.ms || '')}</td>
       <td class="status ${stCls}">${esc(st)}</td>
     </tr>` + (expandable
-      ? `<tr class="row-detail" id="det-${idx}">
+      ? `<tr class="${detailClass}" data-key="${esc(key)}">
            <td colspan="9" class="row-detail-cell">${renderDetail(e)}</td>
          </tr>` : '');
   }).join('');
@@ -1652,14 +1668,18 @@ function renderDetail(e) {
   return html || '<em style="color:var(--muted)">no answer captured</em>';
 }
 
-function toggleDetail(idx) {
-  const det = document.getElementById('det-' + idx);
-  const tgl = document.getElementById('tgl-' + idx);
-  if (!det) return;
-  det.classList.toggle('open');
-  tgl.textContent = det.classList.contains('open') ? '▾' : '▸';
+function toggleDetail(key) {
+  if (OPEN.has(key)) OPEN.delete(key); else OPEN.add(key);
+  // Toggle in-place without a re-render — cheaper, and it keeps scroll
+  // position exactly where the reader was.
+  const rows = document.getElementById('rows');
+  const detail = rows.querySelector(`tr.row-detail[data-key="${CSS.escape(key)}"]`);
+  const toggle = rows.querySelector(`span.row-toggle[data-key="${CSS.escape(key)}"]`);
+  if (detail) detail.classList.toggle('open', OPEN.has(key));
+  if (toggle) toggle.textContent = OPEN.has(key) ? '▾' : '▸';
 }
 async function load() {
+  if (PAUSED) return;
   try {
     const r = await fetch('/admin/activity.json');
     if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -1667,11 +1687,21 @@ async function load() {
     render();
   } catch (err) {
     document.getElementById('rows').innerHTML =
-      `<tr><td colspan="8" class="empty">Failed to load: ${esc(err.message)}</td></tr>`;
+      `<tr><td colspan="9" class="empty">Failed to load: ${esc(err.message)}</td></tr>`;
   }
 }
 document.getElementById('fName').addEventListener('input', render);
 document.getElementById('fPath').addEventListener('change', render);
+// Wire the pause/resume affordance so a maintainer reading a long answer
+// can freeze the refresh cycle if they want to.
+const pauseBtn = document.getElementById('pauseBtn');
+if (pauseBtn) {
+  pauseBtn.addEventListener('click', () => {
+    PAUSED = !PAUSED;
+    pauseBtn.textContent = PAUSED ? '▶ Resume auto-refresh' : '⏸ Pause auto-refresh';
+    pauseBtn.style.color = PAUSED ? 'var(--warn)' : 'var(--accent)';
+  });
+}
 load();
 setInterval(load, 15000);  // refresh every 15 s
 </script></body></html>

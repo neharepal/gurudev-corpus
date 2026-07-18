@@ -51,6 +51,18 @@ _PAID_PATHS = {"/ask"}
 # /works logs a homepage load ≈ session-start (chat-app fetches it on mount);
 # useful proxy for "who logged in when" without a dedicated auth endpoint.
 _LOGGED_PATHS = {"/ask", "/report", "/works"}
+# Prefixes whose activity is also logged — /read/<slug> is a shared-link land
+# (someone opened a specific work), useful for seeing which passages get shared
+# in the wild. Kept separate from _LOGGED_PATHS because the exact path varies
+# by slug — we still just record the path string.
+_LOGGED_PREFIXES = ("/read/",)
+
+
+def _is_logged_path(path: str) -> bool:
+    """True when this request path should be recorded on the activity log."""
+    if path in _LOGGED_PATHS:
+        return True
+    return any(path.startswith(p) for p in _LOGGED_PREFIXES)
 # Log file (bind-mounted from the host so it survives container restarts).
 _ACCESS_LOG_DEFAULT = str(Path(__file__).resolve().parent.parent / "logs" / "access.jsonl")
 
@@ -199,7 +211,7 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
         peeked: dict = {}
         if (self.access_log.enabled
                 and request.method in ("POST", "PUT", "PATCH")
-                and path in _LOGGED_PATHS):
+                and _is_logged_path(path)):
             try:
                 body_bytes = await request.body()
                 request._body = body_bytes  # replay for the route handler
@@ -249,7 +261,24 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
         # via `_finalize_ask_log` inside the generator. Skip auto-log here to
         # avoid duplicate rows (one without answer written now, one with
         # answer written later).
-        if isinstance(response, StreamingResponse):
+        #
+        # `isinstance(response, StreamingResponse)` is NOT sufficient here.
+        # Starlette's `BaseHTTPMiddleware.call_next` re-wraps every response
+        # in an internal `_StreamingResponse` (starlette/middleware/base.py:89)
+        # that (a) does NOT inherit from `StreamingResponse`, (b) does NOT
+        # preserve `media_type` — the ctor doesn't take it, only `content` +
+        # `status_code` + `info`. The one thing it DOES preserve is the raw
+        # ASGI headers (`response.raw_headers = message["headers"]`). So we
+        # sniff the content-type header instead. Discovered 2026-07-18 from
+        # observed duplicate log rows in prod: one partial (middleware) + one
+        # full (handler `_finalize_ask_log`), same `ts` to the microsecond.
+        content_type = ""
+        try:
+            content_type = response.headers.get("content-type", "") or ""
+        except AttributeError:
+            pass
+        if (isinstance(response, StreamingResponse)
+                or content_type.startswith("text/event-stream")):
             return response
 
         # If the handler already wrote the full log (with answer + chunks),
@@ -257,7 +286,7 @@ class InviteAndCapMiddleware(BaseHTTPMiddleware):
         if getattr(request.state, "access_logged_by_handler", False):
             return response
 
-        if self.access_log.enabled and path in _LOGGED_PATHS:
+        if self.access_log.enabled and _is_logged_path(path):
             entry["status"] = response.status_code
             entry["ms"] = elapsed_ms
             self.access_log.append(entry)
