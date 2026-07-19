@@ -84,6 +84,11 @@ RAW_ATHVANI_FOLDERS = [
     ("00_raw/drive_dump_2026-06-11/Neha/निम्बर्गी महाराज आठवणी", "nimbargi_maharaj"),
     ("00_raw/drive_dump_2026-06-11/Neha/बाबांच्या आठवणी", "other_devotees"),
     ("00_raw/drive_dump_2026-06-11/Neha/साधूबुवांच्या आठवणी.", "other_devotees"),
+    # New (2026-07-18): compiled Kulkarni biography + Dhyanagita anvayartha.
+    # Both are born-digital docx (clean Devanagari, no OCR needed). Attributed
+    # to gurudev_ranade because both are ABOUT him / his canonical work.
+    ("00_raw/drive_dump_2026-06-11/Neha/गुरु हा परब्रम्ह केवळ", "gurudev_ranade"),
+    ("00_raw/drive_dump_2026-06-11/Neha/ध्यानगीता अन्वयार्थ फाईल्स", "gurudev_ranade"),
 ]
 
 
