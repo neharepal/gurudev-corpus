@@ -48,6 +48,29 @@ ARTHASAHIT_WORK_IDS = frozenset({
 
 ARTHA_MARKER = "अर्थ"
 
+# In an arthasahit book, `अर्थ` marks the start of the sadhak's meaning-gloss
+# section — it's a paragraph-initial heading (`अर्थ -`, `अर्थ :`, `अर्थ १`),
+# NOT an inline noun/adverb use. The verifier's pattern MUST mirror the
+# parser's boundary check exactly (arthasahit_parse.py:_ARTHA_RE) — otherwise
+# the verifier flags cases the parser correctly kept in the verse.
+#
+# False positives previously caught:
+#   • `अर्थात्` / `अर्थात` — Marathi/Sanskrit adverb "that is, meaning"
+#     (~40 in tukaram-vachanamrut, 3000+ across the wider corpus).
+#   • Inline `अर्थ` as a noun meaning "meaning / purpose / sense" —
+#     "श्लोकाचा अर्थ", "बोल लावण्यात अर्थ नाही", "महावाक्याचा अर्थ",
+#     "त्याचा अर्थ समजेल", etc.
+# Only line-start `अर्थ` (with a non-Devanagari continuation) qualifies.
+import re
+_ARTHA_HEADER_RE = re.compile(r"(?m)^\s*अर्थ(?![ऀ-ॿ])")
+
+
+def _has_artha_header(text: str) -> bool:
+    """True if `text` contains a line-initial arthasahit meaning-gloss
+    heading. Mirrors the split marker in arthasahit_parse.py so the
+    verifier and the parser stay in agreement."""
+    return bool(_ARTHA_HEADER_RE.search(text or ""))
+
 
 def _iter_jsonl(path: Path) -> Iterable[dict]:
     with path.open("r", encoding="utf-8") as f:
@@ -114,7 +137,7 @@ def verify_arthasahit_children(
 
         if "cite_text" in row:
             cite = row["cite_text"] or ""
-            if ARTHA_MARKER in cite:
+            if _has_artha_header(cite):
                 errors.append(
                     f"child {row.get('id')!r}: cite_text contains {ARTHA_MARKER!r} "
                     f"— the sadhak's meaning leaked into the citation"
