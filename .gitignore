@@ -82,7 +82,15 @@ photos/
 .venv-surya/
 
 # Surya OCR handoff kit (source PDFs, large)
-_surya_ocr_job/
+# Ignore _surya_ocr_job/ contents (venv/, pdfs/, out/, out_raw/, log files)
+# BUT keep the pipeline scripts trackable — otherwise fixes to run_ocr.sh
+# (like the 2026-07-19 PATH patch for llama-server) don't survive machine
+# transfers. Use `*` not `/` on the top rule so git descends into the folder
+# and can evaluate the negations below.
+_surya_ocr_job/*
+!_surya_ocr_job/run_ocr.sh
+!_surya_ocr_job/assemble.py
+!_surya_ocr_job/HANDOVER.md
 
 # Surya re-OCR generated decisions (transient)
 tools/surya_ocr/replace_decisions.yaml
