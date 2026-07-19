@@ -55,9 +55,14 @@ ENV GURUDEV_BACKEND_PORT=8765 \
 
 EXPOSE 8765
 
-# Health probe hits GET /; server returns 404 for unknown routes but the
-# request completes → connection working, model loaded (startup finished).
+# Health probe hits the real /health endpoint (RFC-016 §4). It bypasses the
+# invite gate and returns 200 with a status string once the corpus + BM25
+# index are loaded — the only true "ready" signal. Historical note: the
+# probe used to hit GET / with `curl -fsS`, but that endpoint 404s (no
+# route registered) and `-f` treats 404 as failure — so the container was
+# perpetually marked "unhealthy" even while serving real traffic. Fixed
+# 2026-07-19.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=90s --retries=3 \
-  CMD curl -fsS http://127.0.0.1:8765/ >/dev/null || exit 1
+  CMD curl -fsS http://127.0.0.1:8765/health >/dev/null || exit 1
 
 CMD ["python", "tools/server.py"]
