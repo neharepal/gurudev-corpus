@@ -8,9 +8,12 @@
 .env.*
 # Lightsail/AWS SSH keys — never commit even by accident.
 lightsail/
-# Ad-hoc pipeline snapshots (chunker/parents backups) — MB-to-GB scale;
-# recreate from the current source-of-truth files if needed.
+# Ad-hoc pipeline snapshots (chunker/parents/text.md backups) — MB-to-GB
+# scale; recreate from the current source-of-truth files if needed. The
+# broader `*.bak` rule catches text.md rollback anchors we drop next to a
+# canonical file before an in-place OCR-quality swap.
 04_processed/*.bak
+*.bak
 # But do commit the deploy config template — it's the only safe way for a
 # fresh clone (Lightsail, ECS, whatever) to know which env vars matter.
 !deploy/.env.example
