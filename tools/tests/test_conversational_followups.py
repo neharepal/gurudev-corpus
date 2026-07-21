@@ -183,10 +183,10 @@ def test_build_user_message_with_history_includes_two_case_instruction():
     assert '`quote.passage` = ""' in msg
     assert '`quote.quoteStart` = "" and `quote.quoteEnd` = ""' in msg
     assert "graft" in msg.lower() or "Grafting" in msg
-    # verbatim ORIGINAL body from history is required (case b keeps side-by-
-    # side cards; user-facing render doesn't degrade to prose-only).
+    # verbatim ORIGINAL body from history is required (case b.1 keeps side-
+    # by-side cards; b.2 SUMMARIZE mode is prose-only via framingParagraphs).
     assert "verbatim ORIGINAL passage from" in msg
-    assert "your translation / summary / explanation" in msg
+    assert "your translation of that body" in msg
     # kind + author fallback (in case history is missing them).
     assert "kind=\"canonical\"" in msg
 
@@ -369,3 +369,64 @@ def test_build_user_message_carries_bodies_through_to_history_block():
     assert "अखंड नामस्मरण करावे" in msg
     # And the current translate question is present.
     assert "Translate above passages to English." in msg
+
+
+# ── Mukund's session (2026-07-19) — three new failure modes to prevent ─────
+
+def test_output_shape_prescription_for_summarize_follow_up():
+    """Mukund #3: the LLM put a 4.8k-char summary in `synthesis` (meant for a
+    1-2 sentence closer) → frontend rendered it small and Mukund said 'where
+    is the summary?'. The follow-up prompt MUST prescribe where the
+    operation output goes so the model can't accidentally hide the answer
+    in the wrong field."""
+    history = [{"question": "Summarize Ranade's evolution-of-thought essay",
+                "cited_passages": [{"workTitle": "Contemporary Indian Philosophy",
+                                     "location": "essay",
+                                     "body": "Some prior passage."}]}]
+    msg = build_user_message(CHUNKS, "Expand it in plain language", history=history)
+    # The instruction must name the fields and be prescriptive about where
+    # multi-paragraph output goes.
+    assert "framingParagraphs" in msg
+    assert "synthesis" in msg
+    # Must forbid using `synthesis` as the main body of the answer.
+    assert "synthesis" in msg and (
+        "not put the body" in msg.lower()
+        or "closing" in msg.lower()
+        or "not the main" in msg.lower()
+    )
+
+
+def test_sticky_style_directives_from_prior_turns():
+    """Mukund #1: he said 'don't reproduce passages' at turn N. The LLM
+    honored it that turn, forgot it at N+1 and re-added verbatim citations.
+    The prompt MUST tell the model to look through <conversation_history>
+    for user style directives and honor them in subsequent turns even when
+    not repeated."""
+    history = [{"question": "Please don't reproduce passages; give a plain "
+                            "summary of the essay",
+                "cited_passages": [{"workTitle": "Contemporary Indian Philosophy",
+                                     "location": "essay",
+                                     "body": "Prior body."}]}]
+    msg = build_user_message(CHUNKS, "Now expand it", history=history)
+    # The instruction must explicitly ask the model to honor sticky style
+    # preferences from earlier turns.
+    m = msg.lower()
+    assert "sticky" in m or "carry" in m or "honor" in m or "preserve" in m
+    assert "prior turn" in m or "earlier turn" in m or "previous turn" in m
+    # And must give concrete examples so the model knows what to look for.
+    assert '"don' in m or "don't reproduce" in m or "in plain language" in m or "style" in m
+
+
+def test_empty_body_guard_for_case_b():
+    """Mukund #2: the LLM emitted a 212-char 'here is a summary' framing
+    followed by 0 chars in framingParagraphs / synthesis / citations. The
+    prompt must forbid this shape — if you say 'here is X', X must appear."""
+    history = [{"question": "Summarize the essay",
+                "cited_passages": [{"workTitle": "Some Work", "location": "1",
+                                     "body": "Body."}]}]
+    msg = build_user_message(CHUNKS, "Try again in plain language", history=history)
+    m = msg.lower()
+    # Warn against the "Here is a summary" + no body pattern.
+    assert "here is a summary" in m or "if you announce content, deliver it" in m
+    # AND require explicit non-emission rule for the incomplete shape.
+    assert "incomplete" in m and "do not emit" in m

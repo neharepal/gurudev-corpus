@@ -15,6 +15,10 @@ import QuoteBlock from "../../components/QuoteBlock";
 import { authorDisplayName } from "../../lib/authors";
 import { threadId, upsertThread, loadThreads } from "../../lib/conversationHistory";
 import {
+  deriveBodyParagraphs,
+  bodyDerivationUsedSynthesisRescue,
+} from "../../lib/answer-body";
+import {
   type ModeId,
   type PravachanAnswer,
   type QAAnswer,
@@ -909,13 +913,23 @@ function QAAnswerBody({
   // Meta layout — no quotes, no "Why this passage" lines, no synthesis.
   // Guard: during streaming `citations` can be undefined before the first delta.
   if ((answer.citations ?? []).length === 0) {
-    // Prefer `framingParagraphs` (real array, reliable) over splitting
-    // `framing` on \n{2,} (LLMs often skip the newlines and emit one wall).
-    // Guard: `framing` may be empty string or undefined early in streaming.
-    const metaParagraphs =
-      answer.framingParagraphs && answer.framingParagraphs.length > 0
-        ? answer.framingParagraphs
-        : (answer.framing ?? "").split(/\n{2,}/).filter(Boolean);
+    // Derive body paragraphs with the synthesis-rescue safety net
+    // (Mukund #3, 2026-07-19: LLM put a 4,800-char summary in `synthesis`
+    // and the reader saw an empty answer). Helper prefers `framingParagraphs`,
+    // then split `framing`, then rescues from `synthesis` when it's clearly
+    // the body that got misplaced.
+    const metaParagraphs = deriveBodyParagraphs(answer);
+    if (
+      process.env.NODE_ENV !== "production"
+      && bodyDerivationUsedSynthesisRescue(answer)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[answer-body] synthesis-rescue fired — LLM put body content in "
+          + "`synthesis` on this turn. Prompt should have prescribed "
+          + "`framingParagraphs`. Investigate the prior turn's shape.",
+      );
+    }
     return (
       <div>
         {metaParagraphs.map((para, i) => (
