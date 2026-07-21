@@ -1,11 +1,12 @@
-    This book belongs to
+
+    This book belongs to
 
         A. ७. P. R.’s
 
-
 Shri Gurudev Granthalaya
         Belgaum.
-  Av Goudev
+
+  Av Goudev
        of G25
 (€
      ‘ oS)
@@ -13,14 +14,12 @@ Shri Gurudev Granthalaya
         BELGAU i
          NO en   owe
 
-
-
-
                    Academy of Comparative
               Philosophy & Religion, Belgaum
 
                        (673)
-                       A
+
+                       A
 
       CONSTRUCTIVE SURVEY
                       OF
@@ -30,31 +29,17 @@ Shri Gurudev Granthalaya
 
 AN INTRODUCTION TO THE THOUGHT OF THE UPANISHADS
 
-
-
-
                        By,
                 R. 7. RANADE
 
-
-
-
        BHARATIYA VIDYA BHAVAN
               CHOWPATTY : BOMBAY
-                             All rights reserved
 
-
-
+                             All rights reserved
 
                            SECOND EDITION,            1968
 
-
-
-
                                Price   Rs. 20/-
-
-
-
 
                                PRINTED   IN   INDIA
 
@@ -62,10 +47,10 @@ By 8. ७. GUTTAL, B.A., LL. B., at the Samyukta Karnatak Press,   Koppikar Road
 Hubli, and Published by S. RAMAKRISIINAN, Executive Secretary, Bharatiya Vidya
 
                         Bhavan, Chowpatly, Bombay=7-
-                        INTRODUCTION
+
+                        INTRODUCTION
                                               )
                                 (SECOND EDITION
-
 
      The lectures on the basis of which Dr. R. D. Ranade wrote the
 “Constructive Survey of Upanishadic Philosophy’ were delivered            in
@@ -99,12 +84,7 @@ religion and philosophical thought, there has been noend to writings
 and commentaries on these works. Both Indian and foreign scholars
 have written abundantly. Indian thinkers and leaders in various fields
 have been drawing inspiration and spiritual as well as moral strength
-from these fountains of perennial philosophy.      Therefore, there is no
-                                      ili
-1४                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-necessity for bringing to the readers’ mind once again          the    importance
+from these fountains of perennial philosophy.      Therefore, there is no necessity for bringing to the readers’ mind once again          the    importance
 of those ancient texts.     This book, however,          which is a        unique
 contribution by Dr. Ranade to the profound study                  of    the main
 Upanishads, deserves special attention.
@@ -144,8 +124,8 @@ a difficult task.   It seems, however, that Dr. Ranade has eminently
  far as India is no longer an isolated peninsula nor Indian thought
  3 monopoly of the Indians alone.           The narrow national outlook
  characteristic of past generations has already passed away.              Men all
-                                INTRODUCTION                                  Vv
 
+                                INTRODUCTION                                  Vv
 
 over are developing a world outlook and are prone to global thinking.
 All   religions, all cultures, all    people are   but   integral   parts of the
@@ -156,24 +136,16 @@ with a rich heritage of history and wisdom. There is no doubt that this
 attempt of Dr. Ranade will play its humble part in the march towards
 common humanity and a higher destiny.
 
-
-
-
   BANGALORE
 JANUARY 15, 1968                      ;                        1२, २. DIWAKAR
-                       PUBLISHERS’ NOTE
 
+                       PUBLISHERS’ NOTE
 
     The Bharatiya Vidya Bhavan has great pleasure in presenting to the
 world of eager readers one more book of the great schoJar-philosopher
 Dr. २. 10. Ranade of Nimbal.   We expect to follow soon with his great
 work, ‘ Vedanta—The Culmination of Indian Thought.’
 
-
-
-
-                                  vi
-                                       PREFACE
                                             (First EDITION )
 
        1.     The      Occasion      of the    Work.—Ever since the nucleus of the
@@ -211,11 +183,7 @@ in that direction came to me first from a lecture of the late Sir Rama-
 krishna Gopal Bhandarkar in February 1915. It was not long before I
 could discover that the Upanishads contained not one system of
 philosophy, but systems of philosophy rising one over another like
-Alps over Alps, and culminating in a view of Absolute Reality which
-                                                   Vil
-Viii                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-was worthy of the fullest consideration of our                         contemporary Philoso-
+Alps over Alps, and culminating in a view of Absolute Reality which was worthy of the fullest consideration of our                         contemporary Philoso-
 phers of the West.          With      that    end       in   view     and     in    order        that    the
 Upanishadic philosophy might                  be made intelligible to                     the Western
 mind, I      boldly struck out         the     plan of presenting it according to the
@@ -257,7 +225,8 @@ Systems of Philosophy to the             Upanishads has                been     
 attempted task.         Oldenberg has indeed fairly worked out both                                   in his
 
                                                                               [1
-                                        PREFACE                                 ix.
+
+                                        PREFACE                                 ix.
 
 earlier volume on      “Buddha”        as well asin his later    ‘Die Lehre der
 Upanishaden and die Anfange des Buddhismus”’              how the Upanishads
@@ -298,11 +267,7 @@ done. There are however two reasons why we have not done so. In the
 first place, we wanted to take recourse to the objective method of presen-
 tation, going to the Texts of the Upanishads themselves, unbiassed by any
 theological interpretations of the Commentators whether on the Upani-
-shads or the Brahma-sitras.          And, in the second place, it was thought
-    >                           SURVEY OF    UPANISHADIC PHILOSOPHY
-
-
-    desirable      that a        full discussion     of all    the     theologico-philosophical
+shads or the Brahma-sitras.          And, in the second place, it was thought desirable      that a        full discussion     of all    the     theologico-philosophical
     points would best be reserved for a later volume on Vedanta philosophy
     proper.       Indeed the Vedanta Philosophy stands                            to    the       Upanishads
     almost in the same relation in which the Philosophy of the Schoolmen
@@ -342,10 +307,7 @@ shads or the Brahma-sitras.          And, in the second place, it was thought
     volume may be found a succint account of all the work that has                                         been
      done on       Upanishadic literature by scholars like Weber, Roer, Max
         Miiller, Bohtlingk, Whitney, Deussen, Oldenberg,                           Oltramare, Hertel,
-        and Hillebrandt.           Deussen’s work on the Upanishads                     is    a    monument
-                                    PREFACE                                 xi
-
-to his great scholarship,   industry. and insight, and so is the work of
+        and Hillebrandt.           Deussen’s work on the Upanishads                     is    a    monument to his great scholarship,   industry. and insight, and so is the work of
 Oldenberg and Oltramare. We do not wish to enter here into a detailed
 examination of the various opinions held on the subject of Upanishadic
 literature by early scholars, which     have become the common property
@@ -387,8 +349,6 @@ tual progress without herself going it. Dogmatic statements such as this
 about the teachings of Upanishads come merely out of taking partial
 views about a subject. This is also illustrated in Oltramare’s accusation
 against the Upanishads in his ^“ L’Histoire des Idées théosophiques dans
-Xi                   SURVEY     OF   UPANISHADIC        PHILOSOPHY
-
 
 V’Inde ` that ‘‘ in affirming the identity of the Universal and the Indivi-
 dual Soul, from which follows necessarily the identity of all souls,                         the
@@ -429,10 +389,7 @@ could there be about the ultimate realities of human                   life, the
  order to make room for faith.
        5.    The Upanishads and Contemporary Thought.— The comparison
  of Upanishadic Philosophy with Kant suggests the parallelism, in a
- number of points, of the philosophical thought of the Upanishads with
-                                   PREFACE                                       Xiii
-
-the tendencies of Contemporary Thought. Time was when Upanishadic
+ number of points, of the philosophical thought of the Upanishads with the tendencies of Contemporary Thought. Time was when Upanishadic
 Philosophy was compared with the doctrine of Plato and          Parmenides;
 time was yet again when    it   was compared with the        philosophies         of
 Kant and    Schopenhauer; we, however, who live in the world of Con-
@@ -471,10 +428,7 @@ from which came forth Mind and Life and Space and Time ‘in
 the course of devolution.         The very acute analysis of the
 epistemology of Self-consiousness, which we meet with in the
 Upanishads, can easily hold its own against any similar doctrine even
-of the most advanced thinker of to-day, thus nullifying once for all
-xiv                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-the influence of that ill-conceived and half-thought-out                       bluster      of an
+of the most advanced thinker of to-day, thus nullifying once for all the influence of that ill-conceived and half-thought-out                       bluster      of an
 early European writer on the Upanishads that “They are the work                                   of
 a rude age, a deteriorated         race,   and    a   barbarous and            unprogressive
 community.”           Our    presentation    of
@@ -515,11 +469,7 @@ Upanishadic Philosophy, as we have depicted it, would not enable him
 to revise his judgment.          To the charge, finally, that even supposing that
 the Upanishads teach a doctrine of bliss, the bliss of the Indian is one
 thing and that of the Christian another, that the one is negative while
-the other is positive, ( “Upanishads and Life” pp. 69, 70), we may say,
-                                        PREFACE                                   XV
-
-
-as against Mr. Urquhart, in the first place, that we cannot conceive              of
+the other is positive, ( “Upanishads and Life” pp. 69, 70), we may say, as against Mr. Urquhart, in the first place, that we cannot conceive              of
 any bliss being negative, for it would be a contradiction in terms, and in
 the second place, that this bliss is the same for all human beings whether
 they live in India or in Europe, for where the same intellect and feeling
@@ -529,9 +479,7 @@ the candidness to admit, which these critics have not,             that the oppo
 view is at least equally      tenable that it should be inconceivable how the
 world     which is   “ pierced by      Brahman    through and through”       should
 ever wear a pessimistic        aspect    (pp.   115-116).    Let those,    however,
-who wish to find sorrow in the Upanishads, find sorrow, and those who
-
-wish to find bliss,    find   bliss!    7 ५४7७४ xnyLarwv       [६7७००    27620 7 05
+who wish to find sorrow in the Upanishads, find sorrow, and those who wish to find bliss,    find   bliss!    7 ५४7७४ xnyLarwv       [६7७००    27620 7 05
      6.    The   three-fold purpose of the        Work.—      As    may have been
 noticed from our previous discussion, the two chief purposes of the
 Work with which we have been hitherto concerned are to put into the
@@ -560,7 +508,6 @@ intellectual justification of her faith in the light of modern thought.
 Those who have observed the course of the development of European
 thought during the last half century know how very much it owes its
 existence, its inspiration, and its fulfilment to the establishment of the
-xvi                  SURVEY OF UPANISHADIC PHILOSOPHY
 
 Gifford Lectures.      It is a good sign of the times that the University of
 Calcutta should have risen to the occasion, and been a pioneer in
@@ -601,10 +548,7 @@ with the purpose of bringing together all those who are interested in a
 philosophical investigation of the problem of God.               This     aim of      the
 Academy is to be achieved primarily by publications, embodying con-
 tinued and sustained research in all the Philosophies and Religions of
-the world. There will also be a number of Lectures from time to time,
-                                    PREFACE                                               XVii
-
-on behalf of the Academy at great educational centres in India,                      which
+the world. There will also be a number of Lectures from time to time, on behalf of the Academy at great educational centres in India,                      which
 might also help the propagation of the         cause    of    the    Academy.             The
 present centres of the Academy will be Poona,             Bombay, and Nagpur,
 and so on, while the work of the Academy            will be extended            to other
@@ -644,7 +588,8 @@ highest problem even to-day, and a philosophical justification of our
 spiritual life is as necessary to-day as it was hundreds of years ago.”
 More information about the Academy could be had from the Director
 of the Academy of Philosophy and Religion, Poona Branch, Poona,
-अणा                  SURVEY OF UPANISHADIC PHILOSOPHY
+
+अणा                  SURVEY OF UPANISHADIC PHILOSOPHY
 
 or, Nimbal,     3. €. Railway, District Bijapur, India.
       8.   Patronage for this      Volume.—        1    must        express my        heartfelt
@@ -686,10 +631,7 @@ long.
       9.   The 6 Constructive Survey” and the ‘Creative Period.’— The
 mention of the grant of the University of Bombay to three volumes in
 the History of Indian Philosophy makes             it    necessary         for the     present
-writer to say here a      few words in      regard to the relation that subsists
-                                PREFACE                             xix
-
-between the present volume on the ‘‘ Constructive Survey of Upa-
+writer to say here a      few words in      regard to the relation that subsists between the present volume on the ‘‘ Constructive Survey of Upa-
 nishadic Philosophy”? and the Volume on the ‘Creative Period of
 Indian Philosophy” in the प. 1. P. Series, which latter, it is hoped,
 may be published before long. The “Creative Period” discusses the
@@ -728,11 +670,7 @@ it is also a systematic Introduction to the problems of Indian Meta-
 physics. We have already pointed out how a systematic study of the
 Upanishads may serve as an excellent introduction to the Systems of
 Indian Philosophy. For long the necessity has been felt of an adequate
-text-book for introduction in the curricula of our Indian Universities
-XX                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-on the subject of Indian Philosophy,                 and it is hoped that this work
+text-book for introduction in the curricula of our Indian Universities on the subject of Indian Philosophy,                 and it is hoped that this work
 may supply the long-felt want.        The aim of the present writer has been
 to group together all the different theories that have been advanced in
 the Upanishads under suitable headings such as Cosmogony, Psycho-
@@ -772,7 +710,6 @@ Mr. R. D. Wadekar, 3. A., for his very conscientious help in discussing
 the Upanishadic Bibliography with me, as well as in looking through
 certain proofs of the Volume.         Also, I must express my obligations to
 my former pupils, and now Professors, ७. ऽ. Gogate, M. A., and K. ५.
-                                   PREFACE                                XXxi
 
 Gajendragadkar, M. A., of the Arts College, Nasik, for having helped
 me in the General Index and      the Upanishad Index respectively.        The
@@ -795,16 +732,14 @@ and ridiculous excess.”
 
   POONA
     1926                                             R. D. RANADE
-                       TABLE OF CONTENTS
+
+                       TABLE OF CONTENTS
 
                                                                       Page
 
-
 Introduction to Second Edition                                         iii
 
-
 Preface ~ First Edition    `     se              ae              >$   vii
-
 
     Chapter
 
@@ -831,22 +766,9 @@ Preface ~ First Edition    `     se              ae              >$   vii
                Appendix
                    — (List of books by Dr. R. D. Ranade)..            339
 
-
-
-
-                                      XXili
-XXiV                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-
-
                                    CHAPTER [
 
-          THE BACKGROUND OF UPANISHADIC SPECULATION
-
-
                                               म                          Page
-
 
  1.     The Significance of the Study of the Upanishads                     1
  2.     The Upanishads and the Rigveda                                     2
@@ -882,8 +804,8 @@ Preface ~ First Edition    `     se              ae              >$   vii
             (iii)     वाश्व            ..                   ३७     ..      37
              (iv)     Aruni            क                    59     ..      37
              (४)      ४274५१४8         ..                   zs     ..      39
-                                         CONTENTS                           XXV
 
+                                         CONTENTS                           XXV
 
                                                                             Page
 
@@ -896,14 +818,7 @@ Preface ~ First Edition    `     se              ae              >$   vii
 21.   The Problems of Upanishadic philosophy ..                      ...*    44
       Sources I                           ave            =           --      46
 
-
-
-
                                        CHAPTER IT
-
-
-        THE DEVELOPMENT OF UPANISHADIC COSMOGONY
-
 
                    I.        Impersonalistic Theories of Cosmology
 
@@ -920,8 +835,6 @@ Preface ~ First Edition    `     se              ae              >$   vii
 11.   The Controversy between Prana and the Organs of Sense          ..      63
 12,   Prana, a bio-psycho-metaphysical conception                    on      65
 
-
-
                    II.        Personalistic Theories of Cosmogony
 
 13.   The idea of a Creator, and the Creation of mythological
@@ -934,13 +847,8 @@ Preface ~ First Edition    `     se              ae              >$   vii
 19.   The Theory of Independent Parallelism as an explanation
         of the analogies of Upanishadic and Greek philosophies...            72
       Sources II                          i              ae          9       75
-XXVi                     SURVEY OF UPANISHADIC PHILOSOPHY
-
 
                                         CHAPTER IIT
-
-                  VARIETIES OF PSYCHOLOGICAL REFLECTION
-
 
                                1.   Empirical Psychology
                                                                                 Page
@@ -983,7 +891,8 @@ Preface ~ First Edition    `     se              ae              >$   vii
      29.     Transmigration in the Rigveda: the Ist Mandala                 a    107
      -30.    The ethno-psychological development of the idea of Trans-
                 migration                                                        109
-                                     CONTENTS                           XXVii
+
+                                     CONTENTS                           XXVii
 
                                                                         Page
 
@@ -1000,21 +909,13 @@ Preface ~ First Edition    `     se              ae              >$   vii
 39.        Idea of Immortal Life                                         117
            Sources III                                                   119
 
-
-
-
                                    CHAPTER IV
-
-                         ROOTS OF LATER PHILOSOPHIES
-
 
            Introductory                                                  131
            The Upanishads and Buddhism                                   132
            Samkhya in the Chhandogya,     Katha, and Prasna Upani-
              shads                                                       134
-           Samkhya in the Svetasvatara Upanishad                         136
-
- ge हरि    The Upanishads and Yoga                                       137
+           Samkhya in the Svetasvatara Upanishad                         136 ge हरि    The Upanishads and Yoga                                       137
            The Upanishads and Nyaya-Vaiseshika                           139
            The Upanishads and Mimansa                                    140
 
@@ -1036,7 +937,6 @@ Preface ~ First Edition    `     se              ae              >$   vii
 18.        Ramanuja’s Doctrine of Immortality                            155
 
 19.        The fundamental propositions of Safikara’s Philosophy         156
-XXViii                SURVEY OF UPANISHADIC PHILOSOPHY
 
                                                                                    Page
 
@@ -1049,13 +949,7 @@ Preface ~ First Edition    `     se              ae              >$   vii
            of   Maya                    ws              "०                  ..     165
          Sources 1४                     ow              ळू                  ..     169
 
-
-
-
                                        CHAPTER V
-
-        THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS
-
 
   1.     The Supreme Philosophical Problem               we                   +    18]
   2.     The three approaches to the Problem in the history of
@@ -1087,7 +981,8 @@ Preface ~ First Edition    `     se              ae              >$   vii
  13.      The states of consciousness: waking-consciousness, dream-
             consciousness, sleep-consciousness, Self-consciousness          ..     193
   14.     The ontological argument for the existence of the Self            ..     197
-                                           CONTENTS                          XXIX
+
+                                           CONTENTS                          XXIX
 
                                                                              Page
 
@@ -1107,13 +1002,7 @@ Preface ~ First Edition    `     se              ae              >$   vii
 18.       The Ladder of Spiritual Experience                                 202
           Sources V                                                          203
 
-
-
-
                                           CHAPTER VI
-
-                          THE ETHICS OF THE UPANISHADS
-
 
           Metaphysics, Morality, and Mysticism                               211
  Ss       Progress of the Chapter                            ‘               212
@@ -1138,7 +1027,6 @@ Preface ~ First Edition    `     se              ae              >$   vii
 
 16.       Virtues in the Brihadaranyaka
 17.       Virtues and Vices in the Chhandogya
-XXX                SURVEY OF   UPANISHADIC     PHILOSOPHY
 
                                                                        Page
 
@@ -1148,13 +1036,7 @@ Preface ~ First Edition    `     se              ae              >$   vii
 21.   The Ideal of the Sage                                            230
       Sources VI                                                       231
 
-
-
-
                                CuHaPTer VIL
-
-                   INTIMATIONS OF SELF-REALISATION
-
 
       Philosophy is to Mysticism as Knowledge is to Being              239
       The Lower Knowledge and the Higher Knowledge                     239
@@ -1175,13 +1057,8 @@ Preface ~ First Edition    `     se              ae              >$   vii
         Effects of realisation on the Mystic                            254
         Raptures of mystic ecstasy..                                    256
         Sources VIT                                                     258
-                               CHAPTER I
 
-
-
-
-     THE BACKGROUND OF UPANISHADIC SPECULATION
-
+                               CHAPTER I
 
 1.   The Significance of the Study of the Upanishads
 
@@ -1217,15 +1094,10 @@ the foot of Jupitor’s Chair.”” The present writer believes that the Upani-
 shads are capable of giving us a view of reality which would satisfy the
 scientific, the philosophic, as well as the religious aspirations of man;
 because they give us a view which may be seen to be supported bya
-direct, first-hand, intuitive, mystical experience, which no science can
-    2                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-    impeach, which all philosophy may point to as the ultimate goal of its
+direct, first-hand, intuitive, mystical experience, which no science can impeach, which all philosophy may point to as the ultimate goal of its
     endeavour, and which may be       seen at once to be the immanent truth
     in the various forms of religion which only quarrel because they cannot
     converge.
-
-
 
     2.    The Upanishads and the Rigveda
 
@@ -1263,10 +1135,7 @@ direct, first-hand, intuitive, mystical experience, which no science can
         agnostic hymn of creation x. 129, where the primal existent is declared
         as being superior to both Being and Not-being and where the cognisant
      activity of the Creator himself is called in question, we may say that
-     a beginning was made even at this Rigvedic period of the real philo-
-             THE BACKGROUND OF UPANISHADIC SPECULATION                                 3
-
-sophical impulse which passing through the Brahmanic period was to
+     a beginning was made even at this Rigvedic period of the real philo- sophical impulse which passing through the Brahmanic period was to
 gather force at the beginning of the Upanishadic period.               Thirdly, from
 the psychological point of view, we may say that while the Rigveda
 may   be   regarded as a    great     work      of   emotion    and imagination,
@@ -1289,7 +1158,6 @@ of both outside and inside, who is veritably the ballast of nature, who
 is the unshakable bund that prevents the stream of existence from
 flowing recklessly as it lists.”
 
-
 3.   The Upanishads and the Atharvaveda
 
       When   we pass   from    the    !age    of Rigveda       to   the    age   of the
@@ -1309,10 +1177,7 @@ the Atharvaveda to the Upanishads.           The two are almost as poles apart
 No doubt there can be found in the Atharvaveda some sort of philo-
 sophical reflection as in the hymns to KAla xix. 53-54, nor can we say
 that the Upanishads contain no           trace whatsoever of the Atharvic
-influence so far as incantations and charms are concerned, but the
-4                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-general distinction is quite clear, that when we pass from the Atharva-
+influence so far as incantations and charms are concerned, but the general distinction is quite clear, that when we pass from the Atharva-
 veda to the Upanishads, we pass from the domain of incantations to the
 domain of philosophy.       We must not forget, however, to mention the
 few blemishes on Upanishadic thought that are to be found in the
@@ -1357,8 +1222,6 @@ only heighten the beauty of the philosophic reflection—malinam api
     dogma in the Middle Ages.       The spirit of the Upanishads is, on the
     other hand, barring a few exceptions here and there, entirely antagoni-
     stic to the sacrificial doctrine of the Brahmanas.   The halting attitude
-               THE BACKGROUND OF UPANISHADIC SPECULATION                     5
-
 
 01 the Mundaka in regard to the efficacy of Brahmanic ritualism is an
 exception to the general Upanishadic reaction in favour of philosophical
@@ -1400,16 +1263,12 @@ perform acts of mental sacrifice, that ^“ the ancient sages did not go in
 for a formal sacrifice knowing that an endless sacrifice was going on all
 the while within themselves” (S. 2. b). We thus see how the
 Brahmanical idea of sacrifice comes to be modulated in the days of the
-Upanishads 50 as ultimately to be entirely transformed into a new
-6                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-conception of sacrifice altogether— that of a mental sacrifice— which
+Upanishads 50 as ultimately to be entirely transformed into a new conception of sacrifice altogether— that of a mental sacrifice— which
 is helpful to the process of the acquisition of spiritual knowledge.          On
 the whole, it may not be untrue to say that the futility            of     works
 was definitely recognised at the time of the Upanishads which tried to
 substitute a philosophy of knowledge for the Brahmanical philosophy
 of works.                                                      ।
-
 
  5.    Meaning of Revelation
 
@@ -1446,10 +1305,7 @@ of works.                                                      ।
     and likewise, all philosophy worthy of the name comes to be produced.
     It was in this way that we may say that the Vedic seers composed their
     hymns, and the Upanishadic philosophers set forth intellectual argu-
-    ments.     It is futile to discuss, as the Naiyayikas and the Mimamsakas
-            THE BACKGROUND OF UPANISHADIC SPECULATION                           7
-
-later discussed, as to whether the Vedas and the Upanishads are “‘apau-
+    ments.     It is futile to discuss, as the Naiyayikas and the Mimamsakas later discussed, as to whether the Vedas and the Upanishads are “‘apau-
 tusheya ” or 6 paurusheya.””        The Naiyayikas maintained that these
 works were “ paurusheya ”, that is, composed by God.             The Mimamsa-
 kas, on the other hand, believing in         the eternity of sound,     said that
@@ -1464,7 +1320,6 @@ we have tried to assign to the word Revelation; and thus we             may see
 how the Vedas and the Upanishads must, like basal              literature of all
 Other religions,   be    regarded   as    having been composed by seers ina
 State of god-intoxication.
-
 
 6. The Upanishadic view of Revelation
      Let us see what the Upanishads themselves have got to say on
@@ -1490,10 +1345,7 @@ of these works that were the authors of them, but it was the Divinity
 within them that was responsible for their production.          We thus have
 the Upanishadic view of the Upanishads as the result ofthe inspirational
 activity of God, the philosophers to whom they are attributed having
-served merely as instruments for the display of this activity. This is
-8                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-a sort of a new Upanishadic Occasionalism, where the Seer or the Sage
+served merely as instruments for the display of this activity. This is a sort of a new Upanishadic Occasionalism, where the Seer or the Sage
 serves merely as an occasion for the creative activity    of    God.   Thus,
 when the sage Svetagvatara said, that the Upanishad, which is named.
 after him, was revealed to him through the power of his penance and
@@ -1536,7 +1388,6 @@ careful to learn spiritual wisdom from their Teachers, for fear that
     Upanishads to be enumerated presently, while the New Upanishads
     contain such of the remaining Upanishads as can be proved to be
     authentic by higher literary criticism.   The four Upanishads which
-                THE BACKGROUND OF UPANISHADIC SPECULATION                         9
 
 Dr. Schrader has discovered recently, namely the Bashkala, the Chhaga
 leya, the Arsheya and the Saunaka will not concern us in the present
@@ -1578,8 +1429,6 @@ absolutely conclusive. ` Thus it may not be entirely incorrect to find
 the chronological order of certain Upanishads according to the elabora-
 tion of detail of the story of the “ War of the Senses” as found in
 them.    This story occurs in the Chhandogya, the Brihadaranyaka, the
-CS-2
-    10                  SURVEY OF UPANISHADIC PHILOSOPHY
 
     Aitareya, the Kaushitaki and the Pragsna Upanishads, and it must be
     legitimate to argue for the precedence or sequence of any of these
@@ -1620,10 +1469,7 @@ CS-2
      not occur init.        These writers seem to argue in-a circle, because they
      hold that the older portion of the Aranyaka must be separated from
      the newer portion on account of the absence of the idea of Transmigra-
-     tion in it, and then they say that the idea of Transmigration must be
-             THE BACKGROUND OF UPANISHADIC SPECULATION                             11
-
- regarded as late because it does not occur in the older portion. Now
+     tion in it, and then they say that the idea of Transmigration must be regarded as late because it does not occur in the older portion. Now
  even supposing that we can succeed             in making a   division between the
  older portion and the newer portion of the Aitareya Aranyaka, the
  absence of the idea           of Transmigration in the older portion can be
@@ -1662,10 +1508,7 @@ shads in group IJ, namely Iga and Kena, it is customary to relegate
 to a   comparatively      late       period;   but the language,   the sentiment
 and the archaic tone of the Iga, especially the common material it
 has with the Brihadaranyaka and the Kena, which lattermay be placed
-almost in the same category with it, may be regarded as constituting
- 12              SURVEY OF UPANISHADIC PHILOSOPHY
-
- the second group. Of group III, the Aitareya must be regarded as an
+almost in the same category with it, may be regarded as constituting the second group. Of group III, the Aitareya must be regarded as an
  old Upanishad, but not necessarily as the oldest simpl
                                                         y for the reason
  that has been adduced, namely, that it belongs to the
@@ -1740,16 +1583,12 @@ almost in the same category with it, may be regarded as constituting
                                                                    lar
  imitations in days to come.
 
-
  8.   The Brihadaranyaka
 
       It would be necessary for us to review briefly
                                                      the contents of the
  various Upanishads as arranged chronologically in
-                                                      the above outline,
-             THE BACKGROUND OF UPANISHADIC SPECULATION                                    13
-
-and to set forth in a brief way the main points of interest in those
+                                                      the above outline, and to set forth in a brief way the main points of interest in those
 Upanishads from the philosophical point of view. A full analysis of
 the Upanishads is neither possible nor desirable in this place, but we
 refer our readers to our History of Indian Philosophy, Vol. IT, fora full
@@ -1765,17 +1604,13 @@ Others    containing      philosophical            matters       interspersed   
 miscellaneous      reflection.         In   the first chapter,’ we have
                                                                      a good des-
 cription of the Cosmic Person considered                     as a sacrificial horse; then
-we pass to the theory of Death as the “arché ” of all things; and then
-
-we havea parable in proof of the supremacy of Prana, which is
+we pass to the theory of Death as the “arché ” of all things; and then we havea parable in proof of the supremacy of Prana, which is
 followed by a number of creationist myths put together at random.
 In the second chapter, we have the famous conversation between
 Gargya, the proud Brahmin, and Ajatagatru, the quiescent Kshatriya
 king. It is in this chapter likewise that we are introduced for the first
 time to the great sage Yajfiavalkya, who is making a partition of his
- estate between his wives, as well as to              the    sage Dadhyach Atharvana
-
-whose philosophical teaching we shall consider at a later stage in this
+ estate between his wives, as well as to              the    sage Dadhyach Atharvana whose philosophical teaching we shall consider at a later stage in this
 chapter. The sage Yajiiavalkya, to whom we are introduced in chapter
 १४१0७ becomes the prominent figure of chapters three and four, and just
 as in chapter      two    we    see    him    discoursing        with   his   wife   Maitreyi,
@@ -1795,10 +1630,7 @@ Adumbrating as he does his doctrque  ine of immanence to = sar    es she
                                          stion, and wanting inc       e as
 torments him with question after
             us as he procee ds wi th ou t  mu ch  ce rem ony to check her
-he seems to
-14                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-philosophic impudence, he nevertheless appears to be a              shrewd man,
+he seems to philosophic impudence, he nevertheless appears to be a              shrewd man,
 who, when pressed by the sage Jaratkarava to some deepest questions,
 takes him by the hand out of the assembly and discourses with him on
 the topic of Karman, and a prudent man likewise                who gives ad hoc
@@ -1831,7 +1663,6 @@ scarcely avails himself of.    This king Janaka figures largely in the third
 genealogical tradition of the Upanishad which may be taken for                   what
 it is worth.
 
-
  9.   The Chhandogya
 
       The Chhandogya,       which belongs like      Brihadaranyaka          to    our
@@ -1840,7 +1671,8 @@ philosophical eminence as the Brihadaranyaka, even though it is quoted
 and referred to oftener by the Jater author of the Vedantaswtras.
 Chapters six, seven and eight alone are of philosophica]                importance,
 the others not coming up to that level atall.       The first and the second
-             THE BACKGROUND OF UPANISHADIC SPECULATION                                {5
+
+             THE BACKGROUND OF UPANISHADIC SPECULATION                                {5
 
 chapters are merely a            Brahmanism redivivus, and           if we just want to
 point to portions of the Upanishads in which the Brahmanical liturgy
@@ -1882,7 +1714,8 @@ Devaki,     and finally a piece of heliolatory, with the myth of the
 emergence of the Sun out of a huge egg. In the fourth chapter we have
 the philosophy of Raikva, the story of Satyakama Jabala and his
 mother, and the story of Upakosala;who in his turn obtains philo-
-16                SURVEY OF UPANISHADIC PHYLOSOPHY
+
+16                SURVEY OF UPANISHADIC PHYLOSOPHY
 
 sophical wisdom from his teacher Satyakama Jabala.       The fifth chapter
 contains the   eschatological   teaching of Jaivali,   which     is    identical
@@ -1918,7 +1751,6 @@ the practical realisation of the Atman, as well as the famous myth of
 Indra and Virochana which we shall have occasion duly to notice in
 a later chapter of this work.
 
-
 10   The Isa and the Kena Upanishads
 
      The Isa and the Kena Upanishads, which form our group II, are
@@ -1926,7 +1758,6 @@ both named after the initial words of these treatises, just as the ancient
 chronicles   of Scandinavia     are   named   “ Heimskringla”’   after      their
 opening words.    The isopanishad is quite a small Upanishad, and yet
 it contains many hints which show an extraordinarily piercing insight.
-               THE BACKGROUND OF UPANISHADIC SPECULATION                   17
 
  Within the short compass of 18 verses, it gives us a valuable mystical
  description of the Atman, a description of the ideal Sage who stands
@@ -1963,18 +1794,13 @@ it contains many hints which show an extraordinarily piercing insight.
  existence, in     the flash   of the lightning as in the motion of the
  mind.
 
-
  11.    The Aitareya, the Taittiriya, and the Kaushitaki Upanishads
 
         The Aitareya Upanishad, properly so-called, is only a part of the
  larger Aitareya Aranyaka beginning with the fourth section of the
  second chapter of the Aranyaka and going to the end of that chapter.
  There are three chapters of the Upanishad itself, all of which are im-
- portant.    The first is given to a description of the creation of the world
- CS-3
- 18                 SURVEY OF UPANISHADIC PHILOSOPHY
-
- by the primeval Atman through the intermediary Viraj.           The second
+ portant.    The first is given to a description of the creation of the world by the primeval Atman through the intermediary Viraj.           The second
  contains the famous philosophy of “ Three Births ” probably belonging
  to the sage Vamadeva, a Vedic sage mentioned in Rigveda IV. 27. 1,
 _ whose opinions are cited with approval in the present Upanishad, and
@@ -2013,10 +1839,7 @@ _ whose opinions are cited with approval in the present Upanishad, and
       regarded as irreligious. In the third chapter, Pratardana is described as
       imbibing the principles of philosophy from Indra.     Now Indra is only
       a mythological name, a name of Vedic repute, and we may say that the
-      points of philosophy contained in this chapter belong to Pratardana
-              THE BACKGROUND OF UPANISHADIC SPECULATION                    19
-
-himself rather than to Indra.      Nevertheless, we must consider the story
+      points of philosophy contained in this chapter belong to Pratardana himself rather than to Indra.      Nevertheless, we must consider the story
 as it is, and take into account the references that are freely made here
 to Indra’s exploits as found in the Rigveda.     Indra tells Pratardana that
 the only good for mankind here below is to know Him;           that He it was
@@ -2056,10 +1879,7 @@ the original redaction of the Upanishad, and even though this latter
 Adhyaya seems to furnish a sequel to the Nachiketas—Death story as
 may be seen from the last verse of that Adhyaya, as well as from the
 repetition of words even here, still, as may be seen by reference to
-Kathopanishad II. 5. 6, Yama seems at this place just to be supplying
-20                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-an answer to the query of Nachiketas in I. i. 29, which suggests that
+Kathopanishad II. 5. 6, Yama seems at this place just to be supplying an answer to the query of Nachiketas in I. i. 29, which suggests that
 all the intervening portion is a later addition.     The Katha,     like the
 Mundaka and the Svetagvatara, will be so often quoted in this work
 that it would be needless for us to discuss its contents at any length.
@@ -2099,10 +1919,7 @@ we are told, we see Him as one sees a pebble under water, the image
  description of Yoga.     The third, the fourth and the fifth chapters are
   devoted to a discussion of Saivite and Samkhya philosophies, and invite
   a discussion as to the meaning of the word “ kapila”? which has been
- mentioned in ५, 2; while the last chapter is the only unsectarian portion
-            THE BACKGROUND OF UPANISHADIC SPECULATION                     21
-
-of the Upanishad which gives us a purely theistic view of the Godhead,
+ mentioned in ५, 2; while the last chapter is the only unsectarian portion of the Upanishad which gives us a purely theistic view of the Godhead,
 and introduces the idea of Bhakti to Guru as to God.       As in the case
 of its compeer Upanishads, the Svetagvatara was written at a time
 when the Samkhya and the Vedanta were yet intermixed.       ‘‘ The
@@ -2142,10 +1959,7 @@ the last three constituting the second. We may even say that the
 first four chapters of this Upanishad may be taken to be a com-
 paratively early redaction, and, therefore, alone relevant for our
 purposes.    The last three chapters contain references to such astrologi-
-cal names as Sani, Rahu and Ketu (VIII. 6 ), Brihaspati, the author of
-22                SURVEY OF UPANISHADIC PHILOSOPHY
-
-a heretical philosophy ( VII. 9), and a sixfold Yoga ( VI. 18), which is
+cal names as Sani, Rahu and Ketu (VIII. 6 ), Brihaspati, the author of a heretical philosophy ( VII. 9), and a sixfold Yoga ( VI. 18), which is
 the pattern of the later eight-fold Yoga.       For the purposes of the
 present work which considers only the old Upanishadic philosophy,
 therefore, we may even restrict our attention to the first         four chapters
@@ -2185,11 +1999,7 @@ affection, passion, covetousness, injury, love, a longing eye, activity,
  dream, unsubstantial like the pith of the Banana tree,             changing its
  dress like an actor, and falsely delighting the mind like
                                                          a painted
- wall (1४.2).     So far about the earlier portion of the Maitri. In the
-              THE BACKGROUND OF UPANISHADIC SPECULATION                      23
-
-
-later    portion   we have a heliotheism    bordering upon    pantheism,     a
+ wall (1४.2).     So far about the earlier portion of the Maitri. In the later    portion   we have a heliotheism    bordering upon    pantheism,     a
 number      of astronomical    speculations ( VI. 14-16),   the   doctrine   of
 the Word and the non-Word, non-Word being even superior to Word,
 an exhortation to avoid the company of those who always live             in a
@@ -2229,17 +2039,8 @@ alone which is adopted by the Upanishadic philosophers: various
 methods have been resorted to by them at different times according to
  the necessities of discussion.
 (i) In the first place, we must note the enigmatic method which occurs
-        from time to time in these Upanishads.      When Sandilya said that
-24                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-     reality was         “tajjalan”’, he was adopting a cryptic way for saying
-                    ६६
-
-
-
-
-     how God could be regarded as the origin, the end, and the life of
+        from time to time in these Upanishads.      When Sandilya said that reality was         “tajjalan”’, he was adopting a cryptic way for saying
+                    ६६ how God could be regarded as the origin, the end, and the life of
      all things.    When the philosopher of the Igavasyopanishad intro-
      duced the Vidya and Avidya, and the Sambhati and Asambhuti
      triplets, he was also taking recourse to the same method, pointing
@@ -2277,11 +2078,7 @@ methods have been resorted to by them at different times according to
      Systems of philosophy.         This method has the advantage    of com-
      pressing all the material        of thought in short pregnant sentences,
      while leaving the commentator to scratch his head as best he may
-     on interpretation of them.        It is for this reason probably that the
-               THE BACKGROUND OF UPANISHADIC SPECULATION                             25
-
-
-       same Vedanta-sutras, for example, came to be             interpreted in    such
+     on interpretation of them.        It is for this reason probably that the same Vedanta-sutras, for example, came to be             interpreted in    such
        different    fashions   by the various       commentators     on   them.     To
        translate from the Mandukya, we are told how               “the syllable Om
        is verily all that exists. Under it is included all the past, the present
@@ -2321,12 +2118,7 @@ methods have been resorted to by them at different times according to
        for example, in      the Kenopanishad, where the parable of Indra
        and    the   Damsel is introduced to convey the lesson of humility, to
   _ show, in other words, that nobody can attain Brahman unless he
-       is humble at heart.      In the second place, the myth introduced may
-CS-4
-26                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-     have an etiological purpose, as for example, the myth of the Sun
+       is humble at heart.      In the second place, the myth introduced may have an etiological purpose, as for example, the myth of the Sun
      as coming out of the huge World-egg, the myth being serviceable
      here to mark the course of the generation of the world-system
      froma Primeval Egg, which itself originally came from Being,
@@ -2365,10 +2157,7 @@ CS-4
       and may end tragically, as it did at the Symposium we are
       refferring to.
  ( vii) As contrasted with the dialectic method, we have what we may
-      call the synthetic method of philosophy. Here an attempt is made
-                  THE BACKGROUND OF UPANISHADIC SPECULATION                          27
-
-        not    to destroy,      but to    fulfil, as may be seen by      the synthesis
+      call the synthetic method of philosophy. Here an attempt is made not    to destroy,      but to    fulfil, as may be seen by      the synthesis
         of thought effected by Aégvapati            Kaikeya out of the doctrines
         of    the    six   cosmological     philosophers     in   the    Chhandogya,
         or by       Pippalada   out    of the six     psycho-metaphysical     questions
@@ -2407,10 +2196,7 @@ CS-4
         philosophy not all at once, but only when either of them has
         prepared himself for receiving the wisdom to be imparted. It thus
         happens that Virochana is completely satisfied with the first answer
-        of Prajapati, but Indra is not, and presses his Master again and
-28                       SURVEY OF UPANISHADIC PHILOSOPHY
-
-       again for the solution of his difficulties, Prajapati disclosing the
+        of Prajapati, but Indra is not, and presses his Master again and again for the solution of his difficulties, Prajapati disclosing the
        secret of his philosophy only ultimately.             11 thus comes to pass
        that the Atman is successively proved to be no longer a mere
        bodily double, or as identical with the Self in the states of dream
@@ -2439,7 +2225,6 @@ CS-4
             the progress of the questionnaire in the only appropriate way—
             “Thy head shall fall off if thou inquirest again” (S. II).
 
-
      15.     The Poetry of the Upanishads
 
             There   is    a branch    of    the   Upanishadic   method    of   philo-
@@ -2452,7 +2237,6 @@ CS-4
      of mystical apprehension.             When   such is the case, the seer gives no
      heed to the principles of metrification, and the metre he employs                is
      wild and irregular, though at the same time pleasing by its wildness.
-              THE BACKGROUND OF UPANISHADIC SPECULATION                     29
 
 & Like the Corybantes, who lose all control over their reason in           the
 enthusiasm of the secret dance, and during this supernatural possession
@@ -2493,10 +2277,7 @@ we are told, these gods live on them not by the ordinary processes of
 drinking or eating, but by merely ‘‘looking’’ at them (S. 12.a)—an
 expression which gives us an insight into the Gewpia of the Upanishadic
 gods.    Asan example of allegory in the Upanishads, we may take the
-eschatological passage from the Kaushitaki which speaks of ‘“‘ the river
-30                     SURVEY OF UPANISHADIC PHILOSOPHY
-
-of agelessness, the hall of omnipresence,         the couch of grandeur, the
+eschatological passage from the Kaushitaki which speaks of ‘“‘ the river of agelessness, the hall of omnipresence,         the couch of grandeur, the
 damsel of mind, the handmaid of vision,          the flowers   of the worlds
 which these are intent on weaving,       the passage of the Soul through the
 river merely by the motion of the mind, the heaven of safety           which it
@@ -2532,15 +2313,11 @@ thought; but the Upanishads deal nevertheless with             the   sublime in
      the Self is behind, the Self is before, the Self is to the right and to the
      left.    He who knows this truly attains Swarajya”’ (5. 12. d.)
 
-
      16.     The Philosophers of the Upanishadic period
 
              Let us now turn to a brief discussion of the doctrines of the great
      philosophers that lived and thought in the Upanishadic period.           We
-     shall be considering the doctrines in detail in the later chapters of this
-              THE BACKGROUND OF UPANISHADIC SPECULATION                    31
-
-work, where they would be found distributed according to problems. °
+     shall be considering the doctrines in detail in the later chapters of this work, where they would be found distributed according to problems. °
 At this place, we have to content ourselves with merely a concise state-
 ment of them for fear of repetition of the material in the later chapters.
 It is also necessary for us to introduce our readers to the names of the
@@ -2580,10 +2357,7 @@ His work has remained, though his personality has been lost.
        Of the mystical philosophers, Trisanku seems indeed to have been
  a man of great insight, as may be seen from the little scroll that he has
  bequeathed to usin the Taittiriya Upanishad.            Nor must we forget
- that Maitri himself, the promulgator of the Maitri Upanishad, was
-32                SURVEY OF UPANISHADIC PHILOSOPHY
-
-a great God-realiser, as may be seen from his description of “ the
+ that Maitri himself, the promulgator of the Maitri Upanishad, was a great God-realiser, as may be seen from his description of “ the
 Atman as realised”? in that Upanishad.         Rathitara, Paurusishti and
 Naka Maudgalya has each of them left to us the virtue which he regarded
 as of supreme importance, namely, Truth, Penance, and the Study of
@@ -2623,10 +2397,7 @@ prove his supremacy; and that if he regarded the Samaveda as supreme,
  sacrifice, namely the Moon, rises Rain.    Then again, the whole world is
  a great altar in which the earth burns as fuel, fire being the smoke,
  night being the light, the moon being the coals, and the stars the sparks
- of the fire; from the olbation offered in this sacrifice, namely Rain,
-                   THE BACKGROUND OF UPANISHADIC SPECULATION                                 33
-
-rises Food.         Fourthly, man himself is a great altar in which the opened
+ of the fire; from the olbation offered in this sacrifice, namely Rain, rises Food.         Fourthly, man himself is a great altar in which the opened
 mouth       is the    fuel,   the breath    the     smoke,    the       tongue    the     light,
 the eyes      the coals,      the ears the sparks;          from       the oblation offered
 in his      sacrifice,   namely     Food,   rises   Seed.    Finally, woman             herself
@@ -2639,7 +2410,6 @@ is cremated, from out of the fire of cremation which serves as                  
 a lustrous person ,arises, who goes cither to the World of the Gods,
 or to the World of the Fathers, as his qualifications enable him to
 proceed.”
-
 
 18       Cosmological and Psychological philosophers
 
@@ -2668,10 +2438,7 @@ physical categorics such as the sun, the moon, and the wind, and physio-
 logical categories such as the eye are the ultimate reality, and Ajatagatru,
 his instructor, tells him that reality 1510 be found in the decp-sleep-
 consciousness (Bri. II). The very much greater interest that is taken in
-CS-5                                                               ‘
-34                SURVEY OF UPANISHADIC PHILOSOPHY
-
-psychology rather than in cosmology by the Upanishadic philosophers
+CS-5                                                               ‘ psychology rather than in cosmology by the Upanishadic philosophers
 is evident from the way in which they always ask questions about
 psychological matters.    Of the interlocutors of Pippalada in the Prasna
 Upanishad, the first, namely, Kabandhi Katyayana alone seems to be
@@ -2710,10 +2477,7 @@ dream as one in which the mind of man has free play, bodying forth the
  been intensely interested in the question of rebirth, declares that ^. while
  yet inembryo he tried to know all the births of the gods.       A hundred
  iron citadels tricd to hold him;   but a hawk that he was, with swiftness
- he came down to the earth.      In embryo indeed did Vamadeva speak in
-              THE BACKGROUND OF UPANISHADIC SPECULATION                    35
-
-this manner.”? Vamadeva seems to have held that there were three births
+ he came down to the earth.      In embryo indeed did Vamadeva speak in this manner.”? Vamadeva seems to have held that there were three births
 of man: the first birth of a man occurs when the spermatozoon combi-
 nes with the ovum; his second birth occurs when a child is born to him;
 his third birth takes place when he is himself reborn after death. Bhrigu
@@ -2729,13 +2493,11 @@ and the heart constituted the ultimate reality; while Yafjavalkya, follo-
 wing the synthetic method,     found a 918९0 for each of these doctrines in
 his final synthesis.
 
-
 19. Metaphysical philosophers
 
      Of the metaphysical philosophers, Sandilya, Dadhyach, Sanatku-
 mara, Aruni and Yajfiavalkya are the most prominent, the last being the
 greatest of them all.
-
 
      SANDILYA
 
@@ -2757,10 +2519,7 @@ a consummation, which, he is sure he will reach.
      DADHYACH
 
      (ii) The sage Dadhyach who, like Vamadeva, is a sage of Vedic
-repute, as referred to in Rigveda 1. 116, 12, is also a sage who occupies
-36                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-a prominent place in Brihadaranyaka If.       The <: Madhuvidya ` reférred
+repute, as referred to in Rigveda 1. 116, 12, is also a sage who occupies a prominent place in Brihadaranyaka If.       The <: Madhuvidya ` reférred
 to in the Rigveda is in this Upanishad expounded in great detail.            As
 regards his personal history, we are told in the Rigveda that          he knew
 the secret of the ‘‘ Madhuvidya’’, and that he had been enjoined          upon
@@ -2800,8 +2559,6 @@ the Self.    To quote from    the history of Indian Philosophy Volume II,
   many through his magic power ’. Thus does Dadhyach teach the doctrine
  of the supreme existence of the one, and the apparent existence of the
   many.”
-                 THE BACKGROUND OF UPANISHADIC SPECULATION                              37
-
 
       “SANATKUMARA
 
@@ -2845,7 +2602,8 @@ _ Of all action; action is the cause of faith;          faith,    of belief; whe
  with the Atman (VI. 8, 1)— points which have become the current
  coin of Upanishadic thought. In regard to departing consciousness, he
  teaches that, while a man is dying, his speech first becomes merged in
-38                 SURVEY OF UPANISHADIC PHYLOSOPHY
+
+38                 SURVEY OF UPANISHADIC PHYLOSOPHY
 
 the mind, then his mind becomes merged in breath, then breath becomes
 merged in light, and finally light becomes merged in the deity ( VI. 15 )—
@@ -2887,12 +2645,9 @@ this world, animate as well as inanimate, are made up of these elements
   also (VI. 16).     Metaphysically, the Atman pervades all.      As salt may
   pervade every particle of water into which it is put, the Atman fills every
   nook and cranny of the universe. There is nothing that does not live in
-             THE BACKGROUND OF UPANISHADIC SPECULATION                   39
-
 
 Atman (VI. 13).      We thus see how Aruni boldly postulates an ideali-
 stic monism in which there is no room for difference even from within.
-
 
     YAIJNAVALKYA |
 
@@ -2932,10 +2687,7 @@ Fourthly, Yajfiavalkya says that this Atman 21016 is real; all else is
 “artam -- a mere tinsel-show (III. 4. 2 and 11. 5.1). Yajiiavalkya
 then proceeds to characterise the        Atman    in negative terms; the
 Atman is neither Jarge nor small, neither short nor long; he is
-flavourless, eyeless, odourless, and quality-less (III. 8.8). Contrast
-40                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-this negative theology of     Yajiiavalkya     with     the positive   theology
+flavourless, eyeless, odourless, and quality-less (III. 8.8). Contrast this negative theology of     Yajiiavalkya     with     the positive   theology
 of Sandilya.    As a proof of the existence of Atman, Yajiiavalkya draws
 upon the argument from order: Atman is the “‘ bund ” of all existence:
 our very hours and days are measured by this Atman (III. 8.9).              The
@@ -2975,7 +2727,8 @@ That, from the epistemological side, is the relieving feature            of his
  death occurs, the person in the eye first turns away (IV. 4. 1 ). The end
  of the heart is lighted, and by that light, the soul departs either by the
  way of the eye, or the head, or any other part of the human body
-              THE BACKGROUND OF UPANISHADIC SPECULATION                         4]
+
+              THE BACKGROUND OF UPANISHADIC SPECULATION                         4]
 
 (1४.4. 2).     His ^ Karman” alone accompanies him: it is the guardian
 of his destiny (IV. 4.5).       It is probably this doctrine of ^^ Karman”
@@ -3004,7 +2757,6 @@ Yajiiavalkya hastily excuses himself from the impasse                 to which h
 doctrine had led       him,    by saying that sufficient for the nonce was the
 wisdom he had imparted (11. 4. 13 ).
 
-
 20. General social condition
 
        Let us now examine somewhat the social condition in            which these
@@ -3019,9 +2771,6 @@ philosophers lived and made their speculations:
        other hand, we are told in the Brihadaranyaka that Brahman was
        the first to exist; but because it was alone,    it did not fare well,
        and therefore it produced a better form, namely Kshatriya-hood.
-CS-6
-                 SURVEY OF UPANISHADIC PHILOSOPHY
-
 
   It was thus that from the original Brahman were created such
   heavenly deities as Indra, Varuna, Soma, Rudra, Parjanya, Yama,
@@ -3062,11 +2811,7 @@ CS-6
     and orders at the time of the Old Upanishads.
 (ii) Now about the position of women in society in the              Upanishadic
     times.     In the Upanishads, we meet with three chief different types
-    of women: Katyayani, the woman of the world, who is only once
-              THE BACKGROUND OF            UPANISHADIC SPECULATION                    43
-
-
-    mentioned in the Brihadaranyaka:; Maitreyi, the type ofa spiritual
+    of women: Katyayani, the woman of the world, who is only once mentioned in the Brihadaranyaka:; Maitreyi, the type ofa spiritual
     woman, a fit consort to the philosopher Yajiiavalkya ; and Gargi, the
     Upanishadic suffragette, who,             fully equipped in the art of intelle-
     ctual warfare, dares to wrangle with Yajiiavalkya even at the court
@@ -3106,10 +2851,7 @@ CS-6
     the spiritual supremacy of Kshatriya-hood to Brahmin-hood.                       On
     the other hand, in certain passages as in the Brihadfranyaka and
     Kaushitaki, where Gargya, the proud Brahmin, had gone to King
-    Ajatasatru to learn wisdom, we read,that Ajatasatru told him that it
-44               SURVEY OF UPANISHADIC PHILOSOPHY
-
-     was against the * usual practice’ that a Kshatriya should instruct
+    Ajatasatru to learn wisdom, we read,that Ajatasatru told him that it was against the * usual practice’ that a Kshatriya should instruct
      a Brahmin in spirituality, but that Ajatasatru in the course of
      his conversation with Gargya felt his superiority       so much that he
      could not be prevented from imparting his higher wisdom to
@@ -3148,10 +2890,7 @@ CS-6
  of a consideration of the doctrines of the Upanishadic philosophers, as
  well as exhibit their inter-relation.    Wonder, as Plato said, was the
  root of philosophy in Greece as in India. The Upanishadic philosophers,
- we have seen, ceased to understand      the   forces    of nature    as    certain
-            THE BACKGROUND OF UPANISHADIC SPECULATION                     45
-
-heavenly deities before whom they had to bow down their heads in
+ we have seen, ceased to understand      the   forces    of nature    as    certain heavenly deities before whom they had to bow down their heads in
 unconscious awe.     From the Rigveda to the Upanishads we find the
 same transition as we find in the History of Greck Philosophy from
 Homer and Hesiod to Thales and Anaximander.         Natural forces cease
@@ -3189,7 +2928,8 @@ philosophies, and one who does not understand that the cosmology and
 the psychology, the metaphysics and the ethics of the Upanishads are
 merely a propaedeutic to their mystical doctrine can scarcely be said to
 have understood the spirit of Upanishadic philosophy.
-                                               SOURCES I
+
+                                               SOURCES I
 
 1        (a) तदतत्सत्यं॑मंत्रु कर्मा णि                  कवयो यान्यपड्यंस्ताने चतायां agar
               संततानि । तान्याचरथ नि यतं सत्यकामा एप वः पंथाः BHAT लोके ।¦
@@ -3221,20 +2961,18 @@ have understood the spirit of Upanishadic philosophy.
 
                  कममय्यो भवन्त्येतद्र वे पूर्वे वि द्रांसोऽग्रि होत्रे न जुहवांचक्रः |
 
-
     3.           एबं वा अंरऽस्य महतो भूतस्य नि भश्रसि तमतददन्वदरो यजवदः सामच-
                  दो ऽथवांगि रस इति हासः पुराणं वि द्या उपनि षद श्रोकाः सत्राण्यचच्या-
                  ख्यानानि अस्येवेतानि सर्वा णि             नि ःश्रासि तानि ।
                                                                                         व.   11. 4. 10.
 
                                                          46
-            THE BACKGROUND OF UPANISHADIC SPECULATION                                               47
 
+            THE BACKGROUND OF UPANISHADIC SPECULATION                                               47
 
     (a) तपःप्रभावादवप्रसादाच व्रह्म ह श्रेताश्‍वतरो5थवि द्वान्|‌
           अत्याश्रामि भ्यः परमे पवि त्रे प्रावाच सम्यग्रपि संवजुप्रम ॥
                                                                                खरे.     VI. 21.
-
 
     (0) अहं      वृक्षत्य राखा। कीति ः ws गि रेरि व।                    उध्बंपवि त्ञो वाजि नीव
           स्वमृतमस्मि   |      द्रवि णं   सवर्चसम्।‌ सुमेधा             अम्रतोडक्षि तः ।           इति
@@ -3245,7 +2983,6 @@ have understood the spirit of Upanishadic philosophy.
           चक्षि रि ॥                                                                   के. 1. 3.
     (0)   mag स्म वै तद्वि द्वांस आहः पूर्व महाशाला महाश्रोत्रि या न arse
           PAA AMAA वि ज्ञातमुदाहरि ष्यतीति ह्यम्यो वि दांचक्रुः ।
-
 
 6         सो (मृल्युः)ऽकामयत द्वि तीयों म आत्मा जायेतेति ।                         स मनसा वाचं
           मि थुने समभवत्‌| . . .। स तया वाचा तेन आत्मना इदं सवमसृजत
@@ -3266,21 +3003,17 @@ have understood the spirit of Upanishadic philosophy.
           प्रथि व्यंतरि क्ष दयोदि ंशोंडवांतरादि शाः | आम्रि र्वा युरादि त्यश्वंद्रमा नक्षत्राणि          |
            आप ATTA बनस्पतय आकाश आत्मा | इत्याधि मूतम्‌ । अथाध्यात्मम ।
            प्राणो व्यानोऽपान उदानः समानः। चश्नुःश्रोतं मनो वाक्‌ त्वक्‌ । चर्म
-48                         SURVEY OF UPANISHADIC PHILOSOPHY
-
 
               मासं स्नावास्थि मव्ञा । एतदधि वि धाय बदपि खेोचत । पांक्त वा इदं सव
               पांक्तेनि व पाक्त स्प्रणांतीति ।                       ते. 1. 7.
               स एप पांक्तो यज्ञः पांक्तः पशुः पांक्तः पुरुपः पांक्तमि दं सब यादि द
               कि     च |                                                         a. [. 4.17.
 
-
 9        (a) तमेकनोमें त्रि वृतं पोडशान्तं शतार्थी रं वि ंशति ग्रत्यरामि ः |
              अष्टकैः पड्मि वि श्वरूपकपाओं त्रि मा्गभेदं द्वि नि मि त्तेकमोहम ॥
                                                                   श्र. 1. 4.
          (७) Tat, पंचयोन्युअवकत्रां पंचप्राणार्भ पंचबुध्यादि मूलाम |
                पंचावता पचटुःखोघवेगां पंचाशद्भेदां पंचपर्वा मधीमः ॥
-
 
  10 (a) उदाटको हारणि ः इवेतकेतुं पुत्रमुवाच स्वप्नान्त में सोम्य वि जानीहीति +
                यत्रेतत्पुरुपः SA नाम सता सोम्य तदा संपन्नो भवति                          तस्मादेनं
@@ -3302,7 +3035,6 @@ have understood the spirit of Upanishadic philosophy.
                    प्रोताश्चेति नक्षत्रलोकेषु गार्गी ति । कस्मि न्ठ ay नक्षत्रलोका ओताश्च
                     प्रोताश्चेति देवलोकेपु गार्गी ति । stay ay देवलोका ओतारच
                     ग्रोताइचेर्ता द्रलोकेपु गार्गी ति । कस्मि न्नु खाधि द्रटोका ओताश्च प्रोतारचेति
-               THE BACKGROUND OF UPANISHADIC SPECULATION                                     49
 
             प्रजापति छोकेपु गार्गी ति । कस्मि न्नु खदु प्रजापति लोका ओताश्च
              Hawa ब्रह्मलोकेषु गार्गी ति । कस्मि न्नु ay त्रह्मलोका ओताइच
@@ -3328,9 +3060,6 @@ have understood the spirit of Upanishadic philosophy.
        (७) एतस्य वा अक्षरस्य प्रशासने गार्गि सूर्या चंद्रमसौ वि धतो ति ष्ठत एत्य
                                                                       eS
 
-
-
-
              वा अक्ष॒रस्य प्रशासने गार्गि             द्यावाप्रथि व्यो वि धते ति ष्ठत एतस्य वा
              अक्षरस्य प्रशासने गार्गि          नि मेपा Azar अहोरात्राण्यधमासा मासा
              ऋतवः संवत्सरा इति         वि श्वतास्ति   ष्ठन्त्येतत्य वा अक्षरस्य प्रशासन any
@@ -3344,13 +3073,7 @@ have understood the spirit of Upanishadic philosophy.
             यदन्वेप्रव्यं यद्वाव वि जि ज्ञासि तव्यमि ति | स त्रयाद्यावान्वा अयमाकादा-
                                                       [भ
 
-
-
-
             स्तावानेषोऽन्तहेदय आकाश उमे अस्मि न्यावाप्रथि वी अन्तस्व समाहि ते
-CS-7
-50                         SURVEY OF UPANISHADIC PHILOSOPHY
-
 
              उभावापि श्च वायुश्च सूर्या चंद्रमसावुभी वि द्युन्नक्षत्राणि          यच्चास्येहास्ति     यच्च
              नास्ति   सवै तदरक्षि न्समादि तापि ति ।
@@ -3387,8 +3110,8 @@ CS-7
                   वैद्यः, राद्रेण शद्रः ।                                             वृ. 1. 4. 11-15.
      15 (८) वेदमनूच्याचार्यो उन्तेवासि नमनुशाश्ति               .-- आचार्या य प्रि यं धनमाहृत्य
                   प्रजात॑तु मा व्यवच्छेत्सीः ।                                         तै. 1. 11.
-             THE BACKGROUND OF UPANISHADIC SPECULATION                                        51
 
+             THE BACKGROUND OF UPANISHADIC SPECULATION                                        51
 
      (8) तयो धर्मस्कंधाः यज्ञोऽध्ययनं दानमि ति प्रथमः, तप एव द्वि तीयो, बह्म-
          वचवायाचार्यकुल्वासी तृतीयो अत्यंतमात्मानमाचार्यकुटेऽवसादयन्‌ | सर्व
@@ -3423,9 +3146,6 @@ CS-7
            इति । *चंद्रमासे वि द्युति *स्तनायि त्नो “वायो "आकारो "अग्नौ cong
            “आदर्श "छायायां श्प्रति शुत्कायां "शब्दे "दधि रे "दक्षि णेडक्षाणि “सब्ये-
            $क्षागि । तत उ ह वालाकि स्तूष्णीमास । ते होबाचाजातरत्रुरेतावन्नु
-                     SURVEY OF             UPANISHADIC    PHILOSOPHY
-
-
 
         वालाका ३ इति                एतावति        होवाच बालाकि ः । तत उ ह वालाकि ः
         समि त्याणि ः प्रति चक्रम उपायानीति ते होबाचाजातराचुः प्रति कोमरूपमेत
@@ -3460,10 +3180,8 @@ CS-7
           कारेति होवाच तस्या अभि रेव मुखं यदि ह वा अपि वदि वाम्रावभ्याद्धति
            सर्वमेव तत्‌संदहत्येवं हेवेबंवि द्यद्यापे afer पापं कुरुते सर्बमेव तत्संप्साय
            झुद्धः पूतोऽजरोऽमृतः संभवति |                                    व. V. 14. 8.
-                                CHAPTER Il
 
-
-     THE DEVELOPMENT OF UPANISHADIC COSMOGONY
+                                CHAPTER Il
 
 1.   Scarch after the Substratum
 
@@ -3501,10 +3219,7 @@ our being?” (S.1.c), we are put inmind of a similar remark of Hesiod
 at the opening of his ^ Theogony ” when he asks ^“ Who made all this,
 and how did he make them?”         The search after the ultimate cause of
 things, the substratum, the घ्नऽ of things, is as characteristic of the
-                                     53
-54                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-early Upanishadic cosmogony, as it is of the later       Greek cosmogony;
+                                     53 early Upanishadic cosmogony, as it is of the later       Greek cosmogony;
 and even though, as we may see in the sequel of this chapter, there is
 no justification for saying that Greek cosmogony was derived from          the
 Upanishadic, still on account of the universally          acknowledged, and
@@ -3512,7 +3227,6 @@ definitely proved, priority of the Upanishadic. speculation, he must be a
 bold man indeed who dares to say that all things except the blind forces
 of nature have come from Greece
                               !
-
 
 2.     Progress of the Chapter
 
@@ -3546,10 +3260,7 @@ has been attempted by us elsewhere,—the necessities of methodology
      creation.    All theological commentators on the Upanishads such as
      Sankara and Ramanuja have understood these elements as meaning
      deities and not the elements proper.  But if we just consider for a while
-     the naiveté with which the theories were ushered into being, it may seem
-              THE DEVELOPMENT OF UPANISHADIC COSMOGONY                    55
-
-impossible for us to doubt that the Upanishadic seers meant by the ele-
+     the naiveté with which the theories were ushered into being, it may seem impossible for us to doubt that the Upanishadic seers meant by the ele-
 ments the elements proper, and not the deities corresponding to those
 elements.    It is true that the world “ divinity ? is, on certain occasions,
 used in     the case of these elements, but it must be remembered that a
@@ -3589,10 +3300,7 @@ originally, but that the waters were the first to exist, and that everything
 later came from them. It is curious to note also that Brahman is here
 declared to have been created from Satya, which means that we have
 not to understand the word Brahman in the sense of primal reality as
-we understand it later. Then, again, when it is said that Satya was
-56                 SURVEY OF UPANISHADIC       PHILOSOPHY
-
-born from Water, we have to understand by Satya the ultimate “ con-
+we understand it later. Then, again, when it is said that Satya was born from Water, we have to understand by Satya the ultimate “ con-
 crete” existent.    Weare also told that the Satyam consists of three
 syllables: the first is Sa, the second is Ti, and the third is Yam, the first
 and the last being real, and the      second    unreal   (S.2.b).       Freely
@@ -3611,15 +3319,12 @@ philosophy did not need the hypothesis of a God as responsible for the
  things whatsoever, disposing of a belief in God as       the    creator of the
  Water itself.
 
-
  4.     Air
 
         After water comes air.   Raikva, who holds the theory of air as the
  final “absorbent” of things, and therefore probably as the origin of
  them, has an interesting story connected with him. Once upon a time,
-  we are told, king Janasruti was wandering in a forest when he happened
-
-  to overhear the conversation between two swans.        One of these swans
+  we are told, king Janasruti was wandering in a forest when he happened to overhear the conversation between two swans.        One of these swans
   said to the other, just as all the lower throws of dice merge in the
   highest throw, that is, pass to the winner, similarly all the good things
   that people do in the world pass to the sage Raikva, the philosopher
@@ -3635,7 +3340,6 @@ philosophy did not need the hypothesis of a God as responsible for the
      chariot of the Sadra king, and advised him to return.       King Janasruti
      returned, but went back again to the Sage with cows, the golden necklace,
      the chariot, as well as his beautiful daughter; whereupon, the sage
-            THE DEVELOPMENT OF UPANISHADIC COSMOGONY                      57
 
 Raikva seemed to be satisfied, and having lifted the beautiful daughter’s
 face towards himself, said, “ Verily, 0 Sadra, you are making me speak
@@ -3677,11 +3381,7 @@ also brought in, inasmuch as it is maintained that from fire is born water
 and from water earth, while, counter-logically, at the time of dissolu-
 tion, the earth may be dissolved in water, the water in fire, and the fire
 in the Primeval Being. It is rather difficult for any philosopher to hold
-the opinion that fire is the origin of all things, inasmuch as it seems
-CS-8
-38                     SURVEY OF UPANISHADIC PHILOSOPHY
-
-evident that fire burns up all,       andis therefore a fit instrument for the
+the opinion that fire is the origin of all things, inasmuch as it seems evident that fire burns up all,       andis therefore a fit instrument for the
 process of a general १८०५७०७०१७, and it is not difficult to deduce from the
 theory advanced in the Chhandogyopanishad the idea of a pcriodic
 conflagration of things.         The difference, however, between       the Chhan-
@@ -3690,7 +3390,6 @@ as the very origin of all things, the Chhandogyopanishad makes Fire the
 first evolute from the primeval Being; while the Chhandogyopanishad
 does not insist upon the idea of change, of which           Fire seems to be the
 very type to the change-loving mind of the Ephesian philosopher.
-
 
 6.        Space
 
@@ -3718,17 +3417,12 @@ came very         late   in   the development of thought.    With Thales, Anaxi-
   then, we must regard space as a higher entity than any of the concep-
   tions that have been hitherto reached.
 
-
      7.    Not-Being
 
            There are certain passages in the Upanishads which teach that
      Not-being, zo ov, was the primary existent. The Taittiriyopanishad tells
      us that “8 the beginning of all things what existed was Not-Being.
-     From it was born Being.        Being shaped itself of its own accord.       It is
-              THE DEVELOPMENT OF    UPANISHADIC    COSMOGONY              59
-
-
-thus that it is called well-made or self-made’ (ऽ. 6).      Commentators
+     From it was born Being.        Being shaped itself of its own accord.       It is thus that it is called well-made or self-made’ (ऽ. 6).      Commentators
 on this passage who do not want a privative conception like not-Being
 to be the “arché”’ of all things, rightly understand this passage to
 signify that at the very beginning of things it was ^ 85 if” nothing
@@ -3768,10 +3462,7 @@ contrasted with the Being of Parmenides, we must suppose that they
 are doing so merely for the purposes of eristic; for by what other name
 shall we call that process by which from the equational fact of Not-
 Being being Not-Being, they deduce the existence of Not-Being, from
-which, contrariwise, they try to prove that Being does not exist? We
-60                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-need not be concerned with such an eristic philosophy like                   that of
+which, contrariwise, they try to prove that Being does not exist? We need not be concerned with such an eristic philosophy like                   that of
 Gorgias, but we must needs take into account the       recognition of Not-
 Being in philosophies of positive construction like those of Plato              and
 Aristotle.    It was in this sense, it seems to us, that the passages          from
@@ -3779,7 +3470,6 @@ the Taittiriyopanishad and the        Brihadaranyakopanishad are to be
 expiained, and by Not-being we must understand           not absolute          Not-
 Being but only relative Not-Being, the primal semblance              of existence
 as contrasted with later concrete existence.
-
 
 8.     Not-Being and the Egg of the Universe
 
@@ -3813,10 +3503,7 @@ in the Upanishad that “ what existed inthe        beginning was Not-Being.
      counterpart of the Sanskrit ^ Adrishta’’ which also signifies necessity ?
      One does not know how, but it scems probable that, the idea of
      Adrishta was conveyed to the Greck pepple at a time when the Greek
-     and the Indian Aryans lived together.       To return to our argument,
-              THE DEVELOPMENT OF UPANISHADIC COSMOGONY                          61
-
-however, the myth of the Sun coming out of the egg has parallels in the
+     and the Indian Aryans lived together.       To return to our argument, however, the myth of the Sun coming out of the egg has parallels in the
 mythologies of many ancient         peoples: but the creation         of this egg
 from a primeval Non-existent seems to be peculiar to the Indian myth
 as we have it in the Chhandogyopanishad.           We must notice also        that
@@ -3829,14 +3516,10 @@ of the universe       regarded as a huge cubical       chest    mercly for the
 purpose of contrasting it with the universe regarded as a great spherical
 egg, though it has got nothing to do with the philosophy of Not-Being.
 
-
 9.   Being
 
      After the conception of Not-Being as the “archt”’               of things we
                                                                 ”
-
-
-
 
 come to the conception of Being.          A passage from the Chhandogyopa-
 nishad tells us directly that      Being alone existed at the beginning of
@@ -3862,10 +3545,7 @@ call the red colour in the Sun, is really the colour of fire, its white
 colour is the colour ,of water, its black colour is the colour of the
 earth. Thus verily vanishes the sun-ness of the Sun. The sun is only
 aword, a modification and a name. What really exists is the three
-colours. Thus likewise 00९5 depart the moon-ness of the moon, and
-62                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-the lightning-ness of the lightning.         What   really exists    is   the   three
+colours. Thus likewise 00९5 depart the moon-ness of the moon, and the lightning-ness of the lightning.         What   really exists    is   the   three
 colours गाए? (8, 10. ०).       It is interesting to note in       these    passages,
 in the first place, that the primeval existent is regarded as         Being,     and
 is described as being one without a second.         In the second place,          we
@@ -3904,10 +3584,7 @@ regarded as being divided into         four equal different parts, four such
      clements or colours are merely words or names or modificatory appear-
      ances of the original elements.   In the spirit of an extreme nominalism,
      the Chhandogyopanishad tries to reduce all later products to mere
-     semblance or appearance, while it keeps the door open for the reak
-               THE DEVELOPMENT OF    UPANISHADIC    COSMOGONY            63
-
-existence of the three elements alone, all of them having been born from
+     semblance or appearance, while it keeps the door open for the reak existence of the three elements alone, all of them having been born from
 the Primeval Being—a sort ofa philosophical trinitarian monism !
 
 10.    Prana
@@ -3950,10 +3627,7 @@ Prana comes to be: recognised as superior to all the organs of sense in
 the human system.
 
 11,   The Controversy between Prana and the Organs of Sense
-      There are, however, one or two classical passages in the Upani-
-64                SURVEY OF UPANISHADIC PHILOSOPHY
-
-shads which tell us in the language of myth the supremacy of Prana.
+      There are, however, one or two classical passages in the Upani- shads which tell us in the language of myth the supremacy of Prana.
 It was once resolved, we are told in the Chhandogyopanishad,           by the
 senses of man to decide which of them was supreme,              and for that
 reason they went to Prajapati, their Creator.     The Creator replied that
@@ -3992,10 +3666,7 @@ and thinking with the mind, upon which speech returned.            Then the
   organs of sense, of the speech, or the eye, or the ear, or the mind,    but
   of breath.    For the breath   is verily all    these’ (9. 13. a).      This
      passage in the   Chhandogyopanishad is probably the earliest and the
-  most classical as illustrating the controversy between the organs of
-               THE   DEVELOPMENT OF UPANISHADIC COSMOGONY                           65
-
- sense and Prana, and the resulting supremacy of Prana over the organs.
+  most classical as illustrating the controversy between the organs of sense and Prana, and the resulting supremacy of Prana over the organs.
  With a little variation, the same story occurs                in     the   Kaushitaki
  Upanishad also ( II, 14), which, being so much the later, we are not
  much concerned      with as merely repeating for us                 the story of the
@@ -4024,7 +3695,6 @@ also the Prana is requested not to move out, as it is               the Prana wh
 informs, and is immanent in the organs of sense, such as speech and
 hearing and vision, as well as mind (S. 13 ७ ).
 
-
 12.    Prana, a bio-psychometaphysical conception
 
        In the account of Prana which we find in the Kaushitaki Upanishad
@@ -4037,8 +3707,8 @@ It is interesting to note that consciousness is here distinguished from
 life as the higher category of existence. There may be forms of life
 without consciousness; but wherever there is consciousness there must
 be life; and the Kaushitaki Upanishad 500115 to recognise this difference
-CS-9
-66                      SURVEY OF UPANISHADIC PHILOSOPHY .
+
+66                      SURVEY OF UPANISHADIC PHILOSOPHY .
 
 and describes Prana not mercly as the.              principle of life but        as.    the
 principle of conciousness also. . Then, thirdly, the Upanishad identifies
@@ -4048,7 +3718,6 @@ actions     ($. 14).    11 thus comes about that Prana. 15 life from the bio-
 logical    point of view, consciousness from the psychological                  point of
 view, and Atman from the metaphysical point. of. view... This is verily
 a philosophical apotheosis of Prana.
-
 
 13. The idea of a Creator, and the creation of mythological and
         philosophical dualities.
@@ -4082,11 +3751,7 @@ abstract metaphysical conception as Being, or finally             the    highly 
   In a similar spirit does the Taittiriyopanishad tell us that “‘ The Creator
   at the beginning of things practised penance, and having practised
  nenance, created all things that exist, and having created them entered
- into them,       and having enered into them, became himsclf, both the
-                THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                 67
-
-
- manifest     and   the   unmanifest,   the   defined,     and         the   undefined, the
+ into them,       and having enered into them, became himsclf, both the manifest     and   the   unmanifest,   the   defined,     and         the   undefined, the
  supported and the unsupported, the conscious and the unconscious, the
  true and the false” (5. 15. ७).        Though the Taittiriyopanishad agrces
  with the Prasnopanishad in positing a Creator who at the beginning of
@@ -4100,7 +3765,6 @@ abstract metaphysical conception as Being, or finally             the    highly 
  ing, we have the idea of a Creator introduced, which enables us to say
 that these passages logically mark an’ advance over the earlier ones
 which give merely an impersonalistic account of creation.
-
 
  14. ‘The Atman, and the creation of the duality of sex
          Another explanation of the duality of existence, this time
@@ -4128,10 +3792,7 @@ became a he-ass and had intercourse with her.)                   ॥ was thus th
 the male and the female creatures were created by the Atman up to the
 very ants.     All these were created by him” (8. 16).                 It must be noted,
 as we have pointed out above, that this passage gives us an explanation
-of the generation of the duality of sex from the Atman in the organic
-68               SURVEY OF UPANISHADIC PHILOSOPHY
-
-world, but it yet leaves the inorganic generation entirely unexplained.
+of the generation of the duality of sex from the Atman in the organic world, but it yet leaves the inorganic generation entirely unexplained.
 
 15.   Creation by Atman through the Intermediary Person
 
@@ -4173,7 +3834,6 @@ the object of later creation— whom      he fashioned    out of waters, and
           the Moon.
         He created the Navel from which proceeded the Down-Breath, and
           from Down-Breath, Death.
-              THE DEVELOPMENT OF UPANISHADIC COSMOGONY                        69
 
      Finally, he created the Gencrative Organ from which             proceeded
           Semen, and from Semen, Water.”
@@ -4216,12 +3876,8 @@ supreme Brahman spread everywhere. Jt is for the reason that the
 individual Soul saw (dra) the Brahman (Idam) spread everywhere
 that he is called Jdandra, which by contraction, has become Indra a
 mysterious name given to the Godhead by the mystery-loving gods
-९$. 17 ). We thus see how the individual Soul was the last object
-70                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-to be created by the Atman and how ultimately there is a metaphysical
+९$. 17 ). We thus see how the individual Soul was the last object to be created by the Atman and how ultimately there is a metaphysical
 identity between the individual Soul and the supreme Soul.
-
 
 16.   Atman and the theory of Emanation
 
@@ -4261,10 +3917,7 @@ except the Atman to an appearance or illusion.-                  ।
 17.   The Personal-Impersonal theory of creation in Mundaka
 
       The Mundakopanishad offers a connecting link between such an
-emanatory theory of creation and a theistic theory as in the Svetasva-
-             THE DEVELOPMENT OF UPANISHADIC COSMOGONY                    71
-
-tara which we shall presently discuss by suggesting a personal-impersonal
+emanatory theory of creation and a theistic theory as in the Svetasva- tara which we shall presently discuss by suggesting a personal-impersonal
 theory of the origin of the universe and telling us that ^: at the beginning
 of creation, there existed a heavenly Formless Person who was unborn,
 without a mind, lustrous, and super-immutable..      From him were born
@@ -4288,7 +3941,6 @@ passage from the Mundakopanishad which we are discussing describes
 the Person    .as impersonal and speaks of emanation      ( Syandante)    or
 generation ( Jayate) instead of creation proper. ,
 
-
 18.   The Theistic theory of Creation in Svetasvatara
       This entirely personal setting for the supreme Godhead is to be
 found in the Svetagvataropanishad. It is true that. the Svetasvataropa-
@@ -4304,10 +3956,7 @@ of the origin of the world. The passage from the Svetasvataropanishad
 time of Upanishad on the subject of the ‘origin of the. world. ‘* Some
 people say,” says the Upanishad, “that it is Time, otbers Nature,
 others Necessity, others Chance, others the Elements, others yet the
-Person, still others the Combination of these, and yct a few others
-72                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-the Atman, which is the cause of all things whatsoever” ( 8.20. a).
+Person, still others the Combination of these, and yct a few others the Atman, which is the cause of all things whatsoever” ( 8.20. a).
 The Svetasvataropanishad in the course of its chapters criticises all
 these theories and puts forth a constructive programme of Saivite theism
 in explanation of the origin of the universe.           We cannot say, says the
@@ -4336,24 +3985,18 @@ and creates the universe at the time of its origin, can be regarded as the
 Creator of all things that exist.     He is the supreme Godhead, to whose
 power is due the whirling round of the wheel of the universe ( S. 20. 1).
 He is the supreme cause, the lord of all Souls; of him there is neither
-generator nor protector; he is the self-subsisting mover of the unmoving
-
-manifold, and causes the one primal secd to sprout in infinite ways
+generator nor protector; he is the self-subsisting mover of the unmoving manifold, and causes the one primal secd to sprout in infinite ways
 (ऽ 20. £}.        In this manner does the Svetasvataropanishad advance
 a truly philosophic theory of creation, in which all power is ultimately
 due to a personal Godhead who causes the whole universe to move
 round his finger—‘‘ Im Kreis das All am Finger laufen liesse.”’
-
 
 19.   The Theory of Independent Parallelism as an explanation of the
       analogies of Upanishadic and Greek philosophies
 
       We have hitherto considered        both the    impersonalistic     and    the
 personalistic theories of creation, pointing out incidentally the analogies
-which subsist between        the   Upanishadic and      the Greek    theories    of
-              THE DEVELOPMENT OF UPANISHADIC COSMOGONY                      73
-
-cosmogony.       Even though, however, the similarities have been pointed
+which subsist between        the   Upanishadic and      the Greek    theories    of cosmogony.       Even though, however, the similarities have been pointed
  out, they have not yet been explained.          The problem of the relation
  of Greek and Indian cosmogonies,           and in general,      of Greck and
  Indian philosophics, is a very interesting problem, and it may just be
@@ -4394,8 +4037,6 @@ the two languages could hardly be explained except on the theory of’
 acontinued stay together of the two peoples, thus reinforcing from an
 altogether different point of view the truth of the Theory of Common
 ८5-10
-74                  SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 Origin in certain departments of the two cultures. (3) Finally, there is
 the Theory of what we may call Independent Parallelism, which is of
@@ -4437,7 +4078,8 @@ could not be said to be 1255 interesting specimens of the analogies of
  Greek and Indian Thought. How may we explain these cosmological,
 and extra-cosmological, analogies ? Not by the Theory of Borrowal, for
 this cannot be historically proved.    Nor by the Theory of Common
-                 THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                                75
+
+                 THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                                75
 
 Origin, because, in spite of the similarities,                         the philosophical concepts
 of the two lands are placed in a setting all their own, the                             Pythagorean
@@ -4462,11 +4104,7 @@ North Pole at the same moment.                      What might prevent Philosoph
 from grasping the same point of view, even though separated by Time
 and Place ?
 
-
-
-
                                        SOURCES                वा
-
 
  1   (a) तजत्यानि ति शान्त उपासीत |                                            छां. UN. 14. 1.
      (७) यतो वा इमानि             भूतानि     जायन्ते, येन जातानि              जीवन्ति    , यत्प्रयन्त्य-
@@ -4478,8 +4116,6 @@ and Place ?
  2   (a) आप एवेदमग्र. आसुस्ता आपः सव्यमस्र जन्त, सत्यं AT, AM प्रजा+
            पति म्‌ प्रजापति देवान्‌ । ते देवाः सत्यमेवोपासते ।                     वृ. ४. 5. 1.
      (5) तदेतत्‌च्यक्षरं सत्यमि ति           । स इत्यक्रमक्षरम्‌ । तीत्येकमक्षरम्‌ | यामि -
-76                       SURVEY OF UPANISHADIC                   PHILOSOPHY
-
 
             त्येकमक्षरम्‌ । प्रथमोत्तमे अक्षरे सत्यम्।‌ मध्यतोऽनृतम्‌ | तदेतदमृतमुभ-
             यतः सस्येन पार्यि द्दीतं सत्यभूयमेव भवति |                           वृ. ७. 5. 1.
@@ -4514,8 +4150,8 @@ and Place ?
              सशयन । तन्नि रभि द्यत । ते आण्डकपाळे रजतं च सुवण चाभवताम्‌ |
              तद्यद्रजतं सेयं प्रथि वी । तत्सुवण सा यौः | यज्ञरायरु ते पर्वताः । यटुल्वे
              स मेघो नीहारः | या धमनयस्ता नदः ।                        यद्वास्तेयमुदकं स समुद्रः |
-               THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                       77
 
+               THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                       77
 
            अथ यत्तदजायत सोऽसावादि त्यः | तं जायमानं घोपा BAA: अनूद-
            ति ष्ठन्‌ ।                                                   रं 1. 19. 1-3.
@@ -4537,7 +4173,6 @@ and Place ?
      (८) यद्रे रोहि त              रूपं तेजसतद्रप, यच्छुक्टं तदपां, AH तदन्नस्य
                                                   ५५
 
-
            अपागाग्रदरेरभ्नि लं, बाचारभणं वि कारों नामधेयं, त्रीणि                रूपाणि   इस्येव
            सस्यम्|‌ यदादि त्यस्य० यथंद्रमसो० यद्वि ्यता५ ।                छां. शा. 4. 1-4.
 
@@ -4556,8 +4191,6 @@ and Place ?
          सनो दूत, चश्चुर्गा प्तू, art सेश्रावायेत, weal । तस्भे वा caw
          प्राणाय ब्रह्मण णताः सर्वा देवता अयाचमानाय ars हरन्ति ।
                                                                                  को. 11. 1.
-78                        SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 13 (4) अथ ह्‌ प्राणा अहं श्रेयसि व्यूदि रे$हं श्रि यानस्म्यहं श्रेयानस्मीति              } ते ह
           प्राणाः प्रजापति पि तसमेत्योचुभेगवन्को नः De इति तान्होवाच यास्ि न्व
@@ -4590,8 +4223,6 @@ and Place ?
              प्रति ष्टमाने स्वै एव प्रति ष्ठन्ते | तद्यश्रा मक्षि का मधुकरराज़ानमुत्कामर्न्त
              स्वा ए्वोत्कामन्ते तस्मि श्च प्रति ष्ठमाने सवौ एव प्रति ष्ठन्ते एवे वाळान-
              wg: श्रोत्रे च ते प्रीताः प्राणे स्तुवन्ति  | wished सूर्य एप
-                THE DEVELOPMENT OF UPANISHADIC COSMOGONY                                     79
-
 
             पर्जन्यो मघवानेप वायुरेप प्रथि वी रयि र्देवः सदसचागृतं च यत्।‌
            --.। या ते तनुवा प्रति ष्ठि ता या श्रोत्रे याच चश्ुपि               । या चमनासे
@@ -4624,14 +4255,10 @@ and Place ?
           वीयाय ...... द्वि तीयाद्वै भयं भवति । स वे नैव रेमे तस्मदि काकी न
                          .
 
-
-
-
           रमते | स द्वि तीयमेच्छन्‌... । स इममेवात्मानं द्वेधा ऽपातयत्ततः पति श्व
                          ~
-80            SURVEY OF UPANISUADIC               PHILOSOPHY
 
-
+80            SURVEY OF UPANISUADIC               PHILOSOPHY
 
      पत्नी चाभवताम्‌....। सा हेयमीक्षांचक्रे कथं नु मात्मन एव जनायि त्वा
      संभवति , aa ति रो$सानीति सा गोरभवन वृषभ इतरस्तां सभबाभवत
@@ -4657,19 +4284,10 @@ and Place ?
      एव अश्यां अशनापि पासे भवतः ॥ स ईक्षतेमे नु लोकश्च छोकपाल्यश्व,
                                                                    ~
 
-
-
-
                                                              २७४
-
-
-
 
      अन्नमेभ्यः सजा इति ।....स श्रत कथं नु इदं महते स्याति । स
                                                                        | २
-
-
-
 
       इक्षत कतरण प्रपद्या इति      -.-1 स एतमेव सीमानं वि द्राये एतया द्वारा
       प्रापद्यत | सपा वि दति नीम हाः । तदतन्नादनम्‌ | तस्य त्रय आवसथाः
@@ -4682,8 +4300,8 @@ and Place ?
       agua, अद्भयः प्रथि वी ।                                                 ते. ग. 1.
 19   दि व्यो aaa: पुरुपः सवाद्याभ्येतते aa: । अश्राणों ह्यममनाः शुभ्र
      ह्क्षरात्मरतः परः ॥ एतस्माज्ञायते प्राणो मनः सर्वो द्रि याणि च । स्वे
-                 THE DEVELOPMENT OF                UPANISHADIC COSMOGONY                        81
 
+                 THE DEVELOPMENT OF                UPANISHADIC COSMOGONY                        81
 
              बापुज्योति रापः प्रथि वी वि श्वस्य धारि णी | ... aera देवा                   agar
              संप्रसूताः साध्याः मजु॒प्या: पशवों aaa । प्राणापानो त्रीहि यवों
@@ -4694,8 +4312,6 @@ and Place ?
 20      (a) काटः स्वभावो नि यति यंहच्छा भूतानि                    योनि ः पुरुष इति    चि त्यम्।‌
              संयोग एपां न लात्मभावादात्माप्त्यनीशः सुख-दुःखहेतोः ॥
                                                                                   ~
-
-
 
                                                                                   श्रे. 1. 2.
 
@@ -4711,7 +4327,6 @@ and Place ?
      (८) आदि ः स संयोगनि यि त्तदेवुः परस्त्रि काळादकलोपि दष्टः । श्रे. शा. 1
                                                                  ~
 
-
      (/) एको दि           esr न ट्वि तीयाय तस्थुः        य इमांहोकान्‌ इरत        इंशानीमि ः ।
              प्रत्यकुजनास्ति    एति    संचुकोपान्तकाळे संसृज्य वि द्या भुवनानि        गोपाः ॥
                                                                               ठे. IU.     2
@@ -4723,12 +4338,9 @@ and Place ?
             एको वदी नि प्क्रि         याणां वहूनामेकं वीजं agar यः करोति ।
                                                                      दव. ७. 2.
 
-
-
 ९5-11
-                               CuaPTER JIE
 
-        VARIETIES OF PSYCHOLOGICAL REFLECTION
+                               CuaPTER JIE
 
 1.   Empirical, Abnormal and Rational Psychology
 
@@ -4768,10 +4380,7 @@ science of recent growth, and thus we must not expect to finda full-
  (XVII. 8-10).   When once it was belived that the qualities of the food
  consumed formed the quality of the mind of the consumer, it was
  natural to insist, in the interest of the highest morality, upon a kind of
-                                       82
-                   VARIETIES OF PSYCHOLOGICAL REFLECTION                                 83
-
-katharsis in alimentation,        “ When the food is pure,’ says a passage
+                                       82 katharsis in alimentation,        “ When the food is pure,’ says a passage
 (5.2), “ the whole nature becomes               pure;    when the       nature becomes
 pure, memory becomes firm; and when a man is in possession of a firm
 memory, all the bonds which tie          a man down            to   the world become
@@ -4806,22 +4415,17 @@ sacrifice’?   (S.3.c).     In this passage, a justification is found          
 performing the ordinary sacrifice when                 one knows            that an inner
 sacrifice is ever going on inside him.
 
-
 4.    Analysis of Fear
 
        Another curious observation which               these   seers    made     may    be
 mentioned in passing.          This concerns the analysis of the emotion of
 fear. It is only when a fecling of otherness gains lodgment in us (S. 4. a)
 that we come to entertain the emotion of fear.                 Ihe primeval Atman
-feared, as he was alone; but “on finding out that there was no other
-84                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-person whom      he should fear,    he became fearless; for it is only from
+feared, as he was alone; but “on finding out that there was no other person whom      he should fear,    he became fearless; for it is only from
 (the idea or existence 01) a second that fear proceeds’?         (S.4.b).        It
 is in this way that all fecling of fear departs from a man who recognises
 his own true Self, because this recognition implies that beside his own
 true Self there is no other entity which might cause fear.
-
 
 5.   The claim of Will for primacy
 
@@ -4857,10 +4461,7 @@ bodies repel and attract each other....if we observe all this,            I say,
 it will require no great effort of the imagination to recognize, even
 at so great a distance, our own nature.         That, which in us pursues its
 ends by the light of knowledge, but here in the weakest of its manifesta-
-tions, only strives blindly and dumbly in a one-sided and unchangeable
-                       VARIETIES OF PSYCHOLOGICAL REFLECTION                                   85
-
- manner, must yet             in    both cases come under the name of Will.”
+tions, only strives blindly and dumbly in a one-sided and unchangeable manner, must yet             in    both cases come under the name of Will.”
  According to the doctrine which is common to this                           Upanishad and
  Schopenhaucr, the whole world scems to be filled with the force of will;
  and     “what appears as motivation in human beings is the same as
@@ -4868,7 +4469,6 @@ tions, only strives blindly and dumbly in a one-sided and unchangeable
 process      in    the    inorganic     world”—        motivation,       stimulation,        and
  mechanical process being different manifestations of the same force of
  Will,
-
 
 6.     The claim of Intellect for primacy
        As against this primacy of Will,                 the seer of the Chhandogya
@@ -4893,7 +4493,6 @@ the mind alone; he hears by the mind; and all that we call desire, will,
 doubt, belief, disbelief, resolution,            irresolution, shame,          thought, and
 fear,—all this is but mind itself’? (S. 6. b).
 
-
 7.   Classification of Mental States
 
      This intellectualistic way of thought finds its culmination                       in    the
@@ -4903,10 +4502,7 @@ Upanishad makes
 functions, at the basis of which,                  he says,     lies Intellection.          This
 passage is remarkable as being the earliest contribution to a classifica-
 tion of mental states:              ‘‘Sensation, perception, ideation, conception,
-understanding,           insight,    resolution,    opinion,     imagination,       feeling,
-86                SURVEY OF UPANISHADIC PHILOSOPHY
-
-memory, volition, conation, the will-to-live, desire, and self-control, all
+understanding,           insight,    resolution,    opinion,     imagination,       feeling, memory, volition, conation, the will-to-live, desire, and self-control, all
 these are different names of Intellection’?       (S.7).   It is remarkable
 that the seer not merely mentions the different levels of intellectual
 experience such as sensation,    perception, ideation, and conception,     as
@@ -4917,7 +4513,6 @@ conation which does;       as well as recognises the process of imagination
 and memory. Finally, the intellectualistic trend of thought in the seer
 is apparent from the way in which he makes Intellect the fount and
 source of all mental activity whatsoever.
-
 
 8.   Intellectualistic Psychology and Idealistic Metaphysics
 
@@ -4947,10 +4542,7 @@ womb, and from perspiration, sprouting         plants, horses, cows, men,
  absurdity of abstraction to attribute to any single part of them an
  existence independent of a Spirit.”’    Of like import is the passage from
  the Maitri Upanishad which tells us that it is the inner self which
- governs “external” existence, that, in short, the inner Prana is the
-                  VARIETIES OF PSYCHOLOGICAL REFLECTION                             87
-
-source of the existence of the Sun—a knowledge,            which,    the    passage
+ governs “external” existence, that, in short, the inner Prana is the source of the existence of the Sun—a knowledge,            which,    the    passage
 says, is given only to a few (S. 8. b ).
 
                        II—ABNORMAL PSYCHOLOGY
@@ -4993,7 +4585,6 @@ of death, where Nachiketas, being offered three boons by Yama, and
 having chosen two already, declines to choose forthe third boon any-
 thing short of the knowledge of the soul’s existence after the death of
 the human body :—
-88                   SURVEY OF UPANISHADIC PHILOSOPHY
 
        N:   “There is this doubt in the case of a dead man; some say that
 he is, others say he is not.     I would like to be instructed by thee in this
@@ -5020,7 +4611,6 @@ afford?     No.    That which has become a matter of doubt and inquiry,
  0 Death, speak to me about that great Here-after. Nachiketas chooses
  no other boon than that which concerns this great secret.”” (5. 9. ०).
 
-
  11.    The problem of Sleep: the Fatigue and Puritan theories
 
        After the question of the nature of death, comes the question of
@@ -5036,10 +4626,7 @@ afford?     No.    That which has become a matter of doubt and inquiry,
  held on this point by the sages of the Upanishads.         The     seer    of the
  Prasna Upanishad holds that sleep is caused by the senses being
  absorbed in       that highest ‘sensorium,’ the mind: ^ As all the rays of
- the Sun, O Gargya, become collected into the bright disc at the time
-                       VARIETIES OF PSYCHOLOGICAL REFLECTION                                89
-
- of sunset, and emerge again                 from it at the time of sunrise, so do all
+ the Sun, O Gargya, become collected into the bright disc at the time of sunset, and emerge again                 from it at the time of sunrise, so do all
  the senses become collected              into   that highest sensorium—the             mind:
  that is the reason why (in deep sleep) man is not able to hear,                        nor to
  see, nor to smell.           People say about him that he has slept’               ( ऽ. 11.8).
@@ -5077,14 +4664,9 @@ Hitah, which are 72,000 in number, and                    which    are spread   
 heart to the Puritat; there he sleeps like a youth, ora great king, or ध
 great Brahmin who has reached the summit of happiness”                              (S. 11d).
 
-
 12, The problem of sleep: the Prana and Brahman theories
 
-      “Another explanation of the phenomenon of sleep is offered by the
-CS-12
-90                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-seer of the Chhandogya       Upanishad when           he    says   that   sleep    occurs.
+      “Another explanation of the phenomenon of sleep is offered by the seer of the Chhandogya       Upanishad when           he    says   that   sleep    occurs.
 when the mind is merged in Prana,              that is breath or energy:
                                                                    “Asa
 bird when tied by a string flies first in every direction, and finding no
@@ -5124,12 +4706,8 @@ breath;    for indeed,    my Son, mind is fastened to breath” (S. 11. €).
   sleep, it still did not know this, was not cognisant of it:              ‘* As people
   who do not know a field, walk again and again over a golden treasure
   that is hidden somewhere in the earth,         and yet are not able to discover
-  it, thus do all these creatures day after day become merged in Brahman,
-                     VARIETIES OF PSYCHOLOGICAL REFLECTION                         91
-
-and yet do not discover it,             because they are carried away by untruth ”
+  it, thus do all these creatures day after day become merged in Brahman, and yet do not discover it,             because they are carried away by untruth ”
 (S. 11.1).
-
 
 13.    The Dream Problem
 
@@ -5170,11 +4748,9 @@ and over again, he sees once more (in the dream); what is heard
 over and over again, he hears once again (in the dream: ...... What
 is seen and not seen, what is heard and not heard, what is enjoyed and
 not enjoyed, he experiences all, because he is the All” (S. 12. 0).
-92                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 This must     indeed be regarded as a very subtle analysis of dream-
 experience
-
 
 14.    Early psychical research
 
@@ -5201,7 +4777,6 @@ cal personages.     What answer Bhujyu received to these questions we
  these questions, be regarded as an occultist who worked according to
  his own lights in his days on the lines of modern Psychical Research.
 
-
  15.    The Power of Thought
 
         Finally, we must notice the very great stress that is laid in various
@@ -5216,16 +4791,12 @@ cal personages.     What answer Bhujyu received to these questions we
              him shall reach pleasant shouts from all sides, and
  shall continue, yea, shall continue’; “ If one meditates on Brahman as
  support, he himself will find support; if as greatness, he himself will
- become great; if as mind, he himself will receive honour; if as the
-                   VARIETIES OF PSYCHOLOGICAL REFLECTION                                      93
-
-parimara of Brahman, round about (pari) him shall die (ri) all the
+ become great; if as mind, he himself will receive honour; if as the parimara of Brahman, round about (pari) him shall die (ri) all the
 enemies who hate him’; and lastly ^ He who meditates on Brahman as
 Not-Being,       shall    himself cease to exist; he, on the other hand,                     who
 will meditate on Brahman as Being shall ( always) exist; this is what
 they     know”     (S. 14).       We recommend these passages to all those who
 believe in the thaumaturgy of thought.
-
 
                               II—RATIONAL PSYCHOLOGY
 
@@ -5257,7 +4828,6 @@ death     of the body, passes absolutely             beyond the comprehension of
 anybody except a metaphsician                 who    makcs         such    concessions        to
 naturalism as to make an entire farrago of his philosophical ideas.
 
-
 17.     The question of the seat of the soul
         The first question with which a Rational Psychology may be con-
 cerned is the question of the seat of the soul.                   And when this question
@@ -5265,10 +4835,7 @@ is asked, it is not unusual to answer it by taking a spatial view of the
 habitation of the soul.          It is likely to be ignored that the soul is an
 unextended entity,            and that as such it is bereft of all spatial connota-
 tion,   And yet, Rational Psychology has concerned itself with a
-discussion of the part or parts of the body with which the soul comes
-94                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-more directly into contact.           Prof. James says: “In some manner our
+discussion of the part or parts of the body with which the soul comes more directly into contact.           Prof. James says: “In some manner our
 consciousness is present to everything with which it is in relation.               I am
 cognitively present to Orion whenever I perceive that constellation, but
 Iam not dynamically present there, I work no effects.                     To my brain,
@@ -5303,9 +4870,6 @@ comes to be recognised, and it is there that consciousness comes to be
 referred to the brain instead of to the heart.
                                                      ५
 
-
-
-
 18.     The heart and the brain as seats
 
        ‘In one important Upanishadic passage, however, we already find
@@ -5314,7 +4878,6 @@ an incipient transition from the one view to the other.                  Though 
      1. Principles of Psychology, 1. 214.
      2. Hammond, Aristotle's Psychology, 9. xxiii.
      3. Vide Seal’s Positive Sciences of the Ancient Hindus, pp. 218-219.
-                   VARIETIES OF PSYCHOLOGICAL REFLECTION                                      95
 
 Upanishads as a whole we find that the heart is regarded as the seat of
 the soul, in a passage of the Taittiriya Upanishad, in a very cryptic style
@@ -5360,7 +4923,6 @@ the soul in the heart could travel along the course of the pituitary body,
                 मेदन्द्रा   a         lot   .      ४२.           >.    an       nA            [घ
     ददन्द्रा नामदन्द्रा     ह व नाम तमि दन्द्रं सतामन्दर इत्याचक्षत परोक्षेण परोक्षाप्रया इव हि
     देवा:।     रे. 1. 3.14.
-96                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 and through it move further to its overlord in the lateral ventricle,
 around which, in the grey matter, are situated the various special scnse-
@@ -5368,7 +4930,6 @@ centres?    The latter interpretation is not improbable; but one docs not
 know whether the Upanishad-philosopher knew anatomy enough to
 trace the actual path, or was interested in occultism enough to sce the
 path with his mental eye !
-
 
 19.    The relation of the body and the soul
 
@@ -5404,10 +4965,7 @@ who is the mover of it.”       And the Upanishad tells us that the answer
  that the soul of the elephant is as large as the body of the elephant,
  while the soul of the ant is only as large as the body of the ant—
  “hastipudgalam prapya hastipudgalo bhavati, pipilikapudgalam prapya
- pipilikapudgalo bhayati.”    This is the reductio ad absurdam of a belief
-                       VARIETIES OF PSYCHOLOGICAL REFLECTION                                       97
-
- in the extended nature of soul, which will not allow us to think of the
+ pipilikapudgalo bhayati.”    This is the reductio ad absurdam of a belief in the extended nature of soul, which will not allow us to think of the
  soul except under spatial limitations.                 The history of the doctrine of
  the space-filling nature of the soul as advanced in the Upanishads is a
 very interesting one.             In the Brihadaranyka Upanishad we are told that
@@ -5439,12 +4997,8 @@ This is a very significant fact as we shall presently see.                      
 bharata,>       Bhimasena has been described as being a span’s length taller
 than his younger brother Arjuna.                In the Maitri Upanishad,*               the word
 
-
   1. This is the reason why he explains the expression as THIN: प्रा वीपादां ते
                                                                             San        nn
-
-
-
 
      वि   शि मेष्ट
                 क॑ प्रादेशमात्रम्‌ |
@@ -5455,8 +5009,6 @@ than his younger brother Arjuna.                In the Maitri Upanishad,*       
      C, on छा. V. 18. 1.
   5. प्रमाणेन भीमसेन: प्रादेशेनाधि को$जुनात्‌। म. भा. ४, 61, 19.
   6. शरीरप्रादेशांगुष्टमात्रमणोरप्यण्व्यम्‌ ध्यात्वा अतः परमतां गच्छति । मे. VI. 38.
-CS-13
-98                   SURVEY OF UPANISHADIC PHILOSOPHY
 
 pradesa has manifestly the same meaning. Under these circumstances
 it is but natural that the word pradesa in the passage which we are
@@ -5494,13 +5046,10 @@ as equivalent to ^^ measuring the span’s length from the forehead to the
  cephalic movements of his, and say that “the Self of selves, when
  carefully examined, is found to consist mainly               of the    collection of
 
-
-
      1. प्रत्यगात्मतया5भि वि मीयत$हर्मा ति शायत इत्यभि त्रि मानः । ©. ग छा. ४.18. 1.
      2. Sechzig Upanishad’s pp. 150-151.
      3. Sacred Books of the East, Vol. I. p. 88.
      4. Twelve Principal Upanishads by Tukaram Tatya, p. 578.
-                     VARIETIES OF PSYCHOLOGICAL REFLECTION                                   99
 
 these       peculiar motions in         the    head. or between the head and                 the
 throat.”?
@@ -5545,7 +5094,6 @@ in the heart is smaller than a grain of rice or barley, or a mustard ora
 canary seed; and yet my soul, which is pent up in the heart,                    is greater
 
   1. Principles of Psychology I. 301.
-100              SURVEY OF UPANISHADIC PHILOSOPHY
 
 than the earth, greater than the sky,    greater than the heaven,      greater
 than all these worlds” ($. 17. 1).      The Nemesis of the theory which
@@ -5587,10 +5135,7 @@ this fourth state.    The soul, then, according to the Upanishad, ex-
  ing as it does both consciousness and unconsciousness; when it is
  invisible, uncommunicable, incomprehensible,        indefinable;   when it   is
  beyond thought and beyond the possibility of any indication, being
- virtually the quintessence of self-intuition, in which all the five kinds
-                        VARIETIES OF PSYCHOLOGICAL REFLECTION                            101
-
-of sensation           are finally resolved;       when    it is tranquil and       full of
+ virtually the quintessence of self-intuition, in which all the five kinds of sensation           are finally resolved;       when    it is tranquil and       full of
 auspiciousness and without a second;                   it is then to be called Atman 2?
 (S. 18).
 
@@ -5630,9 +5175,7 @@ matter, there is a world of creatures, living beings, animals, entelechics,
 souls.    Each portion of matter may be conceived as like....a pond full
 of fishes.” 1
 
-
     1. Monadology, 66-67.
-102               SURVEY OF UPANISHADIC PHILOSOPHY
 
 24.   The “sheaths” of the soul
 
@@ -5675,7 +5218,8 @@ physical body which is made up of food, is another body which is
  of the physical body, that the etheric double of a child lingers only for
  three days after its death but that in the case of an adult it may linger
   for a sufficienty long time to allow for the period of mourning, that in
-              -      VARIETIES OF PSYCHOLOGICAL REFLECTION                                    103
+
+              -      VARIETIES OF PSYCHOLOGICAL REFLECTION                                    103
 
 dreams while we are having the curious experience of flying like a bird
 in mid-air or swimming like a fish in the seas! it is our etheric double
@@ -5705,7 +5249,6 @@ it to find the Brahman; but in any case, he insists that the kosas or
 sheaths have no real existence, and that a theory which is built upon the
 conception of the sheaths is a theory which is < built upon ignorance.”
 
-
 26.    The problem of Sheaths, at bottom the problem of Substance
 
       That the words ‘‘anna, pran, manas, सि                      वा,   and Ananda” are
@@ -5723,10 +5266,7 @@ not to be understood as meaning veritable sheaths may be scen by
                                एणेीक
                                    नेत्रतदन्तगंततन्दुलान्‌प्रस्ताति
                                                               4
-                                                                              ।
-104                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-reference toa celebrated passage in the third chapter of the same
+                                                                              । reference toa celebrated passage in the third chapter of the same
 Taittiriya Upanishad,            where the author is discussing what         should
 be regarded as the qvats of things; and he rules out of order the
 theorics that “ matter.”’ “‘life,” ‘“‘ mind,”          or   ‘intellect’? could be
@@ -5752,7 +5292,6 @@ the successive answers which his son brings him,                 namely, that th
  Varuni Vidya and that this is “ exalted in-the highest heaven”? (S. 20.0),
  meaning thereby that it is honoured even amongst the gods,
 
-
  27. The Idea of Transmigration, an Aryan Idea
 
            We now pass on to discuss the question of Transmigration in           the
@@ -5767,10 +5306,9 @@ the successive answers which his son brings him,                 namely, that th
  settlers received the‘first impulse in this direction from the aboriginal
  inhabitants of India,” 1 that even though “ the Aryan Indians borrowed
 
-
       1.   History of Sanskrit Literature, 0. 387.
-                         VARIETIES OF PSYCHOLOGICAL REFLECTION                         -105
 
+                         VARIETIES OF PSYCHOLOGICAL REFLECTION                         -105
 
      the idea from the aborigines, they certainly deserve the credit of having
      elaborated out of it the theory of an unbroken chain of existences,
@@ -5801,9 +5339,7 @@ the successive answers which his son brings him,                 namely, that th
      being merely an un-Aryan importation in Aryan thought, appears clearly
      to develop stage by stage in Aryan thought itself.
 
-     28.     ‘Transmigration in the Rigveda: the Xth Mandala
-
-i?          It is quite true that in the major part of the Rigveda, the idea of
+     28.     ‘Transmigration in the Rigveda: the Xth Mandala i?          It is quite true that in the major part of the Rigveda, the idea of
      Transmigration seems conspicuous by its absence.                 The cheerful and
      joyous attitude of the Indian Aryans made it impossible for them to
      think too much of the life after death.          They believed in the world of
@@ -5816,8 +5352,6 @@ i?          It is quite true that in the major part of the Rigveda, the idea of
 
        2. तदस्य प्रि यमभि पाथो अद्यां नरो यत्र देवयवो मदन्त
           उर्क्रमस्यस हि बन्युरि त्णा वि ष्णोः पदे परमे मध्व उतनः ॥   क. 1. 154-5.
-     CS-14
-106                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 Icge first to go and to gather a number of men                     about him,—a            not
 uncovetable place, it seems,        “ of which it was impossible that anybody
@@ -5860,11 +5394,9 @@ death he will recall and make live once more.                 The spirit, he con
   2. सूयं च्षुगेच्छतु वातमात्मा धरां च गच्छ प्रथि वी च धर्म॑णा ।
      अपो वा गच्छ यदि तत्रते हि तं भषधीपु प्रति ति ष्ठा शरारेः ॥      ऋ. x. 16. 3.
    3. 18४५०6३ 5. 58, 1-12.
-                    VARIETIES OF PSYCHOLOGICAL REFLECTION                                      107
 
 atmosphere of hylozoism, and the poet makes us feel that a soul is not
 wholly lost after bodily death, being mixed with the elements.
-
 
 29.   Transmigration in the Rigveda: the Ist Mandala
 
@@ -5898,14 +5430,12 @@ transmigration have been strangely neglected.                       In spite of 
 Icitean style in which the whole hymn has been composed, in spite of
 the fact that it contains allusions to such various conceptions as those
 
-
   1. य ईं चकार न सो$स्य वेद। ऋ. 1. 164. 32.
   2. कवि यें: पुत्र: छ इमा चि क्रेत यम्ता वि जानात्‌ स पि तुष्पि   ता सत्।‌ क्र. 1. 164. 16.
   3. एकं GIZA बहुधा वदन्ति         आरने यमे मातरि श्वानमाहुः ॥ क्र. 1. 164. 46.
   4. यज्ञेन यज्ञमयजन्त देवास्तानि घपाणि प्रथमान्यासन्‌| क्र. 1. 164. 59
   5. द्वा छपणां सयुजा सखया समान टक्षं परि पन्वजाते |
       तयोरन्यः पि प्पटं स्वाद्रस्येनन्नरन्यो अभि चाकशीति ॥ क्र. 1. 164. 17.
-108                    SURVEY OF UPANISHADIC PHILOSOPHY
 
 of the Fire, the Cow and the Calf, and the First-born of the Law, a
 psychological vein is ever present through the whole hymn, and among
@@ -5937,22 +5467,17 @@ but the wonder of it is, the poet goes on to say, that the mortal and
  principles,      But the culminating point of the whole doctrine is reached
  when the poet tells us that he himself saw ( probably with                      his     mind’s
  eye) the guardian of the body, moving unerringly by backward and
- forward paths, clothed in collected and diffusive splendour, and that it
-
- kept on returning frequently inside the mundane regions.!                        That this
+ forward paths, clothed in collected and diffusive splendour, and that it kept on returning frequently inside the mundane regions.!                        That this
 
    1. को ददशे प्रथमं जायमानमस्थन्वेत यदनस्था बि भाति ।
          भूम्या असुरसगात्मा कि    त्‌का वि द्वांससुपगात्‌प्रप्ट्मेतत्‌ ॥ क. 1. 164. 4.
     « अनच्छये तुरगातु जीवमेजद्‌ ws मध्य आ पस्त्यानाम्र । ऋ. 1. 164. 30
    13
 
-
-
    3. अपाड प्राटति स्वधया ग्रभीतो5प्रत्यों मत्थना सयोनि ः |
       ता शश्वन्ता वि षूचाना वि यन्ता न्यन्यं Parad नि चि कयुरन्यम्‌ ॥ क्र. 1. 164. 38.
       4. अपदयं गोपामनि पद्यमानं      आच परा च पथि मि श्वरंतम्‌ ।
          स सध्रीचीः स वि षूचीवेसान आ वरीवर्ति भुवनेप्वन्तरि ति ॥ क्र. 1. 164. 31.
-                    VARIETIES OF PSYCHOLOGICAL REFLECTION                           109
 
 `° guardian ? is no other than the soul may be seen from the way in
 which      verse 31 follows immediately on verse 30 which              mentions the
@@ -5963,7 +5488,6 @@ in     Herakleitean fashion,        of those who come hither as those who are
 moving away,          and    those who are moving back as already returning
 hither,      as Heraklcitos should talk of the gods being mortals and the
 men immortals,
-
 
 30.     The ethno-psychological development of the idea of Transmigration
 
@@ -5998,20 +5522,16 @@ wherever it is thought that the soul after parting from the body could
 
   1. येंड्वात्वस्ता उ पराच आहुर्ये परात्रस्ते उ अवाच आहुः ॥ ऋ. 1. 164. 19.
   2.    1२, ^. ऽ. Journal 1909 ७. 569 seq. : “ Pythagoras and transmigration.”
-110                  SURVEY OF UPANISHADIC PHILOSOPHY
 
 lead a life of desembodied existence, and wherever it is supposed to re-
 turn again to the earth and inhabit any form of existence whatsoever,
 there is a kind of undying life conceived for the soul from which the
-step to actual Transmigration is not very far removed; while the crown-
-
-ing idea in trnsmigration, namely that of gvapvyos isa product of
+step to actual Transmigration is not very far removed; while the crown- ing idea in trnsmigration, namely that of gvapvyos isa product of
 very late growth, and even though          it is found in Pythagoras and   Plato
 and the Indian system of Yoga, we have no reason to attribute it defini-
 tely to the Vedic seers or to the Upanishadic philosophers, unless per-
 haps we scent it in the rather unconscious utterance of the sage Vama-
 deva that he was in a former life 6 Manu or the Sun.” 1
-
 
 31.     Transmigration in the Upanishads : the Kathopanishad
 
@@ -6033,7 +5553,6 @@ idea has been most explicitly advanced.         When the father of Nachiketas
  reborn; but Nachiketas says that just as a corn of grain ripens and
  perishes and is born again, so does a man live and die to be born again.
 
-
  32.     Transmigration in the Upanishads: the Brihadaranyaka Upanishad
 
         The locus classicus, however, of the idea of Transmigration is to be
@@ -6046,8 +5565,6 @@ idea has been most explicitly advanced.         When the father of Nachiketas
 
    1. अहं मदुग्मवं सयेश्च। बृ. 1. 4. 10.
    2,    St. John. 12-24.
-                         VARIETIES OF PSYCHOLOGICAL REFLECTION                    111
-
 
 and governors of towns wait upon him with food, and drink, and tents,
 saying ° he comes, he approaches, similarly do all these clements wait on
@@ -6092,7 +5609,6 @@ body before it leaves its former one: in fact,           it seems that the passa
    “take hold of ’’, ¢.g., Deussen translates ^“ Dann nehmen ihn das Wissen und
    die daa bei der Hand und seine vormalige Erfahrung’’ —Seckrig Upanishads
    p. 475.
-112                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 calls in question a    ^ disembodied”      existence.      Then again, it tells us
 that the Soul is a creative entity, and in Aristotelian fashion, creates a
@@ -6133,19 +5649,13 @@ and cast away,        even so docs his body lic.         Being verily bodiless h
  pitchy darkness where ignorant and unenlightened men go गलाः death.”
  ““Demonict      are the regions.”      says the Iga Upanishad, ‘and also
 
-
    1, Dr. १.७. Bhandarkar in an important article in the B. 8. R. A. S. Journal
        makes the following interesting suggestion. The Sanskrit equivalent of the word
        demonic viz. ^“ Asurya’? may here refer to the Assyrian country, “ Assyrian
        and ^^ AsuryanTM being philologically identical, the y and the ४ being inter-
        changeable as in Greek,
-                    VARIETIES OF PSYCHOLOGICAL REFLECTION                         113
-                                                                                    (१
 
-
-
-
-enveloped in pitchy darkness, where those who have destroyed their
+                                                                                    (१ enveloped in pitchy darkness, where those who have destroyed their
 souls are obliged to ४०.”         This same Upanishad adds that “those who
 worship what is not real knowledge enter into gloomy darkness,”? which
 dea is     also   elsewhere expressed by        the Brihadaranyaka Upanishad.
@@ -6156,7 +5666,6 @@ milk, themselves go to the joyless regions” (S. 22).                 These pas
 show us that the Upanishadic philosophers believed in a sunless region
 where      the   ignorant,   the unenlightened, the self-murdering, and the
 pseudo-charitable were obliged to go after death.
-
 
 34.   Eschatology in the Brihadaranyaka
 
@@ -6188,15 +5697,10 @@ the Brihadaranyaka which           we have already quoted.           Secondly, i
 remarkable that, as in the Upanishads generally, so in this Upanishad,
 the world of the moon is regarded as situated at a greater distance from
 us than the world of the sun.           Thirdly, it is to be noticed that the
-Region of the Blessed of which the passage speaks is a region ^“ without
-CS-15
-114                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-snow.” Does this mean that the Upanishadic philosopher was tormented
+Region of the Blessed of which the passage speaks is a region ^“ without snow.” Does this mean that the Upanishadic philosopher was tormented
 by too much cold in the region where he lived ? And finally, the idea of
 “eternity ” is already introduced in that important passage, and we are
 told that such a soul lives in these blessed regions for ever and ever.
-
 
 35.    Eschatology in the Chhandogya: the Two Paths
 
@@ -6238,7 +5742,6 @@ who, living in towns, lead a life of charitable deeds and perform works
        a funeral connotation of‘
 
              पथाम्‌प्रवि द्वान्‌ et चुपदग्ने समि धानो वि भाहि            ।   ऋ. 5, 2, 7.
-                        VARIETIES OF PSYCHOLOGICAL REFLECTION                         115
 
 of public utility.         Such people do not indeed travel by the path of the
 Gods which is reserved only for the penance-performing ascetics of the
@@ -6255,7 +5758,6 @@ they becomea cloud; having become a cloud they rain down. Then they
 are born as either rice or barley, herbs or trees, sesamum or beans.                  At
 this stage, verily the path            is difficult to follow. Whoever eats the food
 or discharges the sced,          like unto him do they become” (S. 24. ७). :
-
 
 36.    The moral backbone of Upanishadic eschatology
 
@@ -6278,12 +5780,10 @@ for having attempted the solution.                Philosophically speaking, we a
 not much concerned with the actual stages of the ascent or descent of
 the soul, but only with the idea of ascent and descent.                And looking at
 
-
  1. उत्तगयेण ते उत्तम । दक्षणायेण तेआधम । हा संदेहि वसे श्रम । साधु तो नि ःसंदेह
       ॥ १३॥     save उत्तरायेण । गृहः दीप दि वा मरण। अंती राहावे स्मरण । मती कारणे
       ॥ १४॥      इतके    नलगे   योगि यासी। तो     जञीताचे सुक्त   पुण्यराशी ।   ति ळाजुळी
       पापपुण्यासी | As तेण ॥१५॥ दा. शा. 10, 13, 15.
-116             SURVEY OF UPANISHADIC PHILOSOPHY
 
 the problem in this way, one is filled with a great deal of surprise      and
 admiration when one sees that the    ideas of ascent     or descent were
@@ -6300,7 +5800,6 @@ Upanishad where the law of karman is explicitly mentioned, and a soul
 is said to take on the body of “a worm or a moth. a fish or a bird, a
 leopard or a lion, a serpant or aman, or any of these other creatures,
 according to his karman and knowledge’”’ (S. 24. 0).
-
 
 37.   Upanishadic and Platonic eschatology
 
@@ -6326,15 +5825,10 @@ according to his karman and knowledge’”’ (S. 24. 0).
  the Chhandogya Upanishad denies the right to enter on the path of
  liberation, ordaining that they must for ever be fixed in the round of
  births and deaths.   Neither on the path of the Gods, nor on the path
- of the Fathers, are these base creatures allowed to tread.    They must
-                   VARIETIES OF PSYCHOLOGICAL REFLECTION                        117
-
-
- keep up the round of coming and going: their rule is not * die to live”
+ of the Fathers, are these base creatures allowed to tread.    They must keep up the round of coming and going: their rule is not * die to live”
  but “‘live to काल.         And it is wonderful that the Upanishad includes
  even “a tiger or a lion, or a wolf or a एकवा," in the same category
  with “a worm or a moth, a gnat or a mosquito” (S. 24. ८).
-
 
  38.     Variation in the conception of the Path of the Gods
 
@@ -6369,12 +5863,10 @@ _ Brihadaranyaka Upanishad or the Chhandogya Upanishad and substi-
  bad, and all the contrary pairs.           Being free from good and free from
  evil,    knowing Brahman, he moves towards Brahman”               (S. 24.1).
 
-
  39.     Idea of Immortal Life
 
          The culminating point, however, of the Upanishadic psychology
  is reached when we come to the treatment of the idea of Immortal Life.
-118                SURVEY OF UPANISHADIC PHILOSOPHY
 
 This is one of the crucial points in the interpretation               of Upanishadic
 doctrine, and expert opinion has been divided            on       this point     for   the
@@ -6415,9 +5907,7 @@ evolution that could be traced through them of the ideas that were held
   who may be seen in star or flower or wherever the eye may be cast.
   Or else to express it in the words of a poet of rare imagination:
 
-
       1. Tennyson, In Memoriam (09९7९9,
-                   VARIETIES OF PSYCHOLOGICAL REFLECTION                        119
 
             ° He is made one with Nature : there is heard
             His voice in all her music, from the moan
@@ -6428,9 +5918,6 @@ evolution that could be traced through them of the ideas that were held
             Which has withdrawn his being to its own;
             Which weilds the world with never wearied love,
             Sustains it from beneath, and kindles it above.” 1
-
-
-
 
                                   SOURCES HI
 1      (०) अन्नमयं हि     सोम्य मनः |                           wi. शा. 5. 4.
@@ -6451,8 +5938,6 @@ evolution that could be traced through them of the ideas that were held
            मापते, न तावत्‌प्राणि तुं शक्नोति , प्राणं तदा वाचि जुहोति । are
             पुरुपः प्राणि ति , न तावद्‌ भाषि तुं शकनोति , वाच तदा प्राणे जुहोति |
     1. Shelley, Adonais XLII.
-120                    SURVEY OF UPANISHADIC PHILOSOPHY
-
 
             एते अनन्ते अमृते आहुतीर्जा ग्रश्व स्वपंश्व सन्तते Gara | अथ या अन्या
             आहुतयः अंतवत्त्यस्ताः कर्ममय्यो हि भवति , ag स्मेतत्‌ पूर्व वि द्वांसों 5भ्ि -
@@ -6465,7 +5950,6 @@ evolution that could be traced through them of the ideas that were held
              तानि । समकल्पेतां द्यावाप्रथि वी, समकल्पेतां वायुद्वाकाशं                      च समकस्यत
              आपश्च तेजश्र---स एप संकल्पः संकल्पमुपास्स्वेति | |
                                                                                ai. शा. 4. 2.
-
 
 6 bai चि त्तं बाव संकल्याद्‌ भूयो यदा वै चेतयतेऽथ संकल्पयते |...) तस्माय
              aft वहुवि दचि त्तो भवति              नायमस्तीत्येवेनमाहुः |...) अथ यद्यल्प-
@@ -6488,8 +5972,6 @@ evolution that could be traced through them of the ideas that were held
          (6) द्वि धा वा एप आस्माने वि भत्यंयं यः प्राणो यश्चासावादि व्यः असो वा
               आदि त्यो वहि रात्मा, अंतरात्मा प्राणोऽतो वहि राव्मक्या गत्या5न्तरात्म-
               नो$नुमीयते गति रि त्येत्र Me । अथ यः कथि द्वि द्वानपहतपाप्माऽक्षाध्य-
-                            VARIETIES OF PSYCHOLOGICAL REFLECTION                             121
-
 
                क्षो$वदातमनास्तन्नि ष्ठआवृत्तचक्षः सोऽन्तरात्मस्या गत्या वहि रात्मनो5नु
                मीयते गति रि त्येवं are |                                मे. ४.1.
@@ -6497,7 +5979,6 @@ evolution that could be traced through them of the ideas that were held
 9       (a)    यद्‌ वृक्षों TF रोहति मूलान्ञवतरः पुनः |
                मत्येः स्वि न्मृत्युना वृकक्‍्णः कस्मान्‌मूलाअरोहाति ॥
                                                                              वृ. ता 9. 28.
-
 
         (०) श्रेत हे
                  के  रुणयः
@@ -6512,9 +5993,6 @@ evolution that could be traced through them of the ideas that were held
             ag toward वराणमेष वरस्तृतीयः ॥ देवेरत्रापे वि चि कि त्सि तं पुरा न
                       ies
 
-
-
-
               हि      सुवि ज्ञेयमणुरेष धर्मः । अन्यं वर नचि केतो वृणीष्व मा मोपरोत्सरराते
               मा सजेनम्‌ ॥              Fart वि चि कि त्सि तं कि ल aA च मृत्यो यन्न
               सुवि ज्ञेयमात्थ । वक्ता चास्य META न लभ्यो नान्यो वरस्तुल्य
@@ -6528,22 +6006,16 @@ evolution that could be traced through them of the ideas that were held
               वरो गूढमनुप्रवि ष्टो नान्यं तक्मान्नचि केता वृणीते ॥
                                                                            क. 1. 1. 20-29,
 
-
 10            तथथाश्मि       न्नाकाशे श्येनो वा सुपर्णो वा वि पीरपत्य श्रान्तसदधदत्य पक्षौ
               संखयायैव ध्रि यत एवमेवायं पुरुपः एतस्मा अन्ताय धावति यत्र सुप्तो न
               कंचन कार्म कामयते न कचन स्वप्नं परयति               |          वृ. IV. 3. 19,
-CS-16
-ne                      SURVEY OF UPANISHADIC PHILOSOPHY
 
-
+ne                      SURVEY OF UPANISHADIC PHILOSOPHY
 
 11 (०) यथा गाग्ये मरीचयो5केस्यास्तं गच्छतः सवौ एतस्मि स्तेजोमण्डळे एकी-
        wala ताः पुनः पुनरुदयतः प्रचरत्येव ह्‌ वै तत्सव परे देवे मनस्येकी-
          भवती | तेन azo पुरुषोंन aoa, न पश्यति , न जि त्रति , स्वपि तीत्ग्रा-
                              a         ~n
-
-
-
 
          चक्षते |                  ।                                       प्र. 1५. 2.
      (७) स यदा तेजसामि भूतो भवति अत्रेप देवः स्त्रप्नान्न पर्यत्यथ तदेतास्मि च्य्‌
@@ -6574,8 +6046,8 @@ CS-16
            गमयति         ।                                                 प्र. 1५. 4.
            यत्रेतपुरुपः स्वपि ति            नाम, सता सोम्य तदा संपन्नो भवति , स्वमपीतो
            भवति , तस्मादेनं स्वपि तीत्याचक्षते |                      छा: भ्‌. 8. 1.
-                     VARIETIES OF PSYCHOLOGICAL REFLECTION                                         123
 
+                     VARIETIES OF PSYCHOLOGICAL REFLECTION                                         123
 
       (॥) यथापि         हि रण्यनि र्धि   नि हि तमक्षेत्रज्ञा उपयुपरि संचरतो न वि ंदेयुः एवमेवेमाः
              सवोः. प्रजा अहरहर्गच्छन्त्यः एतं त्रह्मलोक॑ a वि ंदति                    aaa हि
@@ -6608,16 +6080,12 @@ CS-16
             अभवन, स त्वा seat याज्ञवल्क्य क पारीक्षि ता अभवन्नि ति                           |
                                                                              बू. I. 3. 1.
 
-
 14    (a) स य एतमेवं वि      द्रान्‌चतुप्कलं पादं ब्रह्मणः प्रकाशवानि त्युपास्ते प्रकाश-
             बानस्मि द्ठीके भवति |                                    छां. 1५. 5. 3
             स यस्तेजो त्रह्मेत्युपास्ते तेजस्वी वे स तेजस्वतो टोकान्‌भाखतो अभि -
             सि द्धचति       ।                                             छां. शा. 1. 2.
 
       (०) अथ यत्तदजायत सोऽसावादि त्यस्तं जायमानं घोषा उळूलबोडनूदाति ष्ठंत
-124                      SURVEY OF UPANISHADIC          PHILOSOPHY
-
-
 
             -.-स य एतमेवं वि द्रानादि त्यं ज्ह्मेत्युपास्तेञभ्याशी ह यदेनश्साधवो
             घोपा आ च गच्छेयुरुप च नि म्ररन्नि ग्रेडेरन्।‌ छां- TIL. 19. 4.
@@ -6651,8 +6119,8 @@ CS-16
 
        १७) अंगुप्ठमात्रः पुरुषों मध्य आत्मानि           ति ष्ठति    । ईशानो yaar न
               ततो वि जुगुप्सते ॥                                               क. गा. 2. 12.
-                       VARIETIES OF PSYCHOLOGICAL REFLECTION                                           125
 
+                       VARIETIES OF PSYCHOLOGICAL REFLECTION                                           125
 
      (८) तान्होबाचेते वे ay यूयं प्रथगि वेममात्मानं वेश्वानर वि द्रांसो5न्नमात्य
            यस्त्वेतमेवं प्रादेशमात्रमभि वि मानमात्मानं PARI स स्वेषु छोकेउ
@@ -6692,9 +6160,6 @@ CS-16
 
 20 (a) तस्माद्रा एतस्मादन्नस्समयाद्‌ अन्योऽन्तर आत्मा प्राणमयः BAT पूर्णः ।
            स वा एष पुरुषवि ध एवं ।....। तस्माद्वा एतस्माआणमयाद्‌ अन्योन्तर
-126                SURVEY OF UPANISHADIC               PHILOSOPHY
-
-
 
           आत्मा मनोमयः । तेनैष पूणः । स वा एप पुरुषबि ध णेव 1...) तस्मादा
           एतस्मान्मनोमयाद्‌ अन्योऽन्तर आत्मा वि ज्ञानमयः | तेनेष पूर्णः ।
@@ -6728,8 +6193,6 @@ CS-16
            Faq AAT पुरुपः TIS पयोबतते5थारूपज्ञो भवति । एकीभवति न
            पदततीत्याहुः . -एकीमबति न वदतीत्याइुस्कीभवति न श्णोतीत्याहुः.    -
            एकीभवति न बि जानातीत्याहुस्तप्त्य हैतस्य हृदयस्यासरे प्रयोतते तेन प्रद्योतेनेष
-                    VARIETIES OF PSYCHOLOGICAL REFLECTION                                  127
-
 
             आत्मा नि ष्क्रामति      चक्षुष्टो वा मूर्ध्नो    वाऽन्येभ्यो वा शरीरदेशेभ्यः,
             तमुत्कामंतं प्राणो5नूत्कामाति प्राणमनूत्कामन्तं सर्वे प्राणा अनूत्कामन्ति - . .
@@ -6766,8 +6229,6 @@ CS-16
 
 23.         यदा वे पुरुपो5स्माह्लाकात्मेति       स वायुमागच्छति     तस्मे स तत्र वि जि हीते
             यथा स्थचक्रस्य ख स तेन स ऊर्ध्व                 आक्रमते स आदि त्यमागच्छति
-128                 SURVEY OF UPANISHADIC PHILOSOPHY
-
 
           तस्मै स तत्र वि जि हीते यथा लम्बरस्य खं तेन स wT आक्रमते स
           चन्द्रमसमागच्छति तस्मे स तत्र वि जि हीते यथा aout खं aa a4
@@ -6802,10 +6263,9 @@ CS-16
             तमि द वृष्टि भूत्वा वपति , स इह कीटो वा पतंगो वा मत्स्यो वा शकुनि वी
             शादूलो वा सि ंहो वा पर्त्रा न्‌वा पुरुषों वाऽन्ये। चैतेषु स्थानेषु प्रत्या-
             जायते यथाक्रम यथावि द्यम्।‌                                कौ. 1. 2.
-                        VARIETIES OF PSYCHOLOGICAL REFLECTION                                         129
+
+                        VARIETIES OF PSYCHOLOGICAL REFLECTION                                         129
                                                          rae
-
-
 
         (८) अथेतयोः पथोने कतरेणचन तानीमानि                              क्षुद्राण्यसऋदावर्ता ने भूतानि
                भवन्ति     । जाय्य म्रि यस्वेत्येतत्तृतीयं स्थानं, तैनासौ लोको न संपूर्यते
@@ -6842,9 +6302,6 @@ CS-16
               यथा नद्यः स्वंदमानाः BABS गच्छेति                      नामरूपे वि हाय |
               तथा वि द्रान्नामरूपादवि मुक्तः परात्परं पुरुपमुपाति दि व्यम ॥
                                                                                 मुं. शा. 2. 7-8.
-CS-17
-130                SURVEY OF UPANISHADIC PHILOSOPHY
-
 
           स यथेमाः नदः स्यंदमानाः समुद्रायणाः समुद्रे प्राप्यास्तं गच्छेति मि ते
           तासां नामरूपे समुद्र इत्येवं प्रोच्यते एवमेवास्य परि द्रष्ट्रारेमाः षोडशकलाः
@@ -6860,9 +6317,8 @@ CS-17
       (८) संप्राप्येनमृषयो ज्ञानतृप्ताः कृतात्मानो वीतरागाः प्रश्ञांताः ।
            ते सर्वगं सवतः प्राप्य धीरा युक्तात्मानः सर्वमेवावि द्वन्ति     ॥
                                                                          मुं. शा. 2. 5.
-                               CHAPTER IV
 
-                 ROOTS OF LATER PHILOSOPHIES
+                               CHAPTER IV
 
 1.   Introductory
 
@@ -6899,10 +6355,7 @@ lation which intermittently join these rivulets, so as to make
 expanse of waters at the place where they meet the ocean of life.     It is
 thus that we see in the Upanishads roots of Buddhistic as well as Jain
 Philosophy, of Samkhya as well as Yoga, of Mimansé as well as Saivism,
-                                    131
-132                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-of the theistic-mystic philosophy of Bhagavadgita, of the Dvaita, the
+                                    131 of the theistic-mystic philosophy of Bhagavadgita, of the Dvaita, the
 Visishtadvaita as well as the Advaita systems. Let no man stand up and
 say that the Upanishads advocate only one single doctrine.                 A careful
 study of the Upanishads, supplemented by a                 critico-historical spirit
@@ -6915,7 +6368,6 @@ these, it shall be our business in the course of this chapter               to p
 out how from the Upanishads spring various streams of thought, which
 gradually become more and more systematised into the architectonic
 systems of later Indian Philosophy.
-
 
 2.    The Upanishads and Buddhism
 
@@ -6943,10 +6395,7 @@ systems of later Indian Philosophy.
  again, the cry of Nachiketas—that everything that exists exists only for
  the nonce and never for the morrow, that objects of sensual enjoyment
  only wear away the vigour of the senses, that life is only as short asa
- dream, that he who contemplates the delights issuing from attachment
-                      ROOTS OF LATER PHILOSOPHIES                        133
-
-to colour and sex may never crave for longevity (S. 1.c )—all this may
+ dream, that he who contemplates the delights issuing from attachment to colour and sex may never crave for longevity (S. 1.c )—all this may
 be taken to be equally well the cry of Buddhism, which is almost con-
 temporaneous with       the thoughts put   into the mouth of Nachiketas,
 that everything in this world is full of sorrow: ‘‘sarvam duhkham, duh-
@@ -6985,12 +6434,8 @@ the doctrine of Denial of Soul, a contempt of sense-pleasure bordering
 upon   pessimism, the    order of   mendicants,   the idealistic theory of
 knowledge, and finally the doctrine of Karman.      It   is true that   with
 these rudiments Buddhism constructed a philosophy which seems to be
-fundamentally different from the philosophy of the        Upanishads, but
-134              SURVEY OF UPANISHADIC PHILOSOPHY
-
-which as we have seen, found sufficient inspiration from      them to    be
+fundamentally different from the philosophy of the        Upanishads, but which as we have seen, found sufficient inspiration from      them to    be
 traceable to them as toa   parent.
-
 
 3.    Samkhya in the Chhandogya, Katha and Prasna Upanishads
 
@@ -7029,10 +6474,7 @@ in the description of the original Prakriti, made up the red, of the white
  of metre. In any case it stands to reason that we may suppose that in
  these two passages we have enunciated for us Mind and Intellect, the
  Mahat, the Avyakta, and the Purusha,— categories which play such an
- important part in the later Samkhya philosophy.      Then also we have
-                             ROOTS OF LATER PHILOSOPHIES                          135
-
-to note that the conception of the Linga-Sarira in the later Samkhya
+ important part in the later Samkhya philosophy.      Then also we have to note that the conception of the Linga-Sarira in the later Samkhya
 philosophy is already adumbrated for us in the Prasnopanishad, which
 reiterates from time to time the nature of the Purusha with sixteen parts.
 In this body verily is that Being who is made up of sixteen               parts, says
@@ -7072,7 +6514,6 @@ tion of the Person with sixteen parts in the Prasnopnishad may
 safely be regarded as the precursor of the later Samkhya conception
 of the Linga-Sarira, which was itself borrowed by the later Vedantic
 philosophy.
-136                  SURVEY OF UPANISHADIC PHILOSOPHY
 
 4.    Samkhya in the Svetasvatara Upanishad
       We have   hitherto considered        the traces of Upanishadic Samkhya
@@ -7113,10 +6554,7 @@ as being absolutely          free from    the influence of qualities and as thus
  of the Svetasvatara could also be proved by the way in which the
  Upanishad describes the tawny-coloured being ( Kapila) as first created
  by the God-head. who is described as looking upon him while he was
- being born (3. 8.a). Much controversy has arisen about the inter-
-                            ROOTS OF LATER PHILOSOPHIES                          137
-
-pretation of the word “ Kapila” in the above passage and doctrinaires
+ being born (3. 8.a). Much controversy has arisen about the inter- pretation of the word “ Kapila” in the above passage and doctrinaires
 are not wanting who hold that the              Kapila referred to in the above
 passage was no other than the originator of the Samkhya Philosophy.
 It need not be denied that the author of the Svetasvatara had no idea
@@ -7136,7 +6574,6 @@ as   intermediary     between himself and creation ( S. 8.          ०), thus p
 beyond the shadow of a doubt the identity of the Kapila                   Rishi of
 Svetasvatara V.2 with              the Hiranyagarbha of Svetasvatara III. 4 and
 IV. 12, as well as the Brahma, the Creator, of Svetasvatara VI. 18.
-
 
 5.    The Upanishads and Yoga
 
@@ -7158,11 +6595,7 @@ may     be called the precursor of the later Pranayama.          Fourthly, we ar
 told that the environment in which one should practise meditation
 should be pure, and free from sand and fire, as well as sounds and water
 pools, and that as far as possible, the maditation should be practised
-in the recesses of        acave.    Fifthly, we are informed of the harbingers
-CS-18
- 138                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-of a     spiritul   day-light    to   come,    namely       the   forms      of mist       and
+in the recesses of        acave.    Fifthly, we are informed of the harbingers of a     spiritul   day-light    to   come,    namely       the   forms      of mist       and
 smoke, the sun        and     the fire, as well     as     other appearances              which
  will   be   discussed   in   the last chapter of this            work.       Sixthly,      we
 are led into the secret of the physiological                effects   produced        by    the
@@ -7202,10 +6635,7 @@ are led into the secret of the physiological                effects   produced  
   other discussions in the Garbhopanishad, was to pave the way for a
   physiology which was to be at the root of the systems propounded by
   Charaka, Agnivega and others. Thus in the Maitri Upanishad an
-  enumeration is made of the seven Dhatus: bone, skin, muscle, marrow,
-                          ROOTS OF LATER PHILOSOPHIES                              139
-
-flesh, semen and blood; of the four Malas, namely, mucus, tears, feces,
+  enumeration is made of the seven Dhatus: bone, skin, muscle, marrow, flesh, semen and blood; of the four Malas, namely, mucus, tears, feces,
 and urine; and of the three Doshas, namely, wind, bile, and phlegm
 (5. 9. 8); and in the Kaushitaki Upanishad we are told that the blood-
 vessels that go from the heart to the Puritat are as small                  as 8 hair
@@ -7245,10 +6675,7 @@ taken by the Nyaya and Vaiseshika systems of philosophy, and a
 change for the better has been also introduced in that doctrine by
 those systems. While the Brihadaranyakopanishad tells us, probably
 for the first time in the history of Upanishadic Thought,             that at the
-time of sleep, the Soul moves by the Nadis to the Puritat, in which
-140                SURVEY OF UPANISHADIC PHILOSOPHY
-
-it takes lodgment and causes the physiological action of sleep(S. 10 .a),
+time of sleep, the Soul moves by the Nadis to the Puritat, in which it takes lodgment and causes the physiological action of sleep(S. 10 .a),
 the   Nyaya philosophy   takes up this idea from the      Brihadaranyaka,
 only substitutes   Mind for Soul, and says that it is the Mind which
 thus moves through the arteries to the Puritat, and it is only when
@@ -7276,7 +6703,6 @@ conception which later played such an important part in the Naiyayika
  air which is the carrier of sound and not ether—a fact corraborated
  by modern science.
 
-
 7.    The Upanishads and Mimansa
 
       The Mimansa school of thought; by the very nature of its ritualis-
@@ -7289,10 +6715,7 @@ whose business it is to consider the nature of the Ultimate.         But there
  go to greater darkness still.     Ignorance leads to the one result, while
  knowtedge leads to the other.     This is what we have heard from the
  Sages, who have told us about the nature of ignorance and knowledge.
- But he, who knows both the path of ignorance and the path of know-
-                      ROOTS OF LATER PHILOSOPHIES                   141
-
-ledge   together, by his knowledge of the one is able to cross the bund
+ But he, who knows both the path of ignorance and the path of know- ledge   together, by his knowledge of the one is able to cross the bund
 of death, and by his knowledge of the other to attain to immortality
                                                                    ”
 (5. 11).     This very important quotation from the Isavasyopanishad
@@ -7333,10 +6756,7 @@ to the Svetasvatara. Even though Uma as a heavenly damsel is
 mentioned so far back as the Kenopanishad, still, for a detailed and
 systematic philosophy of Saivism, we must necessarily turn to the
 Svetasgvatara.   It is true that the conception of Rudra-Siva was being
-developed since the days of the Rigveda and the Atharvaveda; but it is
-142              SURVEY OF UPANISHADIC PHILOSOPHY
-
-only when we come to the time of Svetasvatara that we find the doctrine
+developed since the days of the Rigveda and the Atharvaveda; but it is only when we come to the time of Svetasvatara that we find the doctrine
 of Siva placed on a more or less philosophical foundation. We are told
 in this Upanishad that “it is the God Isa who supports both the
 mutable and the immutable, the manifest and the unmanifest.               As
@@ -7377,7 +6797,6 @@ meshes in his hands, and move on the surface of this globe.    He creates
  nishads: are like a cow. Krishna like a milk-man, Arjuna like the calf
  that is sent to the udders of the cow before milking, and the Bhagavad-
  gita like the milk-nectar that is churned from the udders of the cow.”
-                            ROOTS OF LATER PHILOSOPHIES                         143
 
     As illustrations of the way in which the Bhagavadgita borrows ideas,
 .   phrases and even sentences from the Upanishads,          we have to note how
@@ -7418,10 +6837,7 @@ meshes in his hands, and move on the surface of this globe.    He creates
     sophy.    The verse from the Isavasyopanishad which tells us in a spirit
     of apparent contradiction that “8 man should spend his life-time only
     in doing actions,      for it is only thus that he may hope to be untainted
-    by action”? (3. 14. 2},      has supplied the Bhagavadgita with an idea so
-144              SURVEY OF UPANISHADIC PHILOSOPHY
-
-prolific of consequences that the Bhagavadgita has deemed it fit to
+    by action”? (3. 14. 2},      has supplied the Bhagavadgita with an idea so prolific of consequences that the Bhagavadgita has deemed it fit to
 erect a whole philosophy of Karmayoga upon it. As we may also point
 out in   the chapter on the   Ethics   of the Upanishads,   this   passage
 supplies us with the means as well as the goal of moral life, without
@@ -7460,10 +6876,7 @@ only the psychological categories and simplifies the scheme immensely.
  when he implores Sanatkumara to initiate him into spiritual wisdom
  (S 15. a), as well as the equally fervent emotional attitude of Brihad-
  ratha when he requests Sakayanya to lift him out of the mire of
- existence like a frog from a waterless well ( 3. 15. b),—which emotional
-                          ROOTS OF LATER PHILOSOPHIES                        145
-
-attitudes may be seen to be strangely in contrast with the otherwise
+ existence like a frog from a waterless well ( 3. 15. b),—which emotional attitudes may be seen to be strangely in contrast with the otherwise
 generally dry intellectual argumentation of the Upanishads,—-become
 later almost the foundation-stone for the theistic-mystic philosophy of
 the Bhagavadgita, in which the dry intellectualism and the speculative
@@ -7503,11 +6916,7 @@ Bhagavadgita so far as the Asvattha tree is regarded as having its root
 upwards and its branches downwards. But, while the Upanishad teaches
 that the ASvattha tree is real, and identical with Brahman, and therefore
 impossible of being cut off, the Bhagavadgita teaches that the Asvattha
-tree must be regarded as unreal, and as indentical with existence, and
-CS-19
-146                SURVEY OF UPANISHADIC PHILOSOPHY
-
-therefore that it    is   necessary    to cut off this tree of existence by the
+tree must be regarded as unreal, and as indentical with existence, and therefore that it    is   necessary    to cut off this tree of existence by the
 potent weapon of non-attachment.           The    two    descriptions seem    to be
 almost at daggers drawn. It may be noticed by students of comparative
 mythology that the descriptions of the Asvattha tree in the             Upanishad
@@ -7541,14 +6950,12 @@ Universe; it is the Tree of Existence.          At the foot of it, in the Death-
  In that respect, both the Bhagavadgita and the Upanishads have a
  distinct advantage over the Scandinavian mythology.
 
-
  12. The Krishna of the Chhandogya and the Krishna of the Bhagavadgita
       We must not forget, however, to discuss the merits of a question
  which has assumed some importance at the hands of certain modern
  interpreters of the Bhagavadgita and the Upanishads, especially because
  it seems to us that these interpreters have raised a dust and complain
  that they cannot sec.      In the Chhandogya, there is the mention of a
-                        ROOTS OF LATER PHILOSOPHIES                        147
 
 Krishna       who was the son of Devaki, and these interpreters feel no
 difficulty in facilely identifying him with Krishna, the son of Devaki,
@@ -7589,10 +6996,7 @@ departing from his life. At such a critical time, says Ghora Angirasa
 to Krishna— and we are told that when this knowledge was imparted
 to Krishna he never thirsted again for further knowledge—man must
 take refuge in these three thoughts: Thou art the indestructible; Thou
-art the unchangeable; Thou art the very edge of life (S.17).            From
-148               SURVEY OF UPANISHADIC PHILOSOPHY
-
-this passage a number of modern critics have argued that the Krishna,
+art the unchangeable; Thou art the very edge of life (S.17).            From this passage a number of modern critics have argued that the Krishna,
 the son of Devaki, who is mentioned in this passage, must be regarded
 as indentical with Krishna, the son of Vasudeva, who, as we have
 pointed out is the divine hero of the Mahabharata. Mr. Grierson
@@ -7631,10 +7035,7 @@ Satyavachanam.       This   list    is closely    similar   to   the   list   of
 enumerated in the Bhagavadgita XVI.              1-2, where the same virtues are
 enumerated along with a number of other virtues, and almost in                       the
 same order.      But this fact also proves nothing, because, as we have
-pointed out in the preceding paragraphs, the Bhagavadgita is a congeries
-                          ROOTS OF LATER PHILOSOPHIES                     149
-
-of quotations, phrases, and ideas borrowed from the Upanishads, and
+pointed out in the preceding paragraphs, the Bhagavadgita is a congeries of quotations, phrases, and ideas borrowed from the Upanishads, and
 it is only by accident, as we may say, that the five virtues mentioned
 above should have been enumerated in the Upanishadic passage where
 Krishna, the son of Devaki, is also mentioned.        There is a story about
@@ -7660,7 +7061,6 @@ fication of the two Krishnas falls upon those who make the assertion,
 and so far as their arguments have gone, wedo not think that they
 have, in any way, proved the identification at all.
 
-
 13.     The Upanishads and the Schools of the Vedanta
 
         The relation of the Upanishads to the Brahmasutras is no less
@@ -7676,10 +7076,7 @@ Upanishads, in fact, all his aphorisms 176. 50 much rooted in the texts
 of the Upanishads,     that it would be impossible cither to understand or
 to interpret the Brahmasdatras without a perpetual reference to the texts
 of the Upanishads.         As to whether he taught the dualistic Vedanta or
-the qualificd monistic Vedanta, or the monistic Vedanta, it is not our
-150                SURVEY OF UPANISHADIC PHILOSOPHY
-
-business here to discuss; but it must be remembered that each of the
+the qualificd monistic Vedanta, or the monistic Vedanta, it is not our business here to discuss; but it must be remembered that each of the
 three great schools of Vedantic philosophy, namely, the schools                      of
 Madhva, Ramanuja, and Sankara, interprets the Brahmasttra as well
 as the Upanishads in its own way           The Suddhadvaita, the Dvaitadvaita
@@ -7719,13 +7116,8 @@ Sundamentum divisionis of the systems themselves.                 We shall see h
  Souls which taste of the fruits of action, both of which are lodged in
  the recess of the human heart, and which are as different from each
  other as light and 51806 ? ' ऽ. 18. a), corrected, as later, in the passage
- from the Mundakopanishad which tells us that “‘there are two birds,
-                           ROOTS OF LATER PHILOSOPHIES                             151
-
-companions and friends, both sitting on the same tree, of which one
-partakes,     of sweet     fruits   of     the   tree, while the other without eating
-
-merely     looks on” (S.18.b).               The difficultyin the passage from the
+ from the Mundakopanishad which tells us that “‘there are two birds, companions and friends, both sitting on the same tree, of which one
+partakes,     of sweet     fruits   of     the   tree, while the other without eating merely     looks on” (S.18.b).               The difficultyin the passage from the
 Kathopanishad which we have quoted above is— how can we regard
 the Universal Soul as enjoying the fruits of action? The enjoyment
 of the fruits of action could be            predicated only about the Individual
@@ -7762,10 +7154,7 @@ being both the heaven and the earth (S.19.c).                Such a theory of th
 sovereignty of the Lord over organic as well as inorganic nature brings
 in its train a realistic theory of creation which           tells us that ‘‘ all these
 beings were created from him; they live and move and have their being
-in him; and they are ultimately resolved in him” (S. 20. a) as well                as
-152              SURVEY OF UPANISHADIC PHILOSOPHY
-
-that all inorganic nature was created by him, “ space being the first to
+in him; and they are ultimately resolved in him” (S. 20. a) as well                as that all inorganic nature was created by him, “ space being the first to
 come out of Him, from which later were produced air and                fire and
 water and earth, and the herbs and the          trees and the food       in the
 universe” (5. 20. ए).    We have already seen in our discussion          of the
@@ -7794,29 +7183,21 @@ as gold of gold-ornaments or earth of earthen-ware in quite a           realisti
  of Kramamukti, along with the God whom he has worshipped, to the
  51916 of the highest absolution at the end of time.
 
-
  15.   The Triune Absolute of Ramanuja
 
        Ramanuja agrees with Madhva in maintaining the utter separateness
  of the Individual Souls and God, the reality of Creation, as well as to
  a great extent the doctrine of Immortality; but he differs from him in
- regarding the Absolute to be of the nature ofa Triune Unity,—a sort
-
- ofa philosophic tripod,—of which Nature, the Individual Souls, and
+ regarding the Absolute to be of the nature ofa Triune Unity,—a sort ofa philosophic tripod,—of which Nature, the Individual Souls, and
  God form the feet. So far, again, as the relation between the Souls and
  God is concerned, he disagrees with Madhva in maintaining a qualitative-
  monism, though he agrees with him in maintaining a numerical
  pluralism.   For his doctrine of Triune Unity, Ramanuja finds ample
- justification in the passages from the Svetagvatara which tell us that
-                          ROOTS OF LATER PHILOSOPHIES                            153
-
-there are * three ultimate existences, all of them eternal and all together
+ justification in the passages from the Svetagvatara which tell us that there are * three ultimate existences, all of them eternal and all together
 constituting the Absolute, namcly, the powerless unknowing Soul, the
 powerful knowing God, and the eternal Prakriti, which exists for the
 enjoyment     of   the    individual   Soul,   and    from   which     he   receives
-recompense for his works” (8. 22. a), and yet again that “^ man need
-
-but know the three entities which constitute the Absolute, namely, the
+recompense for his works” (8. 22. a), and yet again that “^ man need but know the three entities which constitute the Absolute, namely, the
 enjoyer, the enjoyed, and the mover, and that when a man has known
 these three, nothing remains to be known” (S. 22.b).                  Thus we see
 that the Absolute of Ramanuja consists of Nature, Soul and God, God
@@ -7828,7 +7209,6 @@ the Soul of Nature as he is the Soul of Souls.                    This is the fu
 mental platform in the philosophy of Ramanujacharya, and we shall
 see what justification he finds for such             views   in    the Upanishads
 themselves.
-
 
 16.   God, the Soul of Nature
 
@@ -7852,11 +7232,7 @@ question he answered by saying that He alone might be regarded as the
 inner Controller “ who dwells in the earth and within the earth, whom
 the earth does not know, whose body the earth is, who from within
 controls the earth.      He is thy Soul, the inner controller, the immortal.
-He who dwells in the waters and within the waters, whom the waters
-CS- 20
-154               SURVEY OF UPANISHADIC PHILOSOPHY
-
-do not know,      whose body the waters are, who from within controls
+He who dwells in the waters and within the waters, whom the waters do not know,      whose body the waters are, who from within controls
 the waters, He is thy Soul, the inner controller, the immortal.”        Thus
 YaAjfiavalkya went on to tell Uddalaka Aruni that the inner Controller
 is He who is immanent likewise “in fire, in       the intermundia, in air,
@@ -7883,7 +7259,6 @@ declare the immanence within, and the inner control of the universe by
  God’s handiwork, as well as God’s garment, is filled and inspired by
  God who is its inner Controller and Soul.
 
-
  17.   God, the Soul of Souls
 
        How is God the Soul of Souls? We are told in the Brinadaranyaka
@@ -7897,10 +7272,7 @@ declare the immanence within, and the inner control of the universe by
  all gods, all beings come out. This is to be mystically expressed
  by saying the Supreme Soul is the verity of verities; the pranas,
  as well as other things mentioned along with them, are verities,
- of whom the Universal Soul is the supreme verity” ( 9. 24. b ). In these
-                            ROOTS OF LATER PHILOSOPHIES                        155
-
-passages we are told how God may be regarded as the Soul of Souls,
+ of whom the Universal Soul is the supreme verity” ( 9. 24. b ). In these passages we are told how God may be regarded as the Soul of Souls,
  and we are also unmistakably told that the Supreme Soul is the Real of
 the Reals, the     verity   of verities, the individual]   souls and   the world
 being themselves verities.       This is corroborated by another passage of
@@ -7940,10 +7312,7 @@ Mundaka we are told that          “६ man, who has attained       to a    per
 catharsis from evil, and has his intellect firmly rooted in the principles
 of the Vedanta, after death goes to the regions of Brahma, with           whom
 he attains to final absolution at the time of the great end”’      (S. 25. 0).
-This passage preserves the personal immortality of the souls and keeps
-156                SURVEY OF UPANISHADIC PHILOSOPHY
-
-them from being absorbed in divinity.       Such a “ Kramamukti,” as it is
+This passage preserves the personal immortality of the souls and keeps them from being absorbed in divinity.       Such a “ Kramamukti,” as it is
 called, is not in line with the real philosophical position    of Advaitism,
 which sees in man the possibility of being liberated even while he lives.
 According to Advaitism, it is possible for man to attain to ^< Jivan-
@@ -7954,7 +7323,6 @@ him.     That is the Advaitic position.   There is an end of the matter, and
 the help of nocelestial god, however great, need           be   invoked for
 carrying such a devotee along with him to the state of liberation at the
 time of the Great End.
-
 
  19.     The fundamental propositions of Sankara’s Philosophy
        How does Sankara’s philosophy lead to such a view of the immortal
@@ -7984,7 +7352,6 @@ time of the Great End.
  monistic systems of the Vedanta are both subsumed in the higher
   synthesis of the monistic.    We shall see how Sankara finds justification
   for such views in the Upanishads.              ‘
-                       ROOTS OF LATER PHILOSOPHIES                         157
 
 20.   The Absolute, the only Reality
   * The fundamental platform of Sankarite philosophy is that the
@@ -8025,10 +7392,7 @@ the conch-shell or the blower of the conchshell, the sound becomes
 grasped; that just as whena      lute is being played, one is not able to
 grasp the external sound, but by grasping the lute or the player of the
 lute, the sound becomes grasped” ( 8. 26.         ०), similarly, in the case of
-the knowledge of the external world, if one isnot able to grasp the
-158              SURVEY OF UPANISHADIC PHILOSOPHY
-
-external worlds as it is in itself, by grasping the Mind, or by grasping
+the knowledge of the external world, if one isnot able to grasp the external worlds as it is in itself, by grasping the Mind, or by grasping
 the Atman, the external world becomes grasped.       This latter statement,
 of course, is only implied in the above passage, and not explicitly stated;
 but it cannot be gainsaid that the Atman is here compared to the lute-
@@ -8067,14 +7431,10 @@ other, that one imagines about the other, that one         thinks   about the
  Passages is, that for the Absolutist there is nothing different from or
  outside the Atman, that knowledge of any part of him is the knowledge
  of the whole, that all causation is ultimately due to him, that everything
- beside him is an appearance, that he is the only eternal knower, and
-                          ROOTS OF LATER PHILOSOPHIES                         159
-
-that it is only when he becomes entangled in the phenomenal acts of
+ beside him is an appearance, that he is the only eternal knower, and that it is only when he becomes entangled in the phenomenal acts of
 perception and knowledge that he may be said to perceive and know,
 and yet the truth is that he does not perceive and know.            The Atman
 is the only entity to exist, and there is naught beside him.
-
 
 21.   The negative-positive characterisation of the Absolute
 
@@ -8112,10 +7472,7 @@ the mouth-less, the un-internal, the un-external, consuming nothing, and
 consumed by none” (ऽ. 27. ७). This 15 > purely negative characterisa-
 tion of the Absolute in the Brihadaranyaka. The Katha mixes
                                                           up
-negative and positive characteristics of it, as does the Mundakopa-
-160               SURVEY OF UPANISHADIC PHILOSOPHY
-
-nishad. The Katha tells us that the Brahman is ‘‘sound-less, touch-less,
+negative and positive characteristics of it, as does the Mundakopa- nishad. The Katha tells us that the Brahman is ‘‘sound-less, touch-less,
 form-less, taste-less, imperishable, smell-less, beginning-less,           end-less,
 greater than the great and eternal, garnering which one is able to
 escape the clutches    of death” (S. 27. €).          The    Mundaka        tells us
@@ -8148,7 +7505,6 @@ the Absolute as Neti Neti; there is nothing which exists outside it,            
  passes from the negative stage of neither-nor, through the affirmative
  stage of inclusiveness, to the trancendental state ‘of either-or.
 
-
  22.   Sankara’s Doctrines of Identity, Creation and Immortality
 
        What is Sankara’s answer to the question of the relation             between
@@ -8156,10 +7512,7 @@ the Absolute as Neti Neti; there is nothing which exists outside it,            
  @ternitatis is the only reality; but what can we say about the reality of
  what we empirically call the Self?       Sankara answers that the Self is
  empirically real, but transcendentally ideal.     From the phenomenal
- point of view, we say that it exists as a separate entity; but transcen-
-                             ROOTS OF LATER PHILOSOPHIES                           161
-
-dentally, itis      identical with     the Absolute.         There are many passages
+ point of view, we say that it exists as a separate entity; but transcen- dentally, itis      identical with     the Absolute.         There are many passages
 in the Upanishads which support this view of Sankara. The Chhandogya
 tells us that ‘*the Self which inhabits          the body is verily the     Brahman,
 and that as soon as the mortal coil is thrown over, it will finally merge
@@ -8200,7 +7553,6 @@ of “ Jivanmukti,” in as much as it asserts that having realised his
 identification with Brahman even while life lasts, he merges in Brahman
 when he has thrown off his mortal coil.
 CS~21
-162              SURVEY OF UPANISHADIC PHILOSOPHY
 
 23.   Three theories about the origin of the Doctrine of Maya
       We now come to discuss a problem, upon which there has been a
@@ -8242,11 +7594,9 @@ to the Upanishads to find his inspiration there,   and as may befit a true
 thinker and philosopher, to have elaborated it out of the inchoate mass
 supplied to him by     the Upanishads.     Our conclusion, therefore, is
 that Sankaracharya only elaborated the ideas that he found in the
-                             ROOTS OF LATER PHILOSOPHIES                               163
 
 Upanishads, and wove them                    into the contexture of       his    Advaitic
 philosophy.
-
 
 24.   The Doctrine of Maya in the Upanishads.
 
@@ -8260,9 +7610,7 @@ The veil    that covers the truth is here described as golden, as being so
 from the inner contents, and rivets it upon itself. Let us not be dazzled
 by the appearance of gold, says the Upanishad, everything that glitters
 is not gold.         Let us penetrate deeper and see the reality that lies
-ensconced       in    it.   We     have    thus, first, the conception of a veil which
-
-prevents truth from being seen at               first glance.   Then,   again, we have
+ensconced       in    it.   We     have    thus, first, the conception of a veil which prevents truth from being seen at               first glance.   Then,   again, we have
 another image in the Kathopanishad of how people living in ignorance,
 and   thinking        themselves wise,         move about       wandering,   like    blind
 men following the blind, in search of reality, which they would have
@@ -8286,10 +7634,7 @@ to Death (S. 31, € }.         The Kathopanishad declares that the Sages never
 find reality and certainty in            the unrealities and    uncertainties    of this
 world ( ऽ. 31.1).           Maya    is   here described as an “ adhruva ”’—an Un-
 reality, or an Uncertainty.               The Chhadogya again tells us that a cover
-of Untruth hides the ultimate Truth from us, just as the surface of the
-164              SURVEY OF UPANISHADIC PHILOSOPHY
-
-earth hides from us the golden treasure that is hidden inside it. We,
+of Untruth hides the ultimate Truth from us, just as the surface of the earth hides from us the golden treasure that is hidden inside it. We,
 who unconsciously move to the region of Truth day after day, do yet
 labour under the power of Untruth         for we do not know the Atman.
 This Atman is verily inside our own hearts.      It is only he, who reaches
@@ -8328,10 +7673,7 @@ a magician, a powerful Being who creates this world by his powers while
  inside which all beings are entangled.       Then again, a famous passage
  from the Brihadaranyaka, which we have already considered, which
  speaks of “as if there was a duality,” implying thereby that there is
- really no duality, signifies the identification of Maya with a semblance,
-                       ROOTS OF LATER PHILOSOPHIES                      165
-
-an as-it-were,     an appearance (S.31.n).     Finally, in that celebrated
+ really no duality, signifies the identification of Maya with a semblance, an as-it-were,     an appearance (S.31.n).     Finally, in that celebrated
 conversation between Svetaketu and Aruni which we have also had the
 Occasion to consider, we are told that everything besides the Atman is
 merely a word, a mode, and a name(S. 31.0).          We thus see from an
@@ -8351,7 +7693,6 @@ power of God, of this power as identical with       nature, of meshes, of
 semblance, an as-it-were and an appearance, and finally, of a word,
 a mode and a name, 1९ no man stand up and say that we do not find
 the traces of the doctrine of Maya in the Upanishads !
-
 
 25.   Vicissitudes in the historical development of the doctrine of Maya.
 
@@ -8374,10 +7715,7 @@ when God robs them of their wisdom by his power ( शा, 15).  More-
 over, it must be remembered, that here again we have to investigate
 the doctrine of Maya in ideas rather than in words. Also, the Bhaga-
 vadgita is a short treatise compared with the Upanishads, nor does the
-theistic-mystic trend of the argument leave much room for a philo-
-166                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-sophical development of the conception of Maya.                 When we come to
+theistic-mystic trend of the argument leave much room for a philo- sophical development of the conception of Maya.                 When we come to
 Gaudapada, however, we find that a great stride forward is taken in
 the development of that doctrine. Gaudapada uses Buddhistic termino-
 logy,    but sets forth an original doctrine.        He      tries   to   write a syste-
@@ -8416,10 +7754,7 @@ who must needs be [द्व on the path of good conduct ( Samacharat ) ””
  cognisance at least of the world as real, though it may be for the perfec-
  tion of mystical endeavour or ethical conduct. even though, philo-
  sophically, he may regard it as not having been created at all. Sankara
- profits by all the conceptions that have preceded him, and weaves
-                           ROOTS OF LATER PHILOSOPHIES                          167
-
-his full-fledged doctrine out of the strands left      at his disposal by the
+ profits by all the conceptions that have preceded him, and weaves his full-fledged doctrine out of the strands left      at his disposal by the
 Upanishads and Gaudapada.              If we examine carefully the expressions
 which Sankara uses about Maya in his great Commentary on the
 Brahmasttras and elsewhere, namely those of inexplicability (sadasa-
@@ -8459,10 +7794,7 @@ view if we do not consider the great distinction that he draws between
 the ‘‘ paramarthika”’ and the “ vyavaharika’’ views of reality.                Like
 his later successor in Germany, he was the first in India to bring into
 vogue the distinction between empirical reality and transcendental
-ideality.     Kant was himself charged with having been an Idealist in
-168                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-spite of his celebrated Refutation of Idealism.           In like manner has
+ideality.     Kant was himself charged with having been an Idealist in spite of his celebrated Refutation of Idealism.           In like manner has
 Sankara been charged with having been an idealist-nihilist in spite of
 his celebrated criticism    of these doctrines.     The    recognition of the
 distinction between the Vyavaharika and the Paramarthika views of
@@ -8502,23 +7834,15 @@ appearance.     From the days of Parmenides, Plato, and Plotinus to the
  while ago, they were not; a little while, and they are not, their very
  ashes are not ...Thus, like a God-created, fire breathing Spirit-host,
  we emerge from the Inane; haste stormfully accross the astonished
-                         ROOTS OF LATER PHILOSOPHIES                                      169
 
 Earth; then plunge again into the Inane....But whence ? —O Heaven,
 whither? Sense knows not; Faith knows not;                   only that it is through
 Mystery to Mystery, from God and to God.”
 
-
-
-
                                    SOURCES        IV
-
 
     (a) तद्ध एक आहुरसदेवेदमग्र आसीत्।‌ एकमेवादि तीयम्‌। तस्मादसतः
                                च
-
-
-
 
           सज्जायत |                                                      छां. VI. 2. 1.
 
@@ -8543,13 +7867,9 @@ Mystery to Mystery, from God and to God.”
          यथाश्रुतम्‌ |                                                    क. व. 5. 7.
 2   (a) तत्कारणं सांख्ययोगाधि गम्यं ज्ञात्वा देवं मुच्यते सर्वपादोः |
                                                                            श्रे. ४1.13.
-CS-22
-470                       SURVEY OF UPANISHADIC PHILOSOPHY
-
 
         (¢) यदग्रे रोहि त रूपं तेजसस्तद्रपं, ages तदपां, यत्क्रष्णं तदन्नस्य
                                               nN
-
 
               अपागादग्नेरभि त्वं, वाचारंभणं वि कारो नामधेयं ओणि                रूपाणि     -इत्यब
               सत्यम्‌ ।                                                  चछ. VI. 4.1.
@@ -8565,11 +7885,9 @@ CS-22
 4        (a) इहैवान्तश्शरीरे सोम्य स पुरुपो यस्मि न्नेताः पोडशकलाः प्रभवन्तीति                    |
                                                                                 प्र. VI 2.
 
-
          ( ¢) स प्राणमसरजत, प्राणाच्छुद्धां, ख, वायुः, ज्योति ः, आपः, प्रथि वी, इन्द्रि यः
                मनः | अन्नं, अन्नाद्वीय, AN, मन्त्राः, कर्म, लोकाः, लोकेपु च नाम च ॥
                                                                                 प्र, VI. 4.
-
 
           (८) स यथेमा नयः स्यन्दमानाः समुद्रं प्राप्य अस्तं गच्छन्ति            । भि द्ेते तासां
                नामरूपे समुद्र इत्येबे प्रोच्यते। एबमेबास्य परि द्रष्टुरि माः पोडशकल्ा ः
@@ -8587,8 +7905,6 @@ CS-22
                                                                                श्रे. 1५. 10.
 
     6     (a) मायां तु प्रकृति ं वि द्यान्मायि नं तु महेश्वर्म |               A. शा. 10.
-                      ROOTS OF          LATER      PHILOSOPHIES                          17
-
 
  (७) अस्मान्मायी Baa वि श्रमेतत्तस्मि              श्चान्यो मायया संनि रुद्धः |
                                                                          AL 1५. 9.
@@ -8599,8 +7915,6 @@ CS-22
 
 (८) कपि ं प्रमृतं कपि ल यस्तमग्रे ज्ञानेवि भर्ति जायमानं च पयेत्‌ ।
                                                                             =
-
-
 
                                                                           दव ४. 2.
 
@@ -8628,11 +7942,7 @@ CS-22
      दीपोपमेनेह युक्तः प्रपद्येत। अजं ध्रुवं सर्वतत्त्वेबि शुद्ध॑ ज्ञात्वा देवं
      मुच्यते सर्वेपादौः ॥                                 डवे. 11. 8-15.
 
-(७) यदा पञ्चावति ष्ठन्ते ज्ञानानि         मनसा सह । बुद्धि श्च न वि चेष्टति तामाहुः
-172                     SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-           mat गति म्‌              at योगमि ति      मन्यन्ते स्थि    रामि न्द्रि    यथारणाम। अप्र-
+(७) यदा पञ्चावति ष्ठन्ते ज्ञानानि         मनसा सह । बुद्धि श्च न वि चेष्टति तामाहुः mat गति म्‌              at योगमि ति      मन्यन्ते स्थि    रामि न्द्रि    यथारणाम। अप्र-
            मत्तस्तदा भवति योगो हि प्रभवाप्ययौ |                               क. IL. 6. 10-11.
       (०) ध्याननि र्मथनाभ्यासादेव पत्र्येत्षि गूढवत्‌ |                                        यवे. 1. 14.
       (4) तयोरन्यः पि प्प aah अनश्नन्नन्यो अभि चाकदीति                                     |
@@ -8653,9 +7963,6 @@ CS-22
              णि न्ना ति ष्ठान्ति   शुक्‍लस्य नीलस्य पि ङ्गटस्य हरि तस्य लोदि तत्य पूर्णा ः |
                                                         .                            वृ.       IV. 3. 20.
 
-
-
-
  10 (a) अथ यदा सुपुप्रो भवति यदा न कस्यचन वेद, हि ता नाम नाड्या
         दरासप्तति सहस्राणि हृदयात पुशेततममि म्रति ष्ठन्ते, ताभेः प्रत्यवरूप्य
         पुरीतति देते स यथा कुमारो वा महाराजों वा महात्राह्मणी वा अति त्री-
@@ -8666,8 +7973,6 @@ CS-22
 
        (८) आकाशेनाहयति , आकाशेन श्रणोति , आकाशेन प्रति श्शणाति | आकादा-
              मुपास्स्वेति      |                                                    छा. शा. 12. 1.
-                            ROOTS OF LATER PHILOSOPHIES                                    173
-
 
 11.        अन्धं तमः प्रवि शन्ति      ये अवि द्यामुपासते । ततो भूय इव ते तमो य उ
            वि द्यायां रताः | अन्यदेवाहुर्वि द्यया अन्यदाहुरवि द्यया । इति gaa
@@ -8701,8 +8006,6 @@ CS-22
            qa अपरपक्षाद्यान्पड्दक्षि णेति मासांस्तान्नेते संवत्सरं अभि प्राप्नुवन्ति        ॥
            a ॥ तश्मि            न्यावत्संपातमुषि त्वा wa णतमेवाध्वानं पुनर्नि वर्तन्ते |
                                                                  छां. ४. 10. 1-5.
-174                   SURVEY OF UPANISHADIC             PHILOSOPHY
-
 
 14 (a) डुवेन्नेवेह कमाणि         जि जीवि षेच्छतं समाः | एवं त्वयि       नान्यथेतोऽस्ति        न
 
@@ -8735,8 +8038,6 @@ CS-22
             ब्रह्मवि दो वदन्ति   ॥                                        क. 1. 3. 1.
       (७) द्रा सुपणा सयुजा सखाया समानं gat परि ष्वजति | तयोरन्यः पि प्पलं
             स्वाद्रत्त्यनर्न्नन्यो अभि चाकरीति      ॥                  मुं. गा. 1. 1.
-                         ROOTS OF        LATER PHILOSOPHIES                                  175
-
 
 19   (०) एको देवः सवभूतेषु गूढः सर्वेव्यापी सर्वभूतान्तरात्मा |
                                                                            उवे. शा. 11.
@@ -8771,8 +8072,6 @@ CS-22
           fa, चन्द्रतारके, area, तमसि , तेजसि , waz भरतेषु, प्रणि ,
         . वाचे, चक्षुषि , श्रोत्रे, मनास, ard, वि ज्ञाने, रेतसि । .-. । एप त
           आम्मान्तर्या म्यमृतो5तो 5न्यदातम्‌ |                                 वर. [7.7
-176                   SURVEY OF UPANISHADIC         PHILOSOPHY
-
 
       (b) तत्सृष्ट्रा तदेवानुप्रावि शत्‌। तदलुप्रवि द्य सच त्यच्च अभवत्‌ । नि रुक्त
            चानि रुक्तं च । नि लयनं चानि लयने च । वि ज्ञानं चावि ज्ञानं च । सत्यं
@@ -8790,9 +8089,6 @@ CS-22
 
 25 (a) यदा परयः पदयते रुक्मवर्णं कर्ता रमीझं पुरुष ब्रह्मयोनि म्‌ । तदा वि द्वान,
                                                                                  lan
-
-
-
 
        पुण्यपापे वि धूय नि रञ्जनः परमं साम्यमुपेति ॥          H वा. 1. 3.
 
@@ -8812,9 +8108,6 @@ CS-22
             सत्यमेवं सोम्य स आदेशो भवतीति ॥ न वै नूनं भगवन्तस्त एतदवेदि -
             पुर्यद्धथेतदवेदि ष्यन्‌ कथं मे नावक्ष्यन्नि ति भगवांस्त्वेव तदुत्रवीत्वि ति
             तथा सोम्येति होवाच ॥                                    Bi. VI 1. 2-7.
-                         ROOTS OF     LATER      PHILOSOPHIES                               177
-
-
 
      (८) इदं नह्य इदं क्षत्रं इमे लोकाः इमे देवाः इमानि          भूताने इदं सर्वं यदय-
            मात्मा | स यथा दुंदुभे्हन्यमानस्य न बाह्यान्‌ शब्दान्‌ शक्ुयादूभ्रह-
@@ -8840,8 +8133,6 @@ CS-22
                                                              द्रष्ट्ट्रेष्टेबि ंपारि ळोपो वि द्य-
                                                                   n
 
-
-
            तेडबि नाशि त्वात्‌ | न तु तद्द्वि तीयमस्ति ततोऽन्यद्वि भक्तं, यत्पश्येत्‌ ।
            *जि न्नति “रसयते “बद॒ति fa “मजुते "स्प्रशति *वि जानाति । यत्र
            वा अन्यदि व स्यात्‌ तत्र अन्यो अन्यत्पशयेत्‌ जि त्रेत्‌ रसयेत्‌ वदत
@@ -8858,9 +8149,6 @@ CS-22
            reed, wate, अलोहि तं, अच्छायं, अतमो, असंगं, अरसं, अगंधं,
            GAGA, AAA, अवाक्‌, अमनो, AIM, अमुखं, अनन्तर, अबाह्यं;
            न तदआति       कि चन, न तदक्षाति        कश्चन |                बृ. वा. 8. 8.
-CS- 23
-178                   SURVEY OF UPANISHADIC PHILOSOPHY
-
 
       (८) अशब्दमस्परमरूपमव्ययं, तथाऽरसं नि त्यमगेधवच्र यत्‌ । अनाद्यनंतं
            महतः परं श्चवं नि चाय्य तन्मृत्युमुखात्ममुच्यते ॥                क. 1. 3. 15.
@@ -8893,7 +8181,8 @@ CS- 23
 
  29 (a) यथोर्णनाभेः Baa Bea च यथा प्रथि व्यामोषधयः संभवन्ति | यथा
         सतः पुरुपात्केशछोमानि तथाक्षरात्संभवतीह्‌ वि ्वम्‌ । मुं. 1. 1. 7.
-                        ROOTS OF LATER PHILOSOPHIES                     *                      179
+
+                        ROOTS OF LATER PHILOSOPHIES                     *                      179
 
      (¢) तदेतत्सत्यं यथा सुदीप्तात्यावकाहि स्फुलि ंगा AES: प्रभवन्ते सरूपाः ।
          तथाक्षराद्वि वि धाः सोम्य भावा: प्रजायन्ते तत्र चे बापि यन्ति ॥
@@ -8929,12 +8218,7 @@ CS- 23
       hy) तेपां असौ वि रजो ब्रह्मलोको न येउ जि ह्यं अनृतं न माया चेति ।
                                                   ~
 
-
-
-
                                                                                  प्र. 1. 16.
-180                 SURVEY OF UPANISHADIC PHILOSOPHY
-
 
       (7) तस्यांभि ध्यानातू योजनात्‌ तत्त्वभावात भरूयळचान्ते वि श्रमायानि वृत्ति ः |
                                                                    खे. 1. 10.
@@ -8952,11 +8236,11 @@ CS- 23
        (7) यत्र हि द्वैतमि व भवति तदि तर इतर पड्यति ।      J. गा. 4. 14.
        (०) यथा सोम्य एकेन मृयि ण्डेन सव मृन्मयं वि ज्ञातं स्यात्‌ वाचारंभणं
             वि कारों aaa म्रात्ति का इत्येव सत्यम्।‌             छा. VI. 1. 4.
-                                    CHAPTER V
+
+                                    CHAPTER V
 
              THE      PROBLEM           OF      ULTIMATE          REALITY
                            IN    THE          UPANISHADS
-
 
 1.   The Supreme Philosophical Problem
 
@@ -8985,7 +8269,6 @@ existence to the Upanishadic seers. How they arrived at this conception,
 and what use they made of it in the solution of the fundamental philo-
 sophical problem will form the theme of the present discourse.
 
-
 2.   The three     approaches to        the    Problem in the history of thought:
      cosmological, theological, psychological
 
@@ -8995,10 +8278,7 @@ been approached.       The three chief types of approach are the Cosmo-
 logical, the Theological, and the Psychological.                  Dr. Caird has said,
 that, by the very constitution of man’s mind, there have been only three
 ways of thinking open to man: “ He can look outward upon the world
-                                              181
-182                SURVEY OF UPANISHADIC PHILOSOPHY
-
-around him;       he can look inward upon the Self within him; and he
+                                              181 around him;       he can look inward upon the Self within him; and he
 can look upward to the God above him, to the Being who unites                  the
 outward and inward worlds,            and who manifests himself in both.”7
 According to him,      the consciousness of objects is prior in time to ऽन
@@ -9038,7 +8318,6 @@ Then they try another experiment: they go by the theological approach
  they try the psychological approach, and arrive at the solution of the
   1. Evolution of Religion, I, 77.
   2. Evolution of Religion, 11. 2.
-           THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                183
 
 problem of ultimate existence We thus see that the problem of ultimate
 Reality to the Upanishadic philosophers is a cosmo-theo-psychological
@@ -9082,7 +8361,6 @@ he ultimately imparted that teaching to his disciple, which consisted in
 saying that the ultimate reality was to be found neither in the sun, nor
 in the moon, nor in the Jightning, but in the image of the person
 reflected in the human eye.     “1615 this image,” said Satykama Jabala,
-184                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 “which is the Atman. It is this image which is fearless, and the ultimate
 reality.    It is this image which   brings all blessings.     It is this image
@@ -9125,13 +8403,8 @@ saying that he would impart superior wisdom to him; how Ajatasatru
  welcomed this great man who told him that he would impart superior
  —_———.
 
-
-
-
   1. There is the same distinction between physiology and psychology as Matthew
       Arnold would say between the poetries of Byron and Wordsworth.
-           THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                       185
-
 
 knowledge; how the proud Balaki began by saying that                    true wisdom
 consisted in regarding the sun as ultimate reality; how he went               on    to
@@ -9155,7 +8428,6 @@ problem that has been raised; and,             therefore, we shall not stop at
 this place to discuss the final psychological answer of the Upanishadic
 philosophers on this head.
 
-
 5.   The    cosmological   argument     for     the     existense of God;    God    is
      all-powerful.
 
@@ -9175,11 +8447,7 @@ And, again, a cryptic formula of the Chhandogya Upanishad declares that
 a man must compose himself in the belief that the world has come out
 of, lives in, and is finally absorbed in the Absolute. The philosopher of
 this Upanishad expresses this whole conception by means ofa                   single
-word tajjalan, which means that it is from the Absolute that the world
-CS-24
-186                     SURVEY OF UPANISHADIC PHILOSOPHY
-
-has sprung, it is into it that it is dissolved, and it is by means of it that
+word tajjalan, which means that it is from the Absolute that the world has sprung, it is into it that it is dissolved, and it is by means of it that
 it lives   (S. 4. ए).    This “‘cosmological” proof for the existence of an
 eternal verity behind the cosmos by reference to the origin, existence,
 and destruction of the world is known to all students of philosophy, and
@@ -9218,10 +8486,7 @@ The story runs, that there was, once upon a time, a great fight between
  with the same mission. The god of wind ran in pride to Brahman, and,
  being asked who he was, said that he was Matarisvan, in whom lay the
  power of blowing away anything from off the surface of the earth.
- Brahman again threw a blade of grass before him. Not with all his
-           THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS            187
-
-might was the god of wind able to move it to an infinitesimal distance.
+ Brahman again threw a blade of grass before him. Not with all his might was the god of wind able to move it to an infinitesimal distance.
 Then the god of wind returned in shame, not being able to know the
 nature of that Great Being.   Then the gods sent Indra and charged him
 with the same mission.   Indra was a more modest god than either the
@@ -9248,7 +8513,6 @@ Power which lies at the back of the so-called manifest powers of nature
 and mind, and      which must therefore be understood as the primary
 reality.
 
-
 6.   God is supreme resplendence
 
      It is not merely that all the power in the world is ultimately due to
@@ -9262,10 +8526,7 @@ obviously owes its resplendence to something else?’’ Shall we say that
 all these so-called resplendent things are resplendent in their own native
 light, or must we assert that they derive their power of illumination
 from a primal eternal verity which lies at the back of them all, and
-whose illumination makes possible the illumination of the so-called
-    188                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-    luminous objects     of nature?      “` Before Him the Sun does not shine,
+whose illumination makes possible the illumination of the so-called luminous objects     of nature?      “` Before Him the Sun does not shine,
     before Him the moon and          the stars do     not   shine, before Him the
     lightining does not shine; far less this earthly fire.      It is only when the
     Absolute shines first, that all these objects shine afterwards.             It is by
@@ -9306,7 +8567,6 @@ whose illumination makes possible the illumination of the so-called
      whole Universe becomes one, only when we suppose that there is the
      same subtle essence underlying both the world of nature and the world
      of mind.
-        THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                     189
 
 8.   The physico-theological argument
 
@@ -9339,7 +8599,6 @@ pointing out that the Absolute must be regarded as the ballast of the
 cosmos, preventing it from rocking to and fro at the slightest gust
 of chance.
 
-
                      JI—TuHe THEOLOGICAL APPROACH
 
 9.   Regress from polytheism to monotheism
@@ -9350,10 +8609,7 @@ inquiring how many gods must be supposed to exist in the universe.
 They could not rest content until they arrived at the idea of one God,
 who was the ruler of the whole universe. Ultimately, they identified this
 God with the inner Self in man.       In this way did theological categories
-become subservient to the psychological category of the Sclf. We shall see
-190                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-how this happens. In the controversy which took place between Vidagdha
+become subservient to the psychological category of the Sclf. We shall see how this happens. In the controversy which took place between Vidagdha
 Sakalya and the sage YAajiiavalkya as reported in the Brihadaranyaka,
 we are told that the former asked Yajiavalkya how many gods must be
 regarded as existing in the world, to which the first answer of Yajiia-
@@ -9394,10 +8650,7 @@ called wise men, being under a great philosophic delusion, regard
 Nature, and others Time, as the source of being They forget that it is
 the greatness of the Lord, which causes the wheel of Brahman to turn
 round. It is by Him that all this has been covered. He is the only
-knower, he is death to the god of death, the possessor of all qualities
-         THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                    191
-
-and wisdom.      It is at His command that creation unfolds itself, namely,
+knower, he is death to the god of death, the possessor of all qualities and wisdom.      It is at His command that creation unfolds itself, namely,
 what people call earth, water, fire, air and ether.       He is the permanent
 as well as the accidental cause of unions.          He is beyond the past, the
 present, and the future, and is truly regarded as without parts.            That
@@ -9437,10 +8690,7 @@ pent up within its nest.     A story from the Chhandogya Upanishad also
 brings into     relief this aspect of the immanence of God.        Weare told
 there how the disciple was asked by his teacher to place a small piece of
 salt in water at night, and come to him in the morning; how the disciple
-did as he was commanded; how, when the teacher asked him what
-192                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-had become of the salt, the disciple could not find it out because it had
+did as he was commanded; how, when the teacher asked him what had become of the salt, the disciple could not find it out because it had
 already melted in the water; how when the teacher asked him to taste
 the water from the surface, then from the middle, and then from the
 bottom, the disciple replied that it was salt in all places; then how the
@@ -9471,7 +8721,6 @@ case,     the God in the universe is to be regarded as identical                
 arrive,       according to the Upanishadic philosophers,                   at the   ultimate
 conception of Reality.
 
-
                       Il[—Tue PsycHOLOGICAL APPROACH
 
 12.     The conception of the Self reached by an               analysis of the various
@@ -9482,7 +8731,8 @@ reached the idea of ultimate reality by the psychological method.               
 conversation which took place between King Janaka and YAjiiavalkya
 as reported in the Brhadaranyaka Upanishad, we find that Yajfavalkya
 asked Janaka as to what psychological doctrines he had                        heard about
-           THE PROBLEM OP ULTIMATE REALITY IN THE UPANISHADS              193
+
+           THE PROBLEM OP ULTIMATE REALITY IN THE UPANISHADS              193
 
 “the nature of ultimate reality. Janaka was a very inquisitive and philo-
 sophically inclined king, and he had therefore known all the opinions on
@@ -9523,11 +8773,7 @@ itself is breathed, know that to be the final reality’? (5. 10. b).    In this
 
  13.    The states of consciousness: waking-consciousness, dream-conscious-
         ness, sleep-consciousness, Self-consciousness
-       We now come to a very famous parable in the Chhandogya Upani-
-CS-25
-194                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-shad which un-mistakably tells us how we must arrive at the conception
+       We now come to a very famous parable in the Chhandogya Upani- shad which un-mistakably tells us how we must arrive at the conception
 of the Self-conscious Being within us as constituting the ulitmate reality.
 Ina very clever analysis        of the    psychological   states     through which
 a man’s soul     passes,    the author of that Upanishad         brings   out   how
@@ -9566,10 +8812,7 @@ this as final gospel, which it calls the gospel of the Asuras.               The
 must be a slight reference here to those, who, like the later Charvakas,
 maintained that the Sclf was nothing more than the mere conscious-
 ness of body.  Indra, however, unlike Virochana, bethought himself
-that Prajapati must not have given him the final answer in the matter
-              THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                           195
-
-of the knowledge of ultimate reality.                  There was this difficulty that
+that Prajapati must not have given him the final answer in the matter of the knowledge of ultimate reality.                  There was this difficulty that
 pressed itself before him. ‘“‘It is true,’’ he said, “that, when the
 body is well adorned, the Self is well adorned; when the body is well
 dressed, the Self is well dressed; when the body is well cleaned, the
@@ -9608,10 +8851,7 @@ in deep-sleep we are conscious neither of our own selves nor of objects.
 In fact, in deep-sleep we are as if we were only logs of wood. There is
 neither consciousness of self nor consciousness of the objective world.
 Feeling this great difficulty in the teaching that had been imparted to
-him by Prajapati, he went back again and told him that he could not be
-196               SURVEY OF UPANISHADIC PHILOSOPHY
-
-satisfied with the knowledge which had been imparted to him, namely
+him by Prajapati, he went back again and told him that he could not be satisfied with the knowledge which had been imparted to him, namely
 that the ultimate Self was to be found in the consciou-ness of deep-sleep.
 For, he said, in that state there was neither self-consciousness, nor any
 consciousness of the objective world; and it seemed as if the soul was
@@ -9653,12 +8893,12 @@ mistake the Self for what the modern Theosophists call the ‘‘ etheric
 double.’ Those, on the other hand, who regard the Self as identical with
 deepsleep consciousness also misunderstand its nature, because there is
 10 that state no consciousness cither of the object world or of the Self.
-          THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                               197
+
+          THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                               197
 
 The true Self could only be the self-conscious Being, shining in his own
 native light, thinking of nothing but his own thought, the voyors vonsews
 of Aristotle, the supreme theoretic Being, the eternal Self-spectator.
-
 
 14.    The ontological argument for the existence of the Self
 
@@ -9697,10 +8937,7 @@ category of existence to the Upanishadic philosophers..
 15.    Self-consciousness; its epistemological and metaphysical significance
        contrasted with the mystical
      The great question that now confronts the Upanishadic secker after
-truth is: if Self-conciousness 15 the final reality, how would it be
-    198                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-    possible for us to realise it ? Can bare intellect suffice to give us a vision
+truth is: if Self-conciousness 15 the final reality, how would it be possible for us to realise it ? Can bare intellect suffice to give us a vision
     of this final reality, or is there any other process beyond the reach of
     intelligence which has the power of taking us within the portals of pure
     Self-consciousness ? The Upanishadic answer is that mere intellect would
@@ -9716,15 +8953,12 @@ truth is: if Self-conciousness 15 the final reality, how would it be
     evidently be       the   super-sensuous   and     the super-intellectual answer.
     Intuition, as we shall see,      is a superior faculty to either mere sensuous
     perception,     or intellective apprehension.         At   present, however, we
-    are concerned       merely with the    ‘philosophic’? aspect        of   pure    ऽथा
-
-    consciousness, which may         be   looked at from two different points of
+    are concerned       merely with the    ‘philosophic’? aspect        of   pure    ऽथा consciousness, which may         be   looked at from two different points of
      view,    the epistemological     and the metaphysical.       We shall see first
     what the epistemological aspect of Self-consciousness is according                 to
     the Upanishads, and then          shall end this chapter by bringing out its
     full metaphysical significance,       reserving the mystical aspect of it for
     our last chapter.
-
 
     16.      [he Epistemology of Self-consciousness
 
@@ -9742,10 +8976,7 @@ _    they are objects of mystical realisation.        Then, again, the Upanishad
      (i)     The Atman, say the Upanishadic philosophers, is unknowable in
              his essential nature.     ^“ That, from which our speech turns back
              along with mind,     being unable to comprehend its fulness,           is the
-             ultimate reality,” says the Taittiriya Upanishad.          ^ That where
-         THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS               199
-
-      the eye is unable to go,    where neither speech nor mind is able to
+             ultimate reality,” says the Taittiriya Upanishad.          ^ That where the eye is unable to go,    where neither speech nor mind is able to
       reach—what conception can we have of it, except that it is beyond
       all that is known, and       beyond all that is unknown!” says the
       Kenopanishad.     The    philosopher of that Upanishad says in an
@@ -9785,11 +9016,7 @@ _    they are objects of mystical realisation.        Then, again, the Upanishad
 (171) But this raises another fundamental question. Granted that the
       Self is the eternal knower of objects, granted also there is no
      other knower of him, would it be possible for the knower to know
-     himself १ This very subtle question was asked of YAjfiavalkya in
-200                  SURVEY OF UPANISHADIC       PHILOSOPHY
-
-
-      another passage of the Brhadaranyakopanishad,            and     here     again
+     himself १ This very subtle question was asked of YAjfiavalkya in another passage of the Brhadaranyakopanishad,            and     here     again
       we see the brilliant light which the sage Yajfiavalkya throws on the
       problem.       It is possible, he says, for the knower to know himself.
       In   fact, Self-knowledge or Self-consciousness is             the     ultimate
@@ -9828,10 +9055,7 @@ _    they are objects of mystical realisation.        Then, again, the Upanishad
       asked Janaka.         ‘‘ Now, verily,”    says Yajfiavalkya,         ‘‘ you are
       pressing me to        the deepest   question.     When the sun has set
       when the moon has set, and when the fire is extinguished, the
-      Self alone is his light” (S.13.c).         Yajiavalkya is here clearly
-            THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS              201
-
-         positing what Aristotle called ^^ theoria,” the act of pure self-
+      Self alone is his light” (S.13.c).         Yajiavalkya is here clearly positing what Aristotle called ^^ theoria,” the act of pure self-
         contemplation in which the Self is most mysteriously both the
         subject and object of knowledge.
 
@@ -9872,11 +9096,7 @@ is a clue through the labyrinth and mazes of the philosophic conflicts.
 It is true that the reconciliation of the different schools must come 1
 at all, only through mystical experience. It is only in mystic experience
 that each schoo] and each doctrine can have its own appointed place
-and level. But it may also be granted to us to look even philosophically
-CS- 26
- 202                    SURVEY OF UPANISHADIC PHILOSOPHY
-
- at the problem, to go back to the texts of the Upanishads themselves,
+and level. But it may also be granted to us to look even philosophically at the problem, to go back to the texts of the Upanishads themselves,
 “to arrange them ina        serial order of developing philosophical propo-
  sitions, and finally to see a vista of supreme reconciliation spreading
  out before us among the battling forces.
@@ -9918,10 +9138,7 @@ CS- 26
   the Brahman according to our third proposition; that is, in other words,
   if I am the Self, and the Self is the Absolute; then, it follows syllo-
 
-                             [१
-         THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                            203
-
-gistically that    Iam the Absolute.       This is unmistakably inculcated by a
+                             [१ gistically that    Iam the Absolute.       This is unmistakably inculcated by a
 passage of Brihadaranyaka Upanishad, where we are told that we must
 identify the   “‘I”    with the Absolute.           Another aspect of the same
 doctrine is proclaimed in          the Chhandogya Upanishad,                where     the
@@ -9942,11 +9159,7 @@ nature destined to be merely torch-bearers or mystics in the spiritual
 pilgrimage. That we should prefer the second alternative will be evident ,
 in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
 
-
-
-
                                    SOURCES V
-
 
 1         उपकोसलो ह वै सत्यकामे जाबाले ब्रह्मचर्यमुवास | तस्य ह द्वादशवर्षा -
           ण्यम्नीन्परि चचार | स ह स्मान्यानन्तेवासि नः समावर्तयंस्तं ह स्मैव न
@@ -9955,10 +9168,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
           अथ हाग्रयः समुदि रे तपनो ब्रह्मचारी SAS नः पर्यचारीद्धन्तास्मै प्रत्र-
           वामेति तस्मै होचुः 1...। अथ दैनं गार्हपत्योजुरशास प्रथि न्यमि रन्नमा-
           दि त्य इति   । य एष आदि त्ये पुरुषो eas सोहमस्मि                 स एवाहम-
-              SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-
 
      स्मीति ।-.-। अथ हैनं अन्वाहार्यपचनो 5चुशशास आपो दि शोाहमनक्ष        त्राणि
                           एप चंद्रमासे पुरुषो र्यते सोहमस्मि स एव स्माति |
@@ -9976,7 +9185,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
 
      वामनीः.“ उ एव भामनीः सर्वेपु लोकेषु माति य एवं वेद ।
                                                              छा. IV. 10. 15.
-
 
 (a) अथ यदतः परो दि वो ज्योति र्दी प्यते वि श्वतः प्रष्टेपु सर्वतः VBI अचुत्तमेपु
      उत्तमेषु लोकेपु इदं वाव तद्यादि दमस्मि न्नन्तःपुरुष ज्योति श्षस्येषा zis:
@@ -9998,7 +9206,8 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
       व्येव त्वां ज्ञपयि ष्यामि ति | ते ह पाणावभि पय प्रवव्राज तो ह सुरं पुरुप-
      मीयतुस्तं दाजातराचरुतमंतयांचकरे ब्रहस्पांडरवासः सोमराजन्नि ति            |
                            |          कौ. 1४. 1-18; also ब्र. ग. 1. 1-15.
-       THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                                       205
+
+       THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                                       205
 
 4   (a) यतो वा इमानि               भूतानि     जायते । येन जातानि जीवंति              । यत्प्रयाते
           अभि संवि शंति      | तद्वि जि ज्ञासस्व | तद ब्रह्मेति |                 तै. रा. 1.
@@ -10031,7 +9240,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
          कि मत्र पश्यसीति । अण्व्य इवेमा धाना भगव इति । आसामङ्ग एकां
          भि न्धीति | भि न्ना भगव इति कि मत्र पश्यसीति न कि ंचन भगव इति ।
           तं होवाच ये वै सोम्य एतमणि मानं न नि भालयस एतस्य वै सोम्य
-206                SURVEY OF UPANISHADIC PHILOSOPHY
 
           एषो$णि श्न एवं महान्न्यग्रोधस्ति ष्ठाति   । श्रद्धत्स्व सोम्येति   स य एपो5
           णि मैतदात्म्यामि दं सब तत्सत्यं स आत्मा तत्त्वमसि श्वतकेतो इति          ।
@@ -10067,10 +9275,7 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
        (८) स्वभावमेके कवयो वदंति कारं तथान्ये परि द्यमानाः। देवस्येष महि मा
            तु लोके येनेदं शाम्यते ब्रह्मचक्रम्‌ ॥ येनावृतं नि त्याभेदं हि सवे a:
             कालकालो गुणी सर्ववि द्यः | तेनेरि तं कर्म वि वतैते ह पृष् मप्रेजोऽनि ट-
-            खानि चि न्त्यम्‌॥...।आदि ः स संयोगानि मि त्तदेतुः परखि काटाद्कलोऽ-
-       THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                            207
-
-         fae: । ते वि श्वरूपं भवभूतमीड्यं देवं स्वचि त्तस्थमुपास्य पूर्वम्‌ ॥ ...
+            खानि चि न्त्यम्‌॥...।आदि ः स संयोगानि मि त्तदेतुः परखि काटाद्कलोऽ- fae: । ते वि श्वरूपं भवभूतमीड्यं देवं स्वचि त्तस्थमुपास्य पूर्वम्‌ ॥ ...
          HAUT परमं महेरवरं तं देवतानां परमं च देवतम्‌ । aa पतीनां
          परमं परस्ताद्वि दाम देवे भुवनेशमीड्यम्‌ Ul न तस्य काय करणं च वि द्यते
          न तत्समश्चाभ्ययि कन्ध हृश्यते । परास्य AA श्रयते स्वाभावि की
@@ -10102,15 +9307,9 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
          भूतांतरात्मा रुपं रूपं प्रति रूपो वहि श्र ॥ वायुर्यथेकों भुवनं प्रवि ष्टो रूपं
          रूपं प्रति रूपो बभूव । कस्तथा सर्वभूतांतरात्मा रूपं रूपं प्रति रूपो
          वदि श्च ॥                                               क. IL. 5. 9. 10.
-208                 SURVEY OF       UPANISHADIC PHILOSOPHY
-
-
 
            वृक्ष इव स्तव्धो दि वि ति ष्ठत्येकम्तेनेदं पूर्ण पुरुषेण सर्वम्‌ |
                                                          ९,
-
-
-
 
                                                                                 खे. 10.9.
 10    (८) यत्ते कश्चि दनरवीत्तच्रुणवामेत्यत्रवीन्मे जि त्वा दोलि नि र्वा खे aah...
@@ -10121,7 +9320,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
            सत्यकामो जावालो मनो            वै ब्रह्मेति ... एकपाद्वा एतत्सम्राडि ति । ... ।
            अन्नवीन्मे वि दग्धः शाकस्यो हदयं त्रह्मेति ...एकपाद्वा एतत्सम्राडि पि            |
                                                                         वृ. IV 1. 2-7.
-
 
        (0) श्रेत्रस्य श्रोत्रे मनसो मना यद्वाचों ह वाचं स उ प्राणस्य प्राणः |
            ववक्षुषश्चक्षुतति मुच्य धीराः प्रत्याष्माहोकादखृता भवंति        ॥ ... ॥ यद्वा-
@@ -10143,7 +9341,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
             सुव्रसनः परि ष्कृते परि ष्कृत: एवमेवायमस्मि       न्नन्धेऽन्धो भवति खामे सामः
             परि वृक्णे afar: ... नाहमत्र भोग्यं परयामीति स समि त्पाणि ः
             पुनरेयाय ।...-। तस्मै ( इन्द्राय ) होवाच य एष स्वर महीयमानश्चरत्येष
-         THE PROBLEM OF ULTIMATE REALITY IN THE UPANISHADS                            209
 
            आत्मेति होवाच एतदमरृतमभयमेतद्‌त्रह्मेति        । स ह शान्तहृदयः प्रवत्नाज
            स ह्‌. अप्राप्येब देवानेतद्धयं दद्श----अग्रि यवेत्तेव भवति , अपि रोदि तीव
@@ -10162,12 +9359,8 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
            पुरुषः |
                                                                   छां. णा. 7-12.
 
-
 12   (८) सत्यं ज्ञानमनन्तं ब्रह्म यो वेद्‌ नि हि तं गुहायां परमे व्योमन्‌ |
                                    ~~   >
-
-
-
 
                                                                           ते. वा. 1.
      (७) एष ब्रह्मा एष इन्द्रः ---एते सर्वे देवा इमानि           च पंचमहाभूतानि ..
@@ -10182,9 +9375,6 @@ in our last Chapter on the “‘ Intimations of Sclf-Realisation.”
           मवि जानताम्‌ ॥                                                  के. 1. 3.
           श्रवणायापि बहुमि यों न भ्यः श्ण्वेतोऽपि          वहवो ये न वि द्युः | आश्चर्यो
           वक्ता FASE छब्धाऽऽश्चर्यो ज्ञाता कुशछालाशि प्टः ॥ क. 1. 2. 7.
-CS- 27
-210                   SURVEY OF UPANISHADIC PHILOSOPHY
-
 
       (७) स वोत्ते वेद्यं न च तस्यासि वेत्ता । तमाहुरध्र्यं पुरुष महान्तम्‌ ।
                                                                    खे. शा. 19.
@@ -10210,9 +9400,8 @@ CS- 27
         (व) अहं ब्रह्मासि     |                                          वरु. 1. 4. 10.
               तत्त्वमसि   |                                            छा. VI. 8.7.
         (८) सब खल्वि दं ब्रह्म ।                                      छा. पा. 14. 1.
-                                 CHAPTER VI
 
-                THE ETHICS OF THE UPANISHADS
+                                 CHAPTER VI
 
 1.   Metaphysics, Morality and Mysticism
 
@@ -10249,7 +9438,6 @@ problem in the Upanishads, as the connecting link between the meta-
 physical position reached therein and the final mystical realisation
 taught in the Upanishads.
                                         211
-212                SURVEY OF UPANISHADIC PHILOSOPHY
 
 2.    Progress of the Chapter
 
@@ -10284,7 +9472,6 @@ ideal of the Upanishadic Sage, bringing out the contrast        between the
 Upanishadic Sage on the one hand and the Stoic and Christian Sages
 on the other.
 
-
                   I—THEORIES OF THE MORAL STANDARD
 
 3.    Heteronomy
@@ -10293,10 +9480,7 @@ on the other.
 as advanced in the Upanishads, we have to note at the outset, that, as
 in the childhood of man, so in the childhood of the race, heteronomy
  is the first principle which serves to dictate rules for moral conduct.
- Reference is always made in such cases to the conduct of others, of
-                         THE ETHICS OF THE UPANISHADS                                213
-
-those    who are better situated morally        than ourselves as dictating           to
+ Reference is always made in such cases to the conduct of others, of those    who are better situated morally        than ourselves as dictating           to
 us the principle of conduct for our own behoof.                  Not without reason
 did Aristotle think that the opinion of men of trained character should
 count as the principle      of moral      authority in cases when        one is      not
@@ -10337,7 +9521,6 @@ regarded as constituting the wishes of God—if we were not to understand
 these as identical with the dictates of Conscience which is the candle of
 the Lord within us—it might not seem very possible to set down in
  J. Nicomachean Ethics I. 4.
-214                   SURVEY OF UPANISHADIC PHILOSOPHY
 
 detail the Laws of God as enjoining the performance of certain duties
 upon us, in preference to, or in cancelment of, other duties.            But in
@@ -10356,7 +9539,6 @@ from the Katha with slight alterations (S.2).           But when all has been
  intimate nature of moral action, it may become evident that            the law
  issuing from anybody except one’s own Self can never be regarded as a
  sufficient guarantee for the moral tone of actions.
-
 
  5.     Autonomy
 
@@ -10380,16 +9562,11 @@ from the Katha with slight alterations (S.2).           But when all has been
   sympathetic intuitionism prepares the way for the higher intuitionism
   of autonomy. It was not till the days of the Bhagavadgita in the
   history of Hindu Ethics that the real nature of autonomy           was clearly
-  appreciated, and the categorical imperative of duty with all its Kantian
-                     THE ETHICS OF THE UPANISHADS                         215
-
-purism    severely inculcated.   We have thus to regard the Upanishadic
+  appreciated, and the categorical imperative of duty with all its Kantian purism    severely inculcated.   We have thus to regard the Upanishadic
 Ethics as on    the whole deficient in     the    principle   of autonomy as
 supplying the rules for moral conduct.
 
-
                     JI—THEORIES OF THE MORAL 10841.
-
 
 6.   Anti-Hedonism
 
@@ -10426,7 +9603,6 @@ heis not like the ordinary run of mankind which hugs to its heart
 the path of pleasure and glory to be only ultimately disillusioned in its
 choice. Nachiketas, true anti-hedonist as he is, refuses to be seduced by
 the life of pleasure.
-216                 SURVEY OF UPANISHADIC PHILOSOPHY
 
 7.    Pessimism
 
@@ -10469,10 +9645,7 @@ demns the desire for a long life of sensual enjoyment in preference to
  its monastic practices.    Unless a man begins to feel the interest in               life
  waning for him, he does not see the necessity of harbouring the ascetic
  virtues.   It is only when his heart begins to be set on the Eternal                that
- he wishes to adopt the life of renunciation.       It was in this way, we are
-                      THE ETHICS OF THE UPANISHADS                         217
-
-told by the Brihadaranyakopanishad, that the wise men of old began
+ he wishes to adopt the life of renunciation.       It was in this way, we are told by the Brihadaranyakopanishad, that the wise men of old began
 to feel that there was no use for them of any wealth or fame or
 progeny. “ What shall we do with progeny,” they asked, “if it does not
 bring us nearer to the Eternal ? ? In this manner did they leave all ambi-
@@ -10499,7 +9672,6 @@ lead a life of child-like simplicity ? (S. 7.   8); believing in the quietistic
 life, “16 should never give himself up to too         many words, for that is
 verily a weariness of the flesh” (5.7. b).
 
-
 9.   Spiritual Activism
 
      There is, however, a positive side to the quietistic life taught       in
@@ -10513,11 +9685,7 @@ the Immortal One, in the form of bliss” ( 9. 8. 8). We must therefore
 remember that even though we are told that we should lead a quietistic
 life, that is only as a sort of recoil from the unreal and empty world of
 sense; within itself, however, it may contain the marrow of self-
-realisation.    ‘‘It was thus,”’ says the Brihadaranyakopanishad, ‘‘ that
-CS-28
-218                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-one who lived a peaceful life, of self-control, of cessation from activity,
+realisation.    ‘‘It was thus,”’ says the Brihadaranyakopanishad, ‘‘ that one who lived a peaceful life, of self-control, of cessation from activity,
 and of patient suffering, having collected himself, saw the Atman within
 himself, saw in fact everything as verily the Atman. Evils cease to have
 any power over him, for he has overcome all       evil.    Sin has ceased to
@@ -10558,7 +9726,8 @@ Thus does he become foremost among those who have known Brahman”
  of action only through freedom from attachment to action, and the
  annihilation of any desire for the end of action. But, at any rate, it is
  evident that the Isopanishad goes very much beyond the other
-                      THE ETHICS OF THE UPANISHADS.        .              219
+
+                      THE ETHICS OF THE UPANISHADS.        .              219
 
 Upanishads when it tries to reconcile the life of action with the life of
 knowledge.      ‘“‘To pitchy darkness do they go,” it tells us,         ‘who
@@ -10601,7 +9770,8 @@ moral, along with Happiness and Prosperity which have material value
 Yajfiavalkya, when he went to the court of King Janaka and was asked
 as to whether he desired wealth and cattle, or victory and controversy,
 said he wanted both: he wanted the cows along with their goldon coin,
-220                    SURVEY OF 'JPANISHADIC PHILOSOPHY
+
+220                    SURVEY OF 'JPANISHADIC PHILOSOPHY
 
 as well as victory in the argumentative battle with the other philo-
 sophers in Janaka’s court.             The apology which Yagfiavalkya apparent-
@@ -10643,10 +9813,7 @@ lists as constituting a moment in the conception of the highest good.
   note that there is here no distinction of kind brought out between
   physical good on the one hand and spiritual bliss on the other, unless
   of course it ere intended by the author that the physical good may be
-  taken to be as good as naught before the highest bliss. That, however,
-                     THE ETHICS OF THE UPANISHADS                        221
-
-does not seem to be thetrend of argument by which the beatific calculus
+  taken to be as good as naught before the highest bliss. That, however, does not seem to be thetrend of argument by which the beatific calculus
 is arrived at after such labour by the author of the Taittiriyopanishad
 with the help of a physico-mythological scale of measurement.           It is
 also equally important to remember that all these various blisses are
@@ -10659,7 +9826,6 @@ probably entirely incommensurate, differing not in degree but in kind.
 The bliss of the Sage, who has realised Brahman, cannot be measured
 in terms of the physical happiness of any beings whatsoever, however
 highly placed or however divine they may be.
-
 
 13.   Self-realisation
 
@@ -10688,10 +9854,7 @@ shad tells us that the Atman, who constitutes the Reality within us as
 without us, is and ought to be the highest object of our desire, higher
 than any phenomenal object of love, such as progeny, or wealth, or the
 like, because, the Upanishad tells us, the Atman, being the very kernel
-of our existence, is nearmost to us. “ If a man may say there is another
-222               SURVEY OF UPANISHADIC PHILOSOPHY
-
-object of love dearer to him than the Atman, and if another replies that
+of our existence, is nearmost to us. “ If a man may say there is another object of love dearer to him than the Atman, and if another replies that
 if there be God overhead he shall destroy his object of love, verily it
 shall so happen as this man says. Hence it is that we ought to meditate
 on the Atman as the only object of desire.     For him who worships the
@@ -10730,17 +9893,13 @@ between his two wives, Katyayani and Maitreyi, Maitreyi chose rather
  stand that the wife or the husband or the sons are dear for one’s own
  sake, interpreting the word Atman in an egoistic sense            The word
  Atman which‘comes at the end of the passage in the expression Atma-
- va are drashtavyah forbids an egoistic interpretation of that word in
-                      THE ETHICS OF THE UPANISHADS                             223
-
-the previous sentences.       We are thus obliged to interpret the word
+ va are drashtavyah forbids an egoistic interpretation of that word in the previous sentences.       We are thus obliged to interpret the word
 Atman throughout the passage in the sense of the Self proper, the
 Ultimate    Reality, and, therefore,      to understand that the love that we
 bear to the wife or the husband or the sons is only an aspect of, or a
 reflection of, the love that we bear to the Self.       It is, in fact, for the
 sake of the Self that all these things become dear to us.          This Self the
 Brihadaranyaka enjoins upon us to realise by means of contemplation.
-
 
 14.   The ethical and mystical sides of Sclf-realisation
 
@@ -10774,16 +9933,12 @@ as identical with everything that exists; when the Atman is seen above
 and below, before and behind, to the right and to the left and is
 regarded as identical with everything that exists.       He who thus realises
 the triune unity of the Infinite, the I, and the Atman, and experiences
-the truth of the sentence So Aham Aun, is alone entitled to enjoy the
-224              SURVEY OF UPANISHADIC PHILOSOPHY
-
-heighest happiness.   One who comes to see this, and think about this,
+the truth of the sentence So Aham Aun, is alone entitled to enjoy the heighest happiness.   One who comes to see this, and think about this,
 and meditate on this, really attains Swarajya: he Joves his          Self, plays .
 with his Self, enjoys the company of his Self, and revels in             his Self
 (5. 14).   In this way, according to the Chhandogya              Upanishad, the
 ethical Sumum Bonum consists in the mystical realisation of the triune
 unity as the goal of the aspirant’s one-pointed endeavour.
-
 
 15.   Supermoralism
 
@@ -10820,11 +9975,11 @@ supermoralism affects only the Absolute, which in its absoluteness is to
  grow by good actions, or diminish by bad actions (S. 16. b). These
  passages tell us that the Moral Agent goes beyond the reach of good
  and bad, when and only so far as he has attained to likeness with, or
-                     THE ETHICS OF THE UPANISHADS                         225 ©:
+
+                     THE ETHICS OF THE UPANISHADS                         225 ©:
 
 becomes merged jin, the Atman, who is himself, metaphysically
 speaking, beyond the reach of good and bad.
-
 
                           III—PRACTICAL ETHICS
 
@@ -10863,17 +10018,12 @@ elements predominating in them.       To those who, like the gods, occupy
 an elevated position, the divine voice says: “ Be self-controlled, for
 otherwise, out of your elation, you might do acts of unkindness.’”? To
 those who are in the position of men, equals among equals, the divine
-voice says: “ Be charitable, and love your fellows.” To those, again,
-CS- 29
-226                SURVEY OF UPANISHADIC PHILOSOPHY
-
-who, like the demons, have in them the capacity of doing infinite harm,
+voice says: “ Be charitable, and love your fellows.” To those, again, who, like the demons, have in them the capacity of doing infinite harm,
 the divine voice says:      “‘Be compassionate.     Be   kind    to    those with
 whom you would otherwise be cruel.”           Thus we are told in the above
 passage that Self-control, Charity and Compassion constitute the three
 different cardinal virtues for the three different sets of people, each
 one of them having a certain predominating psychological temperament.
-
 
 17.     Virtues and Vices in the Chhandogya
 
@@ -10902,7 +10052,6 @@ occasion to consider in a previous chapter. At present we are concerned
  in Manu and YAjiiavalkya (III. 5.227), where the same crimes are
  described as the greatest of all sins.
 
-
   18.    The hortatory precepts in the Taittiriya
 
          The Taittiriya Upanishad is evidently the most hortatory of 211 the
@@ -10911,7 +10060,6 @@ occasion to consider in a previous chapter. At present we are concerned
  Scriptures forming the burthen of the discourse. We are asked to
   respect the Law, to tell the Truth, to practise Penance, Self-control
  and Tranquillity, to offer ceremonial as well as daily Oblations to the
-                        THE ETHICS OF THE UPANISHADS                                   227
 
 Fire, to receive guests with Hospitality, to       practise Humanity, and                (०.
 Increase and Multiply.      We are also told the opinions of three different
@@ -10953,10 +10101,7 @@ speak from the viceregal chair that in Indian Scriptures there does not
 seem to be any consideration made of the supreme virtue of Truth, it
 were much to be wished that they had studied the Upanishads, where
 Truth is inculcated as thé supreme virtue, before they made their
-daring statements. In a famous passage of the Chhandogya Upanishad
-228                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-we are told     how Satyakama, the son            of one Jabala, who had led
+daring statements. In a famous passage of the Chhandogya Upanishad we are told     how Satyakama, the son            of one Jabala, who had led
                                                                            a
 wanton life in her youth, asked his mother when he came of age, as to
 who it was from whom he was born, how the mother answered that she
@@ -10997,10 +10142,7 @@ from the Truth” (S. 20).              This story tells us how even the son of
  Truth alone becomes victorious in the world, and not a lie; by Truth
  is paved the path of the gods, by which travel the sages, who have all
  their desires fulfilled, to where lies the highest Repository of Truth
- (3, 22. ७). This is how the practice of Truth as a moral virtue
-                       THE ETHICS OF THE UPANISHADS                        229
-
-enables one to reach the Absolute.          Finally,    in the conversation
+ (3, 22. ७). This is how the practice of Truth as a moral virtue enables one to reach the Absolute.          Finally,    in the conversation
 between Narada and Sanatkumara, when Narada had gonc to his teacher
 to receive instruction from him in regard to the nature of Truth, the
 teacher answered it was only when a man had realised the Ultimate that
@@ -11014,7 +10156,6 @@ Truth is to be found only in the attainment of Reality.         What people
 call truth is really no Truth at all. It is Truth only by sufferance.     Thus
 we see how Truth is regarded by the Chhandogya             Upanishad as the
 ultimate moral correlate of the realisation of the Absolute.
-
 
 20.   Freedom of the Will
 
@@ -11042,10 +10183,7 @@ expression. On the other hand, in the Chhandogya Upanishad, we are
 told that even though true freedom cannot be said to belong to man
 before the realisation of Atman, still we can say that it does belong
 to him after that realisation.    Man in the foolishness of the contempla-
-tion of his small success regards himself to be the lord of allhe surveys;
-230                SURVEY OF UPANISHADIC PHILOSOPHY
-
-he believes that he may be the master of any situation in which he may
+tion of his small success regards himself to be the lord of allhe surveys; he believes that he may be the master of any situation in which he may
 be placed, and that he may compel nature any time to bend to his sove.
 reign will; but events in life prove that these are after all false   expecta-
 tions, and that even though a   little freedom may be    granted to man in
@@ -11071,7 +10209,6 @@ obtain any object we please, thus testifying to the sovereignty of man’s
  of the good (ऽ. 25)—acontribution, though a            belated one, to the
  psycological aspect of the problem of freedom.
 
-
  21.   The Ideal of the Sage
 
        What is now the Ideal of the     Upanishadic Sage?    It may be seen
@@ -11088,7 +10225,6 @@ obtain any object we please, thus testifying to the sovereignty of man’s
  Christian Sage, who no doubt sticks rightly to the triadic norm of
  conduct, faith, hope and charity, but who centres his hopes for
  mystical perfection ina heteros—Jesus Christ—and not in himself. The
-                      THE ETHICS OF THE UPANISHADS                             231
 
 Upanishadic Sage believes in the possibility of greater or less mystical
 realisation for every being according to the greater or less worth of his
@@ -11118,11 +10254,7 @@ _ because as the Upanishad puts it, he has “collected”? the Godhead
  perfection can be attained, and how morality may thus culminate in
  mysticism, will form the theme of our next Chapter.
 
-
-
-
                                    SOURCES VI
-
 
  1         यान्यस्माकं सुचरि तानि तानि त्वयोपास्याने नो इतराणि        । --- । ये के
            चास्मच्छेयांसो ब्राह्यणाः ... । अथ यादि ते कमबि चि कि त्सा बा वृत्-
@@ -11130,9 +10262,6 @@ _ because as the Upanishad puts it, he has “collected”? the Godhead
            वि चि कि त्सा वा स्यात्‌, ये तत्र ब्राह्यणाः . .. संमार्शनः अळूक्षाः धर्म-
            कामाः स्युः यथा ते तत्र वर्तेरन्‌तथा तत्र बतेथाः । एप आदेदः । एष
            zara: । एषा वेदोपनि षत्।‌                                   ते. 1. 11.
-                 SURVEY OF UPANISHADIC                PHILOSOPHY
-
-
 
        Read वज्रमुद्यतं य एतद्वि टुरमृतास्ते भवंति | भयाद्स्याभि स्तपाति भयात्त-
        पति aa: । भयादि ंद्रश्व वायुश्च म॒त्युधोंवति पंचमः ॥ क. ग. 6. 2-3.
@@ -11147,7 +10276,6 @@ _ because as the Upanishad puts it, he has “collected”? the Godhead
     (७ स त्वं प्रि यान्प्रि यरूपांदूच कामानभि ध्यायन्नाचि केतो 5त्यस्त्राक्षीः |
        नैतां Gai वि त्तमयीमवाप्तो यस्यां asta वहवो मनुष्याः ॥
                                                                          क. 1. 2. 3.
-
 
      (०) अर्जा र्यतामम्रतानामुपेत्य जीयेन्मत्यैः क्वधस्थः प्रजानन्।‌
          अभि ध्यायन्वणेरति प्रमोदानति दीर्चे जीवि ते को रमेत ॥ क. 1. 1. 28.
@@ -11170,7 +10298,6 @@ _ because as the Upanishad puts it, he has “collected”? the Godhead
           याथ भि क्षाचय चरन्ति       |                                वृ. 1४. 4. 22.
     १०) प्राणो ब्रह्मेति ह स्माह्‌ कोषीताकेः । तस्य ह्‌ वा एतस्य प्राण्य ब्रह्मणो
         मनो दूतं, चक्षुगोप्तू, श्रोत्र संश्रावयि तृ, वाक्प्र । तस्मै वा एतस्मै
-                           THE ETHICS OF THE UPANISHADS                                          233
 
              प्राणाय AT एताः सर्वा देवता अयाचमानाय as हरान्ति                               | एवं
              हेवास्मे सबाणि भूतान्ययाचमानायेव बलि ं हरान्ति य एवं वेद्‌ । तस्योप-
@@ -11201,10 +10328,6 @@ _ because as the Upanishad puts it, he has “collected”? the Godhead
 10 (a) मा नस्तोके तनये मा न आयुषि मा नो arg मा नो अश्रेपु रीरि षः ।
        वीरान्मा नो रुद्र भामि नो5वधीहँवि ष्मन्तः सदमि त्वा हवामहे |
                                                              खरे. 1५. 22.
-CS-30
-                    SURVEY OF       UPANISHADIC PHILOSOPHY
-
-
 
       (¢) सत्यान्न प्रमदि तव्यम्‌ । धर्मा न्न प्रमदि तव्यं । aera प्रमदि तव्यम्|‌
           भूत्ये न प्रमदि तन्यम्|‌                            `  तै. .2.1.
@@ -11212,7 +10335,6 @@ CS-30
            उभयमेव सम्राडि ति       होवाच |                            वृ. 1५. 1. 1.
            स दोवाच याज्ञवल्क्यः | पि ता मेऽमन्यत न अननुशि ष्य हरेतेति               |
                                                                       वृ. 1ए. 1, 7.
-
 
 il          सैपा55नंदस्य मीमांसा भवति । युवा स्यात्साघुयुवाध्यायकः । आशि ष्ठो
             gent वलि ष्ठः । तस्येयं प्रथि वी सवौ वि त्तस्य gor स्यात्।‌ स एको
@@ -11240,8 +10362,6 @@ il          सैपा55नंदस्य मीमांसा भवति 
               भूतानां सर्वस्य | आत्मा वा अरे द्रष्टव्यः श्रोतव्यो मन्तव्यो नि दि ध्या-
               सि तव्यः | आत्मनो वा अरे दर्शेनेन श्रवणेन मत्या वि ज्ञानेनेदं सवे
              वि दि तम्‌ ।                                             वृ. वा, 4. 2-5.
-                        THE ETHICS OF THE UPANISHADS                              235
-
 
 14        यदा वे सुखं लमतेऽथ करोति , नामुखं wear करोति सुखमेव wear
           करोति , सुखं aa वि जि ज्ञासि तव्यम्‌ ... । यो वै भूमा aga, नाल्पे
@@ -11276,9 +10396,6 @@ il          सैपा55नंदस्य मीमांसा भवति 
        उषि त्वा aera देवा ऊत्चुन्नेबीतु नो भवानि ति तेभ्यो हेतदक्षरमुवाच द्‌
        इति व्यज्ञासि ष्टा ३ इति व्यज्ञासि ष्मेति दोचुदौम्यतेति न आ्थेत्योपति
        होवाच व्यज्ञासप्रेति ।अथ 24 मनुष्या उचत्रवीतु नो भवानि ति तेभ्यो
-236                SURVEY OF     UPANISHADIC     PHILOSOPHY
-
-
 
          हैतदेवाक्षरमुवाच द्‌ इति व्यज्ञासि ष्टा ३ इति व्यज्ञासि ष्मेति होचुदेत्तेति
          न आव्येत्योमि ति होवाच व्यज्ञासि ष्टेति । अथ हैनमसुरा उचुत्रंबीतु नो
@@ -11312,8 +10429,6 @@ il          सैपा55नंदस्य मीमांसा भवति 
             एव जावाढो छवीया इति । स ह हारि त्र्मतं गौतममेत्योवाच ब्रह्मच
             भगवति वत्स्याम्युपेयां भगवन्तमि ति तं होवाच कि ंगोत्रो चु सोम्यासीति
             स होवाच नाहमेतद्वेद भो यद्रोत्रोऽहमस्म्यप्रच्छं मातरं सा मा
-                       THE ETHICS OF THE UPANISHADS                           237
-
 
           प्रत्यत्रवीत्‌Tee चरन्ती परि चारि णी यौवने त्वामलभे साहमेतन्न वेद
           यद्वोत्रस्त्वमासे जबाला तु नामाहमस्मि       सत्यकामो नाम त्वमसीति
@@ -11337,7 +10452,6 @@ il          सैपा55नंदस्य मीमांसा भवति 
           तुर्भवति , यत्क्रतुर्भवति तत्कम कुरुते, यत्कर्म Hea तदभि संपद्यते |
                                                                 वृ. 1५. 4. 5.
 
-
 24 (८) एष दयेव साधु कर्म कारयति तं यमेभ्यो लोकेभ्य उन्नि नीषत एष उ एवा-
        साधु कर्म कारयति तं, यमधो नि नीपत, एष छोकपालः एष लोकाथि पति -
        रेष छोकेशः स म आत्मेति वि द्यात्‌ स म आत्मेति वि द्यात्‌ ।
@@ -11347,8 +10461,6 @@ il          सैपा55नंदस्य मीमांसा भवति 
                                                               छां. शा. 1. 6.
      (८) य ये अन्तं अभि कामो भवति य ये कामयते सोऽस्य संकस्पादेव समु-
          त्ति ष्ठति तेन संपन्नो महीयते |          छां. भा. 2. 10.
-   238                 SURVEY OF UPANISHADIC PHILOSOPHY
-
 
    25         शुभाशुभाभ्यां मार्गो भ्यां वहंती वासनासरि त्‌ । पौरुषेण प्रयत्नेन योज-
               नीया aa पाथे । अशुभेषु समावि ष्टं शुभेष्बेबाबतारयेत्‌ ।
@@ -11378,10 +10490,10 @@ il          सैपा55नंदस्य मीमांसा भवति 
 
     ३.८ (८) rae येऽनुपरयन्ति             धीरास्तेषां सुखं शाश्रतं नेतरेषाम्‌ |
                                                                                         खे. शा. 12.
-                                CHAPTER VII
+
+                                CHAPTER VII
 
                INTIMATIONS OF SELF - REALISATION
-
 
 1.   Philosophy is to Mysticism as Knowledge is to Being
 
@@ -11417,10 +10529,7 @@ discern to be of immeasurable value.                 +
 
 2.   The Lower Knowledge and the Higher Knowledge
      The Upanishadic seers fully realise the fact that no amount of
-                                      239
-240                SURVEY OF UPANISHADIC PHILOSOPHY
-
-mere intellectual equipment would enable us to intuitively apprehend
+                                      239 mere intellectual equipment would enable us to intuitively apprehend
 Reality.   They draw the same distinction between Apara             Vidya and
 Para Vidya, between lower and higher knowledge, as the Greek phillo-
 sophers did between Doxa and Epistemé, between opinion and truth.
@@ -11460,7 +10569,6 @@ cross Over the ocean of ignorance and grief? (S.1.b).            This     passag
  that unless a man is able to realise the Self while the body lasts, he
 must needs have to go from life to life through a series of incarnations
  (S. 2. ०).
-                     INTIMATIONS OF SELF-REALISATION                            241
 
 3.   Qualifications for self-realisation
      The question now arises— if the Atman is capable of being realised
@@ -11503,8 +10611,6 @@ spirituality, nor can he be reached by a man whose life is a bundle of
 errors (S. 4. €}.    The same Upanishad gives further characteristics of
 the life of Self-realisation.         ‘‘ Unless a man feels disgusted with the
 worlds to which his actions may bring him, and unless he believes.
-CS-31
-242               SURVEY OF UPANISHADIC PHILOSOPHY
 
 firmly that the world which is beyond the reach of actions can never be
 obtained by any actions howsoever good,”            unless,   in other words,           he
@@ -11546,10 +10652,7 @@ Teacher. Time and oft have the Upanishads insisted upon the necessity
  by his own individual effort ever hope to attain it.              Secondly, it is
  necessary that the Teacher to whom we go to seek wisdom must have
  realised his identity with the ultimate Self. For, unless the Teacher has
-realised such an identity, unless, in other words, he stands on the lofty
-                     INTIMATIONS OF SELF-REALISATION                       243
-
-pedestal of unitive experience, the knowledge which he can impart can
+realised such an identity, unless, in other words, he stands on the lofty pedestal of unitive experience, the knowledge which he can impart can
 never be expected to be fructified in any individual who receives it.
 Doubt has oftentimes been expressed as to the necessity of having a
 spiritual teacher from whom to learn spiritual wisdom.              Why,   it is
@@ -11589,13 +10692,8 @@ help may come, which may give us more light and lead us back to
 Brahman. Suddenly, we meet with a Spiritual Teacher, probably as the
 consequence of our having previously performed meritorious actions.
 The Teacher imparts to us knowledge of the way to our original home,
-and then, exercising our faculties as best we may, we go from stage to
-244               SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-stage in the spiritual path until we reach back the country of Brahman
+and then, exercising our faculties as best we may, we go from stage to stage in the spiritual path until we reach back the country of Brahman
 which was our original home.
-
 
 6.    Precautions to be observed in imparting spiritual wisdom
 
@@ -11635,7 +10733,8 @@ student of the spiritual science.     We have no intention to discredit the
  symbol Om. It is also to be noticed that Om is described as not merely
  the supreme means of meditation, but the goal to be reached by the
  meditation itself. The Om occupies in Indian philosophy the same
-                          INTIMATIONS OF SELF—-REALISATION                                    245
+
+                          INTIMATIONS OF SELF—-REALISATION                                    245
 
 position which the        Logos occupies          in Christology.            The Upanishads
 repeat from time to time the efficacy of meditation                     by    means      of the
@@ -11677,10 +10776,7 @@ inquires of his teacher as to what happens to 8 man by his continuing
 to meditate by means of that symbol till the hour of his death, and the
 answer is given that ‘just as a snake is relieved of its slough, similarly
 is the man who meditates on Om relieved of his sins, and, by the power
-of his chants, is lifted to the higbest world where he beholds the Person
-246               SURVEY OF UPANISHADIC PHILOSOPHY
-
-who informs the body, and who stands supreme above any living com-
+of his chants, is lifted to the higbest world where he beholds the Person who informs the body, and who stands supreme above any living com-
 plex whatsoever ” (ऽ. 11).
 
 8.    The Mandukyan exaltation of Om
@@ -11720,10 +10816,7 @@ Upanishad do we find such an exaltation of Om, and the great value
 for spiritual life of meditation by means of that symbol.
 
 9.    Practice of Yoga
-      The aim of the Upanishads is a practical one, and we find scattered
-                     INTIMATIONS OF SELF-REALISATION                       247
-
-throughout the Upanishads certain hints for the practical realisation of
+      The aim of the Upanishads is a practical one, and we find scattered throughout the Upanishads certain hints for the practical realisation of
 the Godhead by means of Yoga. In the Svetagvataropanishad we are
 told that our body should be regarded as the lower stick and medita-
 tion    on Pranava    as the upper one, and that      by rubbing together
@@ -11762,10 +10855,7 @@ that Upanishad a classic and almost systematic description of the practi-
 ces and effects of Yoga, which may be said to carry the Upanishad
 quite near to the time when the Yoga doctrine came to be systematised
 in a new school of philosophy. We are told that ^“ we should hold our
-body with its three erect parts quite even, and that we should pen our
-248                  SURVEY OF UPANISHADIC PHILOSOPHY
-
-mind, along with our senses, in the heart.             We should concentrate upon
+body with its three erect parts quite even, and that we should pen our mind, along with our senses, in the heart.             We should concentrate upon
 Brahman, and, with the help          of that boat cross all the fearful streams
 that bar our spiritual progress.         Controlling our breath and with our
 actions quite measured, we should throw out by                   the nose our Prana
@@ -11792,10 +10882,7 @@ Svetasvataropanishad will be discussed somewhat later in this chapter.
 our    present    concern    being   only    the   details of the manner of Yoga-
 practice, and its physiological effects.
 
-
-11.    The Faculty of God-realisation
-
-  w/f iit ena of the practice of Yoga is evidently the realisation of God.
+11.    The Faculty of God-realisation w/f iit ena of the practice of Yoga is evidently the realisation of God.
 But before we discuss the nature of God-realisation, we must answer a
 previous question—By what Faculty is it that a mystic is able to realise
 God?      Is it Sense, or is it Thought, or is it any super-sensuous and
@@ -11807,12 +10894,11 @@ realise Him either by the heart, or by the imagination, or by the mind.
 It is only those who know this sublime truth that become immortal *’
 (S.16.a).         Later writers have translated the above passage in a
 different way.      They tell us that even though it may not be possible
-                              INTIMATIONS OF SELF—-REALISATION                              249
+
+                              INTIMATIONS OF SELF—-REALISATION                              249
 
 for us to “* visualise” the form of God, still it “‘ may be                    possible for
-us to realise Him by means of the heart,                  or by the imagination, or by
-
-the mind.”         It    is true that the grammatical construction of the above
+us to realise Him by means of the heart,                  or by the imagination, or by the mind.”         It    is true that the grammatical construction of the above
 passage     does     not      come in the way of this interpretation also.               But it
 must be remembered that the                    verse   from the    Kathopanishad         which
 comes almost immediately after it makes it quite clear that it is ‘‘ not
@@ -11850,11 +10936,7 @@ God     realisation, it          may       become      serviceable    psychologi
 make it responsible for the vision of God.                  The Upanishads, however,
 take yct another turn, and look at the question of God-realisation not
 from the      psychological but from the moral point                      of   view.       The
-Mundakopanishad tells us that “it is only when a perfect katharsis
-CS-32
-250                 SURVEY OF UPANISHADIC PHILOSOPHY
-
-of the whole moral being takes place by the clearness of illumination,
+Mundakopanishad tells us that “it is only when a perfect katharsis of the whole moral being takes place by the clearness of illumination,
 that one is able to realise the immaculate God after meditation; for He
 can be attained neither by sight, nor by word of mouth, nor by any other
 sense, nor by penance, nor by any actions whatsoever’? (S. 17. a). Of
@@ -11866,7 +10948,6 @@ in the above passage, for to our mind the idea of Dhatri or Creator is
 absolutely irrelevant to the passage and can only be illegitimately smug-
 gled into it,    the purification   of   the   moral   being yielding quite a
 necessary and legitimate sense.
-
 
 12.    The thorough immanence of God
 
@@ -11896,7 +10977,8 @@ the whole universe, by knowing Whom alone is a man              released from
 all bounds” (ऽ. 18. 0).       The essence of all this teaching about the
 immanence of God is that if man may but try in the proper way, he
 may be able to realise God even within himself.
-                       INTIMATIONS OF SELF—REALISATION                                251
+
+                       INTIMATIONS OF SELF—REALISATION                                251
 
 13.   Types of mystical experience
       It is just the   possibility   of God-realisation within               himself that
@@ -11937,11 +11019,7 @@ peal of a thunder or the crackling of fire (S. 20.                9). Mystic exp
 has shown that it is not merely by shutting our ears that we are able to-
 hear the    mystic sound,        that we can hear it even with our ears quite
 open, and that finally even a deaf man who cannot hear anything else
-is yet able to hear this sound.      Then, again, we cannot call the mystic
-252                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-sound a result of the processes of digestion and assimilation within us.
+is yet able to hear this sound.      Then, again, we cannot call the mystic sound a result of the processes of digestion and assimilation within us.
 It is   true   that the mystic sound is to a certain extent dependent upon
 physiological circumstances.            But to call the sound            a    result     of thosc
 circumstances is like putting the cart before the horse.                           We thus sec
@@ -11971,7 +11049,6 @@ neither any sun-rise nor any             sun-sct,    there is eternal day       
  being, as the result of an utt@r cancelment of these in divine                         omniprc-
  sence ( ऽ. 21. 6 ).
 
-
  14.    The acme of mystic realisation
 
         The photic or auditive experiences which we have referred to above,
@@ -11982,10 +11059,7 @@ neither any sun-rise nor any             sun-sct,    there is eternal day       
  before such a one docs the Atman reveal his proper form (S. 22. a).
  This is verily the doctrine of Grace.              It implies that man’s endeavours
  after a full-fledged realisation of God may always fall short of the ideal,
-unless Grace comes from above.                  It is only when the Atman chooses
-                    INTIMATIONS OF SELF-REALISATION                             253
-
-the saint forthe manifestation of his supreme glory that the mystic
+unless Grace comes from above.                  It is only when the Atman chooses the saint forthe manifestation of his supreme glory that the mystic
 will be able to perceive Him.     It is only then that the golden-coloured
 Being of the Chhandogya Upanishad who can              be scen      on the Sun,
 ** with golden mustaches and golden hair, and who shines like gold up
@@ -12025,7 +11099,6 @@ any far-off cnd quite near to us, being shut up in the cave of our
 heart,’ In like manner does the Kathopanishad tell us in an oft-
 quoted passage that the Atman is subtler than the subtle and greater
 than the great, and is pent up within the recesses of our heart.
-254               SURVEY OF UPANISHADIC PHILOSOPHY
 
 On the other hand, passages are not wanting, asin the Svetagvataro-
 panishad and the     Kathopanishad,       where   the    Atman   is described as
@@ -12067,10 +11140,7 @@ effects which the realisation of God produces upon the perfected Mystic.
  he begins to participate in the other’s infinite power’? (S. 24. ८).
  Fourthly, we have in the Taittiriya Upanishad a classic description of
  the illimitable bliss that a perfected Mystic experiences after his com-
- munion with the Highest—a description which we have had occasion
-                       INTIMATIONS OF SELF-REALISATION                                   255
-
-to notice in our account of the beatific calculus in a previous chapter.
+ munion with the Highest—a description which we have had occasion to notice in our account of the beatific calculus in a previous chapter.
 But the      Brihadaranyakopanishad,          in the vein of an almost erotic
 mysticism,    tells us further that the only carthly analogue which we can
 have    for the    bliss of God-realisation,—indeed            a very imperfect         and
@@ -12110,7 +11180,6 @@ that “if such a Mystic should ever want to have any end fulfilled at
 all, he should wait upon the Atman, and pray to him, without the
 slightest touch of egoism, for the fulfilment of his desire: immediately
 is the end fulfilled for him for which he had prayed to God '' (S. 25. a),
-    256               SURVEY OF UPANISHADIC PHILOSOPHY
 
     हड The Atman,” says the Chhandogya Upanishad, “ is sinless. without
     age, without death, without fear, without any hunger or thirst and             has
@@ -12126,7 +11195,6 @@ is the end fulfilled for him for which he had prayed to God '' (S. 25. a),
     infinite power, the enjoyment of illimitable joy, the destruction of all
     fear and the fulfilment of any end that may be contemplated by the
     Mystic
-
 
 '   17.   Raptures of mystic ecstasy
 
@@ -12154,7 +11222,8 @@ is the end fulfilled for him for which he had prayed to God '' (S. 25. a),
 ८16 Mystic of the Chhandogya Upanishad declares that even as a horse
      might shake its mane, similarly had he himself shaken off all his sin,
      that even as the Moon might come out entire after having suffered an
-                        INTIMATIONS OF SELF—REALISATION                     257
+
+                        INTIMATIONS OF SELF—REALISATION                     257
 
 eclipse from Rahu, even so, having been freed from the mortal coil,
 had he obtained the eternal life in the Atman (S. 28).           Then, again,
@@ -12195,11 +11264,7 @@ their unity,” which utterances only mean, metaphysically, that he was
 himself all matter and all spirit as well as the connecting link between
 them both, and epistemologically, that he was himself the subject-
 world and the object-world as well as the entire subject-object relation
-—a stage of spiritual experience which has been well characterised by a
-CS-33
-258                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-modern idealistic thinker as a stage where the difference between the
+—a stage of spiritual experience which has been well characterised by a modern idealistic thinker as a stage where the difference between the
 field, the fighter, and the strife vanishes altogether—the culmination of
 the unitive song being couched in terms which are only too reminiscent
 of like mystic utterances from other lands,               ‘‘ I am the first-born of the
@@ -12207,11 +11272,7 @@ Law;     I am older than the gods;            I am the navel of Immortality;    
 that gives me, keeps me;               him, who eats all food, I eat as food; 1
 envelop the whole universe with splendor as of the Sun” (S. 30).
 
-
-
-
                                        SOURCES VII
-
 
 1      (a) & वि ये वेदि तव्ये इति ह स्म यद्‌ ब्रह्मवि दो वदंति         परा चेवापरा च ।
             तत्र अपरा वेदो यजुर्वेदः सामवेदोऽथयैवेदः         शि क्षा कल्पो व्याकरणं
@@ -12230,8 +11291,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
 «      (¢) FAG पुरे देही हैसो टेखायते वहि ः |                              श्र. ता. 18.
  4     (a) नाबि रतो दुश्चसि तान्नाशंतो नासमाहि तः । नारान्तमानसो वापि प्रज्ञाने-
            नेनमाप्लुयात्॥‌ `                                  क. 1. 2. 24.
-                           INTIMATIONS OF SELF-REALISATION                                 259
-
 
          (७) सत्येन लभ्यस्तपसा ह्यष आत्मा सम्यग्ज्ञानेन ब्रह्मचर्येण नि त्यम्।‌ अंतः-
              शरीरे ज्योति मयों हि शुभ्रा य परयति यतयः क्षीणदोषाः ॥
@@ -12267,9 +11326,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
 7       (०५) क्रि यावन्तः श्रोत्रि या त्रह्मनि ष्टाः स्वय जुब्हत एकर्षि श्रद्धयंतः । तेपोमे-
              वैतां ब्रह्यावदयां बदेत दि रेत्रतं वि धि वद्येस्तु 'चाणि म्‌ ॥ मुं. 11. 2, 10.
         (8) इदं वाव तज्ज्यंछाय पुत्राय पि ता ब्रह्य -प्रमरूयास्रणाययाय बान्तवासि ने ।
-                   SURVEY       OF     UPANISHADIC   PHILOSOPHY
-
-
 
           नान्यस्मे कस्मेचन यद्यप्यस्मा इमामाद्वेः परि ग्रहीतां धनस्य पूर्णा दद्या-
           देतदेव ततो भूय इत्येतदेव ततो भूय इति             ।   छां. शा. 11. 5-6.
@@ -12284,7 +11340,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
           ब्रह्म waaay परं । एतद्धवेवाक्षरं ज्ञात्वा यो यदि च्छति         तस्य तत ॥
                                                                 क. 1. 2, 15-17.
 
-
      (७) तद्यथा THAT स्वानि पणानि संतृण्णानि एवमे करेण सव वाकू संतृण्णा
            3“कार एवेदं सर्वम्‌ |                                  छा. गा. 23. 3.
 
@@ -12295,7 +11350,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
 
 {0         ॐ इति    ह्येष स्वरन्नेति    ।              |          छा. 1. 5. 1, 3.
 
-
 1]         अथ हैन शैब्यः सत्यकामः पप्रच्छ । स यो ह्‌वैतद्‌ भगवन्मनुष्येषु
            प्रायणान्तमोकारमभि ध्यायीत। कतमं वाव स तेन लोकं जयतीति ।
            तस्मे सर होवाच “ads सत्यकाम परं चापरं च ब्रह्य यदोंकारः |
@@ -12304,12 +11358,9 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
            एतस्माजीवघनास्परं परि दाय पुरुषमीक्षते ? ।
                                                                      प्र, ४. 1-5.
 
-
 12         भूतं भवद्भावि ष्यदि ति सर्वमोकार एव । यथ्चान्यत्त्रि कालातीते तद्प्योझ्लार
            एव ॥१॥ सवे ह्यतद्‌ ब्रह्मायमात्मा ब्रह्म । सोऽयमात्मा चतुष्पात्‌ ॥२॥
            जागरि तस्थानो वाहि ःप्रज्ञः सप्तांग एकोनार्धेशाति मुखः स्थूलभुग्बेश्रानरः
-                         INTIMATIONS OF SELF-REALISATION                                  261
-
 
           प्रथमः पादः ॥ ३॥               स्बप्रस्थानो5न्तःप्रज्ञः सप्तांग एकोनर्वि शति मुखः
            प्रवि वि क्तमुक तेजसो द्वि तीयः पादः ॥ ४1] यत्र सुप्तो न कंचन कामं
@@ -12336,7 +11387,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
      (6) WHAT सर्वमोतं प्रजानां यस्मि न्वि शुद्धे वि भवत्येष आत्मा |
                                                                           मु. गा. 1. 9.
 
-
 15 (a) त्रि रुन्नतं स्थाप्य aa कारीरं हृदीटि याणि         मनसा संनि वेश्य। त्रह्मोडुपेन
           प्रतरेत वि द्वान्‌Baie सर्वा णि        भयावद्याने ॥         ८॥ प्राणान्यरपीड्येह स
            युक्तचेष्टः   क्षीणे प्राणे    नासि कयोच्छुसीत       ।   दुटाश्रयुक्तामेब वाहमेनं
@@ -12348,8 +11398,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
                     3 निज
                         छखेो समुत्थि ते पंचात्मके योगगुणे प्रवृत्त ।
          न तस्य रोगो न जरा न मृत्युः प्राप्तस्य योगामि मयं शरीरम्‌ ॥ १२ ॥
-262                      SURVEY OF UPANISHADIC PHILOSOPHY
-
 
                लघृत्वमारोग्यमलोल॒पत्व॑ वणेप्रसादः स्वरसौष्ठवं च । गंघः शुभो मूत्र-
                पुरीषमल्पं योगप्रवार्ते saat वदन्ति       ॥ १३ ॥      श्रे. गा. 12-13.
@@ -12367,7 +11415,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
           (७) तमक्रतुः पश्यति वीतशोको धातुप्रसादान्महि मानमात्मनः |
                                                                        क. 1. 2. 20.
 
-
  18 (८) तं स्वाच्छरीराठवृहेन्मुजाद्वि षीकां धैर्येण । ते वि द्याच्छुक्रममृतं ते वि द्या-
                च्छुक्रममृतामि ति     1                                क. II. 6. 17.
 
@@ -12380,16 +11427,13 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
                वेष्टि तार ज्ञात्वा देवं मुच्यते सर्वपापैः ॥              श्रे. IV. 16.
       ’
 
-
-
-
  19 (a) नीहारधूमाकोनल्यानलानां खद्योतबि द्युत्त्फाटेकशशि नाम॑ | एतानि रूपाणि
         पुरःसराणि न्रह्मण्यभि व्यक्ति कराणि योगे ॥              खे. गा. 11.
           (७) तस्य ह एतस्य पुरुषस्य रूपं यथा महारजनं वासो, यथा पाण्ट्वादि कं,
               यथेंद्रगोपो, यथा अग्न्यार्चेः, यथा पुण्डरीकं, यथा सकताद्वि दुत। ते ह
               वा अस्य श्रीर्भवति य एवं वेद |                     बृ. गा. 3. 6.
-                       INTIMATIONS OF SELF—REALISATION                                   263
 
+                       INTIMATIONS OF SELF—REALISATION                                   263
 
 20 (a) अयमाम्रि वेश्वानरो योयमंत:पुरुषे येनेदमन्नं पच्यत यादेदमद्यते तस्यैष घोषो
        भवति यमेतत्कणांवपि धाय शणोति स यदोत्कराभि ष्यन्‌ भवति नैन घोषं
@@ -12426,8 +11470,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
            देवं मुच्येत सर्वपारीः ॥ १५ ॥                           द्वे. 11. 14-15.
 
      (८) अयं वाव खल्वात्मा ते । यः कतमो भगव इति । तं होवाच । अथ य
-264                      SURVEY OF UPANISHADIC PHILOSOPHY
-
 
           एष संप्रसादो5स्माच्छरीरात्समुत्थाय परं ज्योति रुपसंपद्य स्वेन रूपेणाभि -
           नि ष्पद्यत इत्येष आत्मेति होवाच एतदमृतमभयमेतद्‌ब्रह्येति । अथ खल्वि         ये
@@ -12454,7 +11496,6 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
            अंगुष्ठमात्रः पुरुषोन्तरात्मा सदा जनानां हृदये सनि वि ष्टः |
                                                                     क. I. 6. 17.
 
-
  24 (a) आत्मानं चेद्धि जानीयाद्यमस्मीति        पुरुषः । कि भि च्छन्‌ कस्य कामाय
            शरीरमनुसंज्वरेत्‌ ॥                                     बृ. 19. 4. 12.
 
@@ -12463,8 +11504,8 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
 
       (८) समाने वृक्षे पुरुषो नि मप्रोऽनीशया शोचति मुह्यमानः | जुष्ट यदा पयति
             अन्यमीदि मस्य महि मानमि ति     वीतशोकः ॥                मु. 111. 1. 2.
-                       INTIMATIONS OF SELF—REALISATION                                  265
 
+                       INTIMATIONS OF SELF—REALISATION                                  265
 
      (व) तद्यथा प्रि यया स्त्रि या संपरि ष्वक्तो न बाह्यं कि ंचन वेद, नांतरं, एवमेवायं
          पुरुषः प्राज्ञेनात्मना संपरि ष्वक्तों न वाह्म॑ कि चन वेद, नान्तरम्‌, तद्रा
@@ -12494,17 +11535,12 @@ envelop the whole universe with splendor as of the Sun” (S. 30).
            ऋषीणां, तथा मुष्याणाम्‌ | axa ऋषि वोमदेवः प्रति पेदेऽहं
            मनुरभवं सूर्यश्चेति   |                                        J. I. 4. 10.
 
-
 28        अश्व इव रोमाणि वि धूय पापं, चंद्र इव राहोमुखात्ममुच्य, धूत्वा शरीरं,
           अक्रृतं कृतात्मा त्रह्मलोकमभि संभवामीति |      क्रां. VIII. 13. 1.
 
 29        अहं rae रेखि ा। कीर्ति ः Ta गि रेरि व । उध्बेपवि त्रो वाजि नीव स्वसृत-
           मस्मि | द्रावि ण सवर्चसम्‌ | सुमेधा अमृतोऽद्षि तः | इति त्रि शंकोर्वेदानु-
            वचनम्‌ ।                                                          तै. 1. 10.
-CS-34
-266           SURVEY OF UPANISHADIC PHILOSOPHY
-
-
 
 30    स य एवंवि त्‌ । अस्माहोकात्मेत्य । एतमन्नमयमात्मानइपसंक्रम्य । एत
       प्राणमयमात्मानमुपसक्रम्य । एतं मनोमयमात्मानमुपसंक्रम्य । एतं
@@ -12518,7 +11554,6 @@ CS-34
                                                     a
 
                                                      त. Til. 10. 5-6.
-                               GENERAL INDEX
 
                  - A >,    =                          70; the realistic theory of crea-
 
@@ -12534,15 +11569,9 @@ Abhivimana, meanings of p 97.                         p. 158.
 
 Abnormal Psychology, p. 87.                         Achyuta, p. 149.
 
-Absolute, as surpassing the con-                    Action and Knowledge,           reconci-
+Absolute, as surpassing the con-                    Action and Knowledge,           reconci- ception of God,         p.23:    defini-            liation of p. 219.
 
-  ception of God,         p.23:    defini-            liation of p. 219.
-
-  tion of, in positive and negative                 Activism, spiritual, the theory of,
-
-  terms, p. 150; the philosophical                    p. 217; phenomenal, the theory
-
-  conception of,          p.   150;    and            of, p. 217.
+  tion of, in positive and negative                 Activism, spiritual, the theory of, terms, p. 150; the philosophical                    p. 217; phenomenal, the theory conception of,          p.   150;    and            of, p. 217.
 
   God, relation of, p. 150; Triune                  Actionlessness,    how    possible in
   Unity of the, p. 152; nature of                     the midst of action,         p. 218.
@@ -12572,8 +11601,6 @@ Absolutism, of YaAjiiavalkya, p.                      p. 199; Upanishadic view o
   41; and theory of creation, p.                      199; Spencer’s view of, p. 199.
 
                                               267
-268                   SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 Air, as the source of all things,           Anandatirtha, dualistic school of,
   pp. 56-57; as the absorbent
@@ -12616,7 +11643,6 @@ Aitareya Brahmana reference to              Anaximander, pp. 45, 53.
       goras, Plato, the Upanishads,            p. 168, doctrine of, in Parmeni-
       and Yoga, p. 110.                        des, Plato, Plotinus, Berkeley,
  Anandagiri on pradesa, p. 97.                 Hegel and Bradley, p. 168.
-                                     GENERAL INDEX                                      269
 
 Apperception, synthetic unity of,            Aruni, the          outstanding        philo-
   p. 200.                                      sopher of the Chhandogya,                 p.
@@ -12660,8 +11686,6 @@ Aristotle: doctrine of Matter and              sation, p. 218.
 
 Arrow and the Target, the meta-                sis of cosmological doctrines,
   phor of, p. 245.                             p.    16;   his     doctrine        of   the
-270                      SURVEY OF UPANISHADIC PHILOSOPHY
-
 
   Universal Atman as Vaisvanara                  1
                                                               as the eternal Subject of know-
@@ -12696,18 +11720,13 @@ Asvins and Dadhyach, the story                                blade from its she
       of creation, p. 152;            as   the                 end of sacrifice, p       147.
       material cause of the universe,                        Avyakta, pp. 134, 144.
       p.    152;    as     the instrumental
-      cause of the world, 9. 152; as                                        -B-
-
-
-      the source of activity, p. 158;                        Babylonian mythology,             p. 60;
+      cause of the world, 9. 152; as                                        -B- the source of activity, p. 158;                        Babylonian mythology,             p. 60;
       compared to the lute-player,                           Bacon, quotation from, on                  the
       or    the    drum-beater,        or the                  chain of nature, p. 1; and the
       conch-blower, p. 158; original                           active life, p. 219.
       meaning of, in the Upanishads                          Badarayana:       his frequent borro-
       and Plato, p. 181; the ultimate                          wal from the Upanishads, p.
       category of existence, p. 181;                            149,
-                                        GENERAL INDEX                                      271
-
 
 Baka Dalbhya, or Glava Maitre-                   conception of God as the A of
   ya, the story of, p. 15.                       the Indian alphabet, p. 75;                its
@@ -12749,16 +11768,7 @@ Bhagavadgita: its attempt to syn-              Bhandarkar, R.G., Dr., on the
   from the Katha, Mundaka and                  Bhargava Vaidarbhi: his interest
   Svetagvatara     Upanishads, p.                10     physilogical           psychology,
   19; castes created according to                p. 34.                                      ।
-  qualities and works,            p. 41;       Bhakti, to Guru as to God, 9.21;
-x
-
-
-
-
-272                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-     to God as to Guru, p. 145; in          Body, compared        to ६   potter’s
+  qualities and works,            p. 41;       Bhakti, to Guru as to God, 9.21; to God as to Guru, p. 145; in          Body, compared        to ६   potter’s
      Upanishadic literature, p. 244.          wheel, p. 22; toa harp, p. 65.
 Bhavas, or ‘ Conditions’ in Sam-              Body and soul, relation of, p.
       khya philosophy, p. 24.                 96.
@@ -12797,10 +11807,7 @@ Bhavas, or ‘ Conditions’ in Sam-              Body and soul, relation of, p.
        221; as consisting in the reali-        Greek philosophers to, p. 73.
        sation of desirelessness, ए. 221.       Brain, as the seat of conscious-
      Blood-vessels of variegated co-           ness, p. 94.
-       lours, p. 139.                        Bride and Bride-groom, the ana-
-                               GENERAL INDEX                             273
-
-  logy of, p. 255.                        the image of the, 9. 111.
+       lours, p. 139.                        Bride and Bride-groom, the ana- logy of, p. 255.                        the image of the, 9. 111.
 Brihadaranyakopanishad, a sum-         Catharsis, or the purging of the
   mary of, pp 12, 14                      inner man, p 241.
 Brihadratha, the disciple of Saka-     Causa sui, representation of God.
@@ -12842,12 +11849,7 @@ Caste, origin of, p. 41; system,          of, pp. 14-15-16, quoted most
 Categorical Imperative of Kant,           ni, p. 43.
 
   p. 214.                              Christ, Jesus: advice to disciples
-Caterpillar, analogy of the, p. 40;       notto take thought ot what
-
-CS-35
-274                     SURVEY OF UPANISHADIC PHILOSOPHY
-
-  they should        speak, p.6;      asa         menon, p. 41 ; seat of, transferr-
+Caterpillar, analogy of the, p. 40;       notto take thought ot what they should        speak, p.6;      asa         menon, p. 41 ; seat of, transferr-
   heteros, p. 230.                                ed from the heart to the brain,
 Christianity: on the Ideal of the                  p. 94; analysis of the states of,
   Sage,       p. 230;    on   the triadic          p.194; identical with Existence,
@@ -12886,18 +11888,13 @@ Citadel of Nine Doors, p. 242.                   Corn of Wheat,      reference t
       Lord within us, p. 213.                       theological, p     189.
  Conscious        Self, as feeding the            Cowell : interpretation of a passa-
       other senses, p. 96.                          ge in Maitri, p. 99.
- Consciousness, a fleeting pheno-                 Creation, as      evolution,    p. 21;
-                                     GENERAL INDEX                               275
-
-  theories of, 9. 54;         35 illusion       88; and birth, manner of, p.
+ Consciousness, a fleeting pheno-                 Creation, as      evolution,    p. 21; theories of, 9. 54;         35 illusion       88; and birth, manner of, p.
   or appearance, p. 55; persona-                110; realistic description of,
   listic theories      of,    p    66;   as      p- 111.
 
   opposed to emanation, p. 70;                 Defined and Undefined       ७. 154.
   realistic theory of, an obstacle             Degrees of Reality, doctrine of,
-  to     absolutism,     p.   152;       the     pp. 167- 168
-
-  absolutist view of, p. 161.                  Deistic view of the Godhead, 7.
+  to     absolutism,     p.   152;       the     pp. 167- 168 absolutist view of, p. 161.                  Deistic view of the Godhead, 7.
 
 Creator. required to practise pe-                136.
 
@@ -12911,9 +11908,7 @@ Critico-historical spirit, engen-              Delphic oracle, story of the, 0.
 Culture,    relation of           Greek to     Departing Consciousness,      p 37.
   Indian,    p. 73.                            Descartes, on the pineal gland as
 Curzon, Lord, on the non-reco-                   the seat of the Soul,      p. 94;
-  gnition    of the supremacy of                 conception of Reality. accord-
-
-  of Truth in Indian literature,                 ing to, p. 182.
+  gnition    of the supremacy of                 conception of Reality. accord- of Truth in Indian literature,                 ing to, p. 182.
 
   p. 227.                                      Design, argument from, p. 189.
                                                Desirelessness, as constituting the
@@ -12940,7 +11935,6 @@ Death, as the arche of all things,               of Abhivimana, p. 98; meaning.
   Death, p. 72; the Great Cutter,                dogmatic justification of,          p.
 
    p. 87; the problem of, pp. 87-                115; conception of,        in   the
-276                    SURVEY OF UPANISHADIC PHILOSOPHY
 
   Bhagavadgita and the Upani-                   denial of, p. 112.
   shads, p.     143; See also Path of         Distinction     of    Degree between
@@ -13003,8 +11997,6 @@ Didactic tone of the Taittiriya,
  Discipleship,     qualifications for,          p. 73; raptures of, p. 256
       p. 244.                                 Efficient cause, problem of the,
  Disembodied existence of Soul,                 p. 96.
-                                        GENERAL INDEX                                 277
-
 
 Egg, Primeval, as generating the                  dins,     p.    133;     of   Absolute
   world-system, p. 26.                            Experience, p 257.
@@ -13013,19 +12005,11 @@ valkya’s dictum, p. 222                         Erotic     Mysticism, criticis
 
 Egyptian Mythology, p 60                          p. 255.
 
-Egypt,     and    the idea of metam-            Eschatological           knowledge,    as
-
-  psychosis, p.         105; and India,           most valuable to Upanishadic
-
-  problem         of        transmigration,       philosophers, p. 45; the highest
+Egypt,     and    the idea of metam-            Eschatological           knowledge,    as psychosis, p.         105; and India,           most valuable to Upanishadic problem         of        transmigration,       philosophers, p. 45; the highest
   p. 109.                                          kind of knowledge, p. 87.
 Elements, as emanating from the                 Eschatology,        Upanishadic,      pp.
 
-  Atman, p. 70; not the origin                     113-114;       moral backbone of,
-
-  of things, pp. 71-72;                as the     p. 115; Upanishadic and Plato-
-
-  garment of God, p. 72.                          nic, p. 116.
+  Atman, p. 70; not the origin                     113-114;       moral backbone of, of things, pp. 71-72;                as the     p. 115; Upanishadic and Plato- garment of God, p. 72.                          nic, p. 116.
 
 Emanation, p. 54; theory of, p.                 Esoteric doctrine,         in the Kena,
                                                   p. 17.
@@ -13052,9 +12036,7 @@ Empedocies, on Fire, Air, Water,
 Empirical psychology, p. 82.
                                                   p.    220.
 
-Empirical reality, and transcen-                Eudaemonist, Yajiiavalkya as an,
-
-  dental ideality, p. 167.                        p. 14.
+Empirical reality, and transcen-                Eudaemonist, Yajiiavalkya as an, dental ideality, p. 167.                        p. 14.
 
 Encyclopedia of Religion                 and    Evil, power of, p. 163.
 
@@ -13070,7 +12052,6 @@ Epimenides: conception of Night                   to the Upanishadic as well as
 Epistemological Idealist, p. 167;               Experience, photic and auditive,
   Nihilist, p. 167.                               p.    253;     first-hand,    intuitive,
 Epistemology, of the Vijfanava-                    p. 239.
-278                   SURVEY OF UPANISHADIC PHILOSOPHY
 
 External    world,     knowledge       of     soul    as    a     space-filling prin-
   the, p. 157.                                ciple, p 94.
@@ -13117,11 +12098,7 @@ Fires, Five, doctrine of, p. 14;            Gargya,       the     proud        B
   Jaivali’s doctrine        of, p    33:      p. 13; doctrine of the reality
   Sacrificial,    rising    in    bodily      of physical         and    physiological
   form, p. 183.                               categories, p. 13;           and      Ajata-
-Fitche, I. H:        his   view of the        gatru, 9. 13; obtains instruction
-                                            GENERAL INDEX                                   279
-
-
- about sleep from Ajatasatru,                        of the conceptions of, p. 159;
+Fitche, I. H:        his   view of the        gatru, 9. 13; obtains instruction about sleep from Ajatasatru,                        of the conceptions of, p. 159;
  p. 90.                                              as Alpha and Omega, p. 182;
 Gaudapada, and Sankara, p 165;                       cosmological            argument       for
   doctrine of,         p. 165,      develop-         the existence of, pp. 185-186-
@@ -13161,8 +12138,6 @@ God, and the           Absolute,       p. 23;         man, the parable of, p 186
   the Soul          of Nature,        p. 153;       God to Soul,            transference      of
   the    Soul of        Souls,      pp. 150;          interest from, p. 2.
   and the Absolute, comparison                      Goethe, quotation from, p. 72.
-280                   SURVEY   OF UPANISHADIC PHILOSOPHY
-
 
 Golden-colaured Being, discrip-                ]   Guru, Bhakti to, as to God, p.
   tion of, p. 253.                                    145; necessity of initiation by,
@@ -13189,9 +12164,7 @@ Gorgias, his conception of a real                    and Plato, p. 116.
 
 Gospel      conception of God, as                    tion of the Soul, p. 94.
 
-  the    Alpha       and     Omega        of       Happiness,     as    the       motive:   for
-
-  things, p. 75.                                     actions. p. 223; true, as vision
+  the    Alpha       and     Omega        of       Happiness,     as    the       motive:   for things, p. 75.                                     actions. p. 223; true, as vision
 
 Grace, Upanishadic doctrine of,                      of the Infinite,        p. 223; Great
   p. 252.                                            and Small, p. 223.
@@ -13224,7 +12197,6 @@ Gunas, the three, the common                         cles of Scandinavia, p. 16.
   property      of     Samkhya       and           Hela, kingdom of, p. 146.
   Vedanta, p. 21; the origin of,                   Heliolatory, p. 15.
   p. 134.                                          Heliotheism, p. 23.
-                                 GENERAL INDEX                          281
 
 Henotheistic Polytheism, trains-           59: and Thirst, compared {10
   tion   from,    to    Monotheistic        Love and Hate, p. 69.
@@ -13234,10 +12206,7 @@ Henotheistic worship of Prana,              Rigveda, p. 2.
 Heracleitus: the Way Up and the             105-106.
   Way Down, pp. 58, 70, 74; on            Hypostasis, as Not-Being or 36-
   the exchange of fire for all              ing, p. 38.
-  things, pp. 57,74; on Logos,                            =   I   as
-
-
-  p. 74; paradoxical language of,         I am I, of Kant, pp. 98, 196.
+  things, pp. 57,74; on Logos,                            =   I   as p. 74; paradoxical language of,         I am I, of Kant, pp. 98, 196.
   pp. 107-108 ; contradictions of,        Idandra, a mysterious name of
   p. 223.                                   the Godhead, p. 69.
 Hercules, the choice of, between          Idealism, monistic, of Aruni and
@@ -13269,10 +12238,6 @@ Human life, compared to a sacri-          {gnoratio elenchi, p. 167.
   ficer’s life, p. 147; the six stages    Illicit transformation, ( Rajju-
    of, p. 147.                              sarpa and Suktikarajata ) 7.
 Hunger, equated with death, p.              167.
-
-CS-36
-282                   SURVEY OF UPANISHADIC      PHILOSOPHY
-
 
 Illusion, in the doctrine of Aruni,            Dadhyach,          pp. 35-36; a con-
   p. 38; creation as, p. 70; Maya              traction of Idandra, p. 69;                  as
@@ -13314,7 +12279,6 @@ Indra, and Virochana, the famous              86.
   17, 25,     187; his     exploits as      Intellectualism, its quarrel                 with
   found in the Rigveda,          p. 19;       Voluntaralism,             p. 84,      in the
   how far historical, p. 31; and              Upanishads, p. 145.
-                                     GENERAL INDEX                             283
 
 Intermediary Person, creation of             Isopanishad, a summary of, pp.
   the world by Atman, through                   16-17.
@@ -13363,8 +12327,6 @@ isa, the deep-sleep aspect
 Isles of the Blessed, in       Plato, p.     Jivanmukti, the doctrine of, p.
   113; in the Upanishads, and                   161; conception of, in Ad-
   Plato, p. 116.                               vaitism, p. 156.
-284                     SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 Jianatman, p. 134.                                doctrine    of,   p.    35;     Yajna-
 Joy, illimitable, as the effect           of      valkya’s    doctrine     of,     p. 41;
@@ -13407,10 +12369,7 @@ Kala, hymns to, in the Atharva-                   doctrine of, in the Isa, p. 17
    and      Brahman(m), p. 137.                   identity of Prana and Brahman,
 Karman, the topic of discussion                   p. 32; an ancient Satyagrahin,
    between           Jaratkarava        and       p. 32; the author of the doc-
-   Yajiiavalkya, 9. 14; Sandilya’s                trine of ‘ Three Meditations’,
-                                            GENERAL INDEX                                       285
-
-      p. 32; on the primacy of Prana,                 p.142; transfigured personality
+   Yajiiavalkya, 9. 14; Sandilya’s                trine of ‘ Three Meditations’, p. 32; on the primacy of Prana,                 p.142; transfigured personality
       p. 63.                                          of, p. 144; the son of Devaki,
     Keith A. B., Prof., on the idea of                in    the   Upanishads            and     the
       Transmigration as determining                    Mahabharata, p.147; the divine
@@ -13450,8 +12409,6 @@ Karman, the topic of discussion                   p. 32; an ancient Satyagrahin,
       with Advaitism, p. 156.                         p. 75.
 .   Krishna,       the    son   of    Devaki,       Life, as the source              of eternal
       p. 15; compared to a milkman,                   misery, p. 216.
-286                      SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 Life-force, as lying at the root of            transmigration and the moral
   things, p. 54; creation from, p.             principle       of requital,      p. 105;
@@ -13496,11 +12453,7 @@ Lingagarira, doctrine of, adum-               Macrocosm, p. 63;        of ihe   
       borrowal of the idea of trans-            0. 32; on the highest secret of
       migration by the Indian Aryans            the Upanishads, p. 253.
 
-      from the aborigines, p. 104;            Makranthropos,          a better word
-                                      GENERAL INDEX                                    287
-
-
-  than Makrocosm, p. 101;             (€       p. 162;      developed by Safikara
+      from the aborigines, p. 104;            Makranthropos,          a better word than Makrocosm, p. 101;             (€       p. 162;      developed by Safikara
   ference to, p. 106.                          from the      Upanishads, p. 162;
 Malas, the Four, p. 139.                       to be found in            ideas rather
 Manasaspati,        Brahman        that        than in words,       p. 162;       mani-
@@ -13526,9 +12479,7 @@ Max     Muller:     explanation       of     Medinikosha: on pradesa, p. 97.
   pretation of Puritat, ए. 89; on              practice of, p. 138;        by means
   the nipple-like appearance as               of Om,       the way to realisation,
   the uvula,      p.95;    on the ex-         p. 244.
-  perience of the mystic,       p. 95;       Mediumship, the phenomena of,
-
-  meaning of Abhivimana, p. 98;               ०. 92.
+  perience of the mystic,       p. 95;       Mediumship, the phenomena of, meaning of Abhivimana, p. 98;               ०. 92.
 
   interpretation of a passage in            Mendicants, order of, p. 133.
 
@@ -13542,11 +12493,7 @@ Maya, a Vedantic metamorphosis              Meshes, Maya as, p. 164.
  about the origin of, pp.162-63;            Metaphysics of Aristotle, quota-
  nota fabrication of Sankara,                 tion from, p. 53;          of Absolute
  p. 162; if springing out of the              Experience, p. 257.
- Sanyavada of the Buddhists,                Metempsychosis, in           Pythagoras,
-288                         SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-  without any explanatory back-                   Moon, situated at a greater dis-
+ Sanyavada of the Buddhists,                Metempsychosis, in           Pythagoras, without any explanatory back-                   Moon, situated at a greater dis-
   ground, p. 105.                                   tance than the Sun, p. 113.
 Methods of Upanishadic Philo-                     Morae of Om, A, ए, M, ए. 246.
   sophy, pp. 23, 28.                              Mora-less part of Om, 9. 246.
@@ -13586,11 +12533,7 @@ Mimansakas, their view that the                     p. 212; oligarchy, the voice
   Monotheism,               springing out of       Mutuum Commercium, p. 36.
       Polytheism, pp. 189-190.                     Mystery to Mystery, p. 169.
   Monotheistic               _Religion,      of    Mystic experience, the faculty of,
-       Krishna, p. 148.                              p. 198; asa clue to the recon-
-                                GENERAL INDEX                                      289
-
-
-  ciliation of the different philo-              supreme virtue, p. 32; on the
+       Krishna, p. 148.                              p. 198; asa clue to the recon- ciliation of the different philo-              supreme virtue, p. 32; on the
   sophical schools, p. 201; con-                 virtue   of    the   study   of the
   cealed nature of, p. 240;     four             Sacred Books, p. 227.
   types of, pp 251, 253; the acme
@@ -13634,7 +12577,6 @@ Naka Maudgalya, propounder of                 Neti Neti, as having
                                                                  a negative as
   the study of the Vedas as the                 well as a positive content, p.
 CS-37    `
-290                     SURVEY OF UPANISHADIC PHILOSOPHY
 
   160; negative connotation of,               Nyaya-Vaiseshika, and the Upa-
   p. 160;       positive      connotation       nishads, p. 139; and the instru-
@@ -13696,8 +12638,6 @@ Niyama,         as the preliminary of
        dialectic and its aberrations,            p. 213.
 
  p. 139.                                       Order, argument from, p. 189.
-                                     GENERAL INDEX                                         291
-
 
  Origin     of   the     world,    various    Path of the Gods, and the Path
    opinions about, p. 71.                        of the     Fathers,          p.    18; later
@@ -13742,8 +12682,6 @@ Patafchala,       daughter of,
                   the                           ce, continuance of, p. 155;—
   possessed by a Gandharva, p.                  impersonal theory of creation,
   92,                                           p. 71.
-292                       SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 Personalistic theories of Upani-                 Upanishads, p. 143.
   shadic         cosmogony,        9. 54;      Pituitary body, as the nipple-like
@@ -13785,11 +12723,7 @@ Pheenician Mythology
  Pitriyana, or the           Way of      the      of, p. 168; and the Upanisha-
       Fathers, history of the concep-             ds, conception of Atman, p.
       tion of, p. 114; conception of,             181; on the comparative value
-      in the Bhagavadgita and the                 of Books and Teachers, p. 243;
-                                       GENERAL   INDEX                                         293
-
-
-  on the Parable of the Cave,             p.        nature        of    Ultimate        Reality,
+      in the Bhagavadgita and the                 of Books and Teachers, p. 243; on the Parable of the Cave,             p.        nature        of    Ultimate        Reality,
   243.                                              . 196; on the cardinal virtues
 Platonists of Alexandria, p. 73.                    p. 225.
 Plotinus,     appearance          17     the     Prajiia, the third foot of Atman,
@@ -13829,10 +12763,7 @@ Prajapati, the teacher         of Indra          Pranayama,        in the       
   and Virochana, p.           27; Kratu            p. 137.
   on the Mover of the body, p.                   Pragnopanishad,a summary of,
   96; instruction to Indra and                     pp. 21-22.
-  Virochana, p. 194; on the true                 Pratardana, p. 18; a 16९ thinker
-294                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-  of antiquity, p. 32;           originator       between Nyaya-Vaiseshika and
+  Virochana, p. 194; on the true                 Pratardana, p. 18; a 16९ thinker of antiquity, p. 32;           originator       between Nyaya-Vaiseshika and
   of the doctrine of Prajfiatman,                 the Upanishads, p. 139: trans-
   p. 32;     giving name to a sacri-              lated as perikardium, p. 89; as
   fice called after him, p. 83.                   the surrounding body, p. 89,
@@ -13873,7 +12804,6 @@ Purgatory, in Dante, p. 116; the                Questionnaire,        Gargi’s,
 Purification, justification of the                p.    217; the      positive side    of,
   process of, p. 251.                             p. 217; and Self-realisation,
 Puritat,     the     connecting          link     p. 217.
-                                 GENERAL INDEX                                       295
 
 Quietistic Life, as a recoil from          Madhva, partial similarity of
   the empty world of sense,                 the views of, p.152; view of the
@@ -13917,7 +12847,6 @@ Rajendralal Mitra, meaning of             Realisation of God, the end of
    tality, p. 118; the qualified-           p. 227.
 
    monistic school of, p. 149; and        Reductio ad absurdum, p. 96.
-296                      SURVEY OF UPANISHADIC PHILOSOPHY
 
 Refutation of Idealism, by Kant                          Two Birds, p.        107    conception
   pp. 167-168.                                           of Rudra-Siva, p. 141.
@@ -13959,10 +12888,7 @@ Representation,              theory        of,    in   Rudra-Siva, conception of
       sceptico- mystical atmosphere,                     of,   in   the      Upanisbads,     pp.
       p. 107; idea of transmigration                     140-141; Kashmirian, p. 142;
       in, pp. 105, 107 and the Upa-                      Southern, p. 142.
-      nishads:     conception              of    the   Sakalya, the disputant of Yajiia-
-                                      GENERAL INDEX                                   297
-
-  valkya, p. 13;         Yajiiavalkya’s         as consisting in the attainment
+      nishads:     conception              of    the   Sakalya, the disputant of Yajiia- valkya, p. 13;         Yajiiavalkya’s         as consisting in the attainment
   imprecations on,            9. 26;    his     of Reality, p. 229.
   interest    in ritualism,          p. 39;   Sandilya, the bon mots of, p. 15;
   and       Y4Ajiiavalkya,       dialogue       the philosophy of, p. 35; his
@@ -13980,17 +12906,13 @@ Sambhati and Asambhiti triplets,                97-92;     his interpretation of
   p. 24; Sambhuiti            as meaning        abhivimana,      p.    98;       on   the
   emanation, p. 70.                             Kosas, p. 103; on the relation
 Samkhya, and Vedanta, relation                  of    beatific   consciousness         to
-  of, in the Svetasvatara, p. 21;               Brahman, p. 103:           his view of
-
-  its borrowal of the conception                Immortality, p. 118: on Sada-
+  of, in the Svetasvatara, p. 21;               Brahman, p. 103:           his view of its borrowal of the conception                Immortality, p. 118: on Sada-
   of three colours from the Upa-                bhava as Buddhistic doctrine,
   nishads, p. 62; question as to                p. 132; on the superiority of
   whether Purusha is the origin                 Knowledge to Works, p. 141;
   of things, p. 72; borrowal by                 the monistic school of, p. 149;
   Neoplatonism           of    the    three     his conception        of    beatitude,
-  Qualities from, ए. 73; roots of,              p.    155; the fundamental pro-
-
-  in the Upanishads, pp. 134,                   positions of the philosophy of,
+  Qualities from, ए. 73; roots of,              p.    155; the fundamental pro- in the Upanishads, pp. 134,                   positions of the philosophy of,
 
   139; in the making, p. 134;                   p. 156; his view of creation,
   fusion of,    with Yoga and                   p. 161;   his view of Immortality,
@@ -14005,11 +12927,6 @@ Samnyasa, and Spiritual Reali-                  Vijfanavadins, p. 167;     on
 Sanatkumara,      the teacher of                noumenal unreality of the
   Narada,      pp. 16, 63, 83; the              world, p. 167; charge on, as
   philosophy of, p. 37; on Truth                idealist-nihilist, p. 168.
-
-CS-38
-298                   SURVEY OF UPANISHADIC PHILOSOPHY
-
-
 
 gantatman, p. 134.                                  mythology, and the description
 Sarira Atman, p. 40.                               of the Igdrasil, p. 73.
@@ -14037,9 +12954,7 @@ Satyakama Jabala, the story of,                  Science,   Philosophy, and     
   228; on the necessity of find-                   moment, p. 75.
 
   ing a Guru, p. 242.                            Seal,   Brajendranath,          Dr.,    refe-
-Satyam,      syllabic    division      of,         rence to the ‘Positive Sciences’,
-
-  p. 56.                                           p. 94.
+Satyam,      syllabic    division      of,         rence to the ‘Positive Sciences’, p. 56.                                           p. 94.
 Satyavachas र1111478; on the                     Seat of the Soul, the question of
   virtue of Truth, p. 227.                         the, pp. 93-94.
 Satyayajia,        on celestial fire as          Self, as a centre of interest,              p.
@@ -14055,8 +12970,6 @@ Scandinavian           chronicles       of         congciousness,          p.   
   logy, p. 146; mythology, com-                    196; as mere consciousness of
   pared to that of the Upanishads                  body, p. 195;      as appearing in
   and the Bhagavadgita, p. 146;                    his own form, p. 196; and the
-                                            GENERAL INDEX                                          299
-
 
   Absolute, relation of,               p. 201;       dual effort for,        0. 242;              help-
   as the supreme light                of man,        fulness of the Spiritual Teacher
@@ -14074,9 +12987,7 @@ Self-consciousness,         pure,      fourth      Self-spectator, of         Ar
   of God, p. 182;            the basis of            realise God, p. 247.
   Ultimate Reality, p. 197;                 the    Seventeen      Parts,     of the Linga
   significance of, pp. 197, 202;                     Sarira, p. 135.
-  to be reached only in mystic                     Sex, explanation of             the duality
-
-  realisation, p. 198; the mysti-                    of, pp. 67, 68.
+  to be reached only in mystic                     Sex, explanation of             the duality realisation, p. 198; the mysti-                    of, pp. 67, 68.
   cal significance of 9. 198;               the    Shakespeare: Falstaff reborn, p.
   metaphysical           significance       of,      16;    reference        to    the        ^ Two
   p.    198;      the    epistemological             Gentlemen,” p. 75; description
@@ -14099,7 +13010,6 @@ Self-realisation,         the     bliss     of,    Sheaths,      doctrine       
   super-intellectual character of,                   p. 226.
   p. 241; qualifications for, p.                   Sixteen Parts,       of the Purusha,
   241; inefficacy of any indivi-                     pp. 134-135.
-300                     SURVEY OF UPANISHADIC PHILOSOPHY
 
 Sleep, a twilight condition, ए. 40;           Soul, endowed with the power of
   four      different     theories      of,     motion,      p. 96; as      the mover
@@ -14140,11 +13050,7 @@ Song of Universal Unity, p. 257.                God as the          Primary   Re
 Sophistic       view      of      Wisdom,       p. 182.
    YAjiiavalkya’s, 9. 14.                     Spiritual Development. anologi-
 Sorites of categories, in Sanat-                cal to     phychological,      p.    211
-   kumara, p. 37.                               Spiritual      Experience,      180081
-                                      GENERAL INDEX                             301
-
-
-  of, p. 202; first stage of, as              Substance, from the Cosmologi-
+   kumara, p. 37.                               Spiritual      Experience,      180081 of, p. 202; first stage of, as              Substance, from the Cosmologi-
   mystical apprehension of the                  cal point of view, p. 38.
   glory of the Self, p. 202; second           Substratum,    a scientific search
   stage, wherein is perceived the               of, in the Upanishads, p. 2;
@@ -14170,16 +13076,12 @@ Spiritual Teacher, necessity of a,              tion, p. 167.
 Spiritual Wisdom, precautions                   219; as consisting in mystical
   for imparting, in the Upani-                  realisation, p. 224.
 
-  shads and the Bhagavadgita,                 Sun, as a great Bee-hive hanging
-
-  p. 244.                                       in space, 9. 15;       the birth of,
+  shads and the Bhagavadgita,                 Sun, as a great Bee-hive hanging p. 244.                                       in space, 9. 15;       the birth of,
 State, and the Moral Law, p. 213.               from the Universal Egg, p. 60.
 States of consciousness, the four,            Sunyavada, Sankara’s criticism
   p. 100.                                       of, pp. 162, 167.
 
-Stoicism and Logos, p. 74; and                Superconscious    state     of   con-
-
-  the Ideal of the Sage, pp. 230-               sciousness, a solecism, p. 100;
+Stoicism and Logos, p. 74; and                Superconscious    state     of   con- the Ideal of the Sage, pp. 230-               sciousness, a solecism, p. 100;
   231.                                          conception of the, in psycho-
 Stutasastras, hymns of praise, p.               logy, p. 101.
 
@@ -14193,9 +13095,6 @@ Sublimity,       in   Nature,     0. 30;        of Bradley, as affecting the
   tive, p. 30.                                  shads, as the ethical counter-
 Sub       Specie      Aeternitatis,     in      part of Absolutism in Meta-
   Sankara, p- 156.                              physics, p. 224.
-302                     SURVEY     OF    UPANISHADIC PHILOSOPHY
-
-
 
 Sushumna, p. 23.                                     Tamasa qualities, full description
 Sushkabhringara,             p. 18;       115          of, p. 22; temperament, p. 82;
@@ -14237,10 +13136,7 @@ Taittiriyopanishad, a             summary            Theophobia, as supplying ru
 Tajjalan,     reality described           as,        Theoria,    of   the gods, p. 29; in
    p. 24;    search after the, p. 53;                  Aristotle, p. 201.
       the cryptic       formula     of    the        Theosophists, modern, their em-
-   Chhandogya, p. 185.                                 phasis on the Bodies of Man,
-                     SURVEY OF UPANISHADIC PHILOSOPHY                        303
-
-  pp. 101, 103; on the “ etheric            p. 110; locus classicus of, in the
+   Chhandogya, p. 185.                                 phasis on the Bodies of Man, pp. 101, 103; on the “ etheric            p. 110; locus classicus of, in the
   double,” ए. 196,                          Upanishads, p. 110.
 Thirteen Upanishads, their classi-        Tree, of the Body, p. 257; of the
   fication, p. 11.                          World, p. 257.
@@ -14285,7 +13181,6 @@ Transmigration, development of              tara, p. 227; as counterpart of
   Psychology, p. 109; idea of, not         229; contrast of the ideas of
   unAryan, p. 109; in the Katha,           Pilate and Sanatkumara about,
   p. 110; in the Brihadaranyaka            0. 229.
-304                                       GENERAL INDEX
 
 Tukarama, as       the       Spectator of         Uma, a heavenly damsel,                    p. 141.
   Suka’s realisation, p. 256.                     Un-attachment, weapon of, p.145.
@@ -14330,8 +13225,6 @@ Ultimate Reality, problem of, in                    p. 44.
   Being who appears in his own                      41; the Berecynthia of the sys-
   form, p.196; ontological chara-                   tems     of    Indian           Philosophy,
   cterisation of, p. 197.                           p. 131; relation of the, to the
-                                   GENERAL INDEX                                            305
-
 
   Brahma-sttras, ए. 149; core of            |   Varuna,     hymns        to,       compared
   the teaching of, p. 181.                  |     with the devotional psalms of
@@ -14356,9 +13249,7 @@ Vaisvanara, the        first    foot   of         the Cosmic Self in, p. 101.
   conciousness, p. 100; the wake-                 God, p. 7.                   x
   ful aspect of Soul, p. 246.                   Vedantists, ultra—, on the                  su-
 Vak, and the Logos, p. 74.                        periority of knowledge, p. 14].
-Valakhilyas:     their question re-             Vedic Hymns,        to call         back the
-
-  garding      the Mover          of the          departed soul, p. 106.
+Valakhilyas:     their question re-             Vedic Hymns,        to call         back the garding      the Mover          of the          departed soul, p. 106.
 
   Body, p. 96.                                  Vedic prayer, spirit of, p. 219.
 
@@ -14373,9 +13264,7 @@ Vamadeva: his         philosophy       of       Veil, conception of a, p. 163.
 
   of, as suggestive of the idea of              Vijnanavadins,       the metaphysics
 
-  Reminiscence, p. 110; 1115                      and espistemology of, p. 133;
-
-  mystic ejaculations, p. 257.                    Sankara’s criticism of, p. 167.
+  Reminiscence, p. 110; 1115                      and espistemology of, p. 133; mystic ejaculations, p. 257.                    Sankara’s criticism of, p. 167.
 Vamana, the dwarf God or beauti-                Vinculum Substantiale, p. 36.
   ful God, seated between the                   Viraj, as intermediary              between
   upper and lower breaths, p. 247.                the Atman         and the World,
@@ -14383,11 +13272,6 @@ Vandhyaputra, postulation of                      p. 18; as the waking state of
   negation, p. 167.                               the Cosmic Self, p. 101.
 Varivarti, as implying frequency                Virochana and Indra, the myth
   of return, p. 109.                              of, p. 194.
-
-CS-39
-306                      SURVEY OF UPANISHADIC PHILOSOPHY
-
-
 
 Virtues, in the Chhandogya and                     White Mountains, p. 30.
   Bhagavadgita           compared,            p.   Will,   as ding-an-sich,         p. 84; its
@@ -14424,10 +13308,7 @@ Ward, James,        Professor,           on   a
    psychology ohne Seele, p. 93.
                                                      Hercules, p. 215.
 Water, as the source of all things,
-  pp.      55-56;    in    the Genesis,                            = च   ~>
-
-
-  p.     56;   the first      existence in         Yajfiavalkya, full description of
+  pp.      55-56;    in    the Genesis,                            = च   ~> p.     56;   the first      existence in         Yajfiavalkya, full description of
   in Manu, p. 56.                                    the character of, pp.            13-14;
 Way Up and Way Down, pp. 57                    ?
                                                      his disputation with Sakalya,
@@ -14436,11 +13317,7 @@ Way of the Gods, in Rigveda and                      outstanding Philosopher of 
   the Upanishads, p. 114.                            Brihadaranyaka,          ७.    16;    115
 Way of the Fathers, in Rigveda                       metaphors  of the drum, the
   and the Upanishads, p. 114.                        conch, and the lute, p. 26; a
-Weariness of the flesh, p. 143.                      synthetical philosopher, ए. 26;°
-                                    GENERAL INDEX                                 307
-
-
-a   synthetical     philosopher, p.         Yama: his philosophical           mono-
+Weariness of the flesh, p. 143.                      synthetical philosopher, ए. 26;° a   synthetical     philosopher, p.         Yama: his philosophical           mono-
 26; his doctrine of the            Light      logue, p. 27;     and Nachiketas,
 of man, p. 28; and Gargi:             on      dialogue between,          pp. 87-88;
 the doctrine of Final           Support,      the world of,     as described in
@@ -14451,9 +13328,7 @@ a great     psycho-metaphysician,             Yoga, p. 138.
 p. 39; his doctrine of Atman,
                                             Yatova, interpretation of, accord-
 pp. 40-41;      his argument from
-order, p. 40; his negative theo-              ing to Sankara, Madhva              and
-
-logy,     p. 40;    his doctrine      of
+order, p. 40; his negative theo-              ing to Sankara, Madhva              and logy,     p. 40;    his doctrine      of
                                               Ramanyja, p. 152.
 
 Karman, p. 41;           his absolute       Yoga, on recollection,          p.   110;
@@ -14472,8 +13347,6 @@ estate, p. 222; and the doctrine              139; conditions of the practice
 of Self-realisation,       p.     222;—       of, 248 ; physiological effects of,
 Smriti,    on   the five kinds        of      pp. 138, 248;     spiritual     effects
 sin, p. 226.                                  of, pp. 248, 254.
-                               UPANISHAD                       INDEX
-
 
                          BRIHADARANYAKA UPANISHAD
 1. 2. 1-2. On Death as the pri-                             I. 4. 17. The doctrine               of Quin-
@@ -14487,11 +13360,7 @@ J. 3. 28. Maya conceived as Not-                            IJ. 1.15.     On    
    Being,        Darkness,       and Death,                   the Brahmins to the Kshatriyas,
    pp. 163-164.                                               p. 44.
 
-8 4. 1-4.        Generation           from At-              II. 1. 15-17.      Sleep     occurs when
-
-  man       of    the     duality of           sex,           the Soul         rests in      the    space
-
-   pp. 67-68.                                                 inside the heart, p. 90.
+8 4. 1-4.        Generation           from At-              II. 1. 15-17.      Sleep     occurs when man       of    the     duality of           sex,           the Soul         rests in      the    space pp. 67-68.                                                 inside the heart, p. 90.
 
 I. 4. 2. Fear proceeds only from                            II. 1. 19. Sleep       caused         by.   the
   a Second, p. 84.                                            Soul’s lodgment in the Puritat,
@@ -14527,7 +13396,6 @@ I. 4.   11-15.         An — unorthodox                      1. 4. 6-9.     The
   Theory         about     the        origin    of            things      by     the     grasping        of
   caste, pp. 41-42.                                           Atman, p. 158.
                                                       308
-                                      UPANISHAD INDEX                                   309
 
 ह. 4. 10.       On     the    Vedas      and   III. 8. 9. Poetical description of
    Sciences having been breathed                 the    Order    in      the   Universe,
@@ -14537,9 +13405,7 @@ I. 4.   11-15.         An — unorthodox                      1. 4. 6-9.     The
 II. 4. 13, 14.        It is not possible         proof     for     the    existence      of
                                                  Brahman, p. 189.
   to know the Knower, p. 158.
-II. 4. 14.      Maya as semblance an           III. 9. 1-10. The absolute            unity
-
-   as-it-were,         an     appearance,        of the Godhead, p. 190.
+II. 4. 14.      Maya as semblance an           III. 9. 1-10. The absolute            unity as-it-were,         an     appearance,        of the Godhead, p. 190.
 
    p. 164.                                     III. 9. 26. The negative meaning
 
@@ -14598,9 +13464,6 @@ III. 8. 2.      The   two     missiles    of
   Gargi, p. 43.                                IV. 3.20. A description of the
 Ill. 8. 8.      Negative     charactcrisa-       blood-vessels of various co-
    tion of the Absolute, p. 159.                 lours, pp. 138-139.
-310                      SURVEY OF UPANISHADIC      PHILOSOPHY
-
-
 
 IV. 3. 21. Realisation of the Self              IV. 4. 12. Cessation of feverish
   involves the fulfilment of all                  activity after the realisation of
@@ -14621,9 +13484,7 @@ IV. 3. 37-38. The welcome and                   IV. 4. 22. The negative meaning
                                                   p. 217.
  IV. 4. 3-5. The Self throws off
       this body, and takes on a new             IV. 4. 22. The Atman grows nei-
-      one, according to his Karman,               ther great by good actions, nor
-
-      pp. 111-112.                                small by evil actions, pp. 224-
+      one, according to his Karman,               ther great by good actions, nor pp. 111-112.                                small by evil actions, pp. 224-
                                                   225.
  IV. 4. 5. A          transcendental des-
       cription of the Absolute, p. 160.
@@ -14654,8 +13515,6 @@ IV. 3. 37-38. The welcome and                   IV. 4. 22. The negative meaning
     less regions after death, p. 112.            V. 6. 1. The Soul, as small as a
   IV. 4. 12. On the identity of the                grain of rice or barley, pp.
        1 and the Atman, ए. 202.                    96-98.
-                                UPANISHAD    INDEX                             311
-
 
 V. 9. 1. Description of the Inter-          Vv.    14.     8.   01    the   dignity
      nal Sound, p. 251.                           of eschatological    knowledge,
@@ -14664,8 +13523,6 @@ V. 10. 1. Ascent of the departed
      Soul to the snowless, sorrow-          VI. 2. 5-7. On the superiority of
      less region through the wind,                the Kshatriyas to the Brahmins,
      the sun and the moon, p. 113.                p. 43.
-
-
 
                        CHHANDOGYA UPANISHAD
 
@@ -14704,8 +13561,6 @@ II. 23. 3. All speech as permeated       Ill. 16. Mahidasa Aitareya, and
 II.     1-11.    The   intermundane           tion of life, p. 32.
      region described as a bee-hive,     III. 17. 1-6. Krishna and Ghora
      p. 29.                                   Angirasa, 0. 147.
-312                     SURVEY OF UPANISHADIC PHILOSOPHY
-
 
 11. 17.4.        The    list    of     virtues      Kshatriyas   to the    Brahmins,
   according to Ghora Angirasa,                      p. 44.
@@ -14763,18 +13618,13 @@ IV. 3. 1-2. On Air as the final
                                                    VI. 4. 1-4. The      doctrine        of
        without eschatological know-
        ledge, pp. 87-88.                             “Trivritkarana,” pp. 61-62.
- V. 3. 7. On the superiority of the                VI. 4.5. On the Sages of old
-                                   UPANISHAD INDEX                            313
-
-  having learnt spiritual wisdom              heated axe for the moral or-
+ V. 3. 7. On the superiority of the                VI. 4.5. On the Sages of old having learnt spiritual wisdom              heated axe for the moral or-
   from their Masters, pp. 7-8.
                                               deal, p. 228.
 
 VI. 5. 1. The subtle part of food           VII.   1.   Narada’s    request   for
   as forming the mind, p. 83.                 initiation, p. 144.
-VI. 5. 4. Mind as manufactured              VII. 1. 2-3. The ocean of grief
-
-  out of food, p. 82.                         can be crossed only        by the
+VI. 5. 4. Mind as manufactured              VII. 1. 2-3. The ocean of grief out of food, p. 82.                         can be crossed only        by the
 
 VI. 6. 1-2. The subtle part of                knowledge of Atman, p. 240.
   food is transformed into mind,            VII. 3. 1. Mind as the Atman in
@@ -14820,11 +13670,6 @@ VI. 14. 1-2. The story of the man           VIL. 1. 6. No true freedom with-
    from Gandhara, p. 243.                     out the knowledge of Atman,
 VI. 16. 1-2.    The efficacy of the           p. 230.
 
-CS-40
-314                    SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-
 VIII. 2. 10. Sovereignty of man’s             the heart, p. 139.
   will after God-realisation, pp.           VII. 6.        3. Sleep caused by the
 
@@ -14865,15 +13710,12 @@ Santi. The Atman and Brahman                  p. 241.
  9. Knowledge as more dangerous               without as the Person within,
       than ignorance for realisation,         p. 252.
 
-
                                KENA UPANISHAD
-
 
 I. 2. 8. The Ultimate Reality as              phical tradition, p. 8.
    the mind of mind, the eye of             I. 3. The Atman as beyond the
       eye, and the ear of ear, p. 193.            Known and beyond               the Un-
 I, 3. The continuity of philoso-              known, p. 199.
-                                UPANISHAD INDEX                             315
 
 II. 3.   Cognoscendo ignorari, et           p. 241.
   ignorando cognosci, p. 199.             III. IV. All physical and mental
@@ -14882,14 +13724,12 @@ II. 13. Exhortation to realise the          power as due to the power of
 
                          AITAREYA UPANISHAD
 
-
 I. 1-3. Creation of the Universe          Ill. 3. On Intellect as the final
   by the       Atman     through the        reality, p. 86.
   Intermediary Person, pp. 68,            III. 3. All existence is based on
   Pe                                        Intellect, p. 133.
 11. 2. Intellectualistic   classifica-    111. 3. Self-consciousness      as the
   tion of mental states, p. 85.             Absolute, pp. 197-198.
-
 
                          TAITTIRIYA UPANISHAD
 
@@ -14935,7 +13775,6 @@ I. 11.   1.   Reference to the two
   Happiness    and_  Prosperity,          11. 7. Lodgment in the fearless
   p. 219.                                    God confers fearlessness, p-
 I. 11. 1-3. The parting advice of           256.
-316                   SURVEY OF UPANISHADIC PHILOSOPHY
 
 II. 7. Being      described      as    born      of life, and the end        of   things,
   from      the   primal    Not-Being,           pp. 73-74.
@@ -14987,10 +13826,7 @@ III. 2-9. Identification of Prana              IV. 20. Thorough immanence of
 
 I. 1. 3. The givers of barren cows               and like corn he is born again,
   go to joyless regions, p. 113.                 p. 110.
-J. 1. 5-6. Like corn man ripens,               I. 1. 20. Denial of the        existence
-                                UPANISHAD INDEX                         317
-
- of Soul after       bodily    death,   I. 2. 20. God’s greatness realised
+J. 1. 5-6. Like corn man ripens,               I. 1. 20. Denial of the        existence of Soul after       bodily    death,   I. 2. 20. God’s greatness realised
  p. 132.                                   after a catharsis of the moral
 . 1. 20-29.    ©      eschatological      being, p. 251.
  knowledge as the highest good,         I. 2. 21. Atman as moving in a
@@ -15039,11 +13875,7 @@ J. 1. 5-6. Like corn man ripens,               I. 1. 20. Denial of the        ex
   subtle, and greater than the          Il. 4. 8. Spiritual Fire to be
  great, p. 99.                             worshipped day after day,
 . 2. 20. Atmanas both large and           p. 247.
- small, p. 254.                         IL. 4. 11. Perception of difference
-318                        SURVEY OF UPANISHADIC PHILOSOPHY
-
-
-      leads one from death to death,              II. 5. 15.      God    as supreme     res-
+ small, p. 254.                         IL. 4. 11. Perception of difference leads one from death to death,              II. 5. 15.      God    as supreme     res-
       p. 157.                                       plendence, p. 187.
 Il.    4.     12.    The Soul      is   of the    11. 6. 1. Description of the eter-
       measure of a thumb, p. 97.                    nal Asvattha tree, ए. 145.
@@ -15083,10 +13915,7 @@ II.     5.    7.     Rebirth     of Souls    in   II. 6. 10-11. Yoga as equanimi
        and re-absorbed by the Immu-               Il. 1. 4. A description of the
        table Brahman, ७. 161.                           Cosmic Person, p. 144.
  J. 2. 1. On the following of the                 II. 1. 10. Identity         of the    Self
-       sacrificial routine, p. 5.                       with the Supreme Person, and
-                                      UPANISHAD INDEX                             319
-
-      the Universe, p. 161.                     गा. 1.6. The triumph of Truth,
+       sacrificial routine, p. 5.                       with the Supreme Person, and the Universe, p. 161.                     गा. 1.6. The triumph of Truth,
 II. 1. 10. Maya asa Knot, p. 163.                  p. 228.
 1. 2. 3-4. Om as the bow, Soul                  Ill. 1. 7. Atman as great and
       as the arrow, and Brahman as                 small,      as far off and near,
@@ -15137,9 +13966,6 @@ III. 1. 4. Life in Atman, a life                Ill. 2.   8.    Sankara’s doct
 III. 1. 5. Truth,         penance, and          III. 2. 10. The carrying of fire
   insight          necessary   for     Self-      over one’s head requisite for
   realisation, p. 241.                            one’s initiation, p. 244.
-320                       SURVEY OF UPANISHADIC PHILOSOPHY
-
-
 
                            SVETASVATARA UPANISHAD
 1.    1. An Aporia regarding the                 IJ.    11.    Description     of    photic
@@ -15164,9 +13990,7 @@ J. 2. Enumeration of                 contem-           of Yoga, p. 248.
        union of the Atman and the
                                                        God, p. 142.
        Mover, p. 161.
- 1. 8. The Universe as contrasted                गा,      2,3.    The    one God creates
-
-       with Isa, ७. 142.                               the    heaven    and    the     earth,
+ 1. 8. The Universe as contrasted                गा,      2,3.    The    one God creates with Isa, ७. 142.                               the    heaven    and    the     earth,
 
  I. 9. Triune unity of Brahman,                        pp. 190-191.
 
@@ -15200,14 +14024,9 @@ J. 2. Enumeration of                 contem-           of Yoga, p. 248.
         practice of Yoga, p. 248.                 IV. 5. On the relation of the
      II. 8-15. A classic description of             Individual Soul, and the Uni-
        the practice of Yoga, pp. 137-                   versal Soul, p. 10.
-       138.                                       IV. 5. The Prakriti as made of
-                                    UPANISHAD INDEX                                  321
-
-  red, white, and dark colours,                   process of development, p. 136.
+       138.                                       IV. 5. The Prakriti as made of red, white, and dark colours,                   process of development, p. 136.
   p- 134.                                       V. 8-9. Atman smaller than the
-IV. 5.       fhe Supreme Soul lives               hundredth part of a hair divi-
-
-  apart from Prakriti, while the                  ded hundredfold, p. 254.
+IV. 5.       fhe Supreme Soul lives               hundredth part of a hair divi- apart from Prakriti, while the                  ded hundredfold, p. 254.
   Individual Soul is caught in the              9५. 10. Atman realised as neither
   meshes of her love, p. 136.                     male nor female, p. 253.
 
@@ -15256,12 +14075,7 @@ V. 3. God as the spreader of the                VI. 11. God    as   the    Spect
   God, 9. 164.                                    in the whole Universe, p. 151.
 V. 5. Nature brought to maturity                VI. 12. Rudra as the Mover of
   by God, p. 72.                                  the unmoving manifold, p. 72.
-V. 5. God as presiding over the                 VI. 12. Highest happiness arises
-CS-41
-322                       SURVEY    OF UPANISHADIC        PHILOSOPHY
-
-
-  by seeing God within oneself,                         sorrow without the knowledge
+V. 5. God as presiding over the                 VI. 12. Highest happiness arises by seeing God within oneself,                         sorrow without the knowledge
   p. 231.                                               of God, 9. 231.
 VI. 13. Mention of Samkhya and
                                                       VI. 21.   The     revelation      of    the
@@ -15279,7 +14093,6 @@ VI.    18.     Brahma       as     the        first     knowledge, p. 244.
   creation of God, p. 137.                            VI. 23. Bhakti to         God      as    to
 VI. 20. There can be no              end to             Guru, p. 145.
 
-
                                   PRASNA UPANISHAD
 
 1. 3-13. Rayi and Prana conceived                     V. 1-5.    Meditation on          Om    re-
@@ -15293,9 +14106,7 @@ VI. 20. There can be no              end to             Guru, p. 145.
 IJ. 1-12. On the supreme impor-                       VI. 2. The Purusha with Sixteen
   tance of Prana, pp. 64-65.                            Parts, p. 135.
 
-IV. 2. Sleep caused by the ab-                        VI. 4. The Constituents of the
-
-  sorption of the Senses             in the
+IV. 2. Sleep caused by the ab-                        VI. 4. The Constituents of the sorption of the Senses             in the
                                                         Person with           Sixteen    Parts,
                                                         9. 135.
   Mind, p. 88.
@@ -15321,11 +14132,7 @@ I. 1-7. On the superiority of the                     I. 2-7. The pessimism of B
   p. 44.
 1.7. Brihadratha’s request                     for      seven Dhatus, ए. 138.
 
-  initiation, p. 145.                                 II. 1-3. Vision of one’s Self ina
-                              UPANISHAD INDEX                           323
-
-
-  flood of supreme light, p 253.       VI. 1. The inner Self governs all
+  initiation, p. 145.                                 II. 1-3. Vision of one’s Self ina flood of supreme light, p 253.       VI. 1. The inner Self governs all
 II. 3-4. The Soul as the Mover           external existence, p. 86.
   of the body-chariot, pp. 96-97.      VI. 30. Thought as the root of
 II. 8. Internal sound as the result      all mental processes, p. 86.
@@ -15344,8 +14151,6 @@ IJ. 8. The Sound within man as         * a thumb, a span, or the whole
   Aspects of Soul, ए. 246.
 2-7. The four States of Con-           9-11. On the meaning        of the
   sciousness and the four Aspects        parts of Om, p. 25.
-              BIBLIOGRAPHICAL                    NOTE
-
 
                               I.   TEXTS
 
@@ -15383,11 +14188,7 @@ an edition of the Saranyasa Upanishads during that year, but when he
  Hundred and Eight Upanishads can now be had even at the Nirnayasagar
  Press, Bombay.    In the absence of a more reliable edition, we can
  recommend this to all students of Upanishadic literature, who care for
-                                    324
-                                BIBLIOGRAPHICAL NOTE                       325
-
-
-the canon      of the    Upanishadic literature ‘“‘inextenso.”   There are    a
+                                    324 the canon      of the    Upanishadic literature ‘“‘inextenso.”   There are    a
 number of other Upanishads which exist beyond the so-called Hundred
 and Eight, which have been catalogued in the volume on the biblio-
 graphy of the Upanishads published at Adyar, as well as with greater
@@ -15427,11 +14228,7 @@ as authentic.     There has been a very good one-volume edition of the
 principal     Eleven    Upanishads commented on          by Swami    Achintya
 Bhagawan and printed at the Nirnayasagar Press, 1910, which follows in
 substance the commentary of Sankara on the Upanishads. If one wishes
-to have an epitome of Sankara’s commentaries on the Upanishad,
-CS-42
-326               SURVEY OF UPANISHADIC PHILOSOPHY
-
-one can have it in this edition of Swami Achintya Bhagawan.                     The
+to have an epitome of Sankara’s commentaries on the Upanishad, one can have it in this edition of Swami Achintya Bhagawan.                     The
 edition is also beautifully printed and is handy.               Another running
 commentary on the substance of the various Upanishads, following the
 Advaita school of Philosophy, is entitled “ Anubhatiprakaga,”’ and has
@@ -15472,11 +14269,7 @@ the Upanishads have afforded a temptation for the aspiring Translator
 to try his hand at in various languages.           The first known translation of
  the Upanishads was done into Persian during the years 1656-1657 by
 the Pandits in the court of Dara, the son of Shah Jahan.                 The first
-notice of the Upanishads to the Western world was through Anquetil
-                             BIBLIOGRAPHICAL NOTE                          327
-
-
- du   Perron’s translation    entitled   the   “ Oupnek’hat,”    two   volumes
+notice of the Upanishads to the Western world was through Anquetil du   Perron’s translation    entitled   the   “ Oupnek’hat,”    two   volumes
  Strassburg, 1801-1802, which was a rendering into Latin of the Persian
  translation above referred to.     The substance of the Latin translation
  appeared in French in the year 1832 in J. D. Lanjuinais’s ^“ Recherches
@@ -15489,7 +14282,6 @@ rendered into Persian at the time of Dara, how the Persian translation
  in its turn was rendered into Latin by Anquetil du Perron in 1801-1802,
 and how the Latin translation was itself rendered both into the French
 and German languages during the course of the last century.
-
 
       One of the earliest translators of the Upanishads into English was
 Réer, who published his translations of nine Upanishads, Iga, Kena,
@@ -15517,7 +14309,6 @@ and Volume II, of the Taittiriya, Aitareya and Svetagvatara Upanishads.
 Mead’s translation excited such an interest in the European world that
 it was translated both into the French and Dutch language in 1905
 and 1908. 5. Sitaram Shastri and Ganganath Jha’s Translation of the
-328               SURVEY OF UPANISHADIC PHILOSOPHY
 
 Upanishads in five volumes with         Sajikara’s commentary ( Natesan,
 Madras, 1898-1901 ) contains texts of the Isa, Kena, Mundaka, Katha,
@@ -15559,7 +14350,6 @@ are translations of the Upanishads in every language of India, and
 particularly the Bengali.     The Bibliography would be          inordinately
 swollen if we were to mention all the translations in the various
  languages.
-                           BIBLIOGRAPHICAL NOTE                         329
 
      As regards the translations of single Upanihads in serial order, we
 might mention first Aurobindo Ghose’s translations of the Isa, Katha,
@@ -15601,10 +14391,7 @@ remarkable in many respects.      It was the first notice of that great
 Heracleitian philosopher Gaudapada in English.        Recently an amount
 of literature is coming out on Gaudapada and on his relation to the
 Madhyamika Sutras. Prof. Vidushekhara Bhattacharya, Shantiniketan,
-is making a special study of Gaudapada, and one fecls no doubt that
-330                SURVEY OF UPANISHADIC PHILOSOPHY
-
-when Gaudapada        is rendered well     into   English, his relation to the
+is making a special study of Gaudapada, and one fecls no doubt that when Gaudapada        is rendered well     into   English, his relation to the
 Madhyamika Sitras is pointed out, and a survey is taken of his               contri-
 bution to Philosophy, he is bound to startle the world of thought.                  As
 regards the Taittiriya Upanishad, A. Mahadeva Shastri has brought out
@@ -15645,8 +14432,6 @@ translation, is a handy little volume. Narayanswami Iyer has translated
 Thirty Minor Upanishads at Madras, 1914. Finally, S. <. Belvalkar’s
 ‘‘Four Unpublished Upanishads, ” containing texts and translations of
 the Bashkala, the Chhagaleya, the Arsheya, and the Saunaka Upanishads
-                              BIBLIOGRAPHICAL NOTE                               331
-
 
  (1925), of which the first was printed by Dr. Schrader but the rest were
  only in MS. form in the Adyar Library, has been published by the
@@ -15688,7 +14473,6 @@ Aitareya, and Kaushitaki Upanishads, and says that he wants to present
 the Upanishads in readable German, not that his book is intended
 specifically for Indologists.    Hertel’s work whets thought, even though
 his conclusions are not always satisfactory.        We have noticed in the
-332                  SURVEY OF UPANISHADIC PHILOSOPHY
 
 Preface how in two little points we disagree with         the meaning which
 Hertel finds in the Kenopanishad.         Hertel gives introductions to all his
@@ -15705,9 +14489,7 @@ elevation of his countrymen, and it may seem as if the spiritual Selec-
 tions from the Upanishads which the author of the present work intends
  to bring out will satisfy this urgent need.
 
-
                                V.    REFERENCES
-
 
       The references to Upanishadic literature are vast and various.         We
  can tabulate here only the principal among them under three different
@@ -15732,11 +14514,7 @@ tions from the Upanishads which the author of the present work intends
 
          Among    Histories of Indian Philosophy we might make special
  mention of Prof. Radhakrishnan’s Indian Philosophy Volume I., and
- Das Gupta’s History of Indian Philosophy Vol. 1., which contain recent
-                            BIBLIOGRAPHICAL NOTE                         333
-
-
-pronouncements on the philosophy of the Upanishads. Strauss’s /ndische
+ Das Gupta’s History of Indian Philosophy Vol. 1., which contain recent pronouncements on the philosophy of the Upanishads. Strauss’s /ndische
 Philosophie contains a treatment of the philosophy of the Old Upani-
 shads at pp. 42-61,     and of the   New Upanishads at pp. 62-85, which
 would amply repay perusal.
@@ -15776,11 +14554,7 @@ Der Gebrauch der Kasus in der alteren        Upanishad-literatur, Tiibingen,
 principal Upanishads he comes at a chronological order of the Upani-
 shads relative to the age of Panini.    This is rather an important idea;
 for, Panini seems to have flourished before the Upanishadic era had faded
-away, and therefore, some Upanishads wherein the Paninian uses do not
-CS-43
-334               SURVEY OF UPANISHADIC PHILOSOPHY
-
-occur may safely be taken to be pre-Panini, while others where they
+away, and therefore, some Upanishads wherein the Paninian uses do not occur may safely be taken to be pre-Panini, while others where they
 do occur may be taken to be post-Panini.       With this important hint,
 Wecker arranges the Upanishads in four groups; Group one consists of
 the Brhadaranyaka, the Chhandogya, and the Kaushitaki; Group two,
@@ -15820,8 +14594,6 @@ point of view is far more valid than that which avails itself of the
  ideas to which it appears to me the reflection of the Upanishads belongs
  as Mysticism from what is properly to be denominated Panthcism ”’ |
  (9. 59).   We cannot go with Dr. Macnicol when he says that the =
-                               BIBLIOGRAPHICAL NOTE                           335
-
 
  Doctrine of Maya is           unknown to the Upanishads; but we do agree
 with     him   when      he speaks about the    mystic trend of Upanishadic
@@ -15862,11 +14634,7 @@ Kant, when he says that the Self in synthesising is not distorting that
 which is given in experience, but is exercising only the essential function
 of spirit in revealing its true nature” (pp. 126-127 ). Finally, Dr. Barua
 in his Pre-Buddhistic Philosophy, Calcutta, 1921, goes into a very detailed
-analysis of all the Thinkers of India before the days of Buddha, and
-336                 SURVEY OF UPANISHADIC      PHILOSOPHY
-
-
-naturally has to consider in extenso the teachings of Upanishadic philo-
+analysis of all the Thinkers of India before the days of Buddha, and naturally has to consider in extenso the teachings of Upanishadic philo-
 sophers like Uddalaka, Yajnavalkya, Pippalada, and others.         The great
 difficulty in the case of these Upanishadic Philosophers is, however, to
 clinch their personalities and doctrines, and if this could be successfully
@@ -15905,11 +14673,7 @@ true religion at its highest, depends, not only on superior intellect, but
 shads, their metaphysical inadequacy, their religious and ethical effects,
 and ends with the message of Christianity for India.
         Of the more systematic works on Upanishadic Philosophy as a
-whole, we have to mention first A. E. Gough’s Philosophy of the Upani-
-                            BIBLIOGRAPHICAL NOTE                         337
-
-
-shads, London, 1882, which is probably the carliest of the        kind, and
+whole, we have to mention first A. E. Gough’s Philosophy of the Upani- shads, London, 1882, which is probably the carliest of the        kind, and
 which is a brilliantly written work, though it has a somewhat unsympa-
 thetic tone.     Gough’s view about the relation of Sankara to the Upani-
 shads is that his philosophy may be supposed to be alegitimate out-
@@ -15948,10 +14712,7 @@ Moksha.      Under these headings, he discusses such problems as the
 Mechanism of Metempsychosis,        Works and Salvation, Knowledge and
 Salvation, and finally, the Meaning of Salvation.      Lastly, he winds up
 by discussing the new tendency of religious thought in the Upanishads,
-as well as by an examination of the intellectual and moral influence of
-338               SURVEY OF UPANISHADIC PHILOSOPHY
-
-the Upanishads.         Oldenberg’s Die     Lehre der    Upanishaden    und die
+as well as by an examination of the intellectual and moral influence of the Upanishads.         Oldenberg’s Die     Lehre der    Upanishaden    und die
 Anfange des Buddhismus, Gottingen,         1915,    ए. 374,   is entirely worthy
 of the veteran scholar.     In part one of this work,     Oldenberg discusses
 the old Upanishads; in part two, the new Upanishads and the beginn-
@@ -15983,7 +14744,8 @@ been written from the standpoint of the philosophy of the past. It
 might be easily seen, therefore, how a constructive presentation of
 Upanishadic Philosophy from the standpoint of contemporary thought
 was the necessity of the hour.
-                                     APPENDIX
+
+                                     APPENDIX
 
                             WORKS BY     Dr. R. D. RANADE
 
@@ -16029,9 +14791,6 @@ was the necessity of the hour.
 10.       Pathway to God in Hindi Literature,              1954,      Adhyatma        Vidya
             Mandir, Sangli.
                                           339
-340                       SURVEY   OF   UPANISHADIC PHILOSOPHY
-
-
 
 11.       Paramartha Sopana: Source-book of the above, 1954, Adhyatma
             Vidya Mandir, Sangli.
@@ -16064,31 +14823,26 @@ was the necessity of the hour.
 
           Upanishad-Rahasya: Hindi translation of ‘A Constructive Survey
              of Upanishadic Philosophy’ by Dr. Ramanand Tiwari.
-           A.C. P. R.’s
+
+           A.C. P. R.’s
 SHRI   GURUDEV     GRANTHALAYA,
             BELGAU ७.
  Please return the book on the date
          mentioned below.
-        ACP १०७
 
+        ACP १०७
 
 Shri Gurudev Granthalaya
     Hindwadi; Belgaum.
-* }:
+
+* }:
    is 1 । ॥ i
      Hit
            i   |
-
-
-
 
     १,१ (५ny! Ht
     1001
     (1111
                    (२
 
-
-
-
                    1!
-
