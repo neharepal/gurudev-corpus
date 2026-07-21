@@ -1255,6 +1255,30 @@ _ADMIN_DASHBOARD_HTML = """\
               white-space: pre-wrap; word-break: break-word; }
   .diff-label { font-size: 0.7rem; color: var(--muted); padding: 2px 10px;
                 background: #f5f0e0; border-bottom: 1px solid var(--border); }
+  /* Inline (unified) diff view: unchanged tokens in body color, insertions
+     in green-underline, deletions in red-strikethrough. Whitespace changes
+     get a visible marker so "3 spaces vs 1" isn't invisible.
+     Rationale: the stacked BEFORE/AFTER blocks made reviewers eyeball the
+     diff themselves and miss subtle edits (Rathin's 2026-07-20 correction
+     of निवरगी → निंबरगी was hard to spot in the stacked view). */
+  .diff-inline { padding: 8px 10px; white-space: pre-wrap; word-break: break-word;
+                 line-height: 1.6; background: #fbfaf3; border-bottom: 1px solid var(--border); }
+  .diff-inline .ins { background: var(--diff-add); color: var(--diff-add-txt);
+                      text-decoration: underline; padding: 0 1px; border-radius: 2px; }
+  .diff-inline .del { background: var(--diff-del); color: var(--diff-del-txt);
+                      text-decoration: line-through; padding: 0 1px; border-radius: 2px; }
+  .diff-inline .ws-marker { color: var(--red); opacity: 0.6; font-weight: bold; }
+  .diff-summary { font-size: 0.75rem; color: var(--muted); padding: 4px 10px;
+                  background: #f5f0e0; border-bottom: 1px solid var(--border);
+                  font-family: monospace; }
+  .diff-summary .n-ins { color: var(--green); font-weight: bold; }
+  .diff-summary .n-del { color: var(--red); font-weight: bold; }
+  .diff-toggle { font-size: 0.7rem; color: var(--accent); cursor: pointer;
+                 user-select: none; float: right; text-decoration: underline; }
+  details.diff-raw > summary { list-style: none; cursor: pointer; }
+  details.diff-raw > summary::-webkit-details-marker { display: none; }
+  details.diff-raw[open] > summary .diff-label::after { content: " (hide raw)"; opacity: 0.7; }
+  details.diff-raw:not([open]) > summary .diff-label::after { content: " (show raw)"; opacity: 0.7; }
   .note-block { font-size: 0.85rem; color: var(--txt); margin: 8px 0; line-height: 1.5; }
   .note-label { font-weight: bold; color: var(--accent); }
   .actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
@@ -1317,12 +1341,107 @@ function kindBadge(k) {
   return `<span class="badge badge-${k}">${k}</span>`;
 }
 
+// Tokenize for diffing. Keeps whitespace runs and single punctuation chars
+// as their own tokens so `– → -` shows as a one-token change AND multi-space
+// runs are visible against single-space (reviewer needs to see whitespace
+// edits too). Word runs (any Unicode letter / mark / number) stay together
+// so `निवरगी` is one token — its replacement `निंबरगी` shows as one full-
+// word change rather than a smear of char-level highlights.
+function tokenize(s) {
+  if (!s) return [];
+  // Match: whitespace runs | word runs (letters/marks/numbers) | any single non-word char
+  return s.match(/(\s+|[\p{L}\p{M}\p{N}]+|[^\s\p{L}\p{M}\p{N}])/gu) || [];
+}
+
+// Classical LCS-based diff at token level. Returns an array of
+// {op: 'eq'|'ins'|'del', text} items in original order.
+// O(m*n) time/space — fine for paragraph-scale text (typical corrections
+// under 1k tokens each way => ~1M cells => a few ms).
+function diffTokens(a, b) {
+  const m = a.length, n = b.length;
+  if (m === 0) return n === 0 ? [] : [{op: 'ins', text: b.join('')}];
+  if (n === 0) return [{op: 'del', text: a.join('')}];
+  // LCS length table.
+  const dp = Array(m + 1);
+  for (let i = 0; i <= m; i++) dp[i] = new Int32Array(n + 1);
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i-1] === b[j-1]
+        ? dp[i-1][j-1] + 1
+        : Math.max(dp[i-1][j], dp[i][j-1]);
+    }
+  }
+  // Traceback → edit script (reversed).
+  const out = [];
+  let i = m, j = n;
+  while (i > 0 && j > 0) {
+    if (a[i-1] === b[j-1]) { out.push({op:'eq', text: a[i-1]}); i--; j--; }
+    else if (dp[i-1][j] >= dp[i][j-1]) { out.push({op:'del', text: a[i-1]}); i--; }
+    else { out.push({op:'ins', text: b[j-1]}); j--; }
+  }
+  while (i > 0) { out.push({op:'del', text: a[i-1]}); i--; }
+  while (j > 0) { out.push({op:'ins', text: b[j-1]}); j--; }
+  out.reverse();
+  // Coalesce consecutive same-op tokens into one span for cleaner rendering.
+  const merged = [];
+  for (const t of out) {
+    const last = merged[merged.length - 1];
+    if (last && last.op === t.op) last.text += t.text;
+    else merged.push({op: t.op, text: t.text});
+  }
+  return merged;
+}
+
+// Make whitespace-only ins/del visible. A raw " " insertion is invisible
+// under underline; render as a small dot marker so the reviewer can see it.
+function visualizeWhitespace(text) {
+  if (!/^\s+$/.test(text)) return escHtml(text);
+  // Show newlines as ↵, tabs as →, and each space as a middle-dot.
+  return text
+    .split('')
+    .map(ch => ch === '\n' ? '<span class="ws-marker">↵</span>\n'
+             : ch === '\t' ? '<span class="ws-marker">→</span>'
+             : `<span class="ws-marker">·</span>`)
+    .join('');
+}
+
 function renderDiff(original, corrected) {
+  const a = tokenize(original || '');
+  const b = tokenize(corrected || '');
+  const script = diffTokens(a, b);
+
+  // Count meaningful changes for the summary (whitespace-only edits get
+  // counted separately so "just spacing" changes are visible but don't
+  // inflate the "words changed" number).
+  let nIns = 0, nDel = 0, wsOnly = 0;
+  for (const s of script) {
+    if (s.op === 'eq') continue;
+    if (/^\s+$/.test(s.text)) { wsOnly++; continue; }
+    if (s.op === 'ins') nIns++; else nDel++;
+  }
+
+  // Build the inline (unified) diff render.
+  const inlineHtml = script.map(s => {
+    if (s.op === 'eq') return escHtml(s.text);
+    const cls = s.op === 'ins' ? 'ins' : 'del';
+    return `<span class="${cls}">${visualizeWhitespace(s.text)}</span>`;
+  }).join('');
+
+  // Summary line
+  const summary = (nIns + nDel + wsOnly === 0)
+    ? '<span style="color:var(--muted)">no textual difference</span>'
+    : `<span class="n-del">−${nDel}</span> deletion${nDel===1?'':'s'}`
+      + ` &middot; <span class="n-ins">+${nIns}</span> insertion${nIns===1?'':'s'}`
+      + (wsOnly ? ` &middot; ${wsOnly} whitespace edit${wsOnly===1?'':'s'}` : '');
+
   return `<div class="diff-block">
-    <div class="diff-label">BEFORE</div>
-    <div class="diff-del">${escHtml(original)}</div>
-    <div class="diff-label">AFTER</div>
-    <div class="diff-add">${escHtml(corrected)}</div>
+    <div class="diff-summary">${summary}</div>
+    <div class="diff-inline">${inlineHtml}</div>
+    <details class="diff-raw">
+      <summary><div class="diff-label">BEFORE / AFTER</div></summary>
+      <div class="diff-del">${escHtml(original || '')}</div>
+      <div class="diff-add">${escHtml(corrected || '')}</div>
+    </details>
   </div>`;
 }
 
