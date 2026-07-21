@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Quote } from "../data/mock-conversations";
 import { authorDisplayName } from "../lib/authors";
+import { renderInlineMd } from "../lib/render-inline-md";
 
 // Renders a verbatim quote with its attribution directly below — per ADR-007
 // the quote IS the citation. The internal `kind` classifier (canonical /
@@ -87,7 +88,7 @@ export default function QuoteBlock({
           }`}
           style={{ color: "var(--text-secondary, #5A4632)", opacity: 0.85 }}
         >
-          {paraphrase}
+          {renderInlineMd(paraphrase)}
         </p>
       ) : null}
       <p className="gd-quote-attr">

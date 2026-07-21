@@ -21,6 +21,7 @@ import QuoteBlock from "../../../components/QuoteBlock";
 import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError, reportCorrection } from "../../../lib/api";
+import { renderInlineMd } from "../../../lib/render-inline-md";
 import type { CorrectionRequest } from "../../../lib/api";
 import { upsertProgress } from "../../../lib/readingProgress";
 
@@ -848,7 +849,7 @@ function ReadingPage() {
                   className={`mb-3 text-[14px] ${isMr ? "font-deva" : ""}`}
                   style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
                 >
-                  {m.answer.framing}
+                  {renderInlineMd(m.answer.framing)}
                 </p>
               ) : null}
               {/* Guard: filter to citations whose quote.body is present.
@@ -878,7 +879,7 @@ function ReadingPage() {
                   className={`mt-2 text-[14px] ${isMr ? "font-deva" : ""}`}
                   style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
                 >
-                  {m.answer.synthesis}
+                  {renderInlineMd(m.answer.synthesis)}
                 </p>
               ) : null}
             </div>

@@ -18,6 +18,7 @@ import {
   deriveBodyParagraphs,
   bodyDerivationUsedSynthesisRescue,
 } from "../../lib/answer-body";
+import { renderInlineMd } from "../../lib/render-inline-md";
 import {
   type ModeId,
   type PravachanAnswer,
@@ -938,7 +939,7 @@ function QAAnswerBody({
             className={`mb-4 text-[16.5px] ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
           >
-            {para}
+            {renderInlineMd(para)}
           </p>
         ))}
         {answer.references && answer.references.length > 0 ? (
