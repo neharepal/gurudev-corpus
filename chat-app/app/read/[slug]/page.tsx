@@ -715,33 +715,40 @@ function ReadingPage() {
         </button>
       </div>
 
-      {/* Single Ask entry — opens the right-side chat drawer. All Q&A
-          interaction now lives in the drawer so follow-ups don't require
-          scrolling back to the foot of the article. */}
-      <div className="mt-6 flex justify-center">
-        <button
-          type="button"
-          onClick={() => setChatOpen(true)}
-          className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-semibold ${
-            isMr ? "font-deva" : ""
-          }`}
-          style={{
-            background: "#6B1F1F",
-            color: "#F4EAC9",
-            border: "1px solid #4F1414",
-            boxShadow: "0 2px 8px rgba(60, 30, 10, 0.18)",
-            cursor: "pointer",
-          }}
-        >
-          <span aria-hidden>💬</span>
-          <span>
-            {messages.length === 0
-              ? lbl.askAboutThisWork
-              : lbl.continueChat(messages.length)}
-          </span>
-        </button>
-      </div>
     </main>
+    {/* Floating "Ask" affordance — viewport-fixed (position: fixed) so it
+        stays reachable no matter where the reader has scrolled. Hidden when
+        the drawer is open so the two affordances don't visually stack.
+        Previously docked at the article foot: reader had to scroll a
+        long-form book chapter to reach it (2026-07-21 UX report). */}
+    {!chatOpen ? (
+      <button
+        type="button"
+        onClick={() => setChatOpen(true)}
+        aria-label={
+          messages.length === 0
+            ? lbl.askAboutThisWork
+            : lbl.continueChat(messages.length)
+        }
+        className={`fixed bottom-6 right-6 z-20 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[14px] font-semibold transition-transform hover:scale-105 ${
+          isMr ? "font-deva" : ""
+        }`}
+        style={{
+          background: "#6B1F1F",
+          color: "#F4EAC9",
+          border: "1px solid #4F1414",
+          boxShadow: "0 4px 14px rgba(60, 30, 10, 0.28)",
+          cursor: "pointer",
+        }}
+      >
+        <span aria-hidden>💬</span>
+        <span>
+          {messages.length === 0
+            ? lbl.askAboutThisWork
+            : lbl.continueChat(messages.length)}
+        </span>
+      </button>
+    ) : null}
     {/* Right-side answer drawer — slides in from the right so it doesn't
         disturb the reading column. Fixed position, full viewport height,
         ~400px wide. Closeable. */}
