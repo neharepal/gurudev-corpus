@@ -57,3 +57,22 @@ def test_positive_example_of_correct_style():
         "Parmartha Mandir records how" in p
         or ("correct:" in p.lower() and "records" in p.lower())
     )
+
+
+def test_no_invented_author_attribution_in_anthologies():
+    """The prompt must forbid attributing a passage to a specific author
+    in a multi-author anthology when the citation body doesn't self-
+    identify the author. Root of Mukund's 2026-07-22 misfire —
+    Contemporary Indian Philosophy passage attributed to 'Shri
+    Gurudev's own essay' when it was actually from another essayist."""
+    p = SYSTEM_PROMPT_QA
+    p_l = p.lower()
+    # The rule must exist by name.
+    assert "invent per-passage author attribution" in p_l or (
+        "multi-author" in p_l and "attribution" in p_l
+    )
+    # It must name Contemporary Indian Philosophy explicitly (that's
+    # our known misfire case).
+    assert "Contemporary Indian Philosophy" in p
+    # It must include the concrete anti-example ("Shri Gurudev's own essay").
+    assert "Shri Gurudev's own essay" in p
