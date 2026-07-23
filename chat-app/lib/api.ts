@@ -116,6 +116,10 @@ type Quote = {
   // passage appears. When present, the "Read in full" link opens the reader
   // directly at this page instead of page 1.
   readPage?: number;
+  // The passage letter (A, B, C, ...) the model picked from the retrieved
+  // set — used by RFC-019's synthesis-to-citation click-jump: a bulleted
+  // synthesis item ending "(A)" scrolls to id="cite-A".
+  passage?: string;
 };
 
 // ────────────────────────────────────────────────────────────────────────────

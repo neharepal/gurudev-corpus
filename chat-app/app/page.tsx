@@ -413,7 +413,21 @@ function LandingPage() {
                   <li key={text}>
                     <button
                       type="button"
-                      onClick={() => setDraft(text)}
+                      onClick={() => {
+                        // Reading-mode chips ARE the book selection —
+                        // clicking one should open the book, not populate
+                        // the composer with a label the user then has to
+                        // hit उघडा / Enter to actually open (2026-07-23
+                        // feedback: users didn't realise the text had
+                        // moved to the composer). For QA / Pravachan the
+                        // chip is a starter question that the user may
+                        // want to edit, so keep the composer path there.
+                        if (mode === "reading") {
+                          submit(text);
+                        } else {
+                          setDraft(text);
+                        }
+                      }}
                       className={`group flex w-full items-baseline gap-2 rounded-[6px] px-3 py-2.5 text-left text-[14px] leading-snug transition-all ${
                         isDeva ? "font-deva" : ""
                       }`}
