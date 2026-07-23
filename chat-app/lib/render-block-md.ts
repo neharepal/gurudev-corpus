@@ -26,31 +26,39 @@ import type { ReactNode } from "react";
 import { Fragment, createElement } from "react";
 import { renderInlineMd } from "./render-inline-md";
 
-// Match a trailing " (X)" where X is a single uppercase letter A–Z. Used to
-// wrap the letter in an anchor that scrolls to the matching citation card.
-const PASSAGE_LETTER_RE = /\s+\(([A-Z])\)\s*$/;
+// Match a trailing " (A)" or " (A, G, L)" — one-or-more uppercase letters
+// separated by commas at end-of-line. Each letter becomes an anchor that
+// scrolls to the matching citation card.
+const PASSAGE_LETTERS_RE = /\s+\(([A-Z](?:\s*,\s*[A-Z])*)\)\s*$/;
 
 function renderItemContent(text: string, keyPrefix: string): ReactNode {
-  // If the item ends with " (A)"-style passage-letter, split off that suffix
-  // and wrap the letter in an anchor. Otherwise, just inline-render.
-  const m = text.match(PASSAGE_LETTER_RE);
+  const m = text.match(PASSAGE_LETTERS_RE);
   if (!m) return renderInlineMd(text);
   const body = text.slice(0, m.index);
-  const letter = m[1];
+  const letters = m[1].split(/\s*,\s*/);
+  // Render " (A, G, L)" with each letter as a click-jump anchor, separated
+  // by ", ".
+  const parenChildren: ReactNode[] = [];
+  letters.forEach((letter, idx) => {
+    if (idx > 0) parenChildren.push(", ");
+    parenChildren.push(
+      createElement(
+        "a",
+        {
+          key: `${keyPrefix}-cite-${letter}-${idx}`,
+          href: `#cite-${letter}`,
+          className: "cite-jump",
+        },
+        letter,
+      ),
+    );
+  });
   return createElement(
     Fragment,
     null,
     renderInlineMd(body),
     " (",
-    createElement(
-      "a",
-      {
-        key: `${keyPrefix}-cite-${letter}`,
-        href: `#cite-${letter}`,
-        className: "cite-jump",
-      },
-      letter,
-    ),
+    ...parenChildren,
     ")",
   );
 }

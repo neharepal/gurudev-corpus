@@ -31,6 +31,19 @@ def test_no_engineering_jargon_rule_present():
             f"the prompt should list {banned!r} as a banned phrase so the "
             f"model recognizes and avoids it"
         )
+    # Near-cousins added 2026-07-23 after the "list of places" answer
+    # surfaced "these passages record" / "the available passages" — same
+    # jargon-in-disguise the original rule didn't catch.
+    for banned in [
+        "the available passages",
+        "these passages record",
+        "the passages here",
+    ]:
+        assert banned in p, (
+            f"the prompt should list {banned!r} as a banned phrase so the "
+            f"model recognizes and avoids it — it's a near-cousin of the "
+            f"original retrieval-jargon ban"
+        )
 
 
 def test_do_not_invent_work_labels_rule_present():

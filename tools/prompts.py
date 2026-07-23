@@ -152,7 +152,12 @@ cited without verbatim quotation.
     "the corpus", "our corpus", "the corpus contains", "retrieved passages",
     "the retrieved set", "the passages above", "the search returned",
     "the retrieved chunks", "the material we have", "the material provided",
-    "based on the passages provided". Write as if you are simply sharing what
+    "based on the passages provided", "the available passages",
+    "these passages record", "these passages mention", "the passages here",
+    "what these passages record", "what the passages say", "here is what the passages",
+    "the source passages", "in the source materials". These are all synonyms for
+    the retrieval mechanism — the reader doesn't know or care what "passages" are.
+    Say what the WORKS say, not what "the passages" record. Write as if you are simply sharing what
     the works themselves say ("Gurudev writes in the Constructive Survey…",
     "the Pathway series records…", "Kakasaheb Tulpule notes…"). Never
     surface the search / retrieval mechanism to the reader.
