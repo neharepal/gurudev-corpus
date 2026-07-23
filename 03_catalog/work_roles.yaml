@@ -1,0 +1,110 @@
+# Container ↔ Original taxonomy for RFC-018 citation-alias resolution.
+#
+# ORIGINALS are the authoritative sources — Gurudev Ranade's own writings and
+# Bhausaheb Maharaj's letters. When a container work reproduces text verbatim
+# from an original, the citation is re-attributed to the original at splice time
+# (RFC-018).
+#
+# CONTAINERS are works that may reproduce originals (compilations, anthologies,
+# arthasahit editions, biographies, souvenirs). They are scanned by the alias
+# builder; matches emit re-attribution rows into 04_processed/citation_aliases.jsonl.
+#
+# NOT LISTED here: pure athvani (oral recollections) that DON'T reproduce book
+# text. Scanning them is wasted work — they carry the narrator's memory of an
+# event, not verbatim excerpts. If a specific athvani work turns out to quote
+# Gurudev's writing, promote it into `containers` in a follow-up.
+#
+# Same-language matching only: a container chunk is scanned only against
+# originals in the SAME language.  A Marathi container will not match against
+# English originals (cross-lingual attribution is a separate future extension).
+
+originals:
+  # Gurudev Ranade — English books
+  - constructive-survey-of-upanishadic-philosophy
+  - creative-period
+  - philosophical-and-other-essays
+  - bhagavadgita-as-pathway-to-god-realization
+  - vedant
+  - herakleitos
+  - evolution-of-my-own-thought
+  - vindication-of-indian-philosophy
+  - gandhi-and-other-indian-saints
+  - mysticism-in-maharashtra
+  - pathway-to-god-in-hindi-literature
+  - pathway-to-god-in-kannada-literature
+  - reflections
+  - essays-and-reflections
+  - gurudeos-abhang
+  - sevenfold-stream-of-spiritual-life
+  - opportunities-of-college-life
+  - pawanbhumi-jamkhandi
+
+  # Gurudev Ranade — Marathi / Hindi
+  - kannad-parmarth-sopan
+  - parmartha-mandir
+  - hindi-parmarth-sopan
+  - parmartha-sopan
+
+  # Bhausaheb Maharaj — original letters/notes
+  - javak-patre-tipane
+
+containers:
+  # ── Biographies + biography-like accounts (about Gurudev / Nimbargi / lineage)
+  - allahabad-days-en
+  - allahabad-days-mr
+  - kushal-pradhyapak
+  - ranade-and-his-spiritual-lineage
+  - kannada-sahityatil-punyasmruti
+  - jivandarshan-deshpande
+  - nimbargi-maharaj-biography-en
+  - nimbargi-maharaj-charitra-athavani-mr
+  - charitra-tatvajnan-tulpule
+  - amrutavalli
+
+  # ── Souvenirs, memorial volumes, compilations by devotees
+  - sonari-pane-2000
+  - acpr-silver-jubilee-vol1
+  - acpr-silver-jubilee-vol2
+  - swanandacha-gabha
+
+  # ── Canonical works by other scholars that draw on Gurudev
+  - pathway-to-god-in-the-vedas
+  - critical-constructive-aspects
+  - studies-in-indian-philosophy
+
+  # ── Anthologies whose work_id groups multi-author essays
+  - contemporary-indian-philosophy
+
+  # ── Kakasaheb Tulpule's own writings (compilations that quote Gurudev
+  #    heavily; his own words remain his — the matcher only re-attributes
+  #    text that is verbatim from a Gurudev original)
+  - gurudev-paramarthik-shikvan
+  - sadhakbodh
+  - kakanchi-pravachane
+  - sadhakachi-atmakatha
+
+  # ── Arthasahit editions (per RFC-017: explanations drawn from Gurudev's
+  #    Pathway-to-God series when available)
+  - tukaram-vachanamrut
+  - eknath-vachanamrut
+  - ramdas-vachanamrut
+  - sant-vachanamrut
+  - jnaneshwar-vachanamrut
+  - eknathi-bhagvat-vachanamrut
+  - dhyanopakarani-gita
+
+  # ── Kakasaheb's discourse compilations that may cite Gurudev
+  - kakanchi-charcha
+  - amar-sandesh-sudha
+  - dhyangita-anvayarth
+
+# Excluded from the scan entirely (pure athvani / navigational / not-worth-scanning):
+#   - bhagvadgeeta                 # gita text; different genre
+#   - bodhsudha                    # Nimbargi's own bodhsudha; original in its own right
+#   - nityanemavali                # daily observances; ritual text
+#   - lachyan-sandesh              # short athvani
+#   - maharajachi-sutre            # aphorisms; original in own right
+#   - sukhasahita-dukharahita      # short athvani
+#
+# Reclassify with a note in the git log if user feedback shows a work here
+# should be scanned or excluded differently.
