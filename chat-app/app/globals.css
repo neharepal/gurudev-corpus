@@ -242,3 +242,51 @@ input:focus-visible {
 .gd-read-p--flush {
   text-indent: 0;
 }
+
+/* RFC-019: block markdown in `synthesis` (bullets, numbered lists, tables). */
+.synthesis-body .md-p {
+  margin: 0 0 0.75em 0;
+}
+.synthesis-body .md-p:last-child {
+  margin-bottom: 0;
+}
+.synthesis-body .md-ul,
+.synthesis-body .md-ol {
+  margin: 0.25em 0 0.75em 0;
+  padding-left: 1.5em;
+}
+.synthesis-body .md-ul { list-style: disc; }
+.synthesis-body .md-ol { list-style: decimal; }
+.synthesis-body .md-ul li,
+.synthesis-body .md-ol li {
+  margin: 0.15em 0;
+}
+.synthesis-body .cite-jump {
+  color: var(--accent-maroon);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.synthesis-body .cite-jump:hover {
+  text-decoration-style: solid;
+}
+.synthesis-body .md-table-wrap {
+  overflow-x: auto;
+  margin: 0.5em 0 0.75em 0;
+}
+.synthesis-body .md-table {
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+.synthesis-body .md-table th,
+.synthesis-body .md-table td {
+  border: 1px solid var(--border, #d0c8b8);
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.synthesis-body .md-table th {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+}

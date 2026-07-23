@@ -19,6 +19,7 @@ import {
   bodyDerivationUsedSynthesisRescue,
 } from "../../lib/answer-body";
 import { renderInlineMd } from "../../lib/render-inline-md";
+import { renderBlockMd } from "../../lib/render-block-md";
 import {
   type ModeId,
   type PravachanAnswer,
@@ -997,7 +998,11 @@ function QAAnswerBody({
           QuoteBlock returns null for missing body but c.whyChosen beside it
           would still appear stray — skip the whole item until it's renderable. */}
       {(answer.citations ?? []).filter((c) => c?.quote?.body).map((c, i) => (
-        <div key={i} className="mb-6">
+        <div
+          key={i}
+          id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
+          className="mb-6 scroll-mt-4"
+        >
           <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} />
           {c.whyChosen ? (
             <p
@@ -1015,17 +1020,14 @@ function QAAnswerBody({
           ) : null}
         </div>
       ))}
-      {answer.synthesis
-        ? answer.synthesis.split(/\n{2,}/).map((para, i) => (
-            <p
-              key={i}
-              className={`mt-4 text-[16.5px] ${isMr ? "font-deva" : ""}`}
-              style={{ color: "var(--text-primary)" }}
-            >
-              {para}
-            </p>
-          ))
-        : null}
+      {answer.synthesis ? (
+        <div
+          className={`mt-4 text-[16.5px] synthesis-body ${isMr ? "font-deva" : ""}`}
+          style={{ color: "var(--text-primary)" }}
+        >
+          {renderBlockMd(answer.synthesis)}
+        </div>
+      ) : null}
     </div>
   );
 }

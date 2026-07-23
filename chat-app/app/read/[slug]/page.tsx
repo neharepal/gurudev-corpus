@@ -22,6 +22,7 @@ import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError, reportCorrection } from "../../../lib/api";
 import { renderInlineMd } from "../../../lib/render-inline-md";
+import { renderBlockMd } from "../../../lib/render-block-md";
 import type { CorrectionRequest } from "../../../lib/api";
 import { upsertProgress } from "../../../lib/readingProgress";
 
@@ -857,7 +858,11 @@ function ReadingPage() {
                   stale/partial shapes; QuoteBlock guards internally but we also
                   skip the whyChosen rationale for incomplete citations. */}
               {(m.answer.citations ?? []).filter((c) => c?.quote?.body).map((c, ci) => (
-                <div key={ci} className="mb-4">
+                <div
+                  key={ci}
+                  id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
+                  className="mb-4 scroll-mt-4"
+                >
                   <QuoteBlock quote={c.quote} lang={lang} />
                   {c.whyChosen ? (
                     <p
@@ -875,12 +880,12 @@ function ReadingPage() {
                 </div>
               ))}
               {m.answer.synthesis ? (
-                <p
-                  className={`mt-2 text-[14px] ${isMr ? "font-deva" : ""}`}
+                <div
+                  className={`mt-2 text-[14px] synthesis-body ${isMr ? "font-deva" : ""}`}
                   style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
                 >
-                  {renderInlineMd(m.answer.synthesis)}
-                </p>
+                  {renderBlockMd(m.answer.synthesis)}
+                </div>
               ) : null}
             </div>
           ))
