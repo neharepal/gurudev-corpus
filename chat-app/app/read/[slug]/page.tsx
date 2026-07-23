@@ -165,9 +165,21 @@ function ReadingPage() {
       return null;
     }
   })();
-  const lang: Lang = (search.get("lang") as Lang | null) ?? "en";
-  const lbl = L[lang];
-  const isMr = lang === "mr";
+  // Content language vs UI language are two DIFFERENT things (2026-07-23):
+  //   - contentLang comes from the URL. It selects which text.md to fetch
+  //     for this book (a Marathi book has to load its Marathi file). This
+  //     also flows into the correction request so we edit the right file.
+  //   - uiLang comes from the user's persisted preference (the same
+  //     `gd:lang` key the landing page uses). It drives labels, font, the
+  //     answer language of the drawer's Q&A, and the back-link to home.
+  //
+  // Before the split, clicking a Marathi book flipped the whole UI to
+  // Marathi even for an English-preferring reader. Split so the reader
+  // stays in the language they chose while the book plays in its own.
+  const contentLang: Lang = (search.get("lang") as Lang | null) ?? "en";
+  const [uiLang] = usePersistentState<Lang>("gd:lang", "en");
+  const lbl = L[uiLang];
+  const isMr = uiLang === "mr";
 
   // If a ?page= param is present (e.g. from a "Read in full" citation link
   // that carries readPage), parse it so we can jump to the right page after
@@ -273,7 +285,7 @@ function ReadingPage() {
     setLoading(true);
     setFetchError(null);
     const qs = new URLSearchParams({ slug, page: String(currentPage) });
-    if (lang) qs.set("lang", lang);
+    if (contentLang) qs.set("lang", contentLang);
     fetch(`/api/read?${qs.toString()}`)
       .then(async (res) => {
         if (!res.ok) {
@@ -316,7 +328,7 @@ function ReadingPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, lang, currentPage]);
+  }, [slug, contentLang, currentPage]);
 
   async function ask() {
     const q = draft.trim();
@@ -331,7 +343,7 @@ function ReadingPage() {
       const resp = await askApi({
         mode: "qa",
         question: q,
-        lang,
+        lang: uiLang,
         work: slug,
       });
       if (resp.kind !== "qa") {
@@ -391,7 +403,7 @@ function ReadingPage() {
       paragraph: n,
       original,
       corrected: edited,
-      lang,
+      lang: contentLang,
       question: "",
       mode: "reading",
       name,
@@ -452,7 +464,7 @@ function ReadingPage() {
             origin link is the answer/pravachan the reader came from. */}
         <div className="mb-3 flex items-center gap-4">
           <Link
-            href={`/?mode=reading&lang=${lang}`}
+            href={`/?mode=reading&lang=${uiLang}`}
             className={`text-[14px] ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-secondary)" }}
           >
@@ -863,7 +875,7 @@ function ReadingPage() {
                   id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
                   className="mb-4 scroll-mt-4"
                 >
-                  <QuoteBlock quote={c.quote} lang={lang} />
+                  <QuoteBlock quote={c.quote} lang={uiLang} />
                   {c.whyChosen ? (
                     <p
                       className={`mt-1.5 text-[13px] leading-snug ${isMr ? "font-deva" : ""}`}
