@@ -451,7 +451,7 @@ function ReadingPage() {
 
   return (
     <>
-    <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
+    <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-24 sm:pb-6">
       <header
         className="mb-5 pb-3"
         style={{ borderBottom: "1px solid var(--border-soft)" }}
