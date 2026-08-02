@@ -199,16 +199,40 @@ _reading_cache: Dict[tuple, List[Dict[str, Any]]] = {}
 # (e.g. kakasaheb_tulpule/lectures, nimbargi_maharaj/books) — see RUNBOOK R1.
 _WORK_ROOTS = ("01_canonical", "02_aggregated")
 
+# Directory-name patterns that mark a snapshot/backup rather than a real work.
+# Enforced across every dir-scan in this file so a stray `.bak` sibling under
+# 01_canonical/ (as happened on 2026-08-02 with a pre-RFC-020 KP snapshot)
+# cannot leak into /works, /read, or /read/{slug}/toc as a duplicate entry.
+# Patterns are matched as substrings against the dir's own name — deliberately
+# broad to catch every convention we've used: `foo.bak`, `foo.pre-x`,
+# `foo.old`, and hidden dirs like `.DS_Store`.
+_BACKUP_DIR_PATTERNS = (".bak", ".pre-", ".old")
+
+
+def _is_work_dir_name(name: str) -> bool:
+    """False for names that look like a snapshot/backup or a hidden entry,
+    True otherwise. Used to gate every 01_canonical/02_aggregated walk."""
+    if not name or name.startswith("."):
+        return False
+    for pat in _BACKUP_DIR_PATTERNS:
+        if pat in name:
+            return False
+    return True
+
 
 def _glob_work_dir(slug: str) -> Optional[Path]:
     """Find a work directory named `slug` anywhere under the corpus roots.
 
     General fallback for works not in catalog.yaml and not under a hardcoded
     candidate dir. Returns the first matching directory that contains at least
-    one `<lang>/text.md`, or None.
+    one `<lang>/text.md`, or None. Filters out snapshot/backup dirs (see
+    `_is_work_dir_name`) so a `.bak` sibling can never masquerade as its
+    live twin under this path.
     """
     for root in _WORK_ROOTS:
         for d in (REPO / root).glob(f"*/*/{slug}"):
+            if not _is_work_dir_name(d.name):
+                continue
             if d.is_dir() and any(
                 sub.is_dir() and (sub / "text.md").exists() for sub in d.iterdir()
             ):
@@ -1013,14 +1037,14 @@ def _scan_readable_works() -> List[Dict[str, Any]]:
         return results
 
     for author_dir in sorted(canonical_root.iterdir()):
-        if not author_dir.is_dir():
+        if not author_dir.is_dir() or not _is_work_dir_name(author_dir.name):
             continue
         author_id = author_dir.name
         for work_type_dir in sorted(author_dir.iterdir()):
-            if not work_type_dir.is_dir():
+            if not work_type_dir.is_dir() or not _is_work_dir_name(work_type_dir.name):
                 continue
             for work_dir in sorted(work_type_dir.iterdir()):
-                if not work_dir.is_dir():
+                if not work_dir.is_dir() or not _is_work_dir_name(work_dir.name):
                     continue
                 # Collect language subdirectories that have a text.md.
                 langs = sorted(
@@ -1898,6 +1922,11 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
 
     404 if the slug is not in the catalog or the text.md file is missing.
     """
+    # Slugs that look like snapshot/backup directory names (e.g.
+    # `foo.pre-rfc020-2026-08-02.bak`) are never real works — refuse them
+    # up front so a hand-typed URL can't reach into a leftover backup dir.
+    if not _is_work_dir_name(slug):
+        raise HTTPException(status_code=404, detail=f"Work not found: {slug!r}")
     # Load catalog
     catalog_path = REPO / "03_catalog" / "catalog.yaml"
     with open(catalog_path, encoding="utf-8") as f:
@@ -2025,6 +2054,10 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     Empty `sections` for books with no `##` / `###` markdown headings. Reader
     UI hides the TOC in that case.
     """
+    # Same slug guard as /read/{slug} — a snapshot/backup dir name is never
+    # a valid work identifier.
+    if not _is_work_dir_name(slug):
+        raise HTTPException(status_code=404, detail=f"Work not found: {slug!r}")
     # Reuse the resolver + parser used by /read
     catalog_path = REPO / "03_catalog" / "catalog.yaml"
     with open(catalog_path, encoding="utf-8") as f:
