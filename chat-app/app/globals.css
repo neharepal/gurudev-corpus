@@ -127,6 +127,19 @@ h1 {
   line-height: 1.5;
 }
 
+/* Paraphrase / translation gloss under the verbatim quote body. Deliberately
+   smaller than the body so the source stays the visual anchor and the gloss
+   reads as a secondary support layer. Matches Devanagari nudge in .gd-quote. */
+.gd-quote-paraphrase {
+  font-size: 14px;
+  line-height: 1.55;
+  padding-left: 21px;
+  margin: 4px 0 4px 0;
+}
+.gd-quote-paraphrase.font-deva {
+  font-size: 13.5px;
+}
+
 .gd-label {
   font-family: var(--font-mono);
   font-size: 12px;

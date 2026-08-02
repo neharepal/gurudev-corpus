@@ -2008,6 +2008,162 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     }
 
 
+@app.get("/read/{slug}/toc")
+def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
+    """Return the chapter index for a work, grouped by top-level (## …) sections.
+
+    Structure:
+      {
+        "workSlug": str, "workTitle": str, "author": str,
+        "sections": [
+          {"title": "भाग १", "chapters": [{"title": "…", "page": int}, …]},
+          …
+        ],
+        "flat": [{"title": "…", "page": int}, …]   # convenience for books w/o ## sections
+      }
+
+    Empty `sections` for books with no `##` / `###` markdown headings. Reader
+    UI hides the TOC in that case.
+    """
+    # Reuse the resolver + parser used by /read
+    catalog_path = REPO / "03_catalog" / "catalog.yaml"
+    with open(catalog_path, encoding="utf-8") as f:
+        catalog = yaml.safe_load(f)
+    work_meta = None
+    for w in catalog.get("works", []):
+        if w.get("id") == slug:
+            work_meta = w; break
+    if work_meta is None:
+        # Same fallback as read_work
+        candidate_dirs = [
+            REPO / "01_canonical" / "gurudev_ranade" / "books" / slug,
+            REPO / "01_canonical" / "bhausaheb_maharaj" / "letters" / slug,
+            REPO / "01_canonical" / "kakasaheb_tulpule" / "books" / slug,
+            REPO / "01_canonical" / "other_authors" / "books" / slug,
+            REPO / "02_aggregated" / "biography" / "about_gurudev_ranade" / slug,
+        ]
+        work_dir = None
+        for d in candidate_dirs:
+            if d.exists(): work_dir = d; break
+        if work_dir is None:
+            work_dir = _glob_work_dir(slug)
+        if work_dir is None:
+            raise HTTPException(status_code=404, detail=f"Work not found: {slug!r}")
+        parts = work_dir.parts
+        author_id = "gurudev_ranade"
+        for i, part in enumerate(parts):
+            if part in ("01_canonical", "02_aggregated"):
+                if i + 1 < len(parts):
+                    candidate = parts[i + 1]
+                    if candidate not in ("biography",):
+                        author_id = candidate
+                break
+        langs_on_disk = sorted(
+            d.name for d in work_dir.iterdir()
+            if d.is_dir() and (d / "text.md").exists()
+        )
+        work_meta = {
+            "id": slug, "title": slug.replace("-", " ").title(),
+            "author": author_id, "languages": langs_on_disk or ["en"],
+            "path": str(work_dir.relative_to(REPO)) + "/",
+        }
+    available_langs: List[str] = work_meta.get("languages", ["en"])
+    if lang is None or lang not in available_langs:
+        lang = available_langs[0]
+    work_path_str: str = work_meta.get("path", "")
+    text_path = REPO / work_path_str.rstrip("/") / lang / "text.md"
+    if not text_path.exists():
+        raise HTTPException(status_code=404, detail=f"text.md not found")
+
+    # Walk the text.md, extracting ## and ### markdown headings. Compute each
+    # heading's reader-page by finding the first paragraph following it and
+    # asking `paginate` which page that paragraph lands on.
+    full_text = text_path.read_text(encoding="utf-8")
+    fm_len = 0
+    body = full_text
+    if body.startswith("---"):
+        end = body.find("\n---\n", 3)
+        if end != -1:
+            fm_len = end + 4
+            body = body[fm_len:]
+
+    # Get paginated paragraphs (cached)
+    cache_key = (str(text_path), lang)
+    if cache_key not in _reading_cache:
+        _reading_cache[cache_key] = _parse_work_text(text_path)
+    all_paragraphs = _reading_cache[cache_key]
+    if not all_paragraphs:
+        return {"workSlug": slug, "workTitle": work_meta.get("title", slug),
+                "author": _author_display_name(work_meta.get("author", "")),
+                "sections": [], "flat": []}
+    pages = paginate(all_paragraphs)
+
+    def page_for_para_n(n: int) -> int:
+        for pnum, page_paras in enumerate(pages, 1):
+            if page_paras and page_paras[0]["n"] <= n <= page_paras[-1]["n"]:
+                return pnum
+        return 1
+
+    # Walk block-by-block, tracking the section (## …) and emitting each ### heading
+    sections: List[Dict[str, Any]] = []
+    current_section: Optional[Dict[str, Any]] = None
+    flat: List[Dict[str, Any]] = []
+
+    para_n = 0
+    for sep_match in re.finditer(r"\n{2,}", body + "\n\n"):
+        block_end = sep_match.start()
+    # Simpler: split by blank lines, walk sequentially, and count paragraphs the same way _parse_work_text does.
+    blocks: List[tuple] = []
+    pos = 0
+    for sep_match in re.finditer(r"\n{2,}", body):
+        blocks.append(body[pos:sep_match.start()])
+        pos = sep_match.end()
+    if pos <= len(body):
+        blocks.append(body[pos:])
+
+    n = 0
+    for block_raw in blocks:
+        block = block_raw.strip()
+        if not block:
+            continue
+        h_match = re.match(r"^(#{1,6})\s+(.*)", block)
+        if h_match:
+            level = len(h_match.group(1))
+            title = _strip_inline_md(h_match.group(2).strip())
+            if level == 2:  # ## section marker (भाग)
+                current_section = {"title": title, "chapters": []}
+                sections.append(current_section)
+            elif level == 3:  # ### chapter
+                # Find the next paragraph (n+1) — its page is this chapter's start
+                target_n = n + 1
+                pg = page_for_para_n(target_n) if target_n <= len(all_paragraphs) else 1
+                entry = {"title": title, "page": pg}
+                flat.append(entry)
+                if current_section is not None:
+                    current_section["chapters"].append(entry)
+                else:
+                    # No ## section — create an implicit one
+                    if not sections or sections[-1].get("title") is not None:
+                        sections.append({"title": None, "chapters": []})
+                    sections[-1]["chapters"].append(entry)
+            continue
+        # Same paragraph-counter rule as _parse_work_text
+        bold_only = re.match(r"^\*\*(.+?)\*\*[.:]?$", block)
+        if bold_only:
+            continue
+        if len(block) < 80:
+            continue
+        n += 1
+
+    return {
+        "workSlug": slug,
+        "workTitle": work_meta.get("title") or slug.replace("-", " ").title(),
+        "author": _author_display_name(work_meta.get("author", "")),
+        "sections": sections,
+        "flat": flat,
+    }
+
+
 def _prepare_request(req: AskRequest, request: Optional[Request] = None):
     """Validate the request and run retrieval. Returns (mode, user_msg, system_prompt,
     chunks, mode_retrieval_meta) or raises HTTPException.
@@ -2166,6 +2322,44 @@ def _enrich_citation_readpage(
         quote["readPage"] = page
 
 
+def _enrich_citation_location(
+    citation: Dict[str, Any],
+    label_to_chunk: Dict[str, Any],
+) -> None:
+    """Set quote.location from the chunk's own section/chapter metadata.
+
+    The LLM is unreliable at composing `location` — it drifts between page
+    numbers, work titles, and empty strings even with strong prompting. When
+    the underlying chunk has structural headings (## `section` / ### `chapter`
+    from the source markdown, per RFC-020), we override the LLM's guess with
+    the deterministic label. Format:
+      - both present:  "<section> · <chapter>"    e.g. "भाग १ · वैकुंठचतुर्दशीनिमित्त"
+      - chapter only:  "<chapter>"
+      - section only:  "<section>"
+      - neither:       untouched (keep the LLM's guess or the original)
+
+    Idempotent. Called from the same enrichment sweep as `_enrich_citation_readpage`.
+    """
+    if not isinstance(citation, dict):
+        return
+    quote = citation.get("quote")
+    if not isinstance(quote, dict):
+        return
+    passage_label = (quote.get("passage") or "").strip()
+    chunk = (label_to_chunk or {}).get(passage_label)
+    if chunk is None:
+        return
+    meta = chunk.get("meta") or {}
+    chapter = (meta.get("chapter") or "").strip()
+    section = (meta.get("section") or "").strip()
+    if not chapter and not section:
+        return
+    if section and chapter:
+        quote["location"] = f"{section} · {chapter}"
+    else:
+        quote["location"] = chapter or section
+
+
 def _enrich_citations_readpage(
     citations: List[Dict[str, Any]],
     label_to_chunk: Dict[str, Any],
@@ -2207,14 +2401,35 @@ def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate,
     answer with zero citations — the user has the prior turn's citations
     already). See grounding.enforce_qa docstring.
     """
-    if os.environ.get("GROUNDING_MODE") != "enforce":
-        return result, []
     passages = sum(1 for _ in (label_to_chunk or {}))
-    result = grounding.enforce_qa(
-        result, passages_supplied=passages, regenerate=regenerate,
-        has_history=has_history,
-    )
+    # `enforce_qa` retries generation when the answer has zero citations but the
+    # model was given retrieved passages. That heavier behavior stays gated on
+    # GROUNDING_MODE=enforce — it's expensive (extra LLM call) and only makes
+    # sense when a caller has opted in.
+    if os.environ.get("GROUNDING_MODE") == "enforce":
+        result = grounding.enforce_qa(
+            result, passages_supplied=passages, regenerate=regenerate,
+            has_history=has_history,
+        )
+    # RFC-021 Change 2: `verify_citations` runs UNCONDITIONALLY and acts on its
+    # findings. If the LLM's quote body doesn't fuzzy-match the source chunk
+    # text (partial ratio < 85), the citation is DROPPED — not just flagged.
+    # This closes the "LLM emits valid anchors but composed a body that
+    # doesn't match the spliced text" gap that would otherwise let a
+    # hallucinated body through. The flags list is still returned for the
+    # advisory review queue.
     flags = grounding.verify_citations(result.get("citations") or [], label_to_chunk)
+    if flags:
+        bad_passages = {
+            (f.get("passage") or "").strip()
+            for f in flags
+            if f.get("reason") == "body not found in source"
+        }
+        if bad_passages:
+            result["citations"] = [
+                c for c in (result.get("citations") or [])
+                if ((c.get("quote") or {}).get("passage") or "").strip() not in bad_passages
+            ]
     return result, flags
 
 

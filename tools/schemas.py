@@ -726,6 +726,14 @@ def splice_qa_citations(tool_input: Dict[str, Any], label_to_chunk: Dict[str, An
 
     Returns the number of citations that degraded (anchor mismatch / unknown
     passage) — for diagnostics. Safe to call on meta answers (no citations).
+
+    RFC-021 Change 1: for QA specifically, refuse LLM-authored bodies. Any
+    splice failure (no ref, unknown passage, empty text, anchor mismatch)
+    forces body="" so the drop logic below removes the citation entirely.
+    The reference-only contract says: LLM points at what to cite, server
+    extracts the actual text. When the server cannot extract, we do not fall
+    back to LLM's authored body — we drop the citation. Missing citations
+    are strictly better than fabricated ones.
     """
     degraded = 0
     cits = tool_input.get("citations")
@@ -733,12 +741,14 @@ def splice_qa_citations(tool_input: Dict[str, Any], label_to_chunk: Dict[str, An
         kept = []
         for c in cits:
             if isinstance(c, dict) and isinstance(c.get("quote"), dict):
-                if not splice_quote_dict(c["quote"], label_to_chunk):
+                spliced_ok = splice_quote_dict(c["quote"], label_to_chunk)
+                if not spliced_ok:
                     degraded += 1
-                # Drop a citation left with no usable verbatim body (e.g. the
-                # model referenced an unknown passage letter and the full-passage
-                # fallback had nothing to supply). Omitting it is better than
-                # failing Quote validation on a missing body or rendering blank.
+                    # RFC-021 Change 1: drop LLM-authored body on any failure.
+                    c["quote"]["body"] = ""
+                # Drop a citation left with no usable verbatim body (empty
+                # body means splice failed and the RFC-021 clear above kicked
+                # in, or the full-passage fallback had nothing to supply).
                 if not (c["quote"].get("body") or "").strip():
                     continue
             kept.append(c)

@@ -33,6 +33,21 @@ type ChatTurn = {
   answer: QAAnswer;
 };
 
+// Table of contents shape returned by /api/read-toc. Chapters carry the
+// printed reader-page number they land on so a click can jump straight to
+// that page. Sections group chapters under ## headings (भाग १, भाग २, …);
+// works without ## headings return an empty `sections` and the TOC UI is
+// hidden entirely (no dead affordance).
+type TocChapter = { title: string; page: number };
+type TocSection = { title: string | null; chapters: TocChapter[] };
+type TocData = {
+  workSlug: string;
+  workTitle: string;
+  author: string;
+  sections: TocSection[];
+  flat: TocChapter[];
+};
+
 // Language-aware UI labels for the reading surface. Verbatim passages
 // stay in their source language (ADR-007). Source titles inside the
 // citation lines stay in their published language (canonical work
@@ -69,6 +84,10 @@ const L: Record<
     correctionSent: string;
     correctionSending: string;
     correctionError: string;
+    tocButton: string;
+    tocDrawerTitle: string;
+    closeToc: string;
+    tocEmpty: string;
   }
 > = {
   en: {
@@ -101,6 +120,10 @@ const L: Record<
     correctionSent: "Thank you — sent for review",
     correctionSending: "Sending…",
     correctionError: "Could not send — please try again.",
+    tocButton: "☰ Contents",
+    tocDrawerTitle: "Contents",
+    closeToc: "Close contents",
+    tocEmpty: "No index available for this work.",
   },
   mr: {
     backToStart: "◁ सुरुवातीला परत",
@@ -132,6 +155,10 @@ const L: Record<
     correctionSent: "धन्यवाद — पुनरावलोकनासाठी पाठवले",
     correctionSending: "पाठवत आहे…",
     correctionError: "पाठवता आले नाही — कृपया पुन्हा प्रयत्न करा.",
+    tocButton: "☰ अनुक्रमणिका",
+    tocDrawerTitle: "अनुक्रमणिका",
+    closeToc: "अनुक्रमणिका बंद करा",
+    tocEmpty: "या ग्रंथासाठी अनुक्रमणिका उपलब्ध नाही.",
   },
 };
 
@@ -239,6 +266,29 @@ function ReadingPage() {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
+  // Table of contents (RFC-018) — fetched once per (slug, contentLang), NOT
+  // per page turn. Cached in state so both the drawer and the inline page-1
+  // TOC render off the same data. Fetch failures fall through silently — an
+  // empty / missing TOC hides the affordance entirely so we never render a
+  // dead button.
+  const [toc, setToc] = useState<TocData | null>(null);
+  const [tocDrawerOpen, setTocDrawerOpen] = useState(false);
+  // `tocResolved` flips true as soon as the /api/read-toc fetch either
+  // succeeds OR fails, so the body-page fetch below can wait to decide
+  // whether page 1 is a TOC-only view or a real body page. Without this
+  // gate the reader briefly fetches chapter-1 body content on cold mount
+  // before the TOC arrives, which then has to be re-fetched a beat later
+  // as the pagination shift kicks in — the user sees a flash of wrong
+  // content.
+  const [tocResolved, setTocResolved] = useState(false);
+
+  // Derived: does this work publish a TOC page? When true, displayed
+  // page 1 is the TOC and the body pages shift by +1 in the numbering
+  // the reader sees. The backend never knows about this shift — the
+  // shift is applied when we call /api/read (subtract 1) and when we
+  // render chapter-click targets from the TOC (add 1).
+  const hasTocPage = !!(toc && toc.sections.length > 0);
+
   // When a ?page= URL param is present, override the persisted page once on
   // mount. We use a ref so this override fires exactly once per navigation to
   // this URL (not on every re-render). The clamping to [1, totalPages] is
@@ -282,9 +332,25 @@ function ReadingPage() {
 
   useEffect(() => {
     let cancelled = false;
+    // Wait until we know whether this work has a TOC — otherwise the very
+    // first fetch would go out at currentPage=1 (backend page 1 = chapter 1
+    // content) and then get thrown away as soon as `hasTocPage` flips true.
+    if (!tocResolved) return;
+    // Displayed page 1 is the TOC-only view when this work has a TOC.
+    // Don't fetch anything — the paragraph area renders the TOC and the
+    // reader never sees chapter-1 body until they page forward.
+    if (hasTocPage && currentPage === 1) {
+      setLoading(false);
+      setFetchError(null);
+      return;
+    }
     setLoading(true);
     setFetchError(null);
-    const qs = new URLSearchParams({ slug, page: String(currentPage) });
+    // Backend still uses body-page numbering. When a TOC page exists the
+    // displayed page is +1 vs. the backend page, so subtract before the
+    // request. The API + proxies are untouched by this shift.
+    const backendPage = hasTocPage ? currentPage - 1 : currentPage;
+    const qs = new URLSearchParams({ slug, page: String(backendPage) });
     if (contentLang) qs.set("lang", contentLang);
     fetch(`/api/read?${qs.toString()}`)
       .then(async (res) => {
@@ -303,18 +369,19 @@ function ReadingPage() {
         if (!cancelled) {
           setPageData(data);
           setLoading(false);
-          // Clamp currentPage to [1, totalPages]. Needed when the ?page= URL
-          // param was out of the valid range for this work. setCurrentPage is
-          // a no-op if already in range, so this is safe to call always.
-          setCurrentPage((p) => Math.max(1, Math.min(data.totalPages, p)));
-          // Record reading progress so the landing page can show a
-          // "Continue reading" shelf. Upsert on every successful page load
-          // (initial load + page turns) to keep lastReadAt fresh.
+          // Clamp currentPage to [1, displayedTotal]. Needed when the ?page=
+          // URL param was out of the valid range for this work. The reader's
+          // displayed total includes the TOC page, so add 1 when hasTocPage.
+          const displayedTotal = data.totalPages + (hasTocPage ? 1 : 0);
+          setCurrentPage((p) => Math.max(1, Math.min(displayedTotal, p)));
+          // Record reading progress in displayed-page numbering so the
+          // "Continue reading" shelf matches what the reader sees on the
+          // slider and Prev/Next.
           upsertProgress({
             slug,
             workTitle: data.workTitle,
             page: currentPage,
-            totalPages: data.totalPages,
+            totalPages: displayedTotal,
             lastReadAt: Date.now(),
           });
         }
@@ -328,7 +395,38 @@ function ReadingPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, contentLang, currentPage]);
+  }, [slug, contentLang, currentPage, hasTocPage, tocResolved]);
+
+  // TOC fetch — separate from the paginated body fetch above so page turns
+  // don't re-fetch the (often-large) TOC. Runs once per (slug, contentLang).
+  // Silent-fail: if the endpoint 404s or the response is malformed, `toc`
+  // stays null and every TOC surface (button, drawer, inline block) hides.
+  useEffect(() => {
+    let cancelled = false;
+    // Reset both toc + tocResolved when the slug/lang change so the body
+    // fetch waits for the new work's TOC before deciding page 1 shape.
+    setTocResolved(false);
+    setToc(null);
+    const qs = new URLSearchParams({ slug });
+    if (contentLang) qs.set("lang", contentLang);
+    fetch(`/api/read-toc?${qs.toString()}`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`toc ${res.status}`);
+        return res.json() as Promise<TocData>;
+      })
+      .then((data) => {
+        if (!cancelled) setToc(data);
+      })
+      .catch(() => {
+        if (!cancelled) setToc(null);
+      })
+      .finally(() => {
+        if (!cancelled) setTocResolved(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, contentLang]);
 
   async function ask() {
     const q = draft.trim();
@@ -424,7 +522,11 @@ function ReadingPage() {
     }
   }
 
-  const total = pageData?.totalPages ?? 1;
+  // Body pages the backend knows about. `displayedTotal` adds the TOC
+  // page when this work has one, giving the numbering the reader sees on
+  // the slider, "Page X of Y", and Prev/Next bounds.
+  const backendTotal = pageData?.totalPages ?? 1;
+  const displayedTotal = backendTotal + (hasTocPage ? 1 : 0);
 
   // Update the live scrub position without triggering a fetch. Called on
   // every change event (drag tick, arrow key press).
@@ -451,6 +553,7 @@ function ReadingPage() {
 
   return (
     <>
+    <TocStyles />
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-24 sm:pb-6">
       <header
         className="mb-5 pb-3"
@@ -492,7 +595,7 @@ function ReadingPage() {
             className="text-[20px] font-semibold leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            {pageData?.workTitle ?? slug.replace(/-/g, " ")}
+            {pageData?.workTitle ?? toc?.workTitle ?? slug.replace(/-/g, " ")}
           </div>
           <div
             className="text-[13.5px]"
@@ -505,9 +608,32 @@ function ReadingPage() {
                 !/[|I]\s+\S+\s+[|I]\s/.test(pageData.chapter)
                 ? `${pageData.author} · ${pageData.chapter}`
                 : pageData.author
-              : ""}
+              : toc?.author ?? ""}
           </div>
         </div>
+        {/* Table-of-contents affordance — only rendered when the fetched TOC
+            has real sections. Books without ## headings return an empty
+            `sections` from the API and hide this button entirely so the
+            reader never sees a dead control. */}
+        {toc && toc.sections.length > 0 ? (
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={() => setTocDrawerOpen(true)}
+              className={`rounded-[4px] px-3 py-1.5 text-[13px] ${
+                isMr ? "font-deva" : ""
+              }`}
+              style={{
+                background: "var(--bg-surface)",
+                color: "var(--accent-maroon)",
+                border: "1px solid var(--accent-maroon)",
+                cursor: "pointer",
+              }}
+            >
+              {lbl.tocButton}
+            </button>
+          </div>
+        ) : null}
       </header>
 
       {/* Progress slider — draggable/clickable range input styled as the
@@ -518,21 +644,21 @@ function ReadingPage() {
         <input
           type="range"
           min={1}
-          max={total}
+          max={displayedTotal}
           step={1}
           value={sliderValue}
           onChange={onSliderChange}
           onMouseUp={commitSliderFromEvent}
           onTouchEnd={commitSliderFromEvent}
           onKeyUp={commitSliderFromEvent}
-          aria-label={lbl.pageXofY(sliderValue, total)}
+          aria-label={lbl.pageXofY(sliderValue, displayedTotal)}
           aria-valuemin={1}
-          aria-valuemax={total}
+          aria-valuemax={displayedTotal}
           aria-valuenow={sliderValue}
           className="gd-page-slider"
           style={
             {
-              "--slider-pct": `${Math.min(100, Math.round(((sliderValue - 1) / Math.max(1, total - 1)) * 100))}%`,
+              "--slider-pct": `${Math.min(100, Math.round(((sliderValue - 1) / Math.max(1, displayedTotal - 1)) * 100))}%`,
             } as CSSProperties
           }
         />
@@ -540,13 +666,35 @@ function ReadingPage() {
           className={`mt-1.5 text-[12px] text-right ${isMr ? "font-deva" : ""}`}
           style={{ color: "var(--text-secondary)" }}
         >
-          {lbl.pageXofY(sliderValue, total)}
+          {lbl.pageXofY(sliderValue, displayedTotal)}
         </div>
       </div>
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
       <article className="mx-auto w-full max-w-reading flex-1">
-        {loading ? (
+        {hasTocPage && currentPage === 1 && toc ? (
+          /* Displayed page 1 = the TOC-only view (no body fetch happens). */
+          <section className="reading-toc-inline">
+            <h2
+              className={`mb-4 text-[16px] font-semibold ${
+                isMr ? "font-deva" : ""
+              }`}
+              style={{
+                color: "var(--accent-maroon)",
+                fontFamily: "var(--font-serif)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {lbl.tocDrawerTitle}
+            </h2>
+            <TocBody
+              toc={toc}
+              hasTocPage={hasTocPage}
+              isMr={isMr}
+              onChapterClick={(displayedPage) => setCurrentPage(displayedPage)}
+            />
+          </section>
+        ) : loading ? (
           <p className="text-[15px] italic" style={{ color: "var(--text-tertiary)" }}>
             Loading…
           </p>
@@ -554,7 +702,9 @@ function ReadingPage() {
           <p className="text-[15px]" style={{ color: "var(--accent-maroon)" }}>
             {fetchError}
           </p>
-        ) : (pageData?.paragraphs ?? []).map((para, idx) => (
+        ) : (
+          <>
+            {(pageData?.paragraphs ?? []).map((para, idx) => (
           <div
             key={para.n}
             className="mb-0"
@@ -689,6 +839,8 @@ function ReadingPage() {
             </div>
           </div>
         ))}
+          </>
+        )}
       </article>
 
 
@@ -714,8 +866,8 @@ function ReadingPage() {
         </button>
         <button
           type="button"
-          onClick={() => setCurrentPage((p) => Math.min(total, p + 1))}
-          disabled={currentPage >= total}
+          onClick={() => setCurrentPage((p) => Math.min(displayedTotal, p + 1))}
+          disabled={currentPage >= displayedTotal}
           className={`rounded-[4px] px-3 py-1.5 text-[13px] disabled:opacity-40 ${
             isMr ? "font-deva" : ""
           }`}
@@ -966,6 +1118,293 @@ function ReadingPage() {
         </button>
       </form>
     </aside>
+    {/* Table-of-contents drawer (RFC-018) — slides in from the LEFT so it
+        doesn't collide with the right-side chat drawer above. Only mounts
+        when the fetched TOC has real sections; while hidden, translated
+        off-screen and pointer-events disabled so it never intercepts clicks.
+        Click-outside-to-close: the semi-transparent backdrop is a sibling
+        element behind the drawer that dismisses on click. */}
+    {toc && toc.sections.length > 0 ? (
+      <>
+        {/* Backdrop — click anywhere off the drawer to close. Only rendered
+            (and only capturing pointer events) while the drawer is open, so
+            it never blocks the reading column when the TOC is idle. */}
+        {tocDrawerOpen ? (
+          <div
+            onClick={() => setTocDrawerOpen(false)}
+            className="fixed inset-0 z-20"
+            style={{
+              background: "rgba(30, 20, 10, 0.25)",
+              backdropFilter: "blur(2px)",
+            }}
+            aria-hidden
+          />
+        ) : null}
+        <aside
+          role="dialog"
+          aria-modal="false"
+          aria-label={lbl.tocDrawerTitle}
+          className="fixed left-0 top-0 z-30 flex h-screen w-[380px] flex-col transition-transform"
+          style={{
+            transform: tocDrawerOpen ? "translateX(0)" : "translateX(-100%)",
+            background: "var(--bg-surface)",
+            borderRight: "1px solid var(--border-soft)",
+            boxShadow: "6px 0 24px rgba(60, 30, 10, 0.12)",
+            visibility: tocDrawerOpen ? "visible" : "hidden",
+            pointerEvents: tocDrawerOpen ? "auto" : "none",
+          }}
+        >
+          {/* Drawer header — title + close (×). */}
+          <div
+            className="flex items-center justify-between px-4 py-3"
+            style={{ borderBottom: "1px solid var(--border-soft)" }}
+          >
+            <div>
+              <h2
+                className={`text-[15px] font-semibold leading-tight ${
+                  isMr ? "font-deva" : ""
+                }`}
+                style={{
+                  color: "#6B1F1F",
+                  fontFamily: "var(--font-serif)",
+                }}
+              >
+                {lbl.tocDrawerTitle}
+              </h2>
+              <p
+                className="text-[12px] leading-tight"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                {toc.workTitle}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setTocDrawerOpen(false)}
+              aria-label={lbl.closeToc}
+              className="text-[22px] leading-none"
+              style={{
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                color: "var(--text-secondary)",
+                padding: "0 4px",
+              }}
+            >
+              ×
+            </button>
+          </div>
+          {/* Drawer body — scrollable list of sections + chapters. Clicking
+              any chapter jumps the reader to that page and closes the drawer
+              so we don't stay in the way of the destination page. */}
+          <div className="flex-1 overflow-y-auto px-4 py-4">
+            <TocBody
+              toc={toc}
+              hasTocPage={hasTocPage}
+              isMr={isMr}
+              onChapterClick={(displayedPage) => {
+                setCurrentPage(displayedPage);
+                setTocDrawerOpen(false);
+              }}
+            />
+          </div>
+        </aside>
+      </>
+    ) : null}
     </>
+  );
+}
+
+// One-time inline stylesheet for the TOC — colocated here so the file
+// is fully self-contained (per constraint: only page.tsx may change).
+// Media query drops the type size + tightens spacing under 640px so a
+// 47-chapter index is comfortable to skim on a phone.
+function TocStyles() {
+  return (
+    <style>{`
+      .gd-toc-root { --gd-toc-fs: 15px; }
+      .gd-toc-root summary { list-style: none; }
+      .gd-toc-root summary::-webkit-details-marker { display: none; }
+      .gd-toc-section { padding: 0; margin: 0; }
+      .gd-toc-section + .gd-toc-section { margin-top: 20px; }
+      .gd-toc-summary {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5em;
+        padding: 6px 0;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--accent-maroon);
+      }
+      .gd-toc-summary--underline {
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .gd-toc-summary--smallcaps {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .gd-toc-chevron {
+        font-size: 10px;
+        opacity: 0.7;
+        transition: transform 120ms ease;
+        display: inline-block;
+      }
+      .gd-toc-list {
+        list-style: none;
+        margin: 6px 0 0 0;
+        padding: 0;
+      }
+      .gd-toc-li { margin: 0; padding: 0; }
+      .gd-toc-row {
+        display: flex;
+        align-items: baseline;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 4px 0;
+        cursor: pointer;
+        font-family: var(--font-serif);
+        font-size: 15px;
+        text-align: left;
+        color: inherit;
+        overflow: hidden;
+      }
+      .gd-toc-title {
+        color: var(--accent-maroon);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+      .gd-toc-leader {
+        flex: 1;
+        border-bottom: 1px dotted var(--border-soft);
+        margin: 0 0.5em 0.25em;
+        min-width: 1em;
+      }
+      .gd-toc-page {
+        color: var(--text-tertiary);
+        flex-shrink: 0;
+        font-variant-numeric: tabular-nums;
+      }
+      .gd-toc-ornament {
+        text-align: center;
+        color: var(--accent-maroon);
+        letter-spacing: 0.4em;
+        margin: 10px 0 12px;
+        font-size: 13px;
+        opacity: 0.85;
+      }
+      @media (max-width: 639px) {
+        .gd-toc-summary { font-size: 14px; padding: 4px 0; }
+        .gd-toc-row { font-size: 14px; padding: 2px 0; }
+        .gd-toc-list { margin-top: 4px; }
+        .gd-toc-section + .gd-toc-section { margin-top: 14px; }
+        .gd-toc-ornament { margin: 6px 0 8px; }
+      }
+    `}</style>
+  );
+}
+
+// TOC render body — shared between the inline page-1 view and the
+// left-side drawer. Sections are `<details>` for native a11y + free
+// keyboard handling; on mobile they seed closed so a 47-chapter index
+// doesn't dump one giant scroll. Ornamented devotional style: dotted
+// leaders between chapter title and page number, `❖` glyph dividing
+// sections, small-caps section headings under a soft underline.
+function TocBody({
+  toc,
+  onChapterClick,
+  hasTocPage,
+  isMr,
+}: {
+  toc: TocData;
+  onChapterClick: (displayedPage: number) => void;
+  hasTocPage: boolean;
+  isMr: boolean;
+}) {
+  // Per-section open/closed state, seeded once from the viewport width.
+  // Uncontrolled after mount — the user's toggle wins because onToggle
+  // writes the browser-driven `open` back into state.
+  const [openMap, setOpenMap] = useState<Record<number, boolean>>(() => {
+    if (typeof window === "undefined") return {};
+    let isMobile = false;
+    try {
+      isMobile = window.matchMedia("(max-width: 639px)").matches;
+    } catch {
+      // matchMedia unavailable — fall back to open (desktop assumption).
+    }
+    const seed: Record<number, boolean> = {};
+    toc.sections.forEach((_, i) => {
+      seed[i] = !isMobile;
+    });
+    return seed;
+  });
+
+  return (
+    <div className="gd-toc-root">
+      {toc.sections.map((section, si) => {
+        const open = openMap[si] ?? false;
+        const summaryClasses = [
+          "gd-toc-summary",
+          "gd-toc-summary--underline",
+          "gd-toc-summary--smallcaps",
+          isMr ? "font-deva" : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
+        return (
+          <div key={si} className="gd-toc-section">
+            {si > 0 ? (
+              <div className="gd-toc-ornament" aria-hidden>
+                ❖
+              </div>
+            ) : null}
+            <details
+              open={open}
+              onToggle={(e) => {
+                const t = e.currentTarget as HTMLDetailsElement;
+                setOpenMap((m) => ({ ...m, [si]: t.open }));
+              }}
+            >
+              <summary className={summaryClasses}>
+                <span aria-hidden className="gd-toc-chevron">
+                  {open ? "▾" : "▸"}
+                </span>
+                <span>{section.title ?? "Chapters"}</span>
+              </summary>
+              <ul className="gd-toc-list">
+                {section.chapters.map((ch, ci) => {
+                  const displayedPage = ch.page + (hasTocPage ? 1 : 0);
+                  return (
+                    <li key={ci} className="gd-toc-li">
+                      <button
+                        type="button"
+                        onClick={() => onChapterClick(displayedPage)}
+                        className="gd-toc-row"
+                      >
+                        <span
+                          className={`gd-toc-title ${
+                            isMr ? "font-deva" : ""
+                          }`}
+                        >
+                          {ch.title}
+                        </span>
+                        <span className="gd-toc-leader" aria-hidden />
+                        <span className="gd-toc-page">
+                          {displayedPage}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+          </div>
+        );
+      })}
+    </div>
   );
 }
