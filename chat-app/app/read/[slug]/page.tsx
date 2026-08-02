@@ -287,7 +287,18 @@ function ReadingPage() {
   // the reader sees. The backend never knows about this shift — the
   // shift is applied when we call /api/read (subtract 1) and when we
   // render chapter-click targets from the TOC (add 1).
-  const hasTocPage = !!(toc && toc.sections.length > 0);
+  //
+  // Feature-gated: the TOC only renders for works whose canonical text.md
+  // has been curated with meticulous chapter markers. Every other work's
+  // extraction currently loses Shri Gurudev's chapter headings, so the
+  // TOC would misrepresent the book. Expand this allow-list as each work
+  // is reviewed.
+  const TOC_ALLOWED_SLUGS = new Set<string>(["kakanchi-pravachane"]);
+  const hasTocPage = !!(
+    toc &&
+    toc.sections.length > 0 &&
+    TOC_ALLOWED_SLUGS.has(slug)
+  );
 
   // When a ?page= URL param is present, override the persisted page once on
   // mount. We use a ref so this override fires exactly once per navigation to
@@ -612,10 +623,10 @@ function ReadingPage() {
           </div>
         </div>
         {/* Table-of-contents affordance — only rendered when the fetched TOC
-            has real sections. Books without ## headings return an empty
-            `sections` from the API and hide this button entirely so the
-            reader never sees a dead control. */}
-        {toc && toc.sections.length > 0 ? (
+            has real sections AND the work is in the curated allow-list
+            (see TOC_ALLOWED_SLUGS). Books whose extraction lost their chapter
+            markers are excluded until they are reviewed. */}
+        {hasTocPage ? (
           <div className="mt-3">
             <button
               type="button"
@@ -1120,11 +1131,11 @@ function ReadingPage() {
     </aside>
     {/* Table-of-contents drawer (RFC-018) — slides in from the LEFT so it
         doesn't collide with the right-side chat drawer above. Only mounts
-        when the fetched TOC has real sections; while hidden, translated
-        off-screen and pointer-events disabled so it never intercepts clicks.
-        Click-outside-to-close: the semi-transparent backdrop is a sibling
-        element behind the drawer that dismisses on click. */}
-    {toc && toc.sections.length > 0 ? (
+        when the fetched TOC has real sections AND the work is in the
+        curated allow-list (see TOC_ALLOWED_SLUGS). Click-outside-to-close:
+        the semi-transparent backdrop is a sibling element behind the drawer
+        that dismisses on click. */}
+    {hasTocPage ? (
       <>
         {/* Backdrop — click anywhere off the drawer to close. Only rendered
             (and only capturing pointer events) while the drawer is open, so
@@ -1234,7 +1245,6 @@ function TocStyles() {
         padding: 6px 0;
         font-size: 15px;
         font-weight: 600;
-        cursor: pointer;
         color: var(--accent-maroon);
       }
       .gd-toc-summary--underline {
@@ -1243,12 +1253,6 @@ function TocStyles() {
       .gd-toc-summary--smallcaps {
         text-transform: uppercase;
         letter-spacing: 0.08em;
-      }
-      .gd-toc-chevron {
-        font-size: 10px;
-        opacity: 0.7;
-        transition: transform 120ms ease;
-        display: inline-block;
       }
       .gd-toc-list {
         list-style: none;
@@ -1325,29 +1329,10 @@ function TocBody({
   hasTocPage: boolean;
   isMr: boolean;
 }) {
-  // Per-section open/closed state, seeded once from the viewport width.
-  // Uncontrolled after mount — the user's toggle wins because onToggle
-  // writes the browser-driven `open` back into state.
-  const [openMap, setOpenMap] = useState<Record<number, boolean>>(() => {
-    if (typeof window === "undefined") return {};
-    let isMobile = false;
-    try {
-      isMobile = window.matchMedia("(max-width: 639px)").matches;
-    } catch {
-      // matchMedia unavailable — fall back to open (desktop assumption).
-    }
-    const seed: Record<number, boolean> = {};
-    toc.sections.forEach((_, i) => {
-      seed[i] = !isMobile;
-    });
-    return seed;
-  });
-
   return (
     <div className="gd-toc-root">
       {toc.sections.map((section, si) => {
-        const open = openMap[si] ?? false;
-        const summaryClasses = [
+        const headingClasses = [
           "gd-toc-summary",
           "gd-toc-summary--underline",
           "gd-toc-summary--smallcaps",
@@ -1362,46 +1347,33 @@ function TocBody({
                 ❖
               </div>
             ) : null}
-            <details
-              open={open}
-              onToggle={(e) => {
-                const t = e.currentTarget as HTMLDetailsElement;
-                setOpenMap((m) => ({ ...m, [si]: t.open }));
-              }}
-            >
-              <summary className={summaryClasses}>
-                <span aria-hidden className="gd-toc-chevron">
-                  {open ? "▾" : "▸"}
-                </span>
-                <span>{section.title ?? "Chapters"}</span>
-              </summary>
-              <ul className="gd-toc-list">
-                {section.chapters.map((ch, ci) => {
-                  const displayedPage = ch.page + (hasTocPage ? 1 : 0);
-                  return (
-                    <li key={ci} className="gd-toc-li">
-                      <button
-                        type="button"
-                        onClick={() => onChapterClick(displayedPage)}
-                        className="gd-toc-row"
+            <div className={headingClasses}>
+              <span>{section.title ?? "Chapters"}</span>
+            </div>
+            <ul className="gd-toc-list">
+              {section.chapters.map((ch, ci) => {
+                const displayedPage = ch.page + (hasTocPage ? 1 : 0);
+                return (
+                  <li key={ci} className="gd-toc-li">
+                    <button
+                      type="button"
+                      onClick={() => onChapterClick(displayedPage)}
+                      className="gd-toc-row"
+                    >
+                      <span
+                        className={`gd-toc-title ${
+                          isMr ? "font-deva" : ""
+                        }`}
                       >
-                        <span
-                          className={`gd-toc-title ${
-                            isMr ? "font-deva" : ""
-                          }`}
-                        >
-                          {ch.title}
-                        </span>
-                        <span className="gd-toc-leader" aria-hidden />
-                        <span className="gd-toc-page">
-                          {displayedPage}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </details>
+                        {ch.title}
+                      </span>
+                      <span className="gd-toc-leader" aria-hidden />
+                      <span className="gd-toc-page">{displayedPage}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         );
       })}
