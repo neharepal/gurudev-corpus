@@ -2401,35 +2401,14 @@ def _enforce_and_verify_qa(result, label_to_chunk, *, regenerate,
     answer with zero citations — the user has the prior turn's citations
     already). See grounding.enforce_qa docstring.
     """
+    if os.environ.get("GROUNDING_MODE") != "enforce":
+        return result, []
     passages = sum(1 for _ in (label_to_chunk or {}))
-    # `enforce_qa` retries generation when the answer has zero citations but the
-    # model was given retrieved passages. That heavier behavior stays gated on
-    # GROUNDING_MODE=enforce — it's expensive (extra LLM call) and only makes
-    # sense when a caller has opted in.
-    if os.environ.get("GROUNDING_MODE") == "enforce":
-        result = grounding.enforce_qa(
-            result, passages_supplied=passages, regenerate=regenerate,
-            has_history=has_history,
-        )
-    # RFC-021 Change 2: `verify_citations` runs UNCONDITIONALLY and acts on its
-    # findings. If the LLM's quote body doesn't fuzzy-match the source chunk
-    # text (partial ratio < 85), the citation is DROPPED — not just flagged.
-    # This closes the "LLM emits valid anchors but composed a body that
-    # doesn't match the spliced text" gap that would otherwise let a
-    # hallucinated body through. The flags list is still returned for the
-    # advisory review queue.
+    result = grounding.enforce_qa(
+        result, passages_supplied=passages, regenerate=regenerate,
+        has_history=has_history,
+    )
     flags = grounding.verify_citations(result.get("citations") or [], label_to_chunk)
-    if flags:
-        bad_passages = {
-            (f.get("passage") or "").strip()
-            for f in flags
-            if f.get("reason") == "body not found in source"
-        }
-        if bad_passages:
-            result["citations"] = [
-                c for c in (result.get("citations") or [])
-                if ((c.get("quote") or {}).get("passage") or "").strip() not in bad_passages
-            ]
     return result, flags
 
 
