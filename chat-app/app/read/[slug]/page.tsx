@@ -938,13 +938,16 @@ function ReadingPage() {
       </button>
     ) : null}
     {/* Right-side answer drawer — slides in from the right so it doesn't
-        disturb the reading column. Fixed position, full viewport height,
-        ~400px wide. Closeable. */}
+        disturb the reading column. Fixed position; height uses dynamic
+        viewport units (100dvh) so the drawer shrinks when the mobile
+        keyboard opens instead of leaving the composer trapped below the
+        keyboard fold. Full-width on phones (composer would be cropped at
+        400px on a 375px viewport); 400px on ≥640px. */}
     <aside
       role="dialog"
       aria-modal="false"
       aria-label="Chat about this work"
-      className="fixed right-0 top-0 z-30 flex h-screen w-[400px] flex-col transition-transform"
+      className="fixed right-0 top-0 z-30 flex h-[100dvh] w-full flex-col transition-transform sm:w-[400px]"
       style={{
         transform: chatOpen ? "translateX(0)" : "translateX(100%)",
         background: "var(--bg-surface)",
@@ -992,8 +995,12 @@ function ReadingPage() {
         </button>
       </div>
 
-      {/* Conversation — scrollable. Empty state when nothing asked yet. */}
-      <div className="flex-1 overflow-y-auto px-4 py-4">
+      {/* Conversation — scrollable. Empty state when nothing asked yet.
+          `overscroll-contain` blocks scroll-chaining to the body (which,
+          combined with the drawer's `position: fixed`, would otherwise
+          leave the underlying reader stuck after keyboard dismissal on
+          iOS/Android). */}
+      <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
         {messages.length === 0 ? (
           <p
             className={`text-[14px] italic ${isMr ? "font-deva" : ""}`}
@@ -1166,7 +1173,7 @@ function ReadingPage() {
           role="dialog"
           aria-modal="false"
           aria-label={lbl.tocDrawerTitle}
-          className="fixed left-0 top-0 z-30 flex h-screen w-[380px] flex-col transition-transform"
+          className="fixed left-0 top-0 z-30 flex h-[100dvh] w-full flex-col transition-transform sm:w-[380px]"
           style={{
             transform: tocDrawerOpen ? "translateX(0)" : "translateX(-100%)",
             background: "var(--bg-surface)",
@@ -1218,8 +1225,10 @@ function ReadingPage() {
           </div>
           {/* Drawer body — scrollable list of sections + chapters. Clicking
               any chapter jumps the reader to that page and closes the drawer
-              so we don't stay in the way of the destination page. */}
-          <div className="flex-1 overflow-y-auto px-4 py-4">
+              so we don't stay in the way of the destination page.
+              `overscroll-contain` matches the chat drawer so the underlying
+              reader can't get scroll-locked when this drawer overlays it. */}
+          <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
             <TocBody
               toc={toc}
               hasTocPage={hasTocPage}
