@@ -164,6 +164,66 @@ PARA_SPLIT_RE = re.compile(r"\n\s*\n")
 DEVANAGARI_RE = re.compile(r"[ऀ-ॿ]")
 SENTENCE_END_RE = re.compile(r"(?<=[.!?।])\s+")
 
+# ADR-019 — heading tracking. Match markdown `## title` and `### title` at the
+# start of a line; deeper levels are treated as body text (rare in canonical
+# corpus, and would just add noise as "sub-chapter" labels).
+HEADING_RE = re.compile(r"^(#{2,3})[ \t]+(.+?)\s*$", re.MULTILINE)
+
+
+def build_heading_index(text: str) -> list[tuple[int, int, str]]:
+    """Scan `text` once and return every `##`/`###` heading's `(char_offset,
+    level, title)`. Char offset is where the heading line starts, which lines
+    up with the `char_start` fields produced by `chunk_text`. Levels 4+ are
+    intentionally ignored — the location label caps at section + chapter."""
+    out: list[tuple[int, int, str]] = []
+    for m in HEADING_RE.finditer(text):
+        level = len(m.group(1))
+        title = m.group(2).strip()
+        out.append((m.start(), level, title))
+    return out
+
+
+def headings_for_chunk(
+    index: list[tuple[int, int, str]], char_start: int, char_end: int
+) -> tuple[str, str]:
+    """Return `(section, chapter)` labels for a chunk spanning
+    `[char_start, char_end)`. Considers every heading whose offset is
+    strictly less than `char_end` — this catches enclosing headings before
+    `char_start` AND headings that fall inside the chunk itself (which are
+    stripped from the body but still define its context). Chapter resets
+    when a new `##` section is entered."""
+    section = ""
+    chapter = ""
+    for h_off, level, title in index:
+        if h_off >= char_end:
+            break
+        if level == 2:
+            section = title
+            chapter = ""  # entering a new section — old chapter is out of scope
+        elif level == 3:
+            chapter = title
+    return section, chapter
+
+
+# Match a leading `##`/`###` heading line — used to strip those lines from the
+# start of chunk bodies once the heading has been captured as typed metadata
+# (ADR-019 §Cleanup). We only strip the *first* run of contiguous heading
+# lines so a heading buried mid-paragraph (rare) is left alone.
+_LEADING_HEADING_LINE_RE = re.compile(r"^\s*#{2,3}[ \t]+[^\n]*\n?")
+
+
+def _strip_leading_headings(text: str) -> str:
+    """Remove one or more leading `##`/`###` heading lines from `text`.
+    Called on parent + child `text` / `cite_text` after `section` and
+    `chapter` metadata have been stamped, so the citation body reads clean
+    (no raw markdown syntax bleeding into the quote)."""
+    while True:
+        m = _LEADING_HEADING_LINE_RE.match(text)
+        if not m:
+            break
+        text = text[m.end():]
+    return text.lstrip("\n")
+
 
 def is_mostly_devanagari(text: str, threshold: float = 0.3) -> bool:
     if not text:
@@ -291,8 +351,20 @@ def emit_chunks_for_source(
     except ValueError:
         spath = str(source_path)
 
+    # ADR-019 — pre-index every `##`/`###` heading in the body so each chunk
+    # can be stamped with the section + chapter active at its char_start.
+    # Works without heading markers get empty strings — behavior unchanged.
+    heading_index = build_heading_index(body_text)
+
     for pi, sec in enumerate(sections):
         pid = f"{work_id}--{lang}--{pi:04d}"
+        section, chapter = headings_for_chunk(
+            heading_index, sec["char_start"], sec["char_end"]
+        )
+        # Strip the leading heading line(s) so the citation body doesn't leak
+        # raw `## भाग १` / `### <chapter>` markdown into the quote. The
+        # section/chapter metadata below is the authoritative label.
+        parent_text = _strip_leading_headings(sec["text"])
         parent = dict(base_meta)
         parent.update({
             "id": pid,
@@ -301,8 +373,10 @@ def emit_chunks_for_source(
             "chunk_total": total,
             "char_start": sec["char_start"],
             "char_end": sec["char_end"],
-            "text": sec["text"],
-            "token_estimate": estimate_tokens(sec["text"]),
+            "text": parent_text,
+            "section": section,
+            "chapter": chapter,
+            "token_estimate": estimate_tokens(parent_text),
             "source_path": spath,
         })
         yield parent
@@ -314,25 +388,34 @@ def emit_chunks_for_source(
             units = [p.strip() for p in PARA_SPLIT_RE.split(sec["text"]) if p.strip()]
             for ci, para in enumerate(units):
                 verse, meaning = arthasahit_parse.split_verse_meaning(para)
+                child_text = _strip_leading_headings(para)
                 child = dict(base_meta)
                 child.update({
                     "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
                     "chunk_index": pi, "chunk_total": total, "source_path": spath,
-                    "text": para, "embed_text": para,
-                    "token_estimate": estimate_tokens(para),
+                    "text": child_text, "embed_text": child_text,
+                    "section": section, "chapter": chapter,
+                    "token_estimate": estimate_tokens(child_text),
                 })
                 if meaning is not None and verse.strip():
-                    child["cite_text"] = verse          # cite the verse only
+                    child["cite_text"] = _strip_leading_headings(verse)
                 # else: no cite_text key ⇒ retrieval-only (never cited)
                 yield child
         else:
             for ci, kid in enumerate(childsplit.split_into_children(sec["text"], window=1)):
+                # Strip leaked headings from BOTH cite/text and embed_text —
+                # embed_text was including them via the neighbor-window join,
+                # which added noise to retrieval AND made spliced anchors miss.
+                clean_text = _strip_leading_headings(kid["text"])
+                clean_embed = _strip_leading_headings(kid["embed_text"])
                 child = dict(base_meta)
                 child.update({
                     "id": f"{pid}--{ci:03d}", "kind_level": "child", "parent_id": pid,
                     "chunk_index": pi, "chunk_total": total, "source_path": spath,
-                    "text": kid["text"], "embed_text": kid["embed_text"],
-                    "cite_text": kid["text"], "token_estimate": estimate_tokens(kid["text"]),
+                    "text": clean_text, "embed_text": clean_embed,
+                    "cite_text": clean_text,
+                    "section": section, "chapter": chapter,
+                    "token_estimate": estimate_tokens(clean_text),
                 })
                 yield child
 

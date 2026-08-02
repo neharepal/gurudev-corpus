@@ -2364,9 +2364,13 @@ def _enrich_citations_readpage(
     citations: List[Dict[str, Any]],
     label_to_chunk: Dict[str, Any],
 ) -> None:
-    """Apply _enrich_citation_readpage to every citation in the list."""
+    """Enrich every citation in the list with server-authored metadata:
+    readPage (from source_path + verbatim body anchor) and location
+    (from the chunk's section/chapter — ADR-019). Both are additive and
+    silently no-op when the underlying data isn't available."""
     for c in citations:
         _enrich_citation_readpage(c, label_to_chunk)
+        _enrich_citation_location(c, label_to_chunk)
 
 
 def _citation_extraction_regen(mode, user_message, label_to_chunk, first_result, lang):
@@ -2605,7 +2609,8 @@ def ask(req: AskRequest, request: Request):
             now = time.time()
             if now - last_event_ts > 15:
                 yield sse_heartbeat()
-            # Enrich Q&A citations with readPage at two points:
+            # Enrich Q&A citations with readPage AND location (ADR-019) at
+            # two points:
             # 1. On each array_item event so the frontend can use it immediately.
             # 2. On the done event's reconciled citations list for consistency.
             if mode == "qa":
@@ -2613,6 +2618,7 @@ def ask(req: AskRequest, request: Request):
                     value = payload.get("value")
                     if isinstance(value, dict):
                         _enrich_citation_readpage(value, label_to_chunk)
+                        _enrich_citation_location(value, label_to_chunk)
                 elif kind == "done":
                     response_dict = payload.get("response") or {}
                     _enrich_citations_readpage(
