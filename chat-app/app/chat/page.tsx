@@ -10,6 +10,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import AnswerToolbar from "../../components/AnswerToolbar";
+import FontScaleControl from "../../components/FontScaleControl";
 import MeditativeLoader from "../../components/MeditativeLoader";
 import QuoteBlock from "../../components/QuoteBlock";
 import { authorDisplayName } from "../../lib/authors";
@@ -689,6 +690,11 @@ function ChatPage() {
   }
 
   return (
+    <>
+    {/* App-wide reader font-scale control (A− / A+) pinned to the viewport's
+        top-right so it's reachable from every chat surface, mirroring the
+        inline version in the reader header. Persists via localStorage. */}
+    <FontScaleControl variant="floating" />
     <main className="mx-auto flex min-h-screen max-w-[760px] flex-col px-5 pt-5 pb-6">
       {/* Mini header — just the back link now. Mode is no longer switchable
           from this surface (user 2026-06-15); start a fresh question to
@@ -717,7 +723,7 @@ function ChatPage() {
             {lbl.you}
           </div>
           <p
-            className={`text-[16.5px] ${
+            className={`gd-scale-body ${
               /[ऀ-ॿ]/.test(questionFromUrl ?? answer?.question ?? "")
                 ? "font-deva"
                 : ""
@@ -806,7 +812,7 @@ function ChatPage() {
                 {lbl.you}
               </div>
               <p
-                className={`text-[16.5px] ${
+                className={`gd-scale-body ${
                   /[ऀ-ॿ]/.test(turn.question) ? "font-deva" : ""
                 }`}
                 style={{ color: "var(--text-primary)" }}
@@ -893,6 +899,7 @@ function ChatPage() {
         </button>
       </form>
     </main>
+    </>
   );
 }
 
@@ -937,7 +944,7 @@ function QAAnswerBody({
         {metaParagraphs.map((para, i) => (
           <p
             key={i}
-            className={`mb-4 text-[16.5px] ${isMr ? "font-deva" : ""}`}
+            className={`mb-4 gd-scale-body ${isMr ? "font-deva" : ""}`}
             style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
           >
             {renderInlineMd(para)}
@@ -989,7 +996,7 @@ function QAAnswerBody({
   return (
     <div>
       {doctrinalParagraphs.map((para, i) => (
-        <p key={i} className={`mb-3 text-[16.5px] ${isMr ? "font-deva" : ""}`}>
+        <p key={i} className={`mb-3 gd-scale-body ${isMr ? "font-deva" : ""}`}>
           {para}
         </p>
       ))}
@@ -1022,7 +1029,7 @@ function QAAnswerBody({
       ))}
       {answer.synthesis ? (
         <div
-          className={`mt-4 text-[16.5px] synthesis-body ${isMr ? "font-deva" : ""}`}
+          className={`mt-4 gd-scale-body synthesis-body ${isMr ? "font-deva" : ""}`}
           style={{ color: "var(--text-primary)" }}
         >
           {renderBlockMd(answer.synthesis)}
@@ -1071,7 +1078,7 @@ function PravachanAnswerBody({
 
       {answer.thesis ? (
         <PravachanSection heading={lbl.sectionThesis} isDeva={isMr}>
-          <p className={`text-[16.5px] ${isMr ? "font-deva" : ""}`}>
+          <p className={`gd-scale-body ${isMr ? "font-deva" : ""}`}>
             {answer.thesis}
           </p>
         </PravachanSection>
@@ -1091,7 +1098,7 @@ function PravachanAnswerBody({
           {(answer.examples ?? []).filter((ex) => ex?.title).map((ex, i) => (
             <li key={i} className="mb-6">
               <div
-                className={`mb-1 text-[16.5px] font-semibold ${
+                className={`mb-1 gd-scale-body font-semibold ${
                   /[ऀ-ॿ]/.test(ex.title) ? "font-deva" : ""
                 }`}
                 style={{ color: "var(--text-primary)" }}

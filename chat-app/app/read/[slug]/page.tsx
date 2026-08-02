@@ -17,6 +17,7 @@ import {
   type MouseEvent,
   type TouchEvent,
 } from "react";
+import FontScaleControl from "../../../components/FontScaleControl";
 import QuoteBlock from "../../../components/QuoteBlock";
 import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
@@ -575,28 +576,33 @@ function ReadingPage() {
             URL is present via ?from= (e.g. a Q&A session or another book), a
             second link back to that exact origin is shown beside it. The two
             links must have distinct destinations — "start" is the landing, the
-            origin link is the answer/pravachan the reader came from. */}
-        <div className="mb-3 flex items-center gap-4">
-          <Link
-            href={`/?mode=reading&lang=${uiLang}`}
-            className={`text-[14px] ${isMr ? "font-deva" : ""}`}
-            style={{ color: "var(--text-secondary)" }}
-          >
-            {lbl.backToStart}
-          </Link>
-          {returnTo ? (
+            origin link is the answer/pravachan the reader came from. Font
+            controls (A− / A+) sit on the right of the same row and share the
+            app-wide scale via <FontScaleControl>. */}
+        <div className="mb-3 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
             <Link
-              href={returnTo}
+              href={`/?mode=reading&lang=${uiLang}`}
               className={`text-[14px] ${isMr ? "font-deva" : ""}`}
-              style={{ color: "var(--accent-maroon)" }}
+              style={{ color: "var(--text-secondary)" }}
             >
-              {returnMode === "qa"
-                ? lbl.backToAnswer
-                : returnMode === "pravachan"
-                  ? lbl.backToPravachan
-                  : lbl.backToPrevious}
+              {lbl.backToStart}
             </Link>
-          ) : null}
+            {returnTo ? (
+              <Link
+                href={returnTo}
+                className={`text-[14px] ${isMr ? "font-deva" : ""}`}
+                style={{ color: "var(--accent-maroon)" }}
+              >
+                {returnMode === "qa"
+                  ? lbl.backToAnswer
+                  : returnMode === "pravachan"
+                    ? lbl.backToPravachan
+                    : lbl.backToPrevious}
+              </Link>
+            ) : null}
+          </div>
+          <FontScaleControl variant="inline" />
         </div>
         {/* Work title block. Canonical work title + author stay in their
             published language; chapter label is descriptive metadata so we
@@ -613,12 +619,14 @@ function ReadingPage() {
             style={{ color: "var(--text-secondary)" }}
           >
             {pageData
-              ? pageData.chapter &&
-                pageData.chapter.length <= 60 &&
-                !/(19|20)\d{2}/.test(pageData.chapter) &&
-                !/[|I]\s+\S+\s+[|I]\s/.test(pageData.chapter)
-                ? `${pageData.author} · ${pageData.chapter}`
-                : pageData.author
+              ? hasTocPage && currentPage === 1
+                ? `${pageData.author} · ${lbl.tocDrawerTitle}`
+                : pageData.chapter &&
+                    pageData.chapter.length <= 60 &&
+                    !/(19|20)\d{2}/.test(pageData.chapter) &&
+                    !/[|I]\s+\S+\s+[|I]\s/.test(pageData.chapter)
+                  ? `${pageData.author} · ${pageData.chapter}`
+                  : pageData.author
               : toc?.author ?? ""}
           </div>
         </div>
@@ -813,14 +821,17 @@ function ReadingPage() {
                     </div>
                   </div>
                 ) : (
-                  /* Normal paragraph display */
+                  /* Normal paragraph display. Font size scales via the
+                      --app-font-scale CSS var set on <html> by FontScaleControl,
+                      shared with chat/pravachan body text. */
                   <p
-                    className={`gd-read-p text-[17.5px] ${
+                    className={`gd-read-p ${
                       idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
                     }`}
                     style={{
                       color: "var(--text-primary)",
                       lineHeight: 1.7,
+                      fontSize: "calc(17.5px * var(--app-font-scale, 1))",
                     }}
                   >
                     {para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "")}

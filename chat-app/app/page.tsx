@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   Suspense,
   useEffect,
+  useRef,
   useState,
   type FormEvent,
   type KeyboardEvent,
@@ -61,6 +62,15 @@ const PLACEHOLDERS: Record<Lang, Record<ModeId, string>> = {
 };
 
 const TRY_PREFIX = { en: "Try:", mr: "उदा.:" } as const;
+
+// Reading-mode search: shown in place of the results when the user has typed
+// a query that filters to zero readable works. Explicit "not in the corpus"
+// signal so the reader knows the book isn't available, rather than a silent
+// empty list that looks like a loading state.
+const READING_NO_MATCH: Record<Lang, string> = {
+  en: "No books in the corpus match — try a shorter or different word.",
+  mr: "संग्रहात जुळणारा ग्रंथ नाही — दुसरा शब्द वापरून पहा.",
+};
 
 // Mode-aware Send labels — each mode performs a different action, so
 // the button text changes to match (Round-2 critic: make the tabs work).
@@ -128,6 +138,26 @@ function LandingPage() {
   // no readable works" (fallback to nothing shown).
   const [readableWorks, setReadableWorks] = useState<ReadableWork[] | null>(null);
 
+  // Reading-mode dropdown: `true` while the composer has focus (or briefly
+  // after blur so a click on a dropdown row still fires). The dropdown lists
+  // the filtered readable-works and replaces the earlier chip-grid approach.
+  const [readingDropdownOpen, setReadingDropdownOpen] = useState<boolean>(false);
+  const readingBlurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openReadingDropdown = () => {
+    if (readingBlurTimer.current) {
+      clearTimeout(readingBlurTimer.current);
+      readingBlurTimer.current = null;
+    }
+    setReadingDropdownOpen(true);
+  };
+  const scheduleCloseReadingDropdown = () => {
+    // Delay close so click on a dropdown option lands before blur removes it.
+    if (readingBlurTimer.current) clearTimeout(readingBlurTimer.current);
+    readingBlurTimer.current = setTimeout(() => {
+      setReadingDropdownOpen(false);
+    }, 150);
+  };
+
   // Fetch the readable works list once on mount so the Reading chips
   // advertise only works with real content. We do not re-fetch on mode
   // change because the list is corpus-wide and doesn't change during a session.
@@ -160,42 +190,57 @@ function LandingPage() {
   }, [mode, lang]);
 
   // Build the suggestion chips for the current mode and language.
-  // For Reading mode, we use the real works list from the backend; for
-  // Q&A and Pravachan we keep the hardcoded suggestions unchanged.
+  // For Reading mode this doubles as a search-and-select surface:
+  //   - Empty query → show the first 6 works from the backend (default chips).
+  //   - Non-empty query → filter ALL readable works by title (case-insensitive
+  //     substring), Devanagari-tolerant, and show up to 12 matches.
+  //   The user can then click a match, or press Enter to open the top match.
+  //   This replaces the earlier "type anything, fall back to DEFAULT_READING_SLUG"
+  //   behavior that opened a random book when the composer text didn't
+  //   exactly match one of the six chips (2026-08-02 feedback).
   function getSuggestions(): Suggestion[] {
     if (mode !== "reading") {
       return SUGGESTIONS[mode][lang];
     }
     if (readableWorks === null) {
-      // Still loading; show nothing (no chips yet).
       return [];
     }
-    // Show up to 6 works as chips. Each chip's text is the work title;
-    // the slug goes to /read/<slug>. Language: prefer the current UI
-    // language if available, otherwise the first available language.
-    return readableWorks.slice(0, 6).map((w) => {
-      const preferredLang = w.languages.includes(lang) ? lang : w.languages[0];
-      return {
+    const q = draft.trim().toLowerCase();
+    const preferredLang = (w: ReadableWork) =>
+      w.languages.includes(lang) ? lang : w.languages[0];
+    if (!q) {
+      return readableWorks.slice(0, 6).map((w) => ({
         text: w.title,
         slug: w.slug,
-        lang: preferredLang,
-      };
-    });
+        lang: preferredLang(w),
+      }));
+    }
+    return readableWorks
+      .filter((w) => w.title.toLowerCase().includes(q))
+      .slice(0, 12)
+      .map((w) => ({
+        text: w.title,
+        slug: w.slug,
+        lang: preferredLang(w),
+      }));
   }
 
   function submit(question: string) {
     const trimmed = question.trim();
     if (!trimmed) return;
     if (mode === "reading") {
-      // Match the draft against the active reading suggestions and use
-      // the chip's own slug. If the user typed a custom question that
-      // doesn't match any chip, fall back to DEFAULT_READING_SLUG[lang].
+      // Reading-mode submit opens the FIRST filtered match — the same list
+      // getSuggestions() renders below the composer, so what the user sees is
+      // what pressing Enter opens. If nothing matches, do nothing (the empty
+      // suggestions list already signals "no book found"); we no longer
+      // silently fall back to DEFAULT_READING_SLUG, which used to open a
+      // random book when the query missed.
       const suggestions = getSuggestions();
-      const chip = suggestions.find((s) => s.text === trimmed);
-      const slug = chip?.slug ?? DEFAULT_READING_SLUG[lang];
-      // Use the chip's preferred language if present; otherwise current lang.
-      const chipLang = (chip as (Suggestion & { lang?: string }) | undefined)?.lang ?? lang;
-      router.push(`/read/${slug}?lang=${chipLang}`);
+      if (suggestions.length === 0) return;
+      const top = suggestions[0];
+      const chipLang =
+        (top as (Suggestion & { lang?: string })).lang ?? lang;
+      router.push(`/read/${top.slug ?? DEFAULT_READING_SLUG[lang]}?lang=${chipLang}`);
       return;
     }
     // Propagate lang too so the chat surface renders in the same language
@@ -321,10 +366,11 @@ function LandingPage() {
         </button>
 
         {/* Action block — composer is the primary draw, lifted into the
-            visual center with a stronger 2px maroon border. Suggestions
-            move BELOW it as a 3-column row of examples ("after seeing the
-            box, here's what you might ask"). */}
-        <div className="mx-auto mt-8 w-full max-w-[820px]">
+            visual center with a stronger 2px maroon border. In Reading mode
+            the composer doubles as a book-search input; a dropdown of
+            matching works from the corpus hangs directly below it while the
+            input has focus. QA/Pravachan keep the traditional chip grid. */}
+        <div className="relative mx-auto mt-8 w-full max-w-[820px]">
           <form
             onSubmit={onSubmit}
             className="flex items-end gap-3 rounded-[8px] p-3"
@@ -338,8 +384,20 @@ function LandingPage() {
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               onKeyDown={onKeyDown}
+              onFocus={() => {
+                if (mode === "reading") openReadingDropdown();
+              }}
+              onBlur={() => {
+                if (mode === "reading") scheduleCloseReadingDropdown();
+              }}
               rows={3}
-              placeholder={PLACEHOLDERS[lang][mode]}
+              placeholder={
+                mode === "reading"
+                  ? lang === "mr"
+                    ? "ग्रंथाचे नाव टाइप करा..."
+                    : "Type a book name..."
+                  : PLACEHOLDERS[lang][mode]
+              }
               aria-label={lang === "mr" ? "विचारा" : "Ask anything"}
               className="block flex-1 resize-none bg-transparent px-3 py-2 text-[17px] outline-none"
               style={{
@@ -362,6 +420,91 @@ function LandingPage() {
               {SEND_LABELS[mode][lang]}
             </button>
           </form>
+
+          {/* Reading-mode dropdown — floats directly under the composer while
+              it has focus. Empty composer shows every readable work (all 48,
+              scrollable inside the panel); typing filters by title substring.
+              Click a row to open, no Enter step. */}
+          {mode === "reading" &&
+          readingDropdownOpen &&
+          readableWorks !== null ? (
+            (() => {
+              const q = draft.trim().toLowerCase();
+              const matches = readableWorks.filter((w) =>
+                q ? w.title.toLowerCase().includes(q) : true,
+              );
+              return (
+                <div
+                  className="absolute left-0 right-0 z-30 mt-1 max-h-[320px] overflow-y-auto rounded-[6px]"
+                  style={{
+                    background: "var(--bg-surface)",
+                    border: "1px solid var(--border-stronger)",
+                    boxShadow: "0 6px 20px rgba(60, 30, 10, 0.14)",
+                  }}
+                  onMouseDown={(e) => {
+                    // Prevent the textarea from losing focus (which would
+                    // schedule dropdown close before the row's click fires).
+                    e.preventDefault();
+                  }}
+                >
+                  {matches.length === 0 ? (
+                    <div
+                      className={`px-3 py-3 text-[13.5px] italic ${
+                        lang === "mr" ? "font-deva" : ""
+                      }`}
+                      style={{ color: "var(--text-tertiary)" }}
+                    >
+                      {READING_NO_MATCH[lang]}
+                    </div>
+                  ) : (
+                    <ul className="m-0 list-none p-0">
+                      {matches.map((w) => {
+                        const preferredLang = w.languages.includes(lang)
+                          ? lang
+                          : w.languages[0];
+                        const isDeva = /[ऀ-ॿ]/.test(w.title);
+                        return (
+                          <li key={w.slug}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                router.push(
+                                  `/read/${w.slug}?lang=${preferredLang}`,
+                                );
+                              }}
+                              className={`flex w-full items-baseline justify-between gap-3 px-3 py-2 text-left text-[14.5px] leading-snug ${
+                                isDeva ? "font-deva" : ""
+                              }`}
+                              style={{
+                                color: "var(--text-primary)",
+                                background: "transparent",
+                                borderBottom: "1px solid var(--border-soft)",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background =
+                                  "rgba(244, 234, 201, 0.85)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "transparent";
+                              }}
+                            >
+                              <span className="truncate">{w.title}</span>
+                              <span
+                                className="shrink-0 text-[11.5px] uppercase tracking-[0.08em]"
+                                style={{ color: "var(--text-tertiary)" }}
+                              >
+                                {preferredLang}
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              );
+            })()
+          ) : null}
 
           {/* Helper text — explains in plain language what the active mode
               will do. Bumped to instruction weight (14px, warm dark brown,
@@ -398,14 +541,17 @@ function LandingPage() {
           {mode === "qa" && <YourQuestionsShelf lang={lang} />}
 
           {/* Suggestions as a 3-column row of example chips beneath the
-              composer — "or try one of these" rather than a preamble. */}
+              composer — QA + Pravachan only. Reading mode uses the
+              dropdown above (attached to the composer) instead, so the
+              chip grid is suppressed there. */}
+          {mode !== "reading" && (
           <div className="mt-5">
-            <p
-              className="mb-2 text-center text-[13.5px]"
-              style={{ color: "var(--text-tertiary)" }}
-            >
-              {TRY_PREFIX[lang]}
-            </p>
+                <p
+                  className="mb-2 text-center text-[13.5px]"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  {TRY_PREFIX[lang]}
+                </p>
             <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
               {getSuggestions().map(({ text }) => {
                 const isDeva = /[ऀ-ॿ]/.test(text);
@@ -414,19 +560,12 @@ function LandingPage() {
                     <button
                       type="button"
                       onClick={() => {
-                        // Reading-mode chips ARE the book selection —
-                        // clicking one should open the book, not populate
-                        // the composer with a label the user then has to
-                        // hit उघडा / Enter to actually open (2026-07-23
-                        // feedback: users didn't realise the text had
-                        // moved to the composer). For QA / Pravachan the
-                        // chip is a starter question that the user may
-                        // want to edit, so keep the composer path there.
-                        if (mode === "reading") {
-                          submit(text);
-                        } else {
-                          setDraft(text);
-                        }
+                        // QA / Pravachan chips are starter questions the
+                        // user may want to edit before sending, so we just
+                        // populate the composer. Reading mode uses the
+                        // dropdown above (attached to the composer) and
+                        // never reaches this handler.
+                        setDraft(text);
                       }}
                       className={`group flex w-full items-baseline gap-2 rounded-[6px] px-3 py-2.5 text-left text-[14px] leading-snug transition-all ${
                         isDeva ? "font-deva" : ""
@@ -470,6 +609,7 @@ function LandingPage() {
               })}
             </ul>
           </div>
+          )}
         </div>
       </main>
     </>

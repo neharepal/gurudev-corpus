@@ -100,14 +100,17 @@ h1 {
   font-family: var(--font-deva);
 }
 
-/* Quote rendering shared by all answer surfaces (ADR-007 quote-first). */
+/* Quote rendering shared by all answer surfaces (ADR-007 quote-first).
+   Font sizes multiply by `--app-font-scale` (set on <html> by
+   FontScaleControl / the layout hydration script) so the A− / A+ control
+   scales quote bodies across chat, pravachan, and the reader-drawer. */
 .gd-quote {
   border-left: 3px solid var(--accent-maroon);
   padding: 4px 0 4px 18px;
   margin: 18px 0 6px;
   font-style: italic;
   color: var(--text-primary);
-  font-size: 18px;
+  font-size: calc(18px * var(--app-font-scale, 1));
   line-height: 1.7;
 }
 
@@ -116,7 +119,7 @@ h1 {
    Nudge Devanagari/mixed quote bodies down so every citation reads at a uniform
    visual size regardless of source script. (Tunable.) */
 .gd-quote.font-deva {
-  font-size: 15.5px;
+  font-size: calc(15.5px * var(--app-font-scale, 1));
 }
 
 .gd-quote-attr {
@@ -131,13 +134,22 @@ h1 {
    smaller than the body so the source stays the visual anchor and the gloss
    reads as a secondary support layer. Matches Devanagari nudge in .gd-quote. */
 .gd-quote-paraphrase {
-  font-size: 14px;
+  font-size: calc(14px * var(--app-font-scale, 1));
   line-height: 1.55;
   padding-left: 21px;
   margin: 4px 0 4px 0;
 }
 .gd-quote-paraphrase.font-deva {
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--app-font-scale, 1));
+}
+
+/* Body-copy utility for answer surfaces (chat framing + synthesis, pravachan
+   example bodies). Adds font-scale awareness while leaving Tailwind classes
+   like `mb-4`, color styles, and font-deva to their own concerns. Use in
+   place of `text-[16.5px]` on paragraphs that should follow the reader's
+   font-size preference. */
+.gd-scale-body {
+  font-size: calc(16.5px * var(--app-font-scale, 1));
 }
 
 .gd-label {
