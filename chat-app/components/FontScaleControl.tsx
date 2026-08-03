@@ -55,7 +55,14 @@ export default function FontScaleControl({
       ? // Pinned to the viewport top-right; sits above content but stays
         // out of the way of the primary action column. Backdrop-blur so it
         // reads even on top of the parchment texture.
-        "fixed right-3 top-3 z-40 flex items-center gap-1 rounded-[6px] px-1.5 py-1 backdrop-blur-sm sm:right-4 sm:top-4"
+        //
+        // `pointer-events-none` on the wrapper is critical: the chip covers
+        // ~60×30 px of viewport in the top-right corner, and without this
+        // any content scrolling behind it (e.g. a citation's "Read in full"
+        // link) would be silently non-clickable in that region — reported
+        // 2026-08-02. Buttons re-enable pointer-events on themselves so
+        // A− / A+ still work.
+        "pointer-events-none fixed right-3 top-3 z-40 flex items-center gap-1 rounded-[6px] px-1.5 py-1 backdrop-blur-sm sm:right-4 sm:top-4"
       : "flex items-center gap-1";
 
   const wrapperStyle =
@@ -78,7 +85,7 @@ export default function FontScaleControl({
         onClick={() => bump(-1)}
         disabled={atMin}
         aria-label="Decrease text size"
-        className="rounded-[4px] px-2 py-1 text-[13px] leading-none disabled:opacity-40"
+        className="pointer-events-auto rounded-[4px] px-2 py-1 text-[13px] leading-none disabled:opacity-40"
         style={{
           color: "var(--text-secondary)",
           border: "1px solid var(--border-soft)",
@@ -92,7 +99,7 @@ export default function FontScaleControl({
         onClick={() => bump(1)}
         disabled={atMax}
         aria-label="Increase text size"
-        className="rounded-[4px] px-2 py-1 text-[15px] leading-none disabled:opacity-40"
+        className="pointer-events-auto rounded-[4px] px-2 py-1 text-[15px] leading-none disabled:opacity-40"
         style={{
           color: "var(--text-secondary)",
           border: "1px solid var(--border-soft)",
