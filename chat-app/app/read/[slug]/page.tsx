@@ -55,14 +55,16 @@ type TocData = {
 // every subsequent body page by +1. Keep in sync with the (identical) set
 // used further down for render-time decisions — one source of truth.
 //
-// Add a slug here only after (1) its canonical text.md has clean ##/###
-// chapter markers, (2) /read/{slug}/toc endpoint returns the expected
-// sections, (3) Neha eyeballs the rendered TOC on the reader. See
-// docs/decisions/ADR-019 and memory `project_toc_allowlist`.
-const TOC_ALLOWED_SLUGS = new Set<string>([
-  "kakanchi-pravachane",
-  "mysticism-in-maharashtra",
-]);
+// Add a slug here only after (1) its canonical text.md matches the actual
+// source book (title, structure, size), (2) has clean ##/### chapter
+// markers matching that source, (3) /read/{slug}/toc returns the expected
+// sections, (4) Neha eyeballs the rendered TOC. See ADR-019 and memory
+// `project_toc_allowlist`. `mysticism-in-maharashtra` was tentatively
+// added on 2026-08-03 then reverted the same day when Neha compared
+// against the IA scan (dli.ministry.14639, 563 pages, 5 Parts) — our
+// canonical is a 146-line short work whose 16 "chapters" don't match the
+// real book at all; needs a full-source rebuild before re-listing.
+const TOC_ALLOWED_SLUGS = new Set<string>(["kakanchi-pravachane"]);
 
 // Language-aware UI labels for the reading surface. Verbatim passages
 // stay in their source language (ADR-007). Source titles inside the
