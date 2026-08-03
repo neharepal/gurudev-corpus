@@ -49,6 +49,13 @@ type TocData = {
   flat: TocChapter[];
 };
 
+// Module-scope so the initial-state expressions below can consult it
+// synchronously (before any TOC fetch has resolved). Any slug listed here
+// causes the reader to inject a TOC page as displayed page 1, shifting
+// every subsequent body page by +1. Keep in sync with the (identical) set
+// used further down for render-time decisions — one source of truth.
+const TOC_ALLOWED_SLUGS = new Set<string>(["kakanchi-pravachane"]);
+
 // Language-aware UI labels for the reading surface. Verbatim passages
 // stay in their source language (ADR-007). Source titles inside the
 // citation lines stay in their published language (canonical work
@@ -213,9 +220,19 @@ function ReadingPage() {
   // that carries readPage), parse it so we can jump to the right page after
   // the persistent state hydrates. NaN-safe: if the param is not an integer,
   // urlPage stays null and the persisted page is used unchanged.
+  //
+  // URL contract: `?page=N` is the BACKEND page number (what the citation
+  // enricher writes as `quote.readPage`). Persistent state + everything
+  // else in this component works in DISPLAYED page numbering — when a
+  // TOC page is injected (allow-listed slug), displayed = backend + 1.
+  // Translate at the URL boundary so downstream state stays consistent.
   const urlPageRaw = search.get("page");
   const urlPage = urlPageRaw !== null ? parseInt(urlPageRaw, 10) : null;
   const hasUrlPage = urlPage !== null && !Number.isNaN(urlPage) && urlPage >= 1;
+  const willInjectTocPage = TOC_ALLOWED_SLUGS.has(slug);
+  const initialCurrentPage = hasUrlPage
+    ? (willInjectTocPage ? urlPage! + 1 : urlPage!)
+    : 1;
 
   // Reading position + drawer chat are scoped to this work and persisted
   // across visits so the devotee can leave and come back where they were.
@@ -225,7 +242,7 @@ function ReadingPage() {
   // page, behave normally — restore the reader's last position.
   const [currentPage, setCurrentPage] = usePersistentState<number>(
     `gd:read:${slug}:page`,
-    hasUrlPage ? urlPage! : 1,
+    initialCurrentPage,
     { skipHydration: hasUrlPage },
   );
   const [messages, setMessages] = usePersistentState<ChatTurn[]>(
@@ -293,8 +310,9 @@ function ReadingPage() {
   // has been curated with meticulous chapter markers. Every other work's
   // extraction currently loses Shri Gurudev's chapter headings, so the
   // TOC would misrepresent the book. Expand this allow-list as each work
-  // is reviewed.
-  const TOC_ALLOWED_SLUGS = new Set<string>(["kakanchi-pravachane"]);
+  // is reviewed. Note: the set itself lives at module scope (see top of
+  // file) so both initial-state expressions and render-time gates use the
+  // same source of truth.
   const hasTocPage = !!(
     toc &&
     toc.sections.length > 0 &&
@@ -318,9 +336,11 @@ function ReadingPage() {
   useEffect(() => {
     if (hasUrlPage && urlPage !== lastAppliedUrlPage.current) {
       lastAppliedUrlPage.current = urlPage;
-      // Apply immediately (pre-clamp). The fetch useEffect below re-clamps
-      // to [1, totalPages] once data arrives if needed.
-      setCurrentPage(urlPage!);
+      // Apply immediately (pre-clamp). Same URL→displayed translation as
+      // the initial-state expression above — URL page is BACKEND page,
+      // displayed page = backend + 1 for TOC-allow-listed slugs.
+      const displayed = willInjectTocPage ? urlPage! + 1 : urlPage!;
+      setCurrentPage(displayed);
     }
   }, [hasUrlPage, urlPage]);
 
