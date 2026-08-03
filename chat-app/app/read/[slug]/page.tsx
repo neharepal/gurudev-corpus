@@ -54,7 +54,15 @@ type TocData = {
 // causes the reader to inject a TOC page as displayed page 1, shifting
 // every subsequent body page by +1. Keep in sync with the (identical) set
 // used further down for render-time decisions — one source of truth.
-const TOC_ALLOWED_SLUGS = new Set<string>(["kakanchi-pravachane"]);
+//
+// Add a slug here only after (1) its canonical text.md has clean ##/###
+// chapter markers, (2) /read/{slug}/toc endpoint returns the expected
+// sections, (3) Neha eyeballs the rendered TOC on the reader. See
+// docs/decisions/ADR-019 and memory `project_toc_allowlist`.
+const TOC_ALLOWED_SLUGS = new Set<string>([
+  "kakanchi-pravachane",
+  "mysticism-in-maharashtra",
+]);
 
 // Language-aware UI labels for the reading surface. Verbatim passages
 // stay in their source language (ADR-007). Source titles inside the
