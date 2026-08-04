@@ -996,22 +996,56 @@ function ReadingPage() {
                       </h4>
                     );
                   })()
-                ) : (
+                ) : (() => {
                   /* Normal paragraph display. Font size scales via the
                       --app-font-scale CSS var set on <html> by FontScaleControl,
-                      shared with chat/pravachan body text. */
-                  <p
-                    className={`gd-read-p ${
-                      idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
-                    }`}
-                    style={{
-                      color: "var(--text-primary)",
-                      lineHeight: 1.7,
-                      fontSize: "calc(17.5px * var(--app-font-scale, 1))",
-                    }}
-                  >
-                    {para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "")}
-                  </p>
+                      shared with chat/pravachan body text.
+
+                      Verse detection: paragraphs whose non-whitespace text is
+                      predominantly Devanagari (or other Indic script) get a
+                      lightweight box treatment — thin top/bottom rules,
+                      centered, font-deva. Matches Ranade's printed Sanskrit
+                      shlokas embedded inside English commentary. Threshold at
+                      50% Indic characters to skip in-line loanwords in the
+                      middle of prose. */
+                  const rendered = para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "");
+                  const stripped = rendered.replace(/\s+/g, "");
+                  const indicChars = (stripped.match(/[ऀ-ॿঀ-৿઀-૿஀-௿]/gu) || []).length;
+                  const isVerse = stripped.length >= 6 && indicChars / stripped.length >= 0.5 && !isMr;
+                  if (isVerse) {
+                    return (
+                      <div
+                        className="my-6 py-4 px-3 text-center font-deva"
+                        style={{
+                          color: "var(--text-primary)",
+                          lineHeight: 1.9,
+                          fontSize: "calc(17.5px * var(--app-font-scale, 1))",
+                          borderTop: "1px dotted var(--border-stronger)",
+                          borderBottom: "1px dotted var(--border-stronger)",
+                          maxWidth: "38em",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                        }}
+                      >
+                        {rendered}
+                      </div>
+                    );
+                  }
+                  return (
+                    <p
+                      className={`gd-read-p ${
+                        idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
+                      }`}
+                      style={{
+                        color: "var(--text-primary)",
+                        lineHeight: 1.7,
+                        fontSize: "calc(17.5px * var(--app-font-scale, 1))",
+                      }}
+                    >
+                      {rendered}
+                    </p>
+                  );
+                })()
                 )}
                 {/* Correction affordance — mounted only while this paragraph is
                     hovered/focused, so it reserves no space otherwise and
