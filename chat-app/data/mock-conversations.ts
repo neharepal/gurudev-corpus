@@ -381,7 +381,16 @@ export type ReadingPage = {
   chapter: string;
   chapterStart?: boolean;
   totalPages: number;
-  paragraphs: { n: number; body: string }[];
+  paragraphs: {
+    n: number;
+    body: string;
+    // Set on `####+` heading blocks (e.g. Ranade's numbered TOC items in
+    // MiM) so the reader can render them as visible in-body sub-headings
+    // instead of prose. Absent on regular paragraphs. `chapter` stays on
+    // the enclosing `##`/`###`, so citations and the page subtitle remain
+    // anchored to the actual chapter, not the sub-item.
+    is_subheading?: boolean;
+  }[];
 };
 
 const pghlReading: ReadingPage = {

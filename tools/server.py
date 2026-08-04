@@ -164,7 +164,29 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
             continue
         heading_match = re.match(r"^(#{1,6})\s+(.*)", block)
         if heading_match:
-            current_heading = _strip_inline_md(heading_match.group(2).strip())
+            level = len(heading_match.group(1))
+            heading_text = _strip_inline_md(heading_match.group(2).strip())
+            if level <= 3:
+                # `##` / `###` update the chapter context and are otherwise
+                # invisible in the body (the reader's ornamental page-top
+                # renders `chapter` separately).
+                current_heading = heading_text
+                continue
+            # `####+` is an in-body sub-section marker (e.g. Ranade's
+            # numbered TOC items in MiM). Emit as a paragraph flagged
+            # `is_subheading: True` so the frontend can render it as a
+            # visible sub-heading instead of prose. `current_heading`
+            # stays on the enclosing `##`/`###` so citations and the page
+            # subtitle still show the true chapter, not the sub-item.
+            n += 1
+            results.append({
+                "n": n,
+                "body": heading_text,
+                "chapter": current_heading,
+                "is_subheading": True,
+                "char_start": fm_len + raw_start,
+                "char_end": fm_len + raw_end,
+            })
             continue
         # A block that is ONLY a bold line is a section heading (the source uses
         # **Heading** instead of ## in places), e.g. "**Preliminary**".
@@ -2033,7 +2055,12 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
         "chapter": chapter,
         "chapterStart": chapter_start,
         "totalPages": total_pages,
-        "paragraphs": [{"n": p["n"], "body": p["body"]} for p in page_paras],
+        "paragraphs": [
+            # Preserve `is_subheading` when present — the reader renders
+            # those rows as visible `####` sub-headings instead of prose.
+            {"n": p["n"], "body": p["body"], **({"is_subheading": True} if p.get("is_subheading") else {})}
+            for p in page_paras
+        ],
     }
 
 
@@ -2154,6 +2181,15 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     if pos <= len(body):
         blocks.append(body[pos:])
 
+    # NOTE: `n` must track _parse_work_text's paragraph numbering exactly,
+    # since we look up chapter pages via `page_for_para_n(target_n)` which
+    # uses paginate() over _parse_work_text's output. That function emits
+    # `####+` blocks as paragraphs too (they're visible in-body sub-headings),
+    # so this walk must also bump n on `####+` blocks; otherwise the TOC's
+    # page numbers drift by however many #### items precede each chapter.
+    # For sections (##), also record the section's own start page — used by
+    # the frontend to render 0-chapter sections (e.g. MiM's standalone
+    # Chapter I) as a clickable leaf row instead of an empty header.
     n = 0
     for block_raw in blocks:
         block = block_raw.strip()
@@ -2163,11 +2199,12 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
         if h_match:
             level = len(h_match.group(1))
             title = _strip_inline_md(h_match.group(2).strip())
-            if level == 2:  # ## section marker (भाग)
-                current_section = {"title": title, "chapters": []}
+            if level == 2:  # ## section marker
+                target_n = n + 1
+                pg = page_for_para_n(target_n) if target_n <= len(all_paragraphs) else 1
+                current_section = {"title": title, "chapters": [], "page": pg}
                 sections.append(current_section)
             elif level == 3:  # ### chapter
-                # Find the next paragraph (n+1) — its page is this chapter's start
                 target_n = n + 1
                 pg = page_for_para_n(target_n) if target_n <= len(all_paragraphs) else 1
                 entry = {"title": title, "page": pg}
@@ -2177,8 +2214,25 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
                 else:
                     # No ## section — create an implicit one
                     if not sections or sections[-1].get("title") is not None:
-                        sections.append({"title": None, "chapters": []})
+                        sections.append({"title": None, "chapters": [], "page": pg})
                     sections[-1]["chapters"].append(entry)
+            else:
+                # ####+ — parse_work_text emits this as a paragraph with
+                # is_subheading=True. Track n so subsequent chapter pages
+                # stay aligned with paginate()'s reality.
+                n += 1
+                # Roman-numeral-only markers (e.g. Preface's `#### I / II /
+                # III / IV`) are section dividers — surface them in the TOC
+                # under their parent section so the drawer isn't empty when
+                # a section has no `###` chapters. Numbered-title items
+                # (`#### 1. The Mysticism of…`) stay collapsed so chapters
+                # with dozens of sub-items don't bloat the drawer.
+                if re.match(r"^[IVXL]+\.?$", title.strip()):
+                    pg = page_for_para_n(n) if n <= len(all_paragraphs) else 1
+                    entry = {"title": title.strip().rstrip("."), "page": pg}
+                    if current_section is not None:
+                        current_section["chapters"].append(entry)
+                        flat.append(entry)
             continue
         # Same paragraph-counter rule as _parse_work_text
         bold_only = re.match(r"^\*\*(.+?)\*\*[.:]?$", block)

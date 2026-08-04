@@ -40,7 +40,10 @@ type ChatTurn = {
 // works without ## headings return an empty `sections` and the TOC UI is
 // hidden entirely (no dead affordance).
 type TocChapter = { title: string; page: number };
-type TocSection = { title: string | null; chapters: TocChapter[] };
+// `page` is present when the section itself is a leaf (0 chapters underneath —
+// e.g. MiM's standalone Chapter I as a `##`). Rendered as a clickable jump row
+// in that case instead of a bare header.
+type TocSection = { title: string | null; chapters: TocChapter[]; page?: number };
 type TocData = {
   workSlug: string;
   workTitle: string;
@@ -657,7 +660,12 @@ function ReadingPage() {
               ? hasTocPage && currentPage === 1
                 ? `${pageData.author} · ${lbl.tocDrawerTitle}`
                 : pageData.chapter &&
-                    pageData.chapter.length <= 60 &&
+                    // Reject obvious noise (year fragments, |I| citation
+                    // artifacts) but no length cap — real book chapter
+                    // titles are often long ("Chapter I. Introduction: The
+                    // Development of Indian Mysticism…") and dropping them
+                    // leaves the reader with no context on continuation
+                    // pages. Long subtitles wrap gracefully.
                     !/(19|20)\d{2}/.test(pageData.chapter) &&
                     !/[|I]\s+\S+\s+[|I]\s/.test(pageData.chapter)
                   ? `${pageData.author} · ${pageData.chapter}`
@@ -758,6 +766,81 @@ function ReadingPage() {
           </p>
         ) : (
           <>
+            {/* Ornamental chapter opener — shown ONLY on the first page of
+                a chapter (like a printed book's chapter-title page). The
+                subtitle in the header carries the chapter name as a running
+                head on continuation pages, so this decoration doesn't need
+                to repeat on every page. */}
+            {pageData?.chapter && pageData?.chapterStart ? (
+              <div
+                className="mb-8 mt-2"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className="flex-1"
+                    style={{ borderTop: "1px dotted var(--border-stronger)" }}
+                    aria-hidden
+                  />
+                  <span
+                    aria-hidden
+                    style={{ color: "var(--accent-maroon)", fontSize: "22px", opacity: 0.9 }}
+                  >
+                    ❖
+                  </span>
+                  <div
+                    className="flex-1"
+                    style={{ borderTop: "1px dotted var(--border-stronger)" }}
+                    aria-hidden
+                  />
+                </div>
+                {(() => {
+                  // Split "Chapter I. Introduction: The Development..." into
+                  // `Chapter I` (headline) + descriptive subtitle. Matches
+                  // Ranade's own printed layout (CHAPTER I. on its own line,
+                  // descriptive title beneath in serif). Anything that doesn't
+                  // parse falls back to the whole string as headline.
+                  const ch = pageData.chapter ?? "";
+                  const m = ch.match(/^(Chapter\s+[IVXL]+|Part\s+[IVXL]+)\.?\s*(.*)$/i);
+                  const head = (m ? m[1] : ch).trim();
+                  const rest = (m ? m[2] : "").trim();
+                  return (
+                    <>
+                      <div
+                        className={`mt-4 text-center uppercase ${isMr ? "font-deva" : ""}`}
+                        style={{
+                          color: "var(--accent-maroon)",
+                          fontSize: "calc(20px * var(--app-font-scale, 1))",
+                          letterSpacing: "0.16em",
+                          fontWeight: 700,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {head}
+                      </div>
+                      {rest ? (
+                        <div
+                          className={`mt-2 text-center ${isMr ? "font-deva" : ""}`}
+                          style={{
+                            color: "var(--accent-maroon)",
+                            fontSize: "calc(16px * var(--app-font-scale, 1))",
+                            fontFamily: "var(--font-serif)",
+                            fontStyle: "normal",
+                            lineHeight: 1.4,
+                            fontWeight: 500,
+                            maxWidth: "36em",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                          }}
+                        >
+                          {rest}
+                        </div>
+                      ) : null}
+                    </>
+                  );
+                })()}
+              </div>
+            ) : null}
             {(pageData?.paragraphs ?? []).map((para, idx) => (
           <div
             key={para.n}
@@ -855,6 +938,64 @@ function ReadingPage() {
                       )}
                     </div>
                   </div>
+                ) : para.is_subheading ? (
+                  /* `####+` sub-section marker from the source markdown (e.g.
+                      Ranade's numbered TOC items in MiM, or the preface's
+                      Roman-numeral dividers I / II / III / IV). Short
+                      roman-only marks render as a centered small-caps
+                      divider; titled ones render as bold serif in title
+                      case (matching the printed book). */
+                  (() => {
+                    const isRomanOnly = /^\s*[IVXL]+\.?\s*$/.test(para.body);
+                    if (isRomanOnly) {
+                      return (
+                        <div className="my-8 flex items-center justify-center gap-4">
+                          <div
+                            style={{
+                              width: "3.5em",
+                              borderTop: "1px solid var(--border-stronger)",
+                              opacity: 0.5,
+                            }}
+                            aria-hidden
+                          />
+                          <span
+                            className={isMr ? "font-deva" : ""}
+                            style={{
+                              color: "var(--accent-maroon)",
+                              fontFamily: "var(--font-serif)",
+                              fontSize: "calc(18px * var(--app-font-scale, 1))",
+                              fontWeight: 700,
+                              letterSpacing: "0.18em",
+                            }}
+                          >
+                            {para.body.replace(/\.$/, "")}
+                          </span>
+                          <div
+                            style={{
+                              width: "3.5em",
+                              borderTop: "1px solid var(--border-stronger)",
+                              opacity: 0.5,
+                            }}
+                            aria-hidden
+                          />
+                        </div>
+                      );
+                    }
+                    return (
+                      <h4
+                        className={`mt-7 mb-3 ${isMr ? "font-deva" : ""}`}
+                        style={{
+                          color: "var(--accent-maroon)",
+                          fontFamily: "var(--font-serif)",
+                          fontSize: "calc(17px * var(--app-font-scale, 1))",
+                          fontWeight: 700,
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {para.body}
+                      </h4>
+                    );
+                  })()
                 ) : (
                   /* Normal paragraph display. Font size scales via the
                       --app-font-scale CSS var set on <html> by FontScaleControl,
@@ -1395,6 +1536,15 @@ function TocBody({
         ]
           .filter(Boolean)
           .join(" ");
+        // A section with 0 chapters but its own `page` is a leaf — e.g.
+        // MiM's standalone `## Chapter I. Introduction: ...` which is a
+        // peer of the Parts but has no `###` children. Render as a
+        // clickable jump row instead of an empty header (which would
+        // strand the reader with no way to navigate to it).
+        const isLeafSection =
+          section.chapters.length === 0 &&
+          section.title != null &&
+          typeof section.page === "number";
         return (
           <div key={si} className="gd-toc-section">
             {si > 0 ? (
@@ -1402,33 +1552,57 @@ function TocBody({
                 ❖
               </div>
             ) : null}
-            <div className={headingClasses}>
-              <span>{section.title ?? "Chapters"}</span>
-            </div>
-            <ul className="gd-toc-list">
-              {section.chapters.map((ch, ci) => {
-                const displayedPage = ch.page + (hasTocPage ? 1 : 0);
+            {isLeafSection ? (
+              (() => {
+                const displayedPage =
+                  (section.page as number) + (hasTocPage ? 1 : 0);
                 return (
-                  <li key={ci} className="gd-toc-li">
-                    <button
-                      type="button"
-                      onClick={() => onChapterClick(displayedPage)}
-                      className="gd-toc-row"
+                  <button
+                    type="button"
+                    onClick={() => onChapterClick(displayedPage)}
+                    className="gd-toc-row gd-toc-row--leaf"
+                  >
+                    <span
+                      className={`gd-toc-title ${isMr ? "font-deva" : ""}`}
                     >
-                      <span
-                        className={`gd-toc-title ${
-                          isMr ? "font-deva" : ""
-                        }`}
-                      >
-                        {ch.title}
-                      </span>
-                      <span className="gd-toc-leader" aria-hidden />
-                      <span className="gd-toc-page">{displayedPage}</span>
-                    </button>
-                  </li>
+                      {section.title}
+                    </span>
+                    <span className="gd-toc-leader" aria-hidden />
+                    <span className="gd-toc-page">{displayedPage}</span>
+                  </button>
                 );
-              })}
-            </ul>
+              })()
+            ) : (
+              <>
+                <div className={headingClasses}>
+                  <span>{section.title ?? "Chapters"}</span>
+                </div>
+                <ul className="gd-toc-list">
+                  {section.chapters.map((ch, ci) => {
+                    const displayedPage = ch.page + (hasTocPage ? 1 : 0);
+                    return (
+                      <li key={ci} className="gd-toc-li">
+                        <button
+                          type="button"
+                          onClick={() => onChapterClick(displayedPage)}
+                          className="gd-toc-row"
+                        >
+                          <span
+                            className={`gd-toc-title ${
+                              isMr ? "font-deva" : ""
+                            }`}
+                          >
+                            {ch.title}
+                          </span>
+                          <span className="gd-toc-leader" aria-hidden />
+                          <span className="gd-toc-page">{displayedPage}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
           </div>
         );
       })}

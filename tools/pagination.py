@@ -15,14 +15,19 @@ def paginate(paragraphs: List[Dict[str, Any]]) -> List[List[Dict[str, Any]]]:
     pages: List[List[Dict[str, Any]]] = []
     current: List[Dict[str, Any]] = []
     current_chapter: Any = None
+    body_count = 0  # only real body paragraphs count toward PAGE_SIZE; subheadings ride along
     for para in paragraphs:
         chapter = para.get("chapter", "")
-        if current and (chapter != current_chapter or len(current) >= PAGE_SIZE):
+        is_sub = bool(para.get("is_subheading"))
+        if current and (chapter != current_chapter or body_count >= PAGE_SIZE):
             pages.append(current)
             current = []
+            body_count = 0
         if not current:
             current_chapter = chapter
         current.append(para)
+        if not is_sub:
+            body_count += 1
     if current:
         pages.append(current)
     return pages
