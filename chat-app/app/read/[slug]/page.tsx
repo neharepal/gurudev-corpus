@@ -24,7 +24,12 @@ import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError, reportCorrection } from "../../../lib/api";
 import { renderInlineMd } from "../../../lib/render-inline-md";
 import { renderBlockMd } from "../../../lib/render-block-md";
-import { isVerseParagraph } from "../../../lib/verse-detection";
+import {
+  isVerseParagraph,
+  splitVerseBlocks,
+  splitVerseCitation,
+  mergeSentenceContinuations,
+} from "../../../lib/verse-detection";
 import type { CorrectionRequest } from "../../../lib/api";
 import { upsertProgress } from "../../../lib/readingProgress";
 
@@ -73,6 +78,7 @@ type TocData = {
 const TOC_ALLOWED_SLUGS = new Set<string>([
   "kakanchi-pravachane",
   "mysticism-in-maharashtra",
+  "bhagavadgita-as-pathway-to-god-realization",
 ]);
 
 // Language-aware UI labels for the reading surface. Verbatim passages
@@ -842,7 +848,10 @@ function ReadingPage() {
                 })()}
               </div>
             ) : null}
-            {(pageData?.paragraphs ?? []).map((para, idx) => (
+            {/* Pre-process paragraphs to merge Surya-split sentences (prev
+                ends without terminator + current starts lowercase). Purely
+                presentational — canonical text is untouched. */}
+            {mergeSentenceContinuations(pageData?.paragraphs ?? []).map((para, idx) => (
           <div
             key={para.n}
             className="mb-0"
@@ -1001,41 +1010,94 @@ function ReadingPage() {
                   /* Normal paragraph display. Font size scales via the
                       --app-font-scale CSS var set on <html> by FontScaleControl,
                       shared with chat/pravachan body text. Verse detection
-                      logic lives in `lib/verse-detection.ts` (unit-tested). */
+                      logic lives in `lib/verse-detection.ts` (unit-tested).
+                      A paragraph may contain embedded verse runs (e.g. a
+                      Plotinus quote in Greek nested inside English commentary),
+                      so we split into an ordered [prose/verse/prose/…] list
+                      and render each block appropriately. */
                   const rendered = para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "");
-                  const isVerse = isVerseParagraph(rendered, { isMarathi: isMr });
-                  if (isVerse) {
-                    return (
-                      <div
-                        className="my-6 py-4 px-3 text-center font-deva"
-                        style={{
-                          color: "var(--text-primary)",
-                          lineHeight: 1.9,
-                          fontSize: "calc(17.5px * var(--app-font-scale, 1))",
-                          borderTop: "1px dotted var(--border-stronger)",
-                          borderBottom: "1px dotted var(--border-stronger)",
-                          maxWidth: "38em",
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                        }}
-                      >
-                        {rendered}
-                      </div>
-                    );
-                  }
+                  const blocks = splitVerseBlocks(rendered, { isMarathi: isMr });
+                  const cornerBase: React.CSSProperties = {
+                    position: "absolute",
+                    width: "12px",
+                    height: "12px",
+                    pointerEvents: "none",
+                  };
+                  const bracketColor = "var(--accent-maroon)";
                   return (
-                    <p
-                      className={`gd-read-p ${
-                        idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
-                      }`}
-                      style={{
-                        color: "var(--text-primary)",
-                        lineHeight: 1.7,
-                        fontSize: "calc(17.5px * var(--app-font-scale, 1))",
-                      }}
-                    >
-                      {rendered}
-                    </p>
+                    <>
+                      {blocks.map((blk, i) => {
+                        if (blk.type === "verse") {
+                          /* Split off a trailing citation (e.g. `॥ XIII.
+                              12-13.` or `Iśa. Up. 2.`) so it renders on its
+                              own line below, smaller + muted. */
+                          const { verse: verseText, citation } = splitVerseCitation(blk.text);
+                          return (
+                            <div key={`v-${i}`} className="my-10 mx-auto" style={{ maxWidth: "30em", textAlign: "center" }}>
+                              <span
+                                aria-hidden
+                                style={{
+                                  display: "inline-block",
+                                  color: "var(--accent-maroon)",
+                                  fontSize: "18px",
+                                  lineHeight: 1,
+                                  opacity: 0.72,
+                                  marginBottom: "14px",
+                                }}
+                              >
+                                ❈
+                              </span>
+                              <div
+                                className="font-deva"
+                                style={{
+                                  position: "relative",
+                                  color: "var(--text-primary)",
+                                  fontFamily: 'var(--font-deva, "Sanskrit 2003", "Noto Sans Devanagari", "Kohinoor Devanagari", "Mangal", serif)',
+                                  fontSize: "calc(16.5px * var(--app-font-scale, 1))",
+                                  lineHeight: 2.0,
+                                  padding: "18px 22px",
+                                }}
+                                aria-label="verse"
+                              >
+                                <span aria-hidden style={{ ...cornerBase, top: 0, left: 0, borderTop: `1px solid ${bracketColor}`, borderLeft: `1px solid ${bracketColor}` }} />
+                                <span aria-hidden style={{ ...cornerBase, top: 0, right: 0, borderTop: `1px solid ${bracketColor}`, borderRight: `1px solid ${bracketColor}` }} />
+                                <span aria-hidden style={{ ...cornerBase, bottom: 0, left: 0, borderBottom: `1px solid ${bracketColor}`, borderLeft: `1px solid ${bracketColor}` }} />
+                                <span aria-hidden style={{ ...cornerBase, bottom: 0, right: 0, borderBottom: `1px solid ${bracketColor}`, borderRight: `1px solid ${bracketColor}` }} />
+                                <div>{verseText}</div>
+                                {citation ? (
+                                  <div
+                                    style={{
+                                      marginTop: "10px",
+                                      fontFamily: "var(--font-serif)",
+                                      fontSize: "calc(13.5px * var(--app-font-scale, 1))",
+                                      color: "var(--text-secondary, #6E5B3E)",
+                                      letterSpacing: "0.02em",
+                                    }}
+                                  >
+                                    {citation}
+                                  </div>
+                                ) : null}
+                              </div>
+                            </div>
+                          );
+                        }
+                        return (
+                          <p
+                            key={`p-${i}`}
+                            className={`gd-read-p ${
+                              i === 0 && idx === 0 && pageData?.chapterStart ? "gd-read-p--flush" : ""
+                            }`}
+                            style={{
+                              color: "var(--text-primary)",
+                              lineHeight: 1.7,
+                              fontSize: "calc(17.5px * var(--app-font-scale, 1))",
+                            }}
+                          >
+                            {blk.text}
+                          </p>
+                        );
+                      })}
+                    </>
                   );
                 })()}
                 {/* Correction affordance — mounted only while this paragraph is
