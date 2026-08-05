@@ -1309,30 +1309,24 @@ function ReadingPage() {
                   {renderInlineMd(m.answer.framing)}
                 </p>
               ) : null}
-              {/* Guard: filter to citations whose quote.body is present.
-                  Persisted messages from localStorage could theoretically hold
-                  stale/partial shapes; QuoteBlock guards internally but we also
-                  skip the whyChosen rationale for incomplete citations. */}
+              {/* Woven-prose layout (see chat/page.tsx for the design note).
+                  whyChosen → setup sentence before the quote; quote → inline
+                  variant. No "Why this passage:" label. */}
               {(m.answer.citations ?? []).filter((c) => c?.quote?.body).map((c, ci) => (
                 <div
                   key={ci}
                   id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
-                  className="mb-4 scroll-mt-4"
+                  className="scroll-mt-4"
                 >
-                  <QuoteBlock quote={c.quote} lang={uiLang} />
                   {c.whyChosen ? (
                     <p
-                      className={`mt-1.5 text-[13px] leading-snug ${isMr ? "font-deva" : ""}`}
-                      style={{ color: "var(--text-secondary)" }}
+                      className={`mb-1 text-[14px] ${isMr ? "font-deva" : ""}`}
+                      style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
                     >
-                      <span
-                        style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
-                      >
-                        {lbl.whyThisPassage}
-                      </span>{" "}
                       {c.whyChosen}
                     </p>
                   ) : null}
+                  <QuoteBlock quote={c.quote} lang={uiLang} variant="inline" />
                 </div>
               ))}
               {m.answer.synthesis ? (

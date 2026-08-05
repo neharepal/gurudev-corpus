@@ -1000,31 +1000,27 @@ function QAAnswerBody({
           {para}
         </p>
       ))}
-      {/* Guard: filter to citations whose quote.body is present before rendering.
-          During streaming a citation slot can exist before its quote is filled;
-          QuoteBlock returns null for missing body but c.whyChosen beside it
-          would still appear stray — skip the whole item until it's renderable. */}
+      {/* Woven-prose layout (Ninad's readability feedback, 2026-08-04): the
+          per-citation `whyChosen` renders as the SETUP sentence BEFORE the
+          quote — no "Why this passage:" label — and the quote itself uses
+          the inline variant (thin left rail, compact attribution as link).
+          Reads as continuous narrative: framing → why → quote → why → quote →
+          synthesis. Design mock in the response-flow artifact. */}
       {(answer.citations ?? []).filter((c) => c?.quote?.body).map((c, i) => (
         <div
           key={i}
           id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
-          className="mb-6 scroll-mt-4"
+          className="scroll-mt-4"
         >
-          <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} />
           {c.whyChosen ? (
             <p
-              className={`mt-2 text-[15px] leading-snug ${isMr ? "font-deva" : ""}`}
+              className={`mb-1 gd-scale-body ${isMr ? "font-deva" : ""}`}
               style={{ color: "var(--text-primary)" }}
             >
-              <span
-                className={isMr ? "font-deva" : ""}
-                style={{ color: "var(--accent-maroon)", fontWeight: 600 }}
-              >
-                {lbl.whyThisPassage}
-              </span>{" "}
               {c.whyChosen}
             </p>
           ) : null}
+          <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} variant="inline" />
         </div>
       ))}
       {answer.synthesis ? (

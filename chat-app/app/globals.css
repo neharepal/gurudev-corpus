@@ -103,23 +103,41 @@ h1 {
 /* Quote rendering shared by all answer surfaces (ADR-007 quote-first).
    Font sizes multiply by `--app-font-scale` (set on <html> by
    FontScaleControl / the layout hydration script) so the A− / A+ control
-   scales quote bodies across chat, pravachan, and the reader-drawer. */
+   scales quote bodies across chat, pravachan, and the reader-drawer.
+   Unified 2026-08-05: all quote bodies (card + inline variants) use the
+   SAME size (16.5px * scale) and italic style, so the reader sees a
+   consistent quote treatment regardless of which surface renders it. The
+   italic distinguishes verbatim quotation from surrounding prose. */
 .gd-quote {
   border-left: 3px solid var(--accent-maroon);
   padding: 4px 0 4px 18px;
   margin: 18px 0 6px;
   font-style: italic;
   color: var(--text-primary);
-  font-size: calc(18px * var(--app-font-scale, 1));
+  font-size: calc(16.5px * var(--app-font-scale, 1));
   line-height: 1.7;
 }
 
-/* "Noto Serif Devanagari" renders visually larger than the Latin serif at the
-   same px, so quotes containing Devanagari looked bigger than Latin-only ones.
-   Nudge Devanagari/mixed quote bodies down so every citation reads at a uniform
-   visual size regardless of source script. (Tunable.) */
+/* "Noto Serif Devanagari" renders visually larger than the Latin serif at
+   the same px; keep Devanagari quote bodies at the same size but drop the
+   italic (Devanagari doesn't italicize meaningfully). */
 .gd-quote.font-deva {
-  font-size: calc(15.5px * var(--app-font-scale, 1));
+  font-style: normal;
+}
+
+/* Inline quote (variant="inline") — same body typography as .gd-quote so
+   quote sizing is consistent across card and inline surfaces. Frame style
+   differs (thinner left rail, less padding); only the body shares. */
+.gd-quote-inline {
+  color: var(--text-primary);
+}
+.gd-quote-inline-body {
+  font-style: italic;
+  font-size: calc(16.5px * var(--app-font-scale, 1));
+  line-height: 1.7;
+}
+.gd-quote-inline.font-deva .gd-quote-inline-body {
+  font-style: normal;
 }
 
 .gd-quote-attr {
@@ -132,14 +150,22 @@ h1 {
 
 /* Paraphrase / translation gloss under the verbatim quote body. Deliberately
    smaller than the body so the source stays the visual anchor and the gloss
-   reads as a secondary support layer. Matches Devanagari nudge in .gd-quote. */
-.gd-quote-paraphrase {
+   reads as a secondary support layer. Unified 2026-08-05 across card + inline
+   variants so the paraphrase reads at one consistent size everywhere. */
+.gd-quote-paraphrase,
+.gd-quote-inline-paraphrase {
   font-size: calc(14px * var(--app-font-scale, 1));
   line-height: 1.55;
+  color: var(--text-secondary, #5A4632);
+  font-style: italic;
+  opacity: 0.9;
+}
+.gd-quote-paraphrase {
   padding-left: 21px;
   margin: 4px 0 4px 0;
 }
-.gd-quote-paraphrase.font-deva {
+.gd-quote-paraphrase.font-deva,
+.gd-quote-inline.font-deva .gd-quote-inline-paraphrase {
   font-size: calc(13.5px * var(--app-font-scale, 1));
 }
 

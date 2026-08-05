@@ -1,79 +1,113 @@
 import Link from "next/link";
 import type { Quote } from "../data/mock-conversations";
-import { authorDisplayName } from "../lib/authors";
 import { renderInlineMd } from "../lib/render-inline-md";
+import {
+  buildReadHref,
+  cleanParaphrase,
+  formatCardAttribution,
+  formatInlineAttribution,
+} from "../lib/quote-formatting";
 
-// Renders a verbatim quote with its attribution directly below — per ADR-007
-// the quote IS the citation. The internal `kind` classifier (canonical /
-// athvani / biography) is no longer shown in the UI — it's metadata that
-// confused devotees ("what is canonical?"). Quotes from athvani sources are
-// still visually distinct via the narrator's name in the author field.
+// Renders a verbatim quote with its attribution. Two variants:
 //
-// When `quote.workId` is non-empty AND `quote.kind === "canonical"`, a small
-// "Read in full →" link is rendered below the attribution. This is only shown
-// for canonical works because those are the ones served by /read/{slug}.
-// Athvani and biography quotes don't have a dedicated reader URL.
-// `lang` is optional — passed through to the reader URL when available, so the
-// reader opens in the right language; omitted if the caller doesn't have it.
-// `fromUrl` is optional — when provided, it is appended as `&from=` so the
-// reader's back link can return the user to the exact Q&A or reader session
-// they came from (back-navigation origin-awareness, ADR-???).
+//  * `variant="card"` (default) — the historical bordered-card look with a
+//    long "— Title, Location · Author" line and a separate "→ Read in full"
+//    link below. Used for Gurudev's Words and pravachan examples where the
+//    quote stands on its own.
+//
+//  * `variant="inline"` — the woven-prose look introduced for Q&A citations
+//    (per Ninad's readability feedback, 2026-08-04). Thin left rail in
+//    accent-maroon, no top/bottom border, no "Read in full" button — the
+//    attribution line itself is the click target. Reads as an embedded
+//    blockquote inside continuous narrative prose rather than a fenced-off
+//    card.
+//
+// Pure formatting logic (attribution assembly, URL construction) lives in
+// `lib/quote-formatting.ts` and is unit-tested.
+
+export type QuoteBlockVariant = "card" | "inline";
+
 export default function QuoteBlock({
   quote,
   lang,
   fromUrl,
+  variant = "card",
 }: {
   // Accept undefined so callers can pass partially-streamed fields (e.g.
   // `ex.quote` before its delta arrives) without a type assertion.
-  // The runtime guard below handles it safely.
   quote: Quote | undefined;
   lang?: string;
   fromUrl?: string;
+  variant?: QuoteBlockVariant;
 }) {
-  // During streaming a citation/example can render before its quote/body is
-  // populated; bail out until there's something to show (avoids a crash).
+  // Streaming guard: bail out until there's a body to render.
   if (!quote || !quote.body) return null;
+
   const containsDevanagari = /[ऀ-ॿ]/.test(quote.body);
   const isMr = lang === "mr";
-  const showReadLink = quote.kind === "canonical" && !!quote.workId;
-  // Build the "Read in full" href. Use URLSearchParams so we never misplace
-  // the first `?` vs subsequent `&` separators.
-  const readHref = showReadLink
-    ? (() => {
-        const qs = new URLSearchParams();
-        if (quote.readPage) qs.set("page", String(quote.readPage));
-        if (lang) qs.set("lang", lang);
-        if (fromUrl) qs.set("from", fromUrl);
-        const qStr = qs.toString();
-        return `/read/${quote.workId}${qStr ? `?${qStr}` : ""}`;
-      })()
-    : null;
-  // Attribution line. `location` is LLM-supplied and, for sources without a
-  // clean page/section (e.g. OCR'd pravachan), it sometimes just repeats the
-  // work title or author — which rendered as "Title, Title · Author". Drop it
-  // when empty or redundant so the reference reads "Title · Author".
-  const authorName = authorDisplayName(quote.author);
-  const norm = (s: string) => (s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
-  const title = (quote.workTitle ?? "").trim();
-  const loc = (quote.location ?? "").trim();
-  const nLoc = norm(loc);
-  const locRedundant =
-    !nLoc ||
-    nLoc === norm(title) ||
-    nLoc === norm(authorName) ||
-    nLoc.startsWith(norm(title)) ||
-    nLoc.includes(norm(authorName));
-  const attribution = locRedundant
-    ? `— ${title} · ${authorName}`
-    : `— ${title}, ${loc} · ${authorName}`;
+  const readHref = buildReadHref(quote, { lang, fromUrl });
+
   // Paraphrase / translation gloss — the LLM populates `quote.paraphrase`
-  // when the quote's source language differs from the reader's language, and
-  // for follow-up "translate above" operations where the paraphrase carries
-  // the translation of the body. Rendered as an italic gloss beneath the
-  // verbatim body so the reader sees the original AND the reading-language
-  // rendering side-by-side.
-  const paraphrase = (quote.paraphrase ?? "").trim();
+  // when the quote's source language differs from the reader's language.
+  // `cleanParaphrase` strips redundant "Paraphrase:" / "Translation:" /
+  // "Gloss:" label prefixes some models emit.
+  const paraphrase = cleanParaphrase(quote.paraphrase);
   const paraphraseContainsDeva = paraphrase && /[ऀ-ॿ]/.test(paraphrase);
+
+  if (variant === "inline") {
+    // Woven-prose variant: thin left rail, compact attribution as link,
+    // no top/bottom fence. Sits inside narrative flow.
+    const inlineAttr = formatInlineAttribution(quote);
+    return (
+      <blockquote
+        className={`gd-quote-inline my-5 pl-4 ${containsDevanagari ? "font-deva" : ""}`}
+        style={{
+          borderLeft: "2px solid var(--accent-maroon)",
+        }}
+      >
+        <span className="gd-quote-inline-body">{quote.body}</span>
+        {paraphrase ? (
+          <span
+            className={`gd-quote-inline-paraphrase mt-1 block ${
+              paraphraseContainsDeva ? "font-deva" : ""
+            }`}
+          >
+            {renderInlineMd(paraphrase)}
+          </span>
+        ) : null}
+        <span
+          className="gd-quote-inline-cite mt-1.5 block"
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: "12.5px",
+            color: "var(--text-secondary, #6E5B3E)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          {readHref ? (
+            <Link
+              href={readHref}
+              className={`gd-quote-inline-link ${isMr ? "font-deva" : ""}`}
+              style={{
+                color: "var(--accent-maroon)",
+                borderBottom: "1px solid var(--accent-maroon)",
+                textDecoration: "none",
+                fontWeight: 500,
+                paddingBottom: "1px",
+              }}
+            >
+              {inlineAttr}
+            </Link>
+          ) : (
+            inlineAttr
+          )}
+        </span>
+      </blockquote>
+    );
+  }
+
+  // Card variant (unchanged shape — used by Gurudev's Words + examples).
+  const attribution = formatCardAttribution(quote);
   return (
     <div>
       <blockquote
@@ -91,9 +125,7 @@ export default function QuoteBlock({
           {renderInlineMd(paraphrase)}
         </p>
       ) : null}
-      <p className="gd-quote-attr">
-        {attribution}
-      </p>
+      <p className="gd-quote-attr">{attribution}</p>
       {readHref ? (
         <Link
           href={readHref}

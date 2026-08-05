@@ -259,3 +259,110 @@ def test_empty_query_returns_none():
 def test_empty_known_works_returns_none():
     assert qu.extract_mentioned_work("Anything", []) is None
     assert qu.extract_mentioned_work("Anything", None) is None
+
+
+# ── Normalization (2026-08-04): human queries won't match exact titles ──
+#
+# `_normalize_title_key` folds diacritics + stopwords + spaces + hyphens
+# + common British/American spelling variants so a real user's quoted
+# claim matches a Ranade title even when they type differently.
+
+_RANADE_WORKS = [
+    {"work_id": "bhagavadgita-as-pathway-to-god-realization",
+     "title": "The Bhagavadgita as a Philosophy of God-Realisation",
+     "title_en": "The Bhagavadgita as a Philosophy of God-Realisation",
+     "title_translit": ""},
+    {"work_id": "mysticism-in-maharashtra",
+     "title": "Mysticism in Maharashtra",
+     "title_en": "Mysticism in Maharashtra",
+     "title_translit": ""},
+    {"work_id": "pathway-to-god-in-hindi-literature",
+     "title": "Pathway to God in Hindi Literature",
+     "title_en": "Pathway to God in Hindi Literature", "title_translit": ""},
+    {"work_id": "vedant",
+     "title": "Vedanta: The Culmination of Indian Thought",
+     "title_en": "Vedanta: The Culmination of Indian Thought", "title_translit": ""},
+]
+
+
+def test_normalize_key_direct():
+    """Fingerprint helper direct behaviour (word-splits, spelling, diacritics)."""
+    n = qu._normalize_title_key
+    # user's split "Bhagavad Gita" vs title's concatenated "Bhagavadgita"
+    assert n("Bhagavad Gita") == n("Bhagavadgita") == "bhagavadgita"
+    # British ↔ American spelling collapse
+    assert n("God-Realisation") == n("God Realization") == "godrealization"
+    # diacritics
+    assert n("Bhāgavadgītā") == "bhagavadgita"
+    # stopwords dropped
+    assert n("The Bhagavadgita as a Philosophy of God-Realisation") == \
+           n("Bhagavad Gita as Philosophy of God Realization") == \
+           "bhagavadgitaphilosophygodrealization"
+    # empty / punctuation-only → empty
+    assert n("") == ""
+    assert n("...") == ""
+
+
+def test_quoted_partial_title_word_split_and_spelling(regression=None):
+    """Neha's 2026-08-04 query — user typed the title with different word-
+    splits (Bhagavad Gita vs Bhagavadgita) and American -zation vs British
+    -sation. Normalization must let this match."""
+    r = qu.extract_mentioned_work(
+        'What are the highlights of the book "Bhagavad Gita as a Philosophy of God Realization"?',
+        _RANADE_WORKS,
+    )
+    assert r is not None, "quoted-scope match should fire under normalization"
+    assert r["work_id"] == "bhagavadgita-as-pathway-to-god-realization"
+    assert r["method"] == "quoted"
+
+
+def test_quoted_title_missing_diacritics_matches():
+    """User typed the title with the wrong diacritics (or no diacritics)."""
+    r = qu.extract_mentioned_work(
+        'Explain "Bhāgavadgītā as Philosophy of God" in one line', _RANADE_WORKS,
+    )
+    assert r is not None
+    assert r["work_id"] == "bhagavadgita-as-pathway-to-god-realization"
+    assert r["method"] == "quoted"
+
+
+def test_quoted_short_title_still_matches():
+    """`"Vedanta"` in a quoted span should map to the vedant work even with
+    a longer canonical title."""
+    r = qu.extract_mentioned_work(
+        'What does "Vedanta" say about Brahman?', _RANADE_WORKS,
+    )
+    assert r is not None
+    assert r["work_id"] == "vedant"
+
+
+def test_quoted_empty_fingerprint_returns_none():
+    """A quoted span of only stopwords/punctuation ('the', '...') can't map
+    to any work — must NOT match everything by producing an empty key."""
+    r = qu.extract_mentioned_work('What is "the" about?', _RANADE_WORKS)
+    assert r is None
+
+
+def test_unquoted_natural_phrasing_still_scopes():
+    """The tier-2 substring match still works on natural phrasing with
+    normalization applied."""
+    r = qu.extract_mentioned_work(
+        "What does the Bhagavadgita as a Philosophy of God-Realisation say about karma?",
+        _RANADE_WORKS,
+    )
+    assert r is not None
+    assert r["work_id"] == "bhagavadgita-as-pathway-to-god-realization"
+    assert r["method"] == "substring"
+
+
+def test_topical_query_does_not_falsely_match():
+    """A pure topical query (no title fingerprint) still returns None
+    after normalization — the length gate prevents "godrealization" from
+    matching random questions about God."""
+    r = qu.extract_mentioned_work(
+        "What does Gurudev say about God-realization in general?",
+        _RANADE_WORKS,
+    )
+    # No specific title fingerprint, so tier-2 length-gated match should
+    # not fire.  (This is not "scope by topic", it's "scope by title".)
+    assert r is None or r["method"] != "quoted"

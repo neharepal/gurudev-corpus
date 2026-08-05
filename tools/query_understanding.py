@@ -9,6 +9,7 @@ exact-match backbone). Cached Haiku; any failure returns None (no-op).
 """
 from __future__ import annotations
 import re
+import unicodedata
 from functools import lru_cache
 from typing import Callable, Optional
 
@@ -65,6 +66,26 @@ _QUOTED_SPAN_RE = re.compile(
     rf"[{_QUOTE_CHARS}]([^{_QUOTE_CHARS}]{{2,}}?)[{_QUOTE_CHARS}]"
 )
 
+# Stopwords that add no discriminative value to a book-title match. Dropped
+# during normalization so "Bhagavad Gita as a Philosophy of God Realization"
+# and "The Bhagavadgita Philosophy of God-Realisation" collide.
+_TITLE_STOPWORDS = frozenset({
+    "the", "a", "an", "of", "to", "in", "on", "as", "and", "is", "for",
+    "at", "by", "with", "from", "into", "onto",
+})
+
+# British ↔ American spelling collapses (Ranade titles use British `-sation`
+# / `-ise`; users often type American `-zation` / `-ize`). Longest-first so
+# a substring rewrite doesn't accidentally chop a longer match.
+_SPELLING_NORMALIZE = [
+    ("sation", "zation"),
+    ("isation", "ization"),
+    ("ised", "ized"),
+    ("iser", "izer"),
+    ("ising", "izing"),
+    ("isable", "izable"),
+]
+
 
 def _extract_quoted_spans(query: str) -> list[str]:
     """Return the content of every double-quoted span in the query
@@ -78,16 +99,53 @@ def _extract_quoted_spans(query: str) -> list[str]:
     return spans
 
 
+def _normalize_title_key(s: str) -> str:
+    """Fold a title (or user-quoted claim) to a single lowercase alphanumeric
+    string with:
+      • diacritics dropped (Bhāgavadgītā → Bhagavadgita)
+      • common British→American spelling normalized (realisation → realization)
+      • stopwords + articles dropped (the, a, of, as, …)
+      • all whitespace + punctuation + hyphens collapsed out
+
+    The result is a length-agnostic "fingerprint" that lets us bidirectionally
+    substring-match user claims against catalog titles even when the two
+    disagree on word-splits (`Bhagavad Gita` ↔ `Bhagavadgita`), hyphenation
+    (`God Realization` ↔ `God-Realisation`), and diacritics/case.
+    """
+    if not s:
+        return ""
+    # Decompose Latin diacritics and drop the combining marks (Bhāgavadgītā
+    # → Bhagavadgita). Devanagari conjuncts survive because NFKD does not
+    # decompose them into base + combining halants that we'd want removed.
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.lower()
+    # British → American spelling collapse (Latin-side; harmless on Devanagari).
+    for old, new in _SPELLING_NORMALIZE:
+        s = s.replace(old, new)
+    # Tokenize on non-word characters (Unicode-aware: keeps Devanagari,
+    # Bengali, Greek, etc. as word chars), drop English stopwords, rejoin
+    # as one blob.
+    tokens = [t for t in re.split(r"[^\w]+", s) if t and t not in _TITLE_STOPWORDS]
+    return "".join(tokens)
+
+
 def _match_quoted_span_to_works(span: str, catalog_titles: list) -> list[str]:
     """Given a quoted span and a list of (title, work_id) pairs, return
-    the set of work_ids the span could refer to. Match is case-insensitive
-    and bidirectional: span ⊂ title (user typed part of the title) OR
-    title ⊂ span (user quoted a phrase that contains the title)."""
-    s_lower = span.lower()
+    the set of work_ids the span could refer to. Match is normalized (see
+    _normalize_title_key) and bidirectional: span-fingerprint ⊂ title-fp
+    (user typed part of the title) OR title-fp ⊂ span-fp (user quoted a
+    phrase that contains the title). A minimum-key-length gate (5 chars)
+    prevents empty or trivial keys from matching everything."""
+    span_key = _normalize_title_key(span)
+    if len(span_key) < 5:
+        return []
     hits = set()
     for title, wid in catalog_titles:
-        t_lower = title.lower()
-        if s_lower in t_lower or t_lower in s_lower:
+        title_key = _normalize_title_key(title)
+        if len(title_key) < 5:
+            continue
+        if span_key in title_key or title_key in span_key:
             hits.add(wid)
     return sorted(hits)
 
@@ -190,11 +248,18 @@ def extract_mentioned_work(query: str, known_works: list) -> Optional[dict]:
         # answer, which is safer than pretending a random work was picked.
 
     # ── TIER 2: unquoted substring ──────────────────────────────────────
-    q_lower = q.lower()
+    # Normalize both sides (see _normalize_title_key) so human queries that
+    # skip diacritics, use different word-splits, or hit British/American
+    # spelling still match the title. The `long_titled` filter (raw ≥ 8
+    # chars) is the guard against topical false positives on short titles.
+    q_key = _normalize_title_key(q)
     substring_hits: list[tuple[str, str]] = []
     matched_work_ids: set[str] = set()
     for title, wid in long_titled:
-        if title.lower() in q_lower and wid not in matched_work_ids:
+        title_key = _normalize_title_key(title)
+        if not title_key:
+            continue
+        if title_key in q_key and wid not in matched_work_ids:
             substring_hits.append((title, wid))
             matched_work_ids.add(wid)
 
