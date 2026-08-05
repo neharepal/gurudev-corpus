@@ -1330,7 +1330,7 @@ function ReadingPage() {
                       className={`mb-1 text-[14px] ${isMr ? "font-deva" : ""}`}
                       style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
                     >
-                      {c.whyChosen}
+                      {renderInlineMd(c.whyChosen)}
                     </p>
                   ) : null}
                   <QuoteBlock quote={c.quote} lang={uiLang} variant="inline" />

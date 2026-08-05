@@ -997,7 +997,7 @@ function QAAnswerBody({
     <div>
       {doctrinalParagraphs.map((para, i) => (
         <p key={i} className={`mb-3 gd-scale-body ${isMr ? "font-deva" : ""}`}>
-          {para}
+          {renderInlineMd(para)}
         </p>
       ))}
       {/* Woven-prose layout (Ninad's readability feedback, 2026-08-04): the
@@ -1017,7 +1017,7 @@ function QAAnswerBody({
               className={`mb-1 gd-scale-body ${isMr ? "font-deva" : ""}`}
               style={{ color: "var(--text-primary)" }}
             >
-              {c.whyChosen}
+              {renderInlineMd(c.whyChosen)}
             </p>
           ) : null}
           <QuoteBlock quote={c.quote} lang={lang} fromUrl={fromUrl} variant="inline" />
