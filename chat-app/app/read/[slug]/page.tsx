@@ -1016,7 +1016,14 @@ function ReadingPage() {
                       so we split into an ordered [prose/verse/prose/…] list
                       and render each block appropriately. */
                   const rendered = para.body.replace(/\f/g, "").replace(/^\s*[*•]\s+/, "");
-                  const blocks = splitVerseBlocks(rendered, { isMarathi: isMr });
+                  // Verse detection uses the RESOLVED content language from
+                  // the backend response (falls back correctly when the URL
+                  // requests `en` on a Marathi-only work). Marathi/Hindi
+                  // body prose must not trip the embedded-verse detector.
+                  const resolvedLang = pageData?.language ?? contentLang;
+                  const blocks = splitVerseBlocks(rendered, {
+                    isMarathi: resolvedLang === "mr" || resolvedLang === "hi",
+                  });
                   const cornerBase: React.CSSProperties = {
                     position: "absolute",
                     width: "12px",

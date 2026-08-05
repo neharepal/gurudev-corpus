@@ -378,6 +378,14 @@ export type ReadingPage = {
   workSlug: string;
   workTitle: string;
   author: string;
+  /**
+   * The RESOLVED content language of the served text — NOT the `lang`
+   * query param. The backend's language resolver falls back when the
+   * requested language isn't available (e.g. requesting `en` on a
+   * Marathi-only work returns `mr`). The reader uses this to decide
+   * whether embedded-verse detection should apply.
+   */
+  language?: string;
   chapter: string;
   chapterStart?: boolean;
   totalPages: number;

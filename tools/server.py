@@ -2052,6 +2052,12 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
         "workSlug": slug,
         "workTitle": title,
         "author": author_display,
+        # `language` is the resolved language of the served text, NOT the
+        # `lang` param the caller sent (the caller can ask for `en` on a
+        # Marathi-only work and the resolver falls back to `mr`). The reader
+        # uses this to decide whether embedded-verse detection should apply
+        # (turns off for whole-Devanagari body books like Marathi/Hindi).
+        "language": lang,
         "chapter": chapter,
         "chapterStart": chapter_start,
         "totalPages": total_pages,
