@@ -40,3 +40,39 @@ def test_continuation_page_is_not_chapter_start():
 def test_empty():
     assert paginate([]) == []
     assert page_for_paragraph_index([], 0) == 1
+
+
+# --- Sub-heading pass-through (2026-08-03) ---
+# `is_subheading=True` paragraphs (####-emitted headings that ride inline
+# with body prose) must NOT count toward PAGE_SIZE, otherwise a chapter
+# opener with clustered `#### N. Title` heads would push real body prose
+# off the first page. Chapter change still forces a new page.
+
+def _sub(n, chapter):
+    return {"n": n, "chapter": chapter, "body": f"heading {n}", "is_subheading": True}
+
+
+def test_subheadings_do_not_consume_page_size():
+    # 5 sub-headings + 4 body paras — all fit on ONE page (subheadings free)
+    paras = [_sub(1, "A"), _sub(2, "A"), _sub(3, "A"), _sub(4, "A"), _sub(5, "A"),
+             _p(6, "A"), _p(7, "A"), _p(8, "A"), _p(9, "A")]
+    pages = paginate(paras)
+    assert len(pages) == 1
+    assert len(pages[0]) == 9
+
+
+def test_body_paragraphs_still_wrap_at_page_size():
+    # Sub-headings inline with a run of body paras: body paras still cap the
+    # page. 1 subheading + PAGE_SIZE body + 1 body → 2 pages (page 1 has the
+    # sub-heading and PAGE_SIZE body paras; page 2 has the final body).
+    paras = [_sub(1, "A")] + [_p(i, "A") for i in range(2, PAGE_SIZE + 3)]
+    pages = paginate(paras)
+    assert [len(pg) for pg in pages] == [PAGE_SIZE + 1, 1]
+
+
+def test_chapter_change_still_forces_page_break_even_with_subheadings():
+    paras = [_p(1, "A"), _sub(2, "A"), _p(3, "B"), _sub(4, "B")]
+    pages = paginate(paras)
+    assert [len(pg) for pg in pages] == [2, 2]
+    assert pages[0][0]["chapter"] == "A"
+    assert pages[1][0]["chapter"] == "B"
