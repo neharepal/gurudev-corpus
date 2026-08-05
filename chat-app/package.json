@@ -6,11 +6,12 @@
     "dev": "next dev --turbopack",
     "dev:webpack": "next dev",
     "build": "next build",
-    "build:check": "NEXT_DIST_DIR=.next-verify next build --no-lint && rm -rf .next-verify",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check": "tsc --noEmit && vitest run"
   },
   "dependencies": {
     "next": "^15.1.0",

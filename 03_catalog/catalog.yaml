@@ -31,18 +31,21 @@ works:
   path: 01_canonical/gurudev_ranade/books/vedant/
 - id: kannad-parmarth-sopan
   title: कन्नड परमार्थ सोपान (Kannad Parmarth Sopan, Marathi)
+  title_en: Pathway to God in Kannada Literature
   author: gurudev_ranade
   languages:
   - mr
   path: 01_canonical/gurudev_ranade/books/kannad-parmarth-sopan/
 - id: parmartha-mandir
   title: परमार्थ मंदिर (Parmartha Mandir)
+  title_en: Paramartha Mandir
   author: gurudev_ranade
   languages:
   - mr
   path: 01_canonical/gurudev_ranade/books/parmartha-mandir/
 - id: javak-patre-tipane
   title: श्री भाऊसाहेब महाराज उमदीकर यांची जावक पत्रे व टिपणे
+  title_en: Shri Bhausaheb Maharaj Umdikar Yanchi Javak Patre va Tipane
   author: bhausaheb_maharaj
   languages:
   - mr
@@ -56,24 +59,28 @@ works:
   path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-en/
 - id: allahabad-days-mr
   title: गुरुदेव रा. द. रानडे — अलाहाबाद विद्यापीठातील कारकीर्द व इतर लेख
+  title_en: "Gurudev R.D. Ranade: A Glance at His Allahabad University Days and Other Essays"
   author: about_gurudev_ranade
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/allahabad-days-mr/
 - id: kushal-pradhyapak
   title: प्रा. रा. द. रानडे — एक कुशल प्राध्यापक व नामवंत ग्रंथकार
+  title_en: Professor R. D. Ranade as a Teacher and Author
   author: about_gurudev_ranade
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/kushal-pradhyapak/
 - id: gurudev-paramarthik-shikvan
   title: श्री गुरुदेव रानडे व त्यांची पारमार्थिक शिकवण
+  title_en: Shri Gurudev Ranade va Tyanchi Paramarthik Shikvan
   author: kakasaheb_tulpule
   languages:
   - mr
   path: 01_canonical/kakasaheb_tulpule/books/gurudev-paramarthik-shikvan/
 - id: sonari-pane-2000
   title: निंबरगी संप्रदायाच्या इतिहासातील सोनेरी पाने (2000)
+  title_en: Nimbargi Sampradayachya Itihasatil Sonari Pane (2000)
   author: about_other_devotees
   languages:
   - mr
@@ -134,6 +141,7 @@ works:
   path: 01_canonical/gurudev_ranade/books/gandhi-and-other-indian-saints/
 - id: sadhakbodh
   title: साधक-बोध
+  title_en: Sadhak-Bodh
   author: kakasaheb_tulpule
   languages:
   - mr
@@ -152,24 +160,28 @@ works:
   path: 02_aggregated/biography/about_nimbargi_maharaj/nimbargi-maharaj-biography-en/
 - id: kannada-sahityatil-punyasmruti
   title: कन्नड साहित्यातील गुरुदेव रानडे यांच्या पुण्यस्मृती
+  title_en: Kannad Sahityatil Gurudev Ranade Yanchya Punyasmruti
   author: about_gurudev_ranade
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/kannada-sahityatil-punyasmruti/
 - id: jivandarshan-deshpande
   title: गुरुदेव रानडे — जीवनदर्शन
+  title_en: Gurudev Ranade — Jivandarshan
   author: about_gurudev_ranade
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/jivandarshan-deshpande/
 - id: nimbargi-maharaj-charitra-athavani-mr
   title: परमपूज्य श्रीनिम्बर्गी महाराज चरित्र व आठवणी
+  title_en: Parampujya Shri Nimbargi Maharaj Charitra va Athavani
   author: about_nimbargi_maharaj
   languages:
   - mr
   path: 02_aggregated/biography/about_nimbargi_maharaj/nimbargi-maharaj-charitra-athavani-mr/
 - id: amrutavalli
   title: अमृतवल्ली — श्री. दादासाहेब देशपांडे यांचे आठवणीमय जीवनचरित्र
+  title_en: Amrutavalli — Shri Dadasaheb Deshpande Yanche Athavanimay Jivancharitra
   author: other_devotees
   languages:
   - mr
@@ -191,24 +203,49 @@ works:
   path: 01_canonical/gurudev_ranade/books/hindi-parmarth-sopan/
 - id: charitra-tatvajnan-tulpule
   title: गुरुदेव रा. द. रानडे चरित्र व तत्वज्ञान
+  title_en: Gurudev R. D. Ranade Charitra va Tatvajnan
   author: shankar_gopal_tulpule
   languages:
   - mr
   path: 02_aggregated/biography/about_gurudev_ranade/charitra-tatvajnan-tulpule/
 - id: kakanchi-pravachane
   title: काकांची प्रवचने
+  title_en: Kakanchi Pravachane
   author: kakasaheb_tulpule
   languages:
   - mr
   path: 01_canonical/kakasaheb_tulpule/lectures/kakanchi-pravachane/
 - id: sadhakachi-atmakatha
   title: साधकाची आत्मकथा
+  title_en: Sadhakachi Atmakatha
   author: kakasaheb_tulpule
   languages:
   - mr
   path: 01_canonical/kakasaheb_tulpule/books/sadhakachi-atmakatha/
+- id: maharajachi-sutre
+  title: महाराजांची सूत्रे
+  title_en: Maharajanchi Sutre
+  author: kakasaheb_tulpule
+  languages:
+  - mr
+  path: 01_canonical/kakasaheb_tulpule/books/maharajachi-sutre/
+- id: bodhsudha
+  title: बोधसुधा
+  title_en: Bodhsudha
+  author: nimbargi_maharaj
+  languages:
+  - mr
+  path: 01_canonical/nimbargi_maharaj/books/bodhsudha/
+- id: nityanemavali
+  title: नित्यनेमावली
+  title_en: Nityanemavali
+  author: gurudev_ranade
+  languages:
+  - mr
+  path: 01_canonical/gurudev_ranade/books/nityanemavali/
 - id: swanandacha-gabha
   title: स्वानंदाचा गाभा
+  title_en: Swanandacha Gabha
   author: about_other_devotees
   languages:
   - mr

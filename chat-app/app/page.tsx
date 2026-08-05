@@ -26,11 +26,16 @@ import {
   removeProgress,
   type ProgressRecord,
 } from "../lib/readingProgress";
+import { matchesWorkQuery } from "../lib/work-filter";
 
 // Shape returned by /api/works (proxied from the Python backend).
+// `title_en` is the roman transliteration/gloss for Marathi-titled works
+// so the picker's substring filter matches user queries like "charitra"
+// against `गुरुदेव...चरित्र...`. Empty for works that don't need it.
 type ReadableWork = {
   slug: string;
   title: string;
+  title_en?: string;
   author: string;
   languages: string[];
 };
@@ -205,7 +210,7 @@ function LandingPage() {
     if (readableWorks === null) {
       return [];
     }
-    const q = draft.trim().toLowerCase();
+    const q = draft.trim();
     const preferredLang = (w: ReadableWork) =>
       w.languages.includes(lang) ? lang : w.languages[0];
     if (!q) {
@@ -216,7 +221,7 @@ function LandingPage() {
       }));
     }
     return readableWorks
-      .filter((w) => w.title.toLowerCase().includes(q))
+      .filter((w) => matchesWorkQuery(w, q))
       .slice(0, 12)
       .map((w) => ({
         text: w.title,
@@ -429,9 +434,9 @@ function LandingPage() {
           readingDropdownOpen &&
           readableWorks !== null ? (
             (() => {
-              const q = draft.trim().toLowerCase();
+              const q = draft.trim();
               const matches = readableWorks.filter((w) =>
-                q ? w.title.toLowerCase().includes(q) : true,
+                matchesWorkQuery(w, q),
               );
               return (
                 <div

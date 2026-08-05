@@ -1078,16 +1078,21 @@ def _scan_readable_works() -> List[Dict[str, Any]]:
                 work_id = work_dir.name
                 # Try to read meta.yaml for proper title and author override.
                 meta_path = work_dir / "meta.yaml"
+                # `title` is the display name (Devanagari for Marathi books);
+                # `title_en` is the roman gloss/transliteration used by the
+                # picker's substring filter so users can type "charitra" or
+                # "pathway" and land on Devanagari-titled works.
                 title: str = _humanize_slug(work_id)
+                title_en: str = ""
                 meta_author_id = author_id
                 if meta_path.exists():
                     try:
                         with open(meta_path, encoding="utf-8") as fh:
                             meta = yaml.safe_load(fh) or {}
-                        # Prefer title_en if set, else title.
-                        raw_title = (meta.get("title_en") or "").strip() or (meta.get("title") or "").strip()
+                        raw_title = (meta.get("title") or "").strip()
                         if raw_title:
                             title = raw_title
+                        title_en = (meta.get("title_en") or "").strip()
                         # meta.yaml may override the author (rare but possible).
                         if meta.get("author"):
                             meta_author_id = meta["author"]
@@ -1096,6 +1101,7 @@ def _scan_readable_works() -> List[Dict[str, Any]]:
                 results.append({
                     "slug": work_id,
                     "title": title,
+                    "title_en": title_en,
                     "author": _author_display_name(meta_author_id),
                     "languages": langs,
                 })
@@ -1108,7 +1114,10 @@ def _scan_readable_works() -> List[Dict[str, Any]]:
 def list_works() -> Dict[str, Any]:
     """Return all canonical works that have at least one readable text.md.
 
-    Response: { "works": [ { "slug", "title", "author", "languages" }, ... ] }
+    Response: { "works": [ { "slug", "title", "title_en", "author", "languages" }, ... ] }
+    `title` is the display name (Devanagari for Marathi works); `title_en`
+    is the roman transliteration/gloss used by the frontend picker's
+    substring filter (so typing "charitra" matches "गुरुदेव... चरित्र...").
     Sorted by title (case-insensitive). Result is cached in-process;
     /admin/reload clears the cache so newly ingested works appear.
     """
