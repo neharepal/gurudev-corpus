@@ -341,3 +341,38 @@ input:focus-visible {
   background: rgba(0, 0, 0, 0.03);
   font-weight: 600;
 }
+
+/* --------------------------------------------------------------------------
+   Verse-format book helpers (server.VERSE_FORMAT_SLUGS — nityanemavali as
+   of 2026-08-05). Bhajans / aartis / stotras render bold + centered with
+   `white-space: pre-line` so the per-pada `\n` the server emits from
+   `_split_verse_lines` survive to the DOM. Section headings emitted
+   in-body (`is_heading`) use serif maroon so the reader can visually
+   navigate a compilation of many songs.
+--------------------------------------------------------------------------- */
+.gd-verse {
+  text-align: center;
+  font-weight: 600;
+  white-space: pre-line;
+  line-height: 1.9;
+  margin: 0.9em auto;
+  max-width: 34em;
+}
+.gd-heading-body {
+  text-align: center;
+  font-family: var(--font-serif);
+  color: var(--accent-maroon);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 1.4em auto 0.6em auto;
+  max-width: 34em;
+}
+.gd-heading-body--l2 {
+  font-size: calc(22px * var(--app-font-scale, 1));
+  line-height: 1.35;
+}
+.gd-heading-body--l3 {
+  font-size: calc(18px * var(--app-font-scale, 1));
+  line-height: 1.4;
+  opacity: 0.9;
+}

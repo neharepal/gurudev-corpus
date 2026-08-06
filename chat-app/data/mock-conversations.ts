@@ -426,6 +426,12 @@ export type ReadingPage = {
     // the enclosing `##`/`###`, so citations and the page subtitle remain
     // anchored to the actual chapter, not the sub-item.
     is_subheading?: boolean;
+    // Verse-format book flags (server.VERSE_FORMAT_SLUGS — nityanemavali).
+    // Set per-paragraph by the backend so the reader can render `##`/`###`
+    // headings as maroon serif chapter titles and verse padas centered/bold.
+    is_heading?: boolean;
+    heading_level?: 2 | 3 | number;
+    is_verse?: boolean;
   }[];
 };
 

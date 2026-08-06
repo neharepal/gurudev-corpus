@@ -138,6 +138,12 @@ export interface Paragraph {
   n: number;
   body: string;
   is_subheading?: boolean;
+  // Verse-format book flags (server.VERSE_FORMAT_SLUGS — nityanemavali). Set
+  // per-paragraph by the server; the reader renders `is_heading` as a
+  // maroon serif chapter title and `is_verse` centered/bold via `.gd-verse`.
+  is_heading?: boolean;
+  heading_level?: 2 | 3 | number;
+  is_verse?: boolean;
 }
 
 const TERMINATORS = ".!?\"'”’)}]";
@@ -147,8 +153,19 @@ export function mergeSentenceContinuations<P extends Paragraph>(paragraphs: P[])
   const out: P[] = [];
   for (const para of paragraphs) {
     const prev = out.length > 0 ? out[out.length - 1] : null;
-    // Never merge across subheading boundaries.
-    if (!prev || prev.is_subheading || para.is_subheading) {
+    // Never merge across subheading / heading / verse boundaries. Verse
+    // padas and section headings from verse-format books are structural —
+    // Surya-style sentence-continuation joining doesn't apply to them
+    // and would concatenate a pada into the next paragraph's prose.
+    if (
+      !prev ||
+      prev.is_subheading ||
+      para.is_subheading ||
+      prev.is_heading ||
+      para.is_heading ||
+      prev.is_verse ||
+      para.is_verse
+    ) {
       out.push({ ...para });
       continue;
     }

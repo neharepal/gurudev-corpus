@@ -103,7 +103,120 @@ def _strip_inline_md(s: str) -> str:
     return s.replace("`", "")
 
 
-def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
+# Books that ship as verse-heavy devotional compilations (bhajans / aartis /
+# stotras). For slugs in this set the parser:
+#   - drops the default `< 80 char` block filter and instead keeps every block
+#     that isn't purely decorative (bhajans are lists of one-pada blocks that
+#     the default filter silently swallows — Neha's 2026-08-05 complaint).
+#   - flags blocks containing verse markers (॥, or ≥3 daṇḍa fragments) with
+#     `is_verse: True` so the reader renders them centered, bold, and
+#     line-broken (`white-space: pre-line`).
+#   - emits synthetic `is_heading: True` paragraphs for `##`/`###` markers in
+#     addition to updating the chapter context, so section titles appear
+#     in-body (not only in the ornamental page opener).
+# Start scoped to a single book; expand after Neha validates the render.
+VERSE_FORMAT_SLUGS = {"nityanemavali"}
+
+# Char-density pagination target for VERSE_FORMAT_SLUGS books (Follow-up 2,
+# 2026-08-06). PAGE_SIZE=4 was giving nityanemavali page 1 four short address
+# lines (~90 chars each) — absurdly sparse. Target ~1500 chars of body text
+# per page instead; `pagination.paginate()` respects `min_per_page=3` and
+# `max_per_page=40` internally so tiny padas can't strand a page and a run
+# of one-word padas can't wall it. Non-verse books keep PAGE_SIZE=4.
+_VERSE_PAGE_TARGET_CHARS = 1500
+
+
+def _pagination_target_chars(slug: Optional[str]) -> Optional[int]:
+    """Return `target_chars` to pass to pagination for `slug`, or None
+    for the default fixed-count PAGE_SIZE mode. Central so read_work,
+    read_work_toc, and the two page-mappers can't drift."""
+    if slug in VERSE_FORMAT_SLUGS:
+        return _VERSE_PAGE_TARGET_CHARS
+    return None
+
+# Pure ornamentation / structural markers under VERSE_FORMAT_SLUGS books —
+# `॥ ॐ ॥`, `* * *`, `०००००`, `(२)` numbering. Filtered out even when the
+# relaxed length gate is active. Kept tight (< 20 chars, all-punct/digits)
+# so real short bhajan padas survive.
+_DECORATIVE_BLOCK_RE = re.compile(r"^[\s\*\-–—•॥ॐ०-९0-9.()]+$")
+
+
+def _is_decorative_block(block: str) -> bool:
+    """True for tiny all-punct/digit ornaments like `* * *`, `०००००`,
+    `(२)`, `॥ ॐ ॥`. Only consulted when slug ∈ VERSE_FORMAT_SLUGS — the
+    default parse path's `<80` filter already catches these."""
+    s = block.strip()
+    if not s:
+        return True
+    if len(s) >= 20:
+        return False
+    return bool(_DECORATIVE_BLOCK_RE.match(s))
+
+
+def _is_verse_block(block: str) -> bool:
+    """Heuristic: does this block look like a devotional-song pada?
+
+    (a) Contains `॥` (pūrṇa-virāma / double daṇḍa — the standard
+        verse-line/verse-end marker in Marathi & Sanskrit poetry), OR
+    (b) contains ≥3 `।` fragments whose AVERAGE length is ≤ 80 chars —
+        density gate for shape-A verses that use single daṇḍa without ॥.
+    The ॥-gate is the safest signal (biography prose rarely uses it);
+    the density gate is a fallback so single-daṇḍa bhajans still bold-
+    render.
+    """
+    if "॥" in block:
+        return True
+    frags = [f.strip() for f in block.split("।") if f.strip()]
+    if len(frags) >= 3:
+        avg = sum(len(f) for f in frags) / len(frags)
+        if avg <= 80:
+            return True
+    return False
+
+
+# Pada terminators for shape-B verse blocks: `॥` (double daṇḍa) and its
+# numbered / labeled forms `॥१॥`, `॥धृ॥`, `॥पल्ल॥`, `॥प॥`. Single `।`
+# is a MID-PADA caesura in Marathi/Sanskrit verse, NOT a line break — so
+# we DO NOT split on it (Neha 2026-08-06 screenshot review: splitting on
+# `।` shattered each pada into fragments). Order matters: `॥N॥` before
+# `॥` so the combined terminator sticks to the pada it closes.
+_VERSE_LINE_SPLIT_RE = re.compile(r"॥[^॥\n]{0,10}॥|॥")
+
+
+def _split_verse_lines(body: str) -> str:
+    """Split a single-line multi-pada verse into `\n`-joined lines the
+    frontend can render with `white-space: pre-line`.
+
+    Break ONLY on `॥` (or `॥…॥` numbered/labeled forms). Internal `।` is
+    a printed caesura — leave it inside the pada. Padas keep their
+    terminating `॥` / `॥N॥` glued to the line they close.
+
+    If the block already contains newlines (shape A: one pada per line),
+    leave it alone — pre-line already honors those breaks. If the block
+    has no `॥` at all (a Shape-A single-pada line reflowed onto one
+    printed line), return it unchanged: single pada is one line.
+    """
+    if "\n" in body:
+        return body
+    if "॥" not in body:
+        return body
+    out: List[str] = []
+    last = 0
+    for m in _VERSE_LINE_SPLIT_RE.finditer(body):
+        end = m.end()
+        chunk = body[last:end].strip()
+        if chunk:
+            out.append(chunk)
+        last = end
+    tail = body[last:].strip()
+    if tail:
+        out.append(tail)
+    if not out:
+        return body
+    return "\n".join(out)
+
+
+def _parse_work_text(text_path: Path, slug: Optional[str] = None) -> List[Dict[str, Any]]:
     """Parse a text.md file into a list of paragraph records.
 
     Each record: {"n": int, "body": str, "chapter": str,
@@ -158,6 +271,7 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
     if pos <= len(raw):
         block_spans.append((raw[pos:], pos, len(raw)))
 
+    is_verse_book = slug in VERSE_FORMAT_SLUGS
     for (block_raw, raw_start, raw_end) in block_spans:
         block = block_raw.strip()
         if not block:
@@ -167,10 +281,23 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
             level = len(heading_match.group(1))
             heading_text = _strip_inline_md(heading_match.group(2).strip())
             if level <= 3:
-                # `##` / `###` update the chapter context and are otherwise
-                # invisible in the body (the reader's ornamental page-top
-                # renders `chapter` separately).
+                # `##` / `###` update the chapter context. For verse-format
+                # books we ALSO emit a visible in-body `is_heading` paragraph
+                # so the sadhak sees the section title on the page — the
+                # ornamental page-opener alone isn't enough when a book
+                # is a compilation of bhajans/aartis (Neha 2026-08-05).
                 current_heading = heading_text
+                if is_verse_book:
+                    n += 1
+                    results.append({
+                        "n": n,
+                        "body": heading_text,
+                        "chapter": current_heading,
+                        "is_heading": True,
+                        "heading_level": level,
+                        "char_start": fm_len + raw_start,
+                        "char_end": fm_len + raw_end,
+                    })
                 continue
             # `####+` is an in-body sub-section marker (e.g. Ranade's
             # numbered TOC items in MiM). Emit as a paragraph flagged
@@ -194,20 +321,73 @@ def _parse_work_text(text_path: Path) -> List[Dict[str, Any]]:
         if bold_only:
             current_heading = bold_only.group(1).strip()
             continue
-        # Skip short/decorative blocks
-        if len(block) < 80:
-            continue
+        # Length / decoration filter. Under VERSE_FORMAT_SLUGS the default
+        # `<80` gate silently swallows every one-pada bhajan block; relax
+        # to keep everything that isn't pure ornament.
+        if is_verse_book:
+            if _is_decorative_block(block):
+                continue
+        else:
+            if len(block) < 80:
+                continue
         n += 1
+        is_verse = is_verse_book and _is_verse_block(block)
+        if is_verse:
+            # Split shape-B (one long line, many padas) onto per-pada lines
+            # and skip _strip_inline_md so any **bold** verse markers pass
+            # through to the frontend intact.
+            body_out = _split_verse_lines(block)
+        else:
+            body_out = _strip_inline_md(block)
         # Absolute offsets: raw_start/raw_end are within the post-front-matter
         # body; add fm_len to get absolute offsets in full_text (same coordinate
         # system as chunk meta char_start / char_end).
-        results.append({
+        para: Dict[str, Any] = {
             "n": n,
-            "body": _strip_inline_md(block),
+            "body": body_out,
             "chapter": current_heading,
             "char_start": fm_len + raw_start,
             "char_end": fm_len + raw_end,
-        })
+        }
+        if is_verse:
+            para["is_verse"] = True
+        results.append(para)
+
+    # Follow-up 1 (2026-08-06, Neha's page-62 review + rule-change):
+    # VERSE-RUN EXTENSION via adjacency. For each paragraph already flagged
+    # `is_verse: True` by the per-block detector, look at its neighbours in
+    # both directions. If a neighbour is SHORT (body < 200 chars) and is
+    # not an `is_heading`, mark it verse too. Iterate the extension until
+    # no new flags land — verse runs propagate outward across chains of
+    # short paragraphs. STOP at a long prose paragraph (≥ 200 chars): that's
+    # the natural boundary between verse and biographical / commentary prose.
+    #
+    # Why not sticky-per-section? A biography section may quote a single
+    # abhang inline — sticky-fill would over-flag every prose paragraph in
+    # the section. Adjacency stops at the first long prose block, so the
+    # verse quote stays an island and the narrative stays prose.
+    #
+    # Only runs for verse-format books; the non-verse code path is
+    # untouched (regression: kakanchi-pravachane page 1 is bit-exact).
+    _VERSE_EXTEND_MAX_LEN = 200
+    if is_verse_book and results:
+        while True:
+            newly_flagged = False
+            for i, p in enumerate(results):
+                if not p.get("is_verse"):
+                    continue
+                for j in (i - 1, i + 1):
+                    if j < 0 or j >= len(results):
+                        continue
+                    q = results[j]
+                    if q.get("is_verse") or q.get("is_heading"):
+                        continue
+                    if len(q.get("body", "")) < _VERSE_EXTEND_MAX_LEN:
+                        q["is_verse"] = True
+                        newly_flagged = True
+            if not newly_flagged:
+                break
+
     return results
 
 
@@ -336,7 +516,7 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
     cache_key = (str(text_path), lang)
     if cache_key not in _reading_cache:
         try:
-            _reading_cache[cache_key] = _parse_work_text(text_path)
+            _reading_cache[cache_key] = _parse_work_text(text_path, slug=slug)
         except Exception:
             return None
     all_paragraphs = _reading_cache[cache_key]
@@ -360,7 +540,10 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
         # char_offset is past the last paragraph — return the last page.
         target_idx = len(all_paragraphs) - 1
 
-    return page_for_paragraph_index(all_paragraphs, target_idx)
+    return page_for_paragraph_index(
+        all_paragraphs, target_idx,
+        target_chars=_pagination_target_chars(slug),
+    )
 
 
 def _norm_for_match(s: str) -> str:
@@ -391,10 +574,18 @@ def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
     """
     if not body:
         return None
+    # Derive slug from the standard `.../<slug>/<lang>/text.md` path shape so
+    # verse-format books (VERSE_FORMAT_SLUGS) still get their relaxed parse
+    # here — otherwise the cache-per-caller could disagree with /read/{slug}
+    # about page numbers for cited quotes.
+    try:
+        slug_from_path: Optional[str] = text_path.parent.parent.name
+    except Exception:
+        slug_from_path = None
     cache_key = (str(text_path), None)
     if cache_key not in _reading_cache:
         try:
-            _reading_cache[cache_key] = _parse_work_text(text_path)
+            _reading_cache[cache_key] = _parse_work_text(text_path, slug=slug_from_path)
         except Exception:
             return None
     paragraphs = _reading_cache[cache_key]
@@ -421,7 +612,10 @@ def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
                 continue
             for i, para in enumerate(paragraphs):
                 if key in _norm_for_match(para["body"]):
-                    return page_for_paragraph_index(paragraphs, i)
+                    return page_for_paragraph_index(
+                        paragraphs, i,
+                        target_chars=_pagination_target_chars(slug_from_path),
+                    )
     return None
 
 
@@ -2040,14 +2234,14 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     # Parse (with cache)
     cache_key = (str(text_path), lang)
     if cache_key not in _reading_cache:
-        _reading_cache[cache_key] = _parse_work_text(text_path)
+        _reading_cache[cache_key] = _parse_work_text(text_path, slug=slug)
     all_paragraphs = _reading_cache[cache_key]
 
     total = len(all_paragraphs)
     if total == 0:
         raise HTTPException(status_code=404, detail="Work has no parseable paragraphs")
 
-    pages = paginate(all_paragraphs)
+    pages = paginate(all_paragraphs, target_chars=_pagination_target_chars(slug))
     total_pages = len(pages)
     page = max(1, min(page, total_pages))
     page_paras = pages[page - 1]
@@ -2071,9 +2265,20 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
         "chapterStart": chapter_start,
         "totalPages": total_pages,
         "paragraphs": [
-            # Preserve `is_subheading` when present — the reader renders
-            # those rows as visible `####` sub-headings instead of prose.
-            {"n": p["n"], "body": p["body"], **({"is_subheading": True} if p.get("is_subheading") else {})}
+            # Preserve structural flags so the reader can render each row
+            # appropriately:
+            #   is_subheading — `####+` in-body sub-heading (all books)
+            #   is_heading    — `##`/`###` heading emitted as a visible
+            #                   in-body row (verse-format books only)
+            #   is_verse      — a Sanskrit/Marathi verse pada; render bold,
+            #                   centered, pre-line (verse-format books only)
+            {
+                "n": p["n"],
+                "body": p["body"],
+                **({"is_subheading": True} if p.get("is_subheading") else {}),
+                **({"is_heading": True, "heading_level": p.get("heading_level", 2)} if p.get("is_heading") else {}),
+                **({"is_verse": True} if p.get("is_verse") else {}),
+            }
             for p in page_paras
         ],
     }
@@ -2165,13 +2370,13 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     # Get paginated paragraphs (cached)
     cache_key = (str(text_path), lang)
     if cache_key not in _reading_cache:
-        _reading_cache[cache_key] = _parse_work_text(text_path)
+        _reading_cache[cache_key] = _parse_work_text(text_path, slug=slug)
     all_paragraphs = _reading_cache[cache_key]
     if not all_paragraphs:
         return {"workSlug": slug, "workTitle": work_meta.get("title", slug),
                 "author": _author_display_name(work_meta.get("author", "")),
                 "sections": [], "flat": []}
-    pages = paginate(all_paragraphs)
+    pages = paginate(all_paragraphs, target_chars=_pagination_target_chars(slug))
 
     def page_for_para_n(n: int) -> int:
         for pnum, page_paras in enumerate(pages, 1):
@@ -2205,6 +2410,7 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     # For sections (##), also record the section's own start page — used by
     # the frontend to render 0-chapter sections (e.g. MiM's standalone
     # Chapter I) as a clickable leaf row instead of an empty header.
+    is_verse_book = slug in VERSE_FORMAT_SLUGS
     n = 0
     for block_raw in blocks:
         block = block_raw.strip()
@@ -2215,12 +2421,25 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
             level = len(h_match.group(1))
             title = _strip_inline_md(h_match.group(2).strip())
             if level == 2:  # ## section marker
-                target_n = n + 1
+                # For verse-format books, `_parse_work_text` emits an
+                # `is_heading` paragraph for this ##, so the target is
+                # the heading paragraph itself (n+1 then bump). For other
+                # books, target is the first BODY paragraph after (n+1,
+                # no bump).
+                if is_verse_book:
+                    n += 1
+                    target_n = n
+                else:
+                    target_n = n + 1
                 pg = page_for_para_n(target_n) if target_n <= len(all_paragraphs) else 1
                 current_section = {"title": title, "chapters": [], "page": pg}
                 sections.append(current_section)
             elif level == 3:  # ### chapter
-                target_n = n + 1
+                if is_verse_book:
+                    n += 1
+                    target_n = n
+                else:
+                    target_n = n + 1
                 pg = page_for_para_n(target_n) if target_n <= len(all_paragraphs) else 1
                 entry = {"title": title, "page": pg}
                 flat.append(entry)
@@ -2253,8 +2472,12 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
         bold_only = re.match(r"^\*\*(.+?)\*\*[.:]?$", block)
         if bold_only:
             continue
-        if len(block) < 80:
-            continue
+        if is_verse_book:
+            if _is_decorative_block(block):
+                continue
+        else:
+            if len(block) < 80:
+                continue
         n += 1
 
     return {
@@ -2281,7 +2504,8 @@ def _prepare_request(req: AskRequest, request: Optional[Request] = None):
         raise HTTPException(status_code=400, detail="`question` is required")
 
     # RFC-023: reading-qa uses the same retrieval budget as qa — the drawer is
-    # a full Q&A surface, just with a plain-prose answer shape.
+    # scoped to a single work but should still see plenty of chunks from it so
+    # the synthesis can reach across chapters.
     top_k = {"qa": 12, "pravachan": 15, "reading": 5, "reading-qa": 12}[mode]
     candidates = 100
     mmr_lambda = 0.7
@@ -2368,8 +2592,8 @@ def _prepare_request(req: AskRequest, request: Optional[Request] = None):
         user_msg = build_reading_user_message(req.passage or "", chunks, question, title)
     else:
         # qa and reading-qa share the same user-message shape (retrieved
-        # chunks + question + optional history). The system prompt varies by
-        # mode via get_system_prompt() below.
+        # passages + question, optionally with prior history). The prompt
+        # itself, selected below by mode, drives the different response shape.
         user_msg = build_user_message(chunks, question, history=req.history)
 
     system_prompt = get_system_prompt(mode, lang=req.lang or "en")
@@ -2736,9 +2960,8 @@ def ask(req: AskRequest, request: Request):
                                         elapsed_ms=int((time.time() - ask_t0) * 1000))
             elif mode == "reading-qa" and kind == "done":
                 # RFC-023: log reading-qa answers on the done event so the
-                # activity feed captures them the same way QA answers are.
-                response_dict = payload.get("response") or {}
-                _finalize_ask_log(request, result=response_dict,
+                # activity dashboard has the full text + link count.
+                _finalize_ask_log(request, result=payload.get("response") or {},
                                     retrieved=retrieved_summary, status=200,
                                     elapsed_ms=int((time.time() - ask_t0) * 1000))
             yield sse(kind, **payload)

@@ -89,6 +89,7 @@ const TOC_ALLOWED_SLUGS = new Set<string>([
   "kakanchi-pravachane",
   "mysticism-in-maharashtra",
   "bhagavadgita-as-pathway-to-god-realization",
+  "nityanemavali",
 ]);
 
 // Language-aware UI labels for the reading surface. Verbatim passages
@@ -801,8 +802,13 @@ function ReadingPage() {
                 a chapter (like a printed book's chapter-title page). The
                 subtitle in the header carries the chapter name as a running
                 head on continuation pages, so this decoration doesn't need
-                to repeat on every page. */}
-            {pageData?.chapter && pageData?.chapterStart ? (
+                to repeat on every page.
+
+                Skipped when the first paragraph is itself an `is_heading`
+                row (verse-format books / VERSE_FORMAT_SLUGS): the visible
+                in-body heading takes the ornamental role, so rendering both
+                would duplicate the chapter title. */}
+            {pageData?.chapter && pageData?.chapterStart && !pageData?.paragraphs?.[0]?.is_heading ? (
               <div
                 className="mb-8 mt-2"
                 style={{ color: "var(--text-secondary)" }}
@@ -875,7 +881,25 @@ function ReadingPage() {
             {/* Pre-process paragraphs to merge Surya-split sentences (prev
                 ends without terminator + current starts lowercase). Purely
                 presentational — canonical text is untouched. */}
-            {mergeSentenceContinuations(pageData?.paragraphs ?? []).map((para, idx) => (
+            {(() => {
+              /* Belt-and-suspenders (Neha 2026-08-06): when a page contains
+                 ANY `is_verse` paragraph, we want every non-heading paragraph
+                 on the page to render with the same centered/bold rhythm.
+                 The server-side verse-run extension already flags most such
+                 neighbours, but a stray prose block on a mostly-verse page
+                 would otherwise break the visual line. Flip the flag on the
+                 client copy so the existing `para.is_verse` render branch
+                 kicks in — no separate CSS path needed. */
+              const raw = pageData?.paragraphs ?? [];
+              const pageHasVerse = raw.some((p) => (p as { is_verse?: boolean }).is_verse);
+              const paras = pageHasVerse
+                ? raw.map((p) => {
+                    const pp = p as { is_heading?: boolean; is_verse?: boolean };
+                    return pp.is_heading || pp.is_verse ? p : { ...p, is_verse: true };
+                  })
+                : raw;
+              return mergeSentenceContinuations(paras);
+            })().map((para, idx) => (
           <div
             key={para.n}
             className="mb-0"
@@ -972,6 +996,36 @@ function ReadingPage() {
                       )}
                     </div>
                   </div>
+                ) : para.is_heading ? (
+                  /* `##`/`###` heading for verse-format books (server
+                      VERSE_FORMAT_SLUGS — nityanemavali as of 2026-08-05).
+                      Rendered as a big centered serif heading in the maroon
+                      accent, in place of the ornamental page opener (which
+                      is suppressed when the first para carries this flag).
+                      Level 2 is bigger than level 3. */
+                  (() => {
+                    const level: 2 | 3 = para.heading_level === 3 ? 3 : 2;
+                    const cls = `gd-heading-body gd-heading-body--l${level} ${isMr ? "font-deva" : ""}`;
+                    if (level === 3) {
+                      return <h3 className={cls}>{para.body}</h3>;
+                    }
+                    return <h2 className={cls}>{para.body}</h2>;
+                  })()
+                ) : para.is_verse ? (
+                  /* Verse pada for verse-format books. Centered narrow
+                      column, bold, `pre-line` so the per-pada `\n` splits
+                      the server emitted survive to the DOM. Matches the
+                      printed nityanemavali layout. */
+                  <p
+                    className={`gd-verse gd-read-p--flush ${isMr ? "font-deva" : ""}`}
+                    style={{
+                      color: "var(--text-primary)",
+                      fontFamily: 'var(--font-deva, "Sanskrit 2003", "Noto Sans Devanagari", "Kohinoor Devanagari", "Mangal", serif)',
+                      fontSize: "calc(17.5px * var(--app-font-scale, 1))",
+                    }}
+                  >
+                    {para.body}
+                  </p>
                 ) : para.is_subheading ? (
                   /* `####+` sub-section marker from the source markdown (e.g.
                       Ranade's numbered TOC items in MiM, or the preface's
