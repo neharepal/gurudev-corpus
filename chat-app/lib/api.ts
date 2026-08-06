@@ -29,8 +29,13 @@ export type HistoryTurn = {
   }>;
 };
 
+// RFC-023 introduces "reading-qa" as a routing string (not a top-level UI
+// mode, so it stays out of ModeId — which drives the mode picker + cache
+// keys). The drawer at /read/<slug> sends it in place of "qa".
+export type AskMode = ModeId | "reading-qa";
+
 export type AskRequest = {
-  mode: ModeId;
+  mode: AskMode;
   question: string;
   lang?: Lang;
   // Scopes retrieval to a specific work. Used by Reading mode and by
@@ -96,6 +101,22 @@ export type AskResponse =
         chapter: string;
         author: string;
       };
+    }
+  // RFC-023 — Reading-mode Q&A (drawer at /read/<slug>). Discriminator is
+  // `format` (not `kind`); the existing modes keep their `kind`.
+  | {
+      format: "reading-qa";
+      question: string;
+      /** Full answer body — plain synthesis + conclusion; Markdown allowed. */
+      text: string;
+      /** Sources footer; server caps at 3. Absent when the question didn't
+       *  imply a source request. */
+      passageLinks?: Array<{
+        label: string;
+        workSlug: string;
+        page: number;
+        workTitle?: string;
+      }>;
     };
 
 type Quote = {

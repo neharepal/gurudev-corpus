@@ -19,7 +19,12 @@ import {
 } from "react";
 import FontScaleControl from "../../../components/FontScaleControl";
 import QuoteBlock from "../../../components/QuoteBlock";
-import type { QAAnswer, ReadingPage } from "../../../data/mock-conversations";
+import ReadingQaAnswer from "../../../components/ReadingQaAnswer";
+import type {
+  QAAnswer,
+  ReadingQaAnswer as ReadingQaAnswerType,
+  ReadingPage,
+} from "../../../data/mock-conversations";
 import { usePersistentState } from "../../../hooks/usePersistentState";
 import { askApi, AskError, reportCorrection } from "../../../lib/api";
 import { renderInlineMd } from "../../../lib/render-inline-md";
@@ -35,9 +40,14 @@ import { upsertProgress } from "../../../lib/readingProgress";
 
 type Lang = "en" | "mr";
 
+// RFC-023: the drawer now stores either shape. Old cached QAAnswer entries
+// from before the format migration still deserialise fine — the render
+// branch below picks by `answer.format === "reading-qa"` and otherwise
+// falls back to the QA render. Old entries lack `format` so they land in
+// the QA fallback, which is exactly what the pre-RFC-023 render expected.
 type ChatTurn = {
   question: string;
-  answer: QAAnswer;
+  answer: QAAnswer | ReadingQaAnswerType;
 };
 
 // Table of contents shape returned by /api/read-toc. Chapters carry the
@@ -271,9 +281,12 @@ function ReadingPage() {
     { skipHydration: hasUrlPage },
   );
   const [messages, setMessages] = usePersistentState<ChatTurn[]>(
-    // v2: drawer chat now stores work-scoped Q&A answers (F17). Bumping the key
-    // discards old {framing, passage}-shaped entries the new renderer can't use.
-    `gd:read:${slug}:chat:v2`,
+    // v3: RFC-023 changed the drawer answer shape to `{format:"reading-qa",
+    // text, passageLinks}`. Bumping v2→v3 discards the old QA-shape entries
+    // that would render as an empty ReadingQaAnswer (their `text` is
+    // undefined). Older restores just start with an empty conversation —
+    // acceptable for a UI cache.
+    `gd:read:${slug}:chat:v3`,
     [],
   );
   const [draft, setDraft] = useState("");
@@ -496,17 +509,28 @@ function ReadingPage() {
     setDraft("");
     try {
       const resp = await askApi({
-        mode: "qa",
+        // RFC-023: the drawer sends "reading-qa" so the backend routes to
+        // SYSTEM_PROMPT_READING_QA + emit_reading_qa_response. The response
+        // is discriminated by `format`, not `kind`.
+        mode: "reading-qa",
         question: q,
         lang: uiLang,
         work: slug,
       });
-      if (resp.kind !== "qa") {
+      // Narrow via the RFC-023 discriminator. Backend also produces the
+      // shape when the LLM misfires (format field is always set by pydantic
+      // literal), so if we don't see it something upstream is very wrong.
+      if (!("format" in resp) || resp.format !== "reading-qa") {
         throw new AskError("Unexpected response shape", 500);
       }
       const turn: ChatTurn = {
         question: q,
-        answer: resp,
+        answer: {
+          format: "reading-qa",
+          question: resp.question,
+          text: resp.text,
+          passageLinks: resp.passageLinks,
+        },
       };
       setMessages((m) => [...m, turn]);
     } catch (e: unknown) {
@@ -1306,44 +1330,67 @@ function ReadingPage() {
                   {m.question}
                 </p>
               </div>
-              {/* QA answer: framing paragraph(s), citations (QuoteBlock +
-                  whyChosen rationale), optional synthesis. */}
-              {m.answer.framing ? (
-                <p
-                  className={`mb-3 text-[14px] ${isMr ? "font-deva" : ""}`}
-                  style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
-                >
-                  {renderInlineMd(m.answer.framing)}
-                </p>
-              ) : null}
-              {/* Woven-prose layout (see chat/page.tsx for the design note).
-                  whyChosen → setup sentence before the quote; quote → inline
-                  variant. No "Why this passage:" label. */}
-              {(m.answer.citations ?? []).filter((c) => c?.quote?.body).map((c, ci) => (
-                <div
-                  key={ci}
-                  id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
-                  className="scroll-mt-4"
-                >
-                  {c.whyChosen ? (
-                    <p
-                      className={`mb-1 text-[14px] ${isMr ? "font-deva" : ""}`}
-                      style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
-                    >
-                      {renderInlineMd(c.whyChosen)}
-                    </p>
-                  ) : null}
-                  <QuoteBlock quote={c.quote} lang={uiLang} variant="inline" />
-                </div>
-              ))}
-              {m.answer.synthesis ? (
-                <div
-                  className={`mt-2 text-[14px] synthesis-body ${isMr ? "font-deva" : ""}`}
-                  style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
-                >
-                  {renderBlockMd(m.answer.synthesis)}
-                </div>
-              ) : null}
+              {/* RFC-023 answer render. Discriminator: `format === "reading-qa"`
+                  → new ReadingQaAnswer (plain synthesis + optional Sources
+                  footer). Otherwise fall back to the QA-shape render (still
+                  used to display older cached entries that predate the
+                  format migration). */}
+              {(() => {
+                const ans = m.answer;
+                if ("format" in ans && ans.format === "reading-qa") {
+                  return (
+                    <ReadingQaAnswer
+                      text={ans.text}
+                      passageLinks={ans.passageLinks}
+                      currentSlug={slug}
+                      lang={uiLang}
+                      onNav={() => setChatOpen(false)}
+                    />
+                  );
+                }
+                // QA answer: framing paragraph(s), citations (QuoteBlock +
+                // whyChosen rationale), optional synthesis. Only reached
+                // for legacy cached entries — new drawer asks are always
+                // reading-qa shape (RFC-023).
+                const qa = ans as QAAnswer;
+                return (
+                  <>
+                    {qa.framing ? (
+                      <p
+                        className={`mb-3 text-[14px] ${isMr ? "font-deva" : ""}`}
+                        style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
+                      >
+                        {renderInlineMd(qa.framing)}
+                      </p>
+                    ) : null}
+                    {(qa.citations ?? []).filter((c) => c?.quote?.body).map((c, ci) => (
+                      <div
+                        key={ci}
+                        id={c.quote?.passage ? `cite-${c.quote.passage}` : undefined}
+                        className="scroll-mt-4"
+                      >
+                        {c.whyChosen ? (
+                          <p
+                            className={`mb-1 text-[14px] ${isMr ? "font-deva" : ""}`}
+                            style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
+                          >
+                            {renderInlineMd(c.whyChosen)}
+                          </p>
+                        ) : null}
+                        <QuoteBlock quote={c.quote} lang={uiLang} variant="inline" />
+                      </div>
+                    ))}
+                    {qa.synthesis ? (
+                      <div
+                        className={`mt-2 text-[14px] synthesis-body ${isMr ? "font-deva" : ""}`}
+                        style={{ color: "var(--text-primary)", lineHeight: 1.6 }}
+                      >
+                        {renderBlockMd(qa.synthesis)}
+                      </div>
+                    ) : null}
+                  </>
+                );
+              })()}
             </div>
           ))
         )}

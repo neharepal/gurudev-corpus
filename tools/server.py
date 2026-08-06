@@ -2274,13 +2274,15 @@ def _prepare_request(req: AskRequest, request: Optional[Request] = None):
     `request.state.log_entry["auto_scope"]` so the /admin/activity dashboard
     can surface them (ADR-018)."""
     mode = req.mode
-    if mode not in ("qa", "pravachan", "reading"):
+    if mode not in ("qa", "pravachan", "reading", "reading-qa"):
         raise HTTPException(status_code=400, detail=f"Unknown mode: {mode!r}")
     question = (req.question or "").strip()
     if not question:
         raise HTTPException(status_code=400, detail="`question` is required")
 
-    top_k = {"qa": 12, "pravachan": 15, "reading": 5}[mode]
+    # RFC-023: reading-qa uses the same retrieval budget as qa — the drawer is
+    # a full Q&A surface, just with a plain-prose answer shape.
+    top_k = {"qa": 12, "pravachan": 15, "reading": 5, "reading-qa": 12}[mode]
     candidates = 100
     mmr_lambda = 0.7
 
@@ -2304,7 +2306,7 @@ def _prepare_request(req: AskRequest, request: Optional[Request] = None):
 
     metadata_filter: Optional[Dict[str, Any]] = None
     auto_scope_info: Optional[Dict[str, Any]] = None
-    if req.work and mode in ("reading", "qa"):
+    if req.work and mode in ("reading", "qa", "reading-qa"):
         metadata_filter = {"work_id": req.work}
     elif mode == "qa" and getattr(STATE, "works_catalog", None):
         # Auto-scope: two deterministic tiers, no LLM.
@@ -2365,6 +2367,9 @@ def _prepare_request(req: AskRequest, request: Optional[Request] = None):
         title = req.passage_title or (req.work or "(current passage)")
         user_msg = build_reading_user_message(req.passage or "", chunks, question, title)
     else:
+        # qa and reading-qa share the same user-message shape (retrieved
+        # chunks + question + optional history). The system prompt varies by
+        # mode via get_system_prompt() below.
         user_msg = build_user_message(chunks, question, history=req.history)
 
     system_prompt = get_system_prompt(mode, lang=req.lang or "en")
@@ -2729,6 +2734,13 @@ def ask(req: AskRequest, request: Request):
                     _finalize_ask_log(request, result=response_dict,
                                         retrieved=retrieved_summary, status=200,
                                         elapsed_ms=int((time.time() - ask_t0) * 1000))
+            elif mode == "reading-qa" and kind == "done":
+                # RFC-023: log reading-qa answers on the done event so the
+                # activity feed captures them the same way QA answers are.
+                response_dict = payload.get("response") or {}
+                _finalize_ask_log(request, result=response_dict,
+                                    retrieved=retrieved_summary, status=200,
+                                    elapsed_ms=int((time.time() - ask_t0) * 1000))
             yield sse(kind, **payload)
             last_event_ts = now
 

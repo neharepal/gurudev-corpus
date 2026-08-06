@@ -281,7 +281,10 @@ function ChatPage() {
     // page (e.g. Back from "Read in full") should rehydrate the prior answer
     // rather than re-stream it. Re-asking costs a full billable LLM call and
     // makes Back feel broken. A cache HIT skips the fetch entirely.
-    const cacheKey = `gd:qa:v1:${mode}|${lang}|${q}`;
+    // v2 (RFC-023 §"Resolved"): bumped after the Reading-Q&A shape
+    // migration. Any leftover v1 entries are natural misses → refetch once,
+    // no error. Simpler than dual-parsing the old cached payloads.
+    const cacheKey = `gd:qa:v2:${mode}|${lang}|${q}`;
 
     // Durable rehydrate: a saved thread restores the answer AND follow-ups, so
     // reopening from the shelf/history shows the whole conversation with no new
@@ -432,7 +435,7 @@ function ChatPage() {
         case "done":
           // Reconcile: replace the progressively-built draft with the
           // fully-validated final response.
-          if (event.response.kind === "reading") {
+          if (!("kind" in event.response) || event.response.kind === "reading") {
             setError(L[lang].errorBadResponse);
           } else {
             const finalAnswer = event.response as QAAnswer | PravachanAnswer;
@@ -619,7 +622,7 @@ function ChatPage() {
           return;
         }
         case "done":
-          if (event.response.kind !== "reading") {
+          if ("kind" in event.response && event.response.kind !== "reading") {
             setFollowUps((prev) => {
               const next = [...prev];
               next[turnIndex] = {

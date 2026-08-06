@@ -258,6 +258,58 @@ class ReadingResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Reading-mode Q&A response (RFC-023)
+#
+# The drawer at /read/<slug> — devotee is holding the book open. Answers a
+# question about the current work as plain synthesis + conclusion. Verbatim
+# quotes are deliberately absent (the reader has the book); optional
+# `passageLinks` appear only when the user asked for a source.
+#
+# Discriminator: `format: "reading-qa"` (not `kind` — the frontend switches
+# on `format` per RFC-023 §"The design"). Existing modes keep their `kind`.
+# ---------------------------------------------------------------------------
+
+
+class PassageLink(BaseModel):
+    """A descriptive link back to a passage in the corpus.
+
+    `label` reads as prose ("where Gurudev discusses nama-smaran"), NOT as
+    an index entry ("Kakanchi Pravachane, page 47"). `workSlug` matches the
+    reader route (/read/<workSlug>). `workTitle` is only present when the
+    linked work differs from the current one — so the reader knows the link
+    is jumping outside their current book.
+    """
+
+    label: str
+    workSlug: str
+    page: int = Field(ge=1)
+    workTitle: Optional[str] = None
+
+    @model_validator(mode="after")
+    def _scrub(self) -> "PassageLink":
+        # label is LLM prose — scrub in case it leaks a "chunk N" phrase.
+        # workSlug / workTitle are references — leave untouched.
+        self.label = _scrub_chunk_leak(self.label) or ""
+        return self
+
+
+class ReadingQaResponse(BaseModel):
+    format: Literal["reading-qa"] = "reading-qa"
+    question: str
+    text: str
+    # RFC-023 caps at 3; server truncates + warns if the LLM emits more.
+    # Default `None` (excluded from serialisation) so the wire payload
+    # matches the "absent by default" contract when no sources apply.
+    passageLinks: Optional[List[PassageLink]] = None
+
+    @model_validator(mode="after")
+    def _scrub(self) -> "ReadingQaResponse":
+        # `text` is LLM prose — scrub the chunk-leak pattern.
+        self.text = _scrub_chunk_leak(self.text) or ""
+        return self
+
+
+# ---------------------------------------------------------------------------
 # JSON schemas (input_schema for Anthropic tool definitions)
 #
 # These are intentionally hand-written rather than derived from
@@ -823,6 +875,79 @@ READING_INPUT_SCHEMA: Dict[str, Any] = {
 }
 
 
+# RFC-023: reading-mode Q&A JSON schema (drawer at /read/<slug>).
+_READING_QA_PASSAGE_LINK_SCHEMA: Dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "label": {
+            "type": "string",
+            "description": (
+                "Descriptive prose that reads naturally in a 'Sources:' list — "
+                "e.g. 'where Gurudev discusses nama-smaran'. Never a raw "
+                "reference like 'Kakanchi Pravachane, page 47'."
+            ),
+        },
+        "workSlug": {
+            "type": "string",
+            "description": (
+                "The reader-route slug for the work — copy exactly from the "
+                "passage's metadata (e.g. 'kakanchi-pravachane')."
+            ),
+        },
+        "page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": (
+                "1-based reader page number. Use the passage's known page; "
+                "omit the link rather than guess."
+            ),
+        },
+        "workTitle": {
+            "type": "string",
+            "description": (
+                "Only when the linked work differs from the current book. "
+                "Shown in muted small type next to the label so the reader "
+                "knows the link jumps outside their current read."
+            ),
+        },
+    },
+    "required": ["label", "workSlug", "page"],
+}
+
+READING_QA_INPUT_SCHEMA: Dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "question": {
+            "type": "string",
+            "description": "The user's question, echoed verbatim.",
+        },
+        "text": {
+            "type": "string",
+            "description": (
+                "The full answer body — plain synthesis + conclusion, in the "
+                "reader's language. Markdown allowed (bold, italic, bullets, "
+                "tables). Do NOT quote verbatim from retrieved passages and "
+                "do NOT paraphrase the current page back at the reader — "
+                "they are looking at it. Focus on synthesis, context, and "
+                "connection to other passages."
+            ),
+        },
+        "passageLinks": {
+            "type": "array",
+            "maxItems": 3,
+            "items": _READING_QA_PASSAGE_LINK_SCHEMA,
+            "description": (
+                "OMIT or leave empty by default. Populate ONLY when the user's "
+                "question implies asking for a source ('where does he say that', "
+                "'cite that', 'source?', 'which book', 'show me'). At most 3 "
+                "links, descriptive labels only."
+            ),
+        },
+    },
+    "required": ["question", "text"],
+}
+
+
 # ---------------------------------------------------------------------------
 # Tool definitions
 # ---------------------------------------------------------------------------
@@ -855,6 +980,17 @@ TOOLS_BY_MODE: Dict[str, Dict[str, Any]] = {
         ),
         "input_schema": READING_INPUT_SCHEMA,
     },
+    # RFC-023 — the drawer at /read/<slug>.
+    "reading-qa": {
+        "name": "emit_reading_qa_response",
+        "description": (
+            "Emit a Reading-mode Q&A answer for the drawer. `text` is plain "
+            "synthesis + conclusion (no verbatim quotes — the reader has the "
+            "book). `passageLinks` is empty by default; populate only when "
+            "the user's question implies asking for a source, and cap at 3."
+        ),
+        "input_schema": READING_QA_INPUT_SCHEMA,
+    },
 }
 
 
@@ -862,6 +998,7 @@ RESPONSE_MODEL_BY_MODE: Dict[str, Any] = {
     "qa": QAResponse,
     "pravachan": PravachanResponse,
     "reading": ReadingResponse,
+    "reading-qa": ReadingQaResponse,
 }
 
 
@@ -869,6 +1006,39 @@ def get_tool(mode: str) -> Dict[str, Any]:
     if mode not in TOOLS_BY_MODE:
         raise ValueError(f"Unknown mode {mode!r}. Choose from: {sorted(TOOLS_BY_MODE)}")
     return TOOLS_BY_MODE[mode]
+
+
+# RFC-023 cap: hard limit on the number of source links a reading-qa answer
+# may carry. If the LLM emits more, the server keeps the first N in order
+# and logs a warning (per RFC — no retry).
+READING_QA_MAX_LINKS = 3
+
+
+def truncate_reading_qa_links(tool_input: Dict[str, Any], logger=None) -> int:
+    """Keep first READING_QA_MAX_LINKS in `passageLinks`, in place.
+
+    Returns the number of links dropped (0 when the cap wasn't reached).
+    If `logger` is given, logs a warning at WARNING level when truncation
+    happened, per RFC-023 §"Design calls locked in".
+    """
+    if not isinstance(tool_input, dict):
+        return 0
+    links = tool_input.get("passageLinks")
+    if not isinstance(links, list):
+        return 0
+    if len(links) <= READING_QA_MAX_LINKS:
+        return 0
+    dropped = len(links) - READING_QA_MAX_LINKS
+    tool_input["passageLinks"] = links[:READING_QA_MAX_LINKS]
+    if logger is not None:
+        try:
+            logger.warning(
+                "reading-qa: LLM emitted %d passageLinks; truncated to %d (RFC-023 cap)",
+                len(links), READING_QA_MAX_LINKS,
+            )
+        except Exception:
+            pass
+    return dropped
 
 
 def get_response_model(mode: str):

@@ -24,7 +24,9 @@ export const runtime = "nodejs"; // SSE doesn't work cleanly on the edge runtime
 export type Lang = "en" | "mr";
 
 type AskRequest = {
-  mode: ModeId;
+  // RFC-023: "reading-qa" is a valid routing string in addition to the
+  // top-level ModeId values. The proxy just forwards it.
+  mode: ModeId | "reading-qa";
   question: string;
   lang?: Lang;
   work?: string;

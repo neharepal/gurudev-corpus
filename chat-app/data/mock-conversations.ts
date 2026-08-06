@@ -103,6 +103,34 @@ export type PravachanAnswer = {
   examples: PravachanExample[];
 };
 
+// RFC-023 — Reading-mode Q&A answer. Distinct from QAAnswer:
+//   - `text` is a plain synthesis (Markdown allowed); no verbatim quotes,
+//     because the reader is already looking at the book.
+//   - `passageLinks` is empty by default; the LLM populates it only when
+//     the user's question implies asking for a source.
+// Discriminated on `format` (not `kind` — the existing modes keep `kind`;
+// this variant introduces `format` as the new discriminator per RFC-023).
+export type PassageLink = {
+  /** Descriptive prose ("where Gurudev discusses nama-smaran"), NOT a raw
+   *  reference. Reads naturally in a "Sources:" list. */
+  label: string;
+  /** Reader-route slug — /read/<workSlug>. */
+  workSlug: string;
+  /** 1-based reader page number. */
+  page: number;
+  /** Present only when the linked work differs from the current book. */
+  workTitle?: string;
+};
+
+export type ReadingQaAnswer = {
+  format: "reading-qa";
+  question: string;
+  /** Full answer body — plain synthesis + conclusion; Markdown allowed. */
+  text: string;
+  /** Sources footer content; server caps at 3 (RFC-023 §"Design calls"). */
+  passageLinks?: PassageLink[];
+};
+
 export type Conversation = {
   id: string;
   defaultMode: "qa" | "pravachan" | "reading";

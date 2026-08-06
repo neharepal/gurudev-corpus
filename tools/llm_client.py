@@ -32,7 +32,13 @@ from typing import Any
 import anthropic
 from anthropic import Anthropic
 
-from schemas import get_response_model, get_tool, splice_qa_citations, splice_quote_dict
+from schemas import (
+    get_response_model,
+    get_tool,
+    splice_qa_citations,
+    splice_quote_dict,
+    truncate_reading_qa_links,
+)
 
 
 def _coerce_json_containers(tool_input):
@@ -78,6 +84,10 @@ MAX_TOKENS_BY_MODE = {
     "qa": 3000,
     "pravachan": 7000,
     "reading": 1200,
+    # RFC-023: drawer answers are short prose + up to 3 short link objects —
+    # no verbatim quotes to inflate the payload. 1500 fits a comfortable
+    # Marathi answer with links; larger would just invite over-long answers.
+    "reading-qa": 1500,
 }
 
 
@@ -223,6 +233,11 @@ class ChatClient:
         if mode == "qa" and label_to_chunk:
             tool_input = copy.deepcopy(tool_input)
             splice_qa_citations(tool_input, label_to_chunk)
+        elif mode == "reading-qa":
+            # RFC-023: cap passageLinks to 3; warn if the LLM overshot.
+            tool_input = copy.deepcopy(tool_input)
+            import logging
+            truncate_reading_qa_links(tool_input, logger=logging.getLogger("reading_qa"))
 
         try:
             parsed = response_model.model_validate(tool_input)
@@ -346,6 +361,10 @@ class ChatClient:
         if mode == "qa" and label_to_chunk:
             tool_input = copy.deepcopy(tool_input)
             splice_qa_citations(tool_input, label_to_chunk)
+        elif mode == "reading-qa":
+            tool_input = copy.deepcopy(tool_input)
+            import logging
+            truncate_reading_qa_links(tool_input, logger=logging.getLogger("reading_qa"))
 
         try:
             parsed = response_model.model_validate(tool_input)
