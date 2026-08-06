@@ -117,6 +117,23 @@ def _strip_inline_md(s: str) -> str:
 # Start scoped to a single book; expand after Neha validates the render.
 VERSE_FORMAT_SLUGS = {"nityanemavali"}
 
+# Books that need in-body `##`/`###` heading emission but are NOT verse-format.
+# Kept separate from `VERSE_FORMAT_SLUGS` so we don't inadvertently apply verse
+# styling (bold, centered, pre-line) to prose books. The heading-emission gate
+# in `_parse_work_text` reads this set; verse detection stays gated on
+# `VERSE_FORMAT_SLUGS` only. Reflections (Ranade's diary) is prose with dated
+# entries — each `###` date needs to render as a visible in-body heading so
+# the sadhak sees which entry they're reading (Neha 2026-08-06).
+HEADING_IN_BODY_SLUGS = VERSE_FORMAT_SLUGS | {"reflections"}
+
+# Books where pagination breaks on every `###` heading — each level-3 heading
+# starts a new page. A level-2 heading immediately followed by a level-3
+# rides with its child on the same page (part header + first entry is the
+# natural unit). Useful for diary/aphorism collections where each dated
+# entry is one natural page. Exclusive with the char-density mode.
+# Neha 2026-08-06: "keep one daily entry on one page."
+ONE_ENTRY_PER_PAGE_SLUGS = {"reflections"}
+
 # Char-density pagination target for VERSE_FORMAT_SLUGS books (Follow-up 2,
 # 2026-08-06). PAGE_SIZE=4 was giving nityanemavali page 1 four short address
 # lines (~90 chars each) — absurdly sparse. Target ~1500 chars of body text
@@ -129,10 +146,21 @@ _VERSE_PAGE_TARGET_CHARS = 1500
 def _pagination_target_chars(slug: Optional[str]) -> Optional[int]:
     """Return `target_chars` to pass to pagination for `slug`, or None
     for the default fixed-count PAGE_SIZE mode. Central so read_work,
-    read_work_toc, and the two page-mappers can't drift."""
+    read_work_toc, and the two page-mappers can't drift.
+
+    Returns None for slugs in `ONE_ENTRY_PER_PAGE_SLUGS` — the two modes
+    are exclusive; the one-entry-per-page mode takes precedence."""
+    if slug in ONE_ENTRY_PER_PAGE_SLUGS:
+        return None
     if slug in VERSE_FORMAT_SLUGS:
         return _VERSE_PAGE_TARGET_CHARS
     return None
+
+
+def _pagination_one_entry_per_page(slug: Optional[str]) -> bool:
+    """Return True if `slug` should paginate one `###` entry per page.
+    Central so every paginate() call site stays in sync."""
+    return slug in ONE_ENTRY_PER_PAGE_SLUGS
 
 # Pure ornamentation / structural markers under VERSE_FORMAT_SLUGS books —
 # `॥ ॐ ॥`, `* * *`, `०००००`, `(२)` numbering. Filtered out even when the
@@ -272,6 +300,26 @@ def _parse_work_text(text_path: Path, slug: Optional[str] = None) -> List[Dict[s
         block_spans.append((raw[pos:], pos, len(raw)))
 
     is_verse_book = slug in VERSE_FORMAT_SLUGS
+    emit_headings_in_body = slug in HEADING_IN_BODY_SLUGS
+
+    # For HEADING_IN_BODY_SLUGS books, sub-split any block that packs
+    # multiple heading lines without a blank-line separator (reflections
+    # source has `## REFLECTIONS – I\n### 21st February 1912` on adjacent
+    # lines — the naive heading regex would treat the whole block as one
+    # `##` heading and silently drop the `###`). Positions are preserved
+    # so offsets stay compatible with chunk meta. No-op for books that
+    # already blank-separate all headings — a corpus scan on 2026-08-06
+    # confirms only reflections triggers this path.
+    if emit_headings_in_body:
+        split_spans: List[tuple] = []
+        for (btext, bstart, bend) in block_spans:
+            sub_pos = 0
+            for m in re.finditer(r"\n(?=#{1,6}\s)", btext):
+                split_spans.append((btext[sub_pos:m.start()], bstart + sub_pos, bstart + m.start()))
+                sub_pos = m.end()
+            split_spans.append((btext[sub_pos:], bstart + sub_pos, bend))
+        block_spans = split_spans
+
     for (block_raw, raw_start, raw_end) in block_spans:
         block = block_raw.strip()
         if not block:
@@ -281,13 +329,17 @@ def _parse_work_text(text_path: Path, slug: Optional[str] = None) -> List[Dict[s
             level = len(heading_match.group(1))
             heading_text = _strip_inline_md(heading_match.group(2).strip())
             if level <= 3:
-                # `##` / `###` update the chapter context. For verse-format
-                # books we ALSO emit a visible in-body `is_heading` paragraph
-                # so the sadhak sees the section title on the page — the
-                # ornamental page-opener alone isn't enough when a book
-                # is a compilation of bhajans/aartis (Neha 2026-08-05).
+                # `##` / `###` update the chapter context. For books in
+                # HEADING_IN_BODY_SLUGS we ALSO emit a visible in-body
+                # `is_heading` paragraph so the sadhak sees the section
+                # title on the page — the ornamental page-opener alone
+                # isn't enough for verse compilations (nityanemavali) or
+                # diary entries (reflections). Verse styling stays gated
+                # on VERSE_FORMAT_SLUGS via `is_verse_book`; prose books
+                # in HEADING_IN_BODY_SLUGS get the heading row without the
+                # bold/centered treatment.
                 current_heading = heading_text
-                if is_verse_book:
+                if emit_headings_in_body:
                     n += 1
                     results.append({
                         "n": n,
@@ -543,6 +595,7 @@ def reading_page_for_offset(slug: str, lang: Optional[str], char_offset: int) ->
     return page_for_paragraph_index(
         all_paragraphs, target_idx,
         target_chars=_pagination_target_chars(slug),
+        one_entry_per_page=_pagination_one_entry_per_page(slug),
     )
 
 
@@ -615,6 +668,7 @@ def reading_page_for_body(text_path: Path, body: str) -> Optional[int]:
                     return page_for_paragraph_index(
                         paragraphs, i,
                         target_chars=_pagination_target_chars(slug_from_path),
+                        one_entry_per_page=_pagination_one_entry_per_page(slug_from_path),
                     )
     return None
 
@@ -2241,7 +2295,11 @@ def read_work(slug: str, lang: Optional[str] = None, page: int = 1) -> Dict[str,
     if total == 0:
         raise HTTPException(status_code=404, detail="Work has no parseable paragraphs")
 
-    pages = paginate(all_paragraphs, target_chars=_pagination_target_chars(slug))
+    pages = paginate(
+        all_paragraphs,
+        target_chars=_pagination_target_chars(slug),
+        one_entry_per_page=_pagination_one_entry_per_page(slug),
+    )
     total_pages = len(pages)
     page = max(1, min(page, total_pages))
     page_paras = pages[page - 1]
@@ -2376,7 +2434,11 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
         return {"workSlug": slug, "workTitle": work_meta.get("title", slug),
                 "author": _author_display_name(work_meta.get("author", "")),
                 "sections": [], "flat": []}
-    pages = paginate(all_paragraphs, target_chars=_pagination_target_chars(slug))
+    pages = paginate(
+        all_paragraphs,
+        target_chars=_pagination_target_chars(slug),
+        one_entry_per_page=_pagination_one_entry_per_page(slug),
+    )
 
     def page_for_para_n(n: int) -> int:
         for pnum, page_paras in enumerate(pages, 1):
@@ -2393,7 +2455,7 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     for sep_match in re.finditer(r"\n{2,}", body + "\n\n"):
         block_end = sep_match.start()
     # Simpler: split by blank lines, walk sequentially, and count paragraphs the same way _parse_work_text does.
-    blocks: List[tuple] = []
+    blocks: List[str] = []
     pos = 0
     for sep_match in re.finditer(r"\n{2,}", body):
         blocks.append(body[pos:sep_match.start()])
@@ -2411,6 +2473,26 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
     # the frontend to render 0-chapter sections (e.g. MiM's standalone
     # Chapter I) as a clickable leaf row instead of an empty header.
     is_verse_book = slug in VERSE_FORMAT_SLUGS
+    # `emit_headings_in_body` mirrors `_parse_work_text`'s emission gate:
+    # when the parser emits an `is_heading` paragraph for `##`/`###`, the
+    # TOC walker must bump `n` to stay aligned with paginate()'s reality.
+    # Includes VERSE_FORMAT_SLUGS as a subset; adds prose books like
+    # reflections that need in-body headings without verse styling.
+    emit_headings_in_body = slug in HEADING_IN_BODY_SLUGS
+
+    # Same sub-split as _parse_work_text: reflections packs `## ...\n### ...`
+    # on adjacent lines without a blank-line separator; walkers must split
+    # them or the TOC drops the H3 chapter entries. Gated on
+    # HEADING_IN_BODY_SLUGS to preserve bit-exact behavior elsewhere.
+    if emit_headings_in_body:
+        split_blocks: List[str] = []
+        for b in blocks:
+            sub_pos = 0
+            for m in re.finditer(r"\n(?=#{1,6}\s)", b):
+                split_blocks.append(b[sub_pos:m.start()])
+                sub_pos = m.end()
+            split_blocks.append(b[sub_pos:])
+        blocks = split_blocks
     n = 0
     for block_raw in blocks:
         block = block_raw.strip()
@@ -2421,12 +2503,12 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
             level = len(h_match.group(1))
             title = _strip_inline_md(h_match.group(2).strip())
             if level == 2:  # ## section marker
-                # For verse-format books, `_parse_work_text` emits an
-                # `is_heading` paragraph for this ##, so the target is
-                # the heading paragraph itself (n+1 then bump). For other
-                # books, target is the first BODY paragraph after (n+1,
-                # no bump).
-                if is_verse_book:
+                # For books in HEADING_IN_BODY_SLUGS, `_parse_work_text`
+                # emits an `is_heading` paragraph for this ##, so the
+                # target is the heading paragraph itself (n+1 then bump).
+                # For other books, target is the first BODY paragraph
+                # after (n+1, no bump).
+                if emit_headings_in_body:
                     n += 1
                     target_n = n
                 else:
@@ -2435,7 +2517,7 @@ def read_work_toc(slug: str, lang: Optional[str] = None) -> Dict[str, Any]:
                 current_section = {"title": title, "chapters": [], "page": pg}
                 sections.append(current_section)
             elif level == 3:  # ### chapter
-                if is_verse_book:
+                if emit_headings_in_body:
                     n += 1
                     target_n = n
                 else:

@@ -17,6 +17,12 @@ works:
   languages:
   - en
   path: 01_canonical/gurudev_ranade/books/philosophical-and-other-essays/
+- id: reflections
+  title: Reflections
+  author: gurudev_ranade
+  languages:
+  - en
+  path: 01_canonical/gurudev_ranade/books/reflections/
 - id: bhagavadgita-as-pathway-to-god-realization
   title: The Bhagavadgita as a Philosophy of God-Realisation
   author: gurudev_ranade

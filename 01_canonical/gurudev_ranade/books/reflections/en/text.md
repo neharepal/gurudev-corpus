@@ -10,11 +10,8 @@ extracted_via: "pdftotext -layout"
 extracted_on: 2026-06-13
 ---
 
-NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     2
-
-REFLECTIONS – I
-21st February 1912
+## REFLECTIONS – I
+### 21st February 1912
 
         To-day I saw a gentleman rebuking a young for a fault, which deserved to be
 censured. But the rebuke lost all its force as it was immediately followed by an
@@ -22,7 +19,7 @@ censured. But the rebuke lost all its force as it was immediately followed by an
 youth. This confession, though magnanimous, was yet ‘indiscreet’ before the young,
 and at that time.
 
-22nd February 1912
+### 22nd February 1912
 
        It is the nature of children to be naughty, and it requires a great deal of tact on
 the part of the elder to behave properly with them. The best way to behave with
@@ -36,7 +33,7 @@ you suppose, does not give as much respect to yourself or to your feelings, as y
 would like he should give. The root of the mischief perhaps lies in yourself. You cannot
 command respect unless you deserve it!
 
-23rd February 1912
+### 23rd February 1912
 
        What a spectacle of temerity man is. It seems as if he has no ballast for his
 conduct. His actions are inspired by a supreme consideration of self, with a total regard
@@ -55,9 +52,6 @@ are leaping in the dark. Whatever is ordained is ordained for man’s good!
        Why do people wish that they should be visited by others? If these persons do
 not visit them, they take a great deal of offence. There is a great deal of weakness
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                      3
-
 exhibited in constantly wishing to be visited by others. The reason is that such persons
 do not know the value of solitude.
 
@@ -69,7 +63,7 @@ are really sinning against the law.
       If you wish to do a good turn to anybody, do it as early as possible, if you really
 have an intention. An early despatch will enhance the value of your favour.
 
-24th February 1912
+### 24th February 1912
 
        I heard a gentleman to-day descanting on his comparatively poor career in the
 University, which, at times, he said made him gloomy. I told him that a man’s worth
@@ -79,7 +73,7 @@ the backbone of a career. A career, he meant to say, touched everything with gol
 One could have a place on the senate, or an examiner working in a University, only by
 a career. Was that the only work to be done?
 
-25th February 1912
+### 25th February 1912
 
         At times I wonder how much I talk. Sometimes I reach such a stage while talking,
 that it seems painful to break the conversation. Why should we waste our energy in a
@@ -88,7 +82,7 @@ immediately that the idea of garrulity occurs to our mind? It does not matter, i
 the break is somewhat painful. Let the break be sudden, & gradually we shall come to
 learn how & when to stop.
 
-26th February 1912
+### 26th February 1912
 
       Have you ever met a man, who will refuse to listen to whatever you say, even
 though you are right? What is the use of arguing with such a person? As it is hopeless
@@ -104,13 +98,10 @@ from an audience. How is the applause to be explained? In the first place, the s
 a very probable story; in the second place, there was the principle of a charming
 antithesis between the work of the two painters, the one being able to deceive the
 
-                                                                 NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                      4
-
 birds, the other his rival artist himself. Thirdly, the story illustrated the immense beauty
 & influence of Art.
 
-27th February 1912
+### 27th February 1912
 
                 You wish that everybody else should subserve to your own self. Why do
 you wish that others should read out to you? You had better not aspire for Knowledge,
@@ -129,7 +120,7 @@ change from place to place with regard to my meals? Why was it that I had to pas
 through two great ordeals of stress and toil? I cannot doubt that it is because there
 has been no Harmony within me for a long time, that these things are taking place.
 
-28th February 1912
+### 28th February 1912
 
        Last night, we were engaged in a very long conversation occupying more than
 two hours. The conversation turned on the extra-independent spirit shown by founders
@@ -138,7 +129,7 @@ that great care ought to be taken not to make religion a subject for humour. Thu
 follow
 
 सहशीखा पु ख: with रिहमतखा शेणखा was really sullying the purity of religion.
-29th February 1912
+### 29th February 1912
 
         What is the art of behaving with a clever, but naughty student? Eccentricity is
 supposed to be the mark of genius. Ought that to be so? Can not genius remain
@@ -151,16 +142,13 @@ try to reform it by expostulation & other means?
 so, when you have not the power to correct mischief. Should we be guided by the
 motive of forbearance, or can there be any other attitude to meet the mischief?
 
-                                                                 NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                    5
-
 Everybody wants to avoid the slightest addition to his duty; & if any addition is made,
 he can’t comply with it except under the threat of punishment. Under such
 circumstances, care ought to be taken not to overburden the duties of such a man to
 the slightest extent. Never overburden any man; & it is by doing so, that you can
 maintain your peace.
 
-2nd March 1912
+### 2nd March 1912
 
       I saw to-day a person who had lost about 8/9 members of his family in plague.
 He was overcast with grief, & had been trying to find solace in religion. He was
@@ -171,7 +159,7 @@ required to flee from Plague, why even they carried their gods with them outside
 city? Why was it that people, who were thoroughly good & moral & even religious to
 all appearances, were obliged to be afraid of plague? The fact was that their ‘Dharma’
 was not ‘Swa-dharma’, which latter consisted in living in the Soul.     वपी राहाण हा वधम
-3rd March 1912
+### 3rd March 1912
 
       A friend approached M. to-day almost in consternation. M. assured him that he
 could not, by any possibility, be led into danger it was worth while making the
@@ -186,22 +174,19 @@ having the letter written, he was doing it simply because an impulse was goading
 to do it. This is one of the wonders which occur by chance, which, in religious language,
 may be called God’s will.
 
-5th March 1912
+### 5th March 1912
 
       O, that I could live a life of religious peace, unthwarted by the cutting words of
 the unbelievers! I do not know where it would be good for me to stay. Can’t God
 determine it for me? I won’t mind staying anywhere, provided the religious inclinations
 would not be impeded!
 
-6th March 1912
+### 6th March 1912
 
         Why do you take it amiss if a gentleman says that a certain person has better
 qualifications, & therefore, a better claim, than yourself? Are the facts not true?
 
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                       6
-
-7th March 1912
+### 7th March 1912
 
         How do all things lose their sting before calmness! All passions all emotions
 seem to die away before tranquillity. A habitual tranquillity is difficult to get. It can’t be
@@ -209,7 +194,7 @@ got except by continued & long practice. A plain unassuming look has the power t
 kill the transgressions of others, & their insinuations. All other natures look so pale
 before an unruffled nature.
 
-8th March 1912
+### 8th March 1912
 
        To-day, I saw a somewhat nude picture lying on my table: I do not know how it
 came to be placed there. Possibly it might be the work of some jolly youth. To me, of
@@ -219,7 +204,7 @@ good: he looked only to the drawing. The boy of fourteen, however, said that ‘
 objection’ need be taken to that: in him there was a contest between the idea of art,
 & the idea of morality.
 
-12th March 1912
+### 12th March 1912
 
         To-day I saw two small stars lying near each other on the sky. They presented a
 phenomenon known as ‘double star’. They resembled two minor authors who
@@ -239,17 +224,14 @@ not even slightly affect a person. Grief in its low stages would be impossible t
 but when it is raised to a pitch, it ceases to torment, if it does not become positive
 happiness.
 
-13th March 1912
+### 13th March 1912
 
       To-day, a certain gentleman was prevented by the Mali from entering the
 botanical garden. The Mali did not know who the person was & was apparently doing
 his duty when he asked him if he was entering the garden with permission. The
 gentleman had also no reason to take it ill, though he was apparently offended!
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     7
-
-17th March 1912
+### 17th March 1912
 
          How long, Oh God, are you going to keep me in dependence? How long am I
 to be fed at other people’s expense? For one reason or other, I have been leading a
@@ -282,7 +264,7 @@ will influence our future character for good or for ill. And when we understand
 character in this light, there is no necessity of growing petulant at the eccentricities of
 behaviour.
 
-18th March 1912
+### 18th March 1912
 
        Have you ever seen a person whose chief business is to meddle & to arrogate
 to himself all the power he can catch hold of. He would open your door in season &
@@ -294,9 +276,6 @@ of others, & would suppose he had worked wonders every now and then.
 gentleman in the city had both his son & daughter attacked by plague towards the
 very close of the plague season. The family had not come out along with others, and
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   8
-
 long after others had returned to town from outside, I hear that the family in question
 had to suffer that terrible blow!
 
@@ -305,7 +284,7 @@ future prospects, when I have once for all determined my life’s occupation? He
 whose service I am to spend myself, will He not take care of me, & show me the right
 path?
 
-19th March 1912
+### 19th March 1912
 
        Try to reform yourself before you wish to reform others. You can influence
 others more by what you are than you can hope to do by word or deed. When you
@@ -324,7 +303,7 @@ likely also lose the future. If you therefore wish something to be done, do it n
 or never is the only solution. However little justice you may do to your work just now,
 & however unsatisfactory it may look, rely upon it that you done at least ‘something’.
 
-20th March 1912
+### 20th March 1912
 
       It’s wisdoms part to learn when to stop while speaking. Why do you continue
 to speak when people show, by their gestures, that they have no relish for the
@@ -334,16 +313,13 @@ want you to meddle? Why do you go to a man who shows by his impatience that he
 does not perhaps like talking with you for a long time? Leave great men to themselves,
 & always be minding your own affairs.
 
-21th March 1912
+### 21th March 1912
 
         I to-day met with an intelligent but vain student. He apparently has no manners,
 but seems to be of a strong determination. It was a pleasure to meet this gentleman;
 it was more: it was a benefit. For the dull monotony of humble yielding was relieved
 to-day by some lively resistance. It is only such persons that teach us the true art of
 living with the world. You must recognise the merit of such men, but keep them at an
-
-                                                              NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     9
 
 arm’s length. It is impossible to restrain them, for they will not be restrained; it is
 impossible to teach them, for they will not be taught. They show as if they are
@@ -379,7 +355,7 @@ repelled by the conduct of the one, & flattered by that of the other!
 or defects of others; & these people are considered popular by the ignorant. Better
 not to speak a word, than to speak blasphemy!
 
-23rd March 1912
+### 23rd March 1912
 
         Would you prefer scenes of gaiety or of calm tranquillity? What is the good of
 being ‘seen’ by others? Why should one wish that one ought to become the load-star
@@ -389,9 +365,6 @@ of all eyes? Moreover, is it not fully to sacrifice calm tranquillity for useles
 first view looks to the present time, the second looks to the future. By pleasing men
 immediately, you may hurt them in the long run; but giving them a just treatment now,
 you will really please them in the end. This is the paradox of conduct.
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                  10
 
        We had a long talk this day, & we discussed the importance of analytic study.
 This kind of study is bound to be slow, as it is concerned with the facts, & not with
@@ -411,7 +384,7 @@ his very face that you do not approve of such and such a thing. It is not necess
 you should go forward with a banter, but if the time comes, you might depend upon
 yourself to tell him that you do not approve of his conduct.
 
-24th March 1912
+### 24th March 1912
 
         I had been to see the Anniversary Celebrations of the N.E. School. The feature
 of the celebration, which struck me most, was the recitation of fine passages in
@@ -435,10 +408,7 @@ feeling I entirely submerged in reading some fine passages of poetry in B.oham�
 Dictionary of Poetical Quotations. This produced an equanimity of mind, & so I found
 myself again easy.
 
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   11
-
-25th March 1912
+### 25th March 1912
 
        Pride is supposed to be the birthright of genius. This was illustrated by one
 more example to-day. Two students, intelligent to a certain extent, supposed they were
@@ -450,7 +420,7 @@ future. Let me try to find out the proper method of behaviour with such people. 
 me neglect them entirely even when they show forth their genius, remember always
 that their merit must nevertheless be duly rewarded.
 
-28th March 1912
+### 28th March 1912
 
          If other people behave with you in a manner which shows their indifference
 towards yourself, you had better not care much for these people. You should never
@@ -482,9 +452,6 @@ perfection & specialisation.
 achieve a good deal, though it cannot equal Nature. A man may not be born an orator;
 but he can make himself a good speaker if he tries. The Hon. Mr. Gokhale is reported
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   12
-
 to have committed passages after passages to memory & to have reproduced them.
 Would it not be worth while, in the interest of learning to speak or write well, to commit
 to memory many famous & select passages? And would not the continued practice of
@@ -502,7 +469,7 @@ benefactor. So care ought to be taken before receiving favours. If possible, you
 not put yourself in a position, which would excite the sympathy of others, and therefore
 cause them to help you.
 
-29th March 1912
+### 29th March 1912
 
         What a dull day I passed to-day without any intellectual illumination, & without
 any tranquil thought! I slept more than necessary last night, & the result was that I got
@@ -511,7 +478,7 @@ sleep. I must determine to get up as soon as the period of the ‘first sleep’
 must try the experiment of reducing the quantity of food at the time of my dinner, &
 must see what the result would be.
 
-2nd April 1912
+### 2nd April 1912
 
        I have been in quite an intolerable sloth lately. I do not suppose that there are
 any higher responsibilities than merely eating, drinking, sleeping, & doing college
@@ -529,9 +496,6 @@ deficiency of the celebrations.
 the D. College, & I was always received with a general ovation. But did I not find
 yesterday that very few had cared to attend the meeting, and fewer to applaud? Time
 doth thus work wonders.
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                  13
 
        I was sorry to find this morning one innocent student charged by his friends
 with having told a lie. The fact was that the student under consideration was entirely
@@ -556,7 +520,7 @@ peacefully. Or, you can live in ignorance, or superior disdain, of their differe
 young student need not advise his elder friends on a matter, in which he himself has
 not made any great advancement.
 
-3rd April 1912
+### 3rd April 1912
 
         How wonderful it is that when a man is placed in the midst of adversity, he is
 inclined to believe in divine justice; but no sooner is he in a comparatively better
@@ -569,16 +533,13 @@ justice be shaken to the smallest extent. Even if we are passing through a serie
 misfortunes, let us consider it as a process of trial; let us suppose that we are being
 tried, & let us not therefore be found wanting.
 
-7th April 1912
+### 7th April 1912
 
        I saw a gentleman to-day, who was either stark mad, or otherwise the cleverest
 rogue. But the first alternative was more possible. He seemed to have stuffed in his
 memory every possible information, & every bit of knowledge, which he could lay hold
 of. Only the words he uttered were so entirely unconnected and ranged over so many
 topics in succession that one could only suppose he has lost the balance of his brain.
-
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   14
 
 There was nothing, it seemed, which could focus his ideas, and arrange them into a
 regular train.
@@ -599,7 +560,7 @@ looked to first. Then there is the positive dislike which great men are feeling 
 sometime or other, they might take away what they have given. Moreover there is the
 general incompetency of health which prevents energetic work.
 
-9th April 1912
+### 9th April 1912
 
         Do not fall into the clutches of a man, who wants to make use of you for his
 whim or for his pleasure. He would come to you, & rob you of your time, when he does
@@ -617,16 +578,13 @@ similar minor problems & are yet called great.
      Have you ever seen an English lady smoking & that too in the midst of
 company?
 
-14th April 1912
+### 14th April 1912
 
         Return good for any evil turn which may be made to you. Why should you feel
 sorry if you are treated like an ordinary man, & are subjected to the same disabilities
 which are usually put upon others? If they do not mind them, why should you? Persist
 in gentility & you will find that one day the very same man, who would like to lay
 disabilities on you at present, would turn round & see that you are put to the least
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     15
 
 trouble possible. What can gentility not do? Have you not seen boys, who were
 somewhat naughty at first, turn round & entirely sympathise with you, simply for the
@@ -636,7 +594,7 @@ when you will be rather too happy & comfortable, & this excess of comfort & resp
 would tend to make you only degenerate. Guard against that possibility and make the
 best of your present position.
 
-15th April 1912
+### 15th April 1912
 
         To what a great extent is man the creature of habit! I can well conceive why a
 prisoner shut up in a cell will, after a time, not desire to get out of his cell at all. When
@@ -661,7 +619,7 @@ their fellows, who looked sorry. But as events turned out, the former went & per
 in the holocaust, while the later returned home in sorrow, & yet had not to lose their
 lives.
 
-18th April 1912
+### 18th April 1912
 
        Should we not grow sorry when we are to be made comfortable at the expense
 of others? The very same thing which may give us pleasure may give pain to those
@@ -669,9 +627,6 @@ persons from whom it is taken away. And is not this the pleasure of one man the 
 of another? And is not the sum of the two constant? Why should we grow joyful, when
 we have an equal possibility of being, in future, deprived of the same thing, which; at
 present, makes those people sorry who are losing the possession of it?
-
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   16
 
         I had a wonderful experience this afternoon. A certainly gentleman had
 studiously avoided expressing his own opinions to me, when, as a matter of fact, he
@@ -705,7 +660,7 @@ woman thrown away from her Kindred in a place, where charity alone could take ca
 of her! It is sad that charity must begin at home, & is not our duty to take care of such
 cases, when they come so close to us?
 
-21st April 1912
+### 21st April 1912
 
        What care can you take of a creature, for whom God has reserved another fate
 altogether! The old woman is gone: she is possibly relieved of her suffering. But what
@@ -714,9 +669,6 @@ a sore example it is of the fact that a man, in his old age, has often to die un
        Things that seem good to you & at present, may not be so in the eyes of God
 & in the long run! For, why else should rich people be unhappy, or men of position lie
 in a miserable state?
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   17
 
        It is not upon circumstances that happiness depends rather, on our mental
 attitude. And how can we secure an equal attitude of mind, when the mind is being
@@ -729,7 +681,7 @@ his master is having a large feast to which he has invited many? The servant loo
 his duty & does not expect any sumptuous feast at his master’s house: he would have
 nothing but his bread!
 
-27th April 1912
+### 27th April 1912
 
        How very true it is that there is a germ of vanity in all men! All people want to
 be able to supervise their students, when they are writing the papers set by themselves.
@@ -761,9 +713,6 @@ whom people supposed to be your friends. It’s impossible that your opinions sh
 exactly coincide with those of others; but you must learn whether they are sincere.
 Great art lies in putting your so-called friends to test. Some of them would not speak
 insultingly of you in your presence, but who knows what they might be doing in your
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                  18
 
 absence? One might be a cynic, & find fault with whatever you do; one may not
 contradict you in your presence, & yet have a different basis of conduct than your own;
@@ -799,11 +748,8 @@ to keep to it even at our expense.
 
                                        *****
 
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   19
-
-REFLECTIONS – II
-10th May 1912
+## REFLECTIONS – II
+### 10th May 1912
 
         In prosperity, we ought to make use of the principles which we have learnt in
 adversity. God sends both prosperity & adversity as a sort of trial upon us; and
@@ -831,7 +777,7 @@ those things which He considered good: should we not in a similar strain always
 implore God to keep us in a condition which He ultimately considers good for us
 according to His own ends?
 
-11th May 1912
+### 11th May 1912
 
         It was most wisely said that we should not be carried away by appearances.
 People may not show any dislike or disapprobation on the exterior, but they may be
@@ -842,9 +788,6 @@ have known the real mode of behaviour.
 
       How readily does a man lend ear to all the evil that may be spoken about
 another? He has no time to wait & examine into the grounds of his opinions. The
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                  20
 
 chastity of woman is a point in hand. How readily would a man believe in the
 unchasticity of a man or woman, without examining the evidence! Does this not show
@@ -866,7 +809,7 @@ entirely agree: it is sufficient if they agree more than they differ.
        Great wisdom lies in not immediately giving out all that you know with regard
 to a subject when you fear that the subject might be misunderstood or abused.
 
-12th May 1912
+### 12th May 1912
 
         Men in a high position must needs look sometimes to the miserable condition
 of the most insignificant men, in order that they might be kept away from elation. It is
@@ -876,7 +819,7 @@ we find men earning about two annas a-piece with a work of about 5 minutes. Thus
 are the bounties of the world, like those of nature, entirely misplaced! There is as much
 irregular variation in the one as in the other.
 
-19th May 1912
+### 19th May 1912
 
        Offer advice only where it would not be slighted. Where you think that your
 advice would not bear fruit, do not go to the length of advising. Whenever anyone
@@ -890,9 +833,6 @@ sometimes inclined to suppose that unless God gives us a special gift, we can’
 distinguish the sincere from the insincere. In what does true spirituality lie & what are
 the marks by which you can read a truly developed man from a bogus spiritualist? One
 of the marks which suggests itself to my mind just now is that the bogus spiritualist
-
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                21
 
 can’t make a proper use of his time: it’s impossible for him to show that he is
 perennially engaged: he would show as if he is whiling away his time in idle talk or
@@ -931,15 +871,12 @@ it somewhat unpleasant in the beginning.
        Why care for matters which are very unpleasant to contemplate upon, & in
 friendships which have degenerated into mere “acquaintanceships?”
 
-20th May 1912
+### 20th May 1912
 
        People would not respect a possessor of money, if that ‘money’ did not bring
 with it also power. It is because money gives power, that people are afraid of
 disobeying a rich man. Where money is not accompanied by power, it is entirely
 neglected. Fly from such people as respect a man, because he is powerful or because
-
-                                                             NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   22
 
 he is rich. As soon as the power or riches goes away – and they are so transient – the
 man ceases to be respected. Should this not serve to open the eyes of a man who is
@@ -955,7 +892,7 @@ All these things ought to teach us a lesson of humility, when our circumstances 
 tend to make us haughty. We must have the greatest equanimity of mind, when we
 are in the utmost extremities of either joy or sorrow!
 
-24th May 1912
+### 24th May 1912
 
       The days of adversity teach us many valuable lessons, which we may unlearn in
 prosperity. Adversity puts us naked before the world: we are then tested only as “men”,
@@ -972,7 +909,7 @@ gentleman in his dream was invited by his Teacher to come to dinner in two days�
 supply a spiritual dinner. Many other instances can be quoted to prove the element of
 truth in certain dreams.
 
-26th May 1912
+### 26th May 1912
 
        Is not the mental attitude of a man a ‘possession’ of his, equally well with riches
 or position? A mental calmness, a spirit of devotion, are inspiration of morality are
@@ -984,13 +921,10 @@ subject to vicissitude, the former never changes, so long as the man’s outlook
 not change. It lies with a man to make himself either good or bad irrespective of
 circumstance.
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   23
-
       If a wrong word, or a bad word escapes your lips, be sorry for it, & cherish the
 sorrow for some time, in order that the same mistake might not be committed again.
 
-3rd June 1912
+### 3rd June 1912
 
        We generally find almost every person supposing himself to be able to read
 others’ characters from their faces. Is this not an excellent example of the idols of the
@@ -1015,7 +949,7 @@ reflections than a pleasing one. Reflections are hardly suggested while one is l
 oneself in the ways of the world. When, however, solitude is resorted to fix spirituality,
 a whole panorama of thoughts opens up before oneself.
 
-4th June 1912
+### 4th June 1912
 
          I was reading an essay to-day wherein a student was exemplifying the difference
 between the form of prayer and the spirit of prayer. What is the use of a mere
@@ -1030,10 +964,7 @@ circumstances simply because they appear so: he is not led away by appearances. 
 is willing to submit himself to experience & leaves it to time to bring out the moral
 qualities of men, among whom, by chance, his life comes to be cast.
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   24
-
-5th June 1912
+### 5th June 1912
 
        It is always good not to ask anybody of anything. But if perchance one asks, &
 the other party shows some uneasiness, it is better to drop the subject altogether.
@@ -1076,10 +1007,7 @@ good motives to other men; but this is not always possible. Our passions get the
 of our wishes, & compel us to see something sinister in the motives of others; & thus
 we move on the path of degradation.
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   25
-
-6th June 1912
+### 6th June 1912
 
         It is very ungentlemanly on the part of one of the audience to try to prevent the
 President from speaking. I saw such a curious thing this evening. The President was
@@ -1091,7 +1019,7 @@ their feelings while he is speaking that he is carrying all of them with him. Th
 be some people in the audience who do not like his views & who sit silent because it
 would be ungentlemanly to do any other thing.
 
-7th June 1912
+### 7th June 1912
 
        There was a discussion in this evening’s lecture between two persons, each of
 whom seemed to me to be honest in his own way. But unfortunately because both of
@@ -1112,7 +1040,7 @@ elements. A woman especially an unenlightened woman is generally selfish, jealou
 fickle; & every woman tries to surpass the other; & so we get the whole woman kind
 as a very original creation of the Almighty.
 
-10th June 1912
+### 10th June 1912
 
         My first visit to Mr. Bain was very pleasing. He was glad that he had “pulled me
 from the Fergusson College” & said that I might have had a hard time of it at the F.
@@ -1122,9 +1050,6 @@ the Supdt. goes away, he said, at the end of the term, I would be able to occupy
 first room. He told me that in getting me this post, he had impressed upon the Director
 that Pali was a simple enough language, & that anybody who know Sanskrit well would
 be able to learn Pali easily. He told me sometime to run down to Ceylon, & have some
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     26
 
 knowledge with regard to Buddhism: a mere look at the Buddhist monasteries would
 be sufficient: it was just necessary to be there. When I asked him whether he had heard
@@ -1165,10 +1090,7 @@ moral; & even though the carnal sometimes also turns out to be moral, it is alwa
 safer not to err on the side of carnality. Look at the moral side; & if you can’t look at it
 except through the carnal, leave the moral side to take care of itself.
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   27
-
-26th June 1912
+### 26th June 1912
 
          A hill looks beautiful from a distance, says a Marathi proverb. Similarly, a good
 & rich position looks charming from a distance. Just after arriving at it, you become
@@ -1205,15 +1127,12 @@ demolished. Oh, the short sighted folly of man that passions should get the bett
 reason. What a touching scene that – when the faithfullest of men have deserted him
 – men of strong purpose, of extreme devotion to work, & full of sacrifice!
 
-27th June 1912
+### 27th June 1912
 
         Give not the smallest cause for people to suppose that you are whiling away
 your time. There is nothing more destructible to you than such an opinion. In the prime
 of youth, people do not care for regular work; but when they become aware of the
 limitations of man’s energy, why, then they begin to work regularly; but alas! They can’t
-
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                    28
 
 command the original energy. Be most regular & sharp in your duties. It is here more
 than anywhere else that the truth of the maxim is very keenly felt: “do not put off till
@@ -1250,16 +1169,13 @@ The weaker must go to the wall, and there is no place for them in Nature’s eco
 The strong, the powerful, possibly the ruffian, creatures must succeed. It is easy to
 explain why meekness is not rewarded in Nature!
 
-29th June 1912
+### 29th June 1912
 
        There is a banyan tree on the right hand side of my room. About 10 days ago, I
 had thought that the tree was almost dead, scarcely any leaves being seen on it: what
 remained was merely the skeleton of a tree. But even before a week elapsed, I began
 to see that the tree was putting forth tender sprouts; to-day, I am seeing that the new
 leaves have assumed nearly half the size of the original leaves, & in a week’s time, the
-
-                                                                 NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   29
 
 tree would be itself again; only it would be much better, become never. When Nature
 begins to supply you with bounties, she supplies them in numbers, when she begins
@@ -1272,7 +1188,7 @@ fell in Ravivar in the city, so late as June 26th, that is more than a fortnight
 mriga had set in. One such instance is sufficient to falsify the prevailing notion that no
 thunderbolts are to be experienced after the mriga sets in.
 
-2nd July 1912
+### 2nd July 1912
 
       Then are you most responsible, when you suppose that there is nobody to
 watch you. Then is the lesson of duty rightly learnt when you do it without reference
@@ -1288,7 +1204,7 @@ the remuneration he gives, so we owe a duty to God for the life he has put in us
 first should not be allowed to come in the way of the second, far less to suppress it.
 Work while you work; but meditate when you ought to meditate.
 
-3rd July 1912
+### 3rd July 1912
 
        To-day Gaurinath Shastri brought to me a certain gentleman from Kasi, who
 could compose Sanskrit poetry extempore. It is wonderful that such high talents should
@@ -1305,15 +1221,12 @@ can’t be sweeter. He also completed straightway two verses, the fourth lines o
 were only told him. I asked him how he had come to acquire such powers. He told me
 that until the age of 23, he had learnt Grammar, Sankara Darsana, Sankhya-Kaumudi,
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     30
-
 Kavyas & Natakas; & then he began to speak out in Sanskrit; & then in Sanskrit verse,
 howsoever bad it might be in the beginning. Gradually, by continued practice, he
 acquired that power over versification which might show him to be in modern times,
 a versifying prodigy. What can patience & practice not do?
 
-5th July 1912
+### 5th July 1912
 
       And yet, mere patience & practice cannot do all. The same gentleman showed
 me a book wherein it was related of him that one day in his dream the Goddess
@@ -1321,7 +1234,7 @@ Saraswati appeared, & asked a Mathura-pandit, who happened to come there also, t
 write the mantra Ćé on his tongue. From that time onwards, he felt an exceedingly great
 facility in versification. The phenomenon is psychologically very interesting.
 
-8th July 1912
+### 8th July 1912
 
         This same gentleman entertained the students of this college by his brilliant
 poetical feats this evening. One of the greatest feats he achieved was to compose three
@@ -1352,9 +1265,6 @@ He can’t turn from side to side, or drink barely 2 tea spoonfuls of water. He 
 bed-ridden for a long time before his death, & must lose his consciousness & remain,
 for shorter or longer periods, in a state of delusion. His very weakness is sufficient to
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     31
-
 keep him in a swoon, not to speak of the agony which he is all the while experiencing.
 He must travel through two extremes: if his heart faints, the wine which would be
 necessary to keep it fit would not be tolerated by the high-risen brain, which would
@@ -1364,7 +1274,7 @@ through nights, in some cases for days & days to come. This very fact may often
 overthrow the constitution of those who attend, & cause sickness within sickness, & in
 some cases, as those of the plague, of death within death.
 
-18th July 1912
+### 18th July 1912
 
          It’s a long time since I wrote last in this note-book. Yesterday I finished my 26th
 year according to the Hindu calendar. What can I find on a review of the life which has
@@ -1398,15 +1308,12 @@ experiences should come in the heels of one another in order that if the wand be
 to one extreme at one moment, it might be immediately bent to the other at the very
 next. The mind also might fair remain indifferent to either joy or sorrow!
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     32
-
         It is necessary that a man should have self-respect within the bounds of
 decency. He must not show himself to be a mere hanger-on, nor must he show that
 he is always desirous to please, even by going out of his way. He must refuse to accept
 presents wherever possible! For less must he implore others to confer favours on him!
 
-24th July 1912
+### 24th July 1912
 
         On Sunday last, the 21st instant, it rained very heavily in Poona. The rainfall on
 that day was 4 inches & 36 cents. one of the record rainfalls of Poona during the period
@@ -1444,9 +1351,6 @@ to an incident which has just happened, & which is experienced by all, appeals g
 to an audience. Mr. Bain, this evening, compared the lecturer, Mr. R. G. Pradhan, to the
 recent rains, who had come to increase the level of students, as the rains to increase
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                     33
-
 the level of river. Another trick is to flatter the audience; to call the D.C. the “flower” of
 the University. Mr. Bain told us that a scholar could be defined as a person who had
 got leisure, & who could know himself gauge his powers. Mr. Pradhan referred to a
@@ -1462,11 +1366,8 @@ interpretation of Morley’s definition of Democracy in his writings upon Societ
 
                                          *****
 
-                                                                  NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                 34
-
-REFLECTIONS – III
-24th July 1912
+## REFLECTIONS – III
+### 24th July 1912
 
        There is a great truth in the saying that a thing can be judged best from the
 outside. I could judge of the D. College while I was at the Fergusson. I can now judge
@@ -1487,7 +1388,7 @@ examine what we have done to advance our spirituality. A day spent is so much as
 day cut off from our life. We shall live one day less. We should counterbalance this
 physical disability by, intellectual, moral, or spiritual gain every day.
 
-25th July 1912
+### 25th July 1912
 
        How difficult the ideal of calm tranquillity under all circumstances is can be
 appreciated only by those who have tried to bring themselves nearer to the ideal. It is
@@ -1504,13 +1405,10 @@ which is far from bringing on the joy of tranquillity.
       Have you analysed the fact that while you feel a kind of attraction for certain
 people, for certain others you do not feel any attraction at all? Is it on account of
 
-                                                              NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                  35
-
 personal magnetism, or the consonance of vibrations, or the ‘complementary’ nature
 of the character-time.
 
-29th July 1912
+### 29th July 1912
 
         So very ungrateful is man! But 10 days ago, people complained so much that
 there was no rain at all; to-day they complain that there has been too much rain! I hear
@@ -1537,7 +1435,7 @@ business in a very right spirit. Time comes when people cling to you, the more y
 to keep them at an arm’s length; & when they appreciate the value you place on every
 moment, they wish to execute business with you in as short a time as possible.
 
-30th July 1912
+### 30th July 1912
 
        As one observes the work, one sees that it is nothing but a contest of passions:
 one man tries to gain as much dignity for himself as possible; the other tries to prevent
@@ -1550,9 +1448,6 @@ happiness tends merely to produce sorrow in another. The philosopher is amused t
 see the contest of these passions, & therefore does not care for either. To think of the
 causes, & to observe the working, of the passions is a sure way to destroy them &
 whenever we are prompted to be affected by any passion, we must immediately
-
-                                                               NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                   36
 
 dissolve it in analysis. To be always modest in good; not to fall a victim to the
 temptation of raising oneself is better; but to destroy a passion by analysis &
@@ -1567,7 +1462,7 @@ even to his relations. He is, nevertheless, humble & modest: he is always ready 
 The greatest disaster may scarcely influence the mind of such a person. He is very
 gentle of manners, & though cold, he is yet inviting.
 
-31st July 1912
+### 31st July 1912
 
         Beware to take advantage of a man’s absence. There is no greater sin than to
 spoil a man’s cause at his back. Do what you would have done, if he had been present:
@@ -1580,7 +1475,7 @@ which must please. If A abuses B, he must present B the very next day with some 
 If one displeases another by robbing him of his freedom, he must please him the next
 day with adventitious importance! Such are the ways of the world!
 
-28th August 1912
+### 28th August 1912
 
        It is a glorious sight to see a pair of friends who love each other with their whole
 heart & soul. If a slight thing pains one, the other will try his best to remove the cause
@@ -1599,9 +1494,6 @@ his own: the second will only grow exasperated.
       The less a man comes into contact with people, the less the opportunity of
 growing dissatisfied with their opinions, or their behaviour. If unfortunately a man is
 
-                                                                NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                37
-
 accidently brought into contact, the sooner he checks himself the better. It does not
 matter if a man looks curt: he will in the end give satisfaction to himself. Let a man
 always beware of being supposed a mere meddler in other people’s affairs. There is
@@ -1611,7 +1503,7 @@ who come in contact with him; & after having judged them, let him hold them near
 at an arm’s length. Let him avoid showy people: they are incapable of doing any solid
 work. Let him accept those who are attracted to him.
 
-8th September 1912
+### 8th September 1912
 
       Accept even that kind of advice which is given by a man, who is conscious of
 his own greatness.
@@ -1632,7 +1524,7 @@ their ingrained thoughts & habits. Such persons must not disturb oneself. It is 
 good never to speak or hear about such people, or to dilate upon their faults in
 discussion. The less that is said or heard about them, the better for one’s peace.
 
-15th September 1912
+### 15th September 1912
 
        And yet how true is that such people are but the product of their circumstances
 & actions. An invariable law governs vice & its result, & when we look at the Law by
@@ -1645,9 +1537,6 @@ light a scorpion, & so he returns. In a moment’s time, another goes there with
 knowledge that there is a scorpion, & the scorpion has run off, & does not come in his
 way!
 
-                                                             NNA I ASD I NVA I Reflections I Feb2014
-                                                                                                        38
-
       One becomes occasionally reminded how so much of the world is guided by
 worship of the Dollar. Is not a rich man flattered for his riches, & a lucky man for his
 luck?
@@ -1658,7 +1547,7 @@ money, which he wanted you to do. It does not matter in the least if you incur
 displeasure of others by not wasting your money: mind only to spend it on good
 causes.
 
-15th October 1912
+### 15th October 1912
 
        It is very true that an unreal thing may produce a real effect. A poet tells a story,
 perhaps fashioning it out of his own mind, there being possibly no historical
@@ -1679,5 +1568,3 @@ himself on the lines of Devotion rather than on those of thought.
 words of a dumb man, or of a blind man seeing a lame man running!
 
                                           *****
-
-                                                                     NNA I ASD I NVA I Reflections I Feb2014

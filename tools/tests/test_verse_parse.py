@@ -13,6 +13,7 @@ import textwrap
 import pytest
 
 from server import (
+    HEADING_IN_BODY_SLUGS,
     VERSE_FORMAT_SLUGS,
     _is_decorative_block,
     _is_verse_block,
@@ -521,3 +522,107 @@ class TestKakanchiPravachaneBitExact:
         assert [len(pg) for pg in pages_default] == [len(pg) for pg in pages_via_helper]
         # Page 1 rows are the same paragraph `n`s in the same order.
         assert [p["n"] for p in pages_default[0]] == [p["n"] for p in pages_via_helper[0]]
+
+
+# ---------------------------------------------------------------------------
+# HEADING_IN_BODY_SLUGS scope-gate: reflections (prose) gets is_heading
+# emission WITHOUT verse styling; nityanemavali (verse) gets both. This is
+# the split of the old VERSE_FORMAT_SLUGS gate on 2026-08-06 for Neha's
+# reflections rebuild.
+# ---------------------------------------------------------------------------
+
+
+def test_heading_in_body_slugs_superset_of_verse_format():
+    assert VERSE_FORMAT_SLUGS <= HEADING_IN_BODY_SLUGS
+    assert "reflections" in HEADING_IN_BODY_SLUGS
+    assert "reflections" not in VERSE_FORMAT_SLUGS
+
+
+SAMPLE_REFLECTIONS = textwrap.dedent(
+    """\
+    ---
+    title: Reflections
+    lang: en
+    ---
+
+    ## REFLECTIONS – I
+    ### 21st February 1912
+
+    Today I saw a gentleman rebuking a young for a fault, which deserved to be censured. But the rebuke lost all its force as it was immediately followed by an indiscreet confession of a similar fault which the gentleman had committed in his youth.
+
+    ### 22nd February 1912
+
+    It is the nature of children to be naughty, and it requires a great deal of tact on the part of the elder to behave properly with them. The best way to behave with children is never to grow familiar with them.
+    """
+)
+
+
+@pytest.fixture()
+def reflections_sample(tmp_path: Path) -> Path:
+    p = tmp_path / "reflections_sample.md"
+    p.write_text(SAMPLE_REFLECTIONS, encoding="utf-8")
+    return p
+
+
+class TestParseReflectionsHeadingEmission:
+    """Reflections is in HEADING_IN_BODY_SLUGS but NOT in VERSE_FORMAT_SLUGS.
+    It must get in-body heading paragraphs (H2 and H3) with NO verse
+    styling on the surrounding prose."""
+
+    def test_h2_heading_emitted_as_paragraph(self, reflections_sample):
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        h2s = [p for p in paras if p.get("is_heading") and p.get("heading_level") == 2]
+        assert len(h2s) == 1
+        assert h2s[0]["body"] == "REFLECTIONS – I"
+
+    def test_h3_headings_emitted_as_paragraphs(self, reflections_sample):
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        h3s = [p for p in paras if p.get("is_heading") and p.get("heading_level") == 3]
+        assert len(h3s) == 2
+        assert h3s[0]["body"] == "21st February 1912"
+        assert h3s[1]["body"] == "22nd February 1912"
+
+    def test_no_verse_flags_for_reflections(self, reflections_sample):
+        # Reflections is prose — no is_verse flag must be set on any row,
+        # even though the parser now emits heading rows.
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        assert not any(p.get("is_verse") for p in paras)
+
+    def test_body_paragraphs_go_through_strip_inline_md(self, reflections_sample):
+        # Prose bodies should be scrubbed by _strip_inline_md — the verse
+        # branch (which preserves **bold**) must NOT fire here.
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        bodies = [p for p in paras if not p.get("is_heading")]
+        assert bodies, "no body paragraphs parsed"
+
+    def test_paragraph_n_is_consecutive(self, reflections_sample):
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        for i, p in enumerate(paras):
+            assert p["n"] == i + 1
+
+    def test_chapter_context_updates_from_h3(self, reflections_sample):
+        # `chapter` on body paragraphs after each `###` should be that date.
+        paras = _parse_work_text(reflections_sample, slug="reflections")
+        # First body para after H3 "21st February 1912"
+        first_body = next(p for p in paras if not p.get("is_heading"))
+        assert first_body["chapter"] == "21st February 1912"
+
+
+class TestNityanemavaliStillGetsBothFlags:
+    """Regression pin: splitting the emission gate off VERSE_FORMAT_SLUGS
+    must NOT stop nityanemavali from getting is_heading rows AND is_verse
+    styling. HEADING_IN_BODY_SLUGS is a superset that includes it."""
+
+    def test_h2_heading_still_emitted(self, sample_file):
+        paras = _parse_work_text(sample_file, slug="nityanemavali")
+        h2s = [p for p in paras if p.get("is_heading") and p.get("heading_level") == 2]
+        assert len(h2s) == 1
+
+    def test_h3_heading_still_emitted(self, sample_file):
+        paras = _parse_work_text(sample_file, slug="nityanemavali")
+        h3s = [p for p in paras if p.get("is_heading") and p.get("heading_level") == 3]
+        assert len(h3s) == 1
+
+    def test_verse_flags_still_applied(self, sample_file):
+        paras = _parse_work_text(sample_file, slug="nityanemavali")
+        assert any(p.get("is_verse") for p in paras)
