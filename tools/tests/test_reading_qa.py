@@ -295,3 +295,229 @@ def test_prepare_request_rejects_unknown_mode(patch_retrieve_min):
     with pytest.raises(HTTPException) as excinfo:
         server._prepare_request(req)
     assert excinfo.value.status_code == 400
+
+
+# ---------------------------------------------------------------------------
+# 5. Slug validation (2026-08-05 fix) — invented workSlugs are dropped
+#    against the current turn's retrieval set BEFORE the cap-to-3 truncation.
+# ---------------------------------------------------------------------------
+
+
+def test_reading_qa_prompt_teaches_slug_verbatim_rule():
+    """The prompt must teach: copy `workSlug` from the `[slug: ...]` marker,
+    never invent from titles. Includes a concrete bad/good example."""
+    system = prompts.get_system_prompt("reading-qa", lang="en")
+    # The marker name the formatter emits.
+    assert "[slug:" in system, (
+        "reading-qa prompt must reference the `[slug: ...]` marker "
+        "that format_chunks_for_prompt now emits (2026-08-05 fix)"
+    )
+    # The observed misfire and the correct behavior — both must be visible.
+    assert "gurudev-paramarthik-shikvan" in system, (
+        "reading-qa prompt must show the correct (short, actual) slug from "
+        "the 2026-08-05 misfire as the good example"
+    )
+    assert "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan" in system, (
+        "reading-qa prompt must show the invented (title-derived) slug from "
+        "the 2026-08-05 misfire as the bad example"
+    )
+
+
+def test_format_chunks_emits_slug_marker():
+    """format_chunks_for_prompt must render `[slug: <work_id>]` per chunk,
+    so the LLM can copy the exact slug into `passageLinks[i].workSlug`."""
+    chunks = [
+        {
+            "meta": {
+                "work_id": "kakanchi-pravachane",
+                "title": "Kakanchi Pravachane",
+                "kind": "canonical",
+                "language": "mr",
+            },
+            "text": "A passage.",
+        },
+        {
+            "meta": {
+                "work_id": "gurudev-paramarthik-shikvan",
+                "title": "Shri Gurudev Ranade va tyanchi Paramarthik Shikvan",
+                "kind": "biography",
+                "language": "mr",
+            },
+            "text": "Another passage.",
+        },
+    ]
+    rendered = prompts.format_chunks_for_prompt(chunks)
+    assert "[slug: kakanchi-pravachane]" in rendered
+    assert "[slug: gurudev-paramarthik-shikvan]" in rendered
+
+
+def test_truncate_reading_qa_links_all_valid_preserved(caplog):
+    """LLM emits 2 links; both slugs valid → both preserved, no warnings."""
+    tool_input = {
+        "question": "q?",
+        "text": "t",
+        "passageLinks": [
+            {"label": "l1", "workSlug": "kakanchi-pravachane", "page": 1},
+            {"label": "l2", "workSlug": "gurudev-paramarthik-shikvan", "page": 5},
+        ],
+    }
+    valid = {"kakanchi-pravachane", "gurudev-paramarthik-shikvan", "another-work"}
+    logger = logging.getLogger("reading_qa")
+    with caplog.at_level(logging.WARNING, logger="reading_qa"):
+        dropped = schemas.truncate_reading_qa_links(
+            tool_input, logger=logger, valid_work_ids=valid,
+        )
+    assert dropped == 0
+    assert len(tool_input["passageLinks"]) == 2
+    assert not any(
+        "dropped passageLink" in rec.getMessage() or "truncated to 3" in rec.getMessage()
+        for rec in caplog.records
+    ), "no warnings should fire when all slugs are valid"
+
+
+def test_truncate_reading_qa_links_drops_invented_slug(caplog):
+    """LLM emits 3 links; 1 slug invalid → filtered to 2, warning logged
+    with the invented slug + the retrieved slugs it should have used."""
+    tool_input = {
+        "question": "q?",
+        "text": "t",
+        "passageLinks": [
+            {"label": "valid one", "workSlug": "kakanchi-pravachane", "page": 1},
+            # This is the exact 2026-08-05 misfire: LLM inflated the title.
+            {"label": "invented one",
+             "workSlug": "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan",
+             "page": 4},
+            {"label": "valid two", "workSlug": "gurudev-paramarthik-shikvan", "page": 12},
+        ],
+    }
+    valid = {"kakanchi-pravachane", "gurudev-paramarthik-shikvan"}
+    logger = logging.getLogger("reading_qa")
+    with caplog.at_level(logging.WARNING, logger="reading_qa"):
+        dropped = schemas.truncate_reading_qa_links(
+            tool_input, logger=logger, valid_work_ids=valid,
+        )
+    assert dropped == 1
+    assert len(tool_input["passageLinks"]) == 2
+    surviving_slugs = [l["workSlug"] for l in tool_input["passageLinks"]]
+    assert "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan" not in surviving_slugs
+    assert set(surviving_slugs) == {"kakanchi-pravachane", "gurudev-paramarthik-shikvan"}
+    # Warning must name both the invented slug AND the retrieved slugs so
+    # future debugging sees exactly what happened.
+    invalid_warns = [
+        rec.getMessage() for rec in caplog.records
+        if "dropped passageLink" in rec.getMessage()
+    ]
+    assert len(invalid_warns) == 1
+    msg = invalid_warns[0]
+    assert "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan" in msg
+    assert "kakanchi-pravachane" in msg
+    assert "gurudev-paramarthik-shikvan" in msg
+
+
+def test_truncate_reading_qa_links_invalid_dropped_before_cap(caplog):
+    """LLM emits 5 links, 2 invalid → invalid dropped FIRST, THEN cap to 3.
+    Result must be 3 valid links (not 3 items where invented ones squatted
+    on the first 3 slots)."""
+    tool_input = {
+        "question": "q?",
+        "text": "t",
+        "passageLinks": [
+            {"label": "bad 1", "workSlug": "invented-slug-one", "page": 1},
+            {"label": "good 1", "workSlug": "kakanchi-pravachane", "page": 2},
+            {"label": "bad 2", "workSlug": "invented-slug-two", "page": 3},
+            {"label": "good 2", "workSlug": "gurudev-paramarthik-shikvan", "page": 4},
+            {"label": "good 3", "workSlug": "pathway-to-god-in-hindi-literature", "page": 5},
+        ],
+    }
+    valid = {
+        "kakanchi-pravachane",
+        "gurudev-paramarthik-shikvan",
+        "pathway-to-god-in-hindi-literature",
+    }
+    logger = logging.getLogger("reading_qa")
+    with caplog.at_level(logging.WARNING, logger="reading_qa"):
+        dropped = schemas.truncate_reading_qa_links(
+            tool_input, logger=logger, valid_work_ids=valid,
+        )
+    # 2 invalid dropped; nothing left to cap (3 valid == cap).
+    assert dropped == 2
+    surviving = [l["workSlug"] for l in tool_input["passageLinks"]]
+    assert surviving == [
+        "kakanchi-pravachane",
+        "gurudev-paramarthik-shikvan",
+        "pathway-to-god-in-hindi-literature",
+    ], "surviving links must be the valid ones in original order, not slots 0–2"
+    # Two dropped-invalid warnings, no cap-truncation warning.
+    dropped_msgs = [
+        rec.getMessage() for rec in caplog.records
+        if "dropped passageLink" in rec.getMessage()
+    ]
+    assert len(dropped_msgs) == 2
+    assert not any("truncated to 3" in rec.getMessage() for rec in caplog.records)
+
+
+def test_truncate_reading_qa_links_empty_retrieval_drops_all(caplog):
+    """Edge case: retrieval returned nothing; any link the LLM invented
+    must be dropped (there's no valid slug it could have used)."""
+    tool_input = {
+        "question": "q?",
+        "text": "t",
+        "passageLinks": [
+            {"label": "invented", "workSlug": "some-slug", "page": 1},
+        ],
+    }
+    logger = logging.getLogger("reading_qa")
+    with caplog.at_level(logging.WARNING, logger="reading_qa"):
+        dropped = schemas.truncate_reading_qa_links(
+            tool_input, logger=logger, valid_work_ids=set(),
+        )
+    assert dropped == 1
+    assert tool_input["passageLinks"] == []
+    assert any(
+        "dropped passageLink" in rec.getMessage() and "some-slug" in rec.getMessage()
+        for rec in caplog.records
+    )
+
+
+def test_truncate_reading_qa_links_valid_and_overflow_cap_still_warns(caplog):
+    """When >3 valid links come in (all-valid, no invented slugs), cap still
+    fires with the RFC-023 cap warning — regression guard on the old path."""
+    tool_input = {
+        "question": "q?",
+        "text": "t",
+        "passageLinks": [
+            {"label": f"l{i}", "workSlug": "kakanchi-pravachane", "page": i + 1}
+            for i in range(5)
+        ],
+    }
+    valid = {"kakanchi-pravachane"}
+    logger = logging.getLogger("reading_qa")
+    with caplog.at_level(logging.WARNING, logger="reading_qa"):
+        dropped = schemas.truncate_reading_qa_links(
+            tool_input, logger=logger, valid_work_ids=valid,
+        )
+    assert dropped == 2
+    assert len(tool_input["passageLinks"]) == 3
+    assert any("truncated to 3" in rec.getMessage() for rec in caplog.records)
+
+
+def test_valid_work_ids_helper_extracts_from_label_to_chunk():
+    """The llm_client helper unpacks work_id from each chunk's meta."""
+    import llm_client
+
+    label_to_chunk = {
+        "A": {"meta": {"work_id": "kakanchi-pravachane"}, "text": "..."},
+        "B": {"meta": {"work_id": "gurudev-paramarthik-shikvan"}, "text": "..."},
+        "C": {"meta": {"work_id": "kakanchi-pravachane"}, "text": "..."},  # duplicate
+        "D": {"meta": {}, "text": "..."},  # no work_id — skipped
+    }
+    ids = llm_client._valid_work_ids_from(label_to_chunk)
+    assert ids == {"kakanchi-pravachane", "gurudev-paramarthik-shikvan"}
+
+
+def test_valid_work_ids_helper_handles_none_and_empty():
+    """Missing/empty label_to_chunk collapses to empty set (drops all links)."""
+    import llm_client
+
+    assert llm_client._valid_work_ids_from(None) == set()
+    assert llm_client._valid_work_ids_from({}) == set()

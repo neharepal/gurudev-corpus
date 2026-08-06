@@ -91,6 +91,28 @@ MAX_TOKENS_BY_MODE = {
 }
 
 
+def _valid_work_ids_from(label_to_chunk: dict | None) -> set[str]:
+    """Extract the set of `work_id` values from the current turn's retrieval.
+
+    Used by the reading-qa slug validator to drop links whose `workSlug`
+    was invented by the LLM rather than copied from a retrieved chunk.
+    Returns an empty set when `label_to_chunk` is None/empty — the caller
+    passes the empty set through so the validator drops ALL links in that
+    edge case (nothing was retrieved, no link can be valid).
+    """
+    if not label_to_chunk:
+        return set()
+    ids: set[str] = set()
+    for chunk in label_to_chunk.values():
+        if not isinstance(chunk, dict):
+            continue
+        meta = chunk.get("meta") or chunk
+        wid = meta.get("work_id") if isinstance(meta, dict) else None
+        if isinstance(wid, str) and wid:
+            ids.add(wid)
+    return ids
+
+
 def pick_model(mode: str) -> str:
     """Sonnet for every mode. Pravachan used Opus (RFC-001), but was moved to
     Sonnet on 2026-06-25 for latency parity with Q&A (user request) — Opus
@@ -234,10 +256,14 @@ class ChatClient:
             tool_input = copy.deepcopy(tool_input)
             splice_qa_citations(tool_input, label_to_chunk)
         elif mode == "reading-qa":
-            # RFC-023: cap passageLinks to 3; warn if the LLM overshot.
+            # RFC-023: filter invented workSlugs, then cap passageLinks to 3.
             tool_input = copy.deepcopy(tool_input)
             import logging
-            truncate_reading_qa_links(tool_input, logger=logging.getLogger("reading_qa"))
+            truncate_reading_qa_links(
+                tool_input,
+                logger=logging.getLogger("reading_qa"),
+                valid_work_ids=_valid_work_ids_from(label_to_chunk),
+            )
 
         try:
             parsed = response_model.model_validate(tool_input)
@@ -364,7 +390,11 @@ class ChatClient:
         elif mode == "reading-qa":
             tool_input = copy.deepcopy(tool_input)
             import logging
-            truncate_reading_qa_links(tool_input, logger=logging.getLogger("reading_qa"))
+            truncate_reading_qa_links(
+                tool_input,
+                logger=logging.getLogger("reading_qa"),
+                valid_work_ids=_valid_work_ids_from(label_to_chunk),
+            )
 
         try:
             parsed = response_model.model_validate(tool_input)

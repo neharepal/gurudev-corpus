@@ -1014,31 +1014,78 @@ def get_tool(mode: str) -> Dict[str, Any]:
 READING_QA_MAX_LINKS = 3
 
 
-def truncate_reading_qa_links(tool_input: Dict[str, Any], logger=None) -> int:
-    """Keep first READING_QA_MAX_LINKS in `passageLinks`, in place.
+def truncate_reading_qa_links(
+    tool_input: Dict[str, Any],
+    logger=None,
+    valid_work_ids: Optional[set] = None,
+) -> int:
+    """Filter invented slugs, then keep first READING_QA_MAX_LINKS.
 
-    Returns the number of links dropped (0 when the cap wasn't reached).
-    If `logger` is given, logs a warning at WARNING level when truncation
-    happened, per RFC-023 §"Design calls locked in".
+    Returns the total number of links dropped (invalid-slug drops + cap
+    truncation). If `logger` is given, logs a WARNING per invalid-slug drop
+    (with the invented slug + the actual retrieved slugs) AND a WARNING
+    when the cap truncation fires, per RFC-023.
+
+    When `valid_work_ids` is provided (a set of `work_id` strings from the
+    current turn's retrieval set), each `passageLinks[i].workSlug` is
+    validated against it. Any link whose slug isn't present is dropped
+    BEFORE the cap-to-3 truncation runs — so validated links get the 3
+    slots, not invented ones. This fixes the 2026-08-05 misfire where the
+    LLM invented "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan" from
+    a work's title/author instead of the actual "gurudev-paramarthik-shikvan"
+    slug, producing a 404 link.
+
+    When `valid_work_ids` is None (legacy callers, tests without a
+    retrieval set), the slug filter is skipped and only the cap runs.
     """
     if not isinstance(tool_input, dict):
         return 0
     links = tool_input.get("passageLinks")
     if not isinstance(links, list):
         return 0
-    if len(links) <= READING_QA_MAX_LINKS:
-        return 0
-    dropped = len(links) - READING_QA_MAX_LINKS
-    tool_input["passageLinks"] = links[:READING_QA_MAX_LINKS]
-    if logger is not None:
-        try:
-            logger.warning(
-                "reading-qa: LLM emitted %d passageLinks; truncated to %d (RFC-023 cap)",
-                len(links), READING_QA_MAX_LINKS,
-            )
-        except Exception:
-            pass
-    return dropped
+
+    dropped_invalid = 0
+    if valid_work_ids is not None:
+        filtered: list = []
+        for link in links:
+            if not isinstance(link, dict):
+                # Non-dict entries pass through to pydantic for a proper error.
+                filtered.append(link)
+                continue
+            slug = link.get("workSlug")
+            if slug in valid_work_ids:
+                filtered.append(link)
+                continue
+            # Invented slug — drop and warn with the invented value + the
+            # actual retrieved slugs (sorted for stable log format).
+            dropped_invalid += 1
+            if logger is not None:
+                try:
+                    logger.warning(
+                        "reading-qa: dropped passageLink with invented "
+                        "workSlug=%r (retrieved slugs were: %s)",
+                        slug,
+                        sorted(valid_work_ids) if valid_work_ids else [],
+                    )
+                except Exception:
+                    pass
+        links = filtered
+        tool_input["passageLinks"] = links
+
+    dropped_cap = 0
+    if len(links) > READING_QA_MAX_LINKS:
+        dropped_cap = len(links) - READING_QA_MAX_LINKS
+        tool_input["passageLinks"] = links[:READING_QA_MAX_LINKS]
+        if logger is not None:
+            try:
+                logger.warning(
+                    "reading-qa: LLM emitted %d passageLinks; truncated to %d (RFC-023 cap)",
+                    len(links), READING_QA_MAX_LINKS,
+                )
+            except Exception:
+                pass
+
+    return dropped_invalid + dropped_cap
 
 
 def get_response_model(mode: str):

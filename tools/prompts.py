@@ -533,8 +533,20 @@ Leave `passageLinks` unset (or empty) unless the user's question implies asking 
 When you do include links:
 - **At most 3 links.** If more feel relevant, choose the 3 strongest.
 - **Descriptive labels only.** "where Gurudev discusses nama-smaran" — not "Kakanchi Pravachane, page 47". The label should read naturally in a "Sources:" list, like a phrase in a sentence, not like an index entry.
-- Each link needs: `label` (descriptive prose in the answer language), `workSlug` (canonical slug — copy exactly from the passage's meta, e.g. "kakanchi-pravachane"), `page` (integer, 1-based reader page — use the passage's known page number if surfaced, otherwise omit the link rather than guess).
+- Each link needs: `label` (descriptive prose in the answer language), `workSlug` (canonical slug), `page` (integer, 1-based reader page — use the passage's known page number if surfaced, otherwise omit the link rather than guess).
 - `workTitle` (optional) is only needed when the linked work is DIFFERENT from the current book — so the reader knows they're jumping outside their current read. Copy the work's published title verbatim.
+
+## `workSlug` — copy VERBATIM from the `[slug: ...]` line — DO NOT INVENT
+
+Every retrieved passage in `<retrieved_passages>` carries a `[slug: <work_id>]` line directly under its `[PASSAGE X]` header. That slug is the ONLY valid value for `passageLinks[i].workSlug` — the reader route is `/read/<workSlug>` and the retrieval system uses that EXACT string. If you invent a slug (even a plausible-looking one derived from the work's title or author), the link 404s and the reader is stranded.
+
+- **MUST**: copy `workSlug` character-for-character from the passage's `[slug: ...]` marker. No transformation, no expansion, no translation.
+- **NEVER**: construct a slug from the work's title, author, or your own guess at what the slug "should" be.
+- If a passage's `[slug: (unknown)]` marker shows no slug, OMIT that link entirely — do not fabricate one.
+
+Bad (observed 2026-08-05 misfire): passage header shows `work="Shri Gurudev Ranade va tyanchi Paramarthik Shikvan"` with `[slug: gurudev-paramarthik-shikvan]`; LLM emits `workSlug: "shri-gurudev-ranade-va-tyanchi-paramarthik-shikvan"` (invented from the title). Result: 404 in the reader.
+
+Good: same passage → LLM emits `workSlug: "gurudev-paramarthik-shikvan"` (copied verbatim from the `[slug: ...]` line). Reader opens the book.
 
 # What you must never do
 
@@ -590,6 +602,13 @@ def format_chunks_for_prompt(chunks: list[dict[str, Any]]) -> str:
         kind = meta.get("kind", "?")
         lang = meta.get("language", "?")
         work = meta.get("title") or meta.get("work_id") or "(unknown work)"
+        # RFC-023 fix (2026-08-05): surface the exact work_id/slug on its own
+        # `[slug: ...]` line so reading-qa `passageLinks[i].workSlug` can be
+        # copied verbatim. Previously only the title was visible; the LLM was
+        # observed inventing longer slugs from title+author ("shri-gurudev-
+        # ranade-va-tyanchi-paramarthik-shikvan" instead of the actual
+        # "gurudev-paramarthik-shikvan"), producing 404 links.
+        slug = meta.get("work_id") or ""
         author = meta.get("author") or ""
         about = meta.get("about_member") or ""
         narrator = meta.get("narrator") or ""
@@ -606,9 +625,9 @@ def format_chunks_for_prompt(chunks: list[dict[str, Any]]) -> str:
         if source_work:
             attrs.append(f'source_work="{source_work}"')
 
-        parts.append(
-            f"[PASSAGE {label}] " + " ".join(attrs) + "\nTEXT:\n" + text.strip()
-        )
+        header = f"[PASSAGE {label}] " + " ".join(attrs)
+        slug_line = f"[slug: {slug}]" if slug else "[slug: (unknown)]"
+        parts.append(header + "\n" + slug_line + "\nTEXT:\n" + text.strip())
 
     return "\n\n---\n\n".join(parts)
 
