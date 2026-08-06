@@ -69,9 +69,10 @@ type TocData = {
 };
 
 // Module-scope so the initial-state expressions below can consult it
-// synchronously (before any TOC fetch has resolved). Any slug listed here
-// causes the reader to inject a TOC page as displayed page 1, shifting
-// every subsequent body page by +1. Keep in sync with the (identical) set
+// synchronously (before any TOC fetch has resolved). A slug in this set
+// gates the ☰ Contents drawer + click-jump behaviour. It does NOT by
+// itself imply a synthetic displayed-page-1 TOC splash — see
+// TOC_SPLASH_SLUGS below for that. Keep in sync with the (identical) set
 // used further down for render-time decisions — one source of truth.
 //
 // Add a slug here only after (1) its canonical text.md matches the actual
@@ -86,6 +87,25 @@ type TocData = {
 // via /toc endpoint (7 sections: Preface + Chapter I standalone + 5 Parts
 // with their chapters, 20 chapters total, 459 `####` sub-items).
 const TOC_ALLOWED_SLUGS = new Set<string>([
+  "kakanchi-pravachane",
+  "mysticism-in-maharashtra",
+  "bhagavadgita-as-pathway-to-god-realization",
+  "nityanemavali",
+  "reflections",
+]);
+
+// Books whose displayed page 1 is a synthetic TOC-splash (mirrors a
+// printed anukramanika). These books apply a +1 offset between backend
+// page numbers and displayed page numbers so displayed p1 = TOC and
+// displayed p2 = backend p1 (real content start). Books allow-listed
+// for the drawer but NOT in this set (e.g. `reflections` — a diary
+// with no printed TOC page) skip the offset and map 1:1: displayed p1
+// is the first real body page and the drawer still opens on click.
+//
+// This must be a SUBSET of TOC_ALLOWED_SLUGS: if the drawer is hidden
+// the offset can never apply anyway. Adding a slug here without also
+// adding it to TOC_ALLOWED_SLUGS is a no-op.
+const TOC_SPLASH_SLUGS = new Set<string>([
   "kakanchi-pravachane",
   "mysticism-in-maharashtra",
   "bhagavadgita-as-pathway-to-god-realization",
@@ -260,12 +280,14 @@ function ReadingPage() {
   // URL contract: `?page=N` is the BACKEND page number (what the citation
   // enricher writes as `quote.readPage`). Persistent state + everything
   // else in this component works in DISPLAYED page numbering — when a
-  // TOC page is injected (allow-listed slug), displayed = backend + 1.
+  // TOC splash is injected (splash-listed slug), displayed = backend + 1.
+  // Books that are in TOC_ALLOWED_SLUGS but NOT TOC_SPLASH_SLUGS (e.g.
+  // `reflections`) map 1:1 — no synthetic page 1 is inserted.
   // Translate at the URL boundary so downstream state stays consistent.
   const urlPageRaw = search.get("page");
   const urlPage = urlPageRaw !== null ? parseInt(urlPageRaw, 10) : null;
   const hasUrlPage = urlPage !== null && !Number.isNaN(urlPage) && urlPage >= 1;
-  const willInjectTocPage = TOC_ALLOWED_SLUGS.has(slug);
+  const willInjectTocPage = TOC_SPLASH_SLUGS.has(slug);
   const initialCurrentPage = hasUrlPage
     ? (willInjectTocPage ? urlPage! + 1 : urlPage!)
     : 1;
@@ -339,11 +361,10 @@ function ReadingPage() {
   // content.
   const [tocResolved, setTocResolved] = useState(false);
 
-  // Derived: does this work publish a TOC page? When true, displayed
-  // page 1 is the TOC and the body pages shift by +1 in the numbering
-  // the reader sees. The backend never knows about this shift — the
-  // shift is applied when we call /api/read (subtract 1) and when we
-  // render chapter-click targets from the TOC (add 1).
+  // Derived: does this work expose a ☰ Contents drawer? True when the
+  // fetched TOC has real sections AND the slug is in the curated
+  // allow-list. Controls drawer/button visibility ONLY — offset math
+  // lives on `hasTocSplashPage` below.
   //
   // Feature-gated: the TOC only renders for works whose canonical text.md
   // has been curated with meticulous chapter markers. Every other work's
@@ -357,6 +378,16 @@ function ReadingPage() {
     toc.sections.length > 0 &&
     TOC_ALLOWED_SLUGS.has(slug)
   );
+
+  // Derived: is displayed page 1 a synthetic TOC-splash for this work?
+  // When true, the backend body pages shift by +1 in the numbering the
+  // reader sees. The backend never knows about this shift — it's applied
+  // when we call /api/read (subtract 1) and when we render chapter-click
+  // targets from the TOC (add 1). Books like `reflections` are in
+  // TOC_ALLOWED_SLUGS (drawer visible) but NOT in TOC_SPLASH_SLUGS
+  // (no printed anukramanika), so this stays false and backend page N
+  // = displayed page N.
+  const hasTocSplashPage = hasTocPage && TOC_SPLASH_SLUGS.has(slug);
 
   // When a ?page= URL param is present, override the persisted page once on
   // mount. We use a ref so this override fires exactly once per navigation to
@@ -405,22 +436,25 @@ function ReadingPage() {
     let cancelled = false;
     // Wait until we know whether this work has a TOC — otherwise the very
     // first fetch would go out at currentPage=1 (backend page 1 = chapter 1
-    // content) and then get thrown away as soon as `hasTocPage` flips true.
+    // content) and then get thrown away as soon as `hasTocSplashPage`
+    // flips true (splash books shift displayed p1 to the synthetic TOC).
     if (!tocResolved) return;
-    // Displayed page 1 is the TOC-only view when this work has a TOC.
-    // Don't fetch anything — the paragraph area renders the TOC and the
-    // reader never sees chapter-1 body until they page forward.
-    if (hasTocPage && currentPage === 1) {
+    // Displayed page 1 is the TOC-only view when this work has a splash
+    // page (see TOC_SPLASH_SLUGS). Don't fetch anything — the paragraph
+    // area renders the TOC and the reader never sees chapter-1 body until
+    // they page forward. Books like `reflections` skip this branch: their
+    // displayed page 1 IS backend page 1 (real content).
+    if (hasTocSplashPage && currentPage === 1) {
       setLoading(false);
       setFetchError(null);
       return;
     }
     setLoading(true);
     setFetchError(null);
-    // Backend still uses body-page numbering. When a TOC page exists the
-    // displayed page is +1 vs. the backend page, so subtract before the
-    // request. The API + proxies are untouched by this shift.
-    const backendPage = hasTocPage ? currentPage - 1 : currentPage;
+    // Backend still uses body-page numbering. When a TOC splash exists
+    // the displayed page is +1 vs. the backend page, so subtract before
+    // the request. The API + proxies are untouched by this shift.
+    const backendPage = hasTocSplashPage ? currentPage - 1 : currentPage;
     const qs = new URLSearchParams({ slug, page: String(backendPage) });
     if (contentLang) qs.set("lang", contentLang);
     fetch(`/api/read?${qs.toString()}`)
@@ -442,8 +476,9 @@ function ReadingPage() {
           setLoading(false);
           // Clamp currentPage to [1, displayedTotal]. Needed when the ?page=
           // URL param was out of the valid range for this work. The reader's
-          // displayed total includes the TOC page, so add 1 when hasTocPage.
-          const displayedTotal = data.totalPages + (hasTocPage ? 1 : 0);
+          // displayed total includes the synthetic TOC page, so add 1 only
+          // when this work injects a splash (hasTocSplashPage).
+          const displayedTotal = data.totalPages + (hasTocSplashPage ? 1 : 0);
           setCurrentPage((p) => Math.max(1, Math.min(displayedTotal, p)));
           // Record reading progress in displayed-page numbering so the
           // "Continue reading" shelf matches what the reader sees on the
@@ -466,7 +501,7 @@ function ReadingPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, contentLang, currentPage, hasTocPage, tocResolved]);
+  }, [slug, contentLang, currentPage, hasTocSplashPage, tocResolved]);
 
   // TOC fetch — separate from the paginated body fetch above so page turns
   // don't re-fetch the (often-large) TOC. Runs once per (slug, contentLang).
@@ -604,11 +639,13 @@ function ReadingPage() {
     }
   }
 
-  // Body pages the backend knows about. `displayedTotal` adds the TOC
-  // page when this work has one, giving the numbering the reader sees on
-  // the slider, "Page X of Y", and Prev/Next bounds.
+  // Body pages the backend knows about. `displayedTotal` adds the
+  // synthetic TOC splash when this work injects one (hasTocSplashPage),
+  // giving the numbering the reader sees on the slider, "Page X of Y",
+  // and Prev/Next bounds. Books with the drawer but no splash (e.g.
+  // reflections) map 1:1.
   const backendTotal = pageData?.totalPages ?? 1;
-  const displayedTotal = backendTotal + (hasTocPage ? 1 : 0);
+  const displayedTotal = backendTotal + (hasTocSplashPage ? 1 : 0);
 
   // Update the live scrub position without triggering a fetch. Called on
   // every change event (drag tick, arrow key press).
@@ -689,7 +726,7 @@ function ReadingPage() {
             style={{ color: "var(--text-secondary)" }}
           >
             {pageData
-              ? hasTocPage && currentPage === 1
+              ? hasTocSplashPage && currentPage === 1
                 ? `${pageData.author} · ${lbl.tocDrawerTitle}`
                 : pageData.chapter &&
                     // Reject obvious noise (year fragments, |I| citation
@@ -766,7 +803,7 @@ function ReadingPage() {
 
       {/* Reading column, capped at ~70ch per ADR-006. */}
       <article className="mx-auto w-full max-w-reading flex-1">
-        {hasTocPage && currentPage === 1 && toc ? (
+        {hasTocSplashPage && currentPage === 1 && toc ? (
           /* Displayed page 1 = the TOC-only view (no body fetch happens). */
           <section className="reading-toc-inline">
             <h2
@@ -783,7 +820,7 @@ function ReadingPage() {
             </h2>
             <TocBody
               toc={toc}
-              hasTocPage={hasTocPage}
+              hasTocSplashPage={hasTocSplashPage}
               isMr={isMr}
               onChapterClick={(displayedPage) => setCurrentPage(displayedPage)}
             />
@@ -1596,7 +1633,7 @@ function ReadingPage() {
           <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
             <TocBody
               toc={toc}
-              hasTocPage={hasTocPage}
+              hasTocSplashPage={hasTocSplashPage}
               isMr={isMr}
               onChapterClick={(displayedPage) => {
                 setCurrentPage(displayedPage);
@@ -1706,12 +1743,17 @@ function TocStyles() {
 function TocBody({
   toc,
   onChapterClick,
-  hasTocPage,
+  hasTocSplashPage,
   isMr,
 }: {
   toc: TocData;
   onChapterClick: (displayedPage: number) => void;
-  hasTocPage: boolean;
+  // True only when the parent reader injects a synthetic splash as
+  // displayed page 1 — determines whether the click-jump math offsets
+  // backend page numbers by +1. Books with a visible drawer but no
+  // printed anukramanika (e.g. reflections) pass `false` here so the
+  // drawer's page numbers are the reader's page numbers.
+  hasTocSplashPage: boolean;
   isMr: boolean;
 }) {
   return (
@@ -1744,7 +1786,7 @@ function TocBody({
             {isLeafSection ? (
               (() => {
                 const displayedPage =
-                  (section.page as number) + (hasTocPage ? 1 : 0);
+                  (section.page as number) + (hasTocSplashPage ? 1 : 0);
                 return (
                   <button
                     type="button"
@@ -1768,7 +1810,7 @@ function TocBody({
                 </div>
                 <ul className="gd-toc-list">
                   {section.chapters.map((ch, ci) => {
-                    const displayedPage = ch.page + (hasTocPage ? 1 : 0);
+                    const displayedPage = ch.page + (hasTocSplashPage ? 1 : 0);
                     return (
                       <li key={ci} className="gd-toc-li">
                         <button
