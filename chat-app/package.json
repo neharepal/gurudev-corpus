@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "dev:webpack": "next dev",
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbopack",
+    "dev:restart": "bash ./scripts/dev-restart.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
