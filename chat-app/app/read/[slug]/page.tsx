@@ -110,6 +110,7 @@ const TOC_SPLASH_SLUGS = new Set<string>([
   "mysticism-in-maharashtra",
   "bhagavadgita-as-pathway-to-god-realization",
   "nityanemavali",
+  "reflections",
 ]);
 
 // Language-aware UI labels for the reading surface. Verbatim passages
